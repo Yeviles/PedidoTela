@@ -1,0 +1,333 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="15.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{586F3DED-27EB-44DB-BF5B-3089C0E0DCBF}</ProjectGuid>
+    <OutputType>WinExe</OutputType>
+    <RootNamespace>PedidoTela.Formularios</RootNamespace>
+    <AssemblyName>PedidoTela.Formularios</AssemblyName>
+    <TargetFrameworkVersion>v4.7.2</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
+    <Deterministic>true</Deterministic>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <Prefer32Bit>false</Prefer32Bit>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup>
+    <StartupObject>PedidoTela.Formularios.Program</StartupObject>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="IrisSkin2">
+      <HintPath>..\..\..\..\Documents\Componentes Graficos Vb2\SKIN NET 2010 WIN 7\SkinVS.NET\IrisSkin2.dll</HintPath>
+    </Reference>
+    <Reference Include="MaterialSkin, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\MaterialSkin.0.2.1\lib\MaterialSkin.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Deployment" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Net.Http" />
+    <Reference Include="System.Windows.Forms" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="FrmAgenciasExternos.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FrmAgenciasExternos.Designer.cs">
+      <DependentUpon>FrmAgenciasExternos.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frmDetalleReserva.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmDetalleReserva.Designer.cs">
+      <DependentUpon>frmDetalleReserva.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frmDisponibleParaReserva.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmDisponibleParaReserva.Designer.cs">
+      <DependentUpon>frmDisponibleParaReserva.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frmPedidoaMontarAgencias.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmPedidoaMontarAgencias.Designer.cs">
+      <DependentUpon>frmPedidoaMontarAgencias.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frmPedidoaMontarCoordinado.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmPedidoaMontarCoordinado.Designer.cs">
+      <DependentUpon>frmPedidoaMontarCoordinado.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frmPedidoaMontarCuellos.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmPedidoaMontarCuellos.Designer.cs">
+      <DependentUpon>frmPedidoaMontarCuellos.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frmPedidoaMontarEstampado.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmPedidoaMontarEstampado.Designer.cs">
+      <DependentUpon>frmPedidoaMontarEstampado.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frmPedidoaMontarPretenido.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmPedidoaMontarPretenido.Designer.cs">
+      <DependentUpon>frmPedidoaMontarPretenido.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frmPedidoaMotarUnicolor.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmPedidoaMotarUnicolor.Designer.cs">
+      <DependentUpon>frmPedidoaMotarUnicolor.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frmPrueba.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmPrueba.Designer.cs">
+      <DependentUpon>frmPrueba.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frmReservaTela.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmReservaTela.Designer.cs">
+      <DependentUpon>frmReservaTela.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frmSolicitudListaTelas.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmSolicitudListaTelas.Designer.cs">
+      <DependentUpon>frmSolicitudListaTelas.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frmSolicitudPlanoPretenido.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmSolicitudPlanoPretenido.Designer.cs">
+      <DependentUpon>frmSolicitudPlanoPretenido.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frmSolicitudCuellosTiras.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmSolicitudCuellosTiras.Designer.cs">
+      <DependentUpon>frmSolicitudCuellosTiras.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frmSolicitudEstampado.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmSolicitudEstampado.Designer.cs">
+      <DependentUpon>frmSolicitudEstampado.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frmSolicitudTela.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmSolicitudTela.Designer.cs">
+      <DependentUpon>frmSolicitudTela.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frmTipoPedidoaMontar.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmTipoPedidoaMontar.Designer.cs">
+      <DependentUpon>frmTipoPedidoaMontar.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frmTipoPedSelecCoordinar.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmTipoPedSelecCoordinar.Designer.cs">
+      <DependentUpon>frmTipoPedSelecCoordinar.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frmTipoSolicitud.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmTipoSolicitud.Designer.cs">
+      <DependentUpon>frmTipoSolicitud.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frmSolicitudUnicolor.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmSolicitudUnicolor.Designer.cs">
+      <DependentUpon>frmSolicitudUnicolor.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Program.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <EmbeddedResource Include="FrmAgenciasExternos.resx">
+      <DependentUpon>FrmAgenciasExternos.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmDetalleReserva.resx">
+      <DependentUpon>frmDetalleReserva.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmDisponibleParaReserva.resx">
+      <DependentUpon>frmDisponibleParaReserva.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmPedidoaMontarAgencias.resx">
+      <DependentUpon>frmPedidoaMontarAgencias.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmPedidoaMontarCoordinado.resx">
+      <DependentUpon>frmPedidoaMontarCoordinado.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmPedidoaMontarCuellos.resx">
+      <DependentUpon>frmPedidoaMontarCuellos.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmPedidoaMontarEstampado.resx">
+      <DependentUpon>frmPedidoaMontarEstampado.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmPedidoaMontarPretenido.resx">
+      <DependentUpon>frmPedidoaMontarPretenido.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmPedidoaMotarUnicolor.resx">
+      <DependentUpon>frmPedidoaMotarUnicolor.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmPrueba.resx">
+      <DependentUpon>frmPrueba.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmReservaTela.resx">
+      <DependentUpon>frmReservaTela.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmSolicitudListaTelas.resx">
+      <DependentUpon>frmSolicitudListaTelas.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmSolicitudPlanoPretenido.resx">
+      <DependentUpon>frmSolicitudPlanoPretenido.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmSolicitudCuellosTiras.resx">
+      <DependentUpon>frmSolicitudCuellosTiras.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmSolicitudEstampado.resx">
+      <DependentUpon>frmSolicitudEstampado.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmSolicitudTela.resx">
+      <DependentUpon>frmSolicitudTela.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmTipoPedidoaMontar.resx">
+      <DependentUpon>frmTipoPedidoaMontar.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmTipoPedSelecCoordinar.resx">
+      <DependentUpon>frmTipoPedSelecCoordinar.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmTipoSolicitud.resx">
+      <DependentUpon>frmTipoSolicitud.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmSolicitudUnicolor.resx">
+      <DependentUpon>frmSolicitudUnicolor.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Properties\Resources.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <SubType>Designer</SubType>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <None Include="packages.config" />
+    <None Include="Properties\Settings.settings">
+      <Generator>SettingsSingleFileGenerator</Generator>
+      <LastGenOutput>Settings.Designer.cs</LastGenOutput>
+    </None>
+    <Compile Include="Properties\Resources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Resources.resx</DependentUpon>
+    </Compile>
+    <Compile Include="Properties\Settings.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Settings.settings</DependentUpon>
+      <DesignTimeSharedInput>True</DesignTimeSharedInput>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="App.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\PedidoTela.Controlodores\PedidoTela.Controlodores.csproj">
+      <Project>{d7bb6a7a-a767-49be-b053-b98eb7fd1f8c}</Project>
+      <Name>PedidoTela.Controlodores</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\PedidoTela.Entidades\PedidoTela.Entidades.csproj">
+      <Project>{7fd407af-c08d-40af-95f9-7c7eb8a18e0d}</Project>
+      <Name>PedidoTela.Entidades</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="imgs\cargaImg.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="imgs\checkmark.ico" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="imgs\cancel_113581.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="imgs\record_icon-icons.com_64775 %281%29.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="imgs\cancel_89309.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="imgs\1492790860-8check_84164.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="imgs\logout_exit_icon_176185.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="imgs\1492790881-6add_84227.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="imgs\arrow-6_90997.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="imgs\arrow_up_upload_icon_123739.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="imgs\mbriprint_99560.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="imgs\mbriedit_99563.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="imgs\mbrifile_99464.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="imgs\mbrilogout_99583.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="imgs\1491254401-detailinformationmenudata_82977.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="imgs\consolidate_icon_135744.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="imgs\4544831-business-comerce-delivery-return-shop_121431.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="imgs\finger_hand_5531.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="imgs\Booking_icon-icons.com_55957.png" />
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+</Project>
