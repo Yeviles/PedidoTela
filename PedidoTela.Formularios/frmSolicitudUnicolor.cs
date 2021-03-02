@@ -28,7 +28,7 @@ namespace PedidoTela.Formularios
         private void btnSalir_Click(object sender, EventArgs e)
         {
             frmTipoSolicitud frmTsoli = new frmTipoSolicitud();
-            frmTsoli.Show();
+            frmTsoli.Show();            
         }
     }
 }
