@@ -21,14 +21,14 @@ namespace PedidoTela.Formularios
         private void frmSolicitudUnicolor_Load(object sender, EventArgs e)
         {
             SkinManager.Theme = MaterialSkin.MaterialSkinManager.Themes.LIGHT;
+            Console.WriteLine("Prueba");
             SkinManager.ColorScheme = new ColorScheme(Primary.Blue900, Primary.Grey500, Primary.Grey200, Accent.Green100, TextShade.WHITE);
-
         }
 
         private void btnSalir_Click(object sender, EventArgs e)
         {
             frmTipoSolicitud frmTsoli = new frmTipoSolicitud();
-            frmTsoli.Show();
+            frmTsoli.Show();            
         }
     }
 }
