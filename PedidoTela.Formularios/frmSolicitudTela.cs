@@ -73,7 +73,7 @@ namespace PedidoTela.Formularios
         /// <param name="prmlista">Lista de Ensayos - Referencias</param>
         private void cargarTexBox(ComboBox prmCombo, List<Ensayo> prmlista)
         {
-            if (prmlista.Count != 0 || prmCombo.Text != "" )
+            if (prmlista.Count != 0)
             {
                 txbDisenador.Text = prmlista[0].Programador.ToString();
                 txbOcasionUso.Text = prmlista[0].Ocasion_uso.ToString();
@@ -190,7 +190,7 @@ namespace PedidoTela.Formularios
             {
                 txbEnsRefDigitado.ReadOnly = false;
                 txbEnsRefDigitado.Focus();
-                txbEnsRefDigitado.ForeColor = Color.Red;
+                txbEnsRefDigitado.BackColor = Color.Beige;
             }
             else
             {
