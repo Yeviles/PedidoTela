@@ -13,9 +13,6 @@ namespace PedidoTela.Data.Acceso
     public class D_Ensayo
     {
         #region Consultas
-        //Script para obtener todos los id ensayos 
-        private readonly string consulta1 = "select cfc_e_ensayo.idprogramador ||'-'|| cfc_e_ensayo.idensayo ||'-'|| cfc_e_ensayo.idrepeticion ensayo_referencia from cfc_e_ensayo;";
-
         //Script para obtener datos cuando es ENSAYO(ejemplo:159-715-0)
         private readonly string consulta2 = "select cfc_e_ensayo.idprogramador ||'-'|| cfc_e_ensayo.idensayo ||'-'|| cfc_e_ensayo.idrepeticion ensayo_referencia "
                                             +", cfc_e_ensayo.idprogramador, cfc_e_ensayo.idensayo, cfc_e_ensayo.idrepeticion "
@@ -30,9 +27,6 @@ namespace PedidoTela.Data.Acceso
                                             +"inner join cfc_m_usuarios on cfc_m_prgrmdor.idusuario= cfc_m_usuarios.idusuario "
                                             +"where cfc_e_ensayo.idprogramador= ? and cfc_e_ensayo.idensayo= ? and cfc_e_ensayo.idrepeticion= ?";
         
-         //Script para obtener todos las id REFERENCIAS
-        private readonly string consulta3 = "select items.codi_item ensayo_referencia from items;";
-       
         //Script para obtener datos cuando es REFERENCIA(ejemplo 45160180)
         private readonly string consulta4 = "select items.codi_item ensayo_referencia, cfc_e_items.idprogramador, 0 idensayo, 0 idrepeticion "
                                             + ", items.idmundo, cfc_e_items.idcapsula, items.amue_item as anio_muestrario, items.mues_item as nmro_muestrario, cfc_e_items.codi_entrada "
@@ -54,27 +48,6 @@ namespace PedidoTela.Data.Acceso
         }
 
         /// <summary>
-        /// Consulta idensayo en la tabla cfc_e_ensayo
-        /// </summary>
-        /// <returns> Recupera una lista<string> con todos los idEnsayo de la BD.</returns>
-        public List<string> ConsultarIDEnsayo()
-        {
-            List<string> respuesta = new List<string>();
-            using (var administrador = new clsConexion())
-            {
-                var datos = administrador.EjecutarConsulta(consulta1);
-                while (datos.Read())
-                {
-                    string ensayo;
-                    ensayo = datos["ensayo_referencia"].ToString().Trim();
-                    respuesta.Add(ensayo);
-                };
-                administrador.cerrarConexion();
-            }
-            return respuesta;
-        }
-
-        /// <summary>
         /// Extrae todos los datos de la tabla cfc_e_ensayo según un idensayo recibido.
         /// </summary>
         /// <param name="idEnsayo">Dato seleccionado por en usuario en Form</param>
@@ -82,6 +55,7 @@ namespace PedidoTela.Data.Acceso
         public List<Ensayo> ConsultarEnsayo(string idEnsayo)
         {
             string [] objId = idEnsayo.Split('-');
+          
             List<Ensayo> respuesta = new List<Ensayo>();
             using (var administrador = new clsConexion())
             {
@@ -113,22 +87,12 @@ namespace PedidoTela.Data.Acceso
            return respuesta;
           
         }
-        public List<string> consultarIDReferencia()
-        {
-            List<string> respuesta = new List<string>();
-            using (var administrador = new clsConexion())
-            {
-                var datos = administrador.EjecutarConsulta(consulta3);
-                while (datos.Read())
-                {
-                    string ensayo;
-                    ensayo = datos["ensayo_referencia"].ToString().Trim();
-                    respuesta.Add(ensayo);
-                };
-                administrador.cerrarConexion();
-            }
-            return respuesta;
-        }
+        
+        /// <summary>
+        /// Extrae todos los datos según una REFERENCIA
+        /// </summary>
+        /// <param name="prmReferencia">Dato ingrsado por el usuario</param>
+        /// <returns>Retorna una lista de tipo Ensayo</returns>
         public List<Ensayo> ConsultarReferencia(string prmReferencia)
         {
 

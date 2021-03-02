@@ -37,7 +37,7 @@ namespace PedidoTela.Formularios
 
         private void frmPrueba_Load(object sender, EventArgs e)
         {
-            cargarCombobox(cbxEnsayo, controlador.getIdEnsayo());
+            //cargarCombobox(cbxEnsayo, controlador.getIdEnsayo());
         }
 
         /// <summary>

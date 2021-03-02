@@ -48,21 +48,13 @@ namespace PedidoTela.Controlodores
         }
         #endregion
         #region Métodos de la clase D_Ensayo /Referencia
-        public List<string> getIdEnsayo()
-        {
-            D_Ensayo objEnsayo = new D_Ensayo();
-            return objEnsayo.ConsultarIDEnsayo();
-        }
+       
         public List<Ensayo> getEnsayo(string prmidEnsayo)
         {
             D_Ensayo d_Ensayo = new D_Ensayo();
             return d_Ensayo.ConsultarEnsayo(prmidEnsayo);
         } 
-        public List<string> getIDReferencia()
-        {
-            D_Ensayo objEnsayo = new D_Ensayo();
-            return objEnsayo.consultarIDReferencia();
-        }
+
         public List<Ensayo> getReferencia(string prmIdReferencia)
         {
             D_Ensayo d_Ensayo = new D_Ensayo();

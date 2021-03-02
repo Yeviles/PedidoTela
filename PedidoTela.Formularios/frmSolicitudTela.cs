@@ -34,36 +34,8 @@ namespace PedidoTela.Formularios
                 txbSku.MaxLength = 3;
                 errorProvider.SetError(txbSku, "Ingrese solo 3 caracteres");
             }
-        }
-
-        /// <summary>
-        /// Muestra todos los idEnsayo encontrados en la BD.
-        /// </summary>
-        /// <param name="prmCombo">ComobBox de Seleccón. </param>
-        /// <param name="prmLista">Contien los idensayo.</param>
-        private void cargarCombobox(ComboBox prmCombo, List<string> prmLista)
-        {
-            prmCombo.DataSource = prmLista;
-            prmCombo.SelectedIndex = -1;
-            prmCombo.AutoCompleteCustomSource = cargarCombobox(prmLista);
-            prmCombo.AutoCompleteMode = AutoCompleteMode.Suggest;
-            prmCombo.AutoCompleteSource = AutoCompleteSource.CustomSource;
-
-        }
-
-        /// <summary>
-        /// Autocompleta la lista desplegable del ComboBox.
-        /// </summary>
-        /// <param name="prmLista">Lista de Ensayos-Referencias</param>
-        /// <returns></returns>
-        private AutoCompleteStringCollection cargarCombobox(List<string> prmLista)
-        {
-            AutoCompleteStringCollection datos = new AutoCompleteStringCollection();
-            foreach (string obj in prmLista)
-            {
-                datos.Add(obj);
-            }
-            return datos;
+            dtpFechaTienda.Format = DateTimePickerFormat.Custom;
+            dtpFechaTienda.CustomFormat = "dd/MM/yyyy";
         }
 
         /// <summary>
@@ -84,7 +56,7 @@ namespace PedidoTela.Formularios
             }
             else
             {
-                MessageBox.Show("No existe información sobre su selección", "Advertencia", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                MessageBox.Show("No existe información sobre la Referencia ingresada", "Advertencia", MessageBoxButtons.OK, MessageBoxIcon.Warning);
 
             }
 
@@ -176,8 +148,19 @@ namespace PedidoTela.Formularios
             }
             else if (cbxTipo.SelectedItem.ToString() == "Ensayo" && (e.KeyChar == Convert.ToChar(Keys.Enter)))
             {
-                cargarTexBox(cbxTipo, controlador.getEnsayo(txbEnsRefDigitado.Text));
+                string[] objId = txbEnsRefDigitado.Text.Split('-');
+                if (objId.Length<3)
+                {
+                    MessageBox.Show("No existe infación sobre el N° ensayo ingresado", "Advertencia", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                }
+                else
+                {
+                     cargarTexBox(cbxTipo, controlador.getEnsayo(txbEnsRefDigitado.Text));
+
+                }
+
             }
+                
             else if (cbxTipo.SelectedItem.ToString() == "Referencia" && (e.KeyChar == Convert.ToChar(Keys.Enter)))
             {
                 cargarTexBox(cbxTipo, controlador.getReferencia(txbEnsRefDigitado.Text));
@@ -197,5 +180,6 @@ namespace PedidoTela.Formularios
                 MessageBox.Show("Por Favor selecione un tipo", "Advertencia", MessageBoxButtons.OK, MessageBoxIcon.Warning);
             }
         }
+       
     }
 }
