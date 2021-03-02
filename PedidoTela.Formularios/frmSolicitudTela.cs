@@ -28,8 +28,6 @@ namespace PedidoTela.Formularios
         {
             SkinManager.Theme = MaterialSkin.MaterialSkinManager.Themes.LIGHT;
             SkinManager.ColorScheme = new ColorScheme(Primary.Blue900, Primary.Grey400, Primary.Grey100, Accent.Green100, TextShade.WHITE);
-
-            //cargarCombobox(cbxEnsayo, controlador.getIdEnsayo());
             
             if (txbSku.MaxLength > 3)
             {
@@ -109,20 +107,6 @@ namespace PedidoTela.Formularios
             }
         }
 
-        private void cbxEnsayo_SelectionChangeCommitted(object sender, EventArgs e)
-        {
-            if(cbxTipo.SelectedItem.ToString() == "Ensayo")
-            {
-                cargarTexBox(cbxEnsayo, controlador.getEnsayo(cbxEnsayo.Text));
-            }
-            else
-            {
-                cargarTexBox(cbxEnsayo, controlador.getReferencia(cbxEnsayo.Text));
-            }
-            
-
-        }
-
         private void txbSku_Validating(object sender, CancelEventArgs e)
         {
 
@@ -168,35 +152,50 @@ namespace PedidoTela.Formularios
             }
         }
         
-
         private void btnConsultar_Click(object sender, EventArgs e)
         {
-            if (cbxEnsayo.SelectedItem.ToString() == "")
+            if (txbEnsRefDigitado.Text == "" || cbxTipo.SelectedItem.ToString()==null)
             {
-                MessageBox.Show("Por favor seleccione un item", "Advertencia", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                MessageBox.Show("Por favor ingrese Ensayo/Referencia", "Advertencia", MessageBoxButtons.OK, MessageBoxIcon.Warning);
             }
-            else if (cbxEnsayo.SelectedItem.ToString() == "Ensayo")
+            else if (cbxTipo.SelectedItem.ToString() == "Ensayo")
             {
-                cargarDataGridView(controlador.getDetalleConsumoEnsayo(cbxEnsayo.SelectedItem.ToString()));
+                cargarDataGridView(controlador.getDetalleConsumoEnsayo(txbEnsRefDigitado.Text));
             }
             else
             {
-                cargarDataGridView(controlador.getDetalleConsumoReferencia(cbxEnsayo.SelectedItem.ToString()));
+                cargarDataGridView(controlador.getDetalleConsumoReferencia(txbEnsRefDigitado.Text));
+            }
+        }
 
+
+        private void txbEnsRefDigitado_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if(cbxTipo.SelectedItem == null)
+            {
+                MessageBox.Show("Por Favor selecione un tipo", "Advertencia", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+            }
+            else if (cbxTipo.SelectedItem.ToString() == "Ensayo" && (e.KeyChar == Convert.ToChar(Keys.Enter)))
+            {
+                cargarTexBox(cbxTipo, controlador.getEnsayo(txbEnsRefDigitado.Text));
+            }
+            else if (cbxTipo.SelectedItem.ToString() == "Referencia" && (e.KeyChar == Convert.ToChar(Keys.Enter)))
+            {
+                cargarTexBox(cbxTipo, controlador.getReferencia(txbEnsRefDigitado.Text));
             }
         }
 
         private void cbxTipo_SelectionChangeCommitted(object sender, EventArgs e)
         {
-            if (cbxTipo.SelectedItem.ToString()=="Ensayo")
+            if(cbxTipo.SelectedItem.ToString() == "Ensayo"  || cbxTipo.SelectedItem.ToString() == "Referencia")
             {
-                cargarCombobox(cbxEnsayo, controlador.getIdEnsayo());
+                txbEnsRefDigitado.ReadOnly = false;
+                txbEnsRefDigitado.Focus();
             }
             else
             {
-                cargarCombobox(cbxEnsayo, controlador.getIDReferencia());
+                MessageBox.Show("Por Favor selecione un tipo", "Advertencia", MessageBoxButtons.OK, MessageBoxIcon.Warning);
             }
-
         }
     }
 }
