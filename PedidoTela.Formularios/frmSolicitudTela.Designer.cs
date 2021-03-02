@@ -29,8 +29,8 @@ namespace PedidoTela.Formularios
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle31 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle32 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
             this.tbcPedidoTela = new System.Windows.Forms.TabControl();
             this.tbpAdicionarSolTela = new System.Windows.Forms.TabPage();
             this.pnlAdicionarSolicitud = new System.Windows.Forms.Panel();
@@ -38,7 +38,6 @@ namespace PedidoTela.Formularios
             this.cbxTipo = new System.Windows.Forms.ComboBox();
             this.lbTipo = new System.Windows.Forms.Label();
             this.btnConsultar = new System.Windows.Forms.Button();
-            this.cbxEnsayo = new System.Windows.Forms.ComboBox();
             this.dtpFechaTienda = new System.Windows.Forms.DateTimePicker();
             this.label9 = new System.Windows.Forms.Label();
             this.txbDisenador = new System.Windows.Forms.TextBox();
@@ -102,7 +101,6 @@ namespace PedidoTela.Formularios
             this.pnlAdicionarSolicitud.Controls.Add(this.cbxTipo);
             this.pnlAdicionarSolicitud.Controls.Add(this.lbTipo);
             this.pnlAdicionarSolicitud.Controls.Add(this.btnConsultar);
-            this.pnlAdicionarSolicitud.Controls.Add(this.cbxEnsayo);
             this.pnlAdicionarSolicitud.Controls.Add(this.dtpFechaTienda);
             this.pnlAdicionarSolicitud.Controls.Add(this.label9);
             this.pnlAdicionarSolicitud.Controls.Add(this.txbDisenador);
@@ -128,7 +126,8 @@ namespace PedidoTela.Formularios
             // 
             // txbEnsRefDigitado
             // 
-            this.txbEnsRefDigitado.Location = new System.Drawing.Point(202, 68);
+            this.txbEnsRefDigitado.BackColor = System.Drawing.SystemColors.Window;
+            this.txbEnsRefDigitado.Location = new System.Drawing.Point(202, 53);
             this.txbEnsRefDigitado.Name = "txbEnsRefDigitado";
             this.txbEnsRefDigitado.ReadOnly = true;
             this.txbEnsRefDigitado.Size = new System.Drawing.Size(254, 24);
@@ -168,14 +167,6 @@ namespace PedidoTela.Formularios
             this.btnConsultar.UseVisualStyleBackColor = true;
             this.btnConsultar.Click += new System.EventHandler(this.btnConsultar_Click);
             // 
-            // cbxEnsayo
-            // 
-            this.cbxEnsayo.FormattingEnabled = true;
-            this.cbxEnsayo.Location = new System.Drawing.Point(202, 38);
-            this.cbxEnsayo.Name = "cbxEnsayo";
-            this.cbxEnsayo.Size = new System.Drawing.Size(254, 24);
-            this.cbxEnsayo.TabIndex = 23;
-            // 
             // dtpFechaTienda
             // 
             this.dtpFechaTienda.Location = new System.Drawing.Point(675, 102);
@@ -196,7 +187,7 @@ namespace PedidoTela.Formularios
             // txbDisenador
             // 
             this.txbDisenador.BackColor = System.Drawing.SystemColors.Window;
-            this.txbDisenador.Location = new System.Drawing.Point(202, 102);
+            this.txbDisenador.Location = new System.Drawing.Point(202, 95);
             this.txbDisenador.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.txbDisenador.Name = "txbDisenador";
             this.txbDisenador.ReadOnly = true;
@@ -341,14 +332,14 @@ namespace PedidoTela.Formularios
             this.dgvDetalleConsumo.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.dgvDetalleConsumo.AutoSizeRowsMode = System.Windows.Forms.DataGridViewAutoSizeRowsMode.DisplayedCells;
             this.dgvDetalleConsumo.BackgroundColor = System.Drawing.Color.White;
-            dataGridViewCellStyle31.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle31.BackColor = System.Drawing.SystemColors.ScrollBar;
-            dataGridViewCellStyle31.Font = new System.Drawing.Font("Verdana", 8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle31.ForeColor = System.Drawing.Color.Navy;
-            dataGridViewCellStyle31.SelectionBackColor = System.Drawing.SystemColors.ScrollBar;
-            dataGridViewCellStyle31.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle31.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dgvDetalleConsumo.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle31;
+            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle3.BackColor = System.Drawing.SystemColors.ScrollBar;
+            dataGridViewCellStyle3.Font = new System.Drawing.Font("Verdana", 8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle3.ForeColor = System.Drawing.Color.Navy;
+            dataGridViewCellStyle3.SelectionBackColor = System.Drawing.SystemColors.ScrollBar;
+            dataGridViewCellStyle3.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dgvDetalleConsumo.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle3;
             this.dgvDetalleConsumo.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgvDetalleConsumo.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.ensayoRef,
@@ -365,11 +356,11 @@ namespace PedidoTela.Formularios
             this.dgvDetalleConsumo.ReadOnly = true;
             this.dgvDetalleConsumo.RightToLeft = System.Windows.Forms.RightToLeft.No;
             this.dgvDetalleConsumo.RowHeadersWidth = 62;
-            dataGridViewCellStyle32.Font = new System.Drawing.Font("Verdana", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle32.ForeColor = System.Drawing.Color.Black;
-            dataGridViewCellStyle32.SelectionBackColor = System.Drawing.Color.Navy;
-            dataGridViewCellStyle32.SelectionForeColor = System.Drawing.Color.White;
-            this.dgvDetalleConsumo.RowsDefaultCellStyle = dataGridViewCellStyle32;
+            dataGridViewCellStyle4.Font = new System.Drawing.Font("Verdana", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle4.ForeColor = System.Drawing.Color.Black;
+            dataGridViewCellStyle4.SelectionBackColor = System.Drawing.Color.Navy;
+            dataGridViewCellStyle4.SelectionForeColor = System.Drawing.Color.White;
+            this.dgvDetalleConsumo.RowsDefaultCellStyle = dataGridViewCellStyle4;
             this.dgvDetalleConsumo.RowTemplate.Height = 28;
             this.dgvDetalleConsumo.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dgvDetalleConsumo.Size = new System.Drawing.Size(1415, 380);
@@ -477,7 +468,6 @@ namespace PedidoTela.Formularios
         private System.Windows.Forms.ComboBox cbxTipo;
         private System.Windows.Forms.Label lbTipo;
         private System.Windows.Forms.TextBox txbEnsRefDigitado;
-        private System.Windows.Forms.ComboBox cbxEnsayo;
     }
 }
 

@@ -168,7 +168,6 @@ namespace PedidoTela.Formularios
             }
         }
 
-
         private void txbEnsRefDigitado_KeyPress(object sender, KeyPressEventArgs e)
         {
             if(cbxTipo.SelectedItem == null)
@@ -191,6 +190,7 @@ namespace PedidoTela.Formularios
             {
                 txbEnsRefDigitado.ReadOnly = false;
                 txbEnsRefDigitado.Focus();
+                txbEnsRefDigitado.ForeColor = Color.Red;
             }
             else
             {
