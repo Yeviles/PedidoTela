@@ -22,17 +22,16 @@ namespace PedidoTela.Formularios
             this.control = control;
             this.codigoTela = codigoTela;
             InitializeComponent();
+            TipoTejido tt = control.getTipoTejido(codigoTela);
+            txbRefTela.Text = tt.CodigoTela;
+            txbNomTela.Text = tt.NombreTela;
+            txbTipoTejido.Text = tt.NombreTipoTela;
         }
 
         private void frmSolicitudUnicolor_Load(object sender, EventArgs e)
         {
             SkinManager.Theme = MaterialSkin.MaterialSkinManager.Themes.LIGHT;
             SkinManager.ColorScheme = new ColorScheme(Primary.Blue900, Primary.Grey500, Primary.Grey200, Accent.Green100, TextShade.WHITE);
-
-            TipoTejido tt = control.getTipoTejido(codigoTela);
-            txbRefTela.Text = tt.CodigoTela;
-            txbNomTela.Text = tt.NombreTela;
-            txbTipoTejido.Text = tt.NombreTipoTela;
         }
 
         private void btnSalir_Click(object sender, EventArgs e)
