@@ -90,9 +90,26 @@ namespace PedidoTela.Controlodores
             return d_TipoTejido.obtenerTipoTejido(codigoTela);
         }
 
-        public List<Objeto> getColores() {
+        public List<Objeto> getColores()
+        {
             D_Color d_color = new D_Color();
             return d_color.consultarColores();
+        }
+        public List<Objeto> buscarColorPorCodigo(string codigo)
+        {
+            D_Color d_color = new D_Color();
+            return d_color.buscarColorPorCodigo(codigo);
+        }
+
+        public List<Objeto> buscarColorPorDescripcion(string descripcion)
+        {
+            D_Color d_color = new D_Color();
+            return d_color.buscarColorPorDescripcion(descripcion);
+        }
+
+        public List<Objeto> getColoresComboBox() {
+            D_Color d_color = new D_Color();
+            return d_color.obtenerColores();
         }
         #endregion
     }

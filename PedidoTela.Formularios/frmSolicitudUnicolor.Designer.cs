@@ -41,7 +41,15 @@ namespace PedidoTela.Formularios
             this.txbCoordinaCon = new System.Windows.Forms.TextBox();
             this.cbxNoCoordinado = new System.Windows.Forms.CheckBox();
             this.cbxSiCoordinado = new System.Windows.Forms.CheckBox();
-            this.dtgUnicolor = new System.Windows.Forms.DataGridView();
+            this.dgvUnicolor = new System.Windows.Forms.DataGridView();
+            this.pnlSolicitudColor = new System.Windows.Forms.Panel();
+            this.richTextBox1 = new System.Windows.Forms.RichTextBox();
+            this.lbObservaciones = new System.Windows.Forms.Label();
+            this.btnAddColor = new System.Windows.Forms.Button();
+            this.panel9 = new System.Windows.Forms.Panel();
+            this.button1 = new System.Windows.Forms.Button();
+            this.button2 = new System.Windows.Forms.Button();
+            this.btnSalir = new System.Windows.Forms.Button();
             this.codColor = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.descripColor = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.tiendas = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -52,15 +60,7 @@ namespace PedidoTela.Formularios
             this.rosado = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.otros = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.totalUnidades = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.pnlSolicitudColor = new System.Windows.Forms.Panel();
-            this.richTextBox1 = new System.Windows.Forms.RichTextBox();
-            this.lbObservaciones = new System.Windows.Forms.Label();
-            this.btnAddColor = new System.Windows.Forms.Button();
-            this.panel9 = new System.Windows.Forms.Panel();
-            this.button1 = new System.Windows.Forms.Button();
-            this.button2 = new System.Windows.Forms.Button();
-            this.btnSalir = new System.Windows.Forms.Button();
-            ((System.ComponentModel.ISupportInitialize)(this.dtgUnicolor)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dgvUnicolor)).BeginInit();
             this.pnlSolicitudColor.SuspendLayout();
             this.panel9.SuspendLayout();
             this.SuspendLayout();
@@ -104,7 +104,7 @@ namespace PedidoTela.Formularios
             // lbCoordinaCon
             // 
             this.lbCoordinaCon.AutoSize = true;
-            this.lbCoordinaCon.Location = new System.Drawing.Point(1001, 79);
+            this.lbCoordinaCon.Location = new System.Drawing.Point(982, 76);
             this.lbCoordinaCon.Name = "lbCoordinaCon";
             this.lbCoordinaCon.Size = new System.Drawing.Size(88, 13);
             this.lbCoordinaCon.TabIndex = 7;
@@ -137,7 +137,7 @@ namespace PedidoTela.Formularios
             // 
             // txbCoordinaCon
             // 
-            this.txbCoordinaCon.Location = new System.Drawing.Point(1169, 76);
+            this.txbCoordinaCon.Location = new System.Drawing.Point(1091, 74);
             this.txbCoordinaCon.Name = "txbCoordinaCon";
             this.txbCoordinaCon.Size = new System.Drawing.Size(253, 20);
             this.txbCoordinaCon.TabIndex = 11;
@@ -165,13 +165,13 @@ namespace PedidoTela.Formularios
             this.cbxSiCoordinado.UseVisualStyleBackColor = true;
             this.cbxSiCoordinado.CheckedChanged += new System.EventHandler(this.cbxSiCoordinado_CheckedChanged);
             // 
-            // dtgUnicolor
+            // dgvUnicolor
             // 
-            this.dtgUnicolor.AllowUserToAddRows = false;
-            this.dtgUnicolor.AllowUserToDeleteRows = false;
-            this.dtgUnicolor.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
-            this.dtgUnicolor.AutoSizeRowsMode = System.Windows.Forms.DataGridViewAutoSizeRowsMode.DisplayedCells;
-            this.dtgUnicolor.BackgroundColor = System.Drawing.Color.White;
+            this.dgvUnicolor.AllowUserToAddRows = false;
+            this.dgvUnicolor.AllowUserToDeleteRows = false;
+            this.dgvUnicolor.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
+            this.dgvUnicolor.AutoSizeRowsMode = System.Windows.Forms.DataGridViewAutoSizeRowsMode.DisplayedCells;
+            this.dgvUnicolor.BackgroundColor = System.Drawing.Color.White;
             dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
             dataGridViewCellStyle1.BackColor = System.Drawing.SystemColors.ScrollBar;
             dataGridViewCellStyle1.Font = new System.Drawing.Font("Verdana", 8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -179,9 +179,9 @@ namespace PedidoTela.Formularios
             dataGridViewCellStyle1.SelectionBackColor = System.Drawing.Color.Navy;
             dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
             dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dtgUnicolor.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
-            this.dtgUnicolor.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dtgUnicolor.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.dgvUnicolor.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
+            this.dgvUnicolor.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dgvUnicolor.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.codColor,
             this.descripColor,
             this.tiendas,
@@ -192,87 +192,17 @@ namespace PedidoTela.Formularios
             this.rosado,
             this.otros,
             this.totalUnidades});
-            this.dtgUnicolor.EnableHeadersVisualStyles = false;
-            this.dtgUnicolor.Location = new System.Drawing.Point(13, 375);
-            this.dtgUnicolor.MultiSelect = false;
-            this.dtgUnicolor.Name = "dtgUnicolor";
-            this.dtgUnicolor.ReadOnly = true;
-            this.dtgUnicolor.RightToLeft = System.Windows.Forms.RightToLeft.No;
-            this.dtgUnicolor.RowHeadersWidth = 62;
-            this.dtgUnicolor.RowTemplate.Height = 28;
-            this.dtgUnicolor.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dtgUnicolor.Size = new System.Drawing.Size(1462, 281);
-            this.dtgUnicolor.TabIndex = 20;
-            // 
-            // codColor
-            // 
-            this.codColor.HeaderText = "Cod Color";
-            this.codColor.MinimumWidth = 8;
-            this.codColor.Name = "codColor";
-            this.codColor.ReadOnly = true;
-            // 
-            // descripColor
-            // 
-            this.descripColor.HeaderText = "Descripción Color";
-            this.descripColor.MinimumWidth = 8;
-            this.descripColor.Name = "descripColor";
-            this.descripColor.ReadOnly = true;
-            // 
-            // tiendas
-            // 
-            this.tiendas.HeaderText = "Tiendas";
-            this.tiendas.MinimumWidth = 8;
-            this.tiendas.Name = "tiendas";
-            this.tiendas.ReadOnly = true;
-            // 
-            // exito
-            // 
-            this.exito.HeaderText = "Éxito";
-            this.exito.MinimumWidth = 8;
-            this.exito.Name = "exito";
-            this.exito.ReadOnly = true;
-            // 
-            // cencosud
-            // 
-            this.cencosud.HeaderText = "Cencosud";
-            this.cencosud.MinimumWidth = 8;
-            this.cencosud.Name = "cencosud";
-            this.cencosud.ReadOnly = true;
-            // 
-            // sao
-            // 
-            this.sao.HeaderText = "SAO";
-            this.sao.MinimumWidth = 8;
-            this.sao.Name = "sao";
-            this.sao.ReadOnly = true;
-            // 
-            // comercioOrg
-            // 
-            this.comercioOrg.HeaderText = "Comercio Org.";
-            this.comercioOrg.MinimumWidth = 8;
-            this.comercioOrg.Name = "comercioOrg";
-            this.comercioOrg.ReadOnly = true;
-            // 
-            // rosado
-            // 
-            this.rosado.HeaderText = "Rosado";
-            this.rosado.MinimumWidth = 8;
-            this.rosado.Name = "rosado";
-            this.rosado.ReadOnly = true;
-            // 
-            // otros
-            // 
-            this.otros.HeaderText = "Otros";
-            this.otros.MinimumWidth = 8;
-            this.otros.Name = "otros";
-            this.otros.ReadOnly = true;
-            // 
-            // totalUnidades
-            // 
-            this.totalUnidades.HeaderText = "Total Unidades";
-            this.totalUnidades.MinimumWidth = 8;
-            this.totalUnidades.Name = "totalUnidades";
-            this.totalUnidades.ReadOnly = true;
+            this.dgvUnicolor.EnableHeadersVisualStyles = false;
+            this.dgvUnicolor.Location = new System.Drawing.Point(12, 375);
+            this.dgvUnicolor.MultiSelect = false;
+            this.dgvUnicolor.Name = "dgvUnicolor";
+            this.dgvUnicolor.RightToLeft = System.Windows.Forms.RightToLeft.No;
+            this.dgvUnicolor.RowHeadersWidth = 62;
+            this.dgvUnicolor.RowTemplate.Height = 28;
+            this.dgvUnicolor.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.CellSelect;
+            this.dgvUnicolor.Size = new System.Drawing.Size(1365, 281);
+            this.dgvUnicolor.TabIndex = 20;
+            this.dgvUnicolor.CellEndEdit += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvUnicolor_CellEndEdit);
             // 
             // pnlSolicitudColor
             // 
@@ -291,7 +221,7 @@ namespace PedidoTela.Formularios
             this.pnlSolicitudColor.Controls.Add(this.txbRefTela);
             this.pnlSolicitudColor.Location = new System.Drawing.Point(12, 155);
             this.pnlSolicitudColor.Name = "pnlSolicitudColor";
-            this.pnlSolicitudColor.Size = new System.Drawing.Size(1463, 114);
+            this.pnlSolicitudColor.Size = new System.Drawing.Size(1365, 114);
             this.pnlSolicitudColor.TabIndex = 21;
             // 
             // richTextBox1
@@ -333,14 +263,14 @@ namespace PedidoTela.Formularios
             this.panel9.Controls.Add(this.btnSalir);
             this.panel9.Location = new System.Drawing.Point(12, 90);
             this.panel9.Name = "panel9";
-            this.panel9.Size = new System.Drawing.Size(1463, 49);
+            this.panel9.Size = new System.Drawing.Size(1365, 49);
             this.panel9.TabIndex = 134;
             // 
             // button1
             // 
             this.button1.Font = new System.Drawing.Font("Verdana", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.button1.Image = global::PedidoTela.Formularios.Properties.Resources._1492790860_8check_84164;
-            this.button1.Location = new System.Drawing.Point(158, 3);
+            this.button1.Location = new System.Drawing.Point(177, 3);
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(174, 43);
             this.button1.TabIndex = 96;
@@ -368,7 +298,7 @@ namespace PedidoTela.Formularios
             // 
             this.btnSalir.Font = new System.Drawing.Font("Verdana", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnSalir.Image = global::PedidoTela.Formularios.Properties.Resources.logout_exit_icon_176185;
-            this.btnSalir.Location = new System.Drawing.Point(333, 3);
+            this.btnSalir.Location = new System.Drawing.Point(352, 3);
             this.btnSalir.Name = "btnSalir";
             this.btnSalir.Size = new System.Drawing.Size(174, 43);
             this.btnSalir.TabIndex = 97;
@@ -377,6 +307,69 @@ namespace PedidoTela.Formularios
             this.btnSalir.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
             this.btnSalir.UseVisualStyleBackColor = true;
             this.btnSalir.Click += new System.EventHandler(this.btnSalir_Click);
+            // 
+            // codColor
+            // 
+            this.codColor.HeaderText = "Cod Color";
+            this.codColor.MinimumWidth = 8;
+            this.codColor.Name = "codColor";
+            this.codColor.ReadOnly = true;
+            // 
+            // descripColor
+            // 
+            this.descripColor.HeaderText = "Descripción Color";
+            this.descripColor.MinimumWidth = 8;
+            this.descripColor.Name = "descripColor";
+            this.descripColor.ReadOnly = true;
+            // 
+            // tiendas
+            // 
+            this.tiendas.HeaderText = "Tiendas";
+            this.tiendas.MinimumWidth = 8;
+            this.tiendas.Name = "tiendas";
+            // 
+            // exito
+            // 
+            this.exito.HeaderText = "Éxito";
+            this.exito.MinimumWidth = 8;
+            this.exito.Name = "exito";
+            // 
+            // cencosud
+            // 
+            this.cencosud.HeaderText = "Cencosud";
+            this.cencosud.MinimumWidth = 8;
+            this.cencosud.Name = "cencosud";
+            // 
+            // sao
+            // 
+            this.sao.HeaderText = "SAO";
+            this.sao.MinimumWidth = 8;
+            this.sao.Name = "sao";
+            // 
+            // comercioOrg
+            // 
+            this.comercioOrg.HeaderText = "Comercio Org.";
+            this.comercioOrg.MinimumWidth = 8;
+            this.comercioOrg.Name = "comercioOrg";
+            // 
+            // rosado
+            // 
+            this.rosado.HeaderText = "Rosado";
+            this.rosado.MinimumWidth = 8;
+            this.rosado.Name = "rosado";
+            // 
+            // otros
+            // 
+            this.otros.HeaderText = "Otros";
+            this.otros.MinimumWidth = 8;
+            this.otros.Name = "otros";
+            // 
+            // totalUnidades
+            // 
+            this.totalUnidades.HeaderText = "Total Unidades";
+            this.totalUnidades.MinimumWidth = 8;
+            this.totalUnidades.Name = "totalUnidades";
+            this.totalUnidades.ReadOnly = true;
             // 
             // frmSolicitudUnicolor
             // 
@@ -388,13 +381,13 @@ namespace PedidoTela.Formularios
             this.Controls.Add(this.lbObservaciones);
             this.Controls.Add(this.richTextBox1);
             this.Controls.Add(this.pnlSolicitudColor);
-            this.Controls.Add(this.dtgUnicolor);
+            this.Controls.Add(this.dgvUnicolor);
             this.Font = new System.Drawing.Font("Verdana", 8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.Name = "frmSolicitudUnicolor";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Solicitud Unicolor";
             this.Load += new System.EventHandler(this.frmSolicitudUnicolor_Load);
-            ((System.ComponentModel.ISupportInitialize)(this.dtgUnicolor)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dgvUnicolor)).EndInit();
             this.pnlSolicitudColor.ResumeLayout(false);
             this.pnlSolicitudColor.PerformLayout();
             this.panel9.ResumeLayout(false);
@@ -415,10 +408,15 @@ namespace PedidoTela.Formularios
         private System.Windows.Forms.TextBox txbCoordinaCon;
         private System.Windows.Forms.CheckBox cbxNoCoordinado;
         private System.Windows.Forms.CheckBox cbxSiCoordinado;
-        private System.Windows.Forms.DataGridView dtgUnicolor;
+        private System.Windows.Forms.DataGridView dgvUnicolor;
         private System.Windows.Forms.Panel pnlSolicitudColor;
         private System.Windows.Forms.RichTextBox richTextBox1;
         private System.Windows.Forms.Label lbObservaciones;
+        private System.Windows.Forms.Button btnAddColor;
+        private System.Windows.Forms.Panel panel9;
+        private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.Button button2;
+        private System.Windows.Forms.Button btnSalir;
         private System.Windows.Forms.DataGridViewTextBoxColumn codColor;
         private System.Windows.Forms.DataGridViewTextBoxColumn descripColor;
         private System.Windows.Forms.DataGridViewTextBoxColumn tiendas;
@@ -429,10 +427,5 @@ namespace PedidoTela.Formularios
         private System.Windows.Forms.DataGridViewTextBoxColumn rosado;
         private System.Windows.Forms.DataGridViewTextBoxColumn otros;
         private System.Windows.Forms.DataGridViewTextBoxColumn totalUnidades;
-        private System.Windows.Forms.Button btnAddColor;
-        private System.Windows.Forms.Panel panel9;
-        private System.Windows.Forms.Button button1;
-        private System.Windows.Forms.Button button2;
-        private System.Windows.Forms.Button btnSalir;
     }
 }
