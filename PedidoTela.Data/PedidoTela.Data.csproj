@@ -80,6 +80,7 @@
     <Compile Include="Acceso\D_Muestrario.cs" />
     <Compile Include="Acceso\D_OcasionUso.cs" />
     <Compile Include="Acceso\D_Tema.cs" />
+    <Compile Include="Acceso\D_TipoTejido.cs" />
     <Compile Include="clsConexion.cs" />
     <Compile Include="Form1.cs">
       <SubType>Form</SubType>

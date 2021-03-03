@@ -75,6 +75,13 @@ namespace PedidoTela.Controlodores
         }
 
         #endregion
+        #region Métodos de la clase TipoTejido
+        public List<TipoTejido> getTipoTejido()
+        {
+            D_TipoTejido d_tejido = new D_TipoTejido();
+            return d_tejido.ConsultarTipoTejido();
+        }
+        #endregion
         #endregion
     }
 }

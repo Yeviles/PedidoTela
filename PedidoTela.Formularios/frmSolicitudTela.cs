@@ -173,7 +173,7 @@ namespace PedidoTela.Formularios
             {
                 txbEnsRefDigitado.ReadOnly = false;
                 txbEnsRefDigitado.Focus();
-                txbEnsRefDigitado.BackColor = Color.Beige;
+                txbEnsRefDigitado.BackColor = Color.LightGoldenrodYellow;
             }
             else
             {

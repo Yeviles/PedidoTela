@@ -59,6 +59,7 @@
     <Compile Include="Logica\DetalleConsumo.cs" />
     <Compile Include="Logica\Ensayo.cs" />
     <Compile Include="Logica\Objeto.cs" />
+    <Compile Include="Logica\TipoTejido.cs" />
     <Compile Include="Logica\Validar.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
