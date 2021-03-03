@@ -42,7 +42,7 @@ namespace PedidoTela.Formularios
         /// </summary>
         /// <param name="prmCombo">ComobBox de Seleccón. </param>
         /// <param name="prmLista">Contien los idensayo.</param>
-        private void cargarCombobox(ComboBox prmCombo, List<TipoTejido> prmLista)
+        private void cargarCombobox(ComboBox prmCombo, List<TipoPedido> prmLista)
         {
             prmCombo.DataSource = prmLista;
             prmCombo.DisplayMember = "Descripcion";
@@ -58,10 +58,10 @@ namespace PedidoTela.Formularios
         /// </summary>
         /// <param name="prmLista">Lista de Ensayos-Referencias</param>
         /// <returns></returns>
-        private AutoCompleteStringCollection cargarCombobox(List<TipoTejido> prmLista)
+        private AutoCompleteStringCollection cargarCombobox(List<TipoPedido> prmLista)
         {
             AutoCompleteStringCollection datos = new AutoCompleteStringCollection();
-            foreach (TipoTejido obj in prmLista)
+            foreach (TipoPedido obj in prmLista)
             {
                 datos.Add(obj.Descripcion);
             }
@@ -87,7 +87,7 @@ namespace PedidoTela.Formularios
 
         private void cbxSiCoordinadoEst_CheckedChanged(object sender, EventArgs e)
         {
-            if(cbxSiCoordinadoEst.Checked==true)
+            if(cbxSiCoordinadoEst.Checked)
             {
                 txbCoordinaCon.ReadOnly = false;
                 txbCoordinaCon.Focus();
@@ -99,9 +99,10 @@ namespace PedidoTela.Formularios
 
         private void cbxNoCoordinadoEst_CheckedChanged(object sender, EventArgs e)
         {
-            if(cbxNoCoordinadoEst.Checked == true)
+            if(cbxNoCoordinadoEst.Checked)
             {
                 txbCoordinaCon.ReadOnly = true;
+                txbCoordinaCon.BackColor = Color.White;
                 cbxSiCoordinadoEst.Checked = false;
 
             }
