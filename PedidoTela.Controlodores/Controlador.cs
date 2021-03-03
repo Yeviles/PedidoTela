@@ -112,6 +112,16 @@ namespace PedidoTela.Controlodores
             D_Color d_color = new D_Color();
             return d_color.obtenerColores();
         }
+
+        public bool addUnicolor(Unicolor unicolor) {
+            D_Unicolor d_Unicolor = new D_Unicolor();
+            return (d_Unicolor.Agregar(unicolor) == "ok")? true:false;
+        }
+
+        public void addDetalleUnicolor(DetalleUnicolor detalle) {
+            D_DetalleUnicolor d_DetalleUnicolor = new D_DetalleUnicolor();
+            d_DetalleUnicolor.Agregar(detalle);
+        }
         #endregion
     }
 }

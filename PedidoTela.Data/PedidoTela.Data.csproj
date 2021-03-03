@@ -75,6 +75,7 @@
   <ItemGroup>
     <Compile Include="Acceso\D_Color.cs" />
     <Compile Include="Acceso\D_DetalleConsumo.cs" />
+    <Compile Include="Acceso\D_DetalleUnicolor.cs" />
     <Compile Include="Acceso\D_Disenador.cs" />
     <Compile Include="Acceso\D_Ensayo.cs" />
     <Compile Include="Acceso\D_Entrada.cs" />
@@ -83,6 +84,7 @@
     <Compile Include="Acceso\D_Tema.cs" />
     <Compile Include="Acceso\D_TipoPedido.cs" />
     <Compile Include="Acceso\D_TipoTejido.cs" />
+    <Compile Include="Acceso\D_Unicolor.cs" />
     <Compile Include="clsConexion.cs" />
     <Compile Include="Form1.cs">
       <SubType>Form</SubType>

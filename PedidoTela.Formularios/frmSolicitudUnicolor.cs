@@ -17,10 +17,12 @@ namespace PedidoTela.Formularios
     public partial class frmSolicitudUnicolor : MaterialSkin.Controls.MaterialForm
     {
         private Controlador control;
+        private int idEnsayo;
         private string codigoTela;
-        public frmSolicitudUnicolor(Controlador control, string codigoTela)
+        public frmSolicitudUnicolor(Controlador control, int idEnsayo, string codigoTela)
         {
             this.control = control;
+            this.idEnsayo = idEnsayo;
             this.codigoTela = codigoTela;
             InitializeComponent();
             TipoTejido tt = control.getTipoTejido(codigoTela);
@@ -37,8 +39,9 @@ namespace PedidoTela.Formularios
 
         private void btnSalir_Click(object sender, EventArgs e)
         {
-            frmTipoSolicitud frmTsoli = new frmTipoSolicitud();
-            frmTsoli.Show();            
+            /*frmTipoSolicitud frmTsoli = new frmTipoSolicitud();
+            frmTsoli.Show();    */
+            this.Close();
         }
 
         private void cbxSiCoordinado_CheckedChanged(object sender, EventArgs e)
@@ -106,6 +109,31 @@ namespace PedidoTela.Formularios
                 dgvUnicolor.CurrentCell.Value = "";
                 MessageBox.Show("Unicamente se permiten valores numéricos", "TTipo de dato no permitido", MessageBoxButtons.OK, MessageBoxIcon.Warning);
             }
+        }
+
+        private void btnGrabar_Click(object sender, EventArgs e)
+        {
+            Unicolor elemento = new Unicolor();
+            elemento.IdEnsayo = idEnsayo;
+            elemento.ReferenciaTela = codigoTela;
+            elemento.DescripcionTela = txbNomTela.Text;
+            elemento.Coordinado = (cbxSiCoordinado.Checked)? true:false;
+            elemento.CoordinadoCon = txbCoordinaCon.Text;
+            elemento.Observaciones = txbObservaciones.Text;
+            if (control.addUnicolor(elemento)) {
+                try {
+
+                    MessageBox.Show("Unicolor se guardo con éxito", "Información", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                }
+                catch (Exception ex) {
+                    MessageBox.Show("Unicolor no se pudo guardar", "Advertencia", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                }
+            }
+        }
+
+        private void btnConfirmar_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }
