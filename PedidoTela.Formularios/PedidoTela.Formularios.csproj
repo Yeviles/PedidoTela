@@ -62,6 +62,12 @@
     <Compile Include="FrmAgenciasExternos.Designer.cs">
       <DependentUpon>FrmAgenciasExternos.cs</DependentUpon>
     </Compile>
+    <Compile Include="frmBuscarColor.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmBuscarColor.Designer.cs">
+      <DependentUpon>frmBuscarColor.cs</DependentUpon>
+    </Compile>
     <Compile Include="frmDetalleReserva.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -180,6 +186,9 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
     <EmbeddedResource Include="FrmAgenciasExternos.resx">
       <DependentUpon>FrmAgenciasExternos.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmBuscarColor.resx">
+      <DependentUpon>frmBuscarColor.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="frmDetalleReserva.resx">
       <DependentUpon>frmDetalleReserva.cs</DependentUpon>

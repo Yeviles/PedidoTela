@@ -1,4 +1,5 @@
-﻿using System;
+﻿using PedidoTela.Controlodores;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
@@ -16,8 +17,9 @@ namespace PedidoTela.Formularios
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new frmSolicitudTela());
-           // Application.Run(new frmTipoPedSelecCoordinar());/*B*/
+            //Application.Run(new frmSolicitudTela());
+            //Application.Run(new frmSolicitudUnicolor(new Controlador(), "DSQUARED"));
+            // Application.Run(new frmTipoPedSelecCoordinar());/*B*/
             //Application.Run(new frmSolicitudPlanoPretenido());
             //Application.Run(new frmSolicitudListaTelas()); /*B*/
             //Application.Run(new frmSolicitudEstampado());
