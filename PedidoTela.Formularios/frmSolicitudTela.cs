@@ -99,7 +99,7 @@ namespace PedidoTela.Formularios
                 String seleccion = objTipoSolicitud.Seleccion;
                 if (seleccion == "unicolor")
                 {
-                    frmSolicitudUnicolor frmUnicolor = new frmSolicitudUnicolor(controlador, dgvDetalleConsumo.Rows[e.ColumnIndex].Cells[2].ToString());
+                    frmSolicitudUnicolor frmUnicolor = new frmSolicitudUnicolor(controlador, dgvDetalleConsumo.Rows[e.RowIndex].Cells[2].ToString());
                     frmUnicolor.Show();
                 }
                 else if (seleccion == "estampado")
