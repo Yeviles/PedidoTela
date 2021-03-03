@@ -1,6 +1,7 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using IBM.Data.Informix;
 using PedidoTela.Entidades.Logica;
+using System;
+using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -9,31 +10,37 @@ namespace PedidoTela.Data.Acceso
 {
     public class D_TipoTejido
     {
-        #region Consultas
-        private readonly string consulta1 = "select tipo, descripcion from cfc_m_tipo_pedido";
+        private readonly string consultar = "select codi_item codigo_tela, trim(desc_item) nombre_tela, " +
+            "cfc_m_tipo_tela.idtipo_tela, cfc_m_tipo_tela.nombre from items " +
+            "inner join cfc_m_tipo_tela on items.tipo_tela=cfc_m_tipo_tela.tipo_tela where codi_item=?;";
 
-        #endregion
-        #region Métodos
-        public List<TipoTejido> ConsultarTipoTejido()
+
+        public void Actualizar(Objeto elemento)
         {
-            List<TipoTejido> respuesta = new List<TipoTejido>();
-            using (var administrador = new clsConexion())
-            {
-                var datos = administrador.EjecutarConsulta(consulta1);
-                while (datos.Read())
-                {
-                    TipoTejido objTipoTejido = new TipoTejido();
-                    objTipoTejido.Tipo = datos["tipo"].ToString().Trim();
-                    objTipoTejido.Descripcion = datos["descripcion"].ToString().Trim();
-
-                    respuesta.Add(objTipoTejido);
-                };
-                administrador.cerrarConexion();
-            }
-            return respuesta;
-
+            throw new NotImplementedException();
         }
 
-        #endregion
+        public TipoTejido obtenerTipoTejido(string codigoTela) {
+            TipoTejido obj = new TipoTejido();
+            using (var con = new clsConexion())
+            {
+                con.Parametros.Add(new IfxParameter("@codi_item", codigoTela));
+                var datosDataReader = con.EjecutarConsulta(consultar);
+                while (datosDataReader.Read())
+                {
+                    obj.CodigoTela = datosDataReader["codigo_tela"].ToString();
+                    obj.NombreTela = datosDataReader["nombre_tela"].ToString();
+                    obj.IdTipoTela = datosDataReader["idtipo_tela"].ToString();
+                    obj.NombreTipoTela = datosDataReader["nombre"].ToString();
+                };
+                con.cerrarConexion();
+            }
+            return obj;
+        }
+
+        public void Dispose()
+        {
+            throw new NotImplementedException();
+        }
     }
 }

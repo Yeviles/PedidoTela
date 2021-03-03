@@ -82,6 +82,7 @@ namespace PedidoTela.Data
             comando.CommandTimeout = 3600;
             foreach (var parametro in Parametros)
             {
+                Console.WriteLine("Name: " + parametro.ParameterName + " Value: " + parametro.Value);
                 comando.Parameters.Add(parametro.ParameterName, parametro.Value);
             }
             lectorDatos = comando.ExecuteReader(); 

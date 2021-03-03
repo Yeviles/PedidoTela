@@ -76,12 +76,24 @@ namespace PedidoTela.Controlodores
 
         #endregion
         #region Métodos de la clase TipoTejido
-        public List<TipoTejido> getTipoTejido()
+        public List<TipoPedido> getTipoTejido()
         {
-            D_TipoTejido d_tejido = new D_TipoTejido();
+            D_TipoPedido d_tejido = new D_TipoPedido();
             return d_tejido.ConsultarTipoTejido();
         }
         #endregion
+        #endregion
+
+        #region Métodos Solicitud unicolor
+        public TipoTejido getTipoTejido(string codigoTela) {
+            D_TipoTejido d_TipoTejido = new D_TipoTejido();
+            return d_TipoTejido.obtenerTipoTejido(codigoTela);
+        }
+
+        public List<Objeto> getColores() {
+            D_Color d_color = new D_Color();
+            return d_color.consultarColores();
+        }
         #endregion
     }
 }

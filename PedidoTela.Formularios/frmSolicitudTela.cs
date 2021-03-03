@@ -16,7 +16,7 @@ namespace PedidoTela.Formularios
     public partial class frmSolicitudTela : MaterialSkin.Controls.MaterialForm
     {
         Controlador controlador = new Controlador();
-       ErrorProvider errorProvider = new ErrorProvider();
+        ErrorProvider errorProvider = new ErrorProvider();
         Validar validacion = new Validar();
 
         public frmSolicitudTela()
@@ -75,7 +75,6 @@ namespace PedidoTela.Formularios
             else
             {
                 MessageBox.Show("No existe información sobre su consulta", "Advertencia", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-
             }
         }
 
@@ -100,7 +99,7 @@ namespace PedidoTela.Formularios
                 String seleccion = objTipoSolicitud.Seleccion;
                 if (seleccion == "unicolor")
                 {
-                    frmSolicitudUnicolor frmUnicolor = new frmSolicitudUnicolor();
+                    frmSolicitudUnicolor frmUnicolor = new frmSolicitudUnicolor(controlador, dgvDetalleConsumo.Rows[e.ColumnIndex].Cells[2].ToString());
                     frmUnicolor.Show();
                 }
                 else if (seleccion == "estampado")

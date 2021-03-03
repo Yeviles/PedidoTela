@@ -8,16 +8,16 @@ namespace PedidoTela.Entidades.Logica
 {
     public class TipoTejido
     {
-        private string tipo;
-        private string descripcion;
-        public TipoTejido() { }
-        public TipoTejido(string tipo, string descripcion)
-        {
-            this.Tipo = tipo;
-            this.Descripcion = descripcion;
-        }
+        private string codigoTela;
+        private string nombreTela;
+        private string idTipoTela;
+        private string nombreTipoTela;
 
-        public string Tipo { get => tipo; set => tipo = value; }
-        public string Descripcion { get => descripcion; set => descripcion = value; }
+        public TipoTejido(){}
+
+        public string CodigoTela { get => codigoTela; set => codigoTela = value; }
+        public string NombreTela { get => nombreTela; set => nombreTela = value; }
+        public string IdTipoTela { get => idTipoTela; set => idTipoTela = value; }
+        public string NombreTipoTela { get => nombreTipoTela; set => nombreTipoTela = value; }
     }
 }
