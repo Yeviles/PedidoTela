@@ -8,6 +8,7 @@ using System.Data;
 using System.Drawing;
 using System.Linq;
 using System.Text;
+using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
@@ -63,7 +64,48 @@ namespace PedidoTela.Formularios
 
         private void btnAddColor_Click(object sender, EventArgs e)
         {
+            frmBuscarColor buscarColor = new frmBuscarColor(control);
+            buscarColor.StartPosition = FormStartPosition.CenterScreen;
+            if (buscarColor.ShowDialog() == DialogResult.OK)
+            {
+                Objeto obj = buscarColor.Elemento;
+                dgvUnicolor.Rows.Add();
+                dgvUnicolor.Rows[dgvUnicolor.Rows.Count - 1].Cells[0].Value = obj.Id;
+                dgvUnicolor.Rows[dgvUnicolor.Rows.Count - 1].Cells[1].Value = obj.Nombre;
+            }
+        }
 
+        private void dgvUnicolor_CellEndEdit(object sender, DataGridViewCellEventArgs e)
+        {
+            try
+            {
+                if (dgvUnicolor.CurrentCell.Value != null)
+                {
+                    int ultimaColumna = dgvUnicolor.ColumnCount - 1;
+
+                    if (e.ColumnIndex > 1 && e.ColumnIndex < ultimaColumna)
+                    {
+                        dgvUnicolor.CurrentCell.Value = Regex.Replace(dgvUnicolor.CurrentCell.Value.ToString().Trim(), @"[^0-9]", "");
+                        if (dgvUnicolor.CurrentCell.Value.ToString() != "")
+                        {
+                            int total = 0;
+                            for (int i = 2; i < ultimaColumna; i++)
+                            {
+                                if (dgvUnicolor.Rows[e.RowIndex].Cells[i].Value != null && dgvUnicolor.Rows[e.RowIndex].Cells[i].Value.ToString() != "")
+                                {
+                                    total += int.Parse(dgvUnicolor.Rows[e.RowIndex].Cells[i].Value.ToString());
+                                }
+                            }
+                            dgvUnicolor.Rows[e.RowIndex].Cells[ultimaColumna].Value = total;
+                        }
+                    }
+                }
+            }
+            catch (ArgumentException aex)
+            {
+                dgvUnicolor.CurrentCell.Value = "";
+                MessageBox.Show("Unicamente se permiten valores numéricos", "TTipo de dato no permitido", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+            }
         }
     }
 }
