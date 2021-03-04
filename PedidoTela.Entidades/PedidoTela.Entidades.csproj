@@ -57,10 +57,12 @@
       <DependentUpon>Form1.cs</DependentUpon>
     </Compile>
     <Compile Include="Logica\DetalleConsumo.cs" />
+    <Compile Include="Logica\DetalleUnicolor.cs" />
     <Compile Include="Logica\Ensayo.cs" />
     <Compile Include="Logica\Objeto.cs" />
     <Compile Include="Logica\TipoPedido.cs" />
     <Compile Include="Logica\TipoTejido.cs" />
+    <Compile Include="Logica\Unicolor.cs" />
     <Compile Include="Logica\Validar.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
