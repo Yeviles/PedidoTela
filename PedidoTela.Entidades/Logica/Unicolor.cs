@@ -9,7 +9,7 @@ namespace PedidoTela.Entidades.Logica
     public class Unicolor
     {
         private int id;
-        private int idEnsayo;
+        private string identificador;
         private string referenciaTela;
         private string descripcionTela;
         private string tipoTejido;
@@ -19,10 +19,10 @@ namespace PedidoTela.Entidades.Logica
 
         public Unicolor() { }
 
-        public Unicolor(int id, int idEnsayo, string referenciaTela, string descripcionTela, string tipoTejido, bool coordinado, string coordinadoCon, string observaciones)
+        public Unicolor(int id, string identificador, string referenciaTela, string descripcionTela, string tipoTejido, bool coordinado, string coordinadoCon, string observaciones)
         {
             this.Id = id;
-            this.IdEnsayo = idEnsayo;
+            this.Identificador = identificador;
             this.ReferenciaTela = referenciaTela;
             this.DescripcionTela = descripcionTela;
             this.TipoTejido = tipoTejido;
@@ -32,7 +32,7 @@ namespace PedidoTela.Entidades.Logica
         }
 
         public int Id { get => id; set => id = value; }
-        public int IdEnsayo { get => idEnsayo; set => idEnsayo = value; }
+        public string Identificador { get => identificador; set => identificador = value; }
         public string ReferenciaTela { get => referenciaTela; set => referenciaTela = value; }
         public string DescripcionTela { get => descripcionTela; set => descripcionTela = value; }
         public string TipoTejido { get => tipoTejido; set => tipoTejido = value; }

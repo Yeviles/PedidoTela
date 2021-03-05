@@ -112,6 +112,22 @@ namespace PedidoTela.Controlodores
             D_Color d_color = new D_Color();
             return d_color.obtenerColores();
         }
+        public int getIdUnicolor(string identificador)
+        {
+            D_Unicolor d_Unicolor = new D_Unicolor();
+            return d_Unicolor.ConsultarId(identificador);
+        }
+
+        public Unicolor getUnicolor(string identificador)
+        {
+            D_Unicolor d_Unicolor = new D_Unicolor();
+            return d_Unicolor.Consultar(identificador);
+        }
+        public List<DetalleUnicolor> getDetalleUnicolor(int idUnicolor)
+        {
+            D_DetalleUnicolor d_Unicolor = new D_DetalleUnicolor();
+            return d_Unicolor.Consultar(idUnicolor);
+        }
 
         public bool addUnicolor(Unicolor unicolor) {
             D_Unicolor d_Unicolor = new D_Unicolor();
