@@ -40,7 +40,39 @@ namespace PedidoTela.Data.Acceso
                                             + "inner join cfc_e_prendas prendas on prendasficha.codi_prenda = prendas.codi_prenda "
                                             + "where ficha.codi_item= ?";
 
+        private readonly string ejemplo = "select unique tel.idprogramador from cfc_telas_ensayo tel;";
         public List<DetalleConsumo> ConsulatDetalleConsumo(string prmIdensayo)
+        {
+            //string[] objConsu = new string[prmIdensayo.Length];
+            string[] objConsu = prmIdensayo.Split('-');
+
+            List<DetalleConsumo> respuesta = new List<DetalleConsumo>();
+            using (var administrador = new clsConexion())
+            {
+                /*administrador.Parametros.Add(new IfxParameter("@idprogramador", objConsu.GetValue(0)));
+                administrador.Parametros.Add(new IfxParameter("@idensayo", objConsu.GetValue(1)));
+                administrador.Parametros.Add(new IfxParameter("@idrepeticion", objConsu.GetValue(2)));*/
+                var datos = administrador.EjecutarConsulta(ejemplo);
+                while (datos.Read())
+                {
+                    DetalleConsumo objDetalle = new DetalleConsumo();
+
+                    objDetalle.Ensayo_referencia = datos["idprogramador"].ToString().Trim();
+                    objDetalle.Codi_prenda = "";
+                    objDetalle.Desc_prenda = "";
+                    objDetalle.Codigo_tela = "";
+                    objDetalle.Descripcion_tela = "";
+                    objDetalle.Consumo_est = "";
+
+                    respuesta.Add(objDetalle);
+                };
+                administrador.cerrarConexion();
+            }
+            return respuesta;
+
+        }
+
+        /*public List<DetalleConsumo> ConsulatDetalleConsumo(string prmIdensayo)
         {
             //string[] objConsu = new string[prmIdensayo.Length];
             string [] objConsu = prmIdensayo.Split('-'); 
@@ -69,7 +101,7 @@ namespace PedidoTela.Data.Acceso
             }
             return respuesta;
 
-        }
+        }*/
 
         public List<DetalleConsumo> ConsulatDetalleReferencia(string prmIdReferencia)
         {
