@@ -42,14 +42,6 @@ namespace PedidoTela.Formularios
             this.cbxNoCoordinado = new System.Windows.Forms.CheckBox();
             this.cbxSiCoordinado = new System.Windows.Forms.CheckBox();
             this.dgvUnicolor = new System.Windows.Forms.DataGridView();
-            this.pnlSolicitudColor = new System.Windows.Forms.Panel();
-            this.txbObservaciones = new System.Windows.Forms.RichTextBox();
-            this.lbObservaciones = new System.Windows.Forms.Label();
-            this.btnAddColor = new System.Windows.Forms.Button();
-            this.panel9 = new System.Windows.Forms.Panel();
-            this.btnConfirmar = new System.Windows.Forms.Button();
-            this.btnGrabar = new System.Windows.Forms.Button();
-            this.btnSalir = new System.Windows.Forms.Button();
             this.codColor = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.descripColor = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.tiendas = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -60,6 +52,14 @@ namespace PedidoTela.Formularios
             this.rosado = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.otros = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.totalUnidades = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.pnlSolicitudColor = new System.Windows.Forms.Panel();
+            this.txbObservaciones = new System.Windows.Forms.RichTextBox();
+            this.lbObservaciones = new System.Windows.Forms.Label();
+            this.btnAddColor = new System.Windows.Forms.Button();
+            this.panel9 = new System.Windows.Forms.Panel();
+            this.btnConfirmar = new System.Windows.Forms.Button();
+            this.btnGrabar = new System.Windows.Forms.Button();
+            this.btnSalir = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.dgvUnicolor)).BeginInit();
             this.pnlSolicitudColor.SuspendLayout();
             this.panel9.SuspendLayout();
@@ -204,6 +204,69 @@ namespace PedidoTela.Formularios
             this.dgvUnicolor.TabIndex = 20;
             this.dgvUnicolor.CellEndEdit += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvUnicolor_CellEndEdit);
             // 
+            // codColor
+            // 
+            this.codColor.HeaderText = "Cod Color";
+            this.codColor.MinimumWidth = 8;
+            this.codColor.Name = "codColor";
+            this.codColor.ReadOnly = true;
+            // 
+            // descripColor
+            // 
+            this.descripColor.HeaderText = "Descripción Color";
+            this.descripColor.MinimumWidth = 8;
+            this.descripColor.Name = "descripColor";
+            this.descripColor.ReadOnly = true;
+            // 
+            // tiendas
+            // 
+            this.tiendas.HeaderText = "Tiendas";
+            this.tiendas.MinimumWidth = 8;
+            this.tiendas.Name = "tiendas";
+            // 
+            // exito
+            // 
+            this.exito.HeaderText = "Éxito";
+            this.exito.MinimumWidth = 8;
+            this.exito.Name = "exito";
+            // 
+            // cencosud
+            // 
+            this.cencosud.HeaderText = "Cencosud";
+            this.cencosud.MinimumWidth = 8;
+            this.cencosud.Name = "cencosud";
+            // 
+            // sao
+            // 
+            this.sao.HeaderText = "SAO";
+            this.sao.MinimumWidth = 8;
+            this.sao.Name = "sao";
+            // 
+            // comercioOrg
+            // 
+            this.comercioOrg.HeaderText = "Comercio Org.";
+            this.comercioOrg.MinimumWidth = 8;
+            this.comercioOrg.Name = "comercioOrg";
+            // 
+            // rosado
+            // 
+            this.rosado.HeaderText = "Rosado";
+            this.rosado.MinimumWidth = 8;
+            this.rosado.Name = "rosado";
+            // 
+            // otros
+            // 
+            this.otros.HeaderText = "Otros";
+            this.otros.MinimumWidth = 8;
+            this.otros.Name = "otros";
+            // 
+            // totalUnidades
+            // 
+            this.totalUnidades.HeaderText = "Total Unidades";
+            this.totalUnidades.MinimumWidth = 8;
+            this.totalUnidades.Name = "totalUnidades";
+            this.totalUnidades.ReadOnly = true;
+            // 
             // pnlSolicitudColor
             // 
             this.pnlSolicitudColor.BackColor = System.Drawing.SystemColors.ScrollBar;
@@ -227,6 +290,7 @@ namespace PedidoTela.Formularios
             // txbObservaciones
             // 
             this.txbObservaciones.Location = new System.Drawing.Point(12, 699);
+            this.txbObservaciones.MaxLength = 120;
             this.txbObservaciones.Name = "txbObservaciones";
             this.txbObservaciones.Size = new System.Drawing.Size(1464, 79);
             this.txbObservaciones.TabIndex = 22;
@@ -309,69 +373,6 @@ namespace PedidoTela.Formularios
             this.btnSalir.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
             this.btnSalir.UseVisualStyleBackColor = true;
             this.btnSalir.Click += new System.EventHandler(this.btnSalir_Click);
-            // 
-            // codColor
-            // 
-            this.codColor.HeaderText = "Cod Color";
-            this.codColor.MinimumWidth = 8;
-            this.codColor.Name = "codColor";
-            this.codColor.ReadOnly = true;
-            // 
-            // descripColor
-            // 
-            this.descripColor.HeaderText = "Descripción Color";
-            this.descripColor.MinimumWidth = 8;
-            this.descripColor.Name = "descripColor";
-            this.descripColor.ReadOnly = true;
-            // 
-            // tiendas
-            // 
-            this.tiendas.HeaderText = "Tiendas";
-            this.tiendas.MinimumWidth = 8;
-            this.tiendas.Name = "tiendas";
-            // 
-            // exito
-            // 
-            this.exito.HeaderText = "Éxito";
-            this.exito.MinimumWidth = 8;
-            this.exito.Name = "exito";
-            // 
-            // cencosud
-            // 
-            this.cencosud.HeaderText = "Cencosud";
-            this.cencosud.MinimumWidth = 8;
-            this.cencosud.Name = "cencosud";
-            // 
-            // sao
-            // 
-            this.sao.HeaderText = "SAO";
-            this.sao.MinimumWidth = 8;
-            this.sao.Name = "sao";
-            // 
-            // comercioOrg
-            // 
-            this.comercioOrg.HeaderText = "Comercio Org.";
-            this.comercioOrg.MinimumWidth = 8;
-            this.comercioOrg.Name = "comercioOrg";
-            // 
-            // rosado
-            // 
-            this.rosado.HeaderText = "Rosado";
-            this.rosado.MinimumWidth = 8;
-            this.rosado.Name = "rosado";
-            // 
-            // otros
-            // 
-            this.otros.HeaderText = "Otros";
-            this.otros.MinimumWidth = 8;
-            this.otros.Name = "otros";
-            // 
-            // totalUnidades
-            // 
-            this.totalUnidades.HeaderText = "Total Unidades";
-            this.totalUnidades.MinimumWidth = 8;
-            this.totalUnidades.Name = "totalUnidades";
-            this.totalUnidades.ReadOnly = true;
             // 
             // frmSolicitudUnicolor
             // 

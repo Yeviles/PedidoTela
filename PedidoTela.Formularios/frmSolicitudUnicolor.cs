@@ -29,6 +29,7 @@ namespace PedidoTela.Formularios
             txbRefTela.Text = tt.CodigoTela;
             txbNomTela.Text = tt.NombreTela;
             txbTipoTejido.Text = tt.NombreTipoTela;
+            cargar();
         }
 
         private void frmSolicitudUnicolor_Load(object sender, EventArgs e)
@@ -113,20 +114,58 @@ namespace PedidoTela.Formularios
 
         private void btnGrabar_Click(object sender, EventArgs e)
         {
-            Unicolor elemento = new Unicolor();
-            elemento.IdEnsayo = idEnsayo;
-            elemento.ReferenciaTela = codigoTela;
-            elemento.DescripcionTela = txbNomTela.Text;
-            elemento.Coordinado = (cbxSiCoordinado.Checked)? true:false;
-            elemento.CoordinadoCon = txbCoordinaCon.Text;
-            elemento.Observaciones = txbObservaciones.Text;
-            if (control.addUnicolor(elemento)) {
-                try {
-
-                    MessageBox.Show("Unicolor se guardo con éxito", "Información", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            if (!cbxSiCoordinado.Checked && !cbxNoCoordinado.Checked)
+            {
+                MessageBox.Show("Por favor, seleccione un valor para coordinado", "Advertencia", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+            }
+            else {
+                if (txbObservaciones.Text.Trim().Length > 0)
+                {
+                    if (dgvUnicolor.RowCount > 0)
+                    {
+                        Unicolor elemento = new Unicolor();
+                        elemento.Identificador = idEnsayo.ToString();
+                        elemento.ReferenciaTela = codigoTela;
+                        elemento.DescripcionTela = txbNomTela.Text;
+                        elemento.TipoTejido = txbTipoTejido.Text;
+                        elemento.Coordinado = (cbxSiCoordinado.Checked) ? true : false;
+                        elemento.CoordinadoCon = (txbCoordinaCon.Text.Trim().Length > 0) ? txbCoordinaCon.Text.Trim() : "";
+                        elemento.Observaciones = (txbObservaciones.Text.Trim().Length > 0) ? txbObservaciones.Text.Trim() : ""; ;
+                        if (control.addUnicolor(elemento))
+                        {
+                            int id = control.getIdUnicolor(idEnsayo.ToString());
+                            try
+                            {
+                                foreach (DataGridViewRow row in dgvUnicolor.Rows)
+                                {
+                                    DetalleUnicolor detalle = new DetalleUnicolor();
+                                    detalle.IdUnicolor = id;
+                                    detalle.CodigoColor = row.Cells[0].Value.ToString();
+                                    detalle.Descripcion = row.Cells[1].Value.ToString();
+                                    detalle.Tiendas = (row.Cells[2].Value != null && row.Cells[2].Value.ToString() != "") ? int.Parse(row.Cells[2].Value.ToString()) : 0;
+                                    detalle.Exito = (row.Cells[3].Value != null && row.Cells[3].Value.ToString() != "") ? int.Parse(row.Cells[3].Value.ToString()) : 0;
+                                    detalle.Cencosud = (row.Cells[4].Value != null && row.Cells[4].Value.ToString() != "") ? int.Parse(row.Cells[4].Value.ToString()) : 0;
+                                    detalle.Sao = (row.Cells[5].Value != null && row.Cells[5].Value.ToString() != "") ? int.Parse(row.Cells[5].Value.ToString()) : 0;
+                                    detalle.Comercio = (row.Cells[6].Value != null && row.Cells[6].Value.ToString() != "") ? int.Parse(row.Cells[6].Value.ToString()) : 0;
+                                    detalle.Rosado = (row.Cells[7].Value != null && row.Cells[7].Value.ToString() != "") ? int.Parse(row.Cells[7].Value.ToString()) : 0;
+                                    detalle.Otros = (row.Cells[8].Value != null && row.Cells[8].Value.ToString() != "") ? int.Parse(row.Cells[8].Value.ToString()) : 0;
+                                    detalle.Total = (row.Cells[9].Value != null && row.Cells[9].Value.ToString() != "") ? int.Parse(row.Cells[9].Value.ToString()) : 0;
+                                    control.addDetalleUnicolor(detalle);
+                                }
+                                MessageBox.Show("Unicolor se guardó con éxito", "Información", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                            }
+                            catch (Exception ex)
+                            {
+                                MessageBox.Show("Detalle unicolor no se pudo guardar", "Advertencia", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                            }
+                        }
+                    }
+                    else {
+                        MessageBox.Show("Por favor, adicione al menos un color", "Advertencia", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    }
                 }
-                catch (Exception ex) {
-                    MessageBox.Show("Unicolor no se pudo guardar", "Advertencia", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                else {
+                    MessageBox.Show("Por favor, ingrese las observaciones de diseño", "Advertencia", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 }
             }
         }
@@ -134,6 +173,30 @@ namespace PedidoTela.Formularios
         private void btnConfirmar_Click(object sender, EventArgs e)
         {
 
+        }
+
+        private void cargar() {
+            Unicolor unicolor = control.getUnicolor(idEnsayo.ToString());
+            if (unicolor.Coordinado) {
+                cbxSiCoordinado.Checked = true;
+                txbCoordinaCon.Text = unicolor.CoordinadoCon;
+            }
+            else {
+                cbxNoCoordinado.Checked = true;
+            }
+            txbObservaciones.Text = unicolor.Observaciones;
+
+            /*Carga detalle unicolor*/
+            List<DetalleUnicolor> lista = control.getDetalleUnicolor(unicolor.Id);
+            if (lista.Count > 0)
+            {
+                foreach (DetalleUnicolor obj in lista)
+                {
+                    dgvUnicolor.Rows.Add(obj.CodigoColor, obj.Descripcion, obj.Exito, obj.Tiendas,
+                        obj.Cencosud, obj.Sao, obj.Comercio, obj.Rosado, obj.Otros, obj.Total);
+                }
+                btnAddColor.Enabled = false;
+            }
         }
     }
 }

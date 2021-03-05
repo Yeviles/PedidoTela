@@ -85,7 +85,7 @@ namespace PedidoTela.Data
                 Console.WriteLine("Name: " + parametro.ParameterName + " Value: " + parametro.Value);
                 comando.Parameters.Add(parametro.ParameterName, parametro.Value);
             }
-            lectorDatos = comando.ExecuteReader(); 
+            lectorDatos = comando.ExecuteReader();
             return lectorDatos;
         }
 
