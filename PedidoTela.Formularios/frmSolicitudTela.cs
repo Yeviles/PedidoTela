@@ -8,6 +8,7 @@ using System.Data;
 using System.Drawing;
 using System.Linq;
 using System.Text;
+using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
@@ -22,20 +23,22 @@ namespace PedidoTela.Formularios
         public frmSolicitudTela()
         {
             InitializeComponent();
+
+            this.ttTipo.SetToolTip(this.cbxTipo, "Por favor Seleccione un Tipo");
+            this.ttEnsayoRef.SetToolTip(this.txbEnsRefDigitado, "Precione Enter para Buscar");
+            this.ttSku.SetToolTip(this.txbSku, "Por favor Ingrese solo 3 Carateres");
+            dtpFechaTienda.Format = DateTimePickerFormat.Custom;
+            dtpFechaTienda.CustomFormat = "dd/MM/yyyy";
+            txbSku.MaxLength = 3;
+           
         }
 
         private void frmSolicitudTela_Load(object sender, EventArgs e)
         {
             SkinManager.Theme = MaterialSkin.MaterialSkinManager.Themes.LIGHT;
             SkinManager.ColorScheme = new ColorScheme(Primary.Blue900, Primary.Grey400, Primary.Grey100, Accent.Green100, TextShade.WHITE);
+         
             
-            if (txbSku.MaxLength > 3)
-            {
-                txbSku.MaxLength = 3;
-                errorProvider.SetError(txbSku, "Ingrese solo 3 caracteres");
-            }
-            dtpFechaTienda.Format = DateTimePickerFormat.Custom;
-            dtpFechaTienda.CustomFormat = "dd/MM/yyyy";
         }
 
         /// <summary>
@@ -56,10 +59,9 @@ namespace PedidoTela.Formularios
             }
             else
             {
-                MessageBox.Show("No existe información sobre la Referencia ingresada", "Advertencia", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                MessageBox.Show("No existe información sobre su consulta", "Advertencia", MessageBoxButtons.OK, MessageBoxIcon.Warning);
 
             }
-
         }
 
         private void cargarDataGridView(List<DetalleConsumo> prmLista)
@@ -83,7 +85,7 @@ namespace PedidoTela.Formularios
 
             if (txbSku.Text == "")
             {
-                e.Cancel = true;
+                //e.Cancel = true;
                 txbSku.Select(0, txbSku.Text.Length);
                 errorProvider.SetError(txbSku, "Debe introducir el SKU");
             }
@@ -125,6 +127,7 @@ namespace PedidoTela.Formularios
         
         private void btnConsultar_Click(object sender, EventArgs e)
         {
+       
             if (txbEnsRefDigitado.Text == "" || cbxTipo.SelectedItem.ToString()==null)
             {
                 MessageBox.Show("Por favor ingrese Ensayo/Referencia", "Advertencia", MessageBoxButtons.OK, MessageBoxIcon.Warning);
@@ -137,6 +140,7 @@ namespace PedidoTela.Formularios
             {
                 cargarDataGridView(controlador.getDetalleConsumoReferencia(txbEnsRefDigitado.Text));
             }
+            
         }
 
         private void txbEnsRefDigitado_KeyPress(object sender, KeyPressEventArgs e)
@@ -154,8 +158,8 @@ namespace PedidoTela.Formularios
                 }
                 else
                 {
-                     cargarTexBox(cbxTipo, controlador.getEnsayo(txbEnsRefDigitado.Text));
-
+                    cargarTexBox(cbxTipo, controlador.getEnsayo(txbEnsRefDigitado.Text));
+                    dgvDetalleConsumo.Rows.Clear();
                 }
 
             }
@@ -163,22 +167,39 @@ namespace PedidoTela.Formularios
             else if (cbxTipo.SelectedItem.ToString() == "Referencia" && (e.KeyChar == Convert.ToChar(Keys.Enter)))
             {
                 cargarTexBox(cbxTipo, controlador.getReferencia(txbEnsRefDigitado.Text));
+                dgvDetalleConsumo.Rows.Clear();
+               
             }
         }
 
         private void cbxTipo_SelectionChangeCommitted(object sender, EventArgs e)
         {
-            if(cbxTipo.SelectedItem.ToString() == "Ensayo"  || cbxTipo.SelectedItem.ToString() == "Referencia")
+            if(cbxTipo.SelectedItem.ToString() == "Ensayo" || (cbxTipo.SelectedItem.ToString() == "Referencia")) 
             {
                 txbEnsRefDigitado.ReadOnly = false;
                 txbEnsRefDigitado.Focus();
                 txbEnsRefDigitado.BackColor = Color.LightGoldenrodYellow;
+                validacion.limpiar(pnlAdicionarSolicitud);
             }
             else
             {
                 MessageBox.Show("Por Favor selecione un tipo", "Advertencia", MessageBoxButtons.OK, MessageBoxIcon.Warning);
             }
+        
         }
-       
+
+        private void txbSku_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            validacion.SoloLetras(e);
+        }
+
+        private void dgvDetalleConsumo_CellEndEdit(object sender, DataGridViewCellEventArgs e)
+        {
+            if(dgvDetalleConsumo.Columns[e.ColumnIndex].Name == "editar")
+            {
+
+            }
+
+        }
     }
 }

@@ -29,6 +29,7 @@ namespace PedidoTela.Formularios
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
             this.tbcPedidoTela = new System.Windows.Forms.TabControl();
@@ -56,12 +57,16 @@ namespace PedidoTela.Formularios
             this.lbDisenador = new System.Windows.Forms.Label();
             this.label7 = new System.Windows.Forms.Label();
             this.dgvDetalleConsumo = new System.Windows.Forms.DataGridView();
-            this.lbDetalleConsumo = new System.Windows.Forms.Label();
             this.ensayoRef = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.desPrenda = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.refTela = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.desTela = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.consumos = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.editar = new System.Windows.Forms.DataGridViewButtonColumn();
+            this.lbDetalleConsumo = new System.Windows.Forms.Label();
+            this.ttEnsayoRef = new System.Windows.Forms.ToolTip(this.components);
+            this.ttSku = new System.Windows.Forms.ToolTip(this.components);
+            this.ttTipo = new System.Windows.Forms.ToolTip(this.components);
             this.tbcPedidoTela.SuspendLayout();
             this.tbpAdicionarSolTela.SuspendLayout();
             this.pnlAdicionarSolicitud.SuspendLayout();
@@ -239,6 +244,7 @@ namespace PedidoTela.Formularios
             this.txbSku.Name = "txbSku";
             this.txbSku.Size = new System.Drawing.Size(254, 24);
             this.txbSku.TabIndex = 11;
+            this.txbSku.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txbSku_KeyPress);
             this.txbSku.Validating += new System.ComponentModel.CancelEventHandler(this.txbSku_Validating);
             // 
             // lbSKU
@@ -346,7 +352,8 @@ namespace PedidoTela.Formularios
             this.desPrenda,
             this.refTela,
             this.desTela,
-            this.consumos});
+            this.consumos,
+            this.editar});
             this.dgvDetalleConsumo.EnableHeadersVisualStyles = false;
             this.dgvDetalleConsumo.GridColor = System.Drawing.SystemColors.ScrollBar;
             this.dgvDetalleConsumo.Location = new System.Drawing.Point(13, 252);
@@ -362,20 +369,11 @@ namespace PedidoTela.Formularios
             dataGridViewCellStyle2.SelectionForeColor = System.Drawing.Color.White;
             this.dgvDetalleConsumo.RowsDefaultCellStyle = dataGridViewCellStyle2;
             this.dgvDetalleConsumo.RowTemplate.Height = 28;
-            this.dgvDetalleConsumo.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
+            this.dgvDetalleConsumo.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.CellSelect;
             this.dgvDetalleConsumo.Size = new System.Drawing.Size(1415, 380);
             this.dgvDetalleConsumo.TabIndex = 19;
             this.dgvDetalleConsumo.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView1_CellClick);
-            // 
-            // lbDetalleConsumo
-            // 
-            this.lbDetalleConsumo.AutoSize = true;
-            this.lbDetalleConsumo.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
-            this.lbDetalleConsumo.Location = new System.Drawing.Point(13, 221);
-            this.lbDetalleConsumo.Name = "lbDetalleConsumo";
-            this.lbDetalleConsumo.Size = new System.Drawing.Size(129, 19);
-            this.lbDetalleConsumo.TabIndex = 18;
-            this.lbDetalleConsumo.Text = "Detalle Consumo";
+            this.dgvDetalleConsumo.CellEndEdit += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvDetalleConsumo_CellEndEdit);
             // 
             // ensayoRef
             // 
@@ -411,6 +409,23 @@ namespace PedidoTela.Formularios
             this.consumos.MinimumWidth = 8;
             this.consumos.Name = "consumos";
             this.consumos.ReadOnly = true;
+            // 
+            // editar
+            // 
+            this.editar.HeaderText = "Editar";
+            this.editar.MinimumWidth = 6;
+            this.editar.Name = "editar";
+            this.editar.ReadOnly = true;
+            // 
+            // lbDetalleConsumo
+            // 
+            this.lbDetalleConsumo.AutoSize = true;
+            this.lbDetalleConsumo.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
+            this.lbDetalleConsumo.Location = new System.Drawing.Point(13, 221);
+            this.lbDetalleConsumo.Name = "lbDetalleConsumo";
+            this.lbDetalleConsumo.Size = new System.Drawing.Size(129, 19);
+            this.lbDetalleConsumo.TabIndex = 18;
+            this.lbDetalleConsumo.Text = "Detalle Consumo";
             // 
             // frmSolicitudTela
             // 
@@ -463,11 +478,15 @@ namespace PedidoTela.Formularios
         private System.Windows.Forms.ComboBox cbxTipo;
         private System.Windows.Forms.Label lbTipo;
         private System.Windows.Forms.TextBox txbEnsRefDigitado;
+        private System.Windows.Forms.ToolTip ttEnsayoRef;
+        private System.Windows.Forms.ToolTip ttSku;
+        private System.Windows.Forms.ToolTip ttTipo;
         private System.Windows.Forms.DataGridViewTextBoxColumn ensayoRef;
         private System.Windows.Forms.DataGridViewTextBoxColumn desPrenda;
         private System.Windows.Forms.DataGridViewTextBoxColumn refTela;
         private System.Windows.Forms.DataGridViewTextBoxColumn desTela;
         private System.Windows.Forms.DataGridViewTextBoxColumn consumos;
+        private System.Windows.Forms.DataGridViewButtonColumn editar;
     }
 }
 

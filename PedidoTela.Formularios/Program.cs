@@ -18,7 +18,7 @@ namespace PedidoTela.Formularios
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
             Application.Run(new frmSolicitudTela());
-           //Application.Run(new frmSolicitudUnicolor(new Controlador(), "DSQUARED"));
+           //Application.Run(new frmSolicitudUnicolor(new Controlador(),715, "DSQUARED"));
             // Application.Run(new frmTipoPedSelecCoordinar());/*B*/
             //Application.Run(new frmSolicitudPlanoPretenido());
             //Application.Run(new frmSolicitudListaTelas()); /*B*/

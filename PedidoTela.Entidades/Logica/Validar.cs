@@ -50,5 +50,20 @@ namespace PedidoTela.Entidades.Logica
                 // MessageBox.Show("Solo Letras");
             }
         }
+        public void limpiar(Panel p)
+        {
+            foreach (Control text in p.Controls)
+            {
+                if (text is TextBox)
+                {
+                    ((TextBox)text).Clear();
+
+                }
+                //else if (text is ComboBox)
+                //{
+                //    ((ComboBox)text).SelectedIndex = 0;
+                //}
+            }
+        }
     }
 }
