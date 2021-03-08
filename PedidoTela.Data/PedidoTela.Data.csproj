@@ -75,6 +75,7 @@
   <ItemGroup>
     <Compile Include="Acceso\D_Color.cs" />
     <Compile Include="Acceso\D_DetalleConsumo.cs" />
+    <Compile Include="Acceso\D_DetalleEstampado.cs" />
     <Compile Include="Acceso\D_DetalleUnicolor.cs" />
     <Compile Include="Acceso\D_Disenador.cs" />
     <Compile Include="Acceso\D_EditarDetalleConsumo.cs" />

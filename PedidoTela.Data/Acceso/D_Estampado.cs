@@ -11,7 +11,7 @@ namespace PedidoTela.Data.Acceso
     public class D_Estampado
     {
         #region Consultas
-        private readonly string consultaInsert = "";
+        private readonly string consultaInsert = "INSERT INTO cfc_spt_sol_estampado (ensayo_ref,referencia_tela,nombre_tela,tipo_estampado,tipo_tejido,n_dibujos,n_cilindros,coordinado_con,coordinado,observaciones) VALUES(?, ?, ?, ?, ?, ?, ?, ?, ?, ?);";
 
         #endregion
         #region Métodos

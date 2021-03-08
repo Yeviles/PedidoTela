@@ -87,6 +87,10 @@ namespace PedidoTela.Formularios
             }
         }
 
+        /// <summary>
+        /// Carga los datos que se han Editado 
+        /// </summary>
+        /// <param name="prmLista"></param>
         private void cargarDgvDatosEditados(List<EditarDetalleconsumo> prmLista)
         {
             dgvDetalleConsumo.Rows.Clear();

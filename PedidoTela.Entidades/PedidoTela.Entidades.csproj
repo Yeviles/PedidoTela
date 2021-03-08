@@ -57,6 +57,7 @@
       <DependentUpon>Form1.cs</DependentUpon>
     </Compile>
     <Compile Include="Logica\DetalleConsumo.cs" />
+    <Compile Include="Logica\DetalleEstampado.cs" />
     <Compile Include="Logica\DetalleUnicolor.cs" />
     <Compile Include="Logica\EditarDetalleconsumo.cs" />
     <Compile Include="Logica\Ensayo.cs" />

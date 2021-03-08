@@ -183,9 +183,9 @@ namespace PedidoTela.Formularios
                 if (buscarColor.ShowDialog() == DialogResult.OK)
                 {
                     Objeto obj = buscarColor.Elemento;
-                    dvgEstampado.Rows.Add();
-                    dvgEstampado.Rows[dvgEstampado.Rows.Count - 2].Cells[2].Value = obj.Id;
-                    dvgEstampado.Rows[dvgEstampado.Rows.Count - 2].Cells[3].Value = obj.Nombre;
+                    //dvgEstampado.Rows.Add();
+                    dvgEstampado.Rows[dvgEstampado.Rows.Count - 1].Cells[2].Value = obj.Id;
+                    dvgEstampado.Rows[dvgEstampado.Rows.Count - 1].Cells[3].Value = obj.Nombre;
                 }
 
             }
@@ -193,66 +193,70 @@ namespace PedidoTela.Formularios
 
         private void btnGrabar_Click(object sender, EventArgs e)
         {
-        //    if (!cbxSiCoordinado.Checked && !cbxNoCoordinado.Checked)
-        //    {
-        //        MessageBox.Show("Por favor, seleccione un valor para coordinado", "Advertencia", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-        //    }
-        //    else
-        //    {
-        //        if (txtObservaciones.Text.Trim().Length > 0)
-        //        {
-        //            if (dvgEstampado.RowCount > 0)
-        //            {
-        //                Estampado elemento = new Estampado();
-        //                elemento.Esayo_ref = lbIdentificador.Text;
-        //                elemento.Referencia_tela = txbRefTela.ToString();
-        //                elemento.Nombre_tela = txbNomTela.Text.Trim();
-        //                elemento.Tipo_estampado = cbxTipoEst.SelectedItem.ToString();
-        //                elemento.Tipo_tejido = cbxTipoTela.SelectedItem.ToString();
-        //                elemento.N_dibujos = int.Parse(txbNdibujo.Text.Trim());
-        //                elemento.N_cilindors = int.Parse(txbNcilindro.Text.Trim());
-        //                elemento.Coordinado_con = (txbCoordinaCon.Text.Trim().Length > 0) ? txbCoordinaCon.Text.Trim() : ""; ;
-        //                elemento.Coordinado = (cbxSiCoordinado.Checked) ? true : false; ;
-        //                elemento.Observaciones = (txtObservaciones.Text.Trim().Length > 0) ? txtObservaciones.Text.Trim() : ""; ;
-        //                if (controlador.addEstampado(elemento))
-        //                {
-        //                    int id = controlador.getIdUnicolor(idEnsayo.ToString());
-        //                    try
-        //                    {
-        //                        foreach (DataGridViewRow row in dvgEstampado.Rows)
-        //                        {
-        //                            DetalleUnicolor detalle = new DetalleUnicolor();
-        //                            detalle.IdUnicolor = id;
-        //                            detalle.CodigoColor = row.Cells[0].Value.ToString();
-        //                            detalle.Descripcion = row.Cells[1].Value.ToString();
-        //                            detalle.Tiendas = (row.Cells[2].Value != null && row.Cells[2].Value.ToString() != "") ? int.Parse(row.Cells[2].Value.ToString()) : 0;
-        //                            detalle.Exito = (row.Cells[3].Value != null && row.Cells[3].Value.ToString() != "") ? int.Parse(row.Cells[3].Value.ToString()) : 0;
-        //                            detalle.Cencosud = (row.Cells[4].Value != null && row.Cells[4].Value.ToString() != "") ? int.Parse(row.Cells[4].Value.ToString()) : 0;
-        //                            detalle.Sao = (row.Cells[5].Value != null && row.Cells[5].Value.ToString() != "") ? int.Parse(row.Cells[5].Value.ToString()) : 0;
-        //                            detalle.Comercio = (row.Cells[6].Value != null && row.Cells[6].Value.ToString() != "") ? int.Parse(row.Cells[6].Value.ToString()) : 0;
-        //                            detalle.Rosado = (row.Cells[7].Value != null && row.Cells[7].Value.ToString() != "") ? int.Parse(row.Cells[7].Value.ToString()) : 0;
-        //                            detalle.Otros = (row.Cells[8].Value != null && row.Cells[8].Value.ToString() != "") ? int.Parse(row.Cells[8].Value.ToString()) : 0;
-        //                            detalle.Total = (row.Cells[9].Value != null && row.Cells[9].Value.ToString() != "") ? int.Parse(row.Cells[9].Value.ToString()) : 0;
-        //                            control.addDetalleUnicolor(detalle);
-        //                        }
-        //                        MessageBox.Show("Unicolor se guardó con éxito", "Información", MessageBoxButtons.OK, MessageBoxIcon.Information);
-        //                    }
-        //                    catch (Exception ex)
-        //                    {
-        //                        MessageBox.Show("Detalle unicolor no se pudo guardar", "Advertencia", MessageBoxButtons.OK, MessageBoxIcon.Error);
-        //                    }
-        //                }
-        //            }
-        //            else
-        //            {
-        //                MessageBox.Show("Por favor, adicione al menos un color", "Advertencia", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-        //            }
-        //        }
-        //        else
-        //        {
-        //            MessageBox.Show("Por favor, ingrese las observaciones de diseño", "Advertencia", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-        //        }
-        //    }
+            if (!cbxSiCoordinado.Checked && !cbxNoCoordinado.Checked)
+            {
+                MessageBox.Show("Por favor, seleccione un valor para coordinado", "Advertencia", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+            }
+            else
+            {
+                if (txtObservaciones.Text.Trim().Length > 0)
+                {
+                    if (dvgEstampado.RowCount > 0)
+                    {
+                        Estampado elemento = new Estampado();
+                        elemento.Esayo_ref = lbIdentificador.Text;
+                        elemento.Referencia_tela = txbRefTela.ToString();
+                        elemento.Nombre_tela = txbNomTela.Text.Trim();
+                        elemento.Tipo_estampado = cbxTipoEst.SelectedItem.ToString();
+                        elemento.Tipo_tejido = cbxTipoTela.SelectedItem.ToString();
+                        elemento.N_dibujos = int.Parse(txbNdibujo.Text.Trim());
+                        elemento.N_cilindors = int.Parse(txbNcilindro.Text.Trim());
+                        elemento.Coordinado_con = (txbCoordinaCon.Text.Trim().Length > 0) ? txbCoordinaCon.Text.Trim() : ""; ;
+                        elemento.Coordinado = (cbxSiCoordinado.Checked) ? true : false; ;
+                        elemento.Observaciones = (txtObservaciones.Text.Trim().Length > 0) ? txtObservaciones.Text.Trim() : ""; ;
+                        if (controlador.addEstampado(elemento))
+                        {
+                            //int id = controlador.getIdUnicolor(idEnsayo.ToString());
+                            try
+                            {
+                                foreach (DataGridViewRow row in dvgEstampado.Rows)
+                                {
+                                    DetalleEstampado detalle = new DetalleEstampado();
+                                    detalle.CodigoColor = row.Cells[0].Value.ToString();
+                                    detalle.Desc_color = row.Cells[1].Value.ToString();
+                                    detalle.Fondo = row.Cells[2].Value.ToString();
+                                    detalle.Des_fondo = row.Cells[3].Value.ToString();
+                                    detalle.Tiendas = (row.Cells[4].Value != null && row.Cells[4].Value.ToString() != "") ? int.Parse(row.Cells[4].Value.ToString()) : 0;
+                                    detalle.Exito = (row.Cells[5].Value != null && row.Cells[5].Value.ToString() != "") ? int.Parse(row.Cells[5].Value.ToString()) : 0;
+                                    detalle.Cencosud = (row.Cells[6].Value != null && row.Cells[6].Value.ToString() != "") ? int.Parse(row.Cells[6].Value.ToString()) : 0;
+                                    detalle.Sao = (row.Cells[7].Value != null && row.Cells[7].Value.ToString() != "") ? int.Parse(row.Cells[7].Value.ToString()) : 0;
+                                    detalle.Comercio = (row.Cells[8].Value != null && row.Cells[8].Value.ToString() != "") ? int.Parse(row.Cells[8].Value.ToString()) : 0;
+                                    detalle.Rosado = (row.Cells[9].Value != null && row.Cells[9].Value.ToString() != "") ? int.Parse(row.Cells[9].Value.ToString()) : 0;
+                                    detalle.Otros = (row.Cells[10].Value != null && row.Cells[10].Value.ToString() != "") ? int.Parse(row.Cells[10].Value.ToString()) : 0;
+                                    detalle.Total = (row.Cells[11].Value != null && row.Cells[11].Value.ToString() != "") ? int.Parse(row.Cells[11].Value.ToString()) : 0;
+                                    detalle.IdEstampado = int.Parse(lbIdentificador.Text);
+                                    controlador.addDetalleEstampado(detalle);
+                                }
+                                MessageBox.Show("Estampado se guardó con éxito", "Información", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                            }
+                            catch (Exception ex)
+                            {
+                                MessageBox.Show("Detalle Estampado no se pudo guardar", "Advertencia", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                            }
+                        }
+                    }
+                    else
+                    {
+                        MessageBox.Show("Por favor, adicione al menos un color", "Advertencia", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    }
+                }
+                else
+                {
+                    MessageBox.Show("Por favor, ingrese las observaciones de diseño", "Advertencia", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                }
+            }
         }
+
+
     }
 }

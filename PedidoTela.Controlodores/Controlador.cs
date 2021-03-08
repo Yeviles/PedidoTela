@@ -193,9 +193,13 @@ namespace PedidoTela.Controlodores
         #region Métodos Solicitud Estampado
         public bool addEstampado(Estampado estampado)
         {
-            //D_Unicolor d_Unicolor = new D_Unicolor();
-            //return (d_Unicolor.Agregar(estampado) == "ok") ? true : false;
-            return false;
+            D_Estampado d_Unicolor = new D_Estampado();
+            return (d_Unicolor.Agregar(estampado) == "ok") ? true : false;
+        }
+        public void addDetalleEstampado(DetalleEstampado detalle)
+        {
+            D_DetalleEstampado d_DetalleUnicolor = new D_DetalleEstampado();
+            d_DetalleUnicolor.Agregar(detalle);
         }
         #endregion
     }
