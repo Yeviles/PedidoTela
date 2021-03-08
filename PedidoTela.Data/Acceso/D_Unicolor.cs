@@ -10,8 +10,8 @@ namespace PedidoTela.Data.Acceso
 {
     public class D_Unicolor
     {
-        private readonly string consultaInsert = "INSERT INTO cfc_spt_sol_unicolor (identificador, referencia_tela, tipo_tejido, coordinado, coordinado_con, observaciones) VALUES(?, ?, ?, ?, ?, ?);";
-        private readonly string consultaAll = "SELECT idunicolor, identificador, referencia_tela, tipo_tejido, coordinado, NVL(coordinado_con, '') AS coordinado_con, observaciones FROM cfc_spt_sol_unicolor WHERE identificador = ?;";
+        private readonly string consultaInsert = "INSERT INTO cfc_spt_sol_unicolor (identificador, referencia_tela, tipo_tejido, coordinado, coordinado_con, observacion) VALUES(?, ?, ?, ?, ?, ?);";
+        private readonly string consultaAll = "SELECT idunicolor, identificador, referencia_tela, tipo_tejido, coordinado, NVL(coordinado_con, '') AS coordinado_con, observacion FROM cfc_spt_sol_unicolor WHERE identificador = ?;";
         private readonly string consultaId = "SELECT idunicolor FROM cfc_spt_sol_unicolor WHERE identificador = ?;";
 
         public int ConsultarId(string identificador)
@@ -52,7 +52,7 @@ namespace PedidoTela.Data.Acceso
                         unicolor.TipoTejido = datos["tipo_tejido"].ToString();
                         unicolor.Coordinado = bool.Parse(datos["coordinado"].ToString());
                         unicolor.CoordinadoCon = (datos["coordinado_con"].ToString().Trim().Length > 0) ? datos["coordinado_con"].ToString().Trim() : "";
-                        unicolor.Observaciones = datos["observaciones"].ToString();
+                        unicolor.Observaciones = datos["observacion"].ToString();
                     }
                     con.cerrarConexion();
                 }
@@ -76,7 +76,7 @@ namespace PedidoTela.Data.Acceso
                     con.Parametros.Add(new IfxParameter("@tipo_tejido", elemento.TipoTejido));
                     con.Parametros.Add(new IfxParameter("@coordinado", elemento.Coordinado));
                     con.Parametros.Add(new IfxParameter("@coordinado_con", elemento.CoordinadoCon));
-                    con.Parametros.Add(new IfxParameter("@observaciones", elemento.Observaciones));
+                    con.Parametros.Add(new IfxParameter("@observacion", elemento.Observaciones));
                     var datos = con.EjecutarConsulta(this.consultaInsert);
                     con.cerrarConexion();
                 }

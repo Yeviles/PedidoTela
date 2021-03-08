@@ -151,6 +151,7 @@ namespace PedidoTela.Formularios
                                     detalle.Total = (row.Cells[9].Value != null && row.Cells[9].Value.ToString() != "") ? int.Parse(row.Cells[9].Value.ToString()) : 0;
                                     control.addDetalleUnicolor(detalle);
                                 }
+                                txbObservaciones.Enabled = false;
                                 MessageBox.Show("Unicolor se guardó con éxito", "Información", MessageBoxButtons.OK, MessageBoxIcon.Information);
                             }
                             catch (Exception ex)
@@ -197,6 +198,7 @@ namespace PedidoTela.Formularios
                 btnAddColor.Enabled = false;
                 dgvUnicolor.ReadOnly = true;
                 btnGrabar.Enabled = false;
+                txbObservaciones.Enabled = false;
             }
         }
     }
