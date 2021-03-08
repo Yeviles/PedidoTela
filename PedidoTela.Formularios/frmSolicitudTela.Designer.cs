@@ -63,6 +63,7 @@ namespace PedidoTela.Formularios
             this.desTela = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.consumos = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.editar = new System.Windows.Forms.DataGridViewButtonColumn();
+            this.guardar = new System.Windows.Forms.DataGridViewButtonColumn();
             this.lbDetalleConsumo = new System.Windows.Forms.Label();
             this.ttEnsayoRef = new System.Windows.Forms.ToolTip(this.components);
             this.ttSku = new System.Windows.Forms.ToolTip(this.components);
@@ -353,10 +354,11 @@ namespace PedidoTela.Formularios
             this.refTela,
             this.desTela,
             this.consumos,
-            this.editar});
+            this.editar,
+            this.guardar});
             this.dgvDetalleConsumo.EnableHeadersVisualStyles = false;
             this.dgvDetalleConsumo.GridColor = System.Drawing.SystemColors.ScrollBar;
-            this.dgvDetalleConsumo.Location = new System.Drawing.Point(13, 252);
+            this.dgvDetalleConsumo.Location = new System.Drawing.Point(14, 252);
             this.dgvDetalleConsumo.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.dgvDetalleConsumo.MultiSelect = false;
             this.dgvDetalleConsumo.Name = "dgvDetalleConsumo";
@@ -416,6 +418,13 @@ namespace PedidoTela.Formularios
             this.editar.MinimumWidth = 6;
             this.editar.Name = "editar";
             this.editar.ReadOnly = true;
+            // 
+            // guardar
+            // 
+            this.guardar.HeaderText = "Guardar";
+            this.guardar.MinimumWidth = 6;
+            this.guardar.Name = "guardar";
+            this.guardar.ReadOnly = true;
             // 
             // lbDetalleConsumo
             // 
@@ -487,6 +496,7 @@ namespace PedidoTela.Formularios
         private System.Windows.Forms.DataGridViewTextBoxColumn desTela;
         private System.Windows.Forms.DataGridViewTextBoxColumn consumos;
         private System.Windows.Forms.DataGridViewButtonColumn editar;
+        private System.Windows.Forms.DataGridViewButtonColumn guardar;
     }
 }
 

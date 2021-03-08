@@ -66,14 +66,64 @@ namespace PedidoTela.Controlodores
         public List<DetalleConsumo> getDetalleConsumoEnsayo(string prmIdensayo)
         {
             D_DetalleConsumo d_detalle = new D_DetalleConsumo();
-            return d_detalle.ConsulatDetalleConsumo(prmIdensayo);
+            return d_detalle.ConsultarDetalleConsumo(prmIdensayo);
         }
         public List<DetalleConsumo> getDetalleConsumoReferencia(string prmIdReferencia)
         {
             D_DetalleConsumo d_detalle = new D_DetalleConsumo();
             return d_detalle.ConsulatDetalleReferencia(prmIdReferencia);
         }
+        public bool consultarIdentificador (string prmIdentificador)
+        {
+            D_EditarDetalleConsumo objDetalleEditado = new D_EditarDetalleConsumo();
+            return objDetalleEditado.consultarIdentificador(prmIdentificador);
+        }
+        public List <EditarDetalleconsumo> getDcEditadoPorEnsayo(string prmIdensayo)
+        {
+            D_EditarDetalleConsumo objDetalleEditado = new D_EditarDetalleConsumo();
+            return objDetalleEditado.ConsultarDCEditadoPorEnsayo(prmIdensayo);
+        }
 
+        /// <summary>
+        /// Realiza un UPDATE en la tabla cfc_spt_sol_tela.
+        /// </summary>
+        /// <param name="editarDetalle"></param>
+        /// <returns></returns>
+        public bool setDcEditadoPorEnsayo(EditarDetalleconsumo editarDetalle,string idEditar)
+        {
+            D_EditarDetalleConsumo objDetalleEditado = new D_EditarDetalleConsumo();
+           // return (d_Unicolor.Agregar(unicolor) == "ok") ? true : false;
+            return (objDetalleEditado.setDcEditadoPorEnsayo(editarDetalle, idEditar) == "ok")?true:false;
+        }
+
+        public List<EditarDetalleconsumo> getDetalleEditadoPorRef(string prmReferencia)
+        {
+            D_EditarDetalleConsumo objDetalleEditado = new D_EditarDetalleConsumo();
+            return objDetalleEditado.ConsultarDtEditadoPorRef(prmReferencia);
+        }
+
+        #endregion
+        #region Métodos Editar Detalle Consumo
+        public List<Objeto> buscarTelaPorReferncia(string prmRefTela)
+        {
+            D_EditarDetalleConsumo d_color = new D_EditarDetalleConsumo();
+            return d_color.buscarTelaPorReferncia(prmRefTela);
+        }
+        public List<Objeto> buscarTelaPorDescripcion(string prmDescripcion)
+        {
+            D_EditarDetalleConsumo d_color = new D_EditarDetalleConsumo();
+            return d_color.buscarTelaPorDescripcion(prmDescripcion);
+        }
+        public List<Objeto> getTela()
+        {
+            D_EditarDetalleConsumo objEditar = new D_EditarDetalleConsumo();
+            return objEditar.consultarTelas();
+        }
+        public bool addDetalleConsumo(EditarDetalleconsumo prmDetalleCon)
+        {
+            D_EditarDetalleConsumo detalleCon = new D_EditarDetalleConsumo();
+            return (detalleCon.addDetalleConsumo(prmDetalleCon) == "ok") ? true : false;
+        }
         #endregion
         #region Métodos de la clase TipoTejido
         public List<TipoPedido> getTipoTejido()
@@ -137,6 +187,15 @@ namespace PedidoTela.Controlodores
         public void addDetalleUnicolor(DetalleUnicolor detalle) {
             D_DetalleUnicolor d_DetalleUnicolor = new D_DetalleUnicolor();
             d_DetalleUnicolor.Agregar(detalle);
+        }
+        #endregion
+
+        #region Métodos Solicitud Estampado
+        public bool addEstampado(Estampado estampado)
+        {
+            //D_Unicolor d_Unicolor = new D_Unicolor();
+            //return (d_Unicolor.Agregar(estampado) == "ok") ? true : false;
+            return false;
         }
         #endregion
     }

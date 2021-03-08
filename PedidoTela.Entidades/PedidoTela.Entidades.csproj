@@ -58,7 +58,9 @@
     </Compile>
     <Compile Include="Logica\DetalleConsumo.cs" />
     <Compile Include="Logica\DetalleUnicolor.cs" />
+    <Compile Include="Logica\EditarDetalleconsumo.cs" />
     <Compile Include="Logica\Ensayo.cs" />
+    <Compile Include="Logica\Estampado.cs" />
     <Compile Include="Logica\Objeto.cs" />
     <Compile Include="Logica\TipoPedido.cs" />
     <Compile Include="Logica\TipoTejido.cs" />

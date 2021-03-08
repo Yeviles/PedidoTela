@@ -90,6 +90,7 @@ namespace PedidoTela.Formularios
                     if (e.ColumnIndex > 1 && e.ColumnIndex < ultimaColumna)
                     {
                         dgvUnicolor.CurrentCell.Value = Regex.Replace(dgvUnicolor.CurrentCell.Value.ToString().Trim(), @"[^0-9]", "");
+                        
                         if (dgvUnicolor.CurrentCell.Value.ToString() != "")
                         {
                             int total = 0;

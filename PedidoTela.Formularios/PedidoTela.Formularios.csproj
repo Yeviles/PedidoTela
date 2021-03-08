@@ -80,6 +80,12 @@
     <Compile Include="frmDisponibleParaReserva.Designer.cs">
       <DependentUpon>frmDisponibleParaReserva.cs</DependentUpon>
     </Compile>
+    <Compile Include="frmEditarDsolicitudTela.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmEditarDsolicitudTela.Designer.cs">
+      <DependentUpon>frmEditarDsolicitudTela.cs</DependentUpon>
+    </Compile>
     <Compile Include="frmPedidoaMontarAgencias.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -195,6 +201,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="frmDisponibleParaReserva.resx">
       <DependentUpon>frmDisponibleParaReserva.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmEditarDsolicitudTela.resx">
+      <DependentUpon>frmEditarDsolicitudTela.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="frmPedidoaMontarAgencias.resx">
       <DependentUpon>frmPedidoaMontarAgencias.cs</DependentUpon>

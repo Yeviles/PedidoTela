@@ -40,7 +40,7 @@ namespace PedidoTela.Data.Acceso
                                             + "inner join cfc_e_prendas prendas on prendasficha.codi_prenda = prendas.codi_prenda "
                                             + "where ficha.codi_item= ?";
 
-        public List<DetalleConsumo> ConsulatDetalleConsumo(string prmIdensayo)
+        public List<DetalleConsumo> ConsultarDetalleConsumo(string prmIdensayo)
         {
             //string[] objConsu = new string[prmIdensayo.Length];
             string [] objConsu = prmIdensayo.Split('-'); 
