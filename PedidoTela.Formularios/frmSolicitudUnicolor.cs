@@ -140,7 +140,7 @@ namespace PedidoTela.Formularios
                                     DetalleUnicolor detalle = new DetalleUnicolor();
                                     detalle.IdUnicolor = id;
                                     detalle.CodigoColor = row.Cells[0].Value.ToString();
-                                    detalle.Descripcion = row.Cells[1].Value.ToString();
+                                    detalle.Descripcion = row.Cells[1].Value.ToString().Trim();
                                     detalle.Tiendas = (row.Cells[2].Value != null && row.Cells[2].Value.ToString() != "") ? int.Parse(row.Cells[2].Value.ToString()) : 0;
                                     detalle.Exito = (row.Cells[3].Value != null && row.Cells[3].Value.ToString() != "") ? int.Parse(row.Cells[3].Value.ToString()) : 0;
                                     detalle.Cencosud = (row.Cells[4].Value != null && row.Cells[4].Value.ToString() != "") ? int.Parse(row.Cells[4].Value.ToString()) : 0;
@@ -195,6 +195,8 @@ namespace PedidoTela.Formularios
                         obj.Cencosud, obj.Sao, obj.Comercio, obj.Rosado, obj.Otros, obj.Total);
                 }
                 btnAddColor.Enabled = false;
+                dgvUnicolor.ReadOnly = true;
+                btnGrabar.Enabled = false;
             }
         }
     }

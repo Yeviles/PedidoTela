@@ -11,7 +11,8 @@ namespace PedidoTela.Data.Acceso
     public class D_DetalleUnicolor
     {
         private readonly string consultaInsert = "INSERT INTO cfc_spt_sol_unicolor_detalle (idunicolor, codigo_color, tiendas, exito, cencosud, sao, comercio, rosado, otros, total) VALUES(?, ?, ?, ?, ?, ?, ?, ?, ?, ?);";
-        private readonly string consultaAll = "SELECT id, idunicolor, codigo_color, tiendas, exito, cencosud, sao, comercio, rosado, otros, total FROM cfc_spt_sol_unicolor_detalle WHERE idunicolor = ?;";
+        private readonly string consultaAll = "SELECT id, idunicolor, codigo_color, c.desc_color, NVL(tiendas, '0') as tiendas, exito, cencosud, sao, comercio, rosado, otros, total "
+                                            + "FROM cfc_spt_sol_unicolor_detalle ud left join  inmcolor c on  ud.codigo_color = c.codi_color WHERE idunicolor = ?;";
 
         public List<DetalleUnicolor> Consultar(int idUnicolor)
         {
@@ -23,18 +24,21 @@ namespace PedidoTela.Data.Acceso
                     DetalleUnicolor detalle = new DetalleUnicolor();
                     con.Parametros.Add(new IfxParameter("@idunicolor", idUnicolor));
                     var datos = con.EjecutarConsulta(this.consultaAll);
-
-                    detalle.Id = int.Parse(datos["id"].ToString());
-                    detalle.IdUnicolor = int.Parse(datos["idunicolor"].ToString());
-                    detalle.CodigoColor = datos["codigo_color"].ToString();
-                    detalle.Exito = int.Parse(datos["exito"].ToString());
-                    detalle.Cencosud = int.Parse(datos["cencosud"].ToString());
-                    detalle.Sao = int.Parse(datos["sao"].ToString());
-                    detalle.Comercio = int.Parse(datos["comercio"].ToString());
-                    detalle.Rosado = int.Parse(datos["rosado"].ToString());
-                    detalle.Otros = int.Parse(datos["otros"].ToString());
-                    detalle.Total = int.Parse(datos["total"].ToString());
-                    lista.Add(detalle);
+                    while (datos.Read())
+                    {
+                        detalle.Id = int.Parse(datos["id"].ToString());
+                        detalle.IdUnicolor = int.Parse(datos["idunicolor"].ToString());
+                        detalle.CodigoColor = datos["codigo_color"].ToString();
+                        detalle.Descripcion = datos["desc_color"].ToString().Trim();
+                        detalle.Exito = int.Parse(datos["exito"].ToString());
+                        detalle.Cencosud = int.Parse(datos["cencosud"].ToString());
+                        detalle.Sao = int.Parse(datos["sao"].ToString());
+                        detalle.Comercio = int.Parse(datos["comercio"].ToString());
+                        detalle.Rosado = int.Parse(datos["rosado"].ToString());
+                        detalle.Otros = int.Parse(datos["otros"].ToString());
+                        detalle.Total = int.Parse(datos["total"].ToString());
+                        lista.Add(detalle);
+                    }
                     con.cerrarConexion();
                 }
             }

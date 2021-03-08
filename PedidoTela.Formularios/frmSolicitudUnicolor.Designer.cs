@@ -376,6 +376,7 @@ namespace PedidoTela.Formularios
             // 
             // frmSolicitudUnicolor
             // 
+            this.AcceptButton = this.btnAddColor;
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1386, 788);

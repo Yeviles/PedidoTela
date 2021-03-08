@@ -10,9 +10,9 @@ namespace PedidoTela.Data.Acceso
 {
     public class D_Unicolor
     {
-        private readonly string consultaInsert = "INSERT INTO cfc_spt_sol_unicolor (idensayo, referencia_tela, tipo_tejido, coordinado, coordinado_con, observaciones) VALUES(?, ?, ?, ?, ?, ?);";
-        private readonly string consultaAll = "SELECT idunicolor, idensayo, referencia_tela, tipo_tejido, coordinado, coordinado_con, observaciones FROM cfc_spt_sol_unicolor WHERE idensayo = 715;";
-        private readonly string consultaId = "SELECT idunicolor FROM cfc_spt_sol_unicolor WHERE idensayo = ?;";
+        private readonly string consultaInsert = "INSERT INTO cfc_spt_sol_unicolor (identificador, referencia_tela, tipo_tejido, coordinado, coordinado_con, observaciones) VALUES(?, ?, ?, ?, ?, ?);";
+        private readonly string consultaAll = "SELECT idunicolor, identificador, referencia_tela, tipo_tejido, coordinado, NVL(coordinado_con, '') AS coordinado_con, observaciones FROM cfc_spt_sol_unicolor WHERE identificador = ?;";
+        private readonly string consultaId = "SELECT idunicolor FROM cfc_spt_sol_unicolor WHERE identificador = ?;";
 
         public int ConsultarId(string identificador)
         {
@@ -42,12 +42,12 @@ namespace PedidoTela.Data.Acceso
             {
                 using (var con = new clsConexion())
                 {
-                    //con.Parametros.Add(new IfxParameter("@idensayo", identificador));
+                    con.Parametros.Add(new IfxParameter("@identificador", identificador));
                     var datos = con.EjecutarConsulta(this.consultaAll);
                     while (datos.Read())
                     {
                         unicolor.Id = int.Parse(datos["idunicolor"].ToString());
-                        unicolor.Identificador = datos["idensayo"].ToString();
+                        unicolor.Identificador = datos["identificador"].ToString();
                         unicolor.ReferenciaTela = datos["referencia_tela"].ToString();
                         unicolor.TipoTejido = datos["tipo_tejido"].ToString();
                         unicolor.Coordinado = bool.Parse(datos["coordinado"].ToString());
@@ -71,7 +71,7 @@ namespace PedidoTela.Data.Acceso
             {
                 using (var con = new clsConexion())
                 {
-                    con.Parametros.Add(new IfxParameter("@idensayo", elemento.Identificador));
+                    con.Parametros.Add(new IfxParameter("@identificador", elemento.Identificador));
                     con.Parametros.Add(new IfxParameter("@referencia_tela", elemento.ReferenciaTela));
                     con.Parametros.Add(new IfxParameter("@tipo_tejido", elemento.TipoTejido));
                     con.Parametros.Add(new IfxParameter("@coordinado", elemento.Coordinado));
