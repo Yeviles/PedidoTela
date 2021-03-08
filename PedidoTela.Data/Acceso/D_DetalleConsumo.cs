@@ -10,26 +10,17 @@ namespace PedidoTela.Data.Acceso
 {
     public class D_DetalleConsumo
     {
-        //private readonly string consulta1= "select unique tel.idprogramador,tel.idensayo,tel.idrepeticion "
-        //                                    +", den.codi_prenda, (prendas.desc_prenda) desc_prenda "
-        //                                    +", trim(tel.nume_pedido) as nume_pedido,trim(tel.codi_item) as codi_item "
-        //                                    +",case when tel.tipo = 'P' then trim(it.desc_item) else tel.codi_item end as _desc_item, consumo_est "
-        //                                    +"from cfc_telas_ensayo tel left join  items it  on tel.codi_item = it.codi_item "
-        //                                    +"inner join cfc_d_ensayo den on tel.idprogramador= den.idprogramador and tel.idensayo= den.idensayo and tel.idrepeticion= den.idrepeticion "
-        //                                    +"inner join cfc_e_prendas prendas on den.codi_prenda = prendas.codi_prenda "
-        //                                    +"where tel.idprogramador = 159  and tel.idensayo = ?  and tel.idrepeticion = 0 "
-        //                                    +"and tel.activo = 'T' ;";
-
+        #region Consultas
         //Script para obtener Consumo Detalle cuando es ENSAYO  (ejemplo:159-715-0)
-        private readonly string consulta1 = "select unique tel.idprogramador||'-'||tel.idensayo||'-'||tel.idrepeticion ensayo_referencia "
-                                            + ", den.codi_prenda, (prendas.desc_prenda) desc_prenda "
-                                            + ", trim(tel.codi_item) as codigo_tela,case when tel.tipo = 'P' then trim(telas.desc_item) else tel.codi_item end as descripcion_tela, consumo_est "
-                                            + "from cfc_telas_ensayo tel left join  items telas  on tel.codi_item = telas.codi_item "
-                                            + "inner join cfc_d_ensayo den on tel.idprogramador= den.idprogramador and tel.idensayo= den.idensayo and tel.idrepeticion= den.idrepeticion "
-                                            + "inner join cfc_e_prendas prendas on den.codi_prenda = prendas.codi_prenda "
-                                            + "where tel.idprogramador = ?  and tel.idensayo = ?  and tel.idrepeticion = ? "
-                                            + "and tel.activo = 'T'";
-
+        private readonly string consulta1 = "select unique tel.idprogramador||'-'||tel.idensayo||'-'||tel.idrepeticion ensayo_referencia, "
+                                          + "den.codi_prenda, (prendas.desc_prenda) desc_prenda, trim(tel.codi_item) as codigo_tela, case when tel.tipo = 'P' then "
+                                          + "trim(telas.desc_item) else tel.codi_item end as descripcion_tela, NVL(consumo_est, '0') AS consumo_est "
+                                          + "from cfc_telas_ensayo tel left join  items telas  on tel.codi_item = telas.codi_item "
+                                          + "inner join cfc_d_ensayo den on tel.idprogramador= den.idprogramador and tel.idensayo = den.idensayo and tel.idrepeticion= den.idrepeticion "
+                                          + "inner join cfc_e_prendas prendas on den.codi_prenda = prendas.codi_prenda "
+                                          + "where tel.idprogramador = ?  and tel.idensayo = ?  and tel.idrepeticion = ? "
+                                          + "and tel.activo = 'T'";
+        
         //Script para obtener Consumo Detalle cuando es REFERENCIA
         private readonly string consulta2 = "select unique ficha.codi_item as ensayo_referencia "
                                             + ",prendasficha.codi_prenda, (prendas.desc_prenda) desc_prenda "
@@ -39,40 +30,9 @@ namespace PedidoTela.Data.Acceso
                                             + "left join  items telas  on tel.codi_item = telas.codi_item "
                                             + "inner join cfc_e_prendas prendas on prendasficha.codi_prenda = prendas.codi_prenda "
                                             + "where ficha.codi_item= ?";
+        #endregion
 
-        private readonly string ejemplo = "select unique tel.idprogramador from cfc_telas_ensayo tel;";
         public List<DetalleConsumo> ConsulatDetalleConsumo(string prmIdensayo)
-        {
-            //string[] objConsu = new string[prmIdensayo.Length];
-            string[] objConsu = prmIdensayo.Split('-');
-
-            List<DetalleConsumo> respuesta = new List<DetalleConsumo>();
-            using (var administrador = new clsConexion())
-            {
-                /*administrador.Parametros.Add(new IfxParameter("@idprogramador", objConsu.GetValue(0)));
-                administrador.Parametros.Add(new IfxParameter("@idensayo", objConsu.GetValue(1)));
-                administrador.Parametros.Add(new IfxParameter("@idrepeticion", objConsu.GetValue(2)));*/
-                var datos = administrador.EjecutarConsulta(ejemplo);
-                while (datos.Read())
-                {
-                    DetalleConsumo objDetalle = new DetalleConsumo();
-
-                    objDetalle.Ensayo_referencia = datos["idprogramador"].ToString().Trim();
-                    objDetalle.Codi_prenda = "";
-                    objDetalle.Desc_prenda = "";
-                    objDetalle.Codigo_tela = "";
-                    objDetalle.Descripcion_tela = "";
-                    objDetalle.Consumo_est = "";
-
-                    respuesta.Add(objDetalle);
-                };
-                administrador.cerrarConexion();
-            }
-            return respuesta;
-
-        }
-
-        /*public List<DetalleConsumo> ConsulatDetalleConsumo(string prmIdensayo)
         {
             //string[] objConsu = new string[prmIdensayo.Length];
             string [] objConsu = prmIdensayo.Split('-'); 
@@ -101,7 +61,7 @@ namespace PedidoTela.Data.Acceso
             }
             return respuesta;
 
-        }*/
+        }
 
         public List<DetalleConsumo> ConsulatDetalleReferencia(string prmIdReferencia)
         {
