@@ -17,12 +17,12 @@ namespace PedidoTela.Formularios
     public partial class frmSolicitudUnicolor : MaterialSkin.Controls.MaterialForm
     {
         private Controlador control;
-        private int idEnsayo;
+        private string identificador;
         private string codigoTela;
-        public frmSolicitudUnicolor(Controlador control, int idEnsayo, string codigoTela)
+        public frmSolicitudUnicolor(Controlador control, string identificador, string codigoTela)
         {
             this.control = control;
-            this.idEnsayo = idEnsayo;
+            this.identificador = identificador;
             this.codigoTela = codigoTela;
             InitializeComponent();
             TipoTejido tt = control.getTipoTejido(codigoTela);
@@ -40,8 +40,6 @@ namespace PedidoTela.Formularios
 
         private void btnSalir_Click(object sender, EventArgs e)
         {
-            /*frmTipoSolicitud frmTsoli = new frmTipoSolicitud();
-            frmTsoli.Show();    */
             this.Close();
         }
 
@@ -125,7 +123,7 @@ namespace PedidoTela.Formularios
                     if (dgvUnicolor.RowCount > 0)
                     {
                         Unicolor elemento = new Unicolor();
-                        elemento.Identificador = idEnsayo.ToString();
+                        elemento.Identificador = identificador;
                         elemento.ReferenciaTela = codigoTela;
                         elemento.DescripcionTela = txbNomTela.Text;
                         elemento.TipoTejido = txbTipoTejido.Text;
@@ -134,7 +132,7 @@ namespace PedidoTela.Formularios
                         elemento.Observaciones = (txbObservaciones.Text.Trim().Length > 0) ? txbObservaciones.Text.Trim() : ""; ;
                         if (control.addUnicolor(elemento))
                         {
-                            int id = control.getIdUnicolor(idEnsayo.ToString());
+                            int id = control.getIdUnicolor(identificador);
                             try
                             {
                                 foreach (DataGridViewRow row in dgvUnicolor.Rows)
@@ -177,7 +175,7 @@ namespace PedidoTela.Formularios
         }
 
         private void cargar() {
-            Unicolor unicolor = control.getUnicolor(idEnsayo.ToString());
+            Unicolor unicolor = control.getUnicolor(identificador);
             if (unicolor.Coordinado) {
                 cbxSiCoordinado.Checked = true;
                 txbCoordinaCon.Text = unicolor.CoordinadoCon;

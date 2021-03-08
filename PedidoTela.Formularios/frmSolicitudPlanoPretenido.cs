@@ -1,4 +1,5 @@
 ﻿using MaterialSkin;
+using PedidoTela.Controlodores;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -13,8 +14,14 @@ namespace PedidoTela.Formularios
 {
     public partial class frmSolicitudPlanoPretenido : MaterialSkin.Controls.MaterialForm
     {
-        public frmSolicitudPlanoPretenido()
+        private Controlador control;
+        private string identificador;
+        private string codigoTela;
+        public frmSolicitudPlanoPretenido(Controlador control, string identificador, string codigoTela)
         {
+            this.control = control;
+            this.identificador = identificador;
+            this.codigoTela = codigoTela;
             InitializeComponent();
         }
 

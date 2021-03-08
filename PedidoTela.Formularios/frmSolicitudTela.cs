@@ -20,6 +20,7 @@ namespace PedidoTela.Formularios
         Controlador controlador = new Controlador();
         ErrorProvider errorProvider = new ErrorProvider();
         Validar validacion = new Validar();
+        bool editando = false;
 
         public frmSolicitudTela()
         {
@@ -78,7 +79,7 @@ namespace PedidoTela.Formularios
                 prmLista[0].Desc_prenda.ToString(),
                 prmLista[0].Codigo_tela.ToString(),
                 prmLista[0].Descripcion_tela.ToString(),
-                prmLista[0].Consumo_est.ToString());
+                prmLista[0].Consumo_est.ToString());                
             }
             else
             {
@@ -88,6 +89,7 @@ namespace PedidoTela.Formularios
 
         private void cargarDgvDatosEditados(List<EditarDetalleconsumo> prmLista)
         {
+            dgvDetalleConsumo.Rows.Clear();
             if (prmLista.Count != 0)
             {
                 dgvDetalleConsumo.Rows.Add(prmLista[0].Identificador.ToString(),
@@ -146,22 +148,22 @@ namespace PedidoTela.Formularios
         /// <param name="e"></param>
         private void dataGridView1_CellClick(object sender, DataGridViewCellEventArgs e)
         {
-      
-
+            if (e.ColumnIndex == 5) {
+                editando = true;
+            }
             if (dgvDetalleConsumo.Columns[e.ColumnIndex].Name == "guardar")
             {
                 guardarDetalleCons(e);
-            }
-            else if (dgvDetalleConsumo.Columns[e.ColumnIndex].Name == "consumos")
-            {
-                dgvDetalleConsumo.CurrentRow.Cells[dgvDetalleConsumo.ColumnCount - 3].ReadOnly = false;
-
-                //dgvDetalleConsumo_CellEndEdit(sender, e);
-            }
-            else
-            if (dgvDetalleConsumo.Columns[e.ColumnIndex].Name != "editar")
+                dgvDetalleConsumo.CurrentRow.Cells[2].ReadOnly = true;
+                dgvDetalleConsumo.CurrentRow.Cells[3].ReadOnly = true;
+                dgvDetalleConsumo.CurrentRow.Cells[4].ReadOnly = true;
+                dgvDetalleConsumo.CurrentRow.Cells[5].ReadOnly = false;
+                editando = false;
+            } 
+            else if (!editando)
             {
                 frmTipoSolicitud objTipoSolicitud = new frmTipoSolicitud();
+                string identificador = dgvDetalleConsumo.CurrentRow.Cells[0].Value.ToString().Trim();
 
                 objTipoSolicitud.StartPosition = FormStartPosition.CenterScreen;
                 if (objTipoSolicitud.ShowDialog() == DialogResult.OK)
@@ -169,7 +171,7 @@ namespace PedidoTela.Formularios
                     String seleccion = objTipoSolicitud.Seleccion;
                     if (seleccion == "unicolor")
                     {
-                        frmSolicitudUnicolor frmUnicolor = new frmSolicitudUnicolor(controlador, 715, dgvDetalleConsumo.Rows[e.RowIndex].Cells[2].Value.ToString());
+                        frmSolicitudUnicolor frmUnicolor = new frmSolicitudUnicolor(controlador, identificador, dgvDetalleConsumo.Rows[e.RowIndex].Cells[2].Value.ToString());
                         frmUnicolor.Show();
                     }
                     else if (seleccion == "estampado")
@@ -180,7 +182,7 @@ namespace PedidoTela.Formularios
                     }
                     else if (seleccion == "planoPre")
                     {
-                        frmSolicitudPlanoPretenido frmPlapretenido = new frmSolicitudPlanoPretenido();
+                        frmSolicitudPlanoPretenido frmPlapretenido = new frmSolicitudPlanoPretenido(controlador, identificador, dgvDetalleConsumo.Rows[e.RowIndex].Cells[2].Value.ToString());
                         frmPlapretenido.Show();
 
                     }
@@ -190,23 +192,32 @@ namespace PedidoTela.Formularios
                         frmCuellos.Show();
                     }
                 }
-
             }
             else
             {
-                dgvDetalleConsumo.CurrentRow.Cells[dgvDetalleConsumo.ColumnCount -3].ReadOnly = false;
-                //((DataGridViewButtonCell)dgvDetalleConsumo.CurrentRow.Cells[dgvDetalleConsumo.ColumnCount - 2]).Visible = false;
-                frmEditarDsolicitudTela objEditar = new frmEditarDsolicitudTela(controlador);
-                objEditar.StartPosition = FormStartPosition.CenterScreen;
-                if (objEditar.ShowDialog() == DialogResult.OK)
-                {
-                    Objeto obj = objEditar.Elemento;
-                    //dgvDetalleConsumo.Rows.Add();
-                    dgvDetalleConsumo.Rows[dgvDetalleConsumo.Rows.Count - 1].Cells[2].Value = obj.Id;
-                    dgvDetalleConsumo.Rows[dgvDetalleConsumo.Rows.Count - 1].Cells[3].Value = obj.Nombre;
+                dgvDetalleConsumo.ReadOnly = false;
 
+                if (e.ColumnIndex > 1 && e.ColumnIndex < 5)
+                {
+                    dgvDetalleConsumo.CurrentRow.Cells[0].ReadOnly = true;
+                    dgvDetalleConsumo.CurrentRow.Cells[1].ReadOnly = true;
+                    dgvDetalleConsumo.CurrentRow.Cells[2].ReadOnly = false;
+                    dgvDetalleConsumo.CurrentRow.Cells[3].ReadOnly = false;
+                    dgvDetalleConsumo.CurrentRow.Cells[4].ReadOnly = false;
+                    dgvDetalleConsumo.CurrentRow.Cells[5].ReadOnly = true;
                 }
 
+                if (e.ColumnIndex == 2 || e.ColumnIndex == 3) {
+                    frmEditarDsolicitudTela objEditar = new frmEditarDsolicitudTela(controlador);
+                    objEditar.StartPosition = FormStartPosition.CenterScreen;
+                    if (objEditar.ShowDialog() == DialogResult.OK)
+                    {
+                        Objeto obj = objEditar.Elemento;
+                        //dgvDetalleConsumo.Rows.Add();
+                        dgvDetalleConsumo.Rows[dgvDetalleConsumo.Rows.Count - 1].Cells[2].Value = obj.Id;
+                        dgvDetalleConsumo.Rows[dgvDetalleConsumo.Rows.Count - 1].Cells[3].Value = obj.Nombre;
+                    }
+                }
             }
         }
 
@@ -218,7 +229,6 @@ namespace PedidoTela.Formularios
         /// <param name="e"></param>
         private void btnConsultar_Click(object sender, EventArgs e)
         {
-
             if (txbEnsRefDigitado.Text == "" || cbxTipo.SelectedItem.ToString() == null)
             {
                 MessageBox.Show("Por favor ingrese Ensayo/Referencia", "Advertencia", MessageBoxButtons.OK, MessageBoxIcon.Warning);
@@ -298,33 +308,9 @@ namespace PedidoTela.Formularios
             validacion.SoloLetras(e);
         }
 
-        /// Falta Terminar
         private void dgvDetalleConsumo_CellEndEdit(object sender, DataGridViewCellEventArgs e)
         {
-            
-
-            dgvDetalleConsumo.CurrentCell.Value = Regex.Replace(dgvDetalleConsumo.CurrentCell.Value.ToString().Trim(), @"[^0-9]", "");
-            //dgvDetalleConsumo.Columns[4].ReadOnly = true;
-            //dgvDetalleConsumo.CurrentCell.Value = Regex.Replace(dgvDetalleConsumo.CurrentCell.Value.ToString().Trim(), @"[^0-9]", "");
-            //if (dgvDetalleConsumo.Columns[e.ColumnIndex] is DataGridViewButtonColumn && e.RowIndex >= 0)
-            //{
-            //    dgvDetalleConsumo.CurrentCell = dgvDetalleConsumo.CurrentRow.Cells["consumos"];
-            //    dgvDetalleConsumo.BeginEdit(true);
-
-
-            //}
-            //try
-            //{
-            //    if (dgvDetalleConsumo.CurrentCell.Value != null)
-            //    {
-            //        dgvDetalleConsumo.CurrentCell.Value = Regex.Replace(dgvDetalleConsumo.CurrentCell.Value.ToString().Trim(), @"[^0-9]", "");
-            //    }
-            //}
-            //catch (ArgumentException aex)
-            //{
-            //    dgvDetalleConsumo.CurrentCell.Value = "";
-            //    MessageBox.Show("Unicamente se permiten valores numéricos", "Tipo de dato no permitido", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-            //}
+            dgvDetalleConsumo.CurrentCell.Value = Regex.Replace(dgvDetalleConsumo.CurrentCell.Value.ToString().Trim(), @"[^0-9.]", "");
         }
 
         /// <summary>
