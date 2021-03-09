@@ -65,11 +65,11 @@ namespace PedidoTela.Formularios
             this.lbObservaciones = new System.Windows.Forms.Label();
             this.txtObservaciones = new System.Windows.Forms.RichTextBox();
             this.panel9 = new System.Windows.Forms.Panel();
+            this.lbIdentificador = new System.Windows.Forms.Label();
             this.btnConfirmar = new System.Windows.Forms.Button();
             this.btnGrabar = new System.Windows.Forms.Button();
             this.btnSalir = new System.Windows.Forms.Button();
             this.btnAddColor = new System.Windows.Forms.Button();
-            this.lbIdentificador = new System.Windows.Forms.Label();
             this.pnlSolicitudColor.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dvgEstampado)).BeginInit();
             this.panel9.SuspendLayout();
@@ -302,7 +302,7 @@ namespace PedidoTela.Formularios
             dataGridViewCellStyle2.BackColor = System.Drawing.SystemColors.ScrollBar;
             dataGridViewCellStyle2.Font = new System.Drawing.Font("Verdana", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             dataGridViewCellStyle2.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.Color.Navy;
+            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.Color.CornflowerBlue;
             dataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
             dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
             this.dvgEstampado.RowHeadersDefaultCellStyle = dataGridViewCellStyle2;
@@ -313,7 +313,6 @@ namespace PedidoTela.Formularios
             this.dvgEstampado.TabIndex = 27;
             this.dvgEstampado.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dvgEstampado_CellClick);
             this.dvgEstampado.CellEndEdit += new System.Windows.Forms.DataGridViewCellEventHandler(this.dvgEstampado_CellEndEdit);
-            this.dvgEstampado.SelectionChanged += new System.EventHandler(this.dvgEstampado_SelectionChanged);
             // 
             // codColor
             // 
@@ -418,6 +417,17 @@ namespace PedidoTela.Formularios
             this.panel9.Size = new System.Drawing.Size(1461, 56);
             this.panel9.TabIndex = 134;
             // 
+            // lbIdentificador
+            // 
+            this.lbIdentificador.AutoSize = true;
+            this.lbIdentificador.BackColor = System.Drawing.Color.White;
+            this.lbIdentificador.Font = new System.Drawing.Font("Verdana", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lbIdentificador.Location = new System.Drawing.Point(1280, 2);
+            this.lbIdentificador.Name = "lbIdentificador";
+            this.lbIdentificador.Size = new System.Drawing.Size(17, 20);
+            this.lbIdentificador.TabIndex = 98;
+            this.lbIdentificador.Text = "-";
+            // 
             // btnConfirmar
             // 
             this.btnConfirmar.Font = new System.Drawing.Font("Verdana", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -430,6 +440,7 @@ namespace PedidoTela.Formularios
             this.btnConfirmar.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             this.btnConfirmar.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
             this.btnConfirmar.UseVisualStyleBackColor = true;
+            this.btnConfirmar.Click += new System.EventHandler(this.btnConfirmar_Click);
             // 
             // btnGrabar
             // 
@@ -474,17 +485,6 @@ namespace PedidoTela.Formularios
             this.btnAddColor.UseVisualStyleBackColor = true;
             this.btnAddColor.Click += new System.EventHandler(this.btnAddColor_Click);
             // 
-            // lbIdentificador
-            // 
-            this.lbIdentificador.AutoSize = true;
-            this.lbIdentificador.BackColor = System.Drawing.Color.White;
-            this.lbIdentificador.Font = new System.Drawing.Font("Verdana", 7.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lbIdentificador.Location = new System.Drawing.Point(1280, 2);
-            this.lbIdentificador.Name = "lbIdentificador";
-            this.lbIdentificador.Size = new System.Drawing.Size(15, 17);
-            this.lbIdentificador.TabIndex = 98;
-            this.lbIdentificador.Text = "-";
-            // 
             // frmSolicitudEstampado
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
@@ -498,7 +498,7 @@ namespace PedidoTela.Formularios
             this.Controls.Add(this.pnlSolicitudColor);
             this.Font = new System.Drawing.Font("Verdana", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.MinimizeBox = false;
+            this.MaximizeBox = false;
             this.Name = "frmSolicitudEstampado";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Solicitud Estampado";

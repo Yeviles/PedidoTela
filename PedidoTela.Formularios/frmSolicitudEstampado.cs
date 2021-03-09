@@ -17,12 +17,17 @@ namespace PedidoTela.Formularios
     public partial class frmSolicitudEstampado : MaterialSkin.Controls.MaterialForm
     {
         private Controlador controlador;
-        //Controlador controlador = new Controlador();
+        private string identificador;
         Validar validacion = new Validar();
-        public frmSolicitudEstampado(Controlador controlador)
+
+        public string Identificador { get => identificador; set => identificador = value; }
+
+        public frmSolicitudEstampado(Controlador controlador, string identificador)
         {
             this.controlador = controlador;
+            this.identificador = identificador;
             InitializeComponent();
+            cargarEstampado();
         }
 
         private void frmSolicitudEstampado_Load(object sender, EventArgs e)
@@ -35,14 +40,15 @@ namespace PedidoTela.Formularios
 
             cargarCombobox(cbxTipoTela, controlador.getTipoTejido());
 
-
         }
-        public void recibirInfoTela(string prmRefTela, string nomTela, string identificador)
+        
+        public void recibirInfoTela(string prmRefTela, string nomTela)
         {
             txbRefTela.Text= prmRefTela;
             txbNomTela.Text = nomTela;
             lbIdentificador.Text = identificador;
         }
+        
         /// <summary>
         /// Muestra lista de tipo de pedido encontrados en la BD.
         /// </summary>
@@ -52,13 +58,14 @@ namespace PedidoTela.Formularios
         {
             prmCombo.DataSource = prmLista;
             prmCombo.DisplayMember = "Descripcion";
-            prmCombo.ValueMember = "Tipo";
+            prmCombo.ValueMember = "Descripcion";
             prmCombo.SelectedIndex = -1;
             prmCombo.AutoCompleteCustomSource = cargarCombobox(prmLista);
             prmCombo.AutoCompleteMode = AutoCompleteMode.Suggest;
             prmCombo.AutoCompleteSource = AutoCompleteSource.CustomSource;
 
         }
+        
         /// <summary>
         /// Autocompleta la lista desplegable del ComboBox.
         /// </summary>
@@ -161,19 +168,6 @@ namespace PedidoTela.Formularios
             }
         }
 
-        private void dvgEstampado_SelectionChanged(object sender, EventArgs e)
-        {
-            //if (dvgEstampado.CurrentCell == dvgEstampado.CurrentRow.Cells["Fondo"])
-            //{
-            //    dvgEstampado.BeginEdit(true);
-            //    string tien = dvgEstampado.Rows[0].Cells[2].Value.ToString();
-            //    Console.WriteLine("jjgjg", tien);
-
-            //}
-         
-
-        }
-
         private void dvgEstampado_CellClick(object sender, DataGridViewCellEventArgs e)
         {
             if (dvgEstampado.Columns[e.ColumnIndex].Name == "fondo" || dvgEstampado.Columns[e.ColumnIndex].Name == "descripcionFondo")
@@ -183,14 +177,19 @@ namespace PedidoTela.Formularios
                 if (buscarColor.ShowDialog() == DialogResult.OK)
                 {
                     Objeto obj = buscarColor.Elemento;
-                    //dvgEstampado.Rows.Add();
                     dvgEstampado.Rows[dvgEstampado.Rows.Count - 1].Cells[2].Value = obj.Id;
                     dvgEstampado.Rows[dvgEstampado.Rows.Count - 1].Cells[3].Value = obj.Nombre;
                 }
 
             }
         }
-
+        
+        /// <summary>
+        /// Guarda infomación en dos tablas difrente que estan relacionadas entre si, las cuales son cfc_spt_sol_estampado, cfc_spt_sol_detalleEstampado
+        /// y formando asi la infomación completa de la solicitud Estampado.
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void btnGrabar_Click(object sender, EventArgs e)
         {
             if (!cbxSiCoordinado.Checked && !cbxNoCoordinado.Checked)
@@ -208,12 +207,12 @@ namespace PedidoTela.Formularios
                         elemento.Referencia_tela = txbRefTela.Text.ToString();
                         elemento.Nombre_tela = txbNomTela.Text.Trim();
                         elemento.Tipo_estampado = cbxTipoEst.SelectedItem.ToString();
-                        elemento.Tipo_tejido = cbxTipoTela.SelectedItem.ToString();
+                        elemento.Tipo_tejido = cbxTipoTela.SelectedValue.ToString();
                         elemento.N_dibujos = int.Parse(txbNdibujo.Text.Trim());
                         elemento.N_cilindros = int.Parse(txbNcilindro.Text.Trim());
-                        elemento.Coordinado_con = (txbCoordinaCon.Text.Trim().Length > 0) ? txbCoordinaCon.Text.Trim() : ""; ;
-                        elemento.Coordinado = (cbxSiCoordinado.Checked) ? true : false; ;
-                        elemento.Observaciones = (txtObservaciones.Text.Trim().Length > 0) ? txtObservaciones.Text.Trim() : ""; ;
+                        elemento.Coordinado_con = (txbCoordinaCon.Text.Trim().Length > 0) ? txbCoordinaCon.Text.Trim() : ""; 
+                        elemento.Coordinado = (cbxSiCoordinado.Checked) ? true : false; 
+                        elemento.Observaciones = (txtObservaciones.Text.Trim().Length > 0) ? txtObservaciones.Text.Trim() : ""; 
                         if (controlador.addEstampado(elemento))
                         {
                             try
@@ -233,7 +232,7 @@ namespace PedidoTela.Formularios
                                     detalle.Rosado = (row.Cells[9].Value != null && row.Cells[9].Value.ToString() != "") ? int.Parse(row.Cells[9].Value.ToString()) : 0;
                                     detalle.Otros = (row.Cells[10].Value != null && row.Cells[10].Value.ToString() != "") ? int.Parse(row.Cells[10].Value.ToString()) : 0;
                                     detalle.Total = (row.Cells[11].Value != null && row.Cells[11].Value.ToString() != "") ? int.Parse(row.Cells[11].Value.ToString()) : 0;
-                                    detalle.IdEstampado = int.Parse(lbIdentificador.Text);
+                                    detalle.IdEstampado = controlador.consultarIdEstampado(lbIdentificador.Text);
                                     controlador.addDetalleEstampado(detalle);
                                 }
                                 MessageBox.Show("Estampado se guardó con éxito", "Información", MessageBoxButtons.OK, MessageBoxIcon.Information);
@@ -255,7 +254,68 @@ namespace PedidoTela.Formularios
                 }
             }
         }
+        
+        private void cargarEstampado()
+        {
+            Estampado objEstampado = controlador.getEstampado(Identificador);
+            if (objEstampado.Coordinado)
+            {
+                cbxSiCoordinado.Checked = true;
+                txbCoordinaCon.Text = objEstampado.Coordinado_con;
+            }
+            else
+            {
+                cbxNoCoordinado.Checked = true;
+            }
+            cbxTipoEst.Text = objEstampado.Tipo_estampado;
+            cbxTipoTela.Text = objEstampado.Tipo_tejido;
+            txbNdibujo.Text = objEstampado.N_dibujos.ToString();
+            txbNcilindro.Text = objEstampado.N_cilindros.ToString();
+            txtObservaciones.Text = objEstampado.Observaciones;
+
+            /*Carga detalle objEstampado*/
+            List<DetalleEstampado> lista = controlador.getDetalleEstampado(objEstampado.IdEstampado);
+            if (lista.Count > 0)
+            {
+                foreach (DetalleEstampado obj in lista)
+                {
+                    dvgEstampado.Rows.Add(obj.CodigoColor, obj.Desc_color, obj.Fondo, obj.Des_fondo, obj.Tiendas, obj.Exito,
+                        obj.Cencosud, obj.Sao, obj.Comercio, obj.Rosado, obj.Otros, obj.Total);
+                }
+                btnAddColor.Enabled = false;
+                dvgEstampado.ReadOnly = true;
+                btnGrabar.Enabled = false;
+                txtObservaciones.Enabled = false;
+            }
+        }
+
+        private void btnConfirmar_Click(object sender, EventArgs e)
+        {
+            Estampado objEstampado = controlador.getEstampado(Identificador);
+            if (objEstampado.IdEstampado != 0)
+            {
 
 
+                int maxConsecutivo = controlador.consultarMaximo();
+                if (controlador.consultarConsecutivo(objEstampado.IdEstampado))
+                {
+
+                    MessageBox.Show("Gracias, ya cuenta con un consecutivo.", "Advertencia", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                }
+                else
+                {
+                    if (controlador.agregarConsecutivo(maxConsecutivo + 1, objEstampado.IdEstampado))
+                    {
+                        MessageBox.Show("El consecutivo se guardó con éxito.", "Información", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    }
+                }
+            }
+            else
+            {
+                MessageBox.Show("Por favor, Grabe la Información.", "Advertencia", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+
+            }
+        }
+    
     }
 }

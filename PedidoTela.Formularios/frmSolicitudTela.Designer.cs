@@ -367,7 +367,7 @@ namespace PedidoTela.Formularios
             this.dgvDetalleConsumo.RowHeadersWidth = 62;
             dataGridViewCellStyle2.Font = new System.Drawing.Font("Verdana", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             dataGridViewCellStyle2.ForeColor = System.Drawing.Color.Black;
-            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.Color.Navy;
+            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.Color.CornflowerBlue;
             dataGridViewCellStyle2.SelectionForeColor = System.Drawing.Color.White;
             this.dgvDetalleConsumo.RowsDefaultCellStyle = dataGridViewCellStyle2;
             this.dgvDetalleConsumo.RowTemplate.Height = 28;
