@@ -268,11 +268,11 @@ namespace PedidoTela.Controlodores
             d_DetallePlanoPretenido.Agregar(detalle);
         }
 
-        public string getConsecutivoPlanoPretenido()
+        public string getConsecutivoPlanoPretenido(int idPlano)
         {
             D_PlanoPretenido d_PlanoPretenido = new D_PlanoPretenido();
             int anterior = d_PlanoPretenido.Consultarconsecutivo();
-            return d_PlanoPretenido.AgregarConsecutivo(anterior + 1);
+            return d_PlanoPretenido.AgregarConsecutivo(anterior + 1, idPlano);
         }
 
         #endregion

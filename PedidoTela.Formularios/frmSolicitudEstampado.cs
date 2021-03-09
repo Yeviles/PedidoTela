@@ -94,8 +94,7 @@ namespace PedidoTela.Formularios
 
         private void btnSalir_Click(object sender, EventArgs e)
         {
-            frmTipoSolicitud frmTsolicitud = new frmTipoSolicitud();
-            frmTsolicitud.Show();
+            this.Close();
         }
 
         private void cbxSiCoordinadoEst_CheckedChanged(object sender, EventArgs e)
@@ -294,20 +293,17 @@ namespace PedidoTela.Formularios
             Estampado objEstampado = controlador.getEstampado(Identificador);
             if (objEstampado.IdEstampado != 0)
             {
-
-
                 int maxConsecutivo = controlador.consultarMaximo();
                 if (controlador.consultarConsecutivo(objEstampado.IdEstampado))
-                {
-
-                    MessageBox.Show("Gracias, ya cuenta con un consecutivo.", "Advertencia", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                }
-                else
                 {
                     if (controlador.agregarConsecutivo(maxConsecutivo + 1, objEstampado.IdEstampado))
                     {
                         MessageBox.Show("El consecutivo se guardó con éxito.", "Información", MessageBoxButtons.OK, MessageBoxIcon.Information);
                     }
+                }
+                else
+                {
+                    MessageBox.Show("Gracias, ya cuenta con un consecutivo.", "Advertencia", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 }
             }
             else

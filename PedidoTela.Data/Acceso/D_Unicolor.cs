@@ -13,6 +13,8 @@ namespace PedidoTela.Data.Acceso
         private readonly string consultaInsert = "INSERT INTO cfc_spt_sol_unicolor (identificador, referencia_tela, tipo_tejido, coordinado, coordinado_con, observacion) VALUES(?, ?, ?, ?, ?, ?);";
         private readonly string consultaAll = "SELECT idunicolor, identificador, referencia_tela, tipo_tejido, coordinado, NVL(coordinado_con, '') AS coordinado_con, observacion FROM cfc_spt_sol_unicolor WHERE identificador = ?;";
         private readonly string consultaId = "SELECT idunicolor FROM cfc_spt_sol_unicolor WHERE identificador = ?;";
+        private readonly string consultaConsecutivo = "SELECT MAX(consecutivo) as consecutivo FROM cfc_spt_sol_unicolor;";
+        private readonly string consultaUpdateConsecutivo = "UPDATE cfc_spt_sol_unicolor set consecutivo=? WHERE idplano= ?;";
 
         public int ConsultarId(string identificador)
         {

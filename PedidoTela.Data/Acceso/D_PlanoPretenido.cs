@@ -111,7 +111,7 @@ namespace PedidoTela.Data.Acceso
             return respuesta;
         }
 
-        public string AgregarConsecutivo(int elemento)
+        public string AgregarConsecutivo(int elemento, int idPlano)
         {
             string respuesta = "";
             try
@@ -119,6 +119,7 @@ namespace PedidoTela.Data.Acceso
                 using (var con = new clsConexion())
                 {
                     con.Parametros.Add(new IfxParameter("@consecutivo", elemento.ToString()));
+                    con.Parametros.Add(new IfxParameter("@idplano", idPlano.ToString()));
                     var datos = con.EjecutarConsulta(this.consultaUpdateConsecutivo);
                     con.cerrarConexion();
                 }

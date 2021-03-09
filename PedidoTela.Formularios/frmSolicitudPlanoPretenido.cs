@@ -19,6 +19,7 @@ namespace PedidoTela.Formularios
         private Controlador control;
         private string identificador;
         private string codigoTela;
+        private int id;
         public frmSolicitudPlanoPretenido(Controlador control, string identificador, string codigoTela)
         {
             this.control = control;
@@ -31,7 +32,6 @@ namespace PedidoTela.Formularios
             cargar();
             if (dgvPlano.RowCount > 0)
             {
-                btnConfirmar.Enabled = true;
                 dgvPlano.ReadOnly = true;
             }
             else {
@@ -179,7 +179,7 @@ namespace PedidoTela.Formularios
                         elemento.Observacion = (txtObservaciones.Text.Trim().Length > 0) ? txtObservaciones.Text.Trim() : ""; ;
                         if (control.addPlanoPretenido(elemento))
                         {
-                            int id = control.getIdPlanoPretenido(identificador);
+                            id = control.getIdPlanoPretenido(identificador);
                             Console.WriteLine("ID: " + id);
                             try
                             {
@@ -232,7 +232,7 @@ namespace PedidoTela.Formularios
 
         private void btnConfirmar_Click(object sender, EventArgs e)
         {
-            if (control.getConsecutivoPlanoPretenido() == "ok")
+            if (control.getConsecutivoPlanoPretenido(id) == "ok")
             {
                 MessageBox.Show("La solicitud se confirmo con éxito", "Información", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 btnConfirmar.Enabled = false;
@@ -250,6 +250,7 @@ namespace PedidoTela.Formularios
         private void cargar()
         {
             PlanoPretenido planoP = control.getPlanoPretenido(identificador);
+            id = planoP.Id;
             if (planoP.Coordinado)
             {
                 cbxSiCoordinado.Checked = true;
@@ -260,7 +261,11 @@ namespace PedidoTela.Formularios
                 cbxNoCoordinado.Checked = true;
             }
             txtObservaciones.Text = planoP.Observacion;
-            if (planoP.Consecutivo != 0) {
+            if (planoP.Consecutivo != 0)
+            {
+                btnConfirmar.Enabled = false;
+            }
+            else if (dgvPlano.RowCount > 0) {
                 btnConfirmar.Enabled = false;
             }
 
