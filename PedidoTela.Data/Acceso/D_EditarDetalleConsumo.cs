@@ -21,7 +21,7 @@ namespace PedidoTela.Data.Acceso
 
         private readonly string consultaPorIdEnsayo = "select identificador, tipo, desc_prenda, referencia_tela, desc_tela, NVL(consumo, '0') AS consumo, sku, fecha_tienda from cfc_spt_sol_tela where tipo ='Ensayo' and identificador = ?;";
         
-        private readonly string consultaPorReferencia = "select identificador, tipo, desc_prenda, referencia_tela, desc_tela, consumo, sku, fecha_tienda from cfc_spt_sol_tela where tipo ='Referencia' and identificador = ?;";
+        private readonly string consultaPorReferencia = "select identificador, tipo, desc_prenda, referencia_tela, desc_tela, NVL(consumo, '0') AS consumo, sku, fecha_tienda from cfc_spt_sol_tela where tipo ='Referencia' and identificador = ?;";
 
         private readonly string consultarId = "select identificador from cfc_spt_sol_tela where identificador =?;";
         

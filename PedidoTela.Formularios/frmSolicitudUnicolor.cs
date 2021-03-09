@@ -30,6 +30,15 @@ namespace PedidoTela.Formularios
             txbNomTela.Text = tt.NombreTela;
             txbTipoTejido.Text = tt.NombreTipoTela;
             cargar();
+            if (dgvUnicolor.RowCount > 0)
+            {
+                btnConfirmar.Enabled = true;
+                dgvUnicolor.ReadOnly = true;
+            }
+            else
+            {
+                btnConfirmar.Enabled = false;
+            }
         }
 
         private void frmSolicitudUnicolor_Load(object sender, EventArgs e)
@@ -129,7 +138,7 @@ namespace PedidoTela.Formularios
                         elemento.TipoTejido = txbTipoTejido.Text;
                         elemento.Coordinado = (cbxSiCoordinado.Checked) ? true : false;
                         elemento.CoordinadoCon = (txbCoordinaCon.Text.Trim().Length > 0) ? txbCoordinaCon.Text.Trim() : "";
-                        elemento.Observaciones = (txbObservaciones.Text.Trim().Length > 0) ? txbObservaciones.Text.Trim() : ""; ;
+                        elemento.Observacion = (txbObservaciones.Text.Trim().Length > 0) ? txbObservaciones.Text.Trim() : ""; ;
                         if (control.addUnicolor(elemento))
                         {
                             int id = control.getIdUnicolor(identificador);
@@ -184,8 +193,11 @@ namespace PedidoTela.Formularios
             else {
                 cbxNoCoordinado.Checked = true;
             }
-            txbObservaciones.Text = unicolor.Observaciones;
-
+            txbObservaciones.Text = unicolor.Observacion;
+            if (unicolor.Consecutivo != 0)
+            {
+                btnConfirmar.Enabled = false;
+            }
             /*Carga detalle unicolor*/
             List<DetalleUnicolor> lista = control.getDetalleUnicolor(unicolor.Id);
             if (lista.Count > 0)
