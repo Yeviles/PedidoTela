@@ -8,7 +8,7 @@ namespace PedidoTela.Entidades.Logica
 {
     public class Estampado
     {
-        //id serial not null,
+        private int idEstampado;
         private string esayo_ref;
 		private string referencia_tela;
 		private string nombre_tela;
@@ -46,5 +46,6 @@ namespace PedidoTela.Entidades.Logica
         public bool Coordinado { get => coordinado; set => coordinado = value; }
         public string Observaciones { get => observaciones; set => observaciones = value; }
         public string Esayo_ref { get => esayo_ref; set => esayo_ref = value; }
+        public int IdEstampado { get => idEstampado; set => idEstampado = value; }
     }
 }

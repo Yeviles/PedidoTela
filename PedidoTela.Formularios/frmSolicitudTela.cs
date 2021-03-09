@@ -39,8 +39,6 @@ namespace PedidoTela.Formularios
         {
             SkinManager.Theme = MaterialSkin.MaterialSkinManager.Themes.LIGHT;
             SkinManager.ColorScheme = new ColorScheme(Primary.Blue900, Primary.Grey400, Primary.Grey100, Accent.Green100, TextShade.WHITE);
-            //foreach (DataGridViewColumn c in dgvDetalleConsumo.Columns)
-            //    if (c.Name != "consumos") c.ReadOnly = true;
 
         }
 
@@ -180,9 +178,9 @@ namespace PedidoTela.Formularios
                     }
                     else if (seleccion == "estampado")
                     {
-                        frmSolicitudEstampado frmEstamapado = new frmSolicitudEstampado(controlador);
+                        frmSolicitudEstampado frmEstamapado = new frmSolicitudEstampado(controlador,identificador);
                         frmEstamapado.Show();
-                        frmEstamapado.recibirInfoTela(dgvDetalleConsumo.CurrentRow.Cells["refTela"].Value.ToString(), dgvDetalleConsumo.CurrentRow.Cells["desTela"].Value.ToString(), dgvDetalleConsumo.CurrentRow.Cells["ensayoRef"].Value.ToString());
+                        frmEstamapado.recibirInfoTela(dgvDetalleConsumo.CurrentRow.Cells["refTela"].Value.ToString(), dgvDetalleConsumo.CurrentRow.Cells["desTela"].Value.ToString());
                     }
                     else if (seleccion == "planoPre")
                     {
@@ -199,6 +197,9 @@ namespace PedidoTela.Formularios
             }
             else
             {
+                dgvDetalleConsumo.CurrentRow.Cells[2].Style.BackColor = Color.PaleGoldenrod;
+                dgvDetalleConsumo.CurrentRow.Cells[3].Style.BackColor = Color.PaleGoldenrod;
+                dgvDetalleConsumo.CurrentRow.Cells[4].Style.BackColor = Color.PaleGoldenrod;
                 dgvDetalleConsumo.ReadOnly = false;
 
                 if (e.ColumnIndex > 1 && e.ColumnIndex < 5)
@@ -212,14 +213,20 @@ namespace PedidoTela.Formularios
                 }
 
                 if (e.ColumnIndex == 2 || e.ColumnIndex == 3) {
+                    
                     frmEditarDsolicitudTela objEditar = new frmEditarDsolicitudTela(controlador);
                     objEditar.StartPosition = FormStartPosition.CenterScreen;
+                   
                     if (objEditar.ShowDialog() == DialogResult.OK)
                     {
                         Objeto obj = objEditar.Elemento;
                         //dgvDetalleConsumo.Rows.Add();
+                        //dgvDetalleConsumo.Rows[dgvDetalleConsumo.Rows.Count - 1].Cells[2].Style.BackColor = Color.Red;
+                        
+
                         dgvDetalleConsumo.Rows[dgvDetalleConsumo.Rows.Count - 1].Cells[2].Value = obj.Id;
                         dgvDetalleConsumo.Rows[dgvDetalleConsumo.Rows.Count - 1].Cells[3].Value = obj.Nombre;
+                        
                     }
                 }
             }
@@ -269,6 +276,8 @@ namespace PedidoTela.Formularios
                 {
                     cargarTexBox(cbxTipo, controlador.getEnsayo(txbEnsRefDigitado.Text));
                     dgvDetalleConsumo.Rows.Clear();
+                    txbSku.Clear();
+                    dtpFechaTienda.Value = DateTime.Now;
                 }
 
             }

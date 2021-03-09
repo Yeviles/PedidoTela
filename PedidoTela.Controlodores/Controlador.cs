@@ -92,7 +92,7 @@ namespace PedidoTela.Controlodores
         public bool setDcEditadoPorEnsayo(EditarDetalleconsumo editarDetalle,string idEditar)
         {
             D_EditarDetalleConsumo objDetalleEditado = new D_EditarDetalleConsumo();
-           // return (d_Unicolor.Agregar(unicolor) == "ok") ? true : false;
+           // return (d_Estampado.Agregar(unicolor) == "ok") ? true : false;
             return (objDetalleEditado.setDcEditadoPorEnsayo(editarDetalle, idEditar) == "ok")?true:false;
         }
 
@@ -200,6 +200,38 @@ namespace PedidoTela.Controlodores
         {
             D_DetalleEstampado d_DetalleUnicolor = new D_DetalleEstampado();
             d_DetalleUnicolor.Agregar(detalle);
+        }
+        public int consultarIdEstampado(string prmIdentificador)
+        {
+            D_Estampado estampado = new D_Estampado();
+            return estampado.consultarIdEstampado(prmIdentificador);
+        }
+        public List<DetalleEstampado> getDetalleEstampado(int idEstampado)
+        {
+            D_DetalleEstampado d_Estampado = new D_DetalleEstampado();
+            return d_Estampado.getDetalleEstampado(idEstampado);
+        }
+        public Estampado getEstampado(string idEstampado)
+        {
+            D_Estampado d_Estampado = new D_Estampado();
+            return d_Estampado.Consultar(idEstampado);
+        }
+        public bool agregarConsecutivo(int prmConsecutivo, int Identificador)
+        {
+            D_Estampado d_estamapdo = new D_Estampado();
+            return (d_estamapdo.agreConsecutivo(prmConsecutivo,Identificador) == "ok") ? true : false;
+        }
+        /*Consultar si el Estampado ya tiene un consecutivo */ 
+        public bool consultarConsecutivo(int prmIdentificador)
+        {
+            D_Estampado d_estamapdo = new D_Estampado();
+            return (d_estamapdo.consultarConsecutivo(prmIdentificador));
+        }
+       
+        public int consultarMaximo()
+        {
+            D_Estampado d_estamapdo = new D_Estampado();
+            return d_estamapdo.consultarMaximo();
         }
         #endregion
     }

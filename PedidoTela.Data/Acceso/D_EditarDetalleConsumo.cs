@@ -33,6 +33,7 @@ namespace PedidoTela.Data.Acceso
         {
             throw new NotImplementedException();
         }
+        
         public List<Objeto> buscarTelaPorReferncia(string prmRefTela)
         {
             List<Objeto> respuesta = new List<Objeto>();
@@ -51,6 +52,7 @@ namespace PedidoTela.Data.Acceso
             }
             return respuesta;
         }
+        
         public List<Objeto> buscarTelaPorDescripcion(string prmDescripcion)
         {
             List<Objeto> respuesta = new List<Objeto>();
@@ -104,7 +106,7 @@ namespace PedidoTela.Data.Acceso
                     con.Parametros.Add(new IfxParameter("@identificador", prmDetalleCon.Identificador));
                     con.Parametros.Add(new IfxParameter("@tipo", prmDetalleCon.Tipo));
                     con.Parametros.Add(new IfxParameter("@desc_prenda", prmDetalleCon.Desc_prenda));
-                    con.Parametros.Add(new IfxParameter("@ referencia_tela", prmDetalleCon.Referencia_tela));
+                    con.Parametros.Add(new IfxParameter("@referencia_tela", prmDetalleCon.Referencia_tela));
                     con.Parametros.Add(new IfxParameter("@desc_tela", prmDetalleCon.Desc_tela));
                     con.Parametros.Add(new IfxParameter("@consumo", prmDetalleCon.Consumo));
                     con.Parametros.Add(new IfxParameter("@sku", prmDetalleCon.Sku));
@@ -120,7 +122,7 @@ namespace PedidoTela.Data.Acceso
             }
             return respuesta;
         }
-        //estoy aqui
+        
         public string setDcEditadoPorEnsayo(EditarDetalleconsumo prmDetalleCon,string prmEditar)
         {
             string respuesta = "";
@@ -128,12 +130,8 @@ namespace PedidoTela.Data.Acceso
             {
                 using (var con = new clsConexion())
                 {
-                    
-                    //con.Parametros.Add(new IfxParameter("@identificador", prmDetalleCon.Identificador));
-                    //con.Parametros.Add(new IfxParameter("@tipo", prmDetalleCon.Tipo));
-                    //con.Parametros.Add(new IfxParameter("@desc_prenda", prmDetalleCon.Desc_prenda));
                     con.Parametros.Add(new IfxParameter("@ referencia_tela", prmDetalleCon.Referencia_tela));
-                    con.Parametros.Add(new IfxParameter("@desc_tela", prmDetalleCon.Desc_prenda));
+                    con.Parametros.Add(new IfxParameter("@desc_tela", prmDetalleCon.Desc_tela));
                     con.Parametros.Add(new IfxParameter("@consumo", decimal.Parse(prmDetalleCon.Consumo)));
                     con.Parametros.Add(new IfxParameter("@sku", prmDetalleCon.Sku));
                     con.Parametros.Add(new IfxParameter("@fecha_tienda", prmDetalleCon.Fecha_tienda));
@@ -151,6 +149,7 @@ namespace PedidoTela.Data.Acceso
             }
             return respuesta;
         }
+        
         public List<EditarDetalleconsumo> ConsultarDCEditadoPorEnsayo(string prmIdensayo)
         {
 
@@ -181,6 +180,7 @@ namespace PedidoTela.Data.Acceso
             return respuesta;
             #endregion
         }
+        
         public List<EditarDetalleconsumo> ConsultarDtEditadoPorRef(string prmIdReferencia)
         {
 
@@ -209,6 +209,7 @@ namespace PedidoTela.Data.Acceso
             return respuesta;
 
         }
+        
         public bool consultarIdentificador(string prmIdentificador)
         {
             string ensayo;
