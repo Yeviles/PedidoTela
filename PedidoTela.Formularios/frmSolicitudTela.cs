@@ -324,32 +324,32 @@ namespace PedidoTela.Formularios
         /// <param name="e"></param>
         private void dgvDetalleConsumo_CellPainting(object sender, DataGridViewCellPaintingEventArgs e)
         {
-            //if (e.ColumnIndex >= 0 && dgvDetalleConsumo.Columns[e.ColumnIndex].Name == "editar" && e.RowIndex >= 0)
-            //{
-            //    e.Paint(e.CellBounds, DataGridViewPaintParts.All);
+            if (e.ColumnIndex >= 0 && dgvDetalleConsumo.Columns[e.ColumnIndex].Name == "editar" && e.RowIndex >= 0)
+            {
+                e.Paint(e.CellBounds, DataGridViewPaintParts.All);
 
-            //    DataGridViewButtonCell celBoton = dgvDetalleConsumo.Rows[e.RowIndex].Cells["editar"] as DataGridViewButtonCell;
-            //    Icon icoAtomico = new Icon(@"editar6.ico");
-            //    e.Graphics.DrawIcon(icoAtomico, e.CellBounds.Left + 25, e.CellBounds.Top + 3);
+                DataGridViewButtonCell celBoton = dgvDetalleConsumo.Rows[e.RowIndex].Cells["editar"] as DataGridViewButtonCell;
+                Icon icoAtomico = new Icon(@"editar6.ico");
+                e.Graphics.DrawIcon(icoAtomico, e.CellBounds.Left + 25, e.CellBounds.Top + 3);
 
-            //    dgvDetalleConsumo.Rows[e.RowIndex].Height = icoAtomico.Height + 50;
-            //    dgvDetalleConsumo.Columns[e.ColumnIndex].Width = icoAtomico.Width + 50;
+                dgvDetalleConsumo.Rows[e.RowIndex].Height = icoAtomico.Height + 50;
+                dgvDetalleConsumo.Columns[e.ColumnIndex].Width = icoAtomico.Width + 50;
 
-            //    e.Handled = true;
-            //}
-            //if (e.ColumnIndex >= 0 && dgvDetalleConsumo.Columns[e.ColumnIndex].Name == "guardar" && e.RowIndex >= 0)
-            //{
-            //    e.Paint(e.CellBounds, DataGridViewPaintParts.All);
+                e.Handled = true;
+            }
+            if (e.ColumnIndex >= 0 && dgvDetalleConsumo.Columns[e.ColumnIndex].Name == "guardar" && e.RowIndex >= 0)
+            {
+                e.Paint(e.CellBounds, DataGridViewPaintParts.All);
 
-            //    DataGridViewButtonCell celBoton = dgvDetalleConsumo.Rows[e.RowIndex].Cells["guardar"] as DataGridViewButtonCell;
-            //    Icon icoAtomico = new Icon(@"guardar.ico");
-            //    e.Graphics.DrawIcon(icoAtomico, e.CellBounds.Left + 25, e.CellBounds.Top + 3);
+                DataGridViewButtonCell celBoton = dgvDetalleConsumo.Rows[e.RowIndex].Cells["guardar"] as DataGridViewButtonCell;
+                Icon icoAtomico = new Icon(@"guardar.ico");
+                e.Graphics.DrawIcon(icoAtomico, e.CellBounds.Left + 25, e.CellBounds.Top + 3);
 
-            //    dgvDetalleConsumo.Rows[e.RowIndex].Height = icoAtomico.Height + 50;
-            //    dgvDetalleConsumo.Columns[e.ColumnIndex].Width = icoAtomico.Width + 50;
+                dgvDetalleConsumo.Rows[e.RowIndex].Height = icoAtomico.Height + 50;
+                dgvDetalleConsumo.Columns[e.ColumnIndex].Width = icoAtomico.Width + 50;
 
-            //    e.Handled = true;
-            //}
+                e.Handled = true;
+            }
         }
 
         /// <summary>

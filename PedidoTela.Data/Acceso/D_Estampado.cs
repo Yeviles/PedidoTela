@@ -29,7 +29,7 @@ namespace PedidoTela.Data.Acceso
                     con.Parametros.Add(new IfxParameter("@tipo_estampado", elemento.Tipo_estampado));
                     con.Parametros.Add(new IfxParameter("@tipo_tejido", elemento.Tipo_tejido));
                     con.Parametros.Add(new IfxParameter("@n_dibujos", elemento.N_dibujos));
-                    con.Parametros.Add(new IfxParameter("@n_cilindros", elemento.N_cilindors));
+                    con.Parametros.Add(new IfxParameter("@n_cilindros", elemento.N_cilindros));
                     con.Parametros.Add(new IfxParameter("@coordinado_con", elemento.Coordinado_con));
                     con.Parametros.Add(new IfxParameter("@coordinado", elemento.Coordinado));
                     con.Parametros.Add(new IfxParameter("@observaciones", elemento.Observaciones));

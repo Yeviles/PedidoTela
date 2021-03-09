@@ -41,7 +41,7 @@ namespace PedidoTela.Entidades.Logica
         public string Tipo_estampado { get => tipo_estampado; set => tipo_estampado = value; }
         public string Tipo_tejido { get => tipo_tejido; set => tipo_tejido = value; }
         public int N_dibujos { get => n_dibujos; set => n_dibujos = value; }
-        public int N_cilindors { get => n_cilindros; set => n_cilindros = value; }
+        public int N_cilindros { get => n_cilindros; set => n_cilindros = value; }
         public string Coordinado_con { get => coordinado_con; set => coordinado_con = value; }
         public bool Coordinado { get => coordinado; set => coordinado = value; }
         public string Observaciones { get => observaciones; set => observaciones = value; }

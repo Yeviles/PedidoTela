@@ -205,18 +205,17 @@ namespace PedidoTela.Formularios
                     {
                         Estampado elemento = new Estampado();
                         elemento.Esayo_ref = lbIdentificador.Text;
-                        elemento.Referencia_tela = txbRefTela.ToString();
+                        elemento.Referencia_tela = txbRefTela.Text.ToString();
                         elemento.Nombre_tela = txbNomTela.Text.Trim();
                         elemento.Tipo_estampado = cbxTipoEst.SelectedItem.ToString();
                         elemento.Tipo_tejido = cbxTipoTela.SelectedItem.ToString();
                         elemento.N_dibujos = int.Parse(txbNdibujo.Text.Trim());
-                        elemento.N_cilindors = int.Parse(txbNcilindro.Text.Trim());
+                        elemento.N_cilindros = int.Parse(txbNcilindro.Text.Trim());
                         elemento.Coordinado_con = (txbCoordinaCon.Text.Trim().Length > 0) ? txbCoordinaCon.Text.Trim() : ""; ;
                         elemento.Coordinado = (cbxSiCoordinado.Checked) ? true : false; ;
                         elemento.Observaciones = (txtObservaciones.Text.Trim().Length > 0) ? txtObservaciones.Text.Trim() : ""; ;
                         if (controlador.addEstampado(elemento))
                         {
-                            //int id = controlador.getIdUnicolor(idEnsayo.ToString());
                             try
                             {
                                 foreach (DataGridViewRow row in dvgEstampado.Rows)

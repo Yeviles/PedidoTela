@@ -11,7 +11,7 @@ namespace PedidoTela.Data.Acceso
     public class D_DetalleEstampado
     {
         #region Consultas
-        private readonly string consultaInserDetalle = "";
+        private readonly string consultaInserDetalle = "INSERT INTO cfc_spt_sol_detalleEstampado (idDetalleEst,codigoColor,desc_color,tiendas,exito,cencosud,sao,comercio,rosado,total, idEstampado) VALUES(?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?);";
         #endregion
         #region Métodos
 

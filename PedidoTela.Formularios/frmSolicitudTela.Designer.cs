@@ -376,6 +376,7 @@ namespace PedidoTela.Formularios
             this.dgvDetalleConsumo.TabIndex = 19;
             this.dgvDetalleConsumo.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView1_CellClick);
             this.dgvDetalleConsumo.CellEndEdit += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvDetalleConsumo_CellEndEdit);
+            this.dgvDetalleConsumo.CellPainting += new System.Windows.Forms.DataGridViewCellPaintingEventHandler(this.dgvDetalleConsumo_CellPainting);
             // 
             // ensayoRef
             // 
