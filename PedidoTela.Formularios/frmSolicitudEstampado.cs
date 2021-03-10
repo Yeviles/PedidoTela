@@ -28,15 +28,6 @@ namespace PedidoTela.Formularios
             this.identificador = identificador;
             InitializeComponent();
             cargarEstampado();
-            if (dvgEstampado.RowCount > 0)
-            {
-                btnConfirmar.Enabled = true;
-                dvgEstampado.ReadOnly = true;
-            }
-            else
-            {
-                btnConfirmar.Enabled = false;
-            }
         }
 
         private void frmSolicitudEstampado_Load(object sender, EventArgs e)
@@ -300,19 +291,19 @@ namespace PedidoTela.Formularios
         private void btnConfirmar_Click(object sender, EventArgs e)
         {
             Estampado objEstampado = controlador.getEstampado(Identificador);
-            int idSolicitud = controlador.consultarIdsolicitud(identificador);
-            
             if (objEstampado.IdEstampado != 0)
             {
-                if (!controlador.consultarConsecutivo(objEstampado.IdEstampado))
+                int maxConsecutivo = controlador.consultarMaximo();
+                if (controlador.consultarConsecutivo(objEstampado.IdEstampado))
                 {
-                    int maxConsecutivo = controlador.consultarMaximo();
-                    controlador.agregarConsecutivo(idSolicitud,objEstampado.IdEstampado,"Estampado", maxConsecutivo + 1);
-                   MessageBox.Show("El consecutivo se guardó con éxito.", "Información", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    if (controlador.agregarConsecutivo(maxConsecutivo + 1, objEstampado.IdEstampado))
+                    {
+                        MessageBox.Show("El consecutivo se guardó con éxito.", "Información", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    }
                 }
                 else
                 {
-                  MessageBox.Show("Gracias, ya cuenta con un consecutivo.", "Advertencia", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    MessageBox.Show("Gracias, ya cuenta con un consecutivo.", "Advertencia", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 }
             }
             else
