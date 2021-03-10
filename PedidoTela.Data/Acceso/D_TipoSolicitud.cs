@@ -50,14 +50,12 @@ namespace PedidoTela.Data.Acceso
                 {
                     con.Parametros.Add(new IfxParameter("@id_tipo", prmIdentificador));
                     var datos = con.EjecutarConsulta(this.consConsecutivo);
-                    while (datos.Read())
-                    {
-                        id = int.Parse(datos["consecutivo"].ToString());
-                    }
+                    datos.Read();
+                    id = int.Parse(datos["consecutivo"].ToString());
                     con.cerrarConexion();
                 }
             }
-            catch (NullReferenceException ex)
+            catch (Exception ex)
             {
                 Console.WriteLine("Error: " + ex.Message);
             }

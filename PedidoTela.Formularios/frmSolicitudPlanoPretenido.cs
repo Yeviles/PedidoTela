@@ -237,18 +237,13 @@ namespace PedidoTela.Formularios
 
             if (id != 0)
             {
-                if (control.consultarConsecutivo(id) != 0)
+                if (control.consultarConsecutivo(id) == 0)
                 {
                     int maxConsecutivo = control.consultarMaximo();
                     control.agregarConsecutivo(idSolicitud, id, "Plano preteñido", maxConsecutivo + 1);
                     MessageBox.Show("El consecutivo se guardó con éxito.", "Información", MessageBoxButtons.OK, MessageBoxIcon.Information);
                     btnConfirmar.Enabled = false;
                 }
-            }
-            else
-            {
-                MessageBox.Show("Por favor, Grabe la Información.", "Advertencia", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-
             }
         }
 

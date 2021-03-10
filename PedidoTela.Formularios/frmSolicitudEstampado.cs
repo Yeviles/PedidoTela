@@ -309,7 +309,7 @@ namespace PedidoTela.Formularios
             
             if (id != 0)
             {
-                if (controlador.consultarConsecutivo(id) != 0)
+                if (controlador.consultarConsecutivo(id) == 0)
                 {
                     int maxConsecutivo = controlador.consultarMaximo();
                     controlador.agregarConsecutivo(idSolicitud, id,"Estampado", maxConsecutivo + 1);
