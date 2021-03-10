@@ -86,8 +86,10 @@
     <Compile Include="Acceso\D_Muestrario.cs" />
     <Compile Include="Acceso\D_OcasionUso.cs" />
     <Compile Include="Acceso\D_PlanoPretenido.cs" />
+    <Compile Include="Acceso\D_SolicitudTela.cs" />
     <Compile Include="Acceso\D_Tema.cs" />
     <Compile Include="Acceso\D_TipoPedido.cs" />
+    <Compile Include="Acceso\D_TipoSolicitud.cs" />
     <Compile Include="Acceso\D_TipoTejido.cs" />
     <Compile Include="Acceso\D_Unicolor.cs" />
     <Compile Include="clsConexion.cs" />

@@ -219,23 +219,31 @@ namespace PedidoTela.Controlodores
             D_Estampado d_Estampado = new D_Estampado();
             return d_Estampado.Consultar(idEstampado);
         }
-        public bool agregarConsecutivo(int prmConsecutivo, int Identificador)
+        public bool agregarConsecutivo(int prmIdsolicitud,int prmIdtipo, string prmTipo, int prmConsecutivo)
         {
-            D_Estampado d_estamapdo = new D_Estampado();
-            return (d_estamapdo.agreConsecutivo(prmConsecutivo,Identificador) == "ok") ? true : false;
+            D_TipoSolicitud d_solicitud = new D_TipoSolicitud();
+            return (d_solicitud.Agregar(prmIdsolicitud, prmIdtipo, prmTipo, prmConsecutivo) == "ok") ? true : false;
         }
         /*Consultar si el Estampado ya tiene un consecutivo */ 
         public bool consultarConsecutivo(int prmIdentificador)
         {
-            D_Estampado d_estamapdo = new D_Estampado();
-            return (d_estamapdo.consultarConsecutivo(prmIdentificador));
+            D_TipoSolicitud d_solicitud = new D_TipoSolicitud();
+            return (d_solicitud.consultarConsecutivo(prmIdentificador));
         }
        
         public int consultarMaximo()
         {
-            D_Estampado d_estamapdo = new D_Estampado();
-            return d_estamapdo.consultarMaximo();
+            D_TipoSolicitud d_solicitud = new D_TipoSolicitud();
+            return d_solicitud.consultarMaximo();
         }
+        public int consultarIdsolicitud(string prmIdSolicitud)
+        {
+            D_SolicitudTela d_estamapdo = new D_SolicitudTela();
+            return d_estamapdo.consultarIdSolicitud(prmIdSolicitud);
+        }
+        
+
+        
         #endregion
 
         #region Métodos Solicitud Plano Preteñido
