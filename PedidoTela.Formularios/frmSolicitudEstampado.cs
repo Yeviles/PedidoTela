@@ -28,6 +28,15 @@ namespace PedidoTela.Formularios
             this.identificador = identificador;
             InitializeComponent();
             cargarEstampado();
+            if (dvgEstampado.RowCount > 0)
+            {
+                btnConfirmar.Enabled = true;
+                dvgEstampado.ReadOnly = true;
+            }
+            else
+            {
+                btnConfirmar.Enabled = false;
+            }
         }
 
         private void frmSolicitudEstampado_Load(object sender, EventArgs e)
@@ -94,8 +103,7 @@ namespace PedidoTela.Formularios
 
         private void btnSalir_Click(object sender, EventArgs e)
         {
-            frmTipoSolicitud frmTsolicitud = new frmTipoSolicitud();
-            frmTsolicitud.Show();
+            this.Close();
         }
 
         private void cbxSiCoordinadoEst_CheckedChanged(object sender, EventArgs e)
@@ -292,12 +300,14 @@ namespace PedidoTela.Formularios
         private void btnConfirmar_Click(object sender, EventArgs e)
         {
             Estampado objEstampado = controlador.getEstampado(Identificador);
+            int idSolicitud = controlador.consultarIdsolicitud(identificador);
+            
             if (objEstampado.IdEstampado != 0)
             {
                 if (!controlador.consultarConsecutivo(objEstampado.IdEstampado))
                 {
                     int maxConsecutivo = controlador.consultarMaximo();
-                    controlador.agregarConsecutivo(maxConsecutivo + 1, objEstampado.IdEstampado);
+                    controlador.agregarConsecutivo(idSolicitud,objEstampado.IdEstampado,"Estampado", maxConsecutivo + 1);
                    MessageBox.Show("El consecutivo se guardó con éxito.", "Información", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 }
                 else
