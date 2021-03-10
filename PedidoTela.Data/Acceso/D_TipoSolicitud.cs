@@ -10,8 +10,8 @@ namespace PedidoTela.Data.Acceso
     public class D_TipoSolicitud
     {
         #region Consultas
-        private readonly string agregarConsecutivo = "insert into cfc_spt_tipo_solicitud(id_solicitud, id_tipo, tipo, consecutivo) values(?, ?, ?, ?);";
-        private readonly string consConsecutivo = "select consecutivo cfc_spt_tipo_solicitud where id_tipo = ?;";
+        private readonly string agregarConsecutivo = "insert into cfc_spt_tipo_solicitud (id_solicitud, id_tipo, tipo, consecutivo) values(?, ?, ?, ?);";
+        private readonly string consConsecutivo = "select consecutivo FROM cfc_spt_tipo_solicitud where id_tipo = ?;";
 
         private readonly string consultaMax = "select idSolicitud(consecutivo) as idSolicitud from  cfc_spt_tipo_solicitud;";
 
@@ -41,7 +41,30 @@ namespace PedidoTela.Data.Acceso
             return respuesta;
         }
 
-        public bool consultarConsecutivo(int prmIdentificador)
+        public int consultarConsecutivo(int prmIdentificador)
+        {
+            int id = 0;
+            try
+            {
+                using (var con = new clsConexion())
+                {
+                    con.Parametros.Add(new IfxParameter("@id_tipo", prmIdentificador));
+                    var datos = con.EjecutarConsulta(this.consConsecutivo);
+                    while (datos.Read())
+                    {
+                        id = int.Parse(datos["consecutivo"].ToString());
+                    }
+                    con.cerrarConexion();
+                }
+            }
+            catch (NullReferenceException ex)
+            {
+                Console.WriteLine("Error: " + ex.Message);
+            }
+            return id;
+        }
+
+        /*public bool consultarConsecutivo(int prmIdentificador)
         {
             string ensayo;
             using (var administrador = new clsConexion())
@@ -69,7 +92,7 @@ namespace PedidoTela.Data.Acceso
                 }
 
             }
-        }
+        }*/
 
         public int consultarMaximo()
         {

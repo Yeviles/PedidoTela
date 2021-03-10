@@ -19,7 +19,7 @@ namespace PedidoTela.Formularios
         private Controlador control;
         private string identificador;
         private string codigoTela;
-        private int id;
+        private int id = 0, consecutivo = 0;
         public frmSolicitudPlanoPretenido(Controlador control, string identificador, string codigoTela)
         {
             this.control = control;
@@ -208,6 +208,7 @@ namespace PedidoTela.Formularios
                                     detalle.Otros = (row.Cells[18].Value != null && row.Cells[18].Value.ToString() != "") ? int.Parse(row.Cells[18].Value.ToString()) : 0;
                                     detalle.Total = (row.Cells[19].Value != null && row.Cells[19].Value.ToString() != "") ? int.Parse(row.Cells[19].Value.ToString()) : 0;
                                     control.addDetallePlanoPretenido(detalle);
+                                    btnConfirmar.Enabled = true;
                                 }
                                 txtObservaciones.Enabled = false;
                                 MessageBox.Show("Plano preteñido se guardó con éxito", "Información", MessageBoxButtons.OK, MessageBoxIcon.Information);
@@ -232,13 +233,22 @@ namespace PedidoTela.Formularios
 
         private void btnConfirmar_Click(object sender, EventArgs e)
         {
-            if (control.getConsecutivoPlanoPretenido(id) == "ok")
+            int idSolicitud = control.consultarIdsolicitud(identificador);
+
+            if (id != 0)
             {
-                MessageBox.Show("La solicitud se confirmo con éxito", "Información", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                btnConfirmar.Enabled = false;
+                if (control.consultarConsecutivo(id) != 0)
+                {
+                    int maxConsecutivo = control.consultarMaximo();
+                    control.agregarConsecutivo(idSolicitud, id, "Plano preteñido", maxConsecutivo + 1);
+                    MessageBox.Show("El consecutivo se guardó con éxito.", "Información", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    btnConfirmar.Enabled = false;
+                }
             }
-            else {
-                MessageBox.Show("Problema al confirmar la solicitud", "Advertencia", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+            else
+            {
+                MessageBox.Show("Por favor, Grabe la Información.", "Advertencia", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+
             }
         }
 
@@ -261,11 +271,10 @@ namespace PedidoTela.Formularios
                 cbxNoCoordinado.Checked = true;
             }
             txtObservaciones.Text = planoP.Observacion;
-            if (planoP.Consecutivo != 0)
+            consecutivo = control.consultarConsecutivo(id);
+            if (id != 0 && consecutivo != 0)
             {
-                btnConfirmar.Enabled = false;
-            }
-            else if (dgvPlano.RowCount > 0) {
+                lblConsecutivo.Text = "Consecutivo: " + consecutivo;
                 btnConfirmar.Enabled = false;
             }
 

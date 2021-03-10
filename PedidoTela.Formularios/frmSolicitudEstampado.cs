@@ -14,15 +14,16 @@ using System.Windows.Forms;
 
 namespace PedidoTela.Formularios
 {
-    public partial class frmSolicitudEstampado : MaterialSkin.Controls.MaterialForm
+    public partial class pnl : MaterialSkin.Controls.MaterialForm
     {
         private Controlador controlador;
         private string identificador;
         Validar validacion = new Validar();
+        private int id = 0, consecutivo = 0;
 
         public string Identificador { get => identificador; set => identificador = value; }
 
-        public frmSolicitudEstampado(Controlador controlador, string identificador)
+        public pnl(Controlador controlador, string identificador)
         {
             this.controlador = controlador;
             this.identificador = identificador;
@@ -30,7 +31,6 @@ namespace PedidoTela.Formularios
             cargarEstampado();
             if (dvgEstampado.RowCount > 0)
             {
-                btnConfirmar.Enabled = true;
                 dvgEstampado.ReadOnly = true;
             }
             else
@@ -266,6 +266,7 @@ namespace PedidoTela.Formularios
         private void cargarEstampado()
         {
             Estampado objEstampado = controlador.getEstampado(Identificador);
+            id = objEstampado.IdEstampado;
             if (objEstampado.Coordinado)
             {
                 cbxSiCoordinado.Checked = true;
@@ -274,6 +275,11 @@ namespace PedidoTela.Formularios
             else
             {
                 cbxNoCoordinado.Checked = true;
+            }
+            consecutivo = controlador.consultarConsecutivo(id);
+            if (id != 0 && consecutivo != 0) {
+                lblConsecutivo.Text = "Consecutivo: " + consecutivo;
+                btnConfirmar.Enabled = false;
             }
             cbxTipoEst.Text = objEstampado.Tipo_estampado;
             cbxTipoTela.Text = objEstampado.Tipo_tejido;
@@ -299,20 +305,16 @@ namespace PedidoTela.Formularios
 
         private void btnConfirmar_Click(object sender, EventArgs e)
         {
-            Estampado objEstampado = controlador.getEstampado(Identificador);
             int idSolicitud = controlador.consultarIdsolicitud(identificador);
             
-            if (objEstampado.IdEstampado != 0)
+            if (id != 0)
             {
-                if (!controlador.consultarConsecutivo(objEstampado.IdEstampado))
+                if (controlador.consultarConsecutivo(id) != 0)
                 {
                     int maxConsecutivo = controlador.consultarMaximo();
-                    controlador.agregarConsecutivo(idSolicitud,objEstampado.IdEstampado,"Estampado", maxConsecutivo + 1);
-                   MessageBox.Show("El consecutivo se guardó con éxito.", "Información", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                }
-                else
-                {
-                  MessageBox.Show("Gracias, ya cuenta con un consecutivo.", "Advertencia", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    controlador.agregarConsecutivo(idSolicitud, id,"Estampado", maxConsecutivo + 1);
+                    MessageBox.Show("El consecutivo se guardó con éxito.", "Información", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    btnConfirmar.Enabled = false;
                 }
             }
             else

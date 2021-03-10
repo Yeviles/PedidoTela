@@ -19,6 +19,7 @@ namespace PedidoTela.Formularios
         private Controlador control;
         private string identificador;
         private string codigoTela;
+        private int id = 0, consecutivo = 0;
         public frmSolicitudUnicolor(Controlador control, string identificador, string codigoTela)
         {
             this.control = control;
@@ -32,7 +33,6 @@ namespace PedidoTela.Formularios
             cargar();
             if (dgvUnicolor.RowCount > 0)
             {
-                btnConfirmar.Enabled = true;
                 dgvUnicolor.ReadOnly = true;
             }
             else
@@ -162,6 +162,8 @@ namespace PedidoTela.Formularios
                                 }
                                 txbObservaciones.Enabled = false;
                                 MessageBox.Show("Unicolor se guardó con éxito", "Información", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                                btnGrabar.Enabled = false;
+                                btnConfirmar.Enabled = true;
                             }
                             catch (Exception ex)
                             {
@@ -181,7 +183,18 @@ namespace PedidoTela.Formularios
 
         private void btnConfirmar_Click(object sender, EventArgs e)
         {
+            int idSolicitud = control.consultarIdsolicitud(identificador);
 
+            if (id != 0)
+            {
+                if (control.consultarConsecutivo(id) == 0)
+                {
+                    int maxConsecutivo = control.consultarMaximo();
+                    control.agregarConsecutivo(idSolicitud, id, "Unicolor", maxConsecutivo + 1);
+                    MessageBox.Show("El consecutivo se guardó con éxito.", "Información", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    btnConfirmar.Enabled = false;
+                }
+            }
         }
 
         private void cargar() {
@@ -194,8 +207,10 @@ namespace PedidoTela.Formularios
                 cbxNoCoordinado.Checked = true;
             }
             txbObservaciones.Text = unicolor.Observacion;
-            if (unicolor.Consecutivo != 0)
+            consecutivo = control.consultarConsecutivo(id);
+            if (id != 0 && consecutivo != 0)
             {
+                lblConsecutivo.Text = "Consecutivo: " + consecutivo;
                 btnConfirmar.Enabled = false;
             }
             /*Carga detalle unicolor*/

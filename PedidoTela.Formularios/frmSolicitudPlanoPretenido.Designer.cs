@@ -41,13 +41,6 @@ namespace PedidoTela.Formularios
             this.lbCoordinaCon = new System.Windows.Forms.Label();
             this.txbRefTela = new System.Windows.Forms.TextBox();
             this.dgvPlano = new System.Windows.Forms.DataGridView();
-            this.lbObservaciones = new System.Windows.Forms.Label();
-            this.txtObservaciones = new System.Windows.Forms.RichTextBox();
-            this.panel9 = new System.Windows.Forms.Panel();
-            this.btnConfirmar = new System.Windows.Forms.Button();
-            this.btnGrabar = new System.Windows.Forms.Button();
-            this.btnSalir = new System.Windows.Forms.Button();
-            this.btnAddColor = new System.Windows.Forms.Button();
             this.vte = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.colorVte = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.codH1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -68,6 +61,14 @@ namespace PedidoTela.Formularios
             this.rosado = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.otros = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.totalUnidades = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.lbObservaciones = new System.Windows.Forms.Label();
+            this.txtObservaciones = new System.Windows.Forms.RichTextBox();
+            this.panel9 = new System.Windows.Forms.Panel();
+            this.btnConfirmar = new System.Windows.Forms.Button();
+            this.btnGrabar = new System.Windows.Forms.Button();
+            this.btnSalir = new System.Windows.Forms.Button();
+            this.btnAddColor = new System.Windows.Forms.Button();
+            this.lblConsecutivo = new System.Windows.Forms.Label();
             this.pnlSolicitudColor.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvPlano)).BeginInit();
             this.panel9.SuspendLayout();
@@ -223,94 +224,6 @@ namespace PedidoTela.Formularios
             this.dgvPlano.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvPlano_CellClick);
             this.dgvPlano.CellEndEdit += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvPlano_CellEndEdit);
             // 
-            // lbObservaciones
-            // 
-            this.lbObservaciones.AutoSize = true;
-            this.lbObservaciones.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
-            this.lbObservaciones.Location = new System.Drawing.Point(14, 642);
-            this.lbObservaciones.Name = "lbObservaciones";
-            this.lbObservaciones.Size = new System.Drawing.Size(136, 15);
-            this.lbObservaciones.TabIndex = 31;
-            this.lbObservaciones.Text = "Observaciones Diseño";
-            // 
-            // txtObservaciones
-            // 
-            this.txtObservaciones.Location = new System.Drawing.Point(14, 680);
-            this.txtObservaciones.MaxLength = 120;
-            this.txtObservaciones.Name = "txtObservaciones";
-            this.txtObservaciones.Size = new System.Drawing.Size(1464, 91);
-            this.txtObservaciones.TabIndex = 30;
-            this.txtObservaciones.Text = "";
-            // 
-            // panel9
-            // 
-            this.panel9.BackColor = System.Drawing.SystemColors.ScrollBar;
-            this.panel9.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.panel9.Controls.Add(this.btnConfirmar);
-            this.panel9.Controls.Add(this.btnGrabar);
-            this.panel9.Controls.Add(this.btnSalir);
-            this.panel9.Location = new System.Drawing.Point(11, 77);
-            this.panel9.Name = "panel9";
-            this.panel9.Size = new System.Drawing.Size(1365, 49);
-            this.panel9.TabIndex = 133;
-            // 
-            // btnConfirmar
-            // 
-            this.btnConfirmar.Font = new System.Drawing.Font("Verdana", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnConfirmar.Image = global::PedidoTela.Formularios.Properties.Resources._1492790860_8check_84164;
-            this.btnConfirmar.Location = new System.Drawing.Point(158, 3);
-            this.btnConfirmar.Name = "btnConfirmar";
-            this.btnConfirmar.Size = new System.Drawing.Size(174, 43);
-            this.btnConfirmar.TabIndex = 96;
-            this.btnConfirmar.Text = "Confirmar";
-            this.btnConfirmar.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.btnConfirmar.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
-            this.btnConfirmar.UseVisualStyleBackColor = true;
-            this.btnConfirmar.Click += new System.EventHandler(this.btnConfirmar_Click);
-            // 
-            // btnGrabar
-            // 
-            this.btnGrabar.BackColor = System.Drawing.Color.LightGray;
-            this.btnGrabar.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.btnGrabar.Font = new System.Drawing.Font("Verdana", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnGrabar.Image = global::PedidoTela.Formularios.Properties.Resources.record_icon_icons_com_64775__1_;
-            this.btnGrabar.Location = new System.Drawing.Point(2, 3);
-            this.btnGrabar.Name = "btnGrabar";
-            this.btnGrabar.Size = new System.Drawing.Size(174, 43);
-            this.btnGrabar.TabIndex = 95;
-            this.btnGrabar.Text = "Grabar";
-            this.btnGrabar.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.btnGrabar.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
-            this.btnGrabar.UseVisualStyleBackColor = false;
-            this.btnGrabar.Click += new System.EventHandler(this.btnGrabar_Click);
-            // 
-            // btnSalir
-            // 
-            this.btnSalir.Font = new System.Drawing.Font("Verdana", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnSalir.Image = global::PedidoTela.Formularios.Properties.Resources.logout_exit_icon_176185;
-            this.btnSalir.Location = new System.Drawing.Point(333, 3);
-            this.btnSalir.Name = "btnSalir";
-            this.btnSalir.Size = new System.Drawing.Size(174, 43);
-            this.btnSalir.TabIndex = 97;
-            this.btnSalir.Text = "Salir";
-            this.btnSalir.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.btnSalir.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
-            this.btnSalir.UseVisualStyleBackColor = true;
-            this.btnSalir.Click += new System.EventHandler(this.btnSalir_Click);
-            // 
-            // btnAddColor
-            // 
-            this.btnAddColor.Image = global::PedidoTela.Formularios.Properties.Resources._1492790881_6add_84227;
-            this.btnAddColor.ImageAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.btnAddColor.Location = new System.Drawing.Point(11, 238);
-            this.btnAddColor.Name = "btnAddColor";
-            this.btnAddColor.Size = new System.Drawing.Size(303, 69);
-            this.btnAddColor.TabIndex = 128;
-            this.btnAddColor.Text = "Adicionar Color";
-            this.btnAddColor.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
-            this.btnAddColor.UseVisualStyleBackColor = true;
-            this.btnAddColor.Click += new System.EventHandler(this.btnAddColor_Click);
-            // 
             // vte
             // 
             this.vte.HeaderText = "Vte";
@@ -431,6 +344,103 @@ namespace PedidoTela.Formularios
             this.totalUnidades.MinimumWidth = 8;
             this.totalUnidades.Name = "totalUnidades";
             // 
+            // lbObservaciones
+            // 
+            this.lbObservaciones.AutoSize = true;
+            this.lbObservaciones.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
+            this.lbObservaciones.Location = new System.Drawing.Point(14, 642);
+            this.lbObservaciones.Name = "lbObservaciones";
+            this.lbObservaciones.Size = new System.Drawing.Size(136, 15);
+            this.lbObservaciones.TabIndex = 31;
+            this.lbObservaciones.Text = "Observaciones Diseño";
+            // 
+            // txtObservaciones
+            // 
+            this.txtObservaciones.Location = new System.Drawing.Point(14, 680);
+            this.txtObservaciones.MaxLength = 120;
+            this.txtObservaciones.Name = "txtObservaciones";
+            this.txtObservaciones.Size = new System.Drawing.Size(1464, 91);
+            this.txtObservaciones.TabIndex = 30;
+            this.txtObservaciones.Text = "";
+            // 
+            // panel9
+            // 
+            this.panel9.BackColor = System.Drawing.SystemColors.ScrollBar;
+            this.panel9.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.panel9.Controls.Add(this.lblConsecutivo);
+            this.panel9.Controls.Add(this.btnConfirmar);
+            this.panel9.Controls.Add(this.btnGrabar);
+            this.panel9.Controls.Add(this.btnSalir);
+            this.panel9.Location = new System.Drawing.Point(11, 77);
+            this.panel9.Name = "panel9";
+            this.panel9.Size = new System.Drawing.Size(1365, 49);
+            this.panel9.TabIndex = 133;
+            // 
+            // btnConfirmar
+            // 
+            this.btnConfirmar.Font = new System.Drawing.Font("Verdana", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnConfirmar.Image = global::PedidoTela.Formularios.Properties.Resources._1492790860_8check_84164;
+            this.btnConfirmar.Location = new System.Drawing.Point(158, 3);
+            this.btnConfirmar.Name = "btnConfirmar";
+            this.btnConfirmar.Size = new System.Drawing.Size(174, 43);
+            this.btnConfirmar.TabIndex = 96;
+            this.btnConfirmar.Text = "Confirmar";
+            this.btnConfirmar.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.btnConfirmar.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
+            this.btnConfirmar.UseVisualStyleBackColor = true;
+            this.btnConfirmar.Click += new System.EventHandler(this.btnConfirmar_Click);
+            // 
+            // btnGrabar
+            // 
+            this.btnGrabar.BackColor = System.Drawing.Color.LightGray;
+            this.btnGrabar.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.btnGrabar.Font = new System.Drawing.Font("Verdana", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnGrabar.Image = global::PedidoTela.Formularios.Properties.Resources.record_icon_icons_com_64775__1_;
+            this.btnGrabar.Location = new System.Drawing.Point(2, 3);
+            this.btnGrabar.Name = "btnGrabar";
+            this.btnGrabar.Size = new System.Drawing.Size(174, 43);
+            this.btnGrabar.TabIndex = 95;
+            this.btnGrabar.Text = "Grabar";
+            this.btnGrabar.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.btnGrabar.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
+            this.btnGrabar.UseVisualStyleBackColor = false;
+            this.btnGrabar.Click += new System.EventHandler(this.btnGrabar_Click);
+            // 
+            // btnSalir
+            // 
+            this.btnSalir.Font = new System.Drawing.Font("Verdana", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnSalir.Image = global::PedidoTela.Formularios.Properties.Resources.logout_exit_icon_176185;
+            this.btnSalir.Location = new System.Drawing.Point(333, 3);
+            this.btnSalir.Name = "btnSalir";
+            this.btnSalir.Size = new System.Drawing.Size(174, 43);
+            this.btnSalir.TabIndex = 97;
+            this.btnSalir.Text = "Salir";
+            this.btnSalir.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.btnSalir.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
+            this.btnSalir.UseVisualStyleBackColor = true;
+            this.btnSalir.Click += new System.EventHandler(this.btnSalir_Click);
+            // 
+            // btnAddColor
+            // 
+            this.btnAddColor.Image = global::PedidoTela.Formularios.Properties.Resources._1492790881_6add_84227;
+            this.btnAddColor.ImageAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.btnAddColor.Location = new System.Drawing.Point(11, 238);
+            this.btnAddColor.Name = "btnAddColor";
+            this.btnAddColor.Size = new System.Drawing.Size(303, 69);
+            this.btnAddColor.TabIndex = 128;
+            this.btnAddColor.Text = "Adicionar Color";
+            this.btnAddColor.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
+            this.btnAddColor.UseVisualStyleBackColor = true;
+            this.btnAddColor.Click += new System.EventHandler(this.btnAddColor_Click);
+            // 
+            // lblConsecutivo
+            // 
+            this.lblConsecutivo.AutoSize = true;
+            this.lblConsecutivo.Location = new System.Drawing.Point(514, 18);
+            this.lblConsecutivo.Name = "lblConsecutivo";
+            this.lblConsecutivo.Size = new System.Drawing.Size(0, 13);
+            this.lblConsecutivo.TabIndex = 98;
+            // 
             // frmSolicitudPlanoPretenido
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 13F);
@@ -452,6 +462,7 @@ namespace PedidoTela.Formularios
             this.pnlSolicitudColor.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvPlano)).EndInit();
             this.panel9.ResumeLayout(false);
+            this.panel9.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -496,5 +507,6 @@ namespace PedidoTela.Formularios
         private System.Windows.Forms.DataGridViewTextBoxColumn rosado;
         private System.Windows.Forms.DataGridViewTextBoxColumn otros;
         private System.Windows.Forms.DataGridViewTextBoxColumn totalUnidades;
+        private System.Windows.Forms.Label lblConsecutivo;
     }
 }

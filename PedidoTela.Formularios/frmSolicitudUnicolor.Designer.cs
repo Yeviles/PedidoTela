@@ -57,6 +57,7 @@ namespace PedidoTela.Formularios
             this.lbObservaciones = new System.Windows.Forms.Label();
             this.btnAddColor = new System.Windows.Forms.Button();
             this.panel9 = new System.Windows.Forms.Panel();
+            this.lblConsecutivo = new System.Windows.Forms.Label();
             this.btnConfirmar = new System.Windows.Forms.Button();
             this.btnGrabar = new System.Windows.Forms.Button();
             this.btnSalir = new System.Windows.Forms.Button();
@@ -322,6 +323,7 @@ namespace PedidoTela.Formularios
             // 
             this.panel9.BackColor = System.Drawing.SystemColors.ScrollBar;
             this.panel9.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.panel9.Controls.Add(this.lblConsecutivo);
             this.panel9.Controls.Add(this.btnConfirmar);
             this.panel9.Controls.Add(this.btnGrabar);
             this.panel9.Controls.Add(this.btnSalir);
@@ -329,6 +331,14 @@ namespace PedidoTela.Formularios
             this.panel9.Name = "panel9";
             this.panel9.Size = new System.Drawing.Size(1365, 49);
             this.panel9.TabIndex = 134;
+            // 
+            // lblConsecutivo
+            // 
+            this.lblConsecutivo.AutoSize = true;
+            this.lblConsecutivo.Location = new System.Drawing.Point(532, 15);
+            this.lblConsecutivo.Name = "lblConsecutivo";
+            this.lblConsecutivo.Size = new System.Drawing.Size(0, 13);
+            this.lblConsecutivo.TabIndex = 98;
             // 
             // btnConfirmar
             // 
@@ -389,12 +399,12 @@ namespace PedidoTela.Formularios
             this.Font = new System.Drawing.Font("Verdana", 8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.Name = "frmSolicitudUnicolor";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "Solicitud Unicolor";
             this.Load += new System.EventHandler(this.frmSolicitudUnicolor_Load);
             ((System.ComponentModel.ISupportInitialize)(this.dgvUnicolor)).EndInit();
             this.pnlSolicitudColor.ResumeLayout(false);
             this.pnlSolicitudColor.PerformLayout();
             this.panel9.ResumeLayout(false);
+            this.panel9.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -431,5 +441,6 @@ namespace PedidoTela.Formularios
         private System.Windows.Forms.DataGridViewTextBoxColumn rosado;
         private System.Windows.Forms.DataGridViewTextBoxColumn otros;
         private System.Windows.Forms.DataGridViewTextBoxColumn totalUnidades;
+        private System.Windows.Forms.Label lblConsecutivo;
     }
 }

@@ -179,7 +179,7 @@ namespace PedidoTela.Formularios
                     }
                     else if (seleccion == "estampado")
                     {
-                        frmSolicitudEstampado frmEstamapado = new frmSolicitudEstampado(controlador,identificador);
+                        pnl frmEstamapado = new pnl(controlador,identificador);
                         frmEstamapado.Show();
                         frmEstamapado.recibirInfoTela(dgvDetalleConsumo.CurrentRow.Cells["refTela"].Value.ToString(), dgvDetalleConsumo.CurrentRow.Cells["desTela"].Value.ToString());
                     }

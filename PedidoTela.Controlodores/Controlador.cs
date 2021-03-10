@@ -233,7 +233,7 @@ namespace PedidoTela.Controlodores
             return (d_solicitud.Agregar(prmIdsolicitud, prmIdtipo, prmTipo, prmConsecutivo) == "ok") ? true : false;
         }
         /*Consultar si el Estampado ya tiene un consecutivo */
-        public bool consultarConsecutivo(int prmIdentificador)
+        public int consultarConsecutivo(int prmIdentificador)
         {
             D_TipoSolicitud d_solicitud = new D_TipoSolicitud();
             return (d_solicitud.consultarConsecutivo(prmIdentificador));
