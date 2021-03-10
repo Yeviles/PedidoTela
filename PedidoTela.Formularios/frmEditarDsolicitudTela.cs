@@ -33,7 +33,7 @@ namespace PedidoTela.Formularios
             {
                 
                 //txbRefTela.Clear();
-                lista = control.buscarTelaPorReferncia(txbRefTela.Text.Trim());
+                lista = control.buscarTelaPorReferencia(txbRefTela.Text.Trim());
                 
             }
             else if (txbDescripcion.Text.Trim().Length > 0)
@@ -99,7 +99,7 @@ namespace PedidoTela.Formularios
                 string refTela = txbRefTela.Text.Trim().ToUpper();
                 if (refTela.Length > 0)
                 {
-                    listar(control.buscarTelaPorReferncia(refTela));
+                    listar(control.buscarTelaPorReferencia(refTela));
                 }
             }
             //else

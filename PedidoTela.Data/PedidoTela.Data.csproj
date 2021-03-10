@@ -86,8 +86,11 @@
     <Compile Include="Acceso\D_Muestrario.cs" />
     <Compile Include="Acceso\D_OcasionUso.cs" />
     <Compile Include="Acceso\D_PlanoPretenido.cs" />
+    <Compile Include="Acceso\D_SolicitudTela.cs" />
+    <Compile Include="Acceso\D_Tela.cs" />
     <Compile Include="Acceso\D_Tema.cs" />
     <Compile Include="Acceso\D_TipoPedido.cs" />
+    <Compile Include="Acceso\D_TipoSolicitud.cs" />
     <Compile Include="Acceso\D_TipoTejido.cs" />
     <Compile Include="Acceso\D_Unicolor.cs" />
     <Compile Include="clsConexion.cs" />
@@ -108,7 +111,6 @@
       <AutoGen>True</AutoGen>
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
-    <None Include="Acceso\EF.Reverse.POCO.v3.ttinclude" />
     <None Include="packages.config" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>

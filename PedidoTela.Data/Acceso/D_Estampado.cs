@@ -15,12 +15,7 @@ namespace PedidoTela.Data.Acceso
         private readonly string consultaId = "select idEstampado from cfc_spt_sol_estampado where ensayo_ref = ?;";
 
         private readonly string consultarTodo = "SELECT idEstampado,tipo_estampado,tipo_tejido,n_dibujos,n_cilindros, NVL(coordinado_con, '') AS coordinado_con,coordinado, observaciones FROM cfc_spt_sol_estampado WHERE ensayo_ref = ?;";
-
-        private readonly string agregarConsecutivo = "update cfc_spt_sol_estampado set consecutivo=?  where idEstampado = ?;";
-
-        private readonly string consConsecutivo = "select consecutivo from cfc_spt_sol_estampado where idEstampado = ?;";
-
-        private readonly string consultaMax = "select max(consecutivo) as max from  cfc_spt_sol_estampado;";
+       
         #endregion
         #region Métodos
         public string Agregar(Estampado elemento)
@@ -107,98 +102,7 @@ namespace PedidoTela.Data.Acceso
             return estampado;
         }
         
-        public string agreConsecutivo(int consecutivo, int identificador)
-        {
-            string respuesta = "";
-            try
-            {
-                using (var con = new clsConexion())
-                {
-
-                    con.Parametros.Add(new IfxParameter("@consecutivo", consecutivo));
-                    con.Parametros.Add(new IfxParameter("@idEstampado", identificador));
-                    var datos = con.EjecutarConsulta(this.agregarConsecutivo);
-                    con.cerrarConexion();
-                }
-                respuesta = "ok";
-            }
-            catch (Exception ex)
-            {
-                respuesta = "Error: " + ex.Message;
-            }
-            return respuesta;
-        }
-        public bool consultarConsecutivo(int prmIdentificador)
-        {
-            //bool respuesta;
-            //try
-            //{
-            //    using (var con = new clsConexion())
-            //    {
-
-            //        con.Parametros.Add(new IfxParameter("@idEstampado", prmIdentificador));
-            //        var datos = con.EjecutarConsulta(this.consConsecutivo);
-            //        con.cerrarConexion();
-
-            //    }
-            //    respuesta = true;
-            //}
-            //catch
-            //{
-            //    return false;
-            //    //respuesta = "Error: " + ex.Message;
-            //}
-
-            string ensayo;
-            using (var administrador = new clsConexion())
-            {
-                try
-                {
-                    administrador.Parametros.Add(new IfxParameter("@idEstampado", prmIdentificador));
-                    var datos = administrador.EjecutarConsulta(this.consConsecutivo);
-                    datos.Read();
-                    ensayo = datos["consecutivo"].ToString().Trim();
-                    administrador.cerrarConexion();
-                    // return true;
-                    if (ensayo != null)
-                    {
-                        return true;
-                    }
-                    else
-                    {
-                        return false;
-                        
-                    }
-                }
-                catch 
-                {
-                    return false;//Console.WriteLine("Error: " + ex.Message);
-                }
-                
-            }
-            }
-            public int consultarMaximo()
-        {
-            int max = 0;
-            try
-            {
-                using (var conexion = new clsConexion())
-                {
-                    //conexion.Parametros.Add(new IfxParameter("@idestampado", prmIdentificador));
-                    
-                    var datos = conexion.EjecutarConsultaEscalar(this.consultaMax);
-                    max = int.Parse(datos.ToString().Trim());
-                   // max = int.Parse(datos.ToString());
-
-                    conexion.cerrarConexion();
-                }
-            }
-            catch (Exception ex)
-            {
-                Console.WriteLine("Error: " + ex.Message);
-            }
-            return max;
-        }
+       
         #endregion
     }
 }

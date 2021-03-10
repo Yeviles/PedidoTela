@@ -10,6 +10,51 @@ namespace PedidoTela.Controlodores
 {
     public class Controlador
     {
+        #region Métodos de búsqueda
+        #region Métodos de Color
+        public List<Objeto> getColores()
+        {
+            D_Color d_color = new D_Color();
+            return d_color.consultarColores();
+        }
+        public List<Objeto> buscarColorPorCodigo(string codigo)
+        {
+            D_Color d_color = new D_Color();
+            return d_color.buscarColorPorCodigo(codigo);
+        }
+
+        public List<Objeto> buscarColorPorDescripcion(string descripcion)
+        {
+            D_Color d_color = new D_Color();
+            return d_color.buscarColorPorDescripcion(descripcion);
+        }
+
+        public List<Objeto> getColoresComboBox()
+        {
+            D_Color d_color = new D_Color();
+            return d_color.obtenerColores();
+        }
+        #endregion
+
+        #region Métodos de Tela
+        public List<Objeto> buscarTelaPorReferencia(string prmRefTela)
+        {
+            D_Tela d_Tela = new D_Tela();
+            return d_Tela.buscarTelaPorReferEncia(prmRefTela);
+        }
+        public List<Objeto> buscarTelaPorDescripcion(string prmDescripcion)
+        {
+            D_Tela d_Tela = new D_Tela();
+            return d_Tela.buscarTelaPorDescripcion(prmDescripcion);
+        }
+        public List<Objeto> getTela()
+        {
+            D_Tela d_Tela = new D_Tela();
+            return d_Tela.consultarTelas();
+        }
+        #endregion
+        #endregion
+
         #region Métodos del frmSolicitudTela
         #region  Métodos de la clase D_Muestrario
         public List<Objeto> getListaMuestrario()
@@ -104,21 +149,6 @@ namespace PedidoTela.Controlodores
 
         #endregion
         #region Métodos Editar Detalle Consumo
-        public List<Objeto> buscarTelaPorReferncia(string prmRefTela)
-        {
-            D_EditarDetalleConsumo d_color = new D_EditarDetalleConsumo();
-            return d_color.buscarTelaPorReferncia(prmRefTela);
-        }
-        public List<Objeto> buscarTelaPorDescripcion(string prmDescripcion)
-        {
-            D_EditarDetalleConsumo d_color = new D_EditarDetalleConsumo();
-            return d_color.buscarTelaPorDescripcion(prmDescripcion);
-        }
-        public List<Objeto> getTela()
-        {
-            D_EditarDetalleConsumo objEditar = new D_EditarDetalleConsumo();
-            return objEditar.consultarTelas();
-        }
         public bool addDetalleConsumo(EditarDetalleconsumo prmDetalleCon)
         {
             D_EditarDetalleConsumo detalleCon = new D_EditarDetalleConsumo();
@@ -134,33 +164,9 @@ namespace PedidoTela.Controlodores
         #endregion
         #endregion
 
-        #region Métodos de Color
-        public List<Objeto> getColores()
-        {
-            D_Color d_color = new D_Color();
-            return d_color.consultarColores();
-        }
-        public List<Objeto> buscarColorPorCodigo(string codigo)
-        {
-            D_Color d_color = new D_Color();
-            return d_color.buscarColorPorCodigo(codigo);
-        }
-
-        public List<Objeto> buscarColorPorDescripcion(string descripcion)
-        {
-            D_Color d_color = new D_Color();
-            return d_color.buscarColorPorDescripcion(descripcion);
-        }
-
-        public List<Objeto> getColoresComboBox()
-        {
-            D_Color d_color = new D_Color();
-            return d_color.obtenerColores();
-        }
-        #endregion
-
         #region Métodos Solicitud unicolor
-        public TipoTejido getTipoTejido(string codigoTela) {
+        public TipoTejido getTipoTejido(string codigoTela)
+        {
             D_TipoTejido d_TipoTejido = new D_TipoTejido();
             return d_TipoTejido.obtenerTipoTejido(codigoTela);
         }
@@ -182,12 +188,14 @@ namespace PedidoTela.Controlodores
             return d_Unicolor.Consultar(idUnicolor);
         }
 
-        public bool addUnicolor(Unicolor unicolor) {
+        public bool addUnicolor(Unicolor unicolor)
+        {
             D_Unicolor d_Unicolor = new D_Unicolor();
             return (d_Unicolor.Agregar(unicolor) == "ok") ? true : false;
         }
 
-        public void addDetalleUnicolor(DetalleUnicolor detalle) {
+        public void addDetalleUnicolor(DetalleUnicolor detalle)
+        {
             D_DetalleUnicolor d_DetalleUnicolor = new D_DetalleUnicolor();
             d_DetalleUnicolor.Agregar(detalle);
         }
@@ -219,23 +227,31 @@ namespace PedidoTela.Controlodores
             D_Estampado d_Estampado = new D_Estampado();
             return d_Estampado.Consultar(idEstampado);
         }
-        public bool agregarConsecutivo(int prmConsecutivo, int Identificador)
+        public bool agregarConsecutivo(int prmIdsolicitud, int prmIdtipo, string prmTipo, int prmConsecutivo)
         {
-            D_Estampado d_estamapdo = new D_Estampado();
-            return (d_estamapdo.agreConsecutivo(prmConsecutivo,Identificador) == "ok") ? true : false;
+            D_TipoSolicitud d_solicitud = new D_TipoSolicitud();
+            return (d_solicitud.Agregar(prmIdsolicitud, prmIdtipo, prmTipo, prmConsecutivo) == "ok") ? true : false;
         }
-        /*Consultar si el Estampado ya tiene un consecutivo */ 
+        /*Consultar si el Estampado ya tiene un consecutivo */
         public bool consultarConsecutivo(int prmIdentificador)
         {
-            D_Estampado d_estamapdo = new D_Estampado();
-            return (d_estamapdo.consultarConsecutivo(prmIdentificador));
+            D_TipoSolicitud d_solicitud = new D_TipoSolicitud();
+            return (d_solicitud.consultarConsecutivo(prmIdentificador));
         }
-       
+
         public int consultarMaximo()
         {
-            D_Estampado d_estamapdo = new D_Estampado();
-            return d_estamapdo.consultarMaximo();
+            D_TipoSolicitud d_solicitud = new D_TipoSolicitud();
+            return d_solicitud.consultarMaximo();
         }
+        public int consultarIdsolicitud(string prmIdSolicitud)
+        {
+            D_SolicitudTela d_estamapdo = new D_SolicitudTela();
+            return d_estamapdo.consultarIdSolicitud(prmIdSolicitud);
+        }
+
+
+
         #endregion
 
         #region Métodos Solicitud Plano Preteñido
@@ -245,7 +261,7 @@ namespace PedidoTela.Controlodores
             return d_PlanoPretenido.ConsultarId(identificador);
         }
 
-        public PlanoPretenido getPlanoPretenido (string identificador)
+        public PlanoPretenido getPlanoPretenido(string identificador)
         {
             D_PlanoPretenido d_PlanoPretenido = new D_PlanoPretenido();
             return d_PlanoPretenido.Consultar(identificador);
