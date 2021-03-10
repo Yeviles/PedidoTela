@@ -294,20 +294,15 @@ namespace PedidoTela.Formularios
             Estampado objEstampado = controlador.getEstampado(Identificador);
             if (objEstampado.IdEstampado != 0)
             {
-
-
-                int maxConsecutivo = controlador.consultarMaximo();
-                if (controlador.consultarConsecutivo(objEstampado.IdEstampado))
+                if (!controlador.consultarConsecutivo(objEstampado.IdEstampado))
                 {
-
-                    MessageBox.Show("Gracias, ya cuenta con un consecutivo.", "Advertencia", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    int maxConsecutivo = controlador.consultarMaximo();
+                    controlador.agregarConsecutivo(maxConsecutivo + 1, objEstampado.IdEstampado);
+                   MessageBox.Show("El consecutivo se guardó con éxito.", "Información", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 }
                 else
                 {
-                    if (controlador.agregarConsecutivo(maxConsecutivo + 1, objEstampado.IdEstampado))
-                    {
-                        MessageBox.Show("El consecutivo se guardó con éxito.", "Información", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                    }
+                  MessageBox.Show("Gracias, ya cuenta con un consecutivo.", "Advertencia", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 }
             }
             else

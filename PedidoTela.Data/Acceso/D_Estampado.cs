@@ -160,7 +160,7 @@ namespace PedidoTela.Data.Acceso
                     ensayo = datos["consecutivo"].ToString().Trim();
                     administrador.cerrarConexion();
                     // return true;
-                    if (ensayo != null)
+                    if (ensayo != "")
                     {
                         return true;
                     }
