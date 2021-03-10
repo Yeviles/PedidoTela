@@ -85,7 +85,7 @@ namespace PedidoTela.Formularios
 
         private void dgvPlano_CellClick(object sender, DataGridViewCellEventArgs e)
         {
-            if (e.ColumnIndex < 12)
+            if (e.RowIndex > -1 && e.ColumnIndex < 12)
             {
                 frmBuscarColor buscarColor = new frmBuscarColor(control);
                 buscarColor.StartPosition = FormStartPosition.CenterScreen;
