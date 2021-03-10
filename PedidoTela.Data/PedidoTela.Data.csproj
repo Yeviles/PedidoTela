@@ -76,6 +76,7 @@
     <Compile Include="Acceso\D_Color.cs" />
     <Compile Include="Acceso\D_DetalleConsumo.cs" />
     <Compile Include="Acceso\D_DetalleEstampado.cs" />
+    <Compile Include="Acceso\D_DetallePlanoPretenido.cs" />
     <Compile Include="Acceso\D_DetalleUnicolor.cs" />
     <Compile Include="Acceso\D_Disenador.cs" />
     <Compile Include="Acceso\D_EditarDetalleConsumo.cs" />
@@ -84,6 +85,7 @@
     <Compile Include="Acceso\D_Estampado.cs" />
     <Compile Include="Acceso\D_Muestrario.cs" />
     <Compile Include="Acceso\D_OcasionUso.cs" />
+    <Compile Include="Acceso\D_PlanoPretenido.cs" />
     <Compile Include="Acceso\D_Tema.cs" />
     <Compile Include="Acceso\D_TipoPedido.cs" />
     <Compile Include="Acceso\D_TipoTejido.cs" />

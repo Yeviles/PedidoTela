@@ -48,12 +48,12 @@ namespace PedidoTela.Controlodores
         }
         #endregion
         #region Métodos de la clase D_Ensayo /Referencia
-       
+
         public List<Ensayo> getEnsayo(string prmidEnsayo)
         {
             D_Ensayo d_Ensayo = new D_Ensayo();
             return d_Ensayo.ConsultarEnsayo(prmidEnsayo);
-        } 
+        }
 
         public List<Ensayo> getReferencia(string prmIdReferencia)
         {
@@ -73,12 +73,12 @@ namespace PedidoTela.Controlodores
             D_DetalleConsumo d_detalle = new D_DetalleConsumo();
             return d_detalle.ConsulatDetalleReferencia(prmIdReferencia);
         }
-        public bool consultarIdentificador (string prmIdentificador)
+        public bool consultarIdentificador(string prmIdentificador)
         {
             D_EditarDetalleConsumo objDetalleEditado = new D_EditarDetalleConsumo();
             return objDetalleEditado.consultarIdentificador(prmIdentificador);
         }
-        public List <EditarDetalleconsumo> getDcEditadoPorEnsayo(string prmIdensayo)
+        public List<EditarDetalleconsumo> getDcEditadoPorEnsayo(string prmIdensayo)
         {
             D_EditarDetalleConsumo objDetalleEditado = new D_EditarDetalleConsumo();
             return objDetalleEditado.ConsultarDCEditadoPorEnsayo(prmIdensayo);
@@ -89,11 +89,11 @@ namespace PedidoTela.Controlodores
         /// </summary>
         /// <param name="editarDetalle"></param>
         /// <returns></returns>
-        public bool setDcEditadoPorEnsayo(EditarDetalleconsumo editarDetalle,string idEditar)
+        public bool setDcEditadoPorEnsayo(EditarDetalleconsumo editarDetalle, string idEditar)
         {
             D_EditarDetalleConsumo objDetalleEditado = new D_EditarDetalleConsumo();
-           // return (d_Estampado.Agregar(unicolor) == "ok") ? true : false;
-            return (objDetalleEditado.setDcEditadoPorEnsayo(editarDetalle, idEditar) == "ok")?true:false;
+            // return (d_Unicolor.Agregar(unicolor) == "ok") ? true : false;
+            return (objDetalleEditado.setDcEditadoPorEnsayo(editarDetalle, idEditar) == "ok") ? true : false;
         }
 
         public List<EditarDetalleconsumo> getDetalleEditadoPorRef(string prmReferencia)
@@ -134,12 +134,7 @@ namespace PedidoTela.Controlodores
         #endregion
         #endregion
 
-        #region Métodos Solicitud unicolor
-        public TipoTejido getTipoTejido(string codigoTela) {
-            D_TipoTejido d_TipoTejido = new D_TipoTejido();
-            return d_TipoTejido.obtenerTipoTejido(codigoTela);
-        }
-
+        #region Métodos de Color
         public List<Objeto> getColores()
         {
             D_Color d_color = new D_Color();
@@ -162,6 +157,14 @@ namespace PedidoTela.Controlodores
             D_Color d_color = new D_Color();
             return d_color.obtenerColores();
         }
+        #endregion
+
+        #region Métodos Solicitud unicolor
+        public TipoTejido getTipoTejido(string codigoTela) {
+            D_TipoTejido d_TipoTejido = new D_TipoTejido();
+            return d_TipoTejido.obtenerTipoTejido(codigoTela);
+        }
+
         public int getIdUnicolor(string identificador)
         {
             D_Unicolor d_Unicolor = new D_Unicolor();
@@ -181,7 +184,7 @@ namespace PedidoTela.Controlodores
 
         public bool addUnicolor(Unicolor unicolor) {
             D_Unicolor d_Unicolor = new D_Unicolor();
-            return (d_Unicolor.Agregar(unicolor) == "ok")? true:false;
+            return (d_Unicolor.Agregar(unicolor) == "ok") ? true : false;
         }
 
         public void addDetalleUnicolor(DetalleUnicolor detalle) {
@@ -233,6 +236,45 @@ namespace PedidoTela.Controlodores
             D_Estampado d_estamapdo = new D_Estampado();
             return d_estamapdo.consultarMaximo();
         }
+        #endregion
+
+        #region Métodos Solicitud Plano Preteñido
+        public int getIdPlanoPretenido(string identificador)
+        {
+            D_PlanoPretenido d_PlanoPretenido = new D_PlanoPretenido();
+            return d_PlanoPretenido.ConsultarId(identificador);
+        }
+
+        public PlanoPretenido getPlanoPretenido (string identificador)
+        {
+            D_PlanoPretenido d_PlanoPretenido = new D_PlanoPretenido();
+            return d_PlanoPretenido.Consultar(identificador);
+        }
+        public List<DetallePlanoPretenido> getDetallePlanoPretenido(int idPlano)
+        {
+            D_DetallePlanoPretenido d_DetallePlanoPretenido = new D_DetallePlanoPretenido();
+            return d_DetallePlanoPretenido.Consultar(idPlano);
+        }
+
+        public bool addPlanoPretenido(PlanoPretenido planoPretenido)
+        {
+            D_PlanoPretenido d_PlanoPretenido = new D_PlanoPretenido();
+            return (d_PlanoPretenido.Agregar(planoPretenido) == "ok") ? true : false;
+        }
+
+        public void addDetallePlanoPretenido(DetallePlanoPretenido detalle)
+        {
+            D_DetallePlanoPretenido d_DetallePlanoPretenido = new D_DetallePlanoPretenido();
+            d_DetallePlanoPretenido.Agregar(detalle);
+        }
+
+        public string getConsecutivoPlanoPretenido(int idPlano)
+        {
+            D_PlanoPretenido d_PlanoPretenido = new D_PlanoPretenido();
+            int anterior = d_PlanoPretenido.Consultarconsecutivo();
+            return d_PlanoPretenido.AgregarConsecutivo(anterior + 1, idPlano);
+        }
+
         #endregion
     }
 }

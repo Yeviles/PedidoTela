@@ -13,6 +13,8 @@ namespace PedidoTela.Data.Acceso
         private readonly string consultaInsert = "INSERT INTO cfc_spt_sol_unicolor (identificador, referencia_tela, tipo_tejido, coordinado, coordinado_con, observacion) VALUES(?, ?, ?, ?, ?, ?);";
         private readonly string consultaAll = "SELECT idunicolor, identificador, referencia_tela, tipo_tejido, coordinado, NVL(coordinado_con, '') AS coordinado_con, observacion FROM cfc_spt_sol_unicolor WHERE identificador = ?;";
         private readonly string consultaId = "SELECT idunicolor FROM cfc_spt_sol_unicolor WHERE identificador = ?;";
+        private readonly string consultaConsecutivo = "SELECT MAX(consecutivo) as consecutivo FROM cfc_spt_sol_unicolor;";
+        private readonly string consultaUpdateConsecutivo = "UPDATE cfc_spt_sol_unicolor set consecutivo=? WHERE idplano= ?;";
 
         public int ConsultarId(string identificador)
         {
@@ -21,7 +23,7 @@ namespace PedidoTela.Data.Acceso
             {
                 using (var con = new clsConexion())
                 {
-                    con.Parametros.Add(new IfxParameter("@idensayo", identificador));
+                    con.Parametros.Add(new IfxParameter("@identificador", identificador));
                     var datos = con.EjecutarConsultaEscalar(this.consultaId);
                     id = int.Parse(datos.ToString());
 
@@ -52,7 +54,7 @@ namespace PedidoTela.Data.Acceso
                         unicolor.TipoTejido = datos["tipo_tejido"].ToString();
                         unicolor.Coordinado = bool.Parse(datos["coordinado"].ToString());
                         unicolor.CoordinadoCon = (datos["coordinado_con"].ToString().Trim().Length > 0) ? datos["coordinado_con"].ToString().Trim() : "";
-                        unicolor.Observaciones = datos["observacion"].ToString();
+                        unicolor.Observacion = datos["observacion"].ToString();
                     }
                     con.cerrarConexion();
                 }
@@ -76,7 +78,8 @@ namespace PedidoTela.Data.Acceso
                     con.Parametros.Add(new IfxParameter("@tipo_tejido", elemento.TipoTejido));
                     con.Parametros.Add(new IfxParameter("@coordinado", elemento.Coordinado));
                     con.Parametros.Add(new IfxParameter("@coordinado_con", elemento.CoordinadoCon));
-                    con.Parametros.Add(new IfxParameter("@observacion", elemento.Observaciones));
+                    con.Parametros.Add(new IfxParameter("@observacion", elemento.Observacion));
+                    con.Parametros.Add(new IfxParameter("@consecutivo", "0"));
                     var datos = con.EjecutarConsulta(this.consultaInsert);
                     con.cerrarConexion();
                 }

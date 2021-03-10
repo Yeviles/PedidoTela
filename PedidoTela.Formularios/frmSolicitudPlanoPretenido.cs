@@ -19,6 +19,7 @@ namespace PedidoTela.Formularios
         private Controlador control;
         private string identificador;
         private string codigoTela;
+        private int id;
         public frmSolicitudPlanoPretenido(Controlador control, string identificador, string codigoTela)
         {
             this.control = control;
@@ -29,6 +30,13 @@ namespace PedidoTela.Formularios
             txbRefTela.Text = tt.CodigoTela;
             txbNomTela.Text = tt.NombreTela;
             cargar();
+            if (dgvPlano.RowCount > 0)
+            {
+                dgvPlano.ReadOnly = true;
+            }
+            else {
+                btnConfirmar.Enabled = false;
+            }
         }
 
         private void frmSolicitudPlanoPretenido_Load(object sender, EventArgs e)
@@ -149,8 +157,133 @@ namespace PedidoTela.Formularios
                 }
             }
         }
+
+        private void btnGrabar_Click(object sender, EventArgs e)
+        {
+            if (!cbxSiCoordinado.Checked && !cbxNoCoordinado.Checked)
+            {
+                MessageBox.Show("Por favor, seleccione un valor para coordinado", "Advertencia", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+            }
+            else
+            {
+                if (txtObservaciones.Text.Trim().Length > 0)
+                {
+                    if (dgvPlano.RowCount > 0)
+                    {
+                        PlanoPretenido elemento = new PlanoPretenido();
+                        elemento.Identificador = identificador;
+                        elemento.ReferenciaTela = codigoTela;
+                        elemento.DescripcionTela = txbNomTela.Text;
+                        elemento.Coordinado = (cbxSiCoordinado.Checked) ? true : false;
+                        elemento.CoordinadoCon = (txbCoordinaCon.Text.Trim().Length > 0) ? txbCoordinaCon.Text.Trim() : "";
+                        elemento.Observacion = (txtObservaciones.Text.Trim().Length > 0) ? txtObservaciones.Text.Trim() : ""; ;
+                        if (control.addPlanoPretenido(elemento))
+                        {
+                            id = control.getIdPlanoPretenido(identificador);
+                            Console.WriteLine("ID: " + id);
+                            try
+                            {
+                                foreach (DataGridViewRow row in dgvPlano.Rows)
+                                {
+                                    DetallePlanoPretenido detalle = new DetallePlanoPretenido();
+                                    detalle.IdPlano = id;
+                                    detalle.CodigoVte = row.Cells[0].Value.ToString();
+                                    detalle.DescripcionVte = row.Cells[1].Value.ToString().Trim();
+                                    detalle.CodigoH1 = row.Cells[2].Value.ToString();
+                                    detalle.DescripcionH1 = row.Cells[3].Value.ToString().Trim();
+                                    detalle.CodigoH2 = row.Cells[4].Value.ToString();
+                                    detalle.DescripcionH2 = row.Cells[5].Value.ToString().Trim();
+                                    detalle.CodigoH3 = row.Cells[6].Value.ToString();
+                                    detalle.DescripcionH3 = row.Cells[7].Value.ToString().Trim();
+                                    detalle.CodigoH4 = row.Cells[8].Value.ToString();
+                                    detalle.DescripcionH4 = row.Cells[9].Value.ToString().Trim();
+                                    detalle.CodigoH5 = row.Cells[10].Value.ToString();
+                                    detalle.DescripcionH5 = row.Cells[11].Value.ToString().Trim();
+                                    detalle.Tiendas = (row.Cells[12].Value != null && row.Cells[12].Value.ToString() != "") ? int.Parse(row.Cells[12].Value.ToString()) : 0;
+                                    detalle.Exito = (row.Cells[13].Value != null && row.Cells[13].Value.ToString() != "") ? int.Parse(row.Cells[13].Value.ToString()) : 0;
+                                    detalle.Cencosud = (row.Cells[14].Value != null && row.Cells[14].Value.ToString() != "") ? int.Parse(row.Cells[14].Value.ToString()) : 0;
+                                    detalle.Sao = (row.Cells[15].Value != null && row.Cells[15].Value.ToString() != "") ? int.Parse(row.Cells[15].Value.ToString()) : 0;
+                                    detalle.Comercio = (row.Cells[16].Value != null && row.Cells[16].Value.ToString() != "") ? int.Parse(row.Cells[16].Value.ToString()) : 0;
+                                    detalle.Rosado = (row.Cells[17].Value != null && row.Cells[17].Value.ToString() != "") ? int.Parse(row.Cells[17].Value.ToString()) : 0;
+                                    detalle.Otros = (row.Cells[18].Value != null && row.Cells[18].Value.ToString() != "") ? int.Parse(row.Cells[18].Value.ToString()) : 0;
+                                    detalle.Total = (row.Cells[19].Value != null && row.Cells[19].Value.ToString() != "") ? int.Parse(row.Cells[19].Value.ToString()) : 0;
+                                    control.addDetallePlanoPretenido(detalle);
+                                }
+                                txtObservaciones.Enabled = false;
+                                MessageBox.Show("Plano preteñido se guardó con éxito", "Información", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                            }
+                            catch (Exception ex)
+                            {
+                                MessageBox.Show("Detalle plano preteñido no se pudo guardar", "Advertencia", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                            }
+                        }
+                    }
+                    else
+                    {
+                        MessageBox.Show("Por favor, adicione al menos un color", "Advertencia", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    }
+                }
+                else
+                {
+                    MessageBox.Show("Por favor, ingrese las observaciones de diseño", "Advertencia", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                }
+            }
+        }
+
+        private void btnConfirmar_Click(object sender, EventArgs e)
+        {
+            if (control.getConsecutivoPlanoPretenido(id) == "ok")
+            {
+                MessageBox.Show("La solicitud se confirmo con éxito", "Información", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                btnConfirmar.Enabled = false;
+            }
+            else {
+                MessageBox.Show("Problema al confirmar la solicitud", "Advertencia", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+            }
+        }
+
+        private void btnSalir_Click(object sender, EventArgs e)
+        {
+            this.Close();
+        }
+
         private void cargar()
         {
+            PlanoPretenido planoP = control.getPlanoPretenido(identificador);
+            id = planoP.Id;
+            if (planoP.Coordinado)
+            {
+                cbxSiCoordinado.Checked = true;
+                txbCoordinaCon.Text = planoP.CoordinadoCon;
+            }
+            else
+            {
+                cbxNoCoordinado.Checked = true;
+            }
+            txtObservaciones.Text = planoP.Observacion;
+            if (planoP.Consecutivo != 0)
+            {
+                btnConfirmar.Enabled = false;
+            }
+            else if (dgvPlano.RowCount > 0) {
+                btnConfirmar.Enabled = false;
+            }
+
+            /*Carga detalle plano preteñido*/
+            List<DetallePlanoPretenido> lista = control.getDetallePlanoPretenido(planoP.Id);
+            if (lista.Count > 0)
+            {
+                foreach (DetallePlanoPretenido obj in lista)
+                {
+                    dgvPlano.Rows.Add(obj.CodigoVte, obj.DescripcionVte, obj.CodigoH1, obj.DescripcionH1, obj.CodigoH2, obj.DescripcionH2,
+                        obj.CodigoH3, obj.DescripcionH3, obj.CodigoH4, obj.DescripcionH4, obj.CodigoH5, obj.DescripcionH5,
+                        obj.Exito, obj.Tiendas, obj.Cencosud, obj.Sao, obj.Comercio, obj.Rosado, obj.Otros, obj.Total);
+                }
+                btnAddColor.Enabled = false;
+                dgvPlano.ReadOnly = true;
+                btnGrabar.Enabled = false;
+                txtObservaciones.Enabled = false;
+            }
         }
     }
 }
