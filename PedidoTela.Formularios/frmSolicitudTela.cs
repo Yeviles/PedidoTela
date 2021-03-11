@@ -154,78 +154,81 @@ namespace PedidoTela.Formularios
             if (e.ColumnIndex == 6) {
                 editando = true;
             }
-            if (dgvDetalleConsumo.Columns[e.ColumnIndex].Name == "guardar")
-            {
-                guardarDetalleCons(e);
-                dgvDetalleConsumo.CurrentRow.Cells[2].ReadOnly = true;
-                dgvDetalleConsumo.CurrentRow.Cells[3].ReadOnly = true;
-                dgvDetalleConsumo.CurrentRow.Cells[4].ReadOnly = true;
-                dgvDetalleConsumo.CurrentRow.Cells[6].ReadOnly = false;
-                editando = false;
-            } 
-            else if (!editando)
-            {
-                frmTipoSolicitud objTipoSolicitud = new frmTipoSolicitud();
-                string identificador = dgvDetalleConsumo.CurrentRow.Cells[0].Value.ToString().Trim();
-
-                objTipoSolicitud.StartPosition = FormStartPosition.CenterScreen;
-                if (objTipoSolicitud.ShowDialog() == DialogResult.OK)
+            if (e.RowIndex > -1) {
+                if (dgvDetalleConsumo.Columns[e.ColumnIndex].Name == "guardar")
                 {
-                    String seleccion = objTipoSolicitud.Seleccion;
-                    if (seleccion == "unicolor")
-                    {
-                        frmSolicitudUnicolor frmUnicolor = new frmSolicitudUnicolor(controlador, identificador, dgvDetalleConsumo.Rows[e.RowIndex].Cells[2].Value.ToString());
-                        frmUnicolor.Show();
-                    }
-                    else if (seleccion == "estampado")
-                    {
-                        pnl frmEstamapado = new pnl(controlador,identificador);
-                        frmEstamapado.Show();
-                        frmEstamapado.recibirInfoTela(dgvDetalleConsumo.CurrentRow.Cells["refTela"].Value.ToString(), dgvDetalleConsumo.CurrentRow.Cells["desTela"].Value.ToString());
-                    }
-                    else if (seleccion == "planoPre")
-                    {
-                        frmSolicitudPlanoPretenido frmPlapretenido = new frmSolicitudPlanoPretenido(controlador, identificador, dgvDetalleConsumo.Rows[e.RowIndex].Cells[2].Value.ToString());
-                        frmPlapretenido.Show();
+                    guardarDetalleCons(e);
+                    dgvDetalleConsumo.CurrentRow.Cells[2].ReadOnly = true;
+                    dgvDetalleConsumo.CurrentRow.Cells[3].ReadOnly = true;
+                    dgvDetalleConsumo.CurrentRow.Cells[4].ReadOnly = true;
+                    dgvDetalleConsumo.CurrentRow.Cells[6].ReadOnly = false;
+                    editando = false;
+                }
+                else if (!editando)
+                {
+                    frmTipoSolicitud objTipoSolicitud = new frmTipoSolicitud();
+                    string identificador = dgvDetalleConsumo.CurrentRow.Cells[0].Value.ToString().Trim();
 
-                    }
-                    else if (seleccion == "cuelloPun")
+                    objTipoSolicitud.StartPosition = FormStartPosition.CenterScreen;
+                    if (objTipoSolicitud.ShowDialog() == DialogResult.OK)
                     {
-                        frmSolicitudCuellosTiras frmCuellos = new frmSolicitudCuellosTiras();
-                        frmCuellos.Show();
+                        String seleccion = objTipoSolicitud.Seleccion;
+                        if (seleccion == "unicolor")
+                        {
+                            frmSolicitudUnicolor frmUnicolor = new frmSolicitudUnicolor(controlador, identificador, dgvDetalleConsumo.Rows[e.RowIndex].Cells[2].Value.ToString());
+                            frmUnicolor.Show();
+                        }
+                        else if (seleccion == "estampado")
+                        {
+                            pnl frmEstamapado = new pnl(controlador, identificador);
+                            frmEstamapado.Show();
+                            frmEstamapado.recibirInfoTela(dgvDetalleConsumo.CurrentRow.Cells["refTela"].Value.ToString(), dgvDetalleConsumo.CurrentRow.Cells["desTela"].Value.ToString());
+                        }
+                        else if (seleccion == "planoPre")
+                        {
+                            frmSolicitudPlanoPretenido frmPlapretenido = new frmSolicitudPlanoPretenido(controlador, identificador, dgvDetalleConsumo.Rows[e.RowIndex].Cells[2].Value.ToString());
+                            frmPlapretenido.Show();
+
+                        }
+                        else if (seleccion == "cuelloPun")
+                        {
+                            frmSolicitudCuellosTiras frmCuellos = new frmSolicitudCuellosTiras();
+                            frmCuellos.Show();
+                        }
                     }
                 }
-            }
-            else
-            {
-                dgvDetalleConsumo.ReadOnly = false;
-
-                if (e.ColumnIndex > 1 && e.ColumnIndex < 6)
+                else
                 {
-                    dgvDetalleConsumo.CurrentRow.Cells[0].ReadOnly = true;
-                    dgvDetalleConsumo.CurrentRow.Cells[1].ReadOnly = true;
-                    dgvDetalleConsumo.CurrentRow.Cells[2].ReadOnly = false;
-                    dgvDetalleConsumo.CurrentRow.Cells[3].ReadOnly = false;
-                    dgvDetalleConsumo.CurrentRow.Cells[4].ReadOnly = false;
-                    dgvDetalleConsumo.CurrentRow.Cells[5].ReadOnly = false;
-                    dgvDetalleConsumo.CurrentRow.Cells[6].ReadOnly = true;
-                    
-                    dgvDetalleConsumo.CurrentRow.Cells[2].Style.BackColor = Color.PaleGoldenrod;
-                    dgvDetalleConsumo.CurrentRow.Cells[3].Style.BackColor = Color.PaleGoldenrod;
-                    dgvDetalleConsumo.CurrentRow.Cells[4].Style.BackColor = Color.PaleGoldenrod;
-                    dgvDetalleConsumo.CurrentRow.Cells[5].Style.BackColor = Color.PaleGoldenrod;
-                }
+                    dgvDetalleConsumo.ReadOnly = false;
 
-                if (e.ColumnIndex == 2 || e.ColumnIndex == 3) {
-                    
-                    frmEditarDsolicitudTela objEditar = new frmEditarDsolicitudTela(controlador);
-                    objEditar.StartPosition = FormStartPosition.CenterScreen;
-                   
-                    if (objEditar.ShowDialog() == DialogResult.OK)
+                    if (e.ColumnIndex > 1 && e.ColumnIndex < 6)
                     {
-                        Objeto obj = objEditar.Elemento;
-                        dgvDetalleConsumo.Rows[dgvDetalleConsumo.Rows.Count - 1].Cells[2].Value = obj.Id;
-                        dgvDetalleConsumo.Rows[dgvDetalleConsumo.Rows.Count - 1].Cells[3].Value = obj.Nombre;
+                        dgvDetalleConsumo.CurrentRow.Cells[0].ReadOnly = true;
+                        dgvDetalleConsumo.CurrentRow.Cells[1].ReadOnly = true;
+                        dgvDetalleConsumo.CurrentRow.Cells[2].ReadOnly = false;
+                        dgvDetalleConsumo.CurrentRow.Cells[3].ReadOnly = false;
+                        dgvDetalleConsumo.CurrentRow.Cells[4].ReadOnly = false;
+                        dgvDetalleConsumo.CurrentRow.Cells[5].ReadOnly = false;
+                        dgvDetalleConsumo.CurrentRow.Cells[6].ReadOnly = true;
+
+                        dgvDetalleConsumo.CurrentRow.Cells[2].Style.BackColor = Color.PaleGoldenrod;
+                        dgvDetalleConsumo.CurrentRow.Cells[3].Style.BackColor = Color.PaleGoldenrod;
+                        dgvDetalleConsumo.CurrentRow.Cells[4].Style.BackColor = Color.PaleGoldenrod;
+                        dgvDetalleConsumo.CurrentRow.Cells[5].Style.BackColor = Color.PaleGoldenrod;
+                    }
+
+                    if (e.ColumnIndex == 2 || e.ColumnIndex == 3)
+                    {
+
+                        frmEditarDsolicitudTela objEditar = new frmEditarDsolicitudTela(controlador);
+                        objEditar.StartPosition = FormStartPosition.CenterScreen;
+
+                        if (objEditar.ShowDialog() == DialogResult.OK)
+                        {
+                            Objeto obj = objEditar.Elemento;
+                            dgvDetalleConsumo.Rows[dgvDetalleConsumo.Rows.Count - 1].Cells[2].Value = obj.Id;
+                            dgvDetalleConsumo.Rows[dgvDetalleConsumo.Rows.Count - 1].Cells[3].Value = obj.Nombre;
+                        }
                     }
                 }
             }
@@ -321,12 +324,17 @@ namespace PedidoTela.Formularios
 
         private void dgvDetalleConsumo_CellEndEdit(object sender, DataGridViewCellEventArgs e)
         {
-            if (dgvDetalleConsumo.CurrentCell.Value != null && dgvDetalleConsumo.CurrentCell.Value.ToString() != "") {
-                dgvDetalleConsumo.CurrentCell.Value = dgvDetalleConsumo.CurrentCell.Value.ToString().Trim().Replace(".", ",");
-                dgvDetalleConsumo.CurrentCell.Value = Regex.Replace(dgvDetalleConsumo.CurrentCell.Value.ToString().Trim(), @"[^0-9,]", "");
-                decimal valor = Decimal.Parse(dgvDetalleConsumo.CurrentCell.Value.ToString());
-                decimal vfinal = Decimal.Round(valor, 2);
-                dgvDetalleConsumo.CurrentCell.Value = vfinal;
+            if (e.ColumnIndex == 5) {
+                if (dgvDetalleConsumo.CurrentCell.Value != null && dgvDetalleConsumo.CurrentCell.Value.ToString().Trim() != "")
+                {
+                    dgvDetalleConsumo.CurrentCell.Value = dgvDetalleConsumo.CurrentCell.Value.ToString().Trim().Replace(".", ",");
+                    dgvDetalleConsumo.CurrentCell.Value = Regex.Replace(dgvDetalleConsumo.CurrentCell.Value.ToString().Trim(), @"[^0-9,]", "");
+                    if (dgvDetalleConsumo.CurrentCell.Value != null && dgvDetalleConsumo.CurrentCell.Value.ToString().Trim() != "") {
+                        decimal valor = Decimal.Parse(dgvDetalleConsumo.CurrentCell.Value.ToString());
+                        decimal vfinal = Decimal.Round(valor, 2);
+                        dgvDetalleConsumo.CurrentCell.Value = vfinal;
+                    }
+                }
             }
         }
 
@@ -374,50 +382,55 @@ namespace PedidoTela.Formularios
         {
             EditarDetalleconsumo detalle = new EditarDetalleconsumo();
             detalle = obtenerObjDetalleConsumo(e);
-            if (controlador.consultarIdentificador(txbEnsRefDigitado.Text))
-            {
-                //Realiza un UPDATE dado que el Indentificador ya esta en la tabla.
-                if (controlador.setDcEditadoPorEnsayo(detalle,txbEnsRefDigitado.Text))
+            if (detalle != null) {
+                if (controlador.consultarIdentificador(txbEnsRefDigitado.Text))
                 {
-                    MessageBox.Show("La información se Actualizo con éxito", "Información", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    //Realiza un UPDATE dado que el Indentificador ya esta en la tabla.
+                    if (controlador.setDcEditadoPorEnsayo(detalle, txbEnsRefDigitado.Text))
+                    {
+                        MessageBox.Show("La información se Actualizo con éxito", "Información", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    }
                 }
-            }
-            else
-            {
-                controlador.addDetalleConsumo(detalle);
-                MessageBox.Show("La información se guardó con éxito", "Información", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                else
+                {
+                    controlador.addDetalleConsumo(detalle);
+                    MessageBox.Show("La información se guardó con éxito", "Información", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                }
             }
                    
         }
 
         private EditarDetalleconsumo obtenerObjDetalleConsumo(DataGridViewCellEventArgs e)
         {
-             EditarDetalleconsumo elemento = new EditarDetalleconsumo();
-                string fecha = dtpFechaTienda.Value.ToString("dd/MM/yyyy");
+            EditarDetalleconsumo elemento = new EditarDetalleconsumo();
+            string fecha = dtpFechaTienda.Value.ToString("dd/MM/yyyy");
             if (fecha == "")
             {
+                elemento = null;
                 MessageBox.Show("Por favor, seleccione un valor para fecha.", "Advertencia", MessageBoxButtons.OK, MessageBoxIcon.Warning);
             }
-            if (txbSku.Text.Trim().Length < 0)
-            {
-                MessageBox.Show("Por favor, ingrese el SKU.", "Advertencia", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+            else {
+                if (txbSku.Text.Trim().Length == 0)
+                {
+                    elemento = null;
+                    MessageBox.Show("Por favor, ingrese el SKU.", "Advertencia", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                }
+                else {
+                    if (dgvDetalleConsumo.RowCount > 0)
+                    {
+                        elemento.Identificador = (string)dgvDetalleConsumo.Rows[e.RowIndex].Cells[0].Value;
+                        elemento.Tipo = cbxTipo.SelectedItem.ToString();
+                        elemento.DescripcionPrenda = (string)dgvDetalleConsumo.Rows[e.RowIndex].Cells[1].Value;
+                        elemento.ReferenciaTela = (string)dgvDetalleConsumo.Rows[e.RowIndex].Cells[2].Value;
+                        elemento.DescripcionTela = (string)dgvDetalleConsumo.Rows[e.RowIndex].Cells[3].Value;
+                        elemento.Consumo = (dgvDetalleConsumo.Rows[e.RowIndex].Cells[5].Value != null) ? dgvDetalleConsumo.Rows[e.RowIndex].Cells[5].Value.ToString() : "0";
+                        elemento.Sku = txbSku.Text.Trim();
+                        elemento.FechaTienda = fecha;
+                        return elemento;
+                    }
+                }
             }
-            if (dgvDetalleConsumo.RowCount > 0)
-            {
-                elemento.Identificador = (string)dgvDetalleConsumo.Rows[e.RowIndex].Cells[0].Value;
-                elemento.Tipo = cbxTipo.SelectedItem.ToString();
-                elemento.DescripcionPrenda = (string)dgvDetalleConsumo.Rows[e.RowIndex].Cells[1].Value;
-                elemento.ReferenciaTela = (string)dgvDetalleConsumo.Rows[e.RowIndex].Cells[2].Value;
-                elemento.DescripcionTela = (string)dgvDetalleConsumo.Rows[e.RowIndex].Cells[3].Value;
-                elemento.Consumo = (dgvDetalleConsumo.Rows[e.RowIndex].Cells[5].Value != null) ? dgvDetalleConsumo.Rows[e.RowIndex].Cells[5].Value.ToString() : "0";
-                elemento.Sku = txbSku.Text.Trim();
-                elemento.FechaTienda = fecha;
-                return elemento;
-            }
-            else
-            {
-                MessageBox.Show("Por favor,Consulte un registro", "Advertencia", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-            }
+            
             return elemento;
         }
     }

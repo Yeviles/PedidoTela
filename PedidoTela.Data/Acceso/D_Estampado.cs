@@ -57,7 +57,8 @@ namespace PedidoTela.Data.Acceso
                 {
                     conexion.Parametros.Add(new IfxParameter("@idestampado", prmIdentificador));
                     var datos = conexion.EjecutarConsulta(consultaId);
-                    id = int.Parse(datos.ToString());
+                    datos.Read();
+                    id = int.Parse(datos["idEstampado"].ToString());
 
                     conexion.cerrarConexion();
                 }

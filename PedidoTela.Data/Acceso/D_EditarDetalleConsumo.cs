@@ -16,9 +16,9 @@ namespace PedidoTela.Data.Acceso
 
         private readonly string consultaInsert = "INSERT INTO cfc_spt_sol_tela (identificador, tipo, desc_prenda, referencia_tela, desc_tela, consumo, sku, fecha_tienda) VALUES(?, ?, ?, ?, ?, ?, ?, ?);";
 
-        private readonly string consultaPorIdEnsayo = "SELECT identificador, st.tipo, desc_prenda, referencia_tela, desc_tela, NVL(ts.tipo, '') as tipo_solicitud, NVL(consumo, '0') AS consumo, sku, fecha_tienda FROM cfc_spt_sol_tela st left join cfc_spt_tipo_solicitud ts on st.idsolicitud = ts.id_solicitud WHERE st.tipo ='Ensayo' and identificador =  ?;";
+        private readonly string consultaPorIdEnsayo = "SELECT identificador, st.tipo, desc_prenda, referencia_tela, desc_tela, NVL(ts.tipo, '') as tipo_solicitud, NVL(consumo, '0') AS consumo, sku, fecha_tienda FROM cfc_spt_sol_tela st left join cfc_spt_tipo_solicitud ts on st.identificador = ts.id_solicitud WHERE st.tipo ='Ensayo' and identificador =  ?;";
 
-        private readonly string consultaPorReferencia = "SELECT identificador, st.tipo, desc_prenda, referencia_tela, desc_tela, NVL(ts.tipo, '') as tipo_solicitud, NVL(consumo, '0') AS consumo, sku, fecha_tienda FROM cfc_spt_sol_tela st left join cfc_spt_tipo_solicitud ts on st.idsolicitud = ts.id_solicitud WHERE st.tipo = 'Referencia' and identificador = ?;";
+        private readonly string consultaPorReferencia = "SELECT identificador, st.tipo, desc_prenda, referencia_tela, desc_tela, NVL(ts.tipo, '') as tipo_solicitud, NVL(consumo, '0') AS consumo, sku, fecha_tienda FROM cfc_spt_sol_tela st left join cfc_spt_tipo_solicitud ts on st.identificador = ts.id_solicitud WHERE st.tipo = 'Referencia' and identificador = ?;";
 
         private readonly string consultarId = "select identificador from cfc_spt_sol_tela where identificador =?;";
 

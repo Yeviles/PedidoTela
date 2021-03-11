@@ -30,11 +30,11 @@ namespace PedidoTela.Formularios
         private void InitializeComponent()
         {
             this.panel1 = new System.Windows.Forms.Panel();
-            this.txbCodigo = new System.Windows.Forms.TextBox();
-            this.txbDescripcion = new System.Windows.Forms.TextBox();
-            this.lblCodigo = new System.Windows.Forms.Label();
-            this.label1 = new System.Windows.Forms.Label();
             this.btnBuscar = new System.Windows.Forms.Button();
+            this.label1 = new System.Windows.Forms.Label();
+            this.lblCodigo = new System.Windows.Forms.Label();
+            this.txbDescripcion = new System.Windows.Forms.TextBox();
+            this.txbCodigo = new System.Windows.Forms.TextBox();
             this.dgvColores = new System.Windows.Forms.DataGridView();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvColores)).BeginInit();
@@ -52,30 +52,15 @@ namespace PedidoTela.Formularios
             this.panel1.Size = new System.Drawing.Size(535, 45);
             this.panel1.TabIndex = 0;
             // 
-            // txbCodigo
+            // btnBuscar
             // 
-            this.txbCodigo.Location = new System.Drawing.Point(60, 12);
-            this.txbCodigo.Name = "txbCodigo";
-            this.txbCodigo.Size = new System.Drawing.Size(100, 20);
-            this.txbCodigo.TabIndex = 0;
-            this.txbCodigo.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txbCodigo_KeyPress);
-            // 
-            // txbDescripcion
-            // 
-            this.txbDescripcion.Location = new System.Drawing.Point(268, 12);
-            this.txbDescripcion.Name = "txbDescripcion";
-            this.txbDescripcion.Size = new System.Drawing.Size(160, 20);
-            this.txbDescripcion.TabIndex = 1;
-            this.txbDescripcion.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txbDescripcion_KeyPress);
-            // 
-            // lblCodigo
-            // 
-            this.lblCodigo.AutoSize = true;
-            this.lblCodigo.Location = new System.Drawing.Point(14, 15);
-            this.lblCodigo.Name = "lblCodigo";
-            this.lblCodigo.Size = new System.Drawing.Size(40, 13);
-            this.lblCodigo.TabIndex = 2;
-            this.lblCodigo.Text = "Código";
+            this.btnBuscar.Location = new System.Drawing.Point(444, 9);
+            this.btnBuscar.Name = "btnBuscar";
+            this.btnBuscar.Size = new System.Drawing.Size(75, 23);
+            this.btnBuscar.TabIndex = 4;
+            this.btnBuscar.Text = "Buscar";
+            this.btnBuscar.UseVisualStyleBackColor = true;
+            this.btnBuscar.Click += new System.EventHandler(this.btnBuscar_Click);
             // 
             // label1
             // 
@@ -86,15 +71,30 @@ namespace PedidoTela.Formularios
             this.label1.TabIndex = 3;
             this.label1.Text = "Descripción";
             // 
-            // btnBuscar
+            // lblCodigo
             // 
-            this.btnBuscar.Location = new System.Drawing.Point(444, 9);
-            this.btnBuscar.Name = "btnBuscar";
-            this.btnBuscar.Size = new System.Drawing.Size(75, 23);
-            this.btnBuscar.TabIndex = 4;
-            this.btnBuscar.Text = "Buscar";
-            this.btnBuscar.UseVisualStyleBackColor = true;
-            this.btnBuscar.Click += new System.EventHandler(this.btnBuscar_Click);
+            this.lblCodigo.AutoSize = true;
+            this.lblCodigo.Location = new System.Drawing.Point(14, 15);
+            this.lblCodigo.Name = "lblCodigo";
+            this.lblCodigo.Size = new System.Drawing.Size(40, 13);
+            this.lblCodigo.TabIndex = 2;
+            this.lblCodigo.Text = "Código";
+            // 
+            // txbDescripcion
+            // 
+            this.txbDescripcion.Location = new System.Drawing.Point(268, 12);
+            this.txbDescripcion.Name = "txbDescripcion";
+            this.txbDescripcion.Size = new System.Drawing.Size(160, 20);
+            this.txbDescripcion.TabIndex = 1;
+            this.txbDescripcion.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txbDescripcion_KeyPress);
+            // 
+            // txbCodigo
+            // 
+            this.txbCodigo.Location = new System.Drawing.Point(60, 12);
+            this.txbCodigo.Name = "txbCodigo";
+            this.txbCodigo.Size = new System.Drawing.Size(100, 20);
+            this.txbCodigo.TabIndex = 0;
+            this.txbCodigo.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txbCodigo_KeyPress);
             // 
             // dgvColores
             // 
@@ -114,6 +114,7 @@ namespace PedidoTela.Formularios
             this.ClientSize = new System.Drawing.Size(560, 450);
             this.Controls.Add(this.dgvColores);
             this.Controls.Add(this.panel1);
+            this.MaximizeBox = false;
             this.Name = "frmBuscarColor";
             this.Text = "Buscar color";
             this.Load += new System.EventHandler(this.frmBuscarColor_Load);

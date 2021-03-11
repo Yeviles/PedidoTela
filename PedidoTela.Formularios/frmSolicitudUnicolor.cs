@@ -26,6 +26,7 @@ namespace PedidoTela.Formularios
             this.identificador = identificador;
             this.codigoTela = codigoTela;
             InitializeComponent();
+            lbIdentificador.Text = identificador;
             TipoTejido tt = control.getTipoTejido(codigoTela);
             txbRefTela.Text = tt.CodigoTela;
             txbNomTela.Text = tt.NombreTela;
@@ -142,7 +143,7 @@ namespace PedidoTela.Formularios
                         elemento.Observacion = (txbObservaciones.Text.Trim().Length > 0) ? txbObservaciones.Text.Trim() : ""; ;
                         if (control.addUnicolor(elemento))
                         {
-                            int id = control.getIdUnicolor(identificador);
+                            id = control.getIdUnicolor(identificador);
                             try
                             {
                                 foreach (DataGridViewRow row in dgvUnicolor.Rows)
@@ -163,6 +164,7 @@ namespace PedidoTela.Formularios
                                 }
                                 txbObservaciones.Enabled = false;
                                 MessageBox.Show("Unicolor se guardó con éxito", "Información", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                                btnAddColor.Enabled = false;
                                 btnGrabar.Enabled = false;
                                 btnConfirmar.Enabled = true;
                             }
@@ -184,8 +186,6 @@ namespace PedidoTela.Formularios
 
         private void btnConfirmar_Click(object sender, EventArgs e)
         {
-            Unicolor objUnicolor = control.getUnicolor(identificador);
-            id = objUnicolor.Id;
             int idSolicitud = control.consultarIdsolicitud(identificador);
             int maxConsecutivo = control.consultarMaximo();
             if (id != 0)
@@ -197,7 +197,7 @@ namespace PedidoTela.Formularios
                     if (control.consultarConsecutivo(id) == 0)
                     {
 
-                        control.agregarConsecutivo(identificador, id, "Estampado", maxConsecutivo + 1);
+                        control.agregarConsecutivo(identificador, id, "Unicolor", maxConsecutivo + 1);
                         MessageBox.Show("El consecutivo se guardó con éxito.", "Información", MessageBoxButtons.OK, MessageBoxIcon.Information);
                         btnConfirmar.Enabled = false;
                         consecutivo = control.consultarConsecutivo(id);
@@ -206,7 +206,7 @@ namespace PedidoTela.Formularios
                 }
                 else
                 {
-                    control.agregarConsecutivo(idSolicitud.ToString(), id, "Estampado", maxConsecutivo + 1);
+                    control.agregarConsecutivo(idSolicitud.ToString(), id, "Unicolor", maxConsecutivo + 1);
                     MessageBox.Show("El consecutivo se guardó con éxito.", "Información", MessageBoxButtons.OK, MessageBoxIcon.Information);
                     btnConfirmar.Enabled = false;
                     consecutivo = control.consultarConsecutivo(id);
@@ -224,6 +224,7 @@ namespace PedidoTela.Formularios
 
         private void cargar() {
             Unicolor unicolor = control.getUnicolor(identificador);
+            id = unicolor.Id;
             if (unicolor.Coordinado) {
                 cbxSiCoordinado.Checked = true;
                 txbCoordinaCon.Text = unicolor.CoordinadoCon;
@@ -236,6 +237,7 @@ namespace PedidoTela.Formularios
             if (id != 0 && consecutivo != 0)
             {
                 lblConsecutivo.Text = "Consecutivo: " + consecutivo;
+                dgvUnicolor.ReadOnly = true;
                 btnConfirmar.Enabled = false;
             }
             /*Carga detalle unicolor*/

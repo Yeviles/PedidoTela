@@ -29,7 +29,7 @@ namespace PedidoTela.Formularios
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
             this.lbReferenciaTela = new System.Windows.Forms.Label();
             this.lbNombreTela = new System.Windows.Forms.Label();
             this.lbTipoTejido = new System.Windows.Forms.Label();
@@ -61,6 +61,7 @@ namespace PedidoTela.Formularios
             this.btnConfirmar = new System.Windows.Forms.Button();
             this.btnGrabar = new System.Windows.Forms.Button();
             this.btnSalir = new System.Windows.Forms.Button();
+            this.lbIdentificador = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.dgvUnicolor)).BeginInit();
             this.pnlSolicitudColor.SuspendLayout();
             this.panel9.SuspendLayout();
@@ -173,14 +174,14 @@ namespace PedidoTela.Formularios
             this.dgvUnicolor.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.dgvUnicolor.AutoSizeRowsMode = System.Windows.Forms.DataGridViewAutoSizeRowsMode.DisplayedCells;
             this.dgvUnicolor.BackgroundColor = System.Drawing.Color.White;
-            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle1.BackColor = System.Drawing.SystemColors.ScrollBar;
-            dataGridViewCellStyle1.Font = new System.Drawing.Font("Verdana", 8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle1.ForeColor = System.Drawing.Color.Navy;
-            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.Color.Navy;
-            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dgvUnicolor.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
+            dataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle4.BackColor = System.Drawing.SystemColors.ScrollBar;
+            dataGridViewCellStyle4.Font = new System.Drawing.Font("Verdana", 8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle4.ForeColor = System.Drawing.Color.Navy;
+            dataGridViewCellStyle4.SelectionBackColor = System.Drawing.Color.Navy;
+            dataGridViewCellStyle4.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle4.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dgvUnicolor.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle4;
             this.dgvUnicolor.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgvUnicolor.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.codColor,
@@ -335,9 +336,10 @@ namespace PedidoTela.Formularios
             // lblConsecutivo
             // 
             this.lblConsecutivo.AutoSize = true;
-            this.lblConsecutivo.Location = new System.Drawing.Point(532, 15);
+            this.lblConsecutivo.Font = new System.Drawing.Font("Verdana", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblConsecutivo.Location = new System.Drawing.Point(545, 15);
             this.lblConsecutivo.Name = "lblConsecutivo";
-            this.lblConsecutivo.Size = new System.Drawing.Size(0, 13);
+            this.lblConsecutivo.Size = new System.Drawing.Size(0, 16);
             this.lblConsecutivo.TabIndex = 98;
             // 
             // btnConfirmar
@@ -384,12 +386,25 @@ namespace PedidoTela.Formularios
             this.btnSalir.UseVisualStyleBackColor = true;
             this.btnSalir.Click += new System.EventHandler(this.btnSalir_Click);
             // 
+            // lbIdentificador
+            // 
+            this.lbIdentificador.AutoSize = true;
+            this.lbIdentificador.BackColor = System.Drawing.Color.Transparent;
+            this.lbIdentificador.Font = new System.Drawing.Font("Verdana", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lbIdentificador.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
+            this.lbIdentificador.Location = new System.Drawing.Point(174, 33);
+            this.lbIdentificador.Name = "lbIdentificador";
+            this.lbIdentificador.Size = new System.Drawing.Size(15, 18);
+            this.lbIdentificador.TabIndex = 99;
+            this.lbIdentificador.Text = "-";
+            // 
             // frmSolicitudUnicolor
             // 
             this.AcceptButton = this.btnAddColor;
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1386, 788);
+            this.Controls.Add(this.lbIdentificador);
             this.Controls.Add(this.panel9);
             this.Controls.Add(this.btnAddColor);
             this.Controls.Add(this.lbObservaciones);
@@ -399,6 +414,7 @@ namespace PedidoTela.Formularios
             this.Font = new System.Drawing.Font("Verdana", 8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.Name = "frmSolicitudUnicolor";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
+            this.Text = "Solicitud Unicolor";
             this.Load += new System.EventHandler(this.frmSolicitudUnicolor_Load);
             ((System.ComponentModel.ISupportInitialize)(this.dgvUnicolor)).EndInit();
             this.pnlSolicitudColor.ResumeLayout(false);
@@ -442,5 +458,6 @@ namespace PedidoTela.Formularios
         private System.Windows.Forms.DataGridViewTextBoxColumn otros;
         private System.Windows.Forms.DataGridViewTextBoxColumn totalUnidades;
         private System.Windows.Forms.Label lblConsecutivo;
+        private System.Windows.Forms.Label lbIdentificador;
     }
 }
