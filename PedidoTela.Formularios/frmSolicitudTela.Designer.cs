@@ -33,9 +33,6 @@ namespace PedidoTela.Formularios
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
             this.tbcPedidoTela = new System.Windows.Forms.TabControl();
-            this.ttEnsayoRef = new System.Windows.Forms.ToolTip(this.components);
-            this.ttSku = new System.Windows.Forms.ToolTip(this.components);
-            this.ttTipo = new System.Windows.Forms.ToolTip(this.components);
             this.tbpAdicionarSolTela = new System.Windows.Forms.TabPage();
             this.pnlAdicionarSolicitud = new System.Windows.Forms.Panel();
             this.txbEnsRefDigitado = new System.Windows.Forms.TextBox();
@@ -60,7 +57,6 @@ namespace PedidoTela.Formularios
             this.lbDisenador = new System.Windows.Forms.Label();
             this.label7 = new System.Windows.Forms.Label();
             this.dgvDetalleConsumo = new System.Windows.Forms.DataGridView();
-            this.lbDetalleConsumo = new System.Windows.Forms.Label();
             this.ensayoRef = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.desPrenda = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.refTela = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -69,6 +65,10 @@ namespace PedidoTela.Formularios
             this.consumos = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.editar = new System.Windows.Forms.DataGridViewButtonColumn();
             this.guardar = new System.Windows.Forms.DataGridViewButtonColumn();
+            this.lbDetalleConsumo = new System.Windows.Forms.Label();
+            this.ttEnsayoRef = new System.Windows.Forms.ToolTip(this.components);
+            this.ttSku = new System.Windows.Forms.ToolTip(this.components);
+            this.ttTipo = new System.Windows.Forms.ToolTip(this.components);
             this.tbcPedidoTela.SuspendLayout();
             this.tbpAdicionarSolTela.SuspendLayout();
             this.pnlAdicionarSolicitud.SuspendLayout();
@@ -91,11 +91,11 @@ namespace PedidoTela.Formularios
             this.tbpAdicionarSolTela.Controls.Add(this.pnlAdicionarSolicitud);
             this.tbpAdicionarSolTela.Controls.Add(this.dgvDetalleConsumo);
             this.tbpAdicionarSolTela.Controls.Add(this.lbDetalleConsumo);
-            this.tbpAdicionarSolTela.Location = new System.Drawing.Point(4, 22);
+            this.tbpAdicionarSolTela.Location = new System.Drawing.Point(4, 25);
             this.tbpAdicionarSolTela.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.tbpAdicionarSolTela.Name = "tbpAdicionarSolTela";
             this.tbpAdicionarSolTela.Padding = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.tbpAdicionarSolTela.Size = new System.Drawing.Size(1373, 651);
+            this.tbpAdicionarSolTela.Size = new System.Drawing.Size(1373, 648);
             this.tbpAdicionarSolTela.TabIndex = 1;
             this.tbpAdicionarSolTela.Text = "Adicionar Solicitud Tela";
             this.tbpAdicionarSolTela.UseVisualStyleBackColor = true;
@@ -137,7 +137,7 @@ namespace PedidoTela.Formularios
             this.txbEnsRefDigitado.Location = new System.Drawing.Point(202, 53);
             this.txbEnsRefDigitado.Name = "txbEnsRefDigitado";
             this.txbEnsRefDigitado.ReadOnly = true;
-            this.txbEnsRefDigitado.Size = new System.Drawing.Size(254, 20);
+            this.txbEnsRefDigitado.Size = new System.Drawing.Size(254, 24);
             this.txbEnsRefDigitado.TabIndex = 63;
             this.txbEnsRefDigitado.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txbEnsRefDigitado_KeyPress);
             // 
@@ -149,7 +149,7 @@ namespace PedidoTela.Formularios
             "Referencia"});
             this.cbxTipo.Location = new System.Drawing.Point(202, 10);
             this.cbxTipo.Name = "cbxTipo";
-            this.cbxTipo.Size = new System.Drawing.Size(254, 21);
+            this.cbxTipo.Size = new System.Drawing.Size(254, 24);
             this.cbxTipo.TabIndex = 62;
             this.cbxTipo.SelectionChangeCommitted += new System.EventHandler(this.cbxTipo_SelectionChangeCommitted);
             // 
@@ -158,7 +158,7 @@ namespace PedidoTela.Formularios
             this.lbTipo.AutoSize = true;
             this.lbTipo.Location = new System.Drawing.Point(37, 15);
             this.lbTipo.Name = "lbTipo";
-            this.lbTipo.Size = new System.Drawing.Size(36, 13);
+            this.lbTipo.Size = new System.Drawing.Size(44, 17);
             this.lbTipo.TabIndex = 61;
             this.lbTipo.Text = "Tipo:";
             // 
@@ -179,7 +179,7 @@ namespace PedidoTela.Formularios
             this.dtpFechaTienda.Location = new System.Drawing.Point(652, 97);
             this.dtpFechaTienda.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.dtpFechaTienda.Name = "dtpFechaTienda";
-            this.dtpFechaTienda.Size = new System.Drawing.Size(254, 20);
+            this.dtpFechaTienda.Size = new System.Drawing.Size(254, 24);
             this.dtpFechaTienda.TabIndex = 22;
             // 
             // label9
@@ -187,7 +187,7 @@ namespace PedidoTela.Formularios
             this.label9.AutoSize = true;
             this.label9.Location = new System.Drawing.Point(533, 98);
             this.label9.Name = "label9";
-            this.label9.Size = new System.Drawing.Size(87, 13);
+            this.label9.Size = new System.Drawing.Size(105, 17);
             this.label9.TabIndex = 7;
             this.label9.Text = "Fecha Tienda:";
             // 
@@ -198,7 +198,7 @@ namespace PedidoTela.Formularios
             this.txbDisenador.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.txbDisenador.Name = "txbDisenador";
             this.txbDisenador.ReadOnly = true;
-            this.txbDisenador.Size = new System.Drawing.Size(254, 20);
+            this.txbDisenador.Size = new System.Drawing.Size(254, 24);
             this.txbDisenador.TabIndex = 17;
             // 
             // label2
@@ -206,7 +206,7 @@ namespace PedidoTela.Formularios
             this.label2.AutoSize = true;
             this.label2.Location = new System.Drawing.Point(34, 56);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(127, 13);
+            this.label2.Size = new System.Drawing.Size(152, 17);
             this.label2.TabIndex = 0;
             this.label2.Text = "Ensayo/Ref. Similiar:";
             // 
@@ -217,7 +217,7 @@ namespace PedidoTela.Formularios
             this.txbTema.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.txbTema.Name = "txbTema";
             this.txbTema.ReadOnly = true;
-            this.txbTema.Size = new System.Drawing.Size(254, 20);
+            this.txbTema.Size = new System.Drawing.Size(254, 24);
             this.txbTema.TabIndex = 16;
             // 
             // txbAnio
@@ -227,7 +227,7 @@ namespace PedidoTela.Formularios
             this.txbAnio.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.txbAnio.Name = "txbAnio";
             this.txbAnio.ReadOnly = true;
-            this.txbAnio.Size = new System.Drawing.Size(254, 20);
+            this.txbAnio.Size = new System.Drawing.Size(254, 24);
             this.txbAnio.TabIndex = 15;
             // 
             // label5
@@ -235,7 +235,7 @@ namespace PedidoTela.Formularios
             this.label5.AutoSize = true;
             this.label5.Location = new System.Drawing.Point(34, 142);
             this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(82, 13);
+            this.label5.Size = new System.Drawing.Size(101, 17);
             this.label5.TabIndex = 3;
             this.label5.Text = "Ocasión Uso:";
             // 
@@ -244,7 +244,7 @@ namespace PedidoTela.Formularios
             this.txbSku.Location = new System.Drawing.Point(1066, 94);
             this.txbSku.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.txbSku.Name = "txbSku";
-            this.txbSku.Size = new System.Drawing.Size(254, 20);
+            this.txbSku.Size = new System.Drawing.Size(254, 24);
             this.txbSku.TabIndex = 11;
             this.txbSku.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txbSku_KeyPress);
             // 
@@ -253,7 +253,7 @@ namespace PedidoTela.Formularios
             this.lbSKU.AutoSize = true;
             this.lbSKU.Location = new System.Drawing.Point(983, 99);
             this.lbSKU.Name = "lbSKU";
-            this.lbSKU.Size = new System.Drawing.Size(36, 13);
+            this.lbSKU.Size = new System.Drawing.Size(44, 17);
             this.lbSKU.TabIndex = 8;
             this.lbSKU.Text = "SKU:";
             // 
@@ -262,7 +262,7 @@ namespace PedidoTela.Formularios
             this.lbTema.AutoSize = true;
             this.lbTema.Location = new System.Drawing.Point(983, 54);
             this.lbTema.Name = "lbTema";
-            this.lbTema.Size = new System.Drawing.Size(43, 13);
+            this.lbTema.Size = new System.Drawing.Size(50, 17);
             this.lbTema.TabIndex = 4;
             this.lbTema.Text = "Tema:";
             // 
@@ -271,7 +271,7 @@ namespace PedidoTela.Formularios
             this.lbAyo.AutoSize = true;
             this.lbAyo.Location = new System.Drawing.Point(983, 17);
             this.lbAyo.Name = "lbAyo";
-            this.lbAyo.Size = new System.Drawing.Size(34, 13);
+            this.lbAyo.Size = new System.Drawing.Size(42, 17);
             this.lbAyo.TabIndex = 2;
             this.lbAyo.Text = "Año:";
             // 
@@ -282,7 +282,7 @@ namespace PedidoTela.Formularios
             this.txbEntrada.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.txbEntrada.Name = "txbEntrada";
             this.txbEntrada.ReadOnly = true;
-            this.txbEntrada.Size = new System.Drawing.Size(254, 20);
+            this.txbEntrada.Size = new System.Drawing.Size(254, 24);
             this.txbEntrada.TabIndex = 14;
             // 
             // txbOcasionUso
@@ -292,7 +292,7 @@ namespace PedidoTela.Formularios
             this.txbOcasionUso.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.txbOcasionUso.Name = "txbOcasionUso";
             this.txbOcasionUso.ReadOnly = true;
-            this.txbOcasionUso.Size = new System.Drawing.Size(254, 20);
+            this.txbOcasionUso.Size = new System.Drawing.Size(254, 24);
             this.txbOcasionUso.TabIndex = 13;
             // 
             // txbMuestrario
@@ -302,7 +302,7 @@ namespace PedidoTela.Formularios
             this.txbMuestrario.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.txbMuestrario.Name = "txbMuestrario";
             this.txbMuestrario.ReadOnly = true;
-            this.txbMuestrario.Size = new System.Drawing.Size(254, 20);
+            this.txbMuestrario.Size = new System.Drawing.Size(254, 24);
             this.txbMuestrario.TabIndex = 10;
             // 
             // label3
@@ -310,7 +310,7 @@ namespace PedidoTela.Formularios
             this.label3.AutoSize = true;
             this.label3.Location = new System.Drawing.Point(533, 15);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(72, 13);
+            this.label3.Size = new System.Drawing.Size(88, 17);
             this.label3.TabIndex = 1;
             this.label3.Text = "Muestrario:";
             // 
@@ -319,7 +319,7 @@ namespace PedidoTela.Formularios
             this.lbDisenador.AutoSize = true;
             this.lbDisenador.Location = new System.Drawing.Point(34, 99);
             this.lbDisenador.Name = "lbDisenador";
-            this.lbDisenador.Size = new System.Drawing.Size(87, 13);
+            this.lbDisenador.Size = new System.Drawing.Size(105, 17);
             this.lbDisenador.TabIndex = 6;
             this.lbDisenador.Text = "Diseñador(a):";
             // 
@@ -328,7 +328,7 @@ namespace PedidoTela.Formularios
             this.label7.AutoSize = true;
             this.label7.Location = new System.Drawing.Point(533, 56);
             this.label7.Name = "label7";
-            this.label7.Size = new System.Drawing.Size(56, 13);
+            this.label7.Size = new System.Drawing.Size(69, 17);
             this.label7.TabIndex = 5;
             this.label7.Text = "Entrada:";
             // 
@@ -377,16 +377,7 @@ namespace PedidoTela.Formularios
             this.dgvDetalleConsumo.TabIndex = 19;
             this.dgvDetalleConsumo.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvDetalleConsumo_CellClick);
             this.dgvDetalleConsumo.CellEndEdit += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvDetalleConsumo_CellEndEdit);
-            // 
-            // lbDetalleConsumo
-            // 
-            this.lbDetalleConsumo.AutoSize = true;
-            this.lbDetalleConsumo.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
-            this.lbDetalleConsumo.Location = new System.Drawing.Point(13, 221);
-            this.lbDetalleConsumo.Name = "lbDetalleConsumo";
-            this.lbDetalleConsumo.Size = new System.Drawing.Size(107, 15);
-            this.lbDetalleConsumo.TabIndex = 18;
-            this.lbDetalleConsumo.Text = "Detalle Consumo";
+            this.dgvDetalleConsumo.CellPainting += new System.Windows.Forms.DataGridViewCellPaintingEventHandler(this.dgvDetalleConsumo_CellPainting);
             // 
             // ensayoRef
             // 
@@ -419,6 +410,7 @@ namespace PedidoTela.Formularios
             // Column1
             // 
             this.Column1.HeaderText = "Tipo solicitud";
+            this.Column1.MinimumWidth = 6;
             this.Column1.Name = "Column1";
             this.Column1.ReadOnly = true;
             // 
@@ -443,9 +435,19 @@ namespace PedidoTela.Formularios
             this.guardar.Name = "guardar";
             this.guardar.ReadOnly = true;
             // 
+            // lbDetalleConsumo
+            // 
+            this.lbDetalleConsumo.AutoSize = true;
+            this.lbDetalleConsumo.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
+            this.lbDetalleConsumo.Location = new System.Drawing.Point(13, 221);
+            this.lbDetalleConsumo.Name = "lbDetalleConsumo";
+            this.lbDetalleConsumo.Size = new System.Drawing.Size(129, 19);
+            this.lbDetalleConsumo.TabIndex = 18;
+            this.lbDetalleConsumo.Text = "Detalle Consumo";
+            // 
             // frmSolicitudTela
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 12F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1386, 788);
             this.Controls.Add(this.tbcPedidoTela);
