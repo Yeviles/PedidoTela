@@ -100,7 +100,9 @@ namespace PedidoTela.Data.Acceso
                 using (var conexion = new clsConexion())
                 {
                     var datos = conexion.EjecutarConsulta(consultaMax);
-                    max = int.Parse(datos.ToString().Trim());
+                    datos.Read();
+                    //max = int.Parse(datos.ToString().Trim());
+                    max = int.Parse(datos["max"].ToString());
                     conexion.cerrarConexion();
                 }
             }
