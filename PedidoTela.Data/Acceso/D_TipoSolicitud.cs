@@ -13,10 +13,10 @@ namespace PedidoTela.Data.Acceso
         private readonly string agregarConsecutivo = "insert into cfc_spt_tipo_solicitud (id_solicitud, id_tipo, tipo, consecutivo) values(?, ?, ?, ?);";
         private readonly string consConsecutivo = "select consecutivo FROM cfc_spt_tipo_solicitud where id_tipo = ?;";
 
-        private readonly string consultaMax = "select idSolicitud(consecutivo) as idSolicitud from  cfc_spt_tipo_solicitud;";
-
+        //private readonly string consultaMax = "select idSolicitud(consecutivo) as idSolicitud from  cfc_spt_tipo_solicitud;";
+        private readonly string consultaMax = "select max(consecutivo) as max from  cfc_spt_tipo_solicitud;";
         #endregion
-        public string Agregar(int prmIdsolicitud, int prmIdtipo, string tipo, int prmConsecutivo)
+        public string Agregar(string prmIdsolicitud, int prmIdtipo, string tipo, int prmConsecutivo)
         {
             string respuesta = "";
             try
@@ -49,7 +49,7 @@ namespace PedidoTela.Data.Acceso
                 using (var con = new clsConexion())
                 {
                     con.Parametros.Add(new IfxParameter("@id_tipo", prmIdentificador));
-                    var datos = con.EjecutarConsulta(this.consConsecutivo);
+                    var datos = con.EjecutarConsulta(consConsecutivo);
                     datos.Read();
                     id = int.Parse(datos["consecutivo"].ToString());
                     con.cerrarConexion();
@@ -99,7 +99,7 @@ namespace PedidoTela.Data.Acceso
             {
                 using (var conexion = new clsConexion())
                 {
-                    var datos = conexion.EjecutarConsultaEscalar(this.consultaMax);
+                    var datos = conexion.EjecutarConsulta(consultaMax);
                     max = int.Parse(datos.ToString().Trim());
                     conexion.cerrarConexion();
                 }

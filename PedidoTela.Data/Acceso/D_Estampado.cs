@@ -56,7 +56,7 @@ namespace PedidoTela.Data.Acceso
                 using (var conexion = new clsConexion())
                 {
                     conexion.Parametros.Add(new IfxParameter("@idestampado", prmIdentificador));
-                    var datos = conexion.EjecutarConsultaEscalar(this.consultaId);
+                    var datos = conexion.EjecutarConsulta(consultaId);
                     id = int.Parse(datos.ToString());
 
                     conexion.cerrarConexion();
@@ -77,7 +77,7 @@ namespace PedidoTela.Data.Acceso
                 using (var con = new clsConexion())
                 {
                     con.Parametros.Add(new IfxParameter("@identificador", identificador));
-                    var datos = con.EjecutarConsulta(this.consultarTodo);
+                    var datos = con.EjecutarConsulta(consultarTodo);
                     while (datos.Read())
                     {
                        

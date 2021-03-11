@@ -33,6 +33,7 @@ namespace PedidoTela.Formularios
             cargar();
             if (dgvUnicolor.RowCount > 0)
             {
+                btnGrabar.Enabled = false;
                 dgvUnicolor.ReadOnly = true;
             }
             else
@@ -97,7 +98,7 @@ namespace PedidoTela.Formularios
                     if (e.ColumnIndex > 1 && e.ColumnIndex < ultimaColumna)
                     {
                         dgvUnicolor.CurrentCell.Value = Regex.Replace(dgvUnicolor.CurrentCell.Value.ToString().Trim(), @"[^0-9]", "");
-                        
+
                         if (dgvUnicolor.CurrentCell.Value.ToString() != "")
                         {
                             int total = 0;
@@ -183,19 +184,43 @@ namespace PedidoTela.Formularios
 
         private void btnConfirmar_Click(object sender, EventArgs e)
         {
+            Unicolor objUnicolor = control.getUnicolor(identificador);
+            id = objUnicolor.Id;
             int idSolicitud = control.consultarIdsolicitud(identificador);
-
+            int maxConsecutivo = control.consultarMaximo();
             if (id != 0)
             {
-                if (control.consultarConsecutivo(id) == 0)
+                if (idSolicitud == 0)
                 {
-                    int maxConsecutivo = control.consultarMaximo();
-                    control.agregarConsecutivo(idSolicitud, id, "Unicolor", maxConsecutivo + 1);
+                    /* quiere decir que ese idSolicitud no está en la tabla cfc_spt_sol_tela
+                     * hay que ingreser el identificador como parámetro  para id_solicitu*/
+                    if (control.consultarConsecutivo(id) == 0)
+                    {
+
+                        control.agregarConsecutivo(identificador, id, "Estampado", maxConsecutivo + 1);
+                        MessageBox.Show("El consecutivo se guardó con éxito.", "Información", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                        btnConfirmar.Enabled = false;
+                        consecutivo = control.consultarConsecutivo(id);
+                        lblConsecutivo.Text = "Consecutivo: " + consecutivo;
+                    }
+                }
+                else
+                {
+                    control.agregarConsecutivo(idSolicitud.ToString(), id, "Estampado", maxConsecutivo + 1);
                     MessageBox.Show("El consecutivo se guardó con éxito.", "Información", MessageBoxButtons.OK, MessageBoxIcon.Information);
                     btnConfirmar.Enabled = false;
+                    consecutivo = control.consultarConsecutivo(id);
+                    lblConsecutivo.Text = "Consecutivo: " + consecutivo;
                 }
             }
+            else
+            {
+                MessageBox.Show("Por favor, Grabe la Información.", "Advertencia", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+
+            }
+        
         }
+    
 
         private void cargar() {
             Unicolor unicolor = control.getUnicolor(identificador);

@@ -15,14 +15,15 @@ namespace PedidoTela.Data.Acceso
         #endregion
         public int consultarIdSolicitud(string prmIdentificador)
         {
-            int idSolicitud = 0;
+            int id = 0;
             try
             {
                 using (var conexion = new clsConexion())
                 {
                     conexion.Parametros.Add(new IfxParameter("@identificador", prmIdentificador));
-                    var datos = conexion.EjecutarConsultaEscalar(this.consultaIdSolicitud);
-                    idSolicitud = int.Parse(datos.ToString().Trim());
+                    var datos = conexion.EjecutarConsulta(consultaIdSolicitud);
+                    id = int.Parse(datos.ToString());
+
                     conexion.cerrarConexion();
                 }
             }
@@ -30,7 +31,7 @@ namespace PedidoTela.Data.Acceso
             {
                 Console.WriteLine("Error: " + ex.Message);
             }
-            return idSolicitud;
+            return id;
         }
     }
 }

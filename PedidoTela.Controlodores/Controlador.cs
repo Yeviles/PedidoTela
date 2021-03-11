@@ -227,7 +227,7 @@ namespace PedidoTela.Controlodores
             D_Estampado d_Estampado = new D_Estampado();
             return d_Estampado.Consultar(idEstampado);
         }
-        public bool agregarConsecutivo(int prmIdsolicitud, int prmIdtipo, string prmTipo, int prmConsecutivo)
+        public bool agregarConsecutivo(string prmIdsolicitud, int prmIdtipo, string prmTipo, int prmConsecutivo)
         {
             D_TipoSolicitud d_solicitud = new D_TipoSolicitud();
             return (d_solicitud.Agregar(prmIdsolicitud, prmIdtipo, prmTipo, prmConsecutivo) == "ok") ? true : false;

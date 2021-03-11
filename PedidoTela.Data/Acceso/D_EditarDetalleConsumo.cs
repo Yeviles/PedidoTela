@@ -18,7 +18,7 @@ namespace PedidoTela.Data.Acceso
 
         private readonly string consultaPorIdEnsayo = "SELECT identificador, st.tipo, desc_prenda, referencia_tela, desc_tela, NVL(ts.tipo, '') as tipo_solicitud, NVL(consumo, '0') AS consumo, sku, fecha_tienda FROM cfc_spt_sol_tela st left join cfc_spt_tipo_solicitud ts on st.idsolicitud = ts.id_solicitud WHERE st.tipo ='Ensayo' and identificador =  ?;";
 
-        private readonly string consultaPorReferencia = "SELECT identificador, st.tipo, desc_prenda, referencia_tela, desc_tela, NVL(ts.tipo, '') as tipo_solicitud, NVL(consumo, '0') AS consumo, sku, fecha_tienda FROM cfc_spt_sol_tela st left join cfc_spt_tipo_solicitud ts on st.idsolicitud = ts.id_solicitud WHERE st.tipo = 'Referencia' and identificador = ?";
+        private readonly string consultaPorReferencia = "SELECT identificador, st.tipo, desc_prenda, referencia_tela, desc_tela, NVL(ts.tipo, '') as tipo_solicitud, NVL(consumo, '0') AS consumo, sku, fecha_tienda FROM cfc_spt_sol_tela st left join cfc_spt_tipo_solicitud ts on st.idsolicitud = ts.id_solicitud WHERE st.tipo = 'Referencia' and identificador = ?;";
 
         private readonly string consultarId = "select identificador from cfc_spt_sol_tela where identificador =?;";
 
@@ -96,64 +96,76 @@ namespace PedidoTela.Data.Acceso
 
             bool b;
             List<EditarDetalleconsumo> respuesta = new List<EditarDetalleconsumo>();
-            using (var administrador = new clsConexion())
+            try
             {
-                administrador.Parametros.Add(new IfxParameter("@identificador", prmIdensayo));
-                var datos = administrador.EjecutarConsulta(consultaPorIdEnsayo);
-                while (datos.Read())
+                using (var administrador = new clsConexion())
                 {
-                    EditarDetalleconsumo objDetalle = new EditarDetalleconsumo();
+                    administrador.Parametros.Add(new IfxParameter("@identificador", prmIdensayo));
+                    var datos = administrador.EjecutarConsulta(consultaPorIdEnsayo);
+                    while (datos.Read())
+                    {
+                        EditarDetalleconsumo objDetalle = new EditarDetalleconsumo();
 
-                    objDetalle.Identificador = datos["identificador"].ToString().Trim();
-                    objDetalle.Tipo = datos["tipo"].ToString().Trim();
-                    objDetalle.DescripcionPrenda = datos["desc_prenda"].ToString().Trim();
-                    objDetalle.ReferenciaTela = datos["referencia_tela"].ToString().Trim();
-                    objDetalle.DescripcionTela = datos["desc_tela"].ToString().Trim();
-                    objDetalle.TipoSolicitud = datos["tipo_solicitud"].ToString().Trim();
-                    objDetalle.Consumo = datos["consumo"].ToString().Trim();
-                    objDetalle.Sku = datos["sku"].ToString().Trim();
-                    objDetalle.FechaTienda = datos["fecha_tienda"].ToString().Trim();
+                        objDetalle.Identificador = datos["identificador"].ToString().Trim();
+                        objDetalle.Tipo = datos["tipo"].ToString().Trim();
+                        objDetalle.DescripcionPrenda = datos["desc_prenda"].ToString().Trim();
+                        objDetalle.ReferenciaTela = datos["referencia_tela"].ToString().Trim();
+                        objDetalle.DescripcionTela = datos["desc_tela"].ToString().Trim();
+                        objDetalle.TipoSolicitud = datos["tipo_solicitud"].ToString().Trim();
+                        objDetalle.Consumo = datos["consumo"].ToString().Trim();
+                        objDetalle.Sku = datos["sku"].ToString().Trim();
+                        objDetalle.FechaTienda = datos["fecha_tienda"].ToString().Trim();
 
-                    respuesta.Add(objDetalle);
+                        respuesta.Add(objDetalle);
 
-                };
-                administrador.cerrarConexion();
+                    }
+                    administrador.cerrarConexion();
+                }
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine("Error: " + ex.Message);
             }
             return respuesta;
-            
         }
 
         public List<EditarDetalleconsumo> ConsultarDtEditadoPorRef(string prmIdReferencia)
         {
 
             List<EditarDetalleconsumo> respuesta = new List<EditarDetalleconsumo>();
-            using (var administrador = new clsConexion())
+            try
             {
-                administrador.Parametros.Add(new IfxParameter("@identificador", prmIdReferencia));
-                var datos = administrador.EjecutarConsulta(consultaPorReferencia);
-                while (datos.Read())
+                using (var administrador = new clsConexion())
                 {
-                    EditarDetalleconsumo objDetalle = new EditarDetalleconsumo();
+                    administrador.Parametros.Add(new IfxParameter("@identificador", prmIdReferencia));
+                    var datos = administrador.EjecutarConsulta(consultaPorReferencia);
+                    while (datos.Read())
+                    {
+                        EditarDetalleconsumo objDetalle = new EditarDetalleconsumo();
 
-                    objDetalle.Identificador = datos["identificador"].ToString().Trim();
-                    objDetalle.Tipo = datos["tipo"].ToString().Trim();
-                    objDetalle.DescripcionPrenda = datos["desc_prenda"].ToString().Trim();
-                    objDetalle.ReferenciaTela = datos["referencia_tela"].ToString().Trim();
-                    objDetalle.DescripcionTela = datos["desc_tela"].ToString().Trim();
-                    objDetalle.TipoSolicitud = datos["tipo_solicitud"].ToString().Trim();
-                    objDetalle.Consumo = datos["consumo"].ToString().Trim();
-                    objDetalle.Sku = datos["sku"].ToString().Trim();
-                    objDetalle.FechaTienda = datos["fecha_tienda"].ToString().Trim();
+                        objDetalle.Identificador = datos["identificador"].ToString().Trim();
+                        objDetalle.Tipo = datos["tipo"].ToString().Trim();
+                        objDetalle.DescripcionPrenda = datos["desc_prenda"].ToString().Trim();
+                        objDetalle.ReferenciaTela = datos["referencia_tela"].ToString().Trim();
+                        objDetalle.DescripcionTela = datos["desc_tela"].ToString().Trim();
+                        objDetalle.TipoSolicitud = datos["tipo_solicitud"].ToString().Trim();
+                        objDetalle.Consumo = datos["consumo"].ToString().Trim();
+                        objDetalle.Sku = datos["sku"].ToString().Trim();
+                        objDetalle.FechaTienda = datos["fecha_tienda"].ToString().Trim();
 
-                    respuesta.Add(objDetalle);
-                };
-                administrador.cerrarConexion();
+                        respuesta.Add(objDetalle);
+                    }
+                    administrador.cerrarConexion();
+                }
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine("Error: " + ex.Message);
             }
             return respuesta;
-
         }
 
-        public bool consultarIdentificador(string prmIdentificador)
+            public bool consultarIdentificador(string prmIdentificador)
         {
             string ensayo;
             using (var administrador = new clsConexion())

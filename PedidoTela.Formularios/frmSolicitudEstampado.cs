@@ -31,6 +31,7 @@ namespace PedidoTela.Formularios
             cargarEstampado();
             if (dvgEstampado.RowCount > 0)
             {
+                btnGrabar.Enabled = false;
                 dvgEstampado.ReadOnly = true;
             }
             else
@@ -208,57 +209,75 @@ namespace PedidoTela.Formularios
             {
                 if (txtObservaciones.Text.Trim().Length > 0)
                 {
-                    if (dvgEstampado.RowCount > 0)
+                    if (cbxTipoEst.SelectedIndex != -1)
                     {
-                        Estampado elemento = new Estampado();
-                        elemento.Esayo_ref = lbIdentificador.Text;
-                        elemento.Referencia_tela = txbRefTela.Text.ToString();
-                        elemento.Nombre_tela = txbNomTela.Text.Trim();
-                        elemento.Tipo_estampado = cbxTipoEst.SelectedItem.ToString();
-                        elemento.Tipo_tejido = cbxTipoTela.SelectedValue.ToString();
-                        elemento.N_dibujos = int.Parse(txbNdibujo.Text.Trim());
-                        elemento.N_cilindros = int.Parse(txbNcilindro.Text.Trim());
-                        elemento.Coordinado_con = (txbCoordinaCon.Text.Trim().Length > 0) ? txbCoordinaCon.Text.Trim() : ""; 
-                        elemento.Coordinado = (cbxSiCoordinado.Checked) ? true : false; 
-                        elemento.Observaciones = (txtObservaciones.Text.Trim().Length > 0) ? txtObservaciones.Text.Trim() : ""; 
-                        if (controlador.addEstampado(elemento))
+                        if (cbxTipoTela.SelectedIndex != -1)
                         {
-                            try
+
+                            if (dvgEstampado.RowCount > 0)
                             {
-                                foreach (DataGridViewRow row in dvgEstampado.Rows)
+                                Estampado elemento = new Estampado();
+                                elemento.Esayo_ref = lbIdentificador.Text;
+                                elemento.Referencia_tela = txbRefTela.Text.ToString();
+                                elemento.Nombre_tela = txbNomTela.Text.Trim();
+                                elemento.Tipo_estampado = cbxTipoEst.SelectedItem.ToString();
+                                elemento.Tipo_tejido = cbxTipoTela.SelectedValue.ToString();
+                                elemento.N_dibujos = int.Parse(txbNdibujo.Text.Trim());
+                                elemento.N_cilindros = int.Parse(txbNcilindro.Text.Trim());
+                                elemento.Coordinado_con = (txbCoordinaCon.Text.Trim().Length > 0) ? txbCoordinaCon.Text.Trim() : "";
+                                elemento.Coordinado = (cbxSiCoordinado.Checked) ? true : false;
+                                elemento.Observaciones = (txtObservaciones.Text.Trim().Length > 0) ? txtObservaciones.Text.Trim() : "";
+                                if (controlador.addEstampado(elemento))
                                 {
-                                    DetalleEstampado detalle = new DetalleEstampado();
-                                    detalle.CodigoColor = row.Cells[0].Value.ToString();
-                                    detalle.Desc_color = row.Cells[1].Value.ToString();
-                                    detalle.Fondo = row.Cells[2].Value.ToString();
-                                    detalle.Des_fondo = row.Cells[3].Value.ToString();
-                                    detalle.Tiendas = (row.Cells[4].Value != null && row.Cells[4].Value.ToString() != "") ? int.Parse(row.Cells[4].Value.ToString()) : 0;
-                                    detalle.Exito = (row.Cells[5].Value != null && row.Cells[5].Value.ToString() != "") ? int.Parse(row.Cells[5].Value.ToString()) : 0;
-                                    detalle.Cencosud = (row.Cells[6].Value != null && row.Cells[6].Value.ToString() != "") ? int.Parse(row.Cells[6].Value.ToString()) : 0;
-                                    detalle.Sao = (row.Cells[7].Value != null && row.Cells[7].Value.ToString() != "") ? int.Parse(row.Cells[7].Value.ToString()) : 0;
-                                    detalle.Comercio = (row.Cells[8].Value != null && row.Cells[8].Value.ToString() != "") ? int.Parse(row.Cells[8].Value.ToString()) : 0;
-                                    detalle.Rosado = (row.Cells[9].Value != null && row.Cells[9].Value.ToString() != "") ? int.Parse(row.Cells[9].Value.ToString()) : 0;
-                                    detalle.Otros = (row.Cells[10].Value != null && row.Cells[10].Value.ToString() != "") ? int.Parse(row.Cells[10].Value.ToString()) : 0;
-                                    detalle.Total = (row.Cells[11].Value != null && row.Cells[11].Value.ToString() != "") ? int.Parse(row.Cells[11].Value.ToString()) : 0;
-                                    detalle.IdEstampado = controlador.consultarIdEstampado(lbIdentificador.Text);
-                                    controlador.addDetalleEstampado(detalle);
+                                    try
+                                    {
+                                        foreach (DataGridViewRow row in dvgEstampado.Rows)
+                                        {
+                                            DetalleEstampado detalle = new DetalleEstampado();
+                                            detalle.CodigoColor = row.Cells[0].Value.ToString();
+                                            detalle.Desc_color = row.Cells[1].Value.ToString();
+                                            detalle.Fondo = row.Cells[2].Value.ToString();
+                                            detalle.Des_fondo = row.Cells[3].Value.ToString();
+                                            detalle.Tiendas = (row.Cells[4].Value != null && row.Cells[4].Value.ToString() != "") ? int.Parse(row.Cells[4].Value.ToString()) : 0;
+                                            detalle.Exito = (row.Cells[5].Value != null && row.Cells[5].Value.ToString() != "") ? int.Parse(row.Cells[5].Value.ToString()) : 0;
+                                            detalle.Cencosud = (row.Cells[6].Value != null && row.Cells[6].Value.ToString() != "") ? int.Parse(row.Cells[6].Value.ToString()) : 0;
+                                            detalle.Sao = (row.Cells[7].Value != null && row.Cells[7].Value.ToString() != "") ? int.Parse(row.Cells[7].Value.ToString()) : 0;
+                                            detalle.Comercio = (row.Cells[8].Value != null && row.Cells[8].Value.ToString() != "") ? int.Parse(row.Cells[8].Value.ToString()) : 0;
+                                            detalle.Rosado = (row.Cells[9].Value != null && row.Cells[9].Value.ToString() != "") ? int.Parse(row.Cells[9].Value.ToString()) : 0;
+                                            detalle.Otros = (row.Cells[10].Value != null && row.Cells[10].Value.ToString() != "") ? int.Parse(row.Cells[10].Value.ToString()) : 0;
+                                            detalle.Total = (row.Cells[11].Value != null && row.Cells[11].Value.ToString() != "") ? int.Parse(row.Cells[11].Value.ToString()) : 0;
+                                            detalle.IdEstampado = controlador.consultarIdEstampado(lbIdentificador.Text);
+                                            controlador.addDetalleEstampado(detalle);
+                                            btnGrabar.Enabled = false;
+                                            btnConfirmar.Enabled = true;
+                                        }
+                                        MessageBox.Show("Estampado se guardó con éxito", "Información", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                                    }
+                                    catch 
+                                    {
+                                        MessageBox.Show("Detalle Estampado no se pudo guardar", "Advertencia", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                                    }
                                 }
-                                MessageBox.Show("Estampado se guardó con éxito", "Información", MessageBoxButtons.OK, MessageBoxIcon.Information);
                             }
-                            catch (Exception ex)
+                            else
                             {
-                                MessageBox.Show("Detalle Estampado no se pudo guardar", "Advertencia", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                                MessageBox.Show("Por favor, adicione al menos un color.", "Advertencia", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                             }
+                        }
+                        else
+                        {
+                            MessageBox.Show("Por favor,Seleccione un tipo de tejido.", "Advertencia", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                         }
                     }
                     else
                     {
-                        MessageBox.Show("Por favor, adicione al menos un color", "Advertencia", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                        MessageBox.Show("Por favor,Seleccione un tipo de estampado.", "Advertencia", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+
                     }
                 }
                 else
                 {
-                    MessageBox.Show("Por favor, ingrese las observaciones de diseño", "Advertencia", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    MessageBox.Show("Por favor, ingrese las observaciones de diseño.", "Advertencia", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 }
             }
         }
@@ -305,16 +324,33 @@ namespace PedidoTela.Formularios
 
         private void btnConfirmar_Click(object sender, EventArgs e)
         {
+            Estampado objEstampado = controlador.getEstampado(Identificador);
+            id = objEstampado.IdEstampado;
             int idSolicitud = controlador.consultarIdsolicitud(identificador);
-            
+            int maxConsecutivo = controlador.consultarMaximo();
             if (id != 0)
             {
-                if (controlador.consultarConsecutivo(id) == 0)
+                if (idSolicitud == 0)
                 {
-                    int maxConsecutivo = controlador.consultarMaximo();
-                    controlador.agregarConsecutivo(idSolicitud, id,"Estampado", maxConsecutivo + 1);
+                    /* quiere decir que ese idSolicitud no está en la tabla cfc_spt_sol_tela
+                     * hay que ingreser el identificador como parámetro  para id_solicitu*/
+                    if (controlador.consultarConsecutivo(id) == 0)
+                    {
+                        
+                        controlador.agregarConsecutivo(identificador, id, "Estampado", maxConsecutivo + 1);
+                        MessageBox.Show("El consecutivo se guardó con éxito.", "Información", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                        btnConfirmar.Enabled = false;
+                        consecutivo = controlador.consultarConsecutivo(id);
+                        lblConsecutivo.Text = "Consecutivo: " + consecutivo;
+                    }
+                }
+                else
+                {
+                    controlador.agregarConsecutivo(idSolicitud.ToString(), id, "Estampado", maxConsecutivo + 1);
                     MessageBox.Show("El consecutivo se guardó con éxito.", "Información", MessageBoxButtons.OK, MessageBoxIcon.Information);
                     btnConfirmar.Enabled = false;
+                    consecutivo = controlador.consultarConsecutivo(id);
+                    lblConsecutivo.Text = "Consecutivo: " + consecutivo;
                 }
             }
             else

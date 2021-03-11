@@ -120,6 +120,7 @@ namespace PedidoTela.Formularios
             this.ClientSize = new System.Drawing.Size(744, 544);
             this.Controls.Add(this.dgvRefTelas);
             this.Controls.Add(this.panel1);
+            this.MaximizeBox = false;
             this.Name = "frmEditarDsolicitudTela";
             this.Text = "Editar Solicitud Tela";
             this.panel1.ResumeLayout(false);
