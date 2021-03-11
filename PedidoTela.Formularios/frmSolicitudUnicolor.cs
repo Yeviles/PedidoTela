@@ -196,7 +196,6 @@ namespace PedidoTela.Formularios
                      * hay que ingreser el identificador como parámetro  para id_solicitu*/
                     if (control.consultarConsecutivo(id) == 0)
                     {
-
                         control.agregarConsecutivo(identificador, id, "Unicolor", maxConsecutivo + 1);
                         MessageBox.Show("El consecutivo se guardó con éxito.", "Información", MessageBoxButtons.OK, MessageBoxIcon.Information);
                         btnConfirmar.Enabled = false;
@@ -206,7 +205,7 @@ namespace PedidoTela.Formularios
                 }
                 else
                 {
-                    control.agregarConsecutivo(idSolicitud.ToString(), id, "Unicolor", maxConsecutivo + 1);
+                    control.agregarConsecutivo(identificador, id, "Unicolor", maxConsecutivo + 1);
                     MessageBox.Show("El consecutivo se guardó con éxito.", "Información", MessageBoxButtons.OK, MessageBoxIcon.Information);
                     btnConfirmar.Enabled = false;
                     consecutivo = control.consultarConsecutivo(id);
@@ -216,9 +215,7 @@ namespace PedidoTela.Formularios
             else
             {
                 MessageBox.Show("Por favor, Grabe la Información.", "Advertencia", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-
             }
-        
         }
     
 

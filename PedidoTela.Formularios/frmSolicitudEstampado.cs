@@ -258,6 +258,7 @@ namespace PedidoTela.Formularios
                                                 detalle.IdEstampado = id;
                                                 controlador.addDetalleEstampado(detalle);
                                                 btnGrabar.Enabled = false;
+                                                btnAddColor.Enabled = false;
                                                 btnConfirmar.Enabled = true;
                                             }
                                             MessageBox.Show("Estampado se guardó con éxito", "Información", MessageBoxButtons.OK, MessageBoxIcon.Information);
@@ -369,7 +370,7 @@ namespace PedidoTela.Formularios
                 }
                 else
                 {
-                    controlador.agregarConsecutivo(idSolicitud.ToString(), id, "Estampado", maxConsecutivo + 1);
+                    controlador.agregarConsecutivo(identificador, id, "Estampado", maxConsecutivo + 1);
                     MessageBox.Show("El consecutivo se guardó con éxito.", "Información", MessageBoxButtons.OK, MessageBoxIcon.Information);
                     btnConfirmar.Enabled = false;
                     consecutivo = controlador.consultarConsecutivo(id);

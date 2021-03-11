@@ -111,6 +111,7 @@ namespace PedidoTela.Formularios
 
         private void cargarDgvEditadosPorREf(List<EditarDetalleconsumo> prmLista)
         {
+            dgvDetalleConsumo.Rows.Clear();
             if (prmLista.Count != 0)
             {
                 dgvDetalleConsumo.Rows.Add(prmLista[0].Identificador.ToString(),
@@ -166,35 +167,40 @@ namespace PedidoTela.Formularios
                 }
                 else if (!editando)
                 {
-                    frmTipoSolicitud objTipoSolicitud = new frmTipoSolicitud();
                     string identificador = dgvDetalleConsumo.CurrentRow.Cells[0].Value.ToString().Trim();
-
-                    objTipoSolicitud.StartPosition = FormStartPosition.CenterScreen;
-                    if (objTipoSolicitud.ShowDialog() == DialogResult.OK)
+                    int id = controlador.consultarIdsolicitud(identificador);
+                    if (id != 0)
                     {
-                        String seleccion = objTipoSolicitud.Seleccion;
-                        if (seleccion == "unicolor")
+                        frmTipoSolicitud objTipoSolicitud = new frmTipoSolicitud();
+                        objTipoSolicitud.StartPosition = FormStartPosition.CenterScreen;
+                        if (objTipoSolicitud.ShowDialog() == DialogResult.OK)
                         {
-                            frmSolicitudUnicolor frmUnicolor = new frmSolicitudUnicolor(controlador, identificador, dgvDetalleConsumo.Rows[e.RowIndex].Cells[2].Value.ToString());
-                            frmUnicolor.Show();
+                            String seleccion = objTipoSolicitud.Seleccion;
+                            if (seleccion == "unicolor")
+                            {
+                                frmSolicitudUnicolor frmUnicolor = new frmSolicitudUnicolor(controlador, identificador, dgvDetalleConsumo.Rows[e.RowIndex].Cells[2].Value.ToString());
+                                frmUnicolor.Show();
+                            }
+                            else if (seleccion == "estampado")
+                            {
+                                pnl frmEstamapado = new pnl(controlador, identificador);
+                                frmEstamapado.Show();
+                                frmEstamapado.recibirInfoTela(dgvDetalleConsumo.CurrentRow.Cells["refTela"].Value.ToString(), dgvDetalleConsumo.CurrentRow.Cells["desTela"].Value.ToString());
+                            }
+                            else if (seleccion == "planoPre")
+                            {
+                                frmSolicitudPlanoPretenido frmPlapretenido = new frmSolicitudPlanoPretenido(controlador, identificador, dgvDetalleConsumo.Rows[e.RowIndex].Cells[2].Value.ToString());
+                                frmPlapretenido.Show();
+                            }
+                            else if (seleccion == "cuelloPun")
+                            {
+                                frmSolicitudCuellosTiras frmCuellos = new frmSolicitudCuellosTiras();
+                                frmCuellos.Show();
+                            }
                         }
-                        else if (seleccion == "estampado")
-                        {
-                            pnl frmEstamapado = new pnl(controlador, identificador);
-                            frmEstamapado.Show();
-                            frmEstamapado.recibirInfoTela(dgvDetalleConsumo.CurrentRow.Cells["refTela"].Value.ToString(), dgvDetalleConsumo.CurrentRow.Cells["desTela"].Value.ToString());
-                        }
-                        else if (seleccion == "planoPre")
-                        {
-                            frmSolicitudPlanoPretenido frmPlapretenido = new frmSolicitudPlanoPretenido(controlador, identificador, dgvDetalleConsumo.Rows[e.RowIndex].Cells[2].Value.ToString());
-                            frmPlapretenido.Show();
-
-                        }
-                        else if (seleccion == "cuelloPun")
-                        {
-                            frmSolicitudCuellosTiras frmCuellos = new frmSolicitudCuellosTiras();
-                            frmCuellos.Show();
-                        }
+                    }
+                    else {
+                        MessageBox.Show("Por favor, guarde la solicitud!", "Advertencia", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                     }
                 }
                 else
@@ -219,7 +225,6 @@ namespace PedidoTela.Formularios
 
                     if (e.ColumnIndex == 2 || e.ColumnIndex == 3)
                     {
-
                         frmEditarDsolicitudTela objEditar = new frmEditarDsolicitudTela(controlador);
                         objEditar.StartPosition = FormStartPosition.CenterScreen;
 
@@ -282,12 +287,12 @@ namespace PedidoTela.Formularios
                     dtpFechaTienda.Value = DateTime.Now;
                 }
             }
-
             else if (cbxTipo.SelectedItem.ToString() == "Referencia" && (e.KeyChar == Convert.ToChar(Keys.Enter)))
             {
                 cargarTexBox(cbxTipo, controlador.getReferencia(txbEnsRefDigitado.Text));
                 dgvDetalleConsumo.Rows.Clear();
-
+                txbSku.Clear();
+                dtpFechaTienda.Value = DateTime.Now;
             }
         }
 
@@ -388,7 +393,7 @@ namespace PedidoTela.Formularios
                     //Realiza un UPDATE dado que el Indentificador ya esta en la tabla.
                     if (controlador.setDcEditadoPorEnsayo(detalle, txbEnsRefDigitado.Text))
                     {
-                        MessageBox.Show("La información se Actualizo con éxito", "Información", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                        MessageBox.Show("La información se actualizo con éxito", "Información", MessageBoxButtons.OK, MessageBoxIcon.Information);
                     }
                 }
                 else

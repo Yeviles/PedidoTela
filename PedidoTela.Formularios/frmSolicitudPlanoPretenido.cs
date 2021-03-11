@@ -272,7 +272,7 @@ namespace PedidoTela.Formularios
                 }
                 else
                 {
-                    control.agregarConsecutivo(idSolicitud.ToString(), id, "Plano preteñido", maxConsecutivo + 1);
+                    control.agregarConsecutivo(identificador, id, "Plano preteñido", maxConsecutivo + 1);
                     MessageBox.Show("El consecutivo se guardó con éxito.", "Información", MessageBoxButtons.OK, MessageBoxIcon.Information);
                     btnConfirmar.Enabled = false;
                     consecutivo = control.consultarConsecutivo(id);

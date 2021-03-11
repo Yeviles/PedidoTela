@@ -49,7 +49,7 @@ namespace PedidoTela.Data.Acceso
                     con.Parametros.Add(new IfxParameter("@desc_prenda", prmDetalleCon.DescripcionPrenda));
                     con.Parametros.Add(new IfxParameter("@referencia_tela", prmDetalleCon.ReferenciaTela));
                     con.Parametros.Add(new IfxParameter("@desc_tela", prmDetalleCon.DescripcionTela));
-                    con.Parametros.Add(new IfxParameter("@consumo", prmDetalleCon.Consumo));
+                    con.Parametros.Add(new IfxParameter("@consumo", prmDetalleCon.Consumo.Replace(",", ".")));
                     con.Parametros.Add(new IfxParameter("@sku", prmDetalleCon.Sku));
                     con.Parametros.Add(new IfxParameter("@fecha_tienda", prmDetalleCon.FechaTienda));
                     var datos = con.EjecutarConsulta(this.consultaInsert);
@@ -93,7 +93,6 @@ namespace PedidoTela.Data.Acceso
 
         public List<EditarDetalleconsumo> ConsultarDCEditadoPorEnsayo(string prmIdensayo)
         {
-
             bool b;
             List<EditarDetalleconsumo> respuesta = new List<EditarDetalleconsumo>();
             try
@@ -165,7 +164,7 @@ namespace PedidoTela.Data.Acceso
             return respuesta;
         }
 
-            public bool consultarIdentificador(string prmIdentificador)
+        public bool consultarIdentificador(string prmIdentificador)
         {
             string ensayo;
             using (var administrador = new clsConexion())

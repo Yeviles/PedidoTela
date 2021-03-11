@@ -22,8 +22,8 @@ namespace PedidoTela.Data.Acceso
                 {
                     conexion.Parametros.Add(new IfxParameter("@identificador", prmIdentificador));
                     var datos = conexion.EjecutarConsulta(consultaIdSolicitud);
-                    id = int.Parse(datos.ToString());
-
+                    datos.Read();
+                    id = int.Parse(datos["idsolicitud"].ToString());
                     conexion.cerrarConexion();
                 }
             }

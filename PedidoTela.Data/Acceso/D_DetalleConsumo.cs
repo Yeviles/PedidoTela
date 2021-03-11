@@ -24,7 +24,7 @@ namespace PedidoTela.Data.Acceso
         //Script para obtener Consumo Detalle cuando es REFERENCIA
         private readonly string consulta2 = "select unique ficha.codi_item as ensayo_referencia "
                                             + ",prendasficha.codi_prenda, (prendas.desc_prenda) desc_prenda "
-                                            + ", trim(tel.codi_item) as codigo_tela,case when tel.tipo = 'P' then trim(telas.desc_item) else tel.codi_item end as descripcion_tela, tel.consumo_est "
+                                            + ", trim(tel.codi_item) as codigo_tela,case when tel.tipo = 'P' then trim(telas.desc_item) else tel.codi_item end as descripcion_tela, NVL(tel.consumo_est, '0') AS consumo_est "
                                             + "from cfc_e_ficha ficha inner join cfc_prendas_ficha prendasficha on ficha.idempresa= prendasficha.idempresa and ficha.idficha= prendasficha.idficha "
                                             + "inner join cfc_telas_ensayo tel on prendasficha.idempresa= tel.idempresa and prendasficha.idprogramador= tel.idprogramador and prendasficha.idensayo= tel.idensayo and prendasficha.idrepeticion= tel.idrepeticion "
                                             + "left join  items telas  on tel.codi_item = telas.codi_item "
