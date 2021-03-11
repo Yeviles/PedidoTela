@@ -33,9 +33,6 @@ namespace PedidoTela.Formularios
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
             this.tbcPedidoTela = new System.Windows.Forms.TabControl();
-            this.ttEnsayoRef = new System.Windows.Forms.ToolTip(this.components);
-            this.ttSku = new System.Windows.Forms.ToolTip(this.components);
-            this.ttTipo = new System.Windows.Forms.ToolTip(this.components);
             this.tbpAdicionarSolTela = new System.Windows.Forms.TabPage();
             this.pnlAdicionarSolicitud = new System.Windows.Forms.Panel();
             this.txbEnsRefDigitado = new System.Windows.Forms.TextBox();
@@ -60,7 +57,6 @@ namespace PedidoTela.Formularios
             this.lbDisenador = new System.Windows.Forms.Label();
             this.label7 = new System.Windows.Forms.Label();
             this.dgvDetalleConsumo = new System.Windows.Forms.DataGridView();
-            this.lbDetalleConsumo = new System.Windows.Forms.Label();
             this.ensayoRef = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.desPrenda = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.refTela = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -69,6 +65,10 @@ namespace PedidoTela.Formularios
             this.consumos = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.editar = new System.Windows.Forms.DataGridViewButtonColumn();
             this.guardar = new System.Windows.Forms.DataGridViewButtonColumn();
+            this.lbDetalleConsumo = new System.Windows.Forms.Label();
+            this.ttEnsayoRef = new System.Windows.Forms.ToolTip(this.components);
+            this.ttSku = new System.Windows.Forms.ToolTip(this.components);
+            this.ttTipo = new System.Windows.Forms.ToolTip(this.components);
             this.tbcPedidoTela.SuspendLayout();
             this.tbpAdicionarSolTela.SuspendLayout();
             this.pnlAdicionarSolicitud.SuspendLayout();
@@ -377,16 +377,7 @@ namespace PedidoTela.Formularios
             this.dgvDetalleConsumo.TabIndex = 19;
             this.dgvDetalleConsumo.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvDetalleConsumo_CellClick);
             this.dgvDetalleConsumo.CellEndEdit += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvDetalleConsumo_CellEndEdit);
-            // 
-            // lbDetalleConsumo
-            // 
-            this.lbDetalleConsumo.AutoSize = true;
-            this.lbDetalleConsumo.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
-            this.lbDetalleConsumo.Location = new System.Drawing.Point(13, 221);
-            this.lbDetalleConsumo.Name = "lbDetalleConsumo";
-            this.lbDetalleConsumo.Size = new System.Drawing.Size(107, 15);
-            this.lbDetalleConsumo.TabIndex = 18;
-            this.lbDetalleConsumo.Text = "Detalle Consumo";
+            this.dgvDetalleConsumo.CellPainting += new System.Windows.Forms.DataGridViewCellPaintingEventHandler(this.dgvDetalleConsumo_CellPainting);
             // 
             // ensayoRef
             // 
@@ -442,6 +433,16 @@ namespace PedidoTela.Formularios
             this.guardar.MinimumWidth = 6;
             this.guardar.Name = "guardar";
             this.guardar.ReadOnly = true;
+            // 
+            // lbDetalleConsumo
+            // 
+            this.lbDetalleConsumo.AutoSize = true;
+            this.lbDetalleConsumo.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
+            this.lbDetalleConsumo.Location = new System.Drawing.Point(13, 221);
+            this.lbDetalleConsumo.Name = "lbDetalleConsumo";
+            this.lbDetalleConsumo.Size = new System.Drawing.Size(107, 15);
+            this.lbDetalleConsumo.TabIndex = 18;
+            this.lbDetalleConsumo.Text = "Detalle Consumo";
             // 
             // frmSolicitudTela
             // 
