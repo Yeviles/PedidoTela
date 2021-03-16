@@ -1,7 +1,11 @@
 ﻿using PedidoTela.Data.Acceso;
+using PedidoTela.Entidades;
 using PedidoTela.Entidades.Logica;
 using System;
 using System.Collections.Generic;
+using System.Drawing;
+using System.Drawing.Imaging;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -290,6 +294,61 @@ namespace PedidoTela.Controlodores
             int anterior = d_PlanoPretenido.Consultarconsecutivo();
             return d_PlanoPretenido.AgregarConsecutivo(anterior + 1, idPlano);
         }
+
+
+        #endregion
+
+        #region Métodos Solicitud Cuellos-Puños-Tiras
+        public int getIdCuellos(string identificador)
+        {
+            D_CuellosTiras d_CuelloId = new D_CuellosTiras();
+            return d_CuelloId.ConsultarId(identificador);
+        }
+        public CuellosTiras getCuellosTiras(string identificador)
+        {
+            D_CuellosTiras d_CuellosT = new D_CuellosTiras();
+            return d_CuellosT.Consultar(identificador);
+        }
+        public bool addCuellosTiras(CuellosTiras cuellosTiras)
+        {
+            D_CuellosTiras d_CuellosT = new D_CuellosTiras();
+            return (d_CuellosT.Agregar(cuellosTiras) == "ok") ? true : false;
+        }
+        public List<DetalleCuelloUno> getDetalleCuellosUno(int idCuellos)
+        {
+            D_DetalleCuelloUno d_DetalleCuelloUno = new D_DetalleCuelloUno();
+            return d_DetalleCuelloUno.Consultar(idCuellos);
+        }
+        public List<DetalleCuelloDos> getDetalleCuellosDos(int idCuellos)
+        {
+            D_DetalleCuelloDos d_DetalleCuelloDos = new D_DetalleCuelloDos();
+            return d_DetalleCuelloDos.Consultar(idCuellos);
+        }
+        public void addDetalleCuelloUno(DetalleCuelloUno detalle)
+        {
+            D_DetalleCuelloUno d_DetalleCuelloUno = new D_DetalleCuelloUno();
+            d_DetalleCuelloUno.Agregar(detalle);
+        }
+        public void addDetalleCuelloDos(DetalleCuelloDos detalle)
+        {
+            D_DetalleCuelloDos d_DetalleCuelloDos = new D_DetalleCuelloDos();
+            d_DetalleCuelloDos.Agregar(detalle);
+        }
+
+        public void guardarImagen(string ruta, Image imagen, string nombre, string tipo)
+        {
+            if (!Directory.Exists(ruta))
+            {
+                DirectoryInfo di = Directory.CreateDirectory(ruta);
+            }
+            ImageFormat formato = ImageFormat.Jpeg;
+            if (tipo.ToLower().Equals("png"))
+            {
+                formato = ImageFormat.Png;
+            }
+            imagen.Save(ruta + nombre, formato);
+        }
+       
 
         #endregion
     }

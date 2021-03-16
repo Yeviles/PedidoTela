@@ -194,7 +194,7 @@ namespace PedidoTela.Formularios
                             }
                             else if (seleccion == "cuelloPun")
                             {
-                                frmSolicitudCuellosTiras frmCuellos = new frmSolicitudCuellosTiras();
+                                frmSolicitudCuellosTiras frmCuellos = new frmSolicitudCuellosTiras(controlador,identificador);
                                 frmCuellos.Show();
                             }
                         }

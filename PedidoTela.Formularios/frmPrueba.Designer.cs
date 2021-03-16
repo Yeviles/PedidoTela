@@ -43,7 +43,17 @@ namespace PedidoTela.Formularios
             this.txbEntrada = new System.Windows.Forms.TextBox();
             this.txbTema = new System.Windows.Forms.TextBox();
             this.txbAnio = new System.Windows.Forms.TextBox();
+            this.panel8 = new System.Windows.Forms.Panel();
+            this.textBox1 = new System.Windows.Forms.TextBox();
+            this.lbAncho = new System.Windows.Forms.Label();
+            this.textBox40 = new System.Windows.Forms.TextBox();
+            this.label7 = new System.Windows.Forms.Label();
+            this.textBox39 = new System.Windows.Forms.TextBox();
+            this.textBox38 = new System.Windows.Forms.TextBox();
+            this.label8 = new System.Windows.Forms.Label();
+            this.label9 = new System.Windows.Forms.Label();
             this.panel9.SuspendLayout();
+            this.panel8.SuspendLayout();
             this.SuspendLayout();
             // 
             // lbTotalCons
@@ -181,11 +191,97 @@ namespace PedidoTela.Formularios
             this.txbAnio.Size = new System.Drawing.Size(100, 22);
             this.txbAnio.TabIndex = 142;
             // 
+            // panel8
+            // 
+            this.panel8.BackColor = System.Drawing.SystemColors.ScrollBar;
+            this.panel8.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.panel8.Controls.Add(this.textBox1);
+            this.panel8.Controls.Add(this.lbAncho);
+            this.panel8.Controls.Add(this.textBox40);
+            this.panel8.Controls.Add(this.label7);
+            this.panel8.Controls.Add(this.textBox39);
+            this.panel8.Controls.Add(this.textBox38);
+            this.panel8.Controls.Add(this.label8);
+            this.panel8.Controls.Add(this.label9);
+            this.panel8.Location = new System.Drawing.Point(784, 445);
+            this.panel8.Name = "panel8";
+            this.panel8.Size = new System.Drawing.Size(143, 120);
+            this.panel8.TabIndex = 143;
+            // 
+            // textBox1
+            // 
+            this.textBox1.Location = new System.Drawing.Point(58, 45);
+            this.textBox1.Name = "textBox1";
+            this.textBox1.Size = new System.Drawing.Size(60, 22);
+            this.textBox1.TabIndex = 126;
+            // 
+            // lbAncho
+            // 
+            this.lbAncho.AutoSize = true;
+            this.lbAncho.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
+            this.lbAncho.Location = new System.Drawing.Point(32, 13);
+            this.lbAncho.Name = "lbAncho";
+            this.lbAncho.Size = new System.Drawing.Size(50, 19);
+            this.lbAncho.TabIndex = 119;
+            this.lbAncho.Text = "Ancho";
+            // 
+            // textBox40
+            // 
+            this.textBox40.Location = new System.Drawing.Point(58, 143);
+            this.textBox40.Name = "textBox40";
+            this.textBox40.Size = new System.Drawing.Size(60, 22);
+            this.textBox40.TabIndex = 120;
+            // 
+            // label7
+            // 
+            this.label7.AutoSize = true;
+            this.label7.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
+            this.label7.Location = new System.Drawing.Point(3, 94);
+            this.label7.Name = "label7";
+            this.label7.Size = new System.Drawing.Size(19, 19);
+            this.label7.TabIndex = 125;
+            this.label7.Text = "X";
+            // 
+            // textBox39
+            // 
+            this.textBox39.Location = new System.Drawing.Point(58, 67);
+            this.textBox39.Name = "textBox39";
+            this.textBox39.Size = new System.Drawing.Size(60, 22);
+            this.textBox39.TabIndex = 121;
+            // 
+            // textBox38
+            // 
+            this.textBox38.Location = new System.Drawing.Point(58, 88);
+            this.textBox38.Name = "textBox38";
+            this.textBox38.Size = new System.Drawing.Size(60, 22);
+            this.textBox38.TabIndex = 122;
+            // 
+            // label8
+            // 
+            this.label8.AutoSize = true;
+            this.label8.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
+            this.label8.Location = new System.Drawing.Point(3, 70);
+            this.label8.Name = "label8";
+            this.label8.Size = new System.Drawing.Size(19, 19);
+            this.label8.TabIndex = 124;
+            this.label8.Text = "X";
+            // 
+            // label9
+            // 
+            this.label9.AutoSize = true;
+            this.label9.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
+            this.label9.Location = new System.Drawing.Point(3, 48);
+            this.label9.Name = "label9";
+            this.label9.Size = new System.Drawing.Size(19, 19);
+            this.label9.TabIndex = 123;
+            this.label9.Text = "X";
+            // 
             // frmPrueba
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1710, 416);
+            this.ClientSize = new System.Drawing.Size(1710, 1011);
+            this.Controls.Add(this.panel8);
             this.Controls.Add(this.txbAnio);
             this.Controls.Add(this.txbTema);
             this.Controls.Add(this.txbEntrada);
@@ -202,6 +298,8 @@ namespace PedidoTela.Formularios
             this.Text = "frmPrueba";
             this.Load += new System.EventHandler(this.frmPrueba_Load);
             this.panel9.ResumeLayout(false);
+            this.panel8.ResumeLayout(false);
+            this.panel8.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -223,5 +321,14 @@ namespace PedidoTela.Formularios
         private System.Windows.Forms.TextBox txbEntrada;
         private System.Windows.Forms.TextBox txbTema;
         private System.Windows.Forms.TextBox txbAnio;
+        private System.Windows.Forms.Panel panel8;
+        private System.Windows.Forms.TextBox textBox1;
+        private System.Windows.Forms.Label lbAncho;
+        private System.Windows.Forms.TextBox textBox40;
+        private System.Windows.Forms.Label label7;
+        private System.Windows.Forms.TextBox textBox39;
+        private System.Windows.Forms.TextBox textBox38;
+        private System.Windows.Forms.Label label8;
+        private System.Windows.Forms.Label label9;
     }
 }

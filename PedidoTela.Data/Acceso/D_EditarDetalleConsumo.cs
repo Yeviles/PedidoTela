@@ -93,7 +93,7 @@ namespace PedidoTela.Data.Acceso
 
         public List<EditarDetalleconsumo> ConsultarDCEditadoPorEnsayo(string prmIdensayo)
         {
-            bool b;
+            //bool b;
             List<EditarDetalleconsumo> respuesta = new List<EditarDetalleconsumo>();
             try
             {
