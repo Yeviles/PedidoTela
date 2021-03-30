@@ -14,15 +14,15 @@ namespace PedidoTela.Data.Acceso
     {
         #region Consultas
 
-        private readonly string consultaInsert = "INSERT INTO cfc_spt_sol_tela (identificador, tipo, desc_prenda, referencia_tela, desc_tela, consumo, sku, fecha_tienda) VALUES(?, ?, ?, ?, ?, ?, ?, ?);";
+        private readonly string consultaInsert = "INSERT INTO cfc_spt_sol_tela (identificador,idmundo,codi_capsula,codi_entrada, tipo, desc_prenda, referencia_tela, desc_tela, consumo, sku, fecha_tienda,muestrario,idusuario,codi_linea) VALUES(?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?,?,?,?);";
 
-        private readonly string consultaPorIdEnsayo = "SELECT identificador, st.tipo, desc_prenda, referencia_tela, desc_tela, NVL(ts.tipo, '') as tipo_solicitud, NVL(consumo, '0') AS consumo, sku, fecha_tienda FROM cfc_spt_sol_tela st left join cfc_spt_tipo_solicitud ts on st.identificador = ts.id_solicitud WHERE st.tipo ='Ensayo' and identificador =  ?;";
+        private readonly string consultaPorIdEnsayo = "SELECT identificador, st.tipo, desc_prenda, referencia_tela, desc_tela, NVL(ts.tipo, '') as tipo_solicitud, NVL(consumo, '0') AS consumo, sku, fecha_tienda,muestrario FROM cfc_spt_sol_tela st left join cfc_spt_tipo_solicitud ts on st.identificador = ts.id_solicitud WHERE st.tipo ='Ensayo' and identificador =  ?;";
 
-        private readonly string consultaPorReferencia = "SELECT identificador, st.tipo, desc_prenda, referencia_tela, desc_tela, NVL(ts.tipo, '') as tipo_solicitud, NVL(consumo, '0') AS consumo, sku, fecha_tienda FROM cfc_spt_sol_tela st left join cfc_spt_tipo_solicitud ts on st.identificador = ts.id_solicitud WHERE st.tipo = 'Referencia' and identificador = ?;";
+        private readonly string consultaPorReferencia = "SELECT identificador, st.tipo, desc_prenda, referencia_tela, desc_tela, NVL(ts.tipo, '') as tipo_solicitud, NVL(consumo, '0') AS consumo, sku, fecha_tienda,muestrario FROM cfc_spt_sol_tela st left join cfc_spt_tipo_solicitud ts on st.identificador = ts.id_solicitud WHERE st.tipo = 'Referencia' and identificador = ?;";
 
         private readonly string consultarId = "select identificador from cfc_spt_sol_tela where identificador =?;";
 
-        private readonly string UpdatePorId = "update cfc_spt_sol_tela set referencia_tela=?, desc_tela=?, consumo=?, sku=?, fecha_tienda=? where identificador = ?;";
+        private readonly string UpdatePorId = "update cfc_spt_sol_tela set idmundo =?, codi_capsula=?, codi_entrada=?, referencia_tela=?, desc_tela=?, consumo=?, sku=?, fecha_tienda=?, muestrario=?,idusuario=?,codi_linea=? where identificador = ?;";
         #endregion
 
         #region Métodos
@@ -45,6 +45,9 @@ namespace PedidoTela.Data.Acceso
                 {
 
                     con.Parametros.Add(new IfxParameter("@identificador", prmDetalleCon.Identificador));
+                    con.Parametros.Add(new IfxParameter("@idmundo",prmDetalleCon.Idmundo));
+                    con.Parametros.Add(new IfxParameter("@codi_capsula", prmDetalleCon.Codi_capsula));
+                    con.Parametros.Add(new IfxParameter("@codi_entrada", prmDetalleCon.Codi_entrada));
                     con.Parametros.Add(new IfxParameter("@tipo", prmDetalleCon.Tipo));
                     con.Parametros.Add(new IfxParameter("@desc_prenda", prmDetalleCon.DescripcionPrenda));
                     con.Parametros.Add(new IfxParameter("@referencia_tela", prmDetalleCon.ReferenciaTela));
@@ -52,6 +55,10 @@ namespace PedidoTela.Data.Acceso
                     con.Parametros.Add(new IfxParameter("@consumo", prmDetalleCon.Consumo.Replace(",", ".")));
                     con.Parametros.Add(new IfxParameter("@sku", prmDetalleCon.Sku));
                     con.Parametros.Add(new IfxParameter("@fecha_tienda", prmDetalleCon.FechaTienda));
+                    con.Parametros.Add(new IfxParameter("@muestrario", prmDetalleCon.Muestrario));
+                    con.Parametros.Add(new IfxParameter("@idusuario", prmDetalleCon.Id_disenador));
+                    con.Parametros.Add(new IfxParameter("@codi_linea", prmDetalleCon.Codi_linea));
+
                     var datos = con.EjecutarConsulta(this.consultaInsert);
                     con.cerrarConexion();
                 }
@@ -71,11 +78,18 @@ namespace PedidoTela.Data.Acceso
             {
                 using (var con = new clsConexion())
                 {
+
+                    con.Parametros.Add(new IfxParameter("@idmundo", prmDetalleCon.Idmundo));
+                    con.Parametros.Add(new IfxParameter("@codi_capsula", prmDetalleCon.Codi_capsula));
+                    con.Parametros.Add(new IfxParameter("@codi_entrada", prmDetalleCon.Codi_entrada));
                     con.Parametros.Add(new IfxParameter("@referencia_tela", prmDetalleCon.ReferenciaTela));
                     con.Parametros.Add(new IfxParameter("@desc_tela", prmDetalleCon.DescripcionTela));
                     con.Parametros.Add(new IfxParameter("@consumo", prmDetalleCon.Consumo.Replace(",", ".")));
                     con.Parametros.Add(new IfxParameter("@sku", prmDetalleCon.Sku));
                     con.Parametros.Add(new IfxParameter("@fecha_tienda", prmDetalleCon.FechaTienda));
+                    con.Parametros.Add(new IfxParameter("@muestrario", prmDetalleCon.Muestrario));
+                    con.Parametros.Add(new IfxParameter("@idusuario", prmDetalleCon.Id_disenador));
+                    con.Parametros.Add(new IfxParameter("@codi_linea", prmDetalleCon.Codi_linea));
 
                     con.Parametros.Add(new IfxParameter("@identificador", prmEditar));
                     var datos = con.EjecutarConsulta(UpdatePorId);
@@ -114,7 +128,7 @@ namespace PedidoTela.Data.Acceso
                         objDetalle.Consumo = datos["consumo"].ToString().Trim();
                         objDetalle.Sku = datos["sku"].ToString().Trim();
                         objDetalle.FechaTienda = datos["fecha_tienda"].ToString().Trim();
-
+                        objDetalle.Muestrario = datos["muestrario"].ToString().Trim();
                         respuesta.Add(objDetalle);
 
                     }
@@ -151,6 +165,7 @@ namespace PedidoTela.Data.Acceso
                         objDetalle.Consumo = datos["consumo"].ToString().Trim();
                         objDetalle.Sku = datos["sku"].ToString().Trim();
                         objDetalle.FechaTienda = datos["fecha_tienda"].ToString().Trim();
+                        objDetalle.Muestrario = datos["muestrario"].ToString().Trim();
 
                         respuesta.Add(objDetalle);
                     }

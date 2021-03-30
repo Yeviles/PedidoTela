@@ -9,9 +9,10 @@ namespace PedidoTela.Data.Acceso
 {
     public class D_Tema
     {
-        private readonly string consultarAll = "SELECT idcapsula, trim(nombre) as nombre " +
-            "FROM cfc_m_capsulas WHERE activo='t';";
-
+        //private readonly string consultarAll = "SELECT idcapsula, trim(nombre) as nombre " +
+        //    "FROM cfc_m_capsulas WHERE activo='t';";
+        private readonly string consultarAll = "select  distinct ( cp.idcapsula),cp.nombre from cfc_spt_sol_tela st " +
+                                                "left join cfc_m_capsulas cp on cp.idcapsula = st.codi_capsula;";
 
         public void Actualizar(Objeto elemento)
         {

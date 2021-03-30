@@ -166,6 +166,7 @@ namespace PedidoTela.Formularios
             this.txbCoordinaCon.ReadOnly = true;
             this.txbCoordinaCon.Size = new System.Drawing.Size(268, 23);
             this.txbCoordinaCon.TabIndex = 11;
+            this.txbCoordinaCon.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txbCoordinaCon_KeyPress);
             // 
             // txbNdibujo
             // 
@@ -294,7 +295,7 @@ namespace PedidoTela.Formularios
             this.otros,
             this.totalUnidades});
             this.dvgEstampado.EnableHeadersVisualStyles = false;
-            this.dvgEstampado.Location = new System.Drawing.Point(15, 355);
+            this.dvgEstampado.Location = new System.Drawing.Point(41, 355);
             this.dvgEstampado.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.dvgEstampado.MultiSelect = false;
             this.dvgEstampado.Name = "dvgEstampado";

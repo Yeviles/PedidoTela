@@ -18,8 +18,8 @@ namespace PedidoTela.Data.Acceso
                                             +", cfc_e_ensayo.idprogramador, cfc_e_ensayo.idensayo, cfc_e_ensayo.idrepeticion "
                                             +",cfc_d_ensayo.idmundo, cfc_d_ensayo.codi_capsula,cfc_d_ensayo.anio_muestrario, cfc_d_ensayo.nmro_muestrario,cfc_d_ensayo.codi_entrada "
                                             +",trim(cfc_e_mundo.desc_mundo) as ocasion_uso, trim(cfc_m_capsulas.nombre) as tema,trim(cfc_e_entrada.desc_entrada) as entrada "
-                                            +",cfc_m_usuarios.nombre as programador "
-                                            +"from cfc_e_ensayo inner join cfc_d_ensayo on cfc_e_ensayo.idempresa=cfc_d_ensayo.idempresa and cfc_e_ensayo.idprogramador= cfc_d_ensayo.idprogramador and cfc_e_ensayo.idensayo= cfc_d_ensayo.idensayo and cfc_e_ensayo.idrepeticion= cfc_d_ensayo.idrepeticion "
+                                            + ",cfc_m_usuarios.nombre as programador,cfc_m_usuarios.idusuario,NVL(cfc_d_ensayo.codi_linea,'') AS codi_linea "
+                                            + "from cfc_e_ensayo inner join cfc_d_ensayo on cfc_e_ensayo.idempresa=cfc_d_ensayo.idempresa and cfc_e_ensayo.idprogramador= cfc_d_ensayo.idprogramador and cfc_e_ensayo.idensayo= cfc_d_ensayo.idensayo and cfc_e_ensayo.idrepeticion= cfc_d_ensayo.idrepeticion "
                                             +"inner join cfc_e_mundo on cfc_d_ensayo.idmundo= cfc_e_mundo.idmundo "
                                             +"inner join cfc_m_capsulas on cfc_d_ensayo.codi_capsula= cfc_m_capsulas.idcapsula "
                                             +"inner join cfc_e_entrada on cfc_d_ensayo.codi_entrada= cfc_e_entrada.codi_entrada "
@@ -31,7 +31,7 @@ namespace PedidoTela.Data.Acceso
         private readonly string consulta4 = "select items.codi_item ensayo_referencia, cfc_e_items.idprogramador, 0 idensayo, 0 idrepeticion "
                                             + ", items.idmundo, cfc_e_items.idcapsula, items.amue_item as anio_muestrario, items.mues_item as nmro_muestrario, cfc_e_items.codi_entrada "
                                             + ", trim(cfc_e_mundo.desc_mundo) as ocasion_uso, trim(cfc_m_capsulas.nombre) as tema, trim(cfc_e_entrada.desc_entrada) as entrada "
-                                            + ", cfc_m_usuarios.nombre as programador "
+                                            + ", cfc_m_usuarios.nombre as programador,cfc_m_usuarios.idusuario,NVL(items.codi_linea,'') as codi_linea  "
                                             + "from items inner join cfc_e_items on items.codi_item= cfc_e_items.codi_item "
                                             + "inner join cfc_e_mundo on items.idmundo= cfc_e_mundo.idmundo "
                                             + "inner join cfc_m_capsulas on cfc_e_items.idcapsula= cfc_m_capsulas.idcapsula "
@@ -80,6 +80,11 @@ namespace PedidoTela.Data.Acceso
                     objEnsayo.Tema = datos["tema"].ToString().Trim();
                     objEnsayo.Entrada = datos["entrada"].ToString().Trim();
                     objEnsayo.Programador = datos["programador"].ToString().Trim();
+                    objEnsayo.Id_disenador = datos["idusuario"].ToString().Trim();
+                    objEnsayo.Codi_linea = datos["codi_linea"].ToString().Trim();
+
+
+
                     respuesta.Add(objEnsayo);
                 };
                 administrador.cerrarConexion();
@@ -118,6 +123,9 @@ namespace PedidoTela.Data.Acceso
                     objEnsayo.Tema = datos["tema"].ToString().Trim();
                     objEnsayo.Entrada = datos["entrada"].ToString().Trim();
                     objEnsayo.Programador = datos["programador"].ToString().Trim();
+                    objEnsayo.Id_disenador = datos["idusuario"].ToString().Trim();
+                    objEnsayo.Codi_linea = datos["codi_linea"].ToString().Trim();
+                    
                     respuesta.Add(objEnsayo);
                 };
                 administrador.cerrarConexion();

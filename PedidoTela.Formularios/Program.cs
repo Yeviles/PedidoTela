@@ -13,11 +13,12 @@ namespace PedidoTela.Formularios
         /// Punto de entrada principal para la aplicación.
         /// </summary>
         [STAThread]
+        //[MTAThread]
         static void Main()
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new frmSolicitudTela());
+            Application.Run(new frmInicial());
             //Application.Run(new frmSolicitudUnicolor(new Controlador(),715, "DSQUARED"));
             // Application.Run(new frmTipoPedSelecCoordinar());/*B*/
             //Application.Run(new frmSolicitudPlanoPretenido());

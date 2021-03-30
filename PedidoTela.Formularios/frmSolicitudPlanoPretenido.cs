@@ -20,6 +20,7 @@ namespace PedidoTela.Formularios
         private string identificador;
         private string codigoTela;
         private int id = 0, consecutivo = 0;
+
         public frmSolicitudPlanoPretenido(Controlador control, string identificador, string codigoTela)
         {
             this.control = control;
@@ -254,6 +255,9 @@ namespace PedidoTela.Formularios
             id = objPretenido.Id;
             int idSolicitud = control.consultarIdsolicitud(identificador);
             int maxConsecutivo = control.consultarMaximo();
+            string fechaSolicitud = DateTime.Now.ToString("dd/MM/yyyy");
+            string fechaEstado = DateTime.Now.ToString("dd/MM/yyyy");
+            string estado = "Por Analizar";
             if (id != 0)
             {
                 if (idSolicitud == 0)
@@ -263,7 +267,7 @@ namespace PedidoTela.Formularios
                     if (control.consultarConsecutivo(id) == 0)
                     {
 
-                        control.agregarConsecutivo(identificador, id, "Plano preteñido", maxConsecutivo + 1);
+                        control.agregarConsecutivo(identificador, id, "PRETEÑIDO", maxConsecutivo + 1,fechaSolicitud,estado,fechaEstado);
                         MessageBox.Show("El consecutivo se guardó con éxito.", "Información", MessageBoxButtons.OK, MessageBoxIcon.Information);
                         btnConfirmar.Enabled = false;
                         consecutivo = control.consultarConsecutivo(id);
@@ -272,7 +276,7 @@ namespace PedidoTela.Formularios
                 }
                 else
                 {
-                    control.agregarConsecutivo(identificador, id, "Plano preteñido", maxConsecutivo + 1);
+                    control.agregarConsecutivo(identificador, id, "PRETEÑIDO", maxConsecutivo + 1,fechaSolicitud,estado,fechaEstado);
                     MessageBox.Show("El consecutivo se guardó con éxito.", "Información", MessageBoxButtons.OK, MessageBoxIcon.Information);
                     btnConfirmar.Enabled = false;
                     consecutivo = control.consultarConsecutivo(id);
@@ -289,6 +293,11 @@ namespace PedidoTela.Formularios
         private void btnSalir_Click(object sender, EventArgs e)
         {
             this.Close();
+        }
+
+        private void txbCoordinaCon_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            e.KeyChar = Char.ToUpper(e.KeyChar);
         }
 
         private void cargar()

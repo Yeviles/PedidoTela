@@ -9,7 +9,9 @@ namespace PedidoTela.Data.Acceso
 {
     public class D_Muestrario
     {
-        private readonly string consultar= "SELECT nmro_mstrrio,trim(desc_mstrrio) as desc_mstrrio FROM m_muestrario WHERE estdo=1;";
+        //private readonly string consultar= "SELECT nmro_mstrrio,trim(desc_mstrrio) as desc_mstrrio FROM m_muestrario WHERE estdo=1;";
+        private readonly string consultar= "select distinct (m.nmro_mstrrio), m.desc_mstrrio from cfc_spt_sol_tela st "+
+                                            "left join m_muestrario m on st.muestrario =  m.nmro_mstrrio;";
         
         public List<Objeto> consultarMuestrario()
         {

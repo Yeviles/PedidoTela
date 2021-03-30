@@ -9,9 +9,10 @@ namespace PedidoTela.Data.Acceso
 {
     public class D_Entrada
     {
-        private readonly string consultarAll = "SELECT codi_entrada, trim(desc_entrada) as desc_entrada " +
-            "FROM cfc_e_entrada WHERE activo='t';";
-
+        //private readonly string consultarAll = "SELECT codi_entrada, trim(desc_entrada) as desc_entrada " +
+        //"FROM cfc_e_entrada WHERE activo='t';";
+        private readonly string consultarAll = "select  distinct (en.codi_entrada),en.desc_entrada  from cfc_spt_sol_tela st " +
+                             "left join cfc_e_entrada en on en.codi_entrada = st.codi_entrada;";
 
         public void Actualizar(Objeto elemento)
         {

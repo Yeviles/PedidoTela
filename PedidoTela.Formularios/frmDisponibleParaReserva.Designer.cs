@@ -29,11 +29,13 @@ namespace PedidoTela.Formularios
         /// </summary>
         private void InitializeComponent()
         {
-            this.pnlMenu = new System.Windows.Forms.Panel();
-            this.btnSalir = new System.Windows.Forms.Button();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
+            this.dgvDisponibleReservar = new System.Windows.Forms.DataGridView();
+            this.lbDisponible = new System.Windows.Forms.Label();
+            this.panel9 = new System.Windows.Forms.Panel();
+            this.btnDetalleReserva = new System.Windows.Forms.Button();
             this.btnGrabar = new System.Windows.Forms.Button();
-            this.btnConfirmar = new System.Windows.Forms.Button();
-            this.dataGridView1 = new System.Windows.Forms.DataGridView();
+            this.btnSalir = new System.Windows.Forms.Button();
             this.diseñadora = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.pedido = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.referencia = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -44,57 +46,27 @@ namespace PedidoTela.Formularios
             this.cantidadReservado = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.disponibleTeorico = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.metrosaReservar = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.lbDisponible = new System.Windows.Forms.Label();
-            this.pnlMenu.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dgvDisponibleReservar)).BeginInit();
+            this.panel9.SuspendLayout();
             this.SuspendLayout();
             // 
-            // pnlMenu
+            // dgvDisponibleReservar
             // 
-            this.pnlMenu.BackColor = System.Drawing.Color.Beige;
-            this.pnlMenu.Controls.Add(this.btnSalir);
-            this.pnlMenu.Controls.Add(this.btnGrabar);
-            this.pnlMenu.Controls.Add(this.btnConfirmar);
-            this.pnlMenu.Location = new System.Drawing.Point(8, 70);
-            this.pnlMenu.Name = "pnlMenu";
-            this.pnlMenu.Size = new System.Drawing.Size(1218, 43);
-            this.pnlMenu.TabIndex = 27;
-            // 
-            // btnSalir
-            // 
-            this.btnSalir.Location = new System.Drawing.Point(358, 0);
-            this.btnSalir.Name = "btnSalir";
-            this.btnSalir.Size = new System.Drawing.Size(124, 43);
-            this.btnSalir.TabIndex = 3;
-            this.btnSalir.Text = "Salir";
-            this.btnSalir.UseVisualStyleBackColor = true;
-            // 
-            // btnGrabar
-            // 
-            this.btnGrabar.Location = new System.Drawing.Point(241, 0);
-            this.btnGrabar.Name = "btnGrabar";
-            this.btnGrabar.Size = new System.Drawing.Size(124, 43);
-            this.btnGrabar.TabIndex = 0;
-            this.btnGrabar.Text = "Grabar";
-            this.btnGrabar.UseVisualStyleBackColor = true;
-            // 
-            // btnConfirmar
-            // 
-            this.btnConfirmar.Location = new System.Drawing.Point(0, 0);
-            this.btnConfirmar.Name = "btnConfirmar";
-            this.btnConfirmar.Size = new System.Drawing.Size(244, 43);
-            this.btnConfirmar.TabIndex = 1;
-            this.btnConfirmar.Text = "Detalle Reserva";
-            this.btnConfirmar.UseVisualStyleBackColor = true;
-            // 
-            // dataGridView1
-            // 
-            this.dataGridView1.AllowUserToAddRows = false;
-            this.dataGridView1.AllowUserToDeleteRows = false;
-            this.dataGridView1.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
-            this.dataGridView1.AutoSizeRowsMode = System.Windows.Forms.DataGridViewAutoSizeRowsMode.DisplayedCells;
-            this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridView1.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.dgvDisponibleReservar.AllowUserToAddRows = false;
+            this.dgvDisponibleReservar.AllowUserToDeleteRows = false;
+            this.dgvDisponibleReservar.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
+            this.dgvDisponibleReservar.AutoSizeRowsMode = System.Windows.Forms.DataGridViewAutoSizeRowsMode.DisplayedCells;
+            this.dgvDisponibleReservar.BackgroundColor = System.Drawing.SystemColors.Window;
+            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle1.BackColor = System.Drawing.SystemColors.ScrollBar;
+            dataGridViewCellStyle1.Font = new System.Drawing.Font("Verdana", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle1.ForeColor = System.Drawing.Color.Navy;
+            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.ScrollBar;
+            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.Color.Navy;
+            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dgvDisponibleReservar.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
+            this.dgvDisponibleReservar.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dgvDisponibleReservar.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.diseñadora,
             this.pedido,
             this.referencia,
@@ -105,121 +77,174 @@ namespace PedidoTela.Formularios
             this.cantidadReservado,
             this.disponibleTeorico,
             this.metrosaReservar});
-            this.dataGridView1.Location = new System.Drawing.Point(12, 169);
-            this.dataGridView1.MultiSelect = false;
-            this.dataGridView1.Name = "dataGridView1";
-            this.dataGridView1.ReadOnly = true;
-            this.dataGridView1.RightToLeft = System.Windows.Forms.RightToLeft.No;
-            this.dataGridView1.RowHeadersWidth = 62;
-            this.dataGridView1.RowTemplate.Height = 28;
-            this.dataGridView1.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dataGridView1.Size = new System.Drawing.Size(1215, 560);
-            this.dataGridView1.TabIndex = 28;
+            this.dgvDisponibleReservar.EnableHeadersVisualStyles = false;
+            this.dgvDisponibleReservar.Location = new System.Drawing.Point(12, 220);
+            this.dgvDisponibleReservar.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.dgvDisponibleReservar.MultiSelect = false;
+            this.dgvDisponibleReservar.Name = "dgvDisponibleReservar";
+            this.dgvDisponibleReservar.RightToLeft = System.Windows.Forms.RightToLeft.No;
+            this.dgvDisponibleReservar.RowHeadersWidth = 62;
+            this.dgvDisponibleReservar.RowTemplate.Height = 28;
+            this.dgvDisponibleReservar.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.CellSelect;
+            this.dgvDisponibleReservar.Size = new System.Drawing.Size(1359, 546);
+            this.dgvDisponibleReservar.TabIndex = 28;
+            this.dgvDisponibleReservar.CellEndEdit += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvDisponibleReservar_CellEndEdit);
+            // 
+            // lbDisponible
+            // 
+            this.lbDisponible.AutoSize = true;
+            this.lbDisponible.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
+            this.lbDisponible.Location = new System.Drawing.Point(12, 182);
+            this.lbDisponible.Name = "lbDisponible";
+            this.lbDisponible.Size = new System.Drawing.Size(179, 19);
+            this.lbDisponible.TabIndex = 29;
+            this.lbDisponible.Text = "Disponible para Reserva";
+            // 
+            // panel9
+            // 
+            this.panel9.BackColor = System.Drawing.SystemColors.ScrollBar;
+            this.panel9.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.panel9.Controls.Add(this.btnDetalleReserva);
+            this.panel9.Controls.Add(this.btnGrabar);
+            this.panel9.Controls.Add(this.btnSalir);
+            this.panel9.Location = new System.Drawing.Point(12, 87);
+            this.panel9.Name = "panel9";
+            this.panel9.Size = new System.Drawing.Size(1359, 56);
+            this.panel9.TabIndex = 137;
+            // 
+            // btnDetalleReserva
+            // 
+            this.btnDetalleReserva.Font = new System.Drawing.Font("Verdana", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnDetalleReserva.Image = global::PedidoTela.Formularios.Properties.Resources._1492790860_8check_84164;
+            this.btnDetalleReserva.Location = new System.Drawing.Point(4, 2);
+            this.btnDetalleReserva.Name = "btnDetalleReserva";
+            this.btnDetalleReserva.Size = new System.Drawing.Size(209, 50);
+            this.btnDetalleReserva.TabIndex = 96;
+            this.btnDetalleReserva.Text = "Detalle Reserva";
+            this.btnDetalleReserva.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.btnDetalleReserva.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
+            this.btnDetalleReserva.UseVisualStyleBackColor = true;
+            this.btnDetalleReserva.Click += new System.EventHandler(this.btnDetalleReserva_Click);
+            // 
+            // btnGrabar
+            // 
+            this.btnGrabar.BackColor = System.Drawing.Color.LightGray;
+            this.btnGrabar.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.btnGrabar.Font = new System.Drawing.Font("Verdana", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnGrabar.Image = global::PedidoTela.Formularios.Properties.Resources.record_icon_icons_com_64775__1_;
+            this.btnGrabar.Location = new System.Drawing.Point(214, 2);
+            this.btnGrabar.Name = "btnGrabar";
+            this.btnGrabar.Size = new System.Drawing.Size(174, 50);
+            this.btnGrabar.TabIndex = 95;
+            this.btnGrabar.Text = "Grabar";
+            this.btnGrabar.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.btnGrabar.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
+            this.btnGrabar.UseVisualStyleBackColor = false;
+            this.btnGrabar.Click += new System.EventHandler(this.btnGrabar_Click);
+            // 
+            // btnSalir
+            // 
+            this.btnSalir.Font = new System.Drawing.Font("Verdana", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnSalir.Image = global::PedidoTela.Formularios.Properties.Resources.logout_exit_icon_176185;
+            this.btnSalir.Location = new System.Drawing.Point(388, 2);
+            this.btnSalir.Name = "btnSalir";
+            this.btnSalir.Size = new System.Drawing.Size(174, 50);
+            this.btnSalir.TabIndex = 97;
+            this.btnSalir.Text = "Salir";
+            this.btnSalir.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.btnSalir.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
+            this.btnSalir.UseVisualStyleBackColor = true;
+            this.btnSalir.Click += new System.EventHandler(this.btnSalir_Click);
             // 
             // diseñadora
             // 
             this.diseñadora.HeaderText = "Diseñadora";
             this.diseñadora.MinimumWidth = 8;
             this.diseñadora.Name = "diseñadora";
-            this.diseñadora.ReadOnly = true;
             // 
             // pedido
             // 
             this.pedido.HeaderText = "Pedido";
             this.pedido.MinimumWidth = 8;
             this.pedido.Name = "pedido";
-            this.pedido.ReadOnly = true;
             // 
             // referencia
             // 
-            this.referencia.HeaderText = "Referencia";
+            this.referencia.HeaderText = "Ensayo / Ref";
             this.referencia.MinimumWidth = 8;
             this.referencia.Name = "referencia";
-            this.referencia.ReadOnly = true;
             // 
             // nombreTela
             // 
             this.nombreTela.HeaderText = "Nombre Tela";
             this.nombreTela.MinimumWidth = 8;
             this.nombreTela.Name = "nombreTela";
-            this.nombreTela.ReadOnly = true;
             // 
             // color
             // 
             this.color.HeaderText = "Color";
             this.color.MinimumWidth = 8;
             this.color.Name = "color";
-            this.color.ReadOnly = true;
             // 
             // estado
             // 
             this.estado.HeaderText = "Estado";
             this.estado.MinimumWidth = 8;
             this.estado.Name = "estado";
-            this.estado.ReadOnly = true;
             // 
             // disponible
             // 
             this.disponible.HeaderText = "Disponible";
             this.disponible.MinimumWidth = 8;
             this.disponible.Name = "disponible";
-            this.disponible.ReadOnly = true;
             // 
             // cantidadReservado
             // 
             this.cantidadReservado.HeaderText = "Cantidad Reservado";
             this.cantidadReservado.MinimumWidth = 8;
             this.cantidadReservado.Name = "cantidadReservado";
-            this.cantidadReservado.ReadOnly = true;
             // 
             // disponibleTeorico
             // 
             this.disponibleTeorico.HeaderText = "Disponible Teórico";
             this.disponibleTeorico.MinimumWidth = 8;
             this.disponibleTeorico.Name = "disponibleTeorico";
-            this.disponibleTeorico.ReadOnly = true;
             // 
             // metrosaReservar
             // 
             this.metrosaReservar.HeaderText = "Metros a Reservar";
             this.metrosaReservar.MinimumWidth = 8;
             this.metrosaReservar.Name = "metrosaReservar";
-            this.metrosaReservar.ReadOnly = true;
-            // 
-            // lbDisponible
-            // 
-            this.lbDisponible.AutoSize = true;
-            this.lbDisponible.Location = new System.Drawing.Point(13, 143);
-            this.lbDisponible.Name = "lbDisponible";
-            this.lbDisponible.Size = new System.Drawing.Size(182, 20);
-            this.lbDisponible.TabIndex = 29;
-            this.lbDisponible.Text = "Disponible para Reserva";
             // 
             // frmDisponibleParaReserva
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1260, 756);
+            this.ClientSize = new System.Drawing.Size(1383, 788);
+            this.Controls.Add(this.panel9);
             this.Controls.Add(this.lbDisponible);
-            this.Controls.Add(this.dataGridView1);
-            this.Controls.Add(this.pnlMenu);
+            this.Controls.Add(this.dgvDisponibleReservar);
+            this.Font = new System.Drawing.Font("Verdana", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.MaximizeBox = false;
             this.Name = "frmDisponibleParaReserva";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Disponible Para Reserva";
             this.Load += new System.EventHandler(this.frmDisponibleParaReserva_Load);
-            this.pnlMenu.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dgvDisponibleReservar)).EndInit();
+            this.panel9.ResumeLayout(false);
             this.ResumeLayout(false);
             this.PerformLayout();
 
         }
 
         #endregion
-
-        private System.Windows.Forms.Panel pnlMenu;
-        private System.Windows.Forms.Button btnSalir;
+        private System.Windows.Forms.DataGridView dgvDisponibleReservar;
+        private System.Windows.Forms.Label lbDisponible;
+        private System.Windows.Forms.Panel panel9;
+        private System.Windows.Forms.Button btnDetalleReserva;
         private System.Windows.Forms.Button btnGrabar;
-        private System.Windows.Forms.Button btnConfirmar;
-        private System.Windows.Forms.DataGridView dataGridView1;
+        private System.Windows.Forms.Button btnSalir;
         private System.Windows.Forms.DataGridViewTextBoxColumn diseñadora;
         private System.Windows.Forms.DataGridViewTextBoxColumn pedido;
         private System.Windows.Forms.DataGridViewTextBoxColumn referencia;
@@ -230,6 +255,5 @@ namespace PedidoTela.Formularios
         private System.Windows.Forms.DataGridViewTextBoxColumn cantidadReservado;
         private System.Windows.Forms.DataGridViewTextBoxColumn disponibleTeorico;
         private System.Windows.Forms.DataGridViewTextBoxColumn metrosaReservar;
-        private System.Windows.Forms.Label lbDisponible;
     }
 }

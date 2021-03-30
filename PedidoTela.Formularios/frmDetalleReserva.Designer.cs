@@ -29,10 +29,13 @@ namespace PedidoTela.Formularios
         /// </summary>
         private void InitializeComponent()
         {
-            this.pnlMenu = new System.Windows.Forms.Panel();
-            this.btnSalir = new System.Windows.Forms.Button();
-            this.btnDetalleReserva = new System.Windows.Forms.Button();
-            this.dataGridView1 = new System.Windows.Forms.DataGridView();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
+            this.dgvDetalle = new System.Windows.Forms.DataGridView();
+            this.lbTotal = new System.Windows.Forms.Label();
+            this.txbTotal = new System.Windows.Forms.TextBox();
+            this.panel9 = new System.Windows.Forms.Panel();
+            this.button1 = new System.Windows.Forms.Button();
             this.diseñadora = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.pedido = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.referencia = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -40,63 +43,97 @@ namespace PedidoTela.Formularios
             this.color = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.ensayo = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.referencia2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.pnlMenu.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
+            this.cantReservado = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            ((System.ComponentModel.ISupportInitialize)(this.dgvDetalle)).BeginInit();
+            this.panel9.SuspendLayout();
             this.SuspendLayout();
             // 
-            // pnlMenu
+            // dgvDetalle
             // 
-            this.pnlMenu.BackColor = System.Drawing.Color.Beige;
-            this.pnlMenu.Controls.Add(this.btnSalir);
-            this.pnlMenu.Controls.Add(this.btnDetalleReserva);
-            this.pnlMenu.Location = new System.Drawing.Point(12, 74);
-            this.pnlMenu.Name = "pnlMenu";
-            this.pnlMenu.Size = new System.Drawing.Size(1243, 43);
-            this.pnlMenu.TabIndex = 27;
-            // 
-            // btnSalir
-            // 
-            this.btnSalir.Location = new System.Drawing.Point(214, 0);
-            this.btnSalir.Name = "btnSalir";
-            this.btnSalir.Size = new System.Drawing.Size(124, 43);
-            this.btnSalir.TabIndex = 3;
-            this.btnSalir.Text = "Salir";
-            this.btnSalir.UseVisualStyleBackColor = true;
-            // 
-            // btnDetalleReserva
-            // 
-            this.btnDetalleReserva.Location = new System.Drawing.Point(0, 0);
-            this.btnDetalleReserva.Name = "btnDetalleReserva";
-            this.btnDetalleReserva.Size = new System.Drawing.Size(216, 43);
-            this.btnDetalleReserva.TabIndex = 0;
-            this.btnDetalleReserva.Text = "Detalle Reserva";
-            this.btnDetalleReserva.UseVisualStyleBackColor = true;
-            // 
-            // dataGridView1
-            // 
-            this.dataGridView1.AllowUserToAddRows = false;
-            this.dataGridView1.AllowUserToDeleteRows = false;
-            this.dataGridView1.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
-            this.dataGridView1.AutoSizeRowsMode = System.Windows.Forms.DataGridViewAutoSizeRowsMode.DisplayedCells;
-            this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridView1.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.dgvDetalle.AllowUserToAddRows = false;
+            this.dgvDetalle.AllowUserToDeleteRows = false;
+            this.dgvDetalle.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
+            this.dgvDetalle.AutoSizeRowsMode = System.Windows.Forms.DataGridViewAutoSizeRowsMode.DisplayedCells;
+            this.dgvDetalle.BackgroundColor = System.Drawing.SystemColors.Window;
+            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle1.BackColor = System.Drawing.SystemColors.ScrollBar;
+            dataGridViewCellStyle1.Font = new System.Drawing.Font("Verdana", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle1.ForeColor = System.Drawing.Color.Navy;
+            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.ScrollBar;
+            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.Color.Navy;
+            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dgvDetalle.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
+            this.dgvDetalle.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dgvDetalle.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.diseñadora,
             this.pedido,
             this.referencia,
             this.nombreTela,
             this.color,
             this.ensayo,
-            this.referencia2});
-            this.dataGridView1.Location = new System.Drawing.Point(12, 198);
-            this.dataGridView1.MultiSelect = false;
-            this.dataGridView1.Name = "dataGridView1";
-            this.dataGridView1.ReadOnly = true;
-            this.dataGridView1.RightToLeft = System.Windows.Forms.RightToLeft.No;
-            this.dataGridView1.RowHeadersWidth = 62;
-            this.dataGridView1.RowTemplate.Height = 28;
-            this.dataGridView1.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dataGridView1.Size = new System.Drawing.Size(1236, 537);
-            this.dataGridView1.TabIndex = 28;
+            this.referencia2,
+            this.cantReservado});
+            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle2.BackColor = System.Drawing.SystemColors.Window;
+            dataGridViewCellStyle2.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle2.ForeColor = System.Drawing.SystemColors.ControlText;
+            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.dgvDetalle.DefaultCellStyle = dataGridViewCellStyle2;
+            this.dgvDetalle.EnableHeadersVisualStyles = false;
+            this.dgvDetalle.Location = new System.Drawing.Point(22, 187);
+            this.dgvDetalle.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.dgvDetalle.MultiSelect = false;
+            this.dgvDetalle.Name = "dgvDetalle";
+            this.dgvDetalle.ReadOnly = true;
+            this.dgvDetalle.RightToLeft = System.Windows.Forms.RightToLeft.No;
+            this.dgvDetalle.RowHeadersWidth = 62;
+            this.dgvDetalle.RowTemplate.Height = 28;
+            this.dgvDetalle.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
+            this.dgvDetalle.Size = new System.Drawing.Size(1349, 511);
+            this.dgvDetalle.TabIndex = 28;
+            this.dgvDetalle.CurrentCellChanged += new System.EventHandler(this.dgvDetalle_CurrentCellChanged);
+            // 
+            // lbTotal
+            // 
+            this.lbTotal.AutoSize = true;
+            this.lbTotal.Location = new System.Drawing.Point(1172, 730);
+            this.lbTotal.Name = "lbTotal";
+            this.lbTotal.Size = new System.Drawing.Size(41, 17);
+            this.lbTotal.TabIndex = 29;
+            this.lbTotal.Text = "Total";
+            // 
+            // txbTotal
+            // 
+            this.txbTotal.Location = new System.Drawing.Point(1245, 725);
+            this.txbTotal.Name = "txbTotal";
+            this.txbTotal.Size = new System.Drawing.Size(112, 23);
+            this.txbTotal.TabIndex = 30;
+            // 
+            // panel9
+            // 
+            this.panel9.BackColor = System.Drawing.SystemColors.ScrollBar;
+            this.panel9.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.panel9.Controls.Add(this.button1);
+            this.panel9.Location = new System.Drawing.Point(12, 81);
+            this.panel9.Name = "panel9";
+            this.panel9.Size = new System.Drawing.Size(1359, 56);
+            this.panel9.TabIndex = 137;
+            // 
+            // button1
+            // 
+            this.button1.Font = new System.Drawing.Font("Verdana", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.button1.Image = global::PedidoTela.Formularios.Properties.Resources.logout_exit_icon_176185;
+            this.button1.Location = new System.Drawing.Point(4, 2);
+            this.button1.Name = "button1";
+            this.button1.Size = new System.Drawing.Size(174, 50);
+            this.button1.TabIndex = 97;
+            this.button1.Text = "Salir";
+            this.button1.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.button1.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
+            this.button1.UseVisualStyleBackColor = true;
+            this.button1.Click += new System.EventHandler(this.button1_Click);
             // 
             // diseñadora
             // 
@@ -114,7 +151,7 @@ namespace PedidoTela.Formularios
             // 
             // referencia
             // 
-            this.referencia.HeaderText = "Referencia";
+            this.referencia.HeaderText = "Referencia / Ensayo";
             this.referencia.MinimumWidth = 8;
             this.referencia.Name = "referencia";
             this.referencia.ReadOnly = true;
@@ -147,28 +184,41 @@ namespace PedidoTela.Formularios
             this.referencia2.Name = "referencia2";
             this.referencia2.ReadOnly = true;
             // 
+            // cantReservado
+            // 
+            this.cantReservado.HeaderText = "Cantidad Reservado";
+            this.cantReservado.MinimumWidth = 6;
+            this.cantReservado.Name = "cantReservado";
+            this.cantReservado.ReadOnly = true;
+            // 
             // frmDetalleReserva
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1260, 756);
-            this.Controls.Add(this.dataGridView1);
-            this.Controls.Add(this.pnlMenu);
+            this.ClientSize = new System.Drawing.Size(1383, 788);
+            this.Controls.Add(this.panel9);
+            this.Controls.Add(this.txbTotal);
+            this.Controls.Add(this.lbTotal);
+            this.Controls.Add(this.dgvDetalle);
+            this.Font = new System.Drawing.Font("Verdana", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.Name = "frmDetalleReserva";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Detalle Reserva";
             this.Load += new System.EventHandler(this.frmDetalleReserva_Load);
-            this.pnlMenu.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dgvDetalle)).EndInit();
+            this.panel9.ResumeLayout(false);
             this.ResumeLayout(false);
+            this.PerformLayout();
 
         }
 
         #endregion
-
-        private System.Windows.Forms.Panel pnlMenu;
-        private System.Windows.Forms.Button btnSalir;
-        private System.Windows.Forms.Button btnDetalleReserva;
-        private System.Windows.Forms.DataGridView dataGridView1;
+        private System.Windows.Forms.DataGridView dgvDetalle;
+        private System.Windows.Forms.Label lbTotal;
+        private System.Windows.Forms.TextBox txbTotal;
+        private System.Windows.Forms.Panel panel9;
+        private System.Windows.Forms.Button button1;
         private System.Windows.Forms.DataGridViewTextBoxColumn diseñadora;
         private System.Windows.Forms.DataGridViewTextBoxColumn pedido;
         private System.Windows.Forms.DataGridViewTextBoxColumn referencia;
@@ -176,5 +226,6 @@ namespace PedidoTela.Formularios
         private System.Windows.Forms.DataGridViewTextBoxColumn color;
         private System.Windows.Forms.DataGridViewTextBoxColumn ensayo;
         private System.Windows.Forms.DataGridViewTextBoxColumn referencia2;
+        private System.Windows.Forms.DataGridViewTextBoxColumn cantReservado;
     }
 }

@@ -165,6 +165,12 @@ namespace PedidoTela.Controlodores
             D_TipoPedido d_tejido = new D_TipoPedido();
             return d_tejido.ConsultarTipoTejido();
         }
+        public List<Objeto> getTipoSocitud()
+        {
+            D_TipoPedido d_tejido = new D_TipoPedido();
+            return d_tejido.ConsultarTipoSolicitud();
+        }
+
         #endregion
         #endregion
 
@@ -231,10 +237,10 @@ namespace PedidoTela.Controlodores
             D_Estampado d_Estampado = new D_Estampado();
             return d_Estampado.Consultar(idEstampado);
         }
-        public bool agregarConsecutivo(string prmIdsolicitud, int prmIdtipo, string prmTipo, int prmConsecutivo)
+        public bool agregarConsecutivo(string prmIdsolicitud, int prmIdtipo, string prmTipo, int prmConsecutivo,string fechaSolicitud,string estado, string fechaEstado)
         {
             D_TipoSolicitud d_solicitud = new D_TipoSolicitud();
-            return (d_solicitud.Agregar(prmIdsolicitud, prmIdtipo, prmTipo, prmConsecutivo) == "ok") ? true : false;
+            return (d_solicitud.Agregar(prmIdsolicitud, prmIdtipo, prmTipo, prmConsecutivo, fechaSolicitud,estado,fechaEstado) == "ok") ? true : false;
         }
         /*Consultar si el Estampado ya tiene un consecutivo */
         public int consultarConsecutivo(int prmIdentificador)
@@ -348,8 +354,75 @@ namespace PedidoTela.Controlodores
             }
             imagen.Save(ruta + nombre, formato);
         }
-       
 
+
+        #endregion
+
+        #region Métodos de Solicitud lista telas
+        public List<DetalleListaTela> consultarListaTelas(ListaTela lista)
+        {
+            D_DetalleListaTela d_detalle = new D_DetalleListaTela();
+            return d_detalle.Consultar(lista);
+        }
+        public List<Objeto> getNomTelas()
+        {
+            D_DetalleListaTela objNomTelas = new D_DetalleListaTela();
+
+            return objNomTelas.consultarNomTela();
+        }
+        public List<Objeto> getRefTelas()
+        {
+            D_DetalleListaTela objRefTelas = new D_DetalleListaTela();
+
+            return objRefTelas.consultarRefTela();
+        }
+        public List<Objeto> getColoresT()
+        {
+            D_DetalleListaTela objColores = new D_DetalleListaTela();
+
+            return objColores.consultarColoresT();
+        }
+        public List<Objeto> getTipoSol()
+        {
+            D_DetalleListaTela objTipo = new D_DetalleListaTela();
+
+            return objTipo.getTipoSol();
+        }
+        public bool setMCalculados(string identificador, string mCalculados)
+        {
+            D_DetalleListaTela objDetalleEditado = new D_DetalleListaTela();
+            // return (d_Unicolor.Agregar(unicolor) == "ok") ? true : false;
+            return (objDetalleEditado.setMCalculados(identificador, mCalculados) == "ok") ? true : false;
+
+        }
+        #endregion
+        #region Métodos Analizar inventario
+        public bool setEstado(string identificador,string estado,string fechaEstado )
+        {
+            D_AnalizarInventario objDetalleEditado = new D_AnalizarInventario();
+            // return (d_Unicolor.Agregar(unicolor) == "ok") ? true : false;
+            return (objDetalleEditado.setEstadoSolicitud(identificador, estado,fechaEstado) == "ok") ? true : false;
+
+        }
+        public bool setMaReservar(string identificador, string maReservar)
+        {
+            D_AnalizarInventario objDetalleEditado = new D_AnalizarInventario();
+            // return (d_Unicolor.Agregar(unicolor) == "ok") ? true : false;
+            return (objDetalleEditado.setMaReservar(identificador, maReservar) == "ok") ? true : false;
+
+        }
+        public bool AtualizarCalculados(string identificador, string mCalculados,string maReservar, string maSolicitar)
+        {
+            D_AnalizarInventario objDetalleEditado = new D_AnalizarInventario();
+            // return (d_Unicolor.Agregar(unicolor) == "ok") ? true : false;
+            return (objDetalleEditado.Actualizar(identificador, mCalculados, maReservar, maSolicitar) == "ok") ? true : false;
+
+        }
+        public List<AnalizarInventario> consultarInvertario(string identificador)
+        {
+            D_AnalizarInventario d_analizar = new D_AnalizarInventario();
+            return d_analizar.Consultar(identificador);
+        }
         #endregion
     }
 }

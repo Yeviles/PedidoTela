@@ -21,6 +21,19 @@ namespace PedidoTela.Formularios
         ErrorProvider errorProvider = new ErrorProvider();
         Validar validacion = new Validar();
         bool editando = false;
+        private string idmundo;
+        private string codi_capsula;
+        private string codi_entrada;
+        private string muestrario;
+        private string id_disenador;
+        private string codi_linea;
+
+        public string Idmundo { get => idmundo; set => idmundo = value; }
+        public string Codi_capsula { get => codi_capsula; set => codi_capsula = value; }
+        public string Codi_entrada { get => codi_entrada; set => codi_entrada = value; }
+        public string Muestrario { get => muestrario; set => muestrario = value; }
+        public string Id_disenador { get => id_disenador; set => id_disenador = value; }
+        public string Codi_linea { get => codi_linea; set => codi_linea = value; }
 
         public frmSolicitudTela()
         {
@@ -50,12 +63,20 @@ namespace PedidoTela.Formularios
         {
             if (prmlista.Count != 0)
             {
+
                 txbDisenador.Text = prmlista[0].Programador.ToString();
                 txbOcasionUso.Text = prmlista[0].Ocasion_uso.ToString();
                 txbMuestrario.Text = prmlista[0].Nmro_muestrario.ToString();
                 txbEntrada.Text = prmlista[0].Entrada.ToString();
                 txbTema.Text = prmlista[0].Tema.ToString();
                 txbAnio.Text = prmlista[0].Anio_muestrario.ToString();
+                Idmundo = prmlista[0].Idmundo.ToString();
+                Codi_capsula = prmlista[0].Codi_capsula.ToString();
+                Codi_entrada = prmlista[0].Codi_entrada.ToString();
+                Muestrario = prmlista[0].Nmro_muestrario.ToString();
+                Id_disenador = prmlista[0].Id_disenador.ToString();
+                Codi_linea = prmlista[0].Codi_linea.ToString();
+
             }
             else
             {
@@ -122,6 +143,7 @@ namespace PedidoTela.Formularios
                 decimal.Round(decimal.Parse(prmLista[0].Consumo.ToString().Replace(".", ",")), 2).ToString());
                 txbSku.Text = prmLista[0].Sku.ToString();
                 dtpFechaTienda.Value = DateTime.Parse(prmLista[0].FechaTienda.ToString());
+                txbMuestrario.Text = prmLista[0].Muestrario.ToString();
             }
             else
             {
@@ -325,6 +347,7 @@ namespace PedidoTela.Formularios
         private void txbSku_KeyPress(object sender, KeyPressEventArgs e)
         {
             validacion.SoloLetras(e);
+            e.KeyChar = Char.ToUpper(e.KeyChar);
         }
 
         private void dgvDetalleConsumo_CellEndEdit(object sender, DataGridViewCellEventArgs e)
@@ -408,6 +431,7 @@ namespace PedidoTela.Formularios
         private EditarDetalleconsumo obtenerObjDetalleConsumo(DataGridViewCellEventArgs e)
         {
             EditarDetalleconsumo elemento = new EditarDetalleconsumo();
+            Ensayo ensayo = new Ensayo();
             string fecha = dtpFechaTienda.Value.ToString("dd/MM/yyyy");
             if (fecha == "")
             {
@@ -424,6 +448,9 @@ namespace PedidoTela.Formularios
                     if (dgvDetalleConsumo.RowCount > 0)
                     {
                         elemento.Identificador = (string)dgvDetalleConsumo.Rows[e.RowIndex].Cells[0].Value;
+                        elemento.Idmundo = Idmundo;
+                        elemento.Codi_capsula = Codi_capsula.ToString();
+                        elemento.Codi_entrada = Codi_entrada.ToString();
                         elemento.Tipo = cbxTipo.SelectedItem.ToString();
                         elemento.DescripcionPrenda = (string)dgvDetalleConsumo.Rows[e.RowIndex].Cells[1].Value;
                         elemento.ReferenciaTela = (string)dgvDetalleConsumo.Rows[e.RowIndex].Cells[2].Value;
@@ -431,6 +458,9 @@ namespace PedidoTela.Formularios
                         elemento.Consumo = (dgvDetalleConsumo.Rows[e.RowIndex].Cells[5].Value != null) ? dgvDetalleConsumo.Rows[e.RowIndex].Cells[5].Value.ToString() : "0";
                         elemento.Sku = txbSku.Text.Trim();
                         elemento.FechaTienda = fecha;
+                        elemento.Muestrario = Muestrario.ToString();
+                        elemento.Id_disenador = Id_disenador.ToString();
+                        elemento.Codi_linea = Codi_linea.ToString();
                         return elemento;
                     }
                 }

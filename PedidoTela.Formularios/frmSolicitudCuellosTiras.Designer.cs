@@ -655,6 +655,7 @@ namespace PedidoTela.Formularios
             this.txbCoordinaCon.Name = "txbCoordinaCon";
             this.txbCoordinaCon.Size = new System.Drawing.Size(502, 23);
             this.txbCoordinaCon.TabIndex = 18;
+            this.txbCoordinaCon.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txbCoordinaCon_KeyPress);
             // 
             // dgvCuellos2
             // 
@@ -786,7 +787,7 @@ namespace PedidoTela.Formularios
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1386, 788);
+            this.ClientSize = new System.Drawing.Size(1375, 788);
             this.Controls.Add(this.panel1);
             this.Controls.Add(this.lbIdentificador);
             this.Font = new System.Drawing.Font("Verdana", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));

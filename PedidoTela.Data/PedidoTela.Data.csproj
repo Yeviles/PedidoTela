@@ -73,12 +73,14 @@
     <Reference Include="WindowsBase" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Acceso\D_AnalizarInventario.cs" />
     <Compile Include="Acceso\D_Color.cs" />
     <Compile Include="Acceso\D_CuellosTiras.cs" />
     <Compile Include="Acceso\D_DetalleConsumo.cs" />
     <Compile Include="Acceso\D_DetalleCuelloDos.cs" />
     <Compile Include="Acceso\D_DetalleCuelloUno.cs" />
     <Compile Include="Acceso\D_DetalleEstampado.cs" />
+    <Compile Include="Acceso\D_DetalleListaTela.cs" />
     <Compile Include="Acceso\D_DetallePlanoPretenido.cs" />
     <Compile Include="Acceso\D_DetalleUnicolor.cs" />
     <Compile Include="Acceso\D_Disenador.cs" />

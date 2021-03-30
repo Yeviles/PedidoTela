@@ -346,12 +346,20 @@ namespace PedidoTela.Formularios
             }
         }
 
+        private void txbCoordinaCon_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            e.KeyChar = Char.ToUpper(e.KeyChar);
+        }
+
         private void btnConfirmar_Click(object sender, EventArgs e)
         {
             Estampado objEstampado = controlador.getEstampado(Identificador);
             id = objEstampado.IdEstampado;
             int idSolicitud = controlador.consultarIdsolicitud(identificador);
             int maxConsecutivo = controlador.consultarMaximo();
+            string fechaSolicitud = DateTime.Now.ToString("dd/MM/yyyy");
+            string fechaEstado = DateTime.Now.ToString("dd/MM/yyyy");
+            string estado = "Por Analizar";
             if (id != 0)
             {
                 if (idSolicitud == 0)
@@ -361,7 +369,7 @@ namespace PedidoTela.Formularios
                     if (controlador.consultarConsecutivo(id) == 0)
                     {
                         
-                        controlador.agregarConsecutivo(identificador, id, "Estampado", maxConsecutivo + 1);
+                        controlador.agregarConsecutivo(identificador, id, "ESTAMPADO", maxConsecutivo + 1,fechaSolicitud,estado,fechaEstado);
                         MessageBox.Show("El consecutivo se guardó con éxito.", "Información", MessageBoxButtons.OK, MessageBoxIcon.Information);
                         btnConfirmar.Enabled = false;
                         consecutivo = controlador.consultarConsecutivo(id);
@@ -370,7 +378,7 @@ namespace PedidoTela.Formularios
                 }
                 else
                 {
-                    controlador.agregarConsecutivo(identificador, id, "Estampado", maxConsecutivo + 1);
+                    controlador.agregarConsecutivo(identificador, id, "ESTAMPADO", maxConsecutivo + 1,fechaSolicitud,estado,fechaEstado);
                     MessageBox.Show("El consecutivo se guardó con éxito.", "Información", MessageBoxButtons.OK, MessageBoxIcon.Information);
                     btnConfirmar.Enabled = false;
                     consecutivo = controlador.consultarConsecutivo(id);

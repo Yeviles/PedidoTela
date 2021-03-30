@@ -12,18 +12,22 @@ namespace PedidoTela.Entidades.Logica
         private string idprogramador;
         private string idensayo;
         private string idrepeticion;
-        private string idmundo;
-        private string codi_capsula;
+        private string idmundo; // id de la tabla cfc_e_mundo se utuliza para sacar la Ocasion de uso
+        private string codi_capsula; // id tabla cfc_m_capsulas el cual se utiliza para dato Tema,
         private string anio_muestrario;
         private string nmro_muestrario;
-        private string codi_entrada;
+        private string codi_entrada; // id de la tabla cfc_e_entrada  se utiliza para la Entrada.
         private string ocasion_uso;
         private string tema;
         private string entrada;
         private string programador;
+        private string id_disenador;
+        private string codi_linea;//id para sacar la marca 
+
+     
         public Ensayo() { }
 
-        public Ensayo(string ensayo_referencia, string idprogramador, string idensayo, string idrepeticion, string idmundo, string codi_capsula, string anio_muestrario, string nmro_muestrario, string codi_entrada, string ocasion_uso, string tema, string entrada, string programador)
+        public Ensayo(string ensayo_referencia, string idprogramador, string idensayo, string idrepeticion, string idmundo, string codi_capsula, string anio_muestrario, string nmro_muestrario, string codi_entrada, string ocasion_uso, string tema, string entrada, string programador, string id_disenador, string codi_linea)
         {
             this.Ensayo_referencia = ensayo_referencia;
             this.Idprogramador = idprogramador;
@@ -38,6 +42,8 @@ namespace PedidoTela.Entidades.Logica
             this.Tema = tema;
             this.Entrada = entrada;
             this.Programador = programador;
+            this.Id_disenador = id_disenador;
+            this.Codi_linea = codi_linea;
         }
 
         public string Ensayo_referencia { get => ensayo_referencia; set => ensayo_referencia = value; }
@@ -53,5 +59,7 @@ namespace PedidoTela.Entidades.Logica
         public string Tema { get => tema; set => tema = value; }
         public string Entrada { get => entrada; set => entrada = value; }
         public string Programador { get => programador; set => programador = value; }
+        public string Id_disenador { get => id_disenador; set => id_disenador = value; }
+        public string Codi_linea { get => codi_linea; set => codi_linea = value; }
     }
 }

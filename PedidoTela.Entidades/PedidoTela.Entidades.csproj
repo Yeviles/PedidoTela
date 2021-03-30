@@ -50,6 +50,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Logica\AnalizarInventario.cs" />
     <Compile Include="Logica\DetalleCuelloDos.cs" />
     <Compile Include="Form1.cs">
       <SubType>Form</SubType>
@@ -61,16 +62,20 @@
     <Compile Include="Logica\DetalleConsumo.cs" />
     <Compile Include="Logica\DetalleCuelloUno.cs" />
     <Compile Include="Logica\DetalleEstampado.cs" />
+    <Compile Include="Logica\DetalleListaTela.cs" />
     <Compile Include="Logica\DetallePlanoPretenido.cs" />
     <Compile Include="Logica\DetalleUnicolor.cs" />
+    <Compile Include="Logica\DisponibleParaReserva.cs" />
     <Compile Include="Logica\EditarDetalleconsumo.cs" />
     <Compile Include="Logica\Ensayo.cs" />
     <Compile Include="Logica\Estampado.cs" />
+    <Compile Include="Logica\ListaTela.cs" />
     <Compile Include="Logica\Objeto.cs" />
     <Compile Include="Logica\PlanoPretenido.cs" />
     <Compile Include="Logica\TipoPedido.cs" />
     <Compile Include="Logica\TipoTejido.cs" />
     <Compile Include="Logica\Unicolor.cs" />
+    <Compile Include="Logica\Utilidades.cs" />
     <Compile Include="Logica\Validar.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

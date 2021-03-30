@@ -188,6 +188,9 @@ namespace PedidoTela.Formularios
         {
             int idSolicitud = control.consultarIdsolicitud(identificador);
             int maxConsecutivo = control.consultarMaximo();
+            string fechaSolicitud = DateTime.Now.ToString("dd/MM/yyyy");
+            string fechaEstado = DateTime.Now.ToString("dd/MM/yyyy");
+            string estado = "Por Analizar";
             if (id != 0)
             {
                 if (idSolicitud == 0)
@@ -196,7 +199,7 @@ namespace PedidoTela.Formularios
                      * hay que ingreser el identificador como parámetro  para id_solicitu*/
                     if (control.consultarConsecutivo(id) == 0)
                     {
-                        control.agregarConsecutivo(identificador, id, "Unicolor", maxConsecutivo + 1);
+                        control.agregarConsecutivo(identificador, id, "UNICOLOR", maxConsecutivo + 1,fechaSolicitud,estado,fechaEstado);
                         MessageBox.Show("El consecutivo se guardó con éxito.", "Información", MessageBoxButtons.OK, MessageBoxIcon.Information);
                         btnConfirmar.Enabled = false;
                         consecutivo = control.consultarConsecutivo(id);
@@ -205,7 +208,7 @@ namespace PedidoTela.Formularios
                 }
                 else
                 {
-                    control.agregarConsecutivo(identificador, id, "Unicolor", maxConsecutivo + 1);
+                    control.agregarConsecutivo(identificador, id, "UNICOLOR", maxConsecutivo + 1,fechaSolicitud,estado,fechaEstado);
                     MessageBox.Show("El consecutivo se guardó con éxito.", "Información", MessageBoxButtons.OK, MessageBoxIcon.Information);
                     btnConfirmar.Enabled = false;
                     consecutivo = control.consultarConsecutivo(id);
@@ -217,7 +220,11 @@ namespace PedidoTela.Formularios
                 MessageBox.Show("Por favor, Grabe la Información.", "Advertencia", MessageBoxButtons.OK, MessageBoxIcon.Warning);
             }
         }
-    
+
+        private void txbCoordinaCon_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            e.KeyChar = Char.ToUpper(e.KeyChar);
+        }
 
         private void cargar() {
             Unicolor unicolor = control.getUnicolor(identificador);

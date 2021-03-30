@@ -10,13 +10,22 @@ namespace PedidoTela.Data.Acceso
     public class D_TipoSolicitud
     {
         #region Consultas
-        private readonly string agregarConsecutivo = "insert into cfc_spt_tipo_solicitud (id_solicitud, id_tipo, tipo, consecutivo) values(?, ?, ?, ?);";
+        private readonly string agregarConsecutivo = "insert into cfc_spt_tipo_solicitud (id_solicitud, id_tipo, tipo, consecutivo,fecha_solicitud,estado,fecha_estado) values(?, ?, ?, ?, ?, ?, ?);";
         private readonly string consConsecutivo = "select consecutivo FROM cfc_spt_tipo_solicitud where id_tipo = ?;";
 
-        //private readonly string consultaMax = "select idSolicitud(consecutivo) as idSolicitud from  cfc_spt_tipo_solicitud;";
         private readonly string consultaMax = "select max(consecutivo) as max from  cfc_spt_tipo_solicitud;";
-        #endregion
-        public string Agregar(string prmIdsolicitud, int prmIdtipo, string tipo, int prmConsecutivo)
+           #endregion
+
+        /// <summary>
+        /// Agrega a la tabla cfc_spt_tipo_solicitud toda la información requerida para la solicitud Telas. 
+        /// </summary>
+        /// <param name="prmIdsolicitud">Identificador de Esayo o Referencia</param>
+        /// <param name="prmIdtipo">Identificador de la solicitud, ya sea Unicolor, Estampado, Plano Preteñido, Cuellos-Puños-Tiras</param>
+        /// <param name="tipo">Nombre del tipo de solocicitud, ya sea Unicolor, Estampado, Plano Preteñido, Cuellos-Puños-Tiras</param>
+        /// <param name="prmConsecutivo">Consecutivo de Solicitud.</param>
+        /// <param name="fechaSolicitud">Fecha en la cual fue confirmada la solicitud de telas.</param>
+        /// <returns>Retorna un string de verificación indicando si la consulta guardo o no la información entregada por parámetros.</returns>
+        public string Agregar(string prmIdsolicitud, int prmIdtipo, string tipo, int prmConsecutivo, string fechaSolicitud, string estado, string fechaEstado)
         {
             string respuesta = "";
             try
@@ -27,8 +36,11 @@ namespace PedidoTela.Data.Acceso
                     con.Parametros.Add(new IfxParameter("@id_tipo", prmIdtipo));
                     con.Parametros.Add(new IfxParameter("@tipo", tipo));
                     con.Parametros.Add(new IfxParameter("@consecutivo", prmConsecutivo));
+                    con.Parametros.Add(new IfxParameter("@fecha_solicitud", fechaSolicitud));
+                    con.Parametros.Add(new IfxParameter("@estado", estado));
+                    con.Parametros.Add(new IfxParameter("@fecha_estado", fechaEstado));
 
-                    //con.Parametros.Add(new IfxParameter("ide", prmConsecutivo));
+
                     var datos = con.EjecutarConsulta(this.agregarConsecutivo);
                     con.cerrarConexion();
                 }
@@ -41,6 +53,11 @@ namespace PedidoTela.Data.Acceso
             return respuesta;
         }
 
+        /// <summary>
+        /// Consulta si el parámetro que llega tien consecutivo. 
+        /// </summary>
+        /// <param name="prmIdentificador">Identificador de ensayo o Refencia.</param>
+        /// <returns></returns>
         public int consultarConsecutivo(int prmIdentificador)
         {
             int id = 0;
@@ -92,6 +109,10 @@ namespace PedidoTela.Data.Acceso
             }
         }*/
 
+        /// <summary>
+        /// Consultar el máximo consecutivo.
+        /// </summary>
+        /// <returns>Retorna un int que representa el número mayor de los consecutivos registrados.</returns>
         public int consultarMaximo()
         {
             int max = 0;
@@ -112,6 +133,7 @@ namespace PedidoTela.Data.Acceso
             }
             return max;
         }
+
 
     }
 }

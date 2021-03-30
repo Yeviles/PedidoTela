@@ -14,6 +14,7 @@ namespace PedidoTela.Entidades.Logica
         {
 
         }
+
         public Objeto(string prmId, string prmNombre)
         {
             Id = prmId;
@@ -24,7 +25,7 @@ namespace PedidoTela.Entidades.Logica
             Id = prmId;
          
         }
-
+     
         public string Id { get => id; set => id = value; }
         public string Nombre { get => nombre; set => nombre = value; }
     }
