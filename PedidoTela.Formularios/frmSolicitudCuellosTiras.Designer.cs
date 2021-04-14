@@ -56,25 +56,6 @@ namespace PedidoTela.Formularios
             this.lbImgCuellos = new System.Windows.Forms.Label();
             this.btnImgCuellos = new System.Windows.Forms.Button();
             this.dgvCuellos1 = new System.Windows.Forms.DataGridView();
-            this.codigo = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.xs = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.s = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.m = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.l = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.xl = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.xxl = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.cuatro = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.seis = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.ocho = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.diez = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.doce = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.catorce = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dieciseis = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dieciocho = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.veinte = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.veintidos = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.veintecuatro = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.ancho = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.pnlSolicitudColor = new System.Windows.Forms.Panel();
             this.lbCoordinaCon = new System.Windows.Forms.Label();
             this.lbTipoTela = new System.Windows.Forms.Label();
@@ -99,7 +80,28 @@ namespace PedidoTela.Formularios
             this.codH5 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.descH5 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.totalUnidades = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.eliminar = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.openFileDialog1 = new System.Windows.Forms.OpenFileDialog();
+            this.nombre = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.codigo = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.xs = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.s = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.m = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.l = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.xl = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.xxl = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.cuatro = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.seis = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.ocho = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.diez = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.doce = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.catorce = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dieciseis = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dieciocho = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.veinte = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.veintidos = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.veintecuatro = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.ancho = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.panel1.SuspendLayout();
             this.panel9.SuspendLayout();
             this.panel2.SuspendLayout();
@@ -389,6 +391,7 @@ namespace PedidoTela.Formularios
             this.dgvCuellos1.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
             this.dgvCuellos1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgvCuellos1.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.nombre,
             this.codigo,
             this.xs,
             this.s,
@@ -428,120 +431,6 @@ namespace PedidoTela.Formularios
             this.dgvCuellos1.Size = new System.Drawing.Size(1334, 116);
             this.dgvCuellos1.TabIndex = 138;
             this.dgvCuellos1.CellEndEdit += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvCuellos1_CellEndEdit);
-            // 
-            // codigo
-            // 
-            this.codigo.HeaderText = "Código";
-            this.codigo.MinimumWidth = 8;
-            this.codigo.Name = "codigo";
-            // 
-            // xs
-            // 
-            this.xs.HeaderText = "XS";
-            this.xs.MinimumWidth = 8;
-            this.xs.Name = "xs";
-            // 
-            // s
-            // 
-            this.s.HeaderText = "S";
-            this.s.MinimumWidth = 8;
-            this.s.Name = "s";
-            // 
-            // m
-            // 
-            this.m.HeaderText = "M";
-            this.m.MinimumWidth = 8;
-            this.m.Name = "m";
-            // 
-            // l
-            // 
-            this.l.HeaderText = "L";
-            this.l.MinimumWidth = 8;
-            this.l.Name = "l";
-            // 
-            // xl
-            // 
-            this.xl.HeaderText = "XL";
-            this.xl.MinimumWidth = 8;
-            this.xl.Name = "xl";
-            // 
-            // xxl
-            // 
-            this.xxl.HeaderText = "2XL";
-            this.xxl.MinimumWidth = 8;
-            this.xxl.Name = "xxl";
-            // 
-            // cuatro
-            // 
-            this.cuatro.HeaderText = "4";
-            this.cuatro.MinimumWidth = 8;
-            this.cuatro.Name = "cuatro";
-            // 
-            // seis
-            // 
-            this.seis.HeaderText = "6";
-            this.seis.MinimumWidth = 8;
-            this.seis.Name = "seis";
-            // 
-            // ocho
-            // 
-            this.ocho.HeaderText = "8";
-            this.ocho.MinimumWidth = 8;
-            this.ocho.Name = "ocho";
-            // 
-            // diez
-            // 
-            this.diez.HeaderText = "10";
-            this.diez.MinimumWidth = 8;
-            this.diez.Name = "diez";
-            // 
-            // doce
-            // 
-            this.doce.HeaderText = "12";
-            this.doce.MinimumWidth = 8;
-            this.doce.Name = "doce";
-            // 
-            // catorce
-            // 
-            this.catorce.HeaderText = "14";
-            this.catorce.MinimumWidth = 8;
-            this.catorce.Name = "catorce";
-            // 
-            // dieciseis
-            // 
-            this.dieciseis.HeaderText = "16";
-            this.dieciseis.MinimumWidth = 8;
-            this.dieciseis.Name = "dieciseis";
-            // 
-            // dieciocho
-            // 
-            this.dieciocho.HeaderText = "18";
-            this.dieciocho.MinimumWidth = 8;
-            this.dieciocho.Name = "dieciocho";
-            // 
-            // veinte
-            // 
-            this.veinte.HeaderText = "20";
-            this.veinte.MinimumWidth = 8;
-            this.veinte.Name = "veinte";
-            // 
-            // veintidos
-            // 
-            this.veintidos.HeaderText = "22";
-            this.veintidos.MinimumWidth = 8;
-            this.veintidos.Name = "veintidos";
-            // 
-            // veintecuatro
-            // 
-            this.veintecuatro.HeaderText = "24";
-            this.veintecuatro.MinimumWidth = 8;
-            this.veintecuatro.Name = "veintecuatro";
-            // 
-            // ancho
-            // 
-            this.ancho.HeaderText = "Ancho";
-            this.ancho.MinimumWidth = 6;
-            this.ancho.Name = "ancho";
             // 
             // pnlSolicitudColor
             // 
@@ -686,7 +575,8 @@ namespace PedidoTela.Formularios
             this.descH4,
             this.codH5,
             this.descH5,
-            this.totalUnidades});
+            this.totalUnidades,
+            this.eliminar});
             this.dgvCuellos2.EnableHeadersVisualStyles = false;
             this.dgvCuellos2.Location = new System.Drawing.Point(14, 720);
             this.dgvCuellos2.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
@@ -695,11 +585,13 @@ namespace PedidoTela.Formularios
             this.dgvCuellos2.RightToLeft = System.Windows.Forms.RightToLeft.No;
             this.dgvCuellos2.RowHeadersWidth = 62;
             this.dgvCuellos2.RowTemplate.Height = 28;
+            this.dgvCuellos2.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
             this.dgvCuellos2.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.CellSelect;
             this.dgvCuellos2.Size = new System.Drawing.Size(1334, 146);
             this.dgvCuellos2.TabIndex = 136;
             this.dgvCuellos2.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvCuellos2_CellClick);
             this.dgvCuellos2.CellEndEdit += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvCuellos2_CellEndEdit);
+            this.dgvCuellos2.CellPainting += new System.Windows.Forms.DataGridViewCellPaintingEventHandler(this.dgvCuellos2_CellPainting);
             // 
             // vte
             // 
@@ -779,15 +671,141 @@ namespace PedidoTela.Formularios
             this.totalUnidades.MinimumWidth = 8;
             this.totalUnidades.Name = "totalUnidades";
             // 
+            // eliminar
+            // 
+            this.eliminar.HeaderText = "Eliminar";
+            this.eliminar.MinimumWidth = 6;
+            this.eliminar.Name = "eliminar";
+            // 
             // openFileDialog1
             // 
             this.openFileDialog1.FileName = "ofdSeleccionar";
+            // 
+            // nombre
+            // 
+            this.nombre.HeaderText = "Nombre";
+            this.nombre.MinimumWidth = 6;
+            this.nombre.Name = "nombre";
+            // 
+            // codigo
+            // 
+            this.codigo.HeaderText = "Código";
+            this.codigo.MinimumWidth = 8;
+            this.codigo.Name = "codigo";
+            // 
+            // xs
+            // 
+            this.xs.HeaderText = "XS";
+            this.xs.MinimumWidth = 8;
+            this.xs.Name = "xs";
+            // 
+            // s
+            // 
+            this.s.HeaderText = "S";
+            this.s.MinimumWidth = 8;
+            this.s.Name = "s";
+            // 
+            // m
+            // 
+            this.m.HeaderText = "M";
+            this.m.MinimumWidth = 8;
+            this.m.Name = "m";
+            // 
+            // l
+            // 
+            this.l.HeaderText = "L";
+            this.l.MinimumWidth = 8;
+            this.l.Name = "l";
+            // 
+            // xl
+            // 
+            this.xl.HeaderText = "XL";
+            this.xl.MinimumWidth = 8;
+            this.xl.Name = "xl";
+            // 
+            // xxl
+            // 
+            this.xxl.HeaderText = "2XL";
+            this.xxl.MinimumWidth = 8;
+            this.xxl.Name = "xxl";
+            // 
+            // cuatro
+            // 
+            this.cuatro.HeaderText = "4";
+            this.cuatro.MinimumWidth = 8;
+            this.cuatro.Name = "cuatro";
+            // 
+            // seis
+            // 
+            this.seis.HeaderText = "6";
+            this.seis.MinimumWidth = 8;
+            this.seis.Name = "seis";
+            // 
+            // ocho
+            // 
+            this.ocho.HeaderText = "8";
+            this.ocho.MinimumWidth = 8;
+            this.ocho.Name = "ocho";
+            // 
+            // diez
+            // 
+            this.diez.HeaderText = "10";
+            this.diez.MinimumWidth = 8;
+            this.diez.Name = "diez";
+            // 
+            // doce
+            // 
+            this.doce.HeaderText = "12";
+            this.doce.MinimumWidth = 8;
+            this.doce.Name = "doce";
+            // 
+            // catorce
+            // 
+            this.catorce.HeaderText = "14";
+            this.catorce.MinimumWidth = 8;
+            this.catorce.Name = "catorce";
+            // 
+            // dieciseis
+            // 
+            this.dieciseis.HeaderText = "16";
+            this.dieciseis.MinimumWidth = 8;
+            this.dieciseis.Name = "dieciseis";
+            // 
+            // dieciocho
+            // 
+            this.dieciocho.HeaderText = "18";
+            this.dieciocho.MinimumWidth = 8;
+            this.dieciocho.Name = "dieciocho";
+            // 
+            // veinte
+            // 
+            this.veinte.HeaderText = "20";
+            this.veinte.MinimumWidth = 8;
+            this.veinte.Name = "veinte";
+            // 
+            // veintidos
+            // 
+            this.veintidos.HeaderText = "22";
+            this.veintidos.MinimumWidth = 8;
+            this.veintidos.Name = "veintidos";
+            // 
+            // veintecuatro
+            // 
+            this.veintecuatro.HeaderText = "24";
+            this.veintecuatro.MinimumWidth = 8;
+            this.veintecuatro.Name = "veintecuatro";
+            // 
+            // ancho
+            // 
+            this.ancho.HeaderText = "Ancho";
+            this.ancho.MinimumWidth = 6;
+            this.ancho.Name = "ancho";
             // 
             // frmSolicitudCuellosTiras
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1375, 788);
+            this.ClientSize = new System.Drawing.Size(1383, 788);
             this.Controls.Add(this.panel1);
             this.Controls.Add(this.lbIdentificador);
             this.Font = new System.Drawing.Font("Verdana", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -855,6 +873,7 @@ namespace PedidoTela.Formularios
         private System.Windows.Forms.DataGridView dgvCuellos2;
         private System.Windows.Forms.Label lbObservaciones;
         private System.Windows.Forms.RichTextBox txtObservaciones;
+        private System.Windows.Forms.OpenFileDialog openFileDialog1;
         private System.Windows.Forms.DataGridViewTextBoxColumn vte;
         private System.Windows.Forms.DataGridViewTextBoxColumn colorVte;
         private System.Windows.Forms.DataGridViewTextBoxColumn codH1;
@@ -868,7 +887,8 @@ namespace PedidoTela.Formularios
         private System.Windows.Forms.DataGridViewTextBoxColumn codH5;
         private System.Windows.Forms.DataGridViewTextBoxColumn descH5;
         private System.Windows.Forms.DataGridViewTextBoxColumn totalUnidades;
-        private System.Windows.Forms.OpenFileDialog openFileDialog1;
+        private System.Windows.Forms.DataGridViewTextBoxColumn eliminar;
+        private System.Windows.Forms.DataGridViewTextBoxColumn nombre;
         private System.Windows.Forms.DataGridViewTextBoxColumn codigo;
         private System.Windows.Forms.DataGridViewTextBoxColumn xs;
         private System.Windows.Forms.DataGridViewTextBoxColumn s;

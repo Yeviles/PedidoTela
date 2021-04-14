@@ -19,27 +19,27 @@ namespace PedidoTela.Formularios
         private Controlador control;
         private string identificador;
         private string codigoTela;
-        private int id = 0, consecutivo = 0;
+        private int id = 0, consecutivo = 0, idSolTelas;
 
-        public frmSolicitudPlanoPretenido(Controlador control, string identificador, string codigoTela)
+        public frmSolicitudPlanoPretenido(Controlador control, string identificador, string codigoTela,string desTela, int idSTelas)
         {
             this.control = control;
             this.identificador = identificador;
             this.codigoTela = codigoTela;
+            this.idSolTelas = idSTelas;
             InitializeComponent();
             lbIdentificador.Text = identificador;
             TipoTejido tt = control.getTipoTejido(codigoTela);
-            txbRefTela.Text = tt.CodigoTela;
-            txbNomTela.Text = tt.NombreTela;
+            txbRefTela.Text = codigoTela;
+            txbNomTela.Text = desTela;
             cargar();
-            if (dgvPlano.RowCount > 0)
+            if (dgvPlano.RowCount < 0)
             {
-                btnGrabar.Enabled = false;
-                dgvPlano.ReadOnly = true;
-            }
-            else {
+                //btnGrabar.Enabled = false;
+                //dgvPlano.ReadOnly = true;
                 btnConfirmar.Enabled = false;
             }
+           
         }
 
         private void frmSolicitudPlanoPretenido_Load(object sender, EventArgs e)
@@ -67,7 +67,10 @@ namespace PedidoTela.Formularios
         {
             if (cbxNoCoordinado.Checked)
             {
+                txbCoordinaCon.ReadOnly = true;
+                txbCoordinaCon.BackColor = Color.LightGoldenrodYellow;
                 cbxSiCoordinado.Checked = false;
+
             }
         }
 
@@ -75,14 +78,10 @@ namespace PedidoTela.Formularios
         {
             if (cbxSiCoordinado.Checked)
             {
-                lbCoordinaCon.Visible = true;
-                txbCoordinaCon.Visible = true;
+                txbCoordinaCon.ReadOnly = false;
+                txbCoordinaCon.Focus();
+                txbCoordinaCon.BackColor = Color.White;
                 cbxNoCoordinado.Checked = false;
-            }
-            else
-            {
-                lbCoordinaCon.Visible = false;
-                txbCoordinaCon.Visible = false;
             }
         }
 
@@ -123,16 +122,21 @@ namespace PedidoTela.Formularios
                     }
                 }
             }
+            if (dgvPlano.Columns[e.ColumnIndex].Name == "eliminar")
+            {
+                dgvPlano.Rows.Remove(dgvPlano.CurrentRow);
+            }
         }
 
         private void dgvPlano_CellEndEdit(object sender, DataGridViewCellEventArgs e)
         {
-            if (e.ColumnIndex > 11 && e.ColumnIndex < dgvPlano.ColumnCount) {
+            int ultimaColumna = dgvPlano.ColumnCount - 2;
+            if (e.ColumnIndex > 11 && e.ColumnIndex < ultimaColumna) {
                 try
                 {
                     if (dgvPlano.CurrentCell.Value != null)
                     {
-                        int ultimaColumna = dgvPlano.ColumnCount - 1;
+                        
 
                         if (e.ColumnIndex > 1 && e.ColumnIndex < ultimaColumna)
                         {
@@ -163,6 +167,8 @@ namespace PedidoTela.Formularios
 
         private void btnGrabar_Click(object sender, EventArgs e)
         {
+            bool b = false;
+            List<int> listaIdDetalles = new List<int>();
             if (!cbxSiCoordinado.Checked && !cbxNoCoordinado.Checked)
             {
                 MessageBox.Show("Por favor, seleccione un valor para coordinado", "Advertencia", MessageBoxButtons.OK, MessageBoxIcon.Warning);
@@ -187,52 +193,76 @@ namespace PedidoTela.Formularios
                             elemento.DescripcionTela = txbNomTela.Text;
                             elemento.Coordinado = (cbxSiCoordinado.Checked) ? true : false;
                             elemento.CoordinadoCon = (txbCoordinaCon.Text.Trim().Length > 0) ? txbCoordinaCon.Text.Trim() : "";
-                            elemento.Observacion = (txtObservaciones.Text.Trim().Length > 0) ? txtObservaciones.Text.Trim() : ""; ;
-                            if (control.addPlanoPretenido(elemento))
+                            elemento.Observacion = (txtObservaciones.Text.Trim().Length > 0) ? txtObservaciones.Text.Trim() : "";
+                            elemento.IdSolTela = idSolTelas;
+
+                            if (control.consultarIdentificadorPla(idSolTelas))
                             {
-                                id = control.getIdPlanoPretenido(identificador);
-                                Console.WriteLine("ID: " + id);
-                                try
+                                control.ActualizarPlano(elemento);
+                                b = true;
+                            }
+                            else
+                            {
+                                control.addPlanoPretenido(elemento);
+                            }
+                                id = control.getIdPlano(idSolTelas);
+                               listaIdDetalles = control.getIdDetallePlano(id);
+                            //Console.WriteLine("ID: " + id);
+                            try
                                 {
-                                    foreach (DataGridViewRow row in dgvPlano.Rows)
+                                   for (int i = 0; i < dgvPlano.RowCount; i++)
                                     {
                                         DetallePlanoPretenido detalle = new DetallePlanoPretenido();
                                         detalle.IdPlano = id;
-                                        detalle.CodigoVte = row.Cells[0].Value.ToString();
-                                        detalle.DescripcionVte = row.Cells[1].Value.ToString().Trim();
-                                        detalle.CodigoH1 = row.Cells[2].Value.ToString();
-                                        detalle.DescripcionH1 = row.Cells[3].Value.ToString().Trim();
-                                        detalle.CodigoH2 = row.Cells[4].Value.ToString();
-                                        detalle.DescripcionH2 = row.Cells[5].Value.ToString().Trim();
-                                        detalle.CodigoH3 = row.Cells[6].Value.ToString();
-                                        detalle.DescripcionH3 = row.Cells[7].Value.ToString().Trim();
-                                        detalle.CodigoH4 = row.Cells[8].Value.ToString();
-                                        detalle.DescripcionH4 = row.Cells[9].Value.ToString().Trim();
-                                        detalle.CodigoH5 = row.Cells[10].Value.ToString();
-                                        detalle.DescripcionH5 = row.Cells[11].Value.ToString().Trim();
-                                        detalle.Tiendas = (row.Cells[12].Value != null && row.Cells[12].Value.ToString() != "") ? int.Parse(row.Cells[12].Value.ToString()) : 0;
-                                        detalle.Exito = (row.Cells[13].Value != null && row.Cells[13].Value.ToString() != "") ? int.Parse(row.Cells[13].Value.ToString()) : 0;
-                                        detalle.Cencosud = (row.Cells[14].Value != null && row.Cells[14].Value.ToString() != "") ? int.Parse(row.Cells[14].Value.ToString()) : 0;
-                                        detalle.Sao = (row.Cells[15].Value != null && row.Cells[15].Value.ToString() != "") ? int.Parse(row.Cells[15].Value.ToString()) : 0;
-                                        detalle.Comercio = (row.Cells[16].Value != null && row.Cells[16].Value.ToString() != "") ? int.Parse(row.Cells[16].Value.ToString()) : 0;
-                                        detalle.Rosado = (row.Cells[17].Value != null && row.Cells[17].Value.ToString() != "") ? int.Parse(row.Cells[17].Value.ToString()) : 0;
-                                        detalle.Otros = (row.Cells[18].Value != null && row.Cells[18].Value.ToString() != "") ? int.Parse(row.Cells[18].Value.ToString()) : 0;
-                                        detalle.Total = (row.Cells[19].Value != null && row.Cells[19].Value.ToString() != "") ? int.Parse(row.Cells[19].Value.ToString()) : 0;
-                                        control.addDetallePlanoPretenido(detalle);
-                                        btnConfirmar.Enabled = true;
+                                        detalle.CodigoVte = dgvPlano.Rows[i].Cells[0].Value.ToString();
+                                        detalle.DescripcionVte = dgvPlano.Rows[i].Cells[1].Value.ToString().Trim();
+                                        detalle.CodigoH1 = dgvPlano.Rows[i].Cells[2].Value.ToString();
+                                        detalle.DescripcionH1 = dgvPlano.Rows[i].Cells[3].Value.ToString().Trim();
+                                        detalle.CodigoH2 = dgvPlano.Rows[i].Cells[4].Value.ToString();
+                                        detalle.DescripcionH2 = dgvPlano.Rows[i].Cells[5].Value.ToString().Trim();
+                                        detalle.CodigoH3 = dgvPlano.Rows[i].Cells[6].Value.ToString();
+                                        detalle.DescripcionH3 = dgvPlano.Rows[i].Cells[7].Value.ToString().Trim();
+                                        detalle.CodigoH4 = dgvPlano.Rows[i].Cells[8].Value.ToString();
+                                        detalle.DescripcionH4 = dgvPlano.Rows[i].Cells[9].Value.ToString().Trim();
+                                        detalle.CodigoH5 = dgvPlano.Rows[i].Cells[10].Value.ToString();
+                                        detalle.DescripcionH5 = dgvPlano.Rows[i].Cells[11].Value.ToString().Trim();
+                                        detalle.Tiendas = (dgvPlano.Rows[i].Cells[12].Value != null && dgvPlano.Rows[i].Cells[12].Value.ToString() != "") ? int.Parse(dgvPlano.Rows[i].Cells[12].Value.ToString()) : 0;
+                                        detalle.Exito = (dgvPlano.Rows[i].Cells[13].Value != null && dgvPlano.Rows[i].Cells[13].Value.ToString() != "") ? int.Parse(dgvPlano.Rows[i].Cells[13].Value.ToString()) : 0;
+                                        detalle.Cencosud = (dgvPlano.Rows[i].Cells[14].Value != null && dgvPlano.Rows[i].Cells[14].Value.ToString() != "") ? int.Parse(dgvPlano.Rows[i].Cells[14].Value.ToString()) : 0;
+                                        detalle.Sao = (dgvPlano.Rows[i].Cells[15].Value != null && dgvPlano.Rows[i].Cells[15].Value.ToString() != "") ? int.Parse(dgvPlano.Rows[i].Cells[15].Value.ToString()) : 0;
+                                        detalle.Comercio = (dgvPlano.Rows[i].Cells[16].Value != null && dgvPlano.Rows[i].Cells[16].Value.ToString() != "") ? int.Parse(dgvPlano.Rows[i].Cells[16].Value.ToString()) : 0;
+                                        detalle.Rosado = (dgvPlano.Rows[i].Cells[17].Value != null && dgvPlano.Rows[i].Cells[17].Value.ToString() != "") ? int.Parse(dgvPlano.Rows[i].Cells[17].Value.ToString()) : 0;
+                                        detalle.Otros = (dgvPlano.Rows[i].Cells[18].Value != null && dgvPlano.Rows[i].Cells[18].Value.ToString() != "") ? int.Parse(dgvPlano.Rows[i].Cells[18].Value.ToString()) : 0;
+                                        detalle.Total = (dgvPlano.Rows[i].Cells[19].Value != null && dgvPlano.Rows[i].Cells[19].Value.ToString() != "") ? int.Parse(dgvPlano.Rows[i].Cells[19].Value.ToString()) : 0;
+                                        
+                                    //btnConfirmar.Enabled = true;
+
+                                    if (b)
+                                    {
+                                        if (i < listaIdDetalles.Count)
+                                        {
+                                            control.ActualizarDetallePlano(detalle, listaIdDetalles[i]);
+                                        }
+                                        else
+                                        {
+                                            control.addDetallePlanoPretenido(detalle);
+                                        }
                                     }
-                                    txtObservaciones.Enabled = false;
+                                    else
+                                    {
+                                        control.addDetallePlanoPretenido(detalle);
+                                    }
+                                }
                                     MessageBox.Show("Plano preteñido se guardó con éxito", "Información", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                                    dgvPlano.ReadOnly = true;
-                                    btnGrabar.Enabled = false;
-                                    btnAddColor.Enabled = false;
-                                }
-                                catch (Exception ex)
-                                {
-                                    MessageBox.Show("Detalle plano preteñido no se pudo guardar", "Advertencia", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                                }
                             }
-                        } else {
+                            catch (Exception ex)
+                            {
+                              MessageBox.Show("Detalle plano preteñido no se pudo guardar", "Advertencia", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                            }
+
+                            }
+                        else
+                        {
                             MessageBox.Show("Los colores H1 - H5 están vacíos", "Advertencia", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                         }
                     }
@@ -245,43 +275,36 @@ namespace PedidoTela.Formularios
                 {
                     MessageBox.Show("Por favor, ingrese las observaciones de diseño", "Advertencia", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 }
+
             }
+                
+            
         }
 
         private void btnConfirmar_Click(object sender, EventArgs e)
         {
 
-            PlanoPretenido objPretenido = control.getPlanoPretenido(identificador);
-            id = objPretenido.Id;
-            int idSolicitud = control.consultarIdsolicitud(identificador);
+            //PlanoPretenido objPretenido = control.getPlanoPretenido(identificador);
+            //id = objPretenido.Id;
+            //int idSolicitud = control.consultarIdsolicitud(identificador);
             int maxConsecutivo = control.consultarMaximo();
-            string fechaSolicitud = DateTime.Now.ToString("dd/MM/yyyy");
-            string fechaEstado = DateTime.Now.ToString("dd/MM/yyyy");
+            string fechaActual = DateTime.Now.ToString("dd/MM/yyyy");
             string estado = "Por Analizar";
+
             if (id != 0)
             {
-                if (idSolicitud == 0)
-                {
-                    /* quiere decir que ese idSolicitud no está en la tabla cfc_spt_sol_tela
-                     * hay que ingreser el identificador como parámetro  para id_solicitu*/
-                    if (control.consultarConsecutivo(id) == 0)
-                    {
-
-                        control.agregarConsecutivo(identificador, id, "PRETEÑIDO", maxConsecutivo + 1,fechaSolicitud,estado,fechaEstado);
-                        MessageBox.Show("El consecutivo se guardó con éxito.", "Información", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                        btnConfirmar.Enabled = false;
-                        consecutivo = control.consultarConsecutivo(id);
-                        lblConsecutivo.Text = "Consecutivo: " + consecutivo;
-                    }
-                }
-                else
-                {
-                    control.agregarConsecutivo(identificador, id, "PRETEÑIDO", maxConsecutivo + 1,fechaSolicitud,estado,fechaEstado);
-                    MessageBox.Show("El consecutivo se guardó con éxito.", "Información", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                    btnConfirmar.Enabled = false;
-                    consecutivo = control.consultarConsecutivo(id);
-                    lblConsecutivo.Text = "Consecutivo: " + consecutivo;
-                }
+   
+                control.agregarConsecutivo(idSolTelas, id, "PRETEÑIDO", maxConsecutivo + 1, fechaActual, estado, fechaActual, identificador);
+                MessageBox.Show("El consecutivo se guardó con éxito.", "Información", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                btnConfirmar.Enabled = false;
+                btnGrabar.Enabled = false;
+                txtObservaciones.ReadOnly = true;
+                btnAddColor.Enabled = false;
+                dgvPlano.ReadOnly = true;
+                consecutivo = control.consultarConsecutivo(id);
+                lblConsecutivo.Text = "Consecutivo: " + consecutivo;
+                DialogResult = DialogResult.OK;
+                
             }
             else
             {
@@ -300,9 +323,26 @@ namespace PedidoTela.Formularios
             e.KeyChar = Char.ToUpper(e.KeyChar);
         }
 
+        private void dgvPlano_CellPainting(object sender, DataGridViewCellPaintingEventArgs e)
+        {
+            if (e.ColumnIndex >= 0 && dgvPlano.Columns[e.ColumnIndex].Name == "eliminar" && e.RowIndex >= 0)
+            {
+                e.Paint(e.CellBounds, DataGridViewPaintParts.All);
+
+                DataGridViewButtonCell celBoton = dgvPlano.Rows[e.RowIndex].Cells["eliminar"] as DataGridViewButtonCell;
+                Icon icoAtomico = new Icon(@"eliminar.ico");
+                e.Graphics.DrawIcon(icoAtomico, e.CellBounds.Left + 25, e.CellBounds.Top + 3);
+
+                dgvPlano.Rows[e.RowIndex].Height = icoAtomico.Height + 50;
+                dgvPlano.Columns[e.ColumnIndex].Width = icoAtomico.Width + 50;
+
+                e.Handled = true;
+            }
+        }
+
         private void cargar()
         {
-            PlanoPretenido planoP = control.getPlanoPretenido(identificador);
+            PlanoPretenido planoP = control.getPlanoPretenido(idSolTelas);
             id = planoP.Id;
             if (planoP.Coordinado)
             {
@@ -320,6 +360,8 @@ namespace PedidoTela.Formularios
                 lblConsecutivo.Text = "Consecutivo: " + consecutivo;
                 btnConfirmar.Enabled = false;
                 dgvPlano.ReadOnly = true;
+                btnGrabar.Enabled = false;
+                btnAddColor.Enabled = false;
             }
 
             /*Carga detalle plano preteñido*/
@@ -332,10 +374,10 @@ namespace PedidoTela.Formularios
                         obj.CodigoH3, obj.DescripcionH3, obj.CodigoH4, obj.DescripcionH4, obj.CodigoH5, obj.DescripcionH5,
                         obj.Exito, obj.Tiendas, obj.Cencosud, obj.Sao, obj.Comercio, obj.Rosado, obj.Otros, obj.Total);
                 }
-                btnAddColor.Enabled = false;
-                dgvPlano.ReadOnly = true;
-                btnGrabar.Enabled = false;
-                txtObservaciones.Enabled = false;
+                //btnAddColor.Enabled = false;
+                //dgvPlano.ReadOnly = true;
+                //btnGrabar.Enabled = false;
+                //txtObservaciones.Enabled = false;
             }
         }
     }

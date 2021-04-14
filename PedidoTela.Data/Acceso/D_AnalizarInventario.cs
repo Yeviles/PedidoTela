@@ -12,12 +12,12 @@ namespace PedidoTela.Data.Acceso
     {
         #region Consultas
         private readonly string UpdateEstado = " update cfc_spt_tipo_solicitud set estado =?, fecha_estado=? where id_solicitud = ?;";
-        private readonly string UpdateMaReservar = "update cfc_spt_sol_tela set m_reservar =? where identificador = ?;";
-        private readonly string actualizar = "update cfc_spt_sol_tela set m_calculados=?, m_reservar =?, m_solicitar=? where identificador = ?;";
-        private readonly string consultarTodo = "select identificador, NVL(m_calculados,'') as m_calculados,  NVL(m_reservar,'') as m_reservar,  NVL(m_solicitar,'') as m_solicitar,consumo from cfc_spt_sol_tela where identificador = ? ;";
+        private readonly string UpdateMaReservar = "update cfc_spt_sol_tela set m_reservar =? where idsolicitud = ?;";
+        private readonly string actualizar = "update cfc_spt_sol_tela set m_calculados=?, m_reservar =?, m_solicitar=? where idsolicitud = ?;";
+        private readonly string consultarTodo = "select identificador, NVL(m_calculados,'') as m_calculados,  NVL(m_reservar,'') as m_reservar,  NVL(m_solicitar,'') as m_solicitar,consumo from cfc_spt_sol_tela where idsolicitud = ? ;";
         
         #endregion
-        public string setEstadoSolicitud(string identificador, string estado, string fechaEstado)
+        public string setEstadoSolicitud(int idSolTela, string estado, string fechaEstado)
         {
             string respuesta = "";
             try
@@ -27,7 +27,7 @@ namespace PedidoTela.Data.Acceso
 
                     con.Parametros.Add(new IfxParameter("@estado", estado));
                     con.Parametros.Add(new IfxParameter("@fecha_estado", fechaEstado));
-                    con.Parametros.Add(new IfxParameter("@id_solicitud", identificador));
+                    con.Parametros.Add(new IfxParameter("@id_solicitud", idSolTela));
                     var datos = con.EjecutarConsulta(UpdateEstado);
 
                     con.cerrarConexion();
@@ -42,7 +42,7 @@ namespace PedidoTela.Data.Acceso
         }
 
         
-        public string setMaReservar(string identificador, string maReservar)
+        public string setMaReservar(int  idSolTela, string maReservar)
         {
             string respuesta = "";
             try
@@ -51,7 +51,7 @@ namespace PedidoTela.Data.Acceso
                 {
 
                     con.Parametros.Add(new IfxParameter("@m_reservar", maReservar));
-                    con.Parametros.Add(new IfxParameter("@identificador", identificador));
+                    con.Parametros.Add(new IfxParameter("@idsolicitud", idSolTela));
                     var datos = con.EjecutarConsulta(UpdateMaReservar);
 
                     con.cerrarConexion();
@@ -65,7 +65,7 @@ namespace PedidoTela.Data.Acceso
             return respuesta;
         }
         
-        public string Actualizar(string identificador, string mCalculados, string maReservar, string maSolicitar)
+        public string Actualizar(int idSolTela, string mCalculados, string maReservar, string maSolicitar)
         {
             string respuesta = "";
             try
@@ -76,7 +76,7 @@ namespace PedidoTela.Data.Acceso
                     con.Parametros.Add(new IfxParameter("@m_calcular", mCalculados));
                     con.Parametros.Add(new IfxParameter("@m_reservar", maReservar));
                     con.Parametros.Add(new IfxParameter("@m_solicitar", maSolicitar));
-                    con.Parametros.Add(new IfxParameter("@identificador", identificador));
+                    con.Parametros.Add(new IfxParameter("@idsolicitud", idSolTela));
                     var datos = con.EjecutarConsulta(actualizar);
 
                     con.cerrarConexion();
@@ -90,7 +90,7 @@ namespace PedidoTela.Data.Acceso
             return respuesta;
         }
 
-        public List<AnalizarInventario> Consultar(string identificador)
+        public List<AnalizarInventario> Consultar(int idSolTela)
         {
             List<AnalizarInventario> lista = new List<AnalizarInventario>();
             try
@@ -98,7 +98,7 @@ namespace PedidoTela.Data.Acceso
                 using (var con = new clsConexion())
                 {
                     AnalizarInventario detalle = new AnalizarInventario();
-                    con.Parametros.Add(new IfxParameter("@identificador ", identificador));
+                    con.Parametros.Add(new IfxParameter("@idsolicitud ", idSolTela));
                     var datos = con.EjecutarConsulta(this.consultarTodo);
                     while (datos.Read())
                     {

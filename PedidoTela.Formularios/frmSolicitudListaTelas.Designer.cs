@@ -105,6 +105,7 @@ namespace PedidoTela.Formularios
             this.fechaSolTelas = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.estado = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.fechaEstado = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.idSolTela = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvSolicitudTelas)).BeginInit();
             this.pnlInicial.SuspendLayout();
@@ -410,16 +411,16 @@ namespace PedidoTela.Formularios
             this.observacionDiseño,
             this.fechaSolTelas,
             this.estado,
-            this.fechaEstado});
+            this.fechaEstado,
+            this.idSolTela});
             this.dgvSolicitudTelas.EnableHeadersVisualStyles = false;
-            this.dgvSolicitudTelas.Location = new System.Drawing.Point(6, 15);
+            this.dgvSolicitudTelas.Location = new System.Drawing.Point(-52, 22);
             this.dgvSolicitudTelas.Name = "dgvSolicitudTelas";
             this.dgvSolicitudTelas.RightToLeft = System.Windows.Forms.RightToLeft.No;
             this.dgvSolicitudTelas.RowHeadersWidth = 62;
             this.dgvSolicitudTelas.RowTemplate.Height = 28;
-            this.dgvSolicitudTelas.ScrollBars = System.Windows.Forms.ScrollBars.None;
             this.dgvSolicitudTelas.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dgvSolicitudTelas.Size = new System.Drawing.Size(3008, 453);
+            this.dgvSolicitudTelas.Size = new System.Drawing.Size(3027, 453);
             this.dgvSolicitudTelas.TabIndex = 58;
             this.dgvSolicitudTelas.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvSolicitudTelas_CellClick);
             // 
@@ -809,6 +810,14 @@ namespace PedidoTela.Formularios
             this.fechaEstado.MinimumWidth = 8;
             this.fechaEstado.Name = "fechaEstado";
             // 
+            // idSolTela
+            // 
+            this.idSolTela.HeaderText = "idSolTela";
+            this.idSolTela.MinimumWidth = 6;
+            this.idSolTela.Name = "idSolTela";
+            this.idSolTela.Visible = false;
+            this.idSolTela.Width = 125;
+            // 
             // frmSolicitudListaTelas
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
@@ -908,5 +917,6 @@ namespace PedidoTela.Formularios
         private System.Windows.Forms.DataGridViewTextBoxColumn fechaSolTelas;
         private System.Windows.Forms.DataGridViewTextBoxColumn estado;
         private System.Windows.Forms.DataGridViewTextBoxColumn fechaEstado;
+        private System.Windows.Forms.DataGridViewTextBoxColumn idSolTela;
     }
 }

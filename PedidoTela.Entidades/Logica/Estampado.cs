@@ -19,10 +19,11 @@ namespace PedidoTela.Entidades.Logica
 		private string coordinado_con;
 		private bool coordinado;
         private string observaciones;
+        private int idSolTela;
 
         public Estampado() { }
 
-        public Estampado(string esayo_ref, string referencia_tela, string nombre_tela, string tipo_estampado, string tipo_tejido, int n_dibujos, int n_cilindors, string coordinado_con, bool coordinado, string observaciones)
+        public Estampado(string esayo_ref, string referencia_tela, string nombre_tela, string tipo_estampado, string tipo_tejido, int n_dibujos, int n_cilindors, string coordinado_con, bool coordinado, string observaciones, int idSolTela = 0)
         {
             this.Esayo_ref = esayo_ref;
             this.referencia_tela = referencia_tela;
@@ -34,6 +35,7 @@ namespace PedidoTela.Entidades.Logica
             this.coordinado_con = coordinado_con;
             this.coordinado = coordinado;
             this.observaciones = observaciones;
+            this.IdSolTela = idSolTela;
         }
 
         public string Referencia_tela { get => referencia_tela; set => referencia_tela = value; }
@@ -47,5 +49,6 @@ namespace PedidoTela.Entidades.Logica
         public string Observaciones { get => observaciones; set => observaciones = value; }
         public string Esayo_ref { get => esayo_ref; set => esayo_ref = value; }
         public int IdEstampado { get => idEstampado; set => idEstampado = value; }
+        public int IdSolTela { get => idSolTela; set => idSolTela = value; }
     }
 }

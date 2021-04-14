@@ -19,10 +19,10 @@ namespace PedidoTela.Formularios
     {
         Controlador controlador = new Controlador();
         List<DisponibleParaReserva> listDetalle = new List<DisponibleParaReserva>();
-        private int metrosReservar;
+        private decimal metrosReservar;
 
         public List<DisponibleParaReserva> ListDetalle { get => listDetalle; set => listDetalle = value; }
-        public int MetrosReservar { get => metrosReservar; set => metrosReservar = value; }
+        public decimal MetrosReservar { get => metrosReservar; set => metrosReservar = value; }
 
         public frmDisponibleParaReserva(Controlador control, List<DisponibleParaReserva> listaSeleccionada)
         { 
@@ -36,6 +36,9 @@ namespace PedidoTela.Formularios
         private void frmDisponibleParaReserva_Load(object sender, EventArgs e)
         {
             cargarDataGridView(ListDetalle);
+            dgvDisponibleReservar.Columns["disponibleTeorico"].HeaderCell.ToolTipText = "Disponible - Cantidad Reservada";
+            dgvDisponibleReservar.Columns["metrosaReservar"].HeaderCell.ToolTipText = "Por favor ingrese un valor, No mayor al disponible.";
+
         }
 
         private void cargarDataGridView(List<DisponibleParaReserva> prmLista)
@@ -50,11 +53,15 @@ namespace PedidoTela.Formularios
                         prmLista[i].Pedido.ToString(),
                         prmLista[i].Referencia.ToString(),
                         prmLista[i].NomTela.ToString(),
+                        prmLista[i].CodiTela.ToString(),
                         prmLista[i].Color.ToString(),
                         prmLista[i].Estado.ToString(),
                         prmLista[i].Disponible.ToString(),
-                        prmLista[i].CantidadReservado.ToString());
-                    //prmLista[i].DiponibleTeorico.ToString();
+                        prmLista[i].CantidadReservado.ToString(),
+                        prmLista[i].DiponibleTeorico.ToString(),
+                        "",
+                        prmLista[i].IdsolTela.ToString());
+                        
                     // prmLista[i].MetrosaReservar.ToString());
                     btnDetalleReserva.Enabled = true;
                 }
@@ -68,7 +75,7 @@ namespace PedidoTela.Formularios
         private void dgvDisponibleReservar_CellEndEdit(object sender, DataGridViewCellEventArgs e)
         {
             ///dgvDisponibleReservar.ReadOnly = true;
-            if (e.ColumnIndex >= 0 && e.ColumnIndex <= 8)
+            if (e.ColumnIndex >= 0 && e.ColumnIndex <= 9)
             {
                 dgvDisponibleReservar.CurrentRow.Cells[0].ReadOnly = true;
                 dgvDisponibleReservar.CurrentRow.Cells[1].ReadOnly = true;
@@ -82,17 +89,18 @@ namespace PedidoTela.Formularios
             }
             else
             {
-                if (e.ColumnIndex == 9)
+                if (e.ColumnIndex == 10)
                 {
                     if (dgvDisponibleReservar.CurrentCell.Value != null && dgvDisponibleReservar.CurrentCell.Value.ToString().Trim() != "")
                     {
-                        dgvDisponibleReservar.CurrentCell.Value = dgvDisponibleReservar.CurrentCell.Value.ToString().Trim().Replace(".", ",");
-                        dgvDisponibleReservar.CurrentCell.Value = Regex.Replace(dgvDisponibleReservar.CurrentCell.Value.ToString().Trim(), @"[^0-9,]", "");
+                        //dgvDisponibleReservar.CurrentCell.Value = dgvDisponibleReservar.CurrentCell.Value.ToString().Trim().Replace(",", ".");
+                        //dgvDisponibleReservar.CurrentCell.Value = Regex.Replace(dgvDisponibleReservar.CurrentCell.Value.ToString().Trim(), @"[^0-9,]", "");
                         if (dgvDisponibleReservar.CurrentCell.Value != null && dgvDisponibleReservar.CurrentCell.Value.ToString().Trim() != "")
                         {
-                            int valor = int.Parse(dgvDisponibleReservar.CurrentCell.Value.ToString());
-                            dgvDisponibleReservar.CurrentCell.Value = valor;
-                            MetrosReservar = valor;
+                            decimal valor = Decimal.Parse(dgvDisponibleReservar.CurrentCell.Value.ToString());
+                            decimal vfinal = Decimal.Round(valor, 2);
+                            dgvDisponibleReservar.CurrentCell.Value = vfinal;
+                            MetrosReservar = vfinal; 
                         }
                     }
                 }
@@ -109,20 +117,30 @@ namespace PedidoTela.Formularios
         {
             foreach (DataGridViewRow row in dgvDisponibleReservar.Rows)
             {
-               if( controlador.setMaReservar(row.Cells[2].Value.ToString(), row.Cells[9].Value.ToString()))
+
+                if (decimal.Parse(row.Cells[10].Value.ToString()) < decimal.Parse(row.Cells[7].Value.ToString()))
                 {
-                    MessageBox.Show("Información Actualizada con éxito.", "Información", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                    DialogResult = DialogResult.OK;
+
+
+                    if (controlador.setMaReservar(int.Parse(row.Cells[11].Value.ToString()), row.Cells[10].Value.ToString()))
+                    {
+                        MessageBox.Show("Información Actualizada con éxito.", "Información", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                        DialogResult = DialogResult.OK;
+                    }
+                }
+                else
+                {
+                    MessageBox.Show("El campo Metros a reservar no puede ser mayor que el disponible", "Advertencia", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 }
 
-              } 
+            } 
         }
 
         private void btnDetalleReserva_Click(object sender, EventArgs e)
         {
             for (int i = 0; i <= dgvDisponibleReservar.RowCount - 1; i++)
             {
-                if (dgvDisponibleReservar.Rows[i].Cells[9].Value == null)
+                if (dgvDisponibleReservar.Rows[i].Cells[10].Value == null)
                     {
 
                     MessageBox.Show("Por favor, ingrese un valor para Metros a Reservar.", "Advertencia", MessageBoxButtons.OK, MessageBoxIcon.Warning);

@@ -30,7 +30,6 @@ namespace PedidoTela.Formularios
         private void InitializeComponent()
         {
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
             this.dgvDetalle = new System.Windows.Forms.DataGridView();
             this.lbTotal = new System.Windows.Forms.Label();
             this.txbTotal = new System.Windows.Forms.TextBox();
@@ -44,6 +43,7 @@ namespace PedidoTela.Formularios
             this.ensayo = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.referencia2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.cantReservado = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.idSolTela = new System.Windows.Forms.DataGridViewTextBoxColumn();
             ((System.ComponentModel.ISupportInitialize)(this.dgvDetalle)).BeginInit();
             this.panel9.SuspendLayout();
             this.SuspendLayout();
@@ -72,15 +72,8 @@ namespace PedidoTela.Formularios
             this.color,
             this.ensayo,
             this.referencia2,
-            this.cantReservado});
-            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle2.BackColor = System.Drawing.SystemColors.Window;
-            dataGridViewCellStyle2.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle2.ForeColor = System.Drawing.SystemColors.ControlText;
-            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.dgvDetalle.DefaultCellStyle = dataGridViewCellStyle2;
+            this.cantReservado,
+            this.idSolTela});
             this.dgvDetalle.EnableHeadersVisualStyles = false;
             this.dgvDetalle.Location = new System.Drawing.Point(22, 187);
             this.dgvDetalle.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
@@ -191,6 +184,14 @@ namespace PedidoTela.Formularios
             this.cantReservado.Name = "cantReservado";
             this.cantReservado.ReadOnly = true;
             // 
+            // idSolTela
+            // 
+            this.idSolTela.HeaderText = "idSolTela";
+            this.idSolTela.MinimumWidth = 6;
+            this.idSolTela.Name = "idSolTela";
+            this.idSolTela.ReadOnly = true;
+            this.idSolTela.Visible = false;
+            // 
             // frmDetalleReserva
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
@@ -227,5 +228,6 @@ namespace PedidoTela.Formularios
         private System.Windows.Forms.DataGridViewTextBoxColumn ensayo;
         private System.Windows.Forms.DataGridViewTextBoxColumn referencia2;
         private System.Windows.Forms.DataGridViewTextBoxColumn cantReservado;
+        private System.Windows.Forms.DataGridViewTextBoxColumn idSolTela;
     }
 }

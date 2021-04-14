@@ -53,7 +53,7 @@ namespace PedidoTela.Data.Acceso
                     objDetalle.Desc_prenda = datos["desc_prenda"].ToString().Trim();
                     objDetalle.Codigo_tela = datos["codigo_tela"].ToString().Trim();
                     objDetalle.Descripcion_tela = datos["descripcion_tela"].ToString().Trim();
-                    objDetalle.Consumo_est = datos["consumo_est"].ToString().Trim();
+                    objDetalle.Consumo_est = datos["consumo_est"].ToString().Trim().Replace(",",".");
              
                     respuesta.Add(objDetalle);
                 };

@@ -47,10 +47,11 @@ namespace PedidoTela.Entidades.Logica
         private string mReservados;
         private string masolicitar;
         private string tipo;
+        private int idSolTela;
 
         public DetalleListaTela() { }
 
-        public DetalleListaTela(bool sel, string solicitud, string tipoSolicitud, string ensayo, string refSimilar, int numDibujos, string codFondo, string fondo, string tipoTela, string coordinado, string coordinadoCon, string refTela, string desTela, string vte, string desColor, string totaUnidades, string consumo, string marca, string muestrario, string ocasionUso, string tema, string entrada, string fechaTienda, string disenador, string obsDiseno, string fechaSolTelas, string estado, string fechaEstado, string tiendas, string exito, string cencosud, string sao, string comercio, string rosado, string otros, string mCalculados, string mReservados, string masolicitar, string tipo)
+        public DetalleListaTela(bool sel, string solicitud, string tipoSolicitud, string ensayo, string refSimilar, int numDibujos, string codFondo, string fondo, string tipoTela, string coordinado, string coordinadoCon, string refTela, string desTela, string vte, string desColor, string totaUnidades, string consumo, string marca, string muestrario, string ocasionUso, string tema, string entrada, string fechaTienda, string disenador, string obsDiseno, string fechaSolTelas, string estado, string fechaEstado, string tiendas, string exito, string cencosud, string sao, string comercio, string rosado, string otros, string mCalculados, string mReservados, string masolicitar, string tipo, int idSolTela)
         {
             this.Sel = sel;
             this.Solicitud = solicitud;
@@ -91,6 +92,7 @@ namespace PedidoTela.Entidades.Logica
             this.MReservados = mReservados;
             this.Masolicitar = masolicitar;
             this.Tipo = tipo;
+            this.IdSolTela = idSolTela;
         }
 
         public bool Sel { get => sel; set => sel = value; }
@@ -132,5 +134,6 @@ namespace PedidoTela.Entidades.Logica
         public string MReservados { get => mReservados; set => mReservados = value; }
         public string Masolicitar { get => masolicitar; set => masolicitar = value; }
         public string Tipo { get => tipo; set => tipo = value; }
+        public int IdSolTela { get => idSolTela; set => idSolTela = value; }
     }
 }

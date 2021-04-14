@@ -50,9 +50,10 @@ namespace PedidoTela.Formularios
             this.btnAceptar.Font = new System.Drawing.Font("Verdana", 8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnAceptar.Image = ((System.Drawing.Image)(resources.GetObject("btnAceptar.Image")));
             this.btnAceptar.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnAceptar.Location = new System.Drawing.Point(299, 371);
+            this.btnAceptar.Location = new System.Drawing.Point(266, 297);
+            this.btnAceptar.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.btnAceptar.Name = "btnAceptar";
-            this.btnAceptar.Size = new System.Drawing.Size(150, 70);
+            this.btnAceptar.Size = new System.Drawing.Size(133, 56);
             this.btnAceptar.TabIndex = 4;
             this.btnAceptar.Text = "Aceptar";
             this.btnAceptar.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
@@ -67,9 +68,10 @@ namespace PedidoTela.Formularios
             this.btnCancelar.ForeColor = System.Drawing.Color.Black;
             this.btnCancelar.Image = global::PedidoTela.Formularios.Properties.Resources.mbrilogout_99583;
             this.btnCancelar.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnCancelar.Location = new System.Drawing.Point(28, 371);
+            this.btnCancelar.Location = new System.Drawing.Point(25, 297);
+            this.btnCancelar.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.btnCancelar.Name = "btnCancelar";
-            this.btnCancelar.Size = new System.Drawing.Size(150, 70);
+            this.btnCancelar.Size = new System.Drawing.Size(133, 56);
             this.btnCancelar.TabIndex = 5;
             this.btnCancelar.Text = "Cancelar";
             this.btnCancelar.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
@@ -84,7 +86,7 @@ namespace PedidoTela.Formularios
             this.lbSelecciontipo.ForeColor = System.Drawing.Color.White;
             this.lbSelecciontipo.Location = new System.Drawing.Point(3, 0);
             this.lbSelecciontipo.Name = "lbSelecciontipo";
-            this.lbSelecciontipo.Size = new System.Drawing.Size(300, 25);
+            this.lbSelecciontipo.Size = new System.Drawing.Size(256, 20);
             this.lbSelecciontipo.TabIndex = 6;
             this.lbSelecciontipo.Text = "Selecione el tipo de solicitud";
             // 
@@ -96,9 +98,10 @@ namespace PedidoTela.Formularios
             this.panel1.Controls.Add(this.cbxPlanoPretenido);
             this.panel1.Controls.Add(this.cbxestampado);
             this.panel1.Controls.Add(this.cbxUnicolor);
-            this.panel1.Location = new System.Drawing.Point(28, 62);
+            this.panel1.Location = new System.Drawing.Point(25, 50);
+            this.panel1.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(421, 285);
+            this.panel1.Size = new System.Drawing.Size(375, 229);
             this.panel1.TabIndex = 7;
             // 
             // cbxCuePunTiras
@@ -106,9 +109,10 @@ namespace PedidoTela.Formularios
             this.cbxCuePunTiras.AutoSize = true;
             this.cbxCuePunTiras.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.cbxCuePunTiras.Font = new System.Drawing.Font("Verdana", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.cbxCuePunTiras.Location = new System.Drawing.Point(105, 187);
+            this.cbxCuePunTiras.Location = new System.Drawing.Point(93, 150);
+            this.cbxCuePunTiras.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.cbxCuePunTiras.Name = "cbxCuePunTiras";
-            this.cbxCuePunTiras.Size = new System.Drawing.Size(232, 29);
+            this.cbxCuePunTiras.Size = new System.Drawing.Size(196, 24);
             this.cbxCuePunTiras.TabIndex = 7;
             this.cbxCuePunTiras.Text = "Cuellos-Puños-Tiras";
             this.cbxCuePunTiras.UseVisualStyleBackColor = true;
@@ -119,9 +123,10 @@ namespace PedidoTela.Formularios
             this.cbxPlanoPretenido.AutoSize = true;
             this.cbxPlanoPretenido.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.cbxPlanoPretenido.Font = new System.Drawing.Font("Verdana", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.cbxPlanoPretenido.Location = new System.Drawing.Point(105, 137);
+            this.cbxPlanoPretenido.Location = new System.Drawing.Point(93, 110);
+            this.cbxPlanoPretenido.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.cbxPlanoPretenido.Name = "cbxPlanoPretenido";
-            this.cbxPlanoPretenido.Size = new System.Drawing.Size(200, 29);
+            this.cbxPlanoPretenido.Size = new System.Drawing.Size(168, 24);
             this.cbxPlanoPretenido.TabIndex = 6;
             this.cbxPlanoPretenido.Text = "Plano- Preteñido";
             this.cbxPlanoPretenido.UseVisualStyleBackColor = true;
@@ -132,9 +137,10 @@ namespace PedidoTela.Formularios
             this.cbxestampado.AutoSize = true;
             this.cbxestampado.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.cbxestampado.Font = new System.Drawing.Font("Verdana", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.cbxestampado.Location = new System.Drawing.Point(105, 86);
+            this.cbxestampado.Location = new System.Drawing.Point(93, 69);
+            this.cbxestampado.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.cbxestampado.Name = "cbxestampado";
-            this.cbxestampado.Size = new System.Drawing.Size(143, 29);
+            this.cbxestampado.Size = new System.Drawing.Size(123, 24);
             this.cbxestampado.TabIndex = 5;
             this.cbxestampado.Text = "Estampado";
             this.cbxestampado.UseVisualStyleBackColor = true;
@@ -145,9 +151,10 @@ namespace PedidoTela.Formularios
             this.cbxUnicolor.AutoSize = true;
             this.cbxUnicolor.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.cbxUnicolor.Font = new System.Drawing.Font("Verdana", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.cbxUnicolor.Location = new System.Drawing.Point(105, 32);
+            this.cbxUnicolor.Location = new System.Drawing.Point(93, 26);
+            this.cbxUnicolor.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.cbxUnicolor.Name = "cbxUnicolor";
-            this.cbxUnicolor.Size = new System.Drawing.Size(116, 29);
+            this.cbxUnicolor.Size = new System.Drawing.Size(96, 24);
             this.cbxUnicolor.TabIndex = 4;
             this.cbxUnicolor.Text = "Unicolor";
             this.cbxUnicolor.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -160,21 +167,23 @@ namespace PedidoTela.Formularios
             this.panel2.Controls.Add(this.lbSelecciontipo);
             this.panel2.Dock = System.Windows.Forms.DockStyle.Top;
             this.panel2.Location = new System.Drawing.Point(0, 0);
+            this.panel2.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(472, 32);
+            this.panel2.Size = new System.Drawing.Size(420, 26);
             this.panel2.TabIndex = 8;
             // 
             // frmTipoSolicitud
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.ScrollBar;
-            this.ClientSize = new System.Drawing.Size(472, 470);
+            this.ClientSize = new System.Drawing.Size(420, 376);
             this.Controls.Add(this.panel2);
             this.Controls.Add(this.panel1);
             this.Controls.Add(this.btnCancelar);
             this.Controls.Add(this.btnAceptar);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
+            this.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.Name = "frmTipoSolicitud";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Tipo Solicitud";
@@ -192,9 +201,9 @@ namespace PedidoTela.Formularios
         private System.Windows.Forms.Label lbSelecciontipo;
         private System.Windows.Forms.Panel panel1;
         private System.Windows.Forms.Panel panel2;
-        private System.Windows.Forms.CheckBox cbxUnicolor;
-        private System.Windows.Forms.CheckBox cbxCuePunTiras;
-        private System.Windows.Forms.CheckBox cbxPlanoPretenido;
-        private System.Windows.Forms.CheckBox cbxestampado;
+        public System.Windows.Forms.CheckBox cbxUnicolor;
+        public System.Windows.Forms.CheckBox cbxCuePunTiras;
+        public System.Windows.Forms.CheckBox cbxPlanoPretenido;
+        public System.Windows.Forms.CheckBox cbxestampado;
     }
 }

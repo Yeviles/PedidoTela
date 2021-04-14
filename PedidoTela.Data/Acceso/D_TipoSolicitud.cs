@@ -10,7 +10,7 @@ namespace PedidoTela.Data.Acceso
     public class D_TipoSolicitud
     {
         #region Consultas
-        private readonly string agregarConsecutivo = "insert into cfc_spt_tipo_solicitud (id_solicitud, id_tipo, tipo, consecutivo,fecha_solicitud,estado,fecha_estado) values(?, ?, ?, ?, ?, ?, ?);";
+        private readonly string agregarConsecutivo = "insert into cfc_spt_tipo_solicitud (id_solicitud, id_tipo, tipo, consecutivo,fecha_solicitud,estado,fecha_estado,identificador) values(?, ?, ?, ?, ?, ?, ?, ?);";
         private readonly string consConsecutivo = "select consecutivo FROM cfc_spt_tipo_solicitud where id_tipo = ?;";
 
         private readonly string consultaMax = "select max(consecutivo) as max from  cfc_spt_tipo_solicitud;";
@@ -25,7 +25,7 @@ namespace PedidoTela.Data.Acceso
         /// <param name="prmConsecutivo">Consecutivo de Solicitud.</param>
         /// <param name="fechaSolicitud">Fecha en la cual fue confirmada la solicitud de telas.</param>
         /// <returns>Retorna un string de verificación indicando si la consulta guardo o no la información entregada por parámetros.</returns>
-        public string Agregar(string prmIdsolicitud, int prmIdtipo, string tipo, int prmConsecutivo, string fechaSolicitud, string estado, string fechaEstado)
+        public string Agregar(int prmIdsolicitud, int prmIdtipo, string tipo, int prmConsecutivo, string fechaSolicitud, string estado, string fechaEstado,string identificador)
         {
             string respuesta = "";
             try
@@ -39,6 +39,7 @@ namespace PedidoTela.Data.Acceso
                     con.Parametros.Add(new IfxParameter("@fecha_solicitud", fechaSolicitud));
                     con.Parametros.Add(new IfxParameter("@estado", estado));
                     con.Parametros.Add(new IfxParameter("@fecha_estado", fechaEstado));
+                    con.Parametros.Add(new IfxParameter("@identificador", identificador));
 
 
                     var datos = con.EjecutarConsulta(this.agregarConsecutivo);

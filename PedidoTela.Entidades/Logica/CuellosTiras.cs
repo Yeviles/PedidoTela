@@ -16,12 +16,13 @@ namespace PedidoTela.Entidades.Logica
         private bool coordinado;
         private string coordinadoCon;
         private string observacion;
+        private int idSolTela;
 
 
 
         public CuellosTiras() { }
 
-        public CuellosTiras(int idCuellos, string identificador, bool cuellos, bool punos, bool tiras, bool coordinado, string coordinadoCon, string observacion)
+        public CuellosTiras(int idCuellos, string identificador, bool cuellos, bool punos, bool tiras, bool coordinado, string coordinadoCon, string observacion, int idSolTela)
         {
             this.IdCuellos = idCuellos;
             this.Identificador = identificador;
@@ -31,7 +32,7 @@ namespace PedidoTela.Entidades.Logica
             this.Coordinado = coordinado;
             this.CoordinadoCon = coordinadoCon;
             this.Observacion = observacion;
-        
+            this.IdSolTela = idSolTela;
         }
 
         public int IdCuellos { get => idCuellos; set => idCuellos = value; }
@@ -42,6 +43,6 @@ namespace PedidoTela.Entidades.Logica
         public bool Coordinado { get => coordinado; set => coordinado = value; }
         public string CoordinadoCon { get => coordinadoCon; set => coordinadoCon = value; }
         public string Observacion { get => observacion; set => observacion = value; }
-    
+        public int IdSolTela { get => idSolTela; set => idSolTela = value; }
     }
 }

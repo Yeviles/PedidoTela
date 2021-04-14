@@ -39,7 +39,7 @@ namespace PedidoTela.Formularios
             {
                 for (int i = 0; i < prmLista.Count; i++)
                 {
-                   // if(prmLista[i])
+                    // if(prmLista[i])
 
                     dgvDetalle.Rows.Add(
                         prmLista[i].Disenadora.ToString(),
@@ -49,7 +49,8 @@ namespace PedidoTela.Formularios
                         prmLista[i].Color.ToString(),
                         prmLista[i].Estado.ToString(),
                         prmLista[i].Disponible.ToString(),
-                        prmLista[i].CantidadReservado.ToString());
+                        prmLista[i].CantidadReservado.ToString(),
+                        prmLista[i].IdsolTela.ToString());
                     //prmLista[i].DiponibleTeorico.ToString();
                     // prmLista[i].MetrosaReservar.ToString());
                 }

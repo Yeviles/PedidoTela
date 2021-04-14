@@ -12,41 +12,48 @@ namespace PedidoTela.Entidades.Logica
     {
         public string mCalculados2(string totalUnidades, string consumo)
         {
-            // detalle.Total = (row.Cells[11].Value != null && row.Cells[11].Value.ToString() != "") ? int.Parse(row.Cells[11].Value.ToString()) : 0;
+            /*Para el campo M Calculados se requiere que el sistema realice la siguiente operación : (Total unidades*Consumo) *  1.10*/
 
-            //decimal total;
-            //string result;
-            double t = (totalUnidades.ToString() != null && totalUnidades.ToString() != "") ? double.Parse(totalUnidades.ToString()) : 0;
-            //decimal cont = 1.10m;
-            //total = ((t) * decimal.Parse(consumo)) * cont;
-            // decimal vfinal = Decimal.Round(total, 3);
-            //result = Convert.ToString(vfinal);
-            double total;
-            string result;
-            double cont = 1.10D;
-            double a = Convert.ToDouble(consumo);
-            //decimal separator will always be '.'
-            string txt = a.ToString(CultureInfo.InvariantCulture);
-            double a2 = double.Parse(txt,CultureInfo.InvariantCulture);
-            total = ((t * a2) * cont);
-            //back to a double
-            result = Convert.ToString(total);
+            CultureInfo culture = new CultureInfo("en-US");
+            decimal totalUni = (totalUnidades.ToString() != null && totalUnidades.ToString() != "") ? decimal.Parse(totalUnidades.ToString(),culture) : 0;
+            decimal con = (consumo.ToString() != null && consumo.ToString() != "") ? decimal.Parse(consumo.ToString(), culture) : 0;
+            decimal constante = 1.10m;
+            decimal total = totalUni * con * constante;
+            decimal vfinal = Decimal.Round(total, 2);
 
+            string result = Convert.ToString(vfinal).Replace(",","."); 
             return result;
         }
         public string mSolicitar(string mCalculado, string mReservar)
         {
-            decimal total;
-            string result;
+            /*M a Solicitar debe ser la diferencia entre M Calculados  -  Mreservados. */
+ 
+            CultureInfo culture = new CultureInfo("en-US");
+       
+            decimal m = (mCalculado.ToString() != null && mCalculado.ToString() != "") ? decimal.Parse(mCalculado.ToString(),culture) : 0;
+            decimal t = (mReservar.ToString() != null && mReservar.ToString() != "") ? decimal.Parse(mReservar.ToString(),culture) : 0;
 
-            decimal m = (mCalculado.ToString() != null && mCalculado.ToString() != "") ? Decimal.Parse(mCalculado.ToString()) : 0;
-            int t = (mReservar.ToString() != null && mReservar.ToString() != "") ? int.Parse(mReservar.ToString()) : 0;
+            decimal total = (m) - (t);
+            decimal vfinal = Decimal.Round(total, 2);
+            
+            string result = Convert.ToString(vfinal).Replace(",",".");
 
-            total = (m) - (t) * -1;
-            decimal vfinal = Decimal.Round(total, 1);
-            result = Convert.ToString(vfinal);
             return result;
 
+        }
+        public string DisponibleTeorico(string disponible, string mReservar)
+        {
+            /*Para este  campo  se requiere   que  el  sistema  realice   siguiente    operación  (  Disponible -  Cantidad    Reservada )  */
+            CultureInfo culture = new CultureInfo("en-US");
+            decimal d = (disponible.ToString() != null && disponible.ToString() != "") ? decimal.Parse(disponible.ToString(), culture) : 0;
+            decimal r = (mReservar.ToString() != null && mReservar.ToString() != "") ? decimal.Parse(mReservar.ToString(), culture) : 0;
+
+            decimal total = ((d) - (r));
+            decimal vfinal = Decimal.Round(total, 2);
+            Math.Abs(vfinal);
+            string result = Convert.ToString(vfinal).Replace(",", ".");
+
+            return result;
         }
         public int ContarChecked(DataGridView prmDataGridView)
         {
@@ -58,6 +65,17 @@ namespace PedidoTela.Entidades.Logica
                 {
                     contador++;
                 }
+            }
+            return contador;
+        }
+        public int Cifras(int numero)
+        {
+            int contador = 0;
+            while (numero > 0)
+            {
+                numero = numero / 10;
+
+                contador = contador + 1;
             }
             return contador;
         }

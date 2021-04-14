@@ -19,12 +19,12 @@ namespace PedidoTela.Formularios
     public partial class frmSolicitudCuellosTiras : MaterialSkin.Controls.MaterialForm
     {
         private Controlador controlador;
-        private string identificador;
-        private int id = 0, consecutivo = 0;
+        private string identificador, cuellos, punos, tiras;
+        private int id = 0, consecutivo = 0, catidadSeleccionada = 0, idSolTela;
 
         private Image imgCuellos, imgPunos, imgTiras;
         Boolean swImgCuellos = false, swImgPunos = false, swImgTiras = false;
-        string tipoImgCuellos, tipoImgPunos, tipoImgTiras;
+        string tipoImgCuellos = "", tipoImgPunos = "", tipoImgTiras = "";
 
         public string Identificador { get => identificador; set => identificador = value; }
 
@@ -32,23 +32,35 @@ namespace PedidoTela.Formularios
         public Image ImgPunos { get => imgPunos; set => imgPunos = value; }
         public Image ImgTiras { get => imgTiras; set => imgTiras = value; }
 
-        public frmSolicitudCuellosTiras(Controlador controlador, string identificador)
+        public frmSolicitudCuellosTiras(Controlador controlador, string identificador, int idSoTelas)
         {
             this.controlador = controlador;
             this.identificador = identificador;
+            this.idSolTela = idSoTelas;
 
             InitializeComponent();
             lbIdentificador.Text = identificador;
+
+            btnImgCuellos.Enabled = false;
+            btnImgPunos.Enabled = false;
+            btnImgTiras.Enabled = false;
+
+            //dgvCuellos1.RowCount = 3;
+            //dgvCuellos1.Rows[0].HeaderCell.Value = "Cuellos";
+            //dgvCuellos1.Rows[1].HeaderCell.Value = "Puños";
+            //dgvCuellos1.Rows[2].HeaderCell.Value = "Tiras";
+
+            //dgvCuellos1.HeadersCellVisible = false;
+            dgvCuellos1.RowHeadersVisible = false;
+
+            //dgvCuellos1.Rows[0].Visible = false;
+            //dgvCuellos1.Rows[1].Visible = false;
+            //dgvCuellos1.Rows[2].Visible = false;
+
             CargarCuellosTiras();
 
 
-            if (dgvCuellos1.RowCount > 0 && dgvCuellos2.RowCount > 0)
-            {
-                btnGrabar.Enabled = false;
-                dgvCuellos1.ReadOnly = true;
-                dgvCuellos2.ReadOnly = true;
-            }
-            else
+            if (dgvCuellos1.RowCount < 0 && dgvCuellos2.RowCount < 0)
             {
                 btnConfirmar.Enabled = false;
             }
@@ -60,18 +72,21 @@ namespace PedidoTela.Formularios
             SkinManager.ColorScheme = new ColorScheme(Primary.Blue900, Primary.Grey500, Primary.Grey200, Accent.Green100, TextShade.WHITE);
             txbCoordinaCon.MaxLength = 40;
             txtObservaciones.MaxLength = 120;
-            dgvCuellos1.RowCount = 3;
-            dgvCuellos1.Rows[0].HeaderCell.Value = "Cuellos";
-            dgvCuellos1.Rows[1].HeaderCell.Value = "Puños";
-            dgvCuellos1.Rows[2].HeaderCell.Value = "Tiras";
+
+            //dgvCuellos1.RowCount = 3;
+            //dgvCuellos1.Rows[0].HeaderCell.Value = "Cuellos";
+            //dgvCuellos1.Rows[1].HeaderCell.Value = "Puños";
+            //dgvCuellos1.Rows[2].HeaderCell.Value = "Tiras";
 
 
         }
 
         private void btnGrabar_Click(object sender, EventArgs e)
         {
-            
-       
+            bool b = false;
+            List<int> listaIdDetalles = new List<int>();
+
+            List<int> listaIdDetalleDos = new List<int>();
             if (!cbxTiras.Checked && !cbxCuellos.Checked && !cbxPunos.Checked)
             {
                 MessageBox.Show("Por favor, Seleccione un Tipo Tela.", "Advertencia", MessageBoxButtons.OK, MessageBoxIcon.Warning);
@@ -80,7 +95,7 @@ namespace PedidoTela.Formularios
             {
                 MessageBox.Show("Por favor, seleccione un valor para coordinado", "Advertencia", MessageBoxButtons.OK, MessageBoxIcon.Warning);
             }
-            else if (ptbCuellos.Image == null && ptbPunos.Image == null &&ptbCuellos.Image == null)
+            else if (ptbCuellos.Image == null && ptbPunos.Image == null && ptbCuellos.Image == null)
             {
                 MessageBox.Show("Por favor, Seleccione almenos una imagen.", "Advertencia", MessageBoxButtons.OK, MessageBoxIcon.Warning);
             }
@@ -102,7 +117,7 @@ namespace PedidoTela.Formularios
 
                         if (!vacio)
                         {
-                            
+
                             CuellosTiras elemento = new CuellosTiras();
                             elemento.Identificador = identificador;
                             elemento.Cuellos = (cbxCuellos.Checked) ? true : false;
@@ -111,72 +126,108 @@ namespace PedidoTela.Formularios
                             elemento.Coordinado = (cbxSiCoordinado.Checked) ? true : false;
                             elemento.CoordinadoCon = (txbCoordinaCon.Text.Trim().Length > 0) ? txbCoordinaCon.Text.Trim() : "";
                             elemento.Observacion = (txtObservaciones.Text.Trim().Length > 0) ? txtObservaciones.Text.Trim() : "";
-                            if (controlador.addCuellosTiras(elemento))
+                            elemento.IdSolTela = idSolTela;
+                            if (controlador.consultarIdentificadorCuel(idSolTela))
                             {
-                                id = controlador.getIdCuellos(identificador);
-                                //Console.WriteLine("ID: " + id);
-                                try
+                                controlador.ActualizarCuellos(elemento);
+                                b = true;
+                            }
+                            else
+                            {
+                                controlador.addCuellosTiras(elemento);
+                            }
+                            id = controlador.getIdCuellos(idSolTela);
+                            listaIdDetalles = controlador.getIdDetallecuellosUno(id);
+                            listaIdDetalleDos = controlador.getIdDetallecuellosDos(id);
+                            //Console.WriteLine("ID: " + id);
+                            try
+                            {
+                                for (int i = 0; i < dgvCuellos1.RowCount; i++)
                                 {
-                                    foreach (DataGridViewRow row in dgvCuellos1.Rows)
-                                    {
-                                        DetalleCuelloUno detalle = new DetalleCuelloUno();
-                                        detalle.IdCuellos = id;
-                                        detalle.Codigo = (row.Cells[0].Value != null  && row.Cells[0].Value.ToString() != "") ? row.Cells[0].Value.ToString(): "";
-                                        detalle.Xs = (row.Cells[1].Value != null && row.Cells[1].Value.ToString() != "") ? int.Parse(row.Cells[1].Value.ToString()) : 0;
-                                        detalle.S = (row.Cells[2].Value != null && row.Cells[2].Value.ToString() != "") ? int.Parse(row.Cells[2].Value.ToString()) : 0;
-                                        detalle.M = (row.Cells[3].Value != null && row.Cells[3].Value.ToString() != "") ? int.Parse(row.Cells[3].Value.ToString()) : 0;
-                                        detalle.L = (row.Cells[4].Value != null && row.Cells[4].Value.ToString() != "") ? int.Parse(row.Cells[4].Value.ToString()) : 0;
-                                        detalle.Xl = (row.Cells[5].Value != null && row.Cells[5].Value.ToString() != "") ? int.Parse(row.Cells[5].Value.ToString()) : 0;
-                                        detalle.Dosxl = (row.Cells[6].Value != null && row.Cells[6].Value.ToString() != "") ? int.Parse(row.Cells[6].Value.ToString()) : 0;
-                                        detalle.Cuatro = (row.Cells[7].Value != null && row.Cells[7].Value.ToString() != "") ? int.Parse(row.Cells[7].Value.ToString()) : 0;
-                                        detalle.Seis = (row.Cells[8].Value != null && row.Cells[8].Value.ToString() != "") ? int.Parse(row.Cells[8].Value.ToString()) : 0;
-                                        detalle.Ocho = (row.Cells[9].Value != null && row.Cells[9].Value.ToString() != "") ? int.Parse(row.Cells[9].Value.ToString()) : 0;
-                                        detalle.Diez = (row.Cells[10].Value != null && row.Cells[10].Value.ToString() != "") ? int.Parse(row.Cells[10].Value.ToString()) : 0;
-                                        detalle.Doce = (row.Cells[11].Value != null && row.Cells[11].Value.ToString() != "") ? int.Parse(row.Cells[11].Value.ToString()) : 0;
-                                        detalle.Catorce = (row.Cells[12].Value != null && row.Cells[12].Value.ToString() != "") ? int.Parse(row.Cells[12].Value.ToString()) : 0;
-                                        detalle.Dieciseis = (row.Cells[13].Value != null && row.Cells[13].Value.ToString() != "") ? int.Parse(row.Cells[13].Value.ToString()) : 0;
-                                        detalle.Dieciocho = (row.Cells[14].Value != null && row.Cells[14].Value.ToString() != "") ? int.Parse(row.Cells[14].Value.ToString()) : 0;
-                                        detalle.Veinte = (row.Cells[15].Value != null && row.Cells[15].Value.ToString() != "") ? int.Parse(row.Cells[15].Value.ToString()) : 0;
-                                        detalle.Veintidos = (row.Cells[16].Value != null && row.Cells[16].Value.ToString() != "") ? int.Parse(row.Cells[16].Value.ToString()) : 0;
-                                        detalle.Veinticuatro = (row.Cells[17].Value != null && row.Cells[17].Value.ToString() != "") ? int.Parse(row.Cells[17].Value.ToString()) : 0;
-                                        detalle.Ancho = (row.Cells[18].Value != null && row.Cells[18].Value.ToString() != "") ? row.Cells[18].Value.ToString() : "0";
 
-                                        // (dgvDetalleConsumo.Rows[e.RowIndex].Cells[5].Value != null) ? dgvDetalleConsumo.Rows[e.RowIndex].Cells[5].Value.ToString() : "0"
-                                        //detalle.Total = (row.Cells[12].Value != null && row.Cells[12].Value.ToString() != "") ? int.Parse(row.Cells[12].Value.ToString()) : 0;
-                                        controlador.addDetalleCuelloUno(detalle);
-                                        //btnConfirmar.Enabled = true;
-                                    }
-                                    foreach (DataGridViewRow row in dgvCuellos2.Rows)
+                                    DetalleCuelloUno detalle = new DetalleCuelloUno();
+                                    detalle.IdCuellos = id;
+                                    detalle.NombreChechSel = (dgvCuellos1.Rows[i].Cells[0].Value.ToString());
+                                    detalle.Codigo = (dgvCuellos1.Rows[i].Cells[1].Value != null && dgvCuellos1.Rows[i].Cells[1].Value.ToString() != "") ? dgvCuellos1.Rows[i].Cells[1].Value.ToString() : "";
+                                    detalle.Xs = (dgvCuellos1.Rows[i].Cells[2].Value != null && dgvCuellos1.Rows[i].Cells[2].Value.ToString() != "") ? dgvCuellos1.Rows[i].Cells[2].Value.ToString() : "0";
+                                    detalle.S = (dgvCuellos1.Rows[i].Cells[3].Value != null && dgvCuellos1.Rows[i].Cells[3].Value.ToString() != "") ? dgvCuellos1.Rows[i].Cells[3].Value.ToString() : "0";
+                                    detalle.M = (dgvCuellos1.Rows[i].Cells[4].Value != null && dgvCuellos1.Rows[i].Cells[4].Value.ToString() != "") ? dgvCuellos1.Rows[i].Cells[4].Value.ToString() : "0";
+                                    detalle.L = (dgvCuellos1.Rows[i].Cells[5].Value != null && dgvCuellos1.Rows[i].Cells[5].Value.ToString() != "") ? dgvCuellos1.Rows[i].Cells[5].Value.ToString() : "0";
+                                    detalle.Xl = (dgvCuellos1.Rows[i].Cells[6].Value != null && dgvCuellos1.Rows[i].Cells[6].Value.ToString() != "") ? dgvCuellos1.Rows[i].Cells[6].Value.ToString() : "0";
+                                    detalle.Dosxl = (dgvCuellos1.Rows[i].Cells[7].Value != null && dgvCuellos1.Rows[i].Cells[7].Value.ToString() != "") ? dgvCuellos1.Rows[i].Cells[7].Value.ToString() : "0";
+                                    detalle.Cuatro = (dgvCuellos1.Rows[i].Cells[8].Value != null && dgvCuellos1.Rows[i].Cells[8].Value.ToString() != "") ? dgvCuellos1.Rows[i].Cells[8].Value.ToString() : "0";
+                                    detalle.Seis = (dgvCuellos1.Rows[i].Cells[9].Value != null && dgvCuellos1.Rows[i].Cells[9].Value.ToString() != "") ? dgvCuellos1.Rows[i].Cells[9].Value.ToString() : "0";
+                                    detalle.Ocho = (dgvCuellos1.Rows[i].Cells[10].Value != null && dgvCuellos1.Rows[i].Cells[10].Value.ToString() != "") ? dgvCuellos1.Rows[i].Cells[10].Value.ToString() : "0";
+                                    detalle.Diez = (dgvCuellos1.Rows[i].Cells[11].Value != null && dgvCuellos1.Rows[i].Cells[11].Value.ToString() != "") ? dgvCuellos1.Rows[i].Cells[11].Value.ToString() : "0";
+                                    detalle.Doce = (dgvCuellos1.Rows[i].Cells[12].Value != null && dgvCuellos1.Rows[i].Cells[12].Value.ToString() != "") ? dgvCuellos1.Rows[i].Cells[12].Value.ToString() : "0";
+                                    detalle.Catorce = (dgvCuellos1.Rows[i].Cells[13].Value != null && dgvCuellos1.Rows[i].Cells[13].Value.ToString() != "") ? dgvCuellos1.Rows[i].Cells[13].Value.ToString() : "0";
+                                    detalle.Dieciseis = (dgvCuellos1.Rows[i].Cells[14].Value != null && dgvCuellos1.Rows[i].Cells[14].Value.ToString() != "") ? dgvCuellos1.Rows[i].Cells[14].Value.ToString() : "0";
+                                    detalle.Dieciocho = (dgvCuellos1.Rows[i].Cells[15].Value != null && dgvCuellos1.Rows[i].Cells[15].Value.ToString() != "") ? dgvCuellos1.Rows[i].Cells[15].Value.ToString() : "0";
+                                    detalle.Veinte = (dgvCuellos1.Rows[i].Cells[16].Value != null && dgvCuellos1.Rows[i].Cells[16].Value.ToString() != "") ? dgvCuellos1.Rows[i].Cells[16].Value.ToString() : "0";
+                                    detalle.Veintidos = (dgvCuellos1.Rows[i].Cells[17].Value != null && dgvCuellos1.Rows[i].Cells[17].Value.ToString() != "") ? dgvCuellos1.Rows[i].Cells[17].Value.ToString() : "0";
+                                    detalle.Veinticuatro = (dgvCuellos1.Rows[i].Cells[18].Value != null && dgvCuellos1.Rows[i].Cells[18].Value.ToString() != "") ? dgvCuellos1.Rows[i].Cells[18].Value.ToString() : "0";
+                                    detalle.Ancho = (dgvCuellos1.Rows[i].Cells[19].Value != null && dgvCuellos1.Rows[i].Cells[19].Value.ToString() != "") ? dgvCuellos1.Rows[i].Cells[19].Value.ToString() : "0";
+
+
+                                    if (b)
                                     {
-                                        DetalleCuelloDos detalle = new DetalleCuelloDos();
-                                        detalle.IdCuellos = id;
-                                        detalle.CodigoVte = row.Cells[0].Value.ToString();
-                                        detalle.DescripcionVte = row.Cells[1].Value.ToString().Trim();
-                                        detalle.CodigoH1 = row.Cells[2].Value.ToString();
-                                        detalle.DescripcionH1 = row.Cells[3].Value.ToString().Trim();
-                                        detalle.CodigoH2 = row.Cells[4].Value.ToString();
-                                        detalle.DescripcionH2 = row.Cells[5].Value.ToString().Trim();
-                                        detalle.CodigoH3 = row.Cells[6].Value.ToString();
-                                        detalle.DescripcionH3 = row.Cells[7].Value.ToString().Trim();
-                                        detalle.CodigoH4 = row.Cells[8].Value.ToString();
-                                        detalle.DescripcionH4 = row.Cells[9].Value.ToString().Trim();
-                                        detalle.CodigoH5 = row.Cells[10].Value.ToString();
-                                        detalle.DescripcionH5 = row.Cells[11].Value.ToString().Trim();
-                                        detalle.Total = (row.Cells[12].Value != null && row.Cells[12].Value.ToString() != "") ? int.Parse(row.Cells[12].Value.ToString()) : 0;
-                                        controlador.addDetalleCuelloDos(detalle);
-                                        btnConfirmar.Enabled = true;
+                                        if (i < listaIdDetalles.Count)
+                                        {
+                                            controlador.ActualizarDetalleCuelloUno(detalle, listaIdDetalles[i]);
+                                        }
+                                        else
+                                        {
+                                            controlador.addDetalleCuelloUno(detalle);
+                                        }
                                     }
-                                    guardarImagen();
-                                    txtObservaciones.Enabled = false;
-                                    MessageBox.Show("Cuellos-Puños-Tiras se guardó con éxito", "Información", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                                    dgvCuellos2.ReadOnly = true;
-                                    btnGrabar.Enabled = false;
-                                    btnAddColor.Enabled = false;
+                                    else
+                                    {
+                                        controlador.addDetalleCuelloUno(detalle);
+                                    }
+
                                 }
-                                catch
+                                for (int i = 0; i < dgvCuellos2.RowCount; i++)
                                 {
-                                    MessageBox.Show("Detalle Cuellos-Puños-Tiras no se pudo guardar.", "Advertencia", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                                    DetalleCuelloDos detalle = new DetalleCuelloDos();
+                                    detalle.IdCuellos = id;
+                                    detalle.CodigoVte = dgvCuellos2.Rows[i].Cells[0].Value.ToString();
+                                    detalle.DescripcionVte = dgvCuellos2.Rows[i].Cells[1].Value.ToString().Trim();
+                                    detalle.CodigoH1 = dgvCuellos2.Rows[i].Cells[2].Value.ToString();
+                                    detalle.DescripcionH1 = dgvCuellos2.Rows[i].Cells[3].Value.ToString().Trim();
+                                    detalle.CodigoH2 = dgvCuellos2.Rows[i].Cells[4].Value.ToString();
+                                    detalle.DescripcionH2 = dgvCuellos2.Rows[i].Cells[5].Value.ToString().Trim();
+                                    detalle.CodigoH3 = dgvCuellos2.Rows[i].Cells[6].Value.ToString();
+                                    detalle.DescripcionH3 = dgvCuellos2.Rows[i].Cells[7].Value.ToString().Trim();
+                                    detalle.CodigoH4 = dgvCuellos2.Rows[i].Cells[8].Value.ToString();
+                                    detalle.DescripcionH4 = dgvCuellos2.Rows[i].Cells[9].Value.ToString().Trim();
+                                    detalle.CodigoH5 = dgvCuellos2.Rows[i].Cells[10].Value.ToString();
+                                    detalle.DescripcionH5 = dgvCuellos2.Rows[i].Cells[11].Value.ToString().Trim();
+                                    detalle.Total = (dgvCuellos2.Rows[i].Cells[12].Value != null && dgvCuellos2.Rows[i].Cells[12].Value.ToString() != "") ? int.Parse(dgvCuellos2.Rows[i].Cells[12].Value.ToString()) : 0;
+
+                                    if (b)
+                                    {
+                                        if (i < listaIdDetalleDos.Count)
+                                        {
+                                            controlador.ActualizarDetalleCuelloDos(detalle, listaIdDetalleDos[i]);
+                                        }
+                                        else
+                                        {
+                                            controlador.addDetalleCuelloDos(detalle);
+                                        }
+                                    }
+                                    else
+                                    {
+                                        controlador.addDetalleCuelloDos(detalle);
+                                    }
+
                                 }
+                                guardarImagen();
+                                MessageBox.Show("Cuellos-Puños-Tiras se guardó con éxito", "Información", MessageBoxButtons.OK, MessageBoxIcon.Information);
+
+                            }
+                            catch
+                            {
+                                MessageBox.Show("Detalle Cuellos-Puños-Tiras no se pudo guardar.", "Advertencia", MessageBoxButtons.OK, MessageBoxIcon.Error);
                             }
                         }
                         else
@@ -194,42 +245,31 @@ namespace PedidoTela.Formularios
                     MessageBox.Show("Por favor, ingrese las observaciones de diseño.", "Advertencia", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 }
             }
-
         }
 
         private void btnConfirmar_Click(object sender, EventArgs e)
         {
-            CuellosTiras objCuellos = controlador.getCuellosTiras(identificador);
-            id = objCuellos.IdCuellos;
-            int idSolicitud = controlador.consultarIdsolicitud(identificador);
+
             int maxConsecutivo = controlador.consultarMaximo();
-            string fechaSolicitud = DateTime.Now.ToString("dd/MM/yyyy");
-            string fechaEstado = DateTime.Now.ToString("dd/MM/yyyy");
+
+            string fechaActual = DateTime.Now.ToString("dd/MM/yyyy");
+
             string estado = "Por Analizar";
+
             if (id != 0)
             {
-                if (idSolicitud == 0)
-                {
-                    /* quiere decir que ese idSolicitud no está en la tabla cfc_spt_sol_tela
-                     * hay que ingreser el identificador como parámetro  para id_solicitu*/
-                    if (controlador.consultarConsecutivo(id) == 0)
-                    {
+                controlador.agregarConsecutivo(idSolTela, id, "TIRAS/CUELLOS/PUÑOS", maxConsecutivo + 1, fechaActual, estado, fechaActual, identificador);
+                MessageBox.Show("El consecutivo se guardó con éxito.", "Información", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                btnConfirmar.Enabled = false;
+                btnGrabar.Enabled = false;
+                txtObservaciones.Enabled = false;
+                btnAddColor.Enabled = false;
+                dgvCuellos1.ReadOnly = true;
+                dgvCuellos2.ReadOnly = true;
+                consecutivo = controlador.consultarConsecutivo(id);
+                lblConsecutivo.Text = "Consecutivo: " + consecutivo;
+                DialogResult = DialogResult.OK;
 
-                        controlador.agregarConsecutivo(identificador, id, "TIRAS/CUELLOS/PUÑOS", maxConsecutivo + 1,fechaSolicitud,estado,fechaEstado);
-                        MessageBox.Show("El consecutivo se guardó con éxito.", "Información", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                        btnConfirmar.Enabled = false;
-                        consecutivo = controlador.consultarConsecutivo(id);
-                        lblConsecutivo.Text = "Consecutivo: " + consecutivo;
-                    }
-                }
-                else
-                {
-                    controlador.agregarConsecutivo(identificador, id, "TIRAS/CUELLOS/PUÑOS", maxConsecutivo + 1,fechaSolicitud, estado, fechaEstado);
-                    MessageBox.Show("El consecutivo se guardó con éxito.", "Información", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                    btnConfirmar.Enabled = false;
-                    consecutivo = controlador.consultarConsecutivo(id);
-                    lblConsecutivo.Text = "Consecutivo: " + consecutivo;
-                }
             }
             else
             {
@@ -318,7 +358,7 @@ namespace PedidoTela.Formularios
             {
                 txbCoordinaCon.ReadOnly = false;
                 txbCoordinaCon.Focus();
-                txbCoordinaCon.BackColor = Color.LightGoldenrodYellow;
+                txbCoordinaCon.BackColor = Color.White;
                 cbxNoCoordinado.Checked = false;
             }
         }
@@ -328,7 +368,7 @@ namespace PedidoTela.Formularios
             if (cbxNoCoordinado.Checked)
             {
                 txbCoordinaCon.ReadOnly = true;
-                txbCoordinaCon.BackColor = Color.White;
+                txbCoordinaCon.BackColor = Color.LightGoldenrodYellow;
                 cbxSiCoordinado.Checked = false;
 
             }
@@ -336,46 +376,127 @@ namespace PedidoTela.Formularios
 
         private void cbxCuellos_CheckedChanged(object sender, EventArgs e)
         {
+            //dgvCuellos1.Rows.Clear();
             if (cbxCuellos.Checked)
             {
-                pnlCuellos.Enabled = true;
-                pnlPunos.Enabled = false;
-                pnlTiras.Enabled = false;
+                foreach (DataGridViewRow fila in dgvCuellos1.Rows)
+                {
 
-                cbxPunos.Checked = false;
-                cbxTiras.Checked = false;
+                    if (fila.Cells[0].Value != null && fila.Cells[0].Value.ToString() == "Cuellos")
+                    {
+                        fila.ReadOnly = false;
+                        pnlCuellos.Enabled = true;
+                        btnImgCuellos.Enabled = true;
+                    }
+                } 
+
             }
+            else
+            {
+                foreach (DataGridViewRow fila in dgvCuellos1.Rows)
+                {
+                    if (fila.Cells[0].Value != null && fila.Cells[0].Value.ToString() == "Cuellos")
+                    {
+                        fila.ReadOnly = true;
+                    }
+
+                }
+
+                pnlCuellos.Enabled = false;
+                btnImgCuellos.Enabled = false;
+            }
+
+
         }
 
         private void cbxPunos_CheckedChanged(object sender, EventArgs e)
         {
+            //dgvCuellos1.Rows.Clear();
             if (cbxPunos.Checked)
             {
-                pnlPunos.Enabled = true;
-                pnlCuellos.Enabled = false;
-                pnlTiras.Enabled = false;
+                foreach (DataGridViewRow fila in dgvCuellos1.Rows)
+                {
 
-                cbxTiras.Checked = false;
-                cbxCuellos.Checked = false;
+                    if (fila.Cells[0].Value != null && fila.Cells[0].Value.ToString() == "Puños")
+                    {
+                        fila.ReadOnly = false;
+                        pnlPunos.Enabled = true;
+                        btnImgPunos.Enabled = true;
+                    } 
+                }             
             }
+            else
+            {
+                foreach (DataGridViewRow fila in dgvCuellos1.Rows)
+                {
+
+                    if (fila.Cells[0].Value != null && fila.Cells[0].Value.ToString() == "Puños")
+                    {
+                        fila.ReadOnly = true;
+                    }
+                }
+                pnlPunos.Enabled = false;
+                btnImgPunos.Enabled = false;
+
+            }
+
         }
 
         private void cbxTiras_CheckedChanged(object sender, EventArgs e)
         {
+            //dgvCuellos1.Rows.Clear();
             if (cbxTiras.Checked)
             {
-                pnlTiras.Enabled = true;
-                pnlCuellos.Enabled = false;
-                pnlPunos.Enabled = false;
+                foreach (DataGridViewRow fila in dgvCuellos1.Rows)
+                {
 
-                cbxCuellos.Checked = false;
-                cbxPunos.Checked = false;
+                    if (fila.Cells[0].Value != null && fila.Cells[0].Value.ToString() == "Tiras")
+                    {
+                        fila.ReadOnly = false;
+                        pnlTiras.Enabled = true;
+                        btnImgTiras.Enabled = true;
+                        
+                    }
+                }
+
             }
+            else
+            {
+                foreach (DataGridViewRow fila in dgvCuellos1.Rows)
+                {
+
+                    if (fila.Cells[0].Value != null && fila.Cells[0].Value.ToString() == "Tiras")
+                    {
+                        fila.ReadOnly = true;
+                    }
+                }
+                pnlTiras.Enabled = false;
+                btnImgTiras.Enabled = false;
+
+            }
+
         }
 
         private void txbCoordinaCon_KeyPress(object sender, KeyPressEventArgs e)
         {
             e.KeyChar = Char.ToUpper(e.KeyChar);
+        }
+
+        private void dgvCuellos2_CellPainting(object sender, DataGridViewCellPaintingEventArgs e)
+        {
+            if (e.ColumnIndex >= 0 && dgvCuellos2.Columns[e.ColumnIndex].Name == "eliminar" && e.RowIndex >= 0)
+            {
+                e.Paint(e.CellBounds, DataGridViewPaintParts.All);
+
+                DataGridViewButtonCell celBoton = dgvCuellos2.Rows[e.RowIndex].Cells["eliminar"] as DataGridViewButtonCell;
+                Icon icoAtomico = new Icon(@"eliminar.ico");
+                e.Graphics.DrawIcon(icoAtomico, e.CellBounds.Left + 25, e.CellBounds.Top + 3);
+
+                dgvCuellos2.Rows[e.RowIndex].Height = icoAtomico.Height + 50;
+                dgvCuellos2.Columns[e.ColumnIndex].Width = icoAtomico.Width + 50;
+
+                e.Handled = true;
+            }
         }
 
         private void btnAddColor_Click(object sender, EventArgs e)
@@ -428,6 +549,10 @@ namespace PedidoTela.Formularios
                     }
                 }
             }
+            if (dgvCuellos2.Columns[e.ColumnIndex].Name == "eliminar")
+            {
+                dgvCuellos2.Rows.Remove(dgvCuellos2.CurrentRow);
+            }
         }
 
         private void dgvCuellos2_CellEndEdit(object sender, DataGridViewCellEventArgs e)
@@ -450,23 +575,26 @@ namespace PedidoTela.Formularios
 
         private void dgvCuellos1_CellEndEdit(object sender, DataGridViewCellEventArgs e)
         {
-            if (e.ColumnIndex >= 1 && e.ColumnIndex <= 17)
+            if (e.ColumnIndex >= 2 && e.ColumnIndex <= 17)
             {
-                dgvCuellos1.CurrentCell.Value = Regex.Replace(dgvCuellos1.CurrentCell.Value.ToString().Trim(), @"[^0-9,]", "");
-                if (dgvCuellos1.CurrentCell.Value != null && dgvCuellos1.CurrentCell.Value.ToString().Trim() != "") 
+                //dgvCuellos1.CurrentCell.Value = dgvCuellos1.CurrentCell.Value.ToString().Trim().Replace(".", ",");
+                //dgvCuellos1.CurrentCell.Value = Regex.Replace(dgvCuellos1.CurrentCell.Value.ToString().Trim(), @"[^0-9,]", "");
+                if (dgvCuellos1.CurrentCell.Value != null && dgvCuellos1.CurrentCell.Value.ToString().Trim() != "")
                 {
-                  
-                    int valor = int.Parse(dgvCuellos1.CurrentCell.Value.ToString());
+
+                    //int valor = int.Parse(dgvCuellos1.CurrentCell.Value.ToString());
+                    decimal valor = Decimal.Parse(dgvCuellos1.CurrentCell.Value.ToString());
+                    decimal vfinal = Decimal.Round(valor, 2);
                     dgvCuellos1.CurrentCell.Value = valor;
-                 } 
-                
+                }
+
             }
             if (e.ColumnIndex == 18)
             {
                 if (dgvCuellos1.CurrentCell.Value != null && dgvCuellos1.CurrentCell.Value.ToString().Trim() != "")
                 {
-                    dgvCuellos1.CurrentCell.Value = dgvCuellos1.CurrentCell.Value.ToString().Trim().Replace(".", ",");
-                    dgvCuellos1.CurrentCell.Value = Regex.Replace(dgvCuellos1.CurrentCell.Value.ToString().Trim(), @"[^0-9,]", "");
+                    //dgvCuellos1.CurrentCell.Value = dgvCuellos1.CurrentCell.Value.ToString().Trim().Replace(".", ",");
+                    //dgvCuellos1.CurrentCell.Value = Regex.Replace(dgvCuellos1.CurrentCell.Value.ToString().Trim(), @"[^0-9,]", "");
                     if (dgvCuellos1.CurrentCell.Value != null && dgvCuellos1.CurrentCell.Value.ToString().Trim() != "")
                     {
                         decimal valor = Decimal.Parse(dgvCuellos1.CurrentCell.Value.ToString());
@@ -475,7 +603,7 @@ namespace PedidoTela.Formularios
                     }
                 }
             }
-            if (e.ColumnIndex == 0)
+            if (e.ColumnIndex == 1)
             {
                 if (dgvCuellos1.CurrentCell.Value != null && dgvCuellos1.CurrentCell.Value.ToString().Trim() != "")
                 {
@@ -488,11 +616,14 @@ namespace PedidoTela.Formularios
 
         private void CargarCuellosTiras()
         {
-            CuellosTiras cuellosT = controlador.getCuellosTiras(identificador);
+            CuellosTiras cuellosT = controlador.getCuellosTiras(idSolTela);
             id = cuellosT.IdCuellos;
             /* Carga las imagenes si ya estan guardadas */
+            if (id != 0)
+            {
+                cargarImagen();
+            }
 
-            cargarImagen();
 
             /* Verificación del Checked de Coordinado */
             if (cuellosT.Coordinado)
@@ -505,20 +636,7 @@ namespace PedidoTela.Formularios
                 cbxNoCoordinado.Checked = true;
             }
 
-            /* Verificacion del Cheked del tipo de Tela */
 
-            if (cuellosT.Cuellos)
-            {
-                cbxCuellos.Checked = true;
-            }
-            else if (cuellosT.Punos)
-            {
-                cbxPunos.Checked = true;
-            }
-            else if (cuellosT.Tiras)
-            {
-                cbxTiras.Checked = true;
-            }
 
             txtObservaciones.Text = cuellosT.Observacion;
             consecutivo = controlador.consultarConsecutivo(id);
@@ -528,23 +646,60 @@ namespace PedidoTela.Formularios
                 btnConfirmar.Enabled = false;
                 dgvCuellos1.ReadOnly = true;
                 dgvCuellos2.ReadOnly = true;
+                btnAddColor.Enabled = false;
+                btnGrabar.Enabled = false;
             }
 
             /*Carga detalle Cuellos-Puños-Tiras*/
             List<DetalleCuelloUno> listaUno = controlador.getDetalleCuellosUno(cuellosT.IdCuellos);
             if (listaUno.Count > 0)
             {
+
                 foreach (DetalleCuelloUno obj in listaUno)
                 {
-                    dgvCuellos1.Rows.Add(obj.Codigo, obj.Xs, obj.S, obj.M, obj.L, obj.Xl, obj.Dosxl,
+                    dgvCuellos1.Rows.Add(obj.NombreChechSel, obj.Codigo, obj.Xs, obj.S, obj.M, obj.L, obj.Xl, obj.Dosxl,
                         obj.Cuatro, obj.Seis, obj.Ocho, obj.Diez, obj.Doce, obj.Catorce, obj.Dieciseis,
-                        obj.Dieciocho, obj.Veinte, obj.Veintidos, obj.Veinticuatro,obj.Ancho);
+                        obj.Dieciocho, obj.Veinte, obj.Veintidos, obj.Veinticuatro, obj.Ancho);
                 }
-                btnAddColor.Enabled = false;
-                dgvCuellos1.ReadOnly = true;
-                btnGrabar.Enabled = false;
-                txtObservaciones.Enabled = false;
+                dgvCuellos1.Rows[0].ReadOnly = true;
+                dgvCuellos1.Rows[1].ReadOnly = true;
+                dgvCuellos1.Rows[2].ReadOnly = true;
+
             }
+            else
+            {
+                dgvCuellos1.RowCount = 3;
+                dgvCuellos1.Rows[0].HeaderCell.Value = "Cuellos";
+                dgvCuellos1.Rows[0].Cells[0].Value = "Cuellos";
+                dgvCuellos1.Rows[0].ReadOnly = true;
+
+                dgvCuellos1.Rows[1].HeaderCell.Value = "Puños";
+                dgvCuellos1.Rows[1].Cells[0].Value = "Puños";
+                dgvCuellos1.Rows[1].ReadOnly = true;
+
+                dgvCuellos1.Rows[2].HeaderCell.Value = "Tiras";
+                dgvCuellos1.Rows[2].Cells[0].Value = "Tiras";
+                dgvCuellos1.Rows[2].ReadOnly = true;
+            }
+            /* Verificacion del Cheked del tipo de Tela */
+
+
+            if (cuellosT.Cuellos)
+            {
+                cbxCuellos.Checked = true;
+
+            }
+            else if (cuellosT.Punos)
+            {
+                cbxPunos.Checked = true;
+
+            }
+            else if (cuellosT.Tiras)
+            {
+                cbxTiras.Checked = true;
+
+            }
+        
 
             List<DetalleCuelloDos> lista = controlador.getDetalleCuellosDos(cuellosT.IdCuellos);
             if (lista.Count > 0)
@@ -555,10 +710,6 @@ namespace PedidoTela.Formularios
                         obj.CodigoH3, obj.DescripcionH3, obj.CodigoH4, obj.DescripcionH4, obj.CodigoH5, obj.DescripcionH5,
                         obj.Total);
                 }
-                btnAddColor.Enabled = false;
-                dgvCuellos2.ReadOnly = true;
-                btnGrabar.Enabled = false;
-                txtObservaciones.Enabled = false;
             }
         }
 
@@ -566,10 +717,10 @@ namespace PedidoTela.Formularios
         {
             try
             {
-                string ruta = Application.StartupPath + "\\Imagenes\\" + identificador + "\\imagen\\";
-                string rutaCuellos =ruta + identificador + "_imagen_cuello.jpeg";
-                string rutaPunos =ruta + identificador + "_imagen_punos.jpeg";
-                string rutaTiras =ruta + identificador + "_imagen_tiras.jpeg";
+                string ruta = Application.StartupPath + "\\Imagenes\\" + identificador + idSolTela + "\\imagen\\";
+                string rutaCuellos =ruta + identificador +idSolTela+ "_imagen_cuello.jpeg";
+                string rutaPunos =ruta + identificador + idSolTela+"_imagen_punos.jpeg";
+                string rutaTiras =ruta + identificador + idSolTela+"_imagen_tiras.jpeg";
 
                 Image varImgCuellos = null, varImgPunos = null, varImgTiras = null;
 
@@ -619,28 +770,28 @@ namespace PedidoTela.Formularios
 
         private void guardarImagen()
         {
-            string ruta = Application.StartupPath + "\\Imagenes\\" + identificador + "\\imagen\\";
+            string ruta = Application.StartupPath + "\\Imagenes\\" + identificador + idSolTela + "\\imagen\\";
             bool directoryExists = Directory.Exists(ruta);
-            /*if (directoryExists)
-            {
-                Directory.Delete(ruta, true);
-            }*/
+            //if (directoryExists)
+            //{
+            //    Directory.Delete(ruta, true);
+            //}
             if (ptbCuellos.Image != null && swImgCuellos == true)
             {
-                string nombre = identificador + "_imagen_cuello.jpeg";
-                //File.Delete(ruta + nombre);
+                string nombre = identificador + idSolTela +"_imagen_cuello.jpeg";
+               // File.Delete(ruta + nombre);
                 controlador.guardarImagen(ruta, ImgCuellos, nombre, tipoImgCuellos);
             }
             if (ptbPunos.Image != null && swImgPunos == true)
             {
-                string nombre = identificador + "_imagen_punos.jpeg";
+                string nombre = identificador + idSolTela + "_imagen_punos.jpeg";
                 //File.Delete(ruta + nombre);
                 controlador.guardarImagen(ruta, ImgPunos, nombre, tipoImgPunos);
             }
             if (ptbTiras.Image != null && swImgTiras == true)
             {
-                string nombre = identificador + "_imagen_tiras.jpeg";
-                ///File.Delete(ruta + nombre);
+                string nombre = identificador + idSolTela + "_imagen_tiras.jpeg";
+                //File.Delete(ruta + nombre);
                 controlador.guardarImagen(ruta, ImgTiras, nombre, tipoImgTiras);
             }
         }

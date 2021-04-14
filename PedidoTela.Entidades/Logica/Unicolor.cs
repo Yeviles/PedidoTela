@@ -16,11 +16,13 @@ namespace PedidoTela.Entidades.Logica
         private bool coordinado;
         private string coordinadoCon;
         private string observacion;
-        private int consecutivo;
+        private int idSolicitudTela;
+
+
 
         public Unicolor() { }
 
-        public Unicolor(int id, string identificador, string referenciaTela, string descripcionTela, string tipoTejido, bool coordinado, string coordinadoCon, string observaciones, int consecutivo)
+        public Unicolor(int id, string identificador, string referenciaTela, string descripcionTela, string tipoTejido, bool coordinado, string coordinadoCon, string observaciones, int idSolicitudTela = 0)
         {
             this.Id = id;
             this.Identificador = identificador;
@@ -30,7 +32,7 @@ namespace PedidoTela.Entidades.Logica
             this.Coordinado = coordinado;
             this.CoordinadoCon = coordinadoCon;
             this.Observacion = observaciones;
-            this.Consecutivo = consecutivo;
+            this.IdSolicitudTela = idSolicitudTela;
         }
 
         public int Id { get => id; set => id = value; }
@@ -41,6 +43,6 @@ namespace PedidoTela.Entidades.Logica
         public bool Coordinado { get => coordinado; set => coordinado = value; }
         public string CoordinadoCon { get => coordinadoCon; set => coordinadoCon = value; }
         public string Observacion { get => observacion; set => observacion = value; }
-        public int Consecutivo { get => consecutivo; set => consecutivo = value; }
+        public int IdSolicitudTela { get => idSolicitudTela; set => idSolicitudTela = value; }
     }
 }

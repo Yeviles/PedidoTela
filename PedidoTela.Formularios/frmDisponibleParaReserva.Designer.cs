@@ -40,12 +40,14 @@ namespace PedidoTela.Formularios
             this.pedido = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.referencia = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.nombreTela = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.refTela = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.color = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.estado = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.disponible = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.cantidadReservado = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.disponibleTeorico = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.metrosaReservar = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.idSolTela = new System.Windows.Forms.DataGridViewTextBoxColumn();
             ((System.ComponentModel.ISupportInitialize)(this.dgvDisponibleReservar)).BeginInit();
             this.panel9.SuspendLayout();
             this.SuspendLayout();
@@ -71,12 +73,14 @@ namespace PedidoTela.Formularios
             this.pedido,
             this.referencia,
             this.nombreTela,
+            this.refTela,
             this.color,
             this.estado,
             this.disponible,
             this.cantidadReservado,
             this.disponibleTeorico,
-            this.metrosaReservar});
+            this.metrosaReservar,
+            this.idSolTela});
             this.dgvDisponibleReservar.EnableHeadersVisualStyles = false;
             this.dgvDisponibleReservar.Location = new System.Drawing.Point(12, 220);
             this.dgvDisponibleReservar.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
@@ -170,7 +174,7 @@ namespace PedidoTela.Formularios
             // 
             // referencia
             // 
-            this.referencia.HeaderText = "Ensayo / Ref";
+            this.referencia.HeaderText = "Ensayo ";
             this.referencia.MinimumWidth = 8;
             this.referencia.Name = "referencia";
             // 
@@ -179,6 +183,12 @@ namespace PedidoTela.Formularios
             this.nombreTela.HeaderText = "Nombre Tela";
             this.nombreTela.MinimumWidth = 8;
             this.nombreTela.Name = "nombreTela";
+            // 
+            // refTela
+            // 
+            this.refTela.HeaderText = "Referncia Tela";
+            this.refTela.MinimumWidth = 6;
+            this.refTela.Name = "refTela";
             // 
             // color
             // 
@@ -216,6 +226,13 @@ namespace PedidoTela.Formularios
             this.metrosaReservar.MinimumWidth = 8;
             this.metrosaReservar.Name = "metrosaReservar";
             // 
+            // idSolTela
+            // 
+            this.idSolTela.HeaderText = "idSolTela";
+            this.idSolTela.MinimumWidth = 6;
+            this.idSolTela.Name = "idSolTela";
+            this.idSolTela.Visible = false;
+            // 
             // frmDisponibleParaReserva
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
@@ -249,11 +266,13 @@ namespace PedidoTela.Formularios
         private System.Windows.Forms.DataGridViewTextBoxColumn pedido;
         private System.Windows.Forms.DataGridViewTextBoxColumn referencia;
         private System.Windows.Forms.DataGridViewTextBoxColumn nombreTela;
+        private System.Windows.Forms.DataGridViewTextBoxColumn refTela;
         private System.Windows.Forms.DataGridViewTextBoxColumn color;
         private System.Windows.Forms.DataGridViewTextBoxColumn estado;
         private System.Windows.Forms.DataGridViewTextBoxColumn disponible;
         private System.Windows.Forms.DataGridViewTextBoxColumn cantidadReservado;
         private System.Windows.Forms.DataGridViewTextBoxColumn disponibleTeorico;
         private System.Windows.Forms.DataGridViewTextBoxColumn metrosaReservar;
+        private System.Windows.Forms.DataGridViewTextBoxColumn idSolTela;
     }
 }

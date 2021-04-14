@@ -46,12 +46,21 @@ namespace PedidoTela.Formularios
             dtpFechaTienda.CustomFormat = "dd/MM/yyyy";
             txbSku.MaxLength = 3;
 
+            dgvDetalleConsumo.Columns["editar"].HeaderCell.ToolTipText = "Campos a Editar CONSUMO, DESCRIPCIÓN Y REFERENCIA TELA ";
+            dgvDetalleConsumo.Columns["ensayoRef"].HeaderCell.ToolTipText = "Doble clic para seleccionar tipo de solicitud ";
+            dgvDetalleConsumo.Columns["tipoSolicitud"].HeaderCell.ToolTipText = "Doble clic para seleccionar tipo de solicitud";
+            dgvDetalleConsumo.Columns["desPrenda"].HeaderCell.ToolTipText = "Doble clic para seleccionar tipo de solicitud";
+
+
         }
 
         private void frmSolicitudTela_Load(object sender, EventArgs e)
         {
             SkinManager.Theme = MaterialSkin.MaterialSkinManager.Themes.LIGHT;
             SkinManager.ColorScheme = new ColorScheme(Primary.Blue900, Primary.Grey400, Primary.Grey100, Accent.Green100, TextShade.WHITE);
+            txbSku.CharacterCasing = CharacterCasing.Upper;
+      
+        
         }
 
         /// <summary>
@@ -93,12 +102,18 @@ namespace PedidoTela.Formularios
         {
             if (prmLista.Count != 0)
             {
-                dgvDetalleConsumo.Rows.Add(prmLista[0].Ensayo_referencia.ToString(),
-                prmLista[0].Desc_prenda.ToString(),
-                prmLista[0].Codigo_tela.ToString(),
-                prmLista[0].Descripcion_tela.ToString(),
-                "",
-                prmLista[0].Consumo_est.ToString());                
+                for (int i = 0; i < prmLista.Count; i++)
+                {
+                    dgvDetalleConsumo.Rows.Add(prmLista[i].Ensayo_referencia.ToString(),
+                    "",
+                    prmLista[i].Desc_prenda.ToString(),
+                    prmLista[i].Codigo_tela.ToString(),
+                    prmLista[i].Descripcion_tela.ToString(),
+                    prmLista[i].Consumo_est.ToString().Replace(",",".")
+
+                    );
+                    
+                }
             }
             else
             {
@@ -115,14 +130,22 @@ namespace PedidoTela.Formularios
             dgvDetalleConsumo.Rows.Clear();
             if (prmLista.Count != 0)
             {
-                dgvDetalleConsumo.Rows.Add(prmLista[0].Identificador.ToString(),
-                prmLista[0].DescripcionPrenda.ToString(),
-                prmLista[0].ReferenciaTela.ToString(),
-                prmLista[0].DescripcionTela.ToString(),
-                prmLista[0].TipoSolicitud.ToString(),
-                decimal.Round(decimal.Parse(prmLista[0].Consumo.ToString().Replace(".", ",")), 2).ToString());
-                txbSku.Text = prmLista[0].Sku.ToString();
-                dtpFechaTienda.Value = DateTime.Parse(prmLista[0].FechaTienda.ToString());
+
+                for (int i = 0; i < prmLista.Count; i++)
+                {
+                    dgvDetalleConsumo.Rows.Add(prmLista[i].Identificador.ToString(),
+                        prmLista[i].TipoSolicitud.ToString(),
+                    prmLista[i].DescripcionPrenda.ToString(),
+                    prmLista[i].ReferenciaTela.ToString(),
+                    prmLista[i].DescripcionTela.ToString(),
+                    decimal.Round(decimal.Parse(prmLista[i].Consumo.ToString().Replace(",", ".")), 2).ToString(),
+                    "",
+                    "",
+                    prmLista[i].Idsolicitud.ToString());
+                    txbSku.Text = prmLista[i].Sku.ToString();
+                    dtpFechaTienda.Value = (prmLista[i].FechaTienda.ToString() != "") ? DateTime.Parse(prmLista[i].FechaTienda.ToString()):DateTime.Now;
+                    
+                }
             }
             else
             {
@@ -132,18 +155,27 @@ namespace PedidoTela.Formularios
 
         private void cargarDgvEditadosPorREf(List<EditarDetalleconsumo> prmLista)
         {
+            //Pilas agregur los for
             dgvDetalleConsumo.Rows.Clear();
             if (prmLista.Count != 0)
             {
-                dgvDetalleConsumo.Rows.Add(prmLista[0].Identificador.ToString(),
-                prmLista[0].DescripcionPrenda.ToString(),
-                prmLista[0].ReferenciaTela.ToString(),
-                prmLista[0].DescripcionTela.ToString(),
-                prmLista[0].TipoSolicitud.ToString(),
-                decimal.Round(decimal.Parse(prmLista[0].Consumo.ToString().Replace(".", ",")), 2).ToString());
-                txbSku.Text = prmLista[0].Sku.ToString();
-                dtpFechaTienda.Value = DateTime.Parse(prmLista[0].FechaTienda.ToString());
-                txbMuestrario.Text = prmLista[0].Muestrario.ToString();
+                for (int i = 0; i < prmLista.Count; i++)
+                {
+                    dgvDetalleConsumo.Rows.Add(prmLista[i].Identificador.ToString(),
+                         prmLista[i].TipoSolicitud.ToString(),
+                    prmLista[i].DescripcionPrenda.ToString(),
+                    prmLista[i].ReferenciaTela.ToString(),
+                    prmLista[i].DescripcionTela.ToString(),   
+                    // tener en cuenta la configuración regional para los decimales. 
+                    decimal.Round(decimal.Parse(prmLista[i].Consumo.ToString().Replace(".", ",")), 2).ToString(),
+                    "",
+                    "",
+                     prmLista[i].Idsolicitud.ToString()
+                    );
+                    txbSku.Text = prmLista[i].Sku.ToString();
+                    dtpFechaTienda.Value = (prmLista[i].FechaTienda.ToString() != "") ? DateTime.Parse(prmLista[i].FechaTienda.ToString()) : DateTime.Now;
+                    txbMuestrario.Text = prmLista[i].Muestrario.ToString();
+                }
             }
             else
             {
@@ -168,6 +200,46 @@ namespace PedidoTela.Formularios
         }
 
         /// <summary>
+        /// Se encarga de validar el tipo de solicitud cuando se ha guardado en frmSolicitudTela.
+        /// el cual es llamado en el método dgvDetalleConsumo_CellClick().
+        /// </summary>
+        /// <param name="e"></param>
+        /// <returns>String, que indica el tipo de solicitud que se ha guardado. </returns>
+        private string validarTipoSolocitudGuardada(DataGridViewCellEventArgs e)
+        {
+            //Realiza un consulta del id_sol_tela encontrados en cada una de las tablas que representan el tipo de solicitud.
+            int idUnicolor = controlador.getIdUni(int.Parse(dgvDetalleConsumo.Rows[e.RowIndex].Cells[8].Value.ToString()));
+            int idEstampado = controlador.consultarIdEst(int.Parse(dgvDetalleConsumo.Rows[e.RowIndex].Cells[8].Value.ToString()));
+            int idPlano = controlador.getIdPlano(int.Parse(dgvDetalleConsumo.Rows[e.RowIndex].Cells[8].Value.ToString()));
+            int idCuellos = controlador.getIdCuellos(int.Parse(dgvDetalleConsumo.Rows[e.RowIndex].Cells[8].Value.ToString()));
+            
+            string SolicitudGuardada = "";
+            // Los siguiente if verifican si el id_sol_tela consultado en los items anteriores es igual al que en el momento se selecciona en la DatagridView.
+           if (controlador.getIdSoltela(idUnicolor) == int.Parse(dgvDetalleConsumo.Rows[e.RowIndex].Cells[8].Value.ToString()))
+            {
+                SolicitudGuardada = "UNICOLOR";
+            }
+            else if (controlador.getIdSoltelaEst(idEstampado) == int.Parse(dgvDetalleConsumo.Rows[e.RowIndex].Cells[8].Value.ToString()))
+            {
+                SolicitudGuardada = "ESTAMPADO";
+            }else if (controlador.getIdSoltelaPla(idPlano) == int.Parse(dgvDetalleConsumo.Rows[e.RowIndex].Cells[8].Value.ToString()))
+            {
+                SolicitudGuardada = "PRETEÑIDO";
+            }else if (controlador.getIdSoltelaCue(idCuellos) == int.Parse(dgvDetalleConsumo.Rows[e.RowIndex].Cells[8].Value.ToString()))
+            {
+                SolicitudGuardada = "TIRAS/CUELLOS/PUÑOS";
+            }
+            else
+            {
+                SolicitudGuardada = "Ninguna";
+            }
+
+            return SolicitudGuardada;
+
+
+        }
+
+        /// <summary>
         /// Según la selección de una celda en el DatagridView(dgvDetalleconsumo) realizá una acción.
         /// </summary>
         /// <param name="sender"></param>
@@ -178,7 +250,7 @@ namespace PedidoTela.Formularios
                 editando = true;
             }
             if (e.RowIndex > -1) {
-                if (dgvDetalleConsumo.Columns[e.ColumnIndex].Name == "guardar")
+                if (dgvDetalleConsumo.Columns[e.ColumnIndex].Name == "guardar" && dgvDetalleConsumo.CurrentRow.Cells[1].Value.ToString() == "")
                 {
                     guardarDetalleCons(e);
                     dgvDetalleConsumo.CurrentRow.Cells[2].ReadOnly = true;
@@ -191,33 +263,54 @@ namespace PedidoTela.Formularios
                 {
                     string identificador = dgvDetalleConsumo.CurrentRow.Cells[0].Value.ToString().Trim();
                     int id = controlador.consultarIdsolicitud(identificador);
-                    if (id != 0)
+                    string tipoSolGuardado = validarTipoSolocitudGuardada(e);
+                     if (id != 0)
                     {
                         frmTipoSolicitud objTipoSolicitud = new frmTipoSolicitud();
                         objTipoSolicitud.StartPosition = FormStartPosition.CenterScreen;
                         if (objTipoSolicitud.ShowDialog() == DialogResult.OK)
                         {
                             String seleccion = objTipoSolicitud.Seleccion;
-                            if (seleccion == "unicolor")
-                            {
-                                frmSolicitudUnicolor frmUnicolor = new frmSolicitudUnicolor(controlador, identificador, dgvDetalleConsumo.Rows[e.RowIndex].Cells[2].Value.ToString());
-                                frmUnicolor.Show();
+                            if (seleccion == "unicolor" && tipoSolGuardado == "Ninguna" || tipoSolGuardado == "UNICOLOR" && dgvDetalleConsumo.Rows[e.RowIndex].Cells["tipoSolicitud"].Value.ToString() == "" || dgvDetalleConsumo.Rows[e.RowIndex].Cells["tipoSolicitud"].Value.ToString() == "UNICOLOR" )
+                            {                            
+                                frmSolicitudUnicolor frmUnicolor = new frmSolicitudUnicolor(controlador, identificador, dgvDetalleConsumo.Rows[e.RowIndex].Cells[3].Value.ToString(), dgvDetalleConsumo.Rows[e.RowIndex].Cells[4].Value.ToString(), int.Parse(dgvDetalleConsumo.Rows[e.RowIndex].Cells[8].Value.ToString()));
+                               
+                                if (frmUnicolor.ShowDialog() == DialogResult.OK)
+                                {
+                                   
+                                    btnConsultar.PerformClick();
+                                    
+                                }
                             }
-                            else if (seleccion == "estampado")
+                            
+                            else if (seleccion == "estampado" && tipoSolGuardado == "Ninguna" || tipoSolGuardado == "ESTAMPADO" && dgvDetalleConsumo.Rows[e.RowIndex].Cells["tipoSolicitud"].Value.ToString() == "" || dgvDetalleConsumo.Rows[e.RowIndex].Cells["tipoSolicitud"].Value.ToString() == "ESTAMPADO")
                             {
-                                pnl frmEstamapado = new pnl(controlador, identificador);
-                                frmEstamapado.Show();
-                                frmEstamapado.recibirInfoTela(dgvDetalleConsumo.CurrentRow.Cells["refTela"].Value.ToString(), dgvDetalleConsumo.CurrentRow.Cells["desTela"].Value.ToString());
+                                frmSolicitudEstampado frmEstamapado = new frmSolicitudEstampado(controlador, identificador, dgvDetalleConsumo.Rows[e.RowIndex].Cells[3].Value.ToString(), dgvDetalleConsumo.Rows[e.RowIndex].Cells[4].Value.ToString(), int.Parse(dgvDetalleConsumo.Rows[e.RowIndex].Cells[8].Value.ToString()));
+                                if (frmEstamapado.ShowDialog() == DialogResult.OK)
+                                {
+                                    btnConsultar.PerformClick();
+
+                                }
+                                 }
+                            
+                            else if (seleccion == "planoPre" && tipoSolGuardado == "Ninguna" || tipoSolGuardado == "PRETEÑIDO" && dgvDetalleConsumo.Rows[e.RowIndex].Cells["tipoSolicitud"].Value.ToString() == "" || dgvDetalleConsumo.Rows[e.RowIndex].Cells["tipoSolicitud"].Value.ToString() == "PRETEÑIDO")
+                            {
+                                frmSolicitudPlanoPretenido frmPlapretenido = new frmSolicitudPlanoPretenido(controlador, identificador, dgvDetalleConsumo.Rows[e.RowIndex].Cells[3].Value.ToString(), dgvDetalleConsumo.Rows[e.RowIndex].Cells[4].Value.ToString(), int.Parse(dgvDetalleConsumo.Rows[e.RowIndex].Cells[8].Value.ToString()));
+                                if (frmPlapretenido.ShowDialog() == DialogResult.OK)
+                                {
+                                    btnConsultar.PerformClick();
+
+                                }
                             }
-                            else if (seleccion == "planoPre")
+                           
+                            else if (seleccion == "cuelloPun" && tipoSolGuardado == "Ninguna" || tipoSolGuardado == "TIRAS/CUELLOS/PUÑOS" && dgvDetalleConsumo.Rows[e.RowIndex].Cells["tipoSolicitud"].Value.ToString() == "" || dgvDetalleConsumo.Rows[e.RowIndex].Cells["tipoSolicitud"].Value.ToString() == "TIRAS/CUELLOS/PUÑOS")
                             {
-                                frmSolicitudPlanoPretenido frmPlapretenido = new frmSolicitudPlanoPretenido(controlador, identificador, dgvDetalleConsumo.Rows[e.RowIndex].Cells[2].Value.ToString());
-                                frmPlapretenido.Show();
-                            }
-                            else if (seleccion == "cuelloPun")
-                            {
-                                frmSolicitudCuellosTiras frmCuellos = new frmSolicitudCuellosTiras(controlador,identificador);
-                                frmCuellos.Show();
+                                frmSolicitudCuellosTiras frmCuellos = new frmSolicitudCuellosTiras(controlador,identificador, int.Parse(dgvDetalleConsumo.Rows[e.RowIndex].Cells[8].Value.ToString()));
+                                if (frmCuellos.ShowDialog() == DialogResult.OK)
+                                {
+                                    btnConsultar.PerformClick();
+
+                                }
                             }
                         }
                     }
@@ -238,23 +331,28 @@ namespace PedidoTela.Formularios
                         dgvDetalleConsumo.CurrentRow.Cells[4].ReadOnly = false;
                         dgvDetalleConsumo.CurrentRow.Cells[5].ReadOnly = false;
                         dgvDetalleConsumo.CurrentRow.Cells[6].ReadOnly = true;
-
-                        dgvDetalleConsumo.CurrentRow.Cells[2].Style.BackColor = Color.PaleGoldenrod;
-                        dgvDetalleConsumo.CurrentRow.Cells[3].Style.BackColor = Color.PaleGoldenrod;
-                        dgvDetalleConsumo.CurrentRow.Cells[4].Style.BackColor = Color.PaleGoldenrod;
-                        dgvDetalleConsumo.CurrentRow.Cells[5].Style.BackColor = Color.PaleGoldenrod;
-                    }
-
-                    if (e.ColumnIndex == 2 || e.ColumnIndex == 3)
+                     }
+                    if (dgvDetalleConsumo.CurrentRow.Cells[1].Value.ToString() != "")
                     {
+                        if (e.ColumnIndex == 7 || e.ColumnIndex == 6 || e.ColumnIndex == 3 || e.ColumnIndex == 4 || e.ColumnIndex == 5)
+                        {
+                            MessageBox.Show("No se puede editar ni guardar, la solitud ya se ha confirmado", "Advertencia", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                            editando = false;
+                        }
+                      
+
+                    }
+                    else if (e.ColumnIndex == 3 || e.ColumnIndex == 4 )
+                    {
+                        
                         frmEditarDsolicitudTela objEditar = new frmEditarDsolicitudTela(controlador);
                         objEditar.StartPosition = FormStartPosition.CenterScreen;
 
                         if (objEditar.ShowDialog() == DialogResult.OK)
                         {
                             Objeto obj = objEditar.Elemento;
-                            dgvDetalleConsumo.Rows[dgvDetalleConsumo.Rows.Count - 1].Cells[2].Value = obj.Id;
-                            dgvDetalleConsumo.Rows[dgvDetalleConsumo.Rows.Count - 1].Cells[3].Value = obj.Nombre;
+                            dgvDetalleConsumo.CurrentRow.Cells[3].Value = obj.Id;
+                            dgvDetalleConsumo.CurrentRow.Cells[4].Value = obj.Nombre;
                         }
                     }
                 }
@@ -269,16 +367,30 @@ namespace PedidoTela.Formularios
         /// <param name="e"></param>
         private void btnConsultar_Click(object sender, EventArgs e)
         {
+        
             if (txbEnsRefDigitado.Text == "" || cbxTipo.SelectedItem.ToString() == null)
             {
                 MessageBox.Show("Por favor ingrese Ensayo/Referencia", "Advertencia", MessageBoxButtons.OK, MessageBoxIcon.Warning);
             }
             else if (cbxTipo.SelectedItem.ToString() == "Ensayo")
             {
+                cargarDataGridView(controlador.getDetalleConsumoEnsayo(txbEnsRefDigitado.Text));
+                //Guarda la información cuando se da click en el boton consultar
+                if (!controlador.consultarIdentificador(txbEnsRefDigitado.Text))
+                {
+                    controlador.GuardarListaDetalleConsumo(ListaSolicitudTelas());
+                }
+                
                 cargarDgvDatosEditados(controlador.getDcEditadoPorEnsayo(txbEnsRefDigitado.Text));
             }
             else
             {
+                cargarDataGridView(controlador.getDetalleConsumoReferencia(txbEnsRefDigitado.Text));
+                //Guarda la información cuando se da click en el boton consultar
+                if (!controlador.consultarIdentificador(txbEnsRefDigitado.Text))
+                {
+                    controlador.GuardarListaDetalleConsumo(ListaSolicitudTelas());
+                }
                 cargarDgvEditadosPorREf(controlador.getDetalleEditadoPorRef(txbEnsRefDigitado.Text));
             }
         }
@@ -305,6 +417,13 @@ namespace PedidoTela.Formularios
                 {
                     cargarTexBox(cbxTipo, controlador.getEnsayo(txbEnsRefDigitado.Text));
                     dgvDetalleConsumo.Rows.Clear();
+
+                    txbTema.BackColor = Color.LightGoldenrodYellow;
+                    txbDisenador.BackColor = Color.LightGoldenrodYellow;
+                    txbOcasionUso.BackColor = Color.LightGoldenrodYellow;
+                    txbMuestrario.BackColor = Color.LightGoldenrodYellow;
+                    txbEntrada.BackColor = Color.LightGoldenrodYellow;
+                    txbAnio.BackColor = Color.LightGoldenrodYellow;
                     txbSku.Clear();
                     dtpFechaTienda.Value = DateTime.Now;
                 }
@@ -329,9 +448,16 @@ namespace PedidoTela.Formularios
             {
                 txbEnsRefDigitado.ReadOnly = false;
                 txbEnsRefDigitado.Focus();
-                txbEnsRefDigitado.BackColor = Color.LightGoldenrodYellow;
+                txbEnsRefDigitado.BackColor = Color.White;
+                txbDisenador.BackColor = Color.White;
+                txbOcasionUso.BackColor = Color.White;
+                txbMuestrario.BackColor = Color.White;
+                txbEntrada.BackColor = Color.White;
+                txbAnio.BackColor = Color.White;
+                txbTema.BackColor = Color.White;
                 validacion.limpiar(pnlAdicionarSolicitud);
-            }
+                dgvDetalleConsumo.Rows.Clear();
+             }
             else
             {
                 MessageBox.Show("Por Favor selecione un tipo", "Advertencia", MessageBoxButtons.OK, MessageBoxIcon.Warning);
@@ -346,7 +472,7 @@ namespace PedidoTela.Formularios
         /// <param name="e"></param>
         private void txbSku_KeyPress(object sender, KeyPressEventArgs e)
         {
-            validacion.SoloLetras(e);
+            //validacion.SoloLetras(e);
             e.KeyChar = Char.ToUpper(e.KeyChar);
         }
 
@@ -355,7 +481,7 @@ namespace PedidoTela.Formularios
             if (e.ColumnIndex == 5) {
                 if (dgvDetalleConsumo.CurrentCell.Value != null && dgvDetalleConsumo.CurrentCell.Value.ToString().Trim() != "")
                 {
-                    dgvDetalleConsumo.CurrentCell.Value = dgvDetalleConsumo.CurrentCell.Value.ToString().Trim().Replace(".", ",");
+                    dgvDetalleConsumo.CurrentCell.Value = dgvDetalleConsumo.CurrentCell.Value.ToString().Trim().Replace(",", ".");
                     dgvDetalleConsumo.CurrentCell.Value = Regex.Replace(dgvDetalleConsumo.CurrentCell.Value.ToString().Trim(), @"[^0-9,]", "");
                     if (dgvDetalleConsumo.CurrentCell.Value != null && dgvDetalleConsumo.CurrentCell.Value.ToString().Trim() != "") {
                         decimal valor = Decimal.Parse(dgvDetalleConsumo.CurrentCell.Value.ToString());
@@ -410,22 +536,21 @@ namespace PedidoTela.Formularios
         {
             EditarDetalleconsumo detalle = new EditarDetalleconsumo();
             detalle = obtenerObjDetalleConsumo(e);
-            if (detalle != null) {
-                if (controlador.consultarIdentificador(txbEnsRefDigitado.Text))
-                {
-                    //Realiza un UPDATE dado que el Indentificador ya esta en la tabla.
-                    if (controlador.setDcEditadoPorEnsayo(detalle, txbEnsRefDigitado.Text))
-                    {
-                        MessageBox.Show("La información se actualizo con éxito", "Información", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                    }
-                }
-                else
+            if (detalle.Identificador != null)
+            {
+
+                if (!controlador.consultarIdentificador(detalle.Identificador.ToString()))
                 {
                     controlador.addDetalleConsumo(detalle);
                     MessageBox.Show("La información se guardó con éxito", "Información", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 }
+                else
+                {
+                    controlador.ActualizarSolicitudTela(detalle, dgvDetalleConsumo.Rows[e.RowIndex].Cells[0].Value.ToString());
+                    MessageBox.Show("La información se Actualizó con éxito", "Información", MessageBoxButtons.OK, MessageBoxIcon.Information);
+
+                }
             }
-                   
         }
 
         private EditarDetalleconsumo obtenerObjDetalleConsumo(DataGridViewCellEventArgs e)
@@ -435,13 +560,13 @@ namespace PedidoTela.Formularios
             string fecha = dtpFechaTienda.Value.ToString("dd/MM/yyyy");
             if (fecha == "")
             {
-                elemento = null;
+                //elemento = null;
                 MessageBox.Show("Por favor, seleccione un valor para fecha.", "Advertencia", MessageBoxButtons.OK, MessageBoxIcon.Warning);
             }
             else {
                 if (txbSku.Text.Trim().Length == 0)
                 {
-                    elemento = null;
+                   // elemento = null;
                     MessageBox.Show("Por favor, ingrese el SKU.", "Advertencia", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 }
                 else {
@@ -452,21 +577,72 @@ namespace PedidoTela.Formularios
                         elemento.Codi_capsula = Codi_capsula.ToString();
                         elemento.Codi_entrada = Codi_entrada.ToString();
                         elemento.Tipo = cbxTipo.SelectedItem.ToString();
-                        elemento.DescripcionPrenda = (string)dgvDetalleConsumo.Rows[e.RowIndex].Cells[1].Value;
-                        elemento.ReferenciaTela = (string)dgvDetalleConsumo.Rows[e.RowIndex].Cells[2].Value;
-                        elemento.DescripcionTela = (string)dgvDetalleConsumo.Rows[e.RowIndex].Cells[3].Value;
-                        elemento.Consumo = (dgvDetalleConsumo.Rows[e.RowIndex].Cells[5].Value != null) ? dgvDetalleConsumo.Rows[e.RowIndex].Cells[5].Value.ToString() : "0";
+                        elemento.DescripcionPrenda = (string)dgvDetalleConsumo.Rows[e.RowIndex].Cells[2].Value;
                         elemento.Sku = txbSku.Text.Trim();
                         elemento.FechaTienda = fecha;
+                        elemento.ReferenciaTela = (string)dgvDetalleConsumo.Rows[e.RowIndex].Cells[3].Value;
+                        elemento.DescripcionTela = (string)dgvDetalleConsumo.Rows[e.RowIndex].Cells[4].Value;
+                        elemento.Consumo = (dgvDetalleConsumo.Rows[e.RowIndex].Cells[5].Value != null) ? dgvDetalleConsumo.Rows[e.RowIndex].Cells[5].Value.ToString() : "0";
                         elemento.Muestrario = Muestrario.ToString();
                         elemento.Id_disenador = Id_disenador.ToString();
                         elemento.Codi_linea = Codi_linea.ToString();
+                        elemento.Idsolicitud = int.Parse(dgvDetalleConsumo.Rows[e.RowIndex].Cells[8].Value.ToString());
                         return elemento;
                     }
                 }
             }
             
             return elemento;
+        }
+
+        private void dgvDetalleConsumo_CellFormatting(object sender, DataGridViewCellFormattingEventArgs e)
+        {
+            if (this.dgvDetalleConsumo.Columns[e.ColumnIndex].Name== "ensayoRef" || this.dgvDetalleConsumo.Columns[e.ColumnIndex].Name == "desPrenda" 
+                || this.dgvDetalleConsumo.Columns[e.ColumnIndex].Name == "tipoSolicitud")
+            {
+                e.CellStyle.BackColor = Color.PaleGoldenrod;
+            }
+        }
+       
+        /// <summary>
+       /// Llena una lista con los datos consultados. 
+       /// </summary>
+       /// <returns></returns>
+        public List<EditarDetalleconsumo> ListaSolicitudTelas()
+        {
+            List<EditarDetalleconsumo> listaDetalleconsumo = new List<EditarDetalleconsumo>();
+            for (int i = 0; i <= dgvDetalleConsumo.RowCount - 1; i++)
+            { 
+                if (dgvDetalleConsumo.RowCount > 0)
+                {
+                    EditarDetalleconsumo elemento = new EditarDetalleconsumo();
+                    elemento.Identificador = (string)dgvDetalleConsumo.Rows[i].Cells[0].Value;
+                    elemento.Idmundo = Idmundo;
+                    elemento.Codi_capsula = Codi_capsula.ToString();
+                    elemento.Codi_entrada = Codi_entrada.ToString();
+                    elemento.Tipo = cbxTipo.SelectedItem.ToString();
+                    elemento.DescripcionPrenda = (string)dgvDetalleConsumo.Rows[i].Cells[2].Value;
+                    elemento.Sku = "";
+                    elemento.FechaTienda = "";
+                    elemento.ReferenciaTela = (string)dgvDetalleConsumo.Rows[i].Cells[3].Value;
+                    elemento.DescripcionTela = (string)dgvDetalleConsumo.Rows[i].Cells[4].Value;
+                    elemento.Consumo = (dgvDetalleConsumo.Rows[i].Cells[5].Value != null) ? dgvDetalleConsumo.Rows[i].Cells[5].Value.ToString() : "0";
+                    elemento.Muestrario = Muestrario.ToString();
+                    elemento.Id_disenador = Id_disenador.ToString();
+                    elemento.Codi_linea = Codi_linea.ToString();
+                    //elemento.Idsolicitud = (int)dgvDetalleConsumo.Rows[i].Cells[8].Value;
+                    listaDetalleconsumo.Add(elemento);
+                }
+            }
+            return listaDetalleconsumo;
+        }
+
+        private void btnSalir_Click(object sender, EventArgs e)
+        {
+
+            frmInicial frmInicial = new frmInicial();
+            this.Close();
+            frmInicial.Show();
         }
     }
 }

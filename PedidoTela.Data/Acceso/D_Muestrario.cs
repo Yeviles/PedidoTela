@@ -22,8 +22,8 @@ namespace PedidoTela.Data.Acceso
                 while (datos.Read())
                 {
                     Objeto muestrario = new Objeto();
-                    muestrario.Id = datos["nmro_mstrrio"].ToString().Trim();
-                    muestrario.Nombre = datos["desc_mstrrio"].ToString().Trim();
+                    muestrario.Id = datos["desc_mstrrio"].ToString().Trim();
+                    muestrario.Nombre = datos["nmro_mstrrio"].ToString().Trim();
                     respuesta.Add(muestrario);
                 }
 

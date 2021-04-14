@@ -1,7 +1,7 @@
 ﻿
 namespace PedidoTela.Formularios
 {
-    partial class pnl
+    partial class frmSolicitudEstampado
     {
         /// <summary>
         /// Required designer variable.
@@ -62,6 +62,7 @@ namespace PedidoTela.Formularios
             this.rosado = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.otros = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.totalUnidades = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.eliminar = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.lbObservaciones = new System.Windows.Forms.Label();
             this.txtObservaciones = new System.Windows.Forms.RichTextBox();
             this.panel9 = new System.Windows.Forms.Panel();
@@ -132,7 +133,7 @@ namespace PedidoTela.Formularios
             // 
             // txbNomTela
             // 
-            this.txbNomTela.BackColor = System.Drawing.SystemColors.Window;
+            this.txbNomTela.BackColor = System.Drawing.Color.LightGoldenrodYellow;
             this.txbNomTela.Location = new System.Drawing.Point(144, 63);
             this.txbNomTela.Name = "txbNomTela";
             this.txbNomTela.ReadOnly = true;
@@ -257,7 +258,7 @@ namespace PedidoTela.Formularios
             // 
             // txbRefTela
             // 
-            this.txbRefTela.BackColor = System.Drawing.SystemColors.Window;
+            this.txbRefTela.BackColor = System.Drawing.Color.LightGoldenrodYellow;
             this.txbRefTela.Location = new System.Drawing.Point(145, 18);
             this.txbRefTela.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.txbRefTela.Name = "txbRefTela";
@@ -293,9 +294,10 @@ namespace PedidoTela.Formularios
             this.comercioOrg,
             this.rosado,
             this.otros,
-            this.totalUnidades});
+            this.totalUnidades,
+            this.eliminar});
             this.dvgEstampado.EnableHeadersVisualStyles = false;
-            this.dvgEstampado.Location = new System.Drawing.Point(41, 355);
+            this.dvgEstampado.Location = new System.Drawing.Point(12, 361);
             this.dvgEstampado.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.dvgEstampado.MultiSelect = false;
             this.dvgEstampado.Name = "dvgEstampado";
@@ -310,11 +312,13 @@ namespace PedidoTela.Formularios
             this.dvgEstampado.RowHeadersDefaultCellStyle = dataGridViewCellStyle2;
             this.dvgEstampado.RowHeadersWidth = 62;
             this.dvgEstampado.RowTemplate.Height = 28;
+            this.dvgEstampado.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
             this.dvgEstampado.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.CellSelect;
-            this.dvgEstampado.Size = new System.Drawing.Size(1461, 310);
+            this.dvgEstampado.Size = new System.Drawing.Size(1463, 310);
             this.dvgEstampado.TabIndex = 27;
             this.dvgEstampado.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dvgEstampado_CellClick);
             this.dvgEstampado.CellEndEdit += new System.Windows.Forms.DataGridViewCellEventHandler(this.dvgEstampado_CellEndEdit);
+            this.dvgEstampado.CellPainting += new System.Windows.Forms.DataGridViewCellPaintingEventHandler(this.dvgEstampado_CellPainting);
             // 
             // codColor
             // 
@@ -387,6 +391,12 @@ namespace PedidoTela.Formularios
             this.totalUnidades.HeaderText = "Total Unidades";
             this.totalUnidades.MinimumWidth = 8;
             this.totalUnidades.Name = "totalUnidades";
+            // 
+            // eliminar
+            // 
+            this.eliminar.HeaderText = "Eliminar";
+            this.eliminar.MinimumWidth = 6;
+            this.eliminar.Name = "eliminar";
             // 
             // lbObservaciones
             // 
@@ -497,7 +507,7 @@ namespace PedidoTela.Formularios
             this.lbIdentificador.TabIndex = 135;
             this.lbIdentificador.Text = "-";
             // 
-            // pnl
+            // frmSolicitudEstampado
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
@@ -512,7 +522,7 @@ namespace PedidoTela.Formularios
             this.Font = new System.Drawing.Font("Verdana", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.MaximizeBox = false;
-            this.Name = "pnl";
+            this.Name = "frmSolicitudEstampado";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Solicitud Estampado";
             this.Load += new System.EventHandler(this.frmSolicitudEstampado_Load);
@@ -554,6 +564,8 @@ namespace PedidoTela.Formularios
         private System.Windows.Forms.ComboBox cbxTipoTela;
         private System.Windows.Forms.ComboBox cbxTipoEst;
         private System.Windows.Forms.Label lbTipoTela;
+        private System.Windows.Forms.Label lblConsecutivo;
+        private System.Windows.Forms.Label lbIdentificador;
         private System.Windows.Forms.DataGridViewTextBoxColumn codColor;
         private System.Windows.Forms.DataGridViewTextBoxColumn descripColor;
         private System.Windows.Forms.DataGridViewTextBoxColumn fondo;
@@ -566,7 +578,6 @@ namespace PedidoTela.Formularios
         private System.Windows.Forms.DataGridViewTextBoxColumn rosado;
         private System.Windows.Forms.DataGridViewTextBoxColumn otros;
         private System.Windows.Forms.DataGridViewTextBoxColumn totalUnidades;
-        private System.Windows.Forms.Label lblConsecutivo;
-        private System.Windows.Forms.Label lbIdentificador;
+        private System.Windows.Forms.DataGridViewTextBoxColumn eliminar;
     }
 }

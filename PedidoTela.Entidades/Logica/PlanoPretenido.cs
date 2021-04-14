@@ -15,11 +15,12 @@ namespace PedidoTela.Entidades.Logica
         private bool coordinado;
         private string coordinadoCon;
         private string observacion;
-        private int consecutivo;
+        private int idSolTela;
+     
 
         public PlanoPretenido() { }
 
-        public PlanoPretenido(int id, string identificador, string referenciaTela, string descripcionTela, bool coordinado, string coordinadoCon, string observacion, int consecutivo)
+        public PlanoPretenido(int id, string identificador, string referenciaTela, string descripcionTela, bool coordinado, string coordinadoCon, string observacion, int idSolTela)
         {
             this.Id = id;
             this.Identificador = identificador;
@@ -28,7 +29,7 @@ namespace PedidoTela.Entidades.Logica
             this.Coordinado = coordinado;
             this.CoordinadoCon = coordinadoCon;
             this.Observacion = observacion;
-            this.Consecutivo = consecutivo;
+            this.IdSolTela = idSolTela;
         }
 
         public int Id { get => id; set => id = value; }
@@ -38,6 +39,6 @@ namespace PedidoTela.Entidades.Logica
         public bool Coordinado { get => coordinado; set => coordinado = value; }
         public string CoordinadoCon { get => coordinadoCon; set => coordinadoCon = value; }
         public string Observacion { get => observacion; set => observacion = value; }
-        public int Consecutivo { get => consecutivo; set => consecutivo = value; }
+        public int IdSolTela { get => idSolTela; set => idSolTela = value; }
     }
 }

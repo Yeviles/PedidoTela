@@ -24,10 +24,11 @@ namespace PedidoTela.Entidades.Logica
         private string muestrario;
         private string id_disenador;
         private string codi_linea;
+        private int idsolicitud;
 
         public EditarDetalleconsumo() { }
 
-        public EditarDetalleconsumo(string identificador, string tipo, string idmundo, string codi_capsula, string codi_entrada, string descripcionPrenda, string referenciaTela, string descripcionTela, string tipoSolicitud, string consumo, string sku, string fechaTienda, string muestrario, string id_disenador, string codi_linea)
+        public EditarDetalleconsumo(string identificador, string tipo, string idmundo, string codi_capsula, string codi_entrada, string descripcionPrenda, string referenciaTela, string descripcionTela, string tipoSolicitud, string consumo, string sku, string fechaTienda, string muestrario, string id_disenador, string codi_linea, int idsolicitud)
         {
             this.Identificador = identificador;
             this.Tipo = tipo;
@@ -44,6 +45,7 @@ namespace PedidoTela.Entidades.Logica
             this.Muestrario = muestrario;
             this.Id_disenador = id_disenador;
             this.Codi_linea = codi_linea;
+            this.Idsolicitud = idsolicitud;
         }
 
         public string Identificador { get => identificador; set => identificador = value; }
@@ -61,5 +63,6 @@ namespace PedidoTela.Entidades.Logica
         public string Muestrario { get => muestrario; set => muestrario = value; }
         public string Id_disenador { get => id_disenador; set => id_disenador = value; }
         public string Codi_linea { get => codi_linea; set => codi_linea = value; }
+        public int Idsolicitud { get => idsolicitud; set => idsolicitud = value; }
     }
 }

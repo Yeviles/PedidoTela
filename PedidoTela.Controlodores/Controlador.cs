@@ -111,7 +111,7 @@ namespace PedidoTela.Controlodores
         }
 
         #endregion
-        #region Métodos de la clse DetalleConsumo
+        #region Métodos de la clase DetalleConsumo
         public List<DetalleConsumo> getDetalleConsumoEnsayo(string prmIdensayo)
         {
             D_DetalleConsumo d_detalle = new D_DetalleConsumo();
@@ -132,16 +132,21 @@ namespace PedidoTela.Controlodores
             D_EditarDetalleConsumo objDetalleEditado = new D_EditarDetalleConsumo();
             return objDetalleEditado.ConsultarDCEditadoPorEnsayo(prmIdensayo);
         }
+        public bool GuardarListaDetalleConsumo(List<EditarDetalleconsumo> detalle)
+        {
+            D_EditarDetalleConsumo d_Detalle = new D_EditarDetalleConsumo();
+            return (d_Detalle.Agregar(detalle) == "ok") ? true : false;
+        }
+
 
         /// <summary>
         /// Realiza un UPDATE en la tabla cfc_spt_sol_tela.
         /// </summary>
         /// <param name="editarDetalle"></param>
         /// <returns></returns>
-        public bool setDcEditadoPorEnsayo(EditarDetalleconsumo editarDetalle, string idEditar)
+        public bool ActualizarSolicitudTela(EditarDetalleconsumo editarDetalle, string idEditar)
         {
             D_EditarDetalleConsumo objDetalleEditado = new D_EditarDetalleConsumo();
-            // return (d_Unicolor.Agregar(unicolor) == "ok") ? true : false;
             return (objDetalleEditado.setDcEditadoPorEnsayo(editarDetalle, idEditar) == "ok") ? true : false;
         }
 
@@ -184,38 +189,88 @@ namespace PedidoTela.Controlodores
         public int getIdUnicolor(string identificador)
         {
             D_Unicolor d_Unicolor = new D_Unicolor();
-            return d_Unicolor.ConsultarId(identificador);
+            return d_Unicolor.ConsultarIdUnicolor(identificador);
         }
-
-        public Unicolor getUnicolor(string identificador)
+        public int getIdUni(int idSolTela)
         {
             D_Unicolor d_Unicolor = new D_Unicolor();
-            return d_Unicolor.Consultar(identificador);
+            return d_Unicolor.ConsultarIdUni(idSolTela);
+        }
+        public int getIdSoltela(int idUnicolor)
+        {
+            D_Unicolor d_Unicolor = new D_Unicolor();
+            return d_Unicolor.ConsultarIdSolTela(idUnicolor);
+        }
+        public Unicolor getUnicolor(int idSolTelas)
+        {
+            D_Unicolor d_Unicolor = new D_Unicolor();
+            return d_Unicolor.Consultar(idSolTelas);
         }
         public List<DetalleUnicolor> getDetalleUnicolor(int idUnicolor)
         {
             D_DetalleUnicolor d_Unicolor = new D_DetalleUnicolor();
             return d_Unicolor.Consultar(idUnicolor);
         }
-
+        public bool consultarIdentificadorUni(int idSolTela)
+        {
+            D_Unicolor objDetalleEditado = new D_Unicolor();
+            return objDetalleEditado.consultarIdentificador(idSolTela);
+        }
         public bool addUnicolor(Unicolor unicolor)
         {
             D_Unicolor d_Unicolor = new D_Unicolor();
             return (d_Unicolor.Agregar(unicolor) == "ok") ? true : false;
         }
 
-        public void addDetalleUnicolor(DetalleUnicolor detalle)
+        public bool addDetalleUnicolor(DetalleUnicolor detalle)
         {
             D_DetalleUnicolor d_DetalleUnicolor = new D_DetalleUnicolor();
-            d_DetalleUnicolor.Agregar(detalle);
+            return (d_DetalleUnicolor.Agregar(detalle) == "ok") ? true : false;
+        }
+        public bool ActualizarDetalle(DetalleUnicolor detalleUnicolor, int idDetalle)
+        {
+            D_DetalleUnicolor objDetalleEditado = new D_DetalleUnicolor();
+            return (objDetalleEditado.Actualizar(detalleUnicolor, idDetalle) == "ok") ? true : false;
+        }
+        public bool Actualizar(Unicolor unicolor)
+        {
+            D_Unicolor objDetalleEditado = new D_Unicolor();
+            return (objDetalleEditado.Actualizar(unicolor) == "ok") ? true : false;
+        }
+        public List<int> getIdDetalle(int idUnicolor)
+        {
+            D_DetalleUnicolor d_Unicolor = new D_DetalleUnicolor();
+            return d_Unicolor.ConsultarId(idUnicolor);
         }
         #endregion
 
         #region Métodos Solicitud Estampado
         public bool addEstampado(Estampado estampado)
         {
+            D_Estampado d_estamapdo = new D_Estampado();
+            return (d_estamapdo.Agregar(estampado) == "ok") ? true : false;
+        }
+        public int getIdSoltelaEst(int idEstamapdo)
+        {
             D_Estampado d_Unicolor = new D_Estampado();
-            return (d_Unicolor.Agregar(estampado) == "ok") ? true : false;
+            return d_Unicolor.ConsultarIdSolTela(idEstamapdo);
+        }
+        public bool ActualizarEstampado(Estampado estampado)
+        {
+            D_Estampado actuEstampado = new D_Estampado();
+            return (actuEstampado.Actualizar(estampado) == "ok") ? true : false;
+        }
+        public bool ActualizarDetalleEstampado(DetalleEstampado detalleEstampado, int idDetalle)
+        {
+            D_DetalleEstampado objDetalleEditado = new D_DetalleEstampado();
+            return (objDetalleEditado.Actualizar(detalleEstampado, idDetalle) == "ok") ? true : false;
+        }
+       
+        
+        public List<int> getIdDetalleEst(int idEstampado)
+        {
+            D_DetalleEstampado d_Unicolor = new D_DetalleEstampado();
+            return d_Unicolor.ConsultarId(idEstampado);
         }
         public void addDetalleEstampado(DetalleEstampado detalle)
         {
@@ -227,20 +282,35 @@ namespace PedidoTela.Controlodores
             D_Estampado estampado = new D_Estampado();
             return estampado.consultarIdEstampado(prmIdentificador);
         }
+        public int consultarIdEst(int idSolTelas)
+        {
+            D_Estampado estampado = new D_Estampado();
+            return estampado.consultarIdEst(idSolTelas);
+        }
+        //public bool consultarIdentificadorEst(string prmIdentificador)
+        //{
+        //    D_Estampado estampado = new D_Estampado();
+        //    return (estampado.consultarIdentificador(prmIdentificador)== "ok")?true :false;
+        //}
+        public bool consultarIdentificadorEst(int idSolTela)
+        {
+            D_Estampado objDetalleEditado = new D_Estampado();
+            return objDetalleEditado.consultarIdentificador(idSolTela);
+        }
         public List<DetalleEstampado> getDetalleEstampado(int idEstampado)
         {
             D_DetalleEstampado d_Estampado = new D_DetalleEstampado();
             return d_Estampado.getDetalleEstampado(idEstampado);
         }
-        public Estampado getEstampado(string idEstampado)
+        public Estampado getEstampado(int idSolTela)
         {
             D_Estampado d_Estampado = new D_Estampado();
-            return d_Estampado.Consultar(idEstampado);
+            return d_Estampado.Consultar(idSolTela);
         }
-        public bool agregarConsecutivo(string prmIdsolicitud, int prmIdtipo, string prmTipo, int prmConsecutivo,string fechaSolicitud,string estado, string fechaEstado)
+        public bool agregarConsecutivo(int prmIdsolicitud, int prmIdtipo, string prmTipo, int prmConsecutivo,string fechaSolicitud,string estado, string fechaEstado,string identificador)
         {
             D_TipoSolicitud d_solicitud = new D_TipoSolicitud();
-            return (d_solicitud.Agregar(prmIdsolicitud, prmIdtipo, prmTipo, prmConsecutivo, fechaSolicitud,estado,fechaEstado) == "ok") ? true : false;
+            return (d_solicitud.Agregar(prmIdsolicitud, prmIdtipo, prmTipo, prmConsecutivo, fechaSolicitud,estado,fechaEstado, identificador) == "ok") ? true : false;
         }
         /*Consultar si el Estampado ya tiene un consecutivo */
         public int consultarConsecutivo(int prmIdentificador)
@@ -270,11 +340,41 @@ namespace PedidoTela.Controlodores
             D_PlanoPretenido d_PlanoPretenido = new D_PlanoPretenido();
             return d_PlanoPretenido.ConsultarId(identificador);
         }
-
-        public PlanoPretenido getPlanoPretenido(string identificador)
+        public int getIdPlano(int  idSolTela)
         {
             D_PlanoPretenido d_PlanoPretenido = new D_PlanoPretenido();
-            return d_PlanoPretenido.Consultar(identificador);
+            return d_PlanoPretenido.ConsultarIdPla(idSolTela);
+        }
+        public bool consultarIdentificadorPla(int idSolTela)
+        {
+            D_PlanoPretenido objDetalleEditado = new D_PlanoPretenido();
+            return objDetalleEditado.consultarIdentificador(idSolTela);
+        }
+        public int getIdSoltelaPla(int idPlano)
+        {
+            D_PlanoPretenido d_plano = new D_PlanoPretenido();
+            return d_plano.ConsultarIdSolTela(idPlano);
+        }
+
+        public bool ActualizarPlano(PlanoPretenido platoPretenido)
+        {
+            D_PlanoPretenido actuPlanoPre = new D_PlanoPretenido();
+            return (actuPlanoPre.Actualizar(platoPretenido) == "ok") ? true : false;
+        }
+        public bool ActualizarDetallePlano(DetallePlanoPretenido detallePlano, int idDetalle)
+        {
+            D_DetallePlanoPretenido detalleEditado = new D_DetallePlanoPretenido();
+            return (detalleEditado.Actualizar(detallePlano, idDetalle) == "ok") ? true : false;
+        }
+         public List<int> getIdDetallePlano(int idPlano)
+        {
+            D_DetallePlanoPretenido d_plano = new D_DetallePlanoPretenido();
+            return d_plano.ConsultarId(idPlano);
+        }
+        public PlanoPretenido getPlanoPretenido(int idSolTela)
+        {
+            D_PlanoPretenido d_PlanoPretenido = new D_PlanoPretenido();
+            return d_PlanoPretenido.Consultar(idSolTela);
         }
         public List<DetallePlanoPretenido> getDetallePlanoPretenido(int idPlano)
         {
@@ -305,21 +405,60 @@ namespace PedidoTela.Controlodores
         #endregion
 
         #region Métodos Solicitud Cuellos-Puños-Tiras
-        public int getIdCuellos(string identificador)
+
+        public int getIdCuellos(int idSolTela)
         {
             D_CuellosTiras d_CuelloId = new D_CuellosTiras();
-            return d_CuelloId.ConsultarId(identificador);
+            return d_CuelloId.ConsultarId(idSolTela);
         }
-        public CuellosTiras getCuellosTiras(string identificador)
+        
+        public CuellosTiras getCuellosTiras(int idSolTela)
         {
             D_CuellosTiras d_CuellosT = new D_CuellosTiras();
-            return d_CuellosT.Consultar(identificador);
+            return d_CuellosT.Consultar(idSolTela);
+        }
+        public int getIdSoltelaCue(int idPlano)
+        {
+            D_CuellosTiras d_plano = new D_CuellosTiras();
+            return d_plano.ConsultarIdSolCuel(idPlano);
+        }
+        public bool ActualizarCuellos(CuellosTiras cuellosTiras)
+        {
+            D_CuellosTiras actuCuellos = new D_CuellosTiras();
+            return (actuCuellos.Actualizar(cuellosTiras) == "ok") ? true : false;
+        }
+        public List<int> getIdDetallecuellosUno(int idCuellos)
+        {
+            D_DetalleCuelloUno d_CuelloUno = new D_DetalleCuelloUno();
+            return d_CuelloUno.ConsultarId(idCuellos);
+        }
+        public List<int> getIdDetallecuellosDos(int idCuellos)
+        {
+            D_DetalleCuelloDos d_CuelloDos = new D_DetalleCuelloDos();
+            return d_CuelloDos.ConsultarId(idCuellos);
+        }
+
+        public bool ActualizarDetalleCuelloUno(DetalleCuelloUno detalleCuellosUno, int idDetalle)
+        {
+            D_DetalleCuelloUno objDetalleEditado = new D_DetalleCuelloUno();
+            return (objDetalleEditado.Actualizar(detalleCuellosUno, idDetalle) == "ok") ? true : false;
+        }
+        public bool ActualizarDetalleCuelloDos(DetalleCuelloDos detalleCuelloDos, int idDetalle)
+        {
+           D_DetalleCuelloDos objDetalleEditado = new D_DetalleCuelloDos();
+            return (objDetalleEditado.Actualizar(detalleCuelloDos, idDetalle) == "ok") ? true : false;
         }
         public bool addCuellosTiras(CuellosTiras cuellosTiras)
         {
             D_CuellosTiras d_CuellosT = new D_CuellosTiras();
             return (d_CuellosT.Agregar(cuellosTiras) == "ok") ? true : false;
         }
+        public bool consultarIdentificadorCuel(int idSolTelas)
+        {
+            D_CuellosTiras cuellos = new D_CuellosTiras();
+            return cuellos.consultarIdentificador(idSolTelas);
+        }
+
         public List<DetalleCuelloUno> getDetalleCuellosUno(int idCuellos)
         {
             D_DetalleCuelloUno d_DetalleCuelloUno = new D_DetalleCuelloUno();
@@ -388,40 +527,49 @@ namespace PedidoTela.Controlodores
 
             return objTipo.getTipoSol();
         }
-        public bool setMCalculados(string identificador, string mCalculados)
+        public bool setMCalculados(int  idSolTela, string mCalculados)
         {
             D_DetalleListaTela objDetalleEditado = new D_DetalleListaTela();
-            // return (d_Unicolor.Agregar(unicolor) == "ok") ? true : false;
-            return (objDetalleEditado.setMCalculados(identificador, mCalculados) == "ok") ? true : false;
+            // return (d_Detalle.Agregar(detalle) == "ok") ? true : false;
+            return (objDetalleEditado.setMCalculados(idSolTela, mCalculados) == "ok") ? true : false;
 
         }
         #endregion
+        
         #region Métodos Analizar inventario
-        public bool setEstado(string identificador,string estado,string fechaEstado )
+        public bool setEstado(int idSolTela,string estado,string fechaEstado )
         {
             D_AnalizarInventario objDetalleEditado = new D_AnalizarInventario();
-            // return (d_Unicolor.Agregar(unicolor) == "ok") ? true : false;
-            return (objDetalleEditado.setEstadoSolicitud(identificador, estado,fechaEstado) == "ok") ? true : false;
+            // return (d_Detalle.Agregar(detalle) == "ok") ? true : false;
+            return (objDetalleEditado.setEstadoSolicitud(idSolTela, estado,fechaEstado) == "ok") ? true : false;
 
         }
-        public bool setMaReservar(string identificador, string maReservar)
+        public bool setMaReservar(int idSolTela, string maReservar)
         {
             D_AnalizarInventario objDetalleEditado = new D_AnalizarInventario();
-            // return (d_Unicolor.Agregar(unicolor) == "ok") ? true : false;
-            return (objDetalleEditado.setMaReservar(identificador, maReservar) == "ok") ? true : false;
+            // return (d_Detalle.Agregar(detalle) == "ok") ? true : false;
+            return (objDetalleEditado.setMaReservar(idSolTela, maReservar) == "ok") ? true : false;
 
         }
-        public bool AtualizarCalculados(string identificador, string mCalculados,string maReservar, string maSolicitar)
+        public bool AtualizarCalculados(int idSolTela, string mCalculados,string maReservar, string maSolicitar)
         {
             D_AnalizarInventario objDetalleEditado = new D_AnalizarInventario();
-            // return (d_Unicolor.Agregar(unicolor) == "ok") ? true : false;
-            return (objDetalleEditado.Actualizar(identificador, mCalculados, maReservar, maSolicitar) == "ok") ? true : false;
+            // return (d_Detalle.Agregar(detalle) == "ok") ? true : false;
+            return (objDetalleEditado.Actualizar(idSolTela, mCalculados, maReservar, maSolicitar) == "ok") ? true : false;
 
         }
-        public List<AnalizarInventario> consultarInvertario(string identificador)
+        public List<AnalizarInventario> consultarInvertario(int idSolTela)
         {
             D_AnalizarInventario d_analizar = new D_AnalizarInventario();
-            return d_analizar.Consultar(identificador);
+            return d_analizar.Consultar(idSolTela);
+        }
+        #endregion
+
+        #region Métodos Disponible para Reserva
+        public DisponibleParaReserva consultarPedido(string identificador, string codigoTela, string CodigoColor)
+        {
+            D_DisponibleParaReserva d_Unicolor = new D_DisponibleParaReserva();
+            return d_Unicolor.Consultar(identificador, codigoTela, CodigoColor);
         }
         #endregion
     }

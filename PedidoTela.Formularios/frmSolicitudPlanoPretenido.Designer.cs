@@ -29,7 +29,7 @@ namespace PedidoTela.Formularios
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
             this.pnlSolicitudColor = new System.Windows.Forms.Panel();
             this.txbNomTela = new System.Windows.Forms.TextBox();
             this.lbReferenciaTela = new System.Windows.Forms.Label();
@@ -61,6 +61,7 @@ namespace PedidoTela.Formularios
             this.rosado = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.otros = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.totalUnidades = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.eliminar = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.lbObservaciones = new System.Windows.Forms.Label();
             this.txtObservaciones = new System.Windows.Forms.RichTextBox();
             this.panel9 = new System.Windows.Forms.Panel();
@@ -94,6 +95,7 @@ namespace PedidoTela.Formularios
             // 
             // txbNomTela
             // 
+            this.txbNomTela.BackColor = System.Drawing.Color.LightGoldenrodYellow;
             this.txbNomTela.Location = new System.Drawing.Point(557, 26);
             this.txbNomTela.Name = "txbNomTela";
             this.txbNomTela.ReadOnly = true;
@@ -151,11 +153,10 @@ namespace PedidoTela.Formularios
             // 
             // txbCoordinaCon
             // 
-            this.txbCoordinaCon.Location = new System.Drawing.Point(1163, 30);
+            this.txbCoordinaCon.Location = new System.Drawing.Point(1151, 25);
             this.txbCoordinaCon.Name = "txbCoordinaCon";
             this.txbCoordinaCon.Size = new System.Drawing.Size(190, 24);
             this.txbCoordinaCon.TabIndex = 11;
-            this.txbCoordinaCon.Visible = false;
             this.txbCoordinaCon.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txbCoordinaCon_KeyPress);
             // 
             // lbCoordinaCon
@@ -166,10 +167,10 @@ namespace PedidoTela.Formularios
             this.lbCoordinaCon.Size = new System.Drawing.Size(107, 17);
             this.lbCoordinaCon.TabIndex = 7;
             this.lbCoordinaCon.Text = "Coordina con:";
-            this.lbCoordinaCon.Visible = false;
             // 
             // txbRefTela
             // 
+            this.txbRefTela.BackColor = System.Drawing.Color.LightGoldenrodYellow;
             this.txbRefTela.Location = new System.Drawing.Point(171, 27);
             this.txbRefTela.Name = "txbRefTela";
             this.txbRefTela.ReadOnly = true;
@@ -183,14 +184,14 @@ namespace PedidoTela.Formularios
             this.dgvPlano.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.dgvPlano.AutoSizeRowsMode = System.Windows.Forms.DataGridViewAutoSizeRowsMode.DisplayedCells;
             this.dgvPlano.BackgroundColor = System.Drawing.Color.White;
-            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle1.BackColor = System.Drawing.SystemColors.ScrollBar;
-            dataGridViewCellStyle1.Font = new System.Drawing.Font("Verdana", 8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle1.ForeColor = System.Drawing.Color.Navy;
-            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.Color.Navy;
-            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dgvPlano.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
+            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle2.BackColor = System.Drawing.SystemColors.ScrollBar;
+            dataGridViewCellStyle2.Font = new System.Drawing.Font("Verdana", 8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle2.ForeColor = System.Drawing.Color.Navy;
+            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.Color.Navy;
+            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dgvPlano.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle2;
             this.dgvPlano.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgvPlano.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.vte,
@@ -212,7 +213,8 @@ namespace PedidoTela.Formularios
             this.comercioOrg,
             this.rosado,
             this.otros,
-            this.totalUnidades});
+            this.totalUnidades,
+            this.eliminar});
             this.dgvPlano.EnableHeadersVisualStyles = false;
             this.dgvPlano.Location = new System.Drawing.Point(14, 313);
             this.dgvPlano.MultiSelect = false;
@@ -225,6 +227,7 @@ namespace PedidoTela.Formularios
             this.dgvPlano.TabIndex = 29;
             this.dgvPlano.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvPlano_CellClick);
             this.dgvPlano.CellEndEdit += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvPlano_CellEndEdit);
+            this.dgvPlano.CellPainting += new System.Windows.Forms.DataGridViewCellPaintingEventHandler(this.dgvPlano_CellPainting);
             // 
             // vte
             // 
@@ -345,6 +348,12 @@ namespace PedidoTela.Formularios
             this.totalUnidades.HeaderText = "Total Unidades";
             this.totalUnidades.MinimumWidth = 8;
             this.totalUnidades.Name = "totalUnidades";
+            // 
+            // eliminar
+            // 
+            this.eliminar.HeaderText = "Eliminar";
+            this.eliminar.MinimumWidth = 6;
+            this.eliminar.Name = "eliminar";
             // 
             // lbObservaciones
             // 
@@ -503,6 +512,8 @@ namespace PedidoTela.Formularios
         private System.Windows.Forms.Button btnGrabar;
         private System.Windows.Forms.Button btnSalir;
         private System.Windows.Forms.Button btnAddColor;
+        private System.Windows.Forms.Label lblConsecutivo;
+        private System.Windows.Forms.Label lbIdentificador;
         private System.Windows.Forms.DataGridViewTextBoxColumn vte;
         private System.Windows.Forms.DataGridViewTextBoxColumn colorVte;
         private System.Windows.Forms.DataGridViewTextBoxColumn codH1;
@@ -523,7 +534,6 @@ namespace PedidoTela.Formularios
         private System.Windows.Forms.DataGridViewTextBoxColumn rosado;
         private System.Windows.Forms.DataGridViewTextBoxColumn otros;
         private System.Windows.Forms.DataGridViewTextBoxColumn totalUnidades;
-        private System.Windows.Forms.Label lblConsecutivo;
-        private System.Windows.Forms.Label lbIdentificador;
+        private System.Windows.Forms.DataGridViewTextBoxColumn eliminar;
     }
 }

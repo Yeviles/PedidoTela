@@ -20,27 +20,35 @@ namespace PedidoTela.Formularios
         private string identificador;
         private string codigoTela;
         private int id = 0, consecutivo = 0;
-        public frmSolicitudUnicolor(Controlador control, string identificador, string codigoTela)
+        public bool esClickBtnGrabar = false;
+        private int idSolicitudTelas;
+
+        public frmSolicitudUnicolor(Controlador control, string identificador, string codigoTela,string desTela, int idSolicitud)
         {
             this.control = control;
             this.identificador = identificador;
             this.codigoTela = codigoTela;
+            this.idSolicitudTelas = idSolicitud;
+
             InitializeComponent();
+
             lbIdentificador.Text = identificador;
+
             TipoTejido tt = control.getTipoTejido(codigoTela);
-            txbRefTela.Text = tt.CodigoTela;
-            txbNomTela.Text = tt.NombreTela;
+            txbRefTela.Text = codigoTela;
+            txbNomTela.Text = desTela;
             txbTipoTejido.Text = tt.NombreTipoTela;
             cargar();
-            if (dgvUnicolor.RowCount > 0)
-            {
-                btnGrabar.Enabled = false;
-                dgvUnicolor.ReadOnly = true;
-            }
-            else
+            if (dgvUnicolor.RowCount < 0)
             {
                 btnConfirmar.Enabled = false;
             }
+            if (esClickBtnGrabar)
+            {
+                frmTipoSolicitud tipo = new frmTipoSolicitud();
+                tipo.cbxCuePunTiras.Enabled = false;
+            }
+
         }
 
         private void frmSolicitudUnicolor_Load(object sender, EventArgs e)
@@ -56,22 +64,24 @@ namespace PedidoTela.Formularios
 
         private void cbxSiCoordinado_CheckedChanged(object sender, EventArgs e)
         {
+     
             if (cbxSiCoordinado.Checked)
             {
-                lbCoordinaCon.Visible = true;
-                txbCoordinaCon.Visible = true;
+                txbCoordinaCon.ReadOnly = false;
+                txbCoordinaCon.Focus();
+                txbCoordinaCon.BackColor = Color.White;
                 cbxNoCoordinado.Checked = false;
-            }
-            else {
-                lbCoordinaCon.Visible = false;
-                txbCoordinaCon.Visible = false;
             }
         }
 
         private void cbxNoCoordinado_CheckedChanged(object sender, EventArgs e)
         {
-            if (cbxNoCoordinado.Checked) {
+            if (cbxNoCoordinado.Checked)
+            {
+                txbCoordinaCon.ReadOnly = true;
+                txbCoordinaCon.BackColor = Color.LightGoldenrodYellow;
                 cbxSiCoordinado.Checked = false;
+
             }
         }
 
@@ -94,7 +104,7 @@ namespace PedidoTela.Formularios
             {
                 if (dgvUnicolor.CurrentCell.Value != null)
                 {
-                    int ultimaColumna = dgvUnicolor.ColumnCount - 1;
+                    int ultimaColumna = dgvUnicolor.ColumnCount - 2;
 
                     if (e.ColumnIndex > 1 && e.ColumnIndex < ultimaColumna)
                     {
@@ -120,10 +130,14 @@ namespace PedidoTela.Formularios
                 dgvUnicolor.CurrentCell.Value = "";
                 MessageBox.Show("Unicamente se permiten valores numéricos", "TTipo de dato no permitido", MessageBoxButtons.OK, MessageBoxIcon.Warning);
             }
+         
+          
         }
 
         private void btnGrabar_Click(object sender, EventArgs e)
         {
+            bool b = false;
+            List<int> listaIdDetalles = new List<int>();
             if (!cbxSiCoordinado.Checked && !cbxNoCoordinado.Checked)
             {
                 MessageBox.Show("Por favor, seleccione un valor para coordinado", "Advertencia", MessageBoxButtons.OK, MessageBoxIcon.Warning);
@@ -140,38 +154,61 @@ namespace PedidoTela.Formularios
                         elemento.TipoTejido = txbTipoTejido.Text;
                         elemento.Coordinado = (cbxSiCoordinado.Checked) ? true : false;
                         elemento.CoordinadoCon = (txbCoordinaCon.Text.Trim().Length > 0) ? txbCoordinaCon.Text.Trim() : "";
-                        elemento.Observacion = (txbObservaciones.Text.Trim().Length > 0) ? txbObservaciones.Text.Trim() : ""; ;
-                        if (control.addUnicolor(elemento))
+                        elemento.Observacion = (txbObservaciones.Text.Trim().Length > 0) ? txbObservaciones.Text.Trim() : "";
+                        elemento.IdSolicitudTela = idSolicitudTelas;
+
+                        if (control.consultarIdentificadorUni(idSolicitudTelas))
                         {
-                            id = control.getIdUnicolor(identificador);
-                            try
+                            control.Actualizar(elemento);
+                            b = true;
+                        }
+                        else
+                        {
+                            control.addUnicolor(elemento);
+                        }
+                        id = control.getIdUni(idSolicitudTelas);
+                        listaIdDetalles = control.getIdDetalle(id);
+                        try
+                        {
+                            for (int i = 0; i < dgvUnicolor.RowCount; i++)
                             {
-                                foreach (DataGridViewRow row in dgvUnicolor.Rows)
+                                DetalleUnicolor detalle = new DetalleUnicolor();
+                                detalle.IdUnicolor = id;
+                                detalle.CodigoColor = dgvUnicolor.Rows[i].Cells[0].Value.ToString();
+                                detalle.Descripcion = dgvUnicolor.Rows[i].Cells[1].Value.ToString().Trim();
+                                detalle.Tiendas = (dgvUnicolor.Rows[i].Cells[2].Value != null && dgvUnicolor.Rows[i].Cells[2].Value.ToString() != "") ? int.Parse(dgvUnicolor.Rows[i].Cells[2].Value.ToString()) : 0;
+                                detalle.Exito = (dgvUnicolor.Rows[i].Cells[3].Value != null && dgvUnicolor.Rows[i].Cells[3].Value.ToString() != "") ? int.Parse(dgvUnicolor.Rows[i].Cells[3].Value.ToString()) : 0;
+                                detalle.Cencosud = (dgvUnicolor.Rows[i].Cells[4].Value != null && dgvUnicolor.Rows[i].Cells[4].Value.ToString() != "") ? int.Parse(dgvUnicolor.Rows[i].Cells[4].Value.ToString()) : 0;
+                                detalle.Sao = (dgvUnicolor.Rows[i].Cells[5].Value != null && dgvUnicolor.Rows[i].Cells[5].Value.ToString() != "") ? int.Parse(dgvUnicolor.Rows[i].Cells[5].Value.ToString()) : 0;
+                                detalle.Comercio = (dgvUnicolor.Rows[i].Cells[6].Value != null && dgvUnicolor.Rows[i].Cells[6].Value.ToString() != "") ? int.Parse(dgvUnicolor.Rows[i].Cells[6].Value.ToString()) : 0;
+                                detalle.Rosado = (dgvUnicolor.Rows[i].Cells[7].Value != null && dgvUnicolor.Rows[i].Cells[7].Value.ToString() != "") ? int.Parse(dgvUnicolor.Rows[i].Cells[7].Value.ToString()) : 0;
+                                detalle.Otros = (dgvUnicolor.Rows[i].Cells[8].Value != null && dgvUnicolor.Rows[i].Cells[8].Value.ToString() != "") ? int.Parse(dgvUnicolor.Rows[i].Cells[8].Value.ToString()) : 0;
+                                detalle.Total = (dgvUnicolor.Rows[i].Cells[9].Value != null && dgvUnicolor.Rows[i].Cells[9].Value.ToString() != "") ? int.Parse(dgvUnicolor.Rows[i].Cells[9].Value.ToString()) : 0;
+
+                                if (b)
                                 {
-                                    DetalleUnicolor detalle = new DetalleUnicolor();
-                                    detalle.IdUnicolor = id;
-                                    detalle.CodigoColor = row.Cells[0].Value.ToString();
-                                    detalle.Descripcion = row.Cells[1].Value.ToString().Trim();
-                                    detalle.Tiendas = (row.Cells[2].Value != null && row.Cells[2].Value.ToString() != "") ? int.Parse(row.Cells[2].Value.ToString()) : 0;
-                                    detalle.Exito = (row.Cells[3].Value != null && row.Cells[3].Value.ToString() != "") ? int.Parse(row.Cells[3].Value.ToString()) : 0;
-                                    detalle.Cencosud = (row.Cells[4].Value != null && row.Cells[4].Value.ToString() != "") ? int.Parse(row.Cells[4].Value.ToString()) : 0;
-                                    detalle.Sao = (row.Cells[5].Value != null && row.Cells[5].Value.ToString() != "") ? int.Parse(row.Cells[5].Value.ToString()) : 0;
-                                    detalle.Comercio = (row.Cells[6].Value != null && row.Cells[6].Value.ToString() != "") ? int.Parse(row.Cells[6].Value.ToString()) : 0;
-                                    detalle.Rosado = (row.Cells[7].Value != null && row.Cells[7].Value.ToString() != "") ? int.Parse(row.Cells[7].Value.ToString()) : 0;
-                                    detalle.Otros = (row.Cells[8].Value != null && row.Cells[8].Value.ToString() != "") ? int.Parse(row.Cells[8].Value.ToString()) : 0;
-                                    detalle.Total = (row.Cells[9].Value != null && row.Cells[9].Value.ToString() != "") ? int.Parse(row.Cells[9].Value.ToString()) : 0;
+                                    if(i < listaIdDetalles.Count)
+                                    {
+                                        control.ActualizarDetalle(detalle, listaIdDetalles[i]);
+                                    }
+                                    else
+                                    {
+                                        control.addDetalleUnicolor(detalle);
+                                    }
+                                }
+                                else
+                                {
                                     control.addDetalleUnicolor(detalle);
                                 }
-                                txbObservaciones.Enabled = false;
-                                MessageBox.Show("Unicolor se guardó con éxito", "Información", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                                btnAddColor.Enabled = false;
-                                btnGrabar.Enabled = false;
-                                btnConfirmar.Enabled = true;
                             }
-                            catch (Exception ex)
-                            {
-                                MessageBox.Show("Detalle unicolor no se pudo guardar", "Advertencia", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                            }
+                            esClickBtnGrabar = true;
+                            //DialogResult = DialogResult.OK("Hola");
+                            MessageBox.Show("Unicolor se guardó con éxito", "Información", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                           
+                        }
+                        catch 
+                        {
+                            MessageBox.Show("Detalle unicolor no se pudo guardar", "Advertencia", MessageBoxButtons.OK, MessageBoxIcon.Error);
                         }
                     }
                     else {
@@ -186,34 +223,31 @@ namespace PedidoTela.Formularios
 
         private void btnConfirmar_Click(object sender, EventArgs e)
         {
-            int idSolicitud = control.consultarIdsolicitud(identificador);
+            //consulta el id que esta en la tabla  cfc_spt_sol_tela
+           //int idSolicitud = control.consultarIdsolicitud(identificador);
+            // Consulta el número máximo que representa el último consecutivo ingresado en la tabla cfc_spt_tipo_solicitud
             int maxConsecutivo = control.consultarMaximo();
-            string fechaSolicitud = DateTime.Now.ToString("dd/MM/yyyy");
-            string fechaEstado = DateTime.Now.ToString("dd/MM/yyyy");
+            // Se asignar valores para la fecha. 
+            string fechaActual = DateTime.Now.ToString("dd/MM/yyyy");
+            // El estado que se le debe dar a solicitud cuando es confirmada
+
             string estado = "Por Analizar";
+
             if (id != 0)
             {
-                if (idSolicitud == 0)
-                {
-                    /* quiere decir que ese idSolicitud no está en la tabla cfc_spt_sol_tela
-                     * hay que ingreser el identificador como parámetro  para id_solicitu*/
-                    if (control.consultarConsecutivo(id) == 0)
-                    {
-                        control.agregarConsecutivo(identificador, id, "UNICOLOR", maxConsecutivo + 1,fechaSolicitud,estado,fechaEstado);
-                        MessageBox.Show("El consecutivo se guardó con éxito.", "Información", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                        btnConfirmar.Enabled = false;
-                        consecutivo = control.consultarConsecutivo(id);
-                        lblConsecutivo.Text = "Consecutivo: " + consecutivo;
-                    }
-                }
-                else
-                {
-                    control.agregarConsecutivo(identificador, id, "UNICOLOR", maxConsecutivo + 1,fechaSolicitud,estado,fechaEstado);
-                    MessageBox.Show("El consecutivo se guardó con éxito.", "Información", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                    btnConfirmar.Enabled = false;
-                    consecutivo = control.consultarConsecutivo(id);
-                    lblConsecutivo.Text = "Consecutivo: " + consecutivo;
-                }
+                control.agregarConsecutivo(idSolicitudTelas, id, "UNICOLOR", maxConsecutivo + 1, fechaActual, estado, fechaActual,identificador);
+                MessageBox.Show("El consecutivo se guardó con éxito.", "Información", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                // Deshabilita los diferentes botones y demás contenido del formulario que se quiere que no sea modificado una vez se confirme la solicitud.
+                btnConfirmar.Enabled = false;
+                btnGrabar.Enabled = false;
+                txbObservaciones.Enabled = false;
+                btnAddColor.Enabled = false;
+                dgvUnicolor.ReadOnly = true;
+                
+                //consulta el consecutivo generado y se muestra en la vista.
+                consecutivo = control.consultarConsecutivo(id);
+                lblConsecutivo.Text = "Consecutivo: " + consecutivo;
+                DialogResult = DialogResult.OK;
             }
             else
             {
@@ -226,8 +260,35 @@ namespace PedidoTela.Formularios
             e.KeyChar = Char.ToUpper(e.KeyChar);
         }
 
+        private void dgvUnicolor_CellPainting(object sender, DataGridViewCellPaintingEventArgs e)
+        {
+            if (e.ColumnIndex >= 0 && dgvUnicolor.Columns[e.ColumnIndex].Name == "eliminar" && e.RowIndex >= 0)
+            {
+                e.Paint(e.CellBounds, DataGridViewPaintParts.All);
+
+                DataGridViewButtonCell celBoton = dgvUnicolor.Rows[e.RowIndex].Cells["eliminar"] as DataGridViewButtonCell;
+                Icon icoAtomico = new Icon(@"eliminar.ico");
+                e.Graphics.DrawIcon(icoAtomico, e.CellBounds.Left + 25, e.CellBounds.Top + 3);
+
+                dgvUnicolor.Rows[e.RowIndex].Height = icoAtomico.Height + 50;
+                dgvUnicolor.Columns[e.ColumnIndex].Width = icoAtomico.Width + 50;
+
+                e.Handled = true;
+            }
+        }
+
+        private void dgvUnicolor_CellClick(object sender, DataGridViewCellEventArgs e)
+        {
+            if (dgvUnicolor.Columns[e.ColumnIndex].Name == "eliminar")
+            {
+                dgvUnicolor.Rows.Remove(dgvUnicolor.CurrentRow);
+            }
+        }
+
         private void cargar() {
-            Unicolor unicolor = control.getUnicolor(identificador);
+            //int idUnicolor = (control.getIdUnicolor(identificador).ToString() != null && control.getIdUnicolor(identificador).ToString() != "") ? int.Parse(control.getIdUnicolor(identificador).ToString()) : 0;
+
+            Unicolor unicolor = control.getUnicolor(idSolicitudTelas);
             id = unicolor.Id;
             if (unicolor.Coordinado) {
                 cbxSiCoordinado.Checked = true;
@@ -243,6 +304,8 @@ namespace PedidoTela.Formularios
                 lblConsecutivo.Text = "Consecutivo: " + consecutivo;
                 dgvUnicolor.ReadOnly = true;
                 btnConfirmar.Enabled = false;
+                btnGrabar.Enabled = false;
+                btnAddColor.Enabled = false;
             }
             /*Carga detalle unicolor*/
             List<DetalleUnicolor> lista = control.getDetalleUnicolor(unicolor.Id);
@@ -253,10 +316,10 @@ namespace PedidoTela.Formularios
                     dgvUnicolor.Rows.Add(obj.CodigoColor, obj.Descripcion, obj.Exito, obj.Tiendas,
                         obj.Cencosud, obj.Sao, obj.Comercio, obj.Rosado, obj.Otros, obj.Total);
                 }
-                btnAddColor.Enabled = false;
-                dgvUnicolor.ReadOnly = true;
-                btnGrabar.Enabled = false;
-                txbObservaciones.Enabled = false;
+                //btnAddColor.Enabled = false;
+                //dgvUnicolor.ReadOnly = true;
+                //btnGrabar.Enabled = false;
+                //txbObservaciones.Enabled = false;
             }
         }
     }
