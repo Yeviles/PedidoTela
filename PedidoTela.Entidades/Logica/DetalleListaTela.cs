@@ -51,7 +51,8 @@ namespace PedidoTela.Entidades.Logica
         private string cantidadReservado;
         private string idDetalleSolicitud;
 
-        public DetalleListaTela() { }
+        public DetalleListaTela() {}
+        
 
         public DetalleListaTela(bool sel, string solicitud, string tipoSolicitud, string ensayo, string refSimilar, int numDibujos, string codFondo, string fondo, string tipoTela, string coordinado, string coordinadoCon, string refTela, string desTela, string vte, string desColor, string totaUnidades, string consumo, string marca, string muestrario, string ocasionUso, string tema, string entrada, string fechaTienda, string disenador, string obsDiseno, string fechaSolTelas, string estado, string fechaEstado, string tiendas, string exito, string cencosud, string sao, string comercio, string rosado, string otros, string mCalculados, string mReservados, string masolicitar, string tipo, int idSolTela, string cantidadReservado, string idDetalleSolicitud = null)
         {

@@ -274,10 +274,37 @@ namespace PedidoTela.Formularios
         /// <param name="e"></param>
         private void btnAnaInventario_Click(object sender, EventArgs e)
         {
-
-            List<DetalleListaTela> listaSeleccionadas = new List<DetalleListaTela>();
+            /// Cuenta cuantas filas de la DataGridView (dgvSolicitudTelas) en la vista frmSolicitudListaTelas ha sido chequeada (seleccionada).
             int contador = utilidades.ContarChecked(dgvSolicitudTelas);
-
+            /// Realiza el respectivo método que retorna la lista de filas Seleccionadas
+            List<DetalleListaTela> listaFilasSeleccionadas = ListaFilasSeleccionadas();
+            frmAnalizarInventario frmAnalizarInventario = new frmAnalizarInventario(controlador, listaFilasSeleccionadas, contador);
+         
+        }
+       
+        /// <summary>
+        /// Permite abrir la vista Agencias Externos a Traves del Botón InventarioExterno
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void btnInventarioExt_Click(object sender, EventArgs e)
+        {
+            /// Cuenta cuantas filas de la DataGridView (dgvSolicitudTelas) en la vista frmSolicitudListaTelas ha sido chequeada (seleccionada).
+            int contador = utilidades.ContarChecked(dgvSolicitudTelas);
+            /// Realiza el respectivo método que retorna la lista de filas Seleccionadas
+            List<DetalleListaTela> listaFilasSeleccionadas = ListaFilasSeleccionadas();
+            FrmAgenciasExternos frmAgenciasExterno = new FrmAgenciasExternos(controlador, listaFilasSeleccionadas, contador);
+        }
+        
+        /// <summary>
+        /// Genera una lista de tipo DetalleListaTela, la cual es representada por las filas seleccionadas en la dataGridView (dgvSolicitudTelas) es decir 
+        /// en la vista frmSolicitudListaTelas, para más comprensión son las filas Chequedas. 
+        /// </summary>
+        /// <returns>Retorna una Lista de Tipo DetalleLista, que representas las filas seleccionadas.</returns>
+        private List<DetalleListaTela> ListaFilasSeleccionadas()
+        {
+            List<DetalleListaTela> listaSeleccionadas = new List<DetalleListaTela>();
+            //int contador = utilidades.ContarChecked(dgvSolicitudTelas);
 
             for (int i = 0; i <= dgvSolicitudTelas.RowCount - 1; i++)
             {
@@ -333,10 +360,7 @@ namespace PedidoTela.Formularios
 
 
             }
-
-            frmAnalizarInventario frmAnalizarInventario = new frmAnalizarInventario(controlador, listaSeleccionadas, contador);
-            // frmAnalizarInventario.Show();
-         
+            return listaSeleccionadas;
         }
         
         /// <summary>
@@ -439,11 +463,18 @@ namespace PedidoTela.Formularios
             e.KeyChar = Char.ToUpper(e.KeyChar);
         }
 
+        /// <summary>
+        /// Permite Salir de la vista actual, llevando al usuario a la vista inicial
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void btnSalir_Click(object sender, EventArgs e)
         {
             frmInicial frmInicial = new frmInicial();
             this.Close();
             frmInicial.Show();
         }
+
+      
     }
 }

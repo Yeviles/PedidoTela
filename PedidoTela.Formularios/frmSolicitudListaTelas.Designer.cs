@@ -30,8 +30,9 @@ namespace PedidoTela.Formularios
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
             this.panel1 = new System.Windows.Forms.Panel();
+            this.btnInventarioExt = new System.Windows.Forms.Button();
             this.btnDevolucion = new System.Windows.Forms.Button();
             this.btnEditar = new System.Windows.Forms.Button();
             this.btnImprimir = new System.Windows.Forms.Button();
@@ -107,7 +108,6 @@ namespace PedidoTela.Formularios
             this.ttMuestrario = new System.Windows.Forms.ToolTip(this.components);
             this.ttNomTela = new System.Windows.Forms.ToolTip(this.components);
             this.pnlContenedorGrid = new System.Windows.Forms.Panel();
-            this.button1 = new System.Windows.Forms.Button();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvSolicitudTelas)).BeginInit();
             this.pnlInicial.SuspendLayout();
@@ -117,7 +117,7 @@ namespace PedidoTela.Formularios
             // panel1
             // 
             this.panel1.BackColor = System.Drawing.SystemColors.ScrollBar;
-            this.panel1.Controls.Add(this.button1);
+            this.panel1.Controls.Add(this.btnInventarioExt);
             this.panel1.Controls.Add(this.btnDevolucion);
             this.panel1.Controls.Add(this.btnEditar);
             this.panel1.Controls.Add(this.btnImprimir);
@@ -128,6 +128,18 @@ namespace PedidoTela.Formularios
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(1358, 49);
             this.panel1.TabIndex = 25;
+            // 
+            // btnInventarioExt
+            // 
+            this.btnInventarioExt.Image = global::PedidoTela.Formularios.Properties.Resources._4544831_business_comerce_delivery_return_shop_121431;
+            this.btnInventarioExt.Location = new System.Drawing.Point(466, 5);
+            this.btnInventarioExt.Name = "btnInventarioExt";
+            this.btnInventarioExt.Size = new System.Drawing.Size(157, 42);
+            this.btnInventarioExt.TabIndex = 6;
+            this.btnInventarioExt.Text = "Inventario Externo";
+            this.btnInventarioExt.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
+            this.btnInventarioExt.UseVisualStyleBackColor = true;
+            this.btnInventarioExt.Click += new System.EventHandler(this.btnInventarioExt_Click);
             // 
             // btnDevolucion
             // 
@@ -155,7 +167,7 @@ namespace PedidoTela.Formularios
             // btnImprimir
             // 
             this.btnImprimir.Image = global::PedidoTela.Formularios.Properties.Resources.mbriprint_99560;
-            this.btnImprimir.Location = new System.Drawing.Point(465, 5);
+            this.btnImprimir.Location = new System.Drawing.Point(931, 6);
             this.btnImprimir.Name = "btnImprimir";
             this.btnImprimir.Size = new System.Drawing.Size(157, 42);
             this.btnImprimir.TabIndex = 3;
@@ -377,14 +389,14 @@ namespace PedidoTela.Formularios
             this.dgvSolicitudTelas.AllowUserToDeleteRows = false;
             this.dgvSolicitudTelas.AutoSizeRowsMode = System.Windows.Forms.DataGridViewAutoSizeRowsMode.DisplayedCells;
             this.dgvSolicitudTelas.BackgroundColor = System.Drawing.Color.White;
-            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle1.BackColor = System.Drawing.SystemColors.ScrollBar;
-            dataGridViewCellStyle1.Font = new System.Drawing.Font("Verdana", 8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle1.ForeColor = System.Drawing.Color.Navy;
-            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.ScrollBar;
-            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.Color.Navy;
-            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dgvSolicitudTelas.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
+            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle2.BackColor = System.Drawing.SystemColors.ScrollBar;
+            dataGridViewCellStyle2.Font = new System.Drawing.Font("Verdana", 8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle2.ForeColor = System.Drawing.Color.Navy;
+            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.SystemColors.ScrollBar;
+            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.Color.Navy;
+            dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dgvSolicitudTelas.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle2;
             this.dgvSolicitudTelas.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgvSolicitudTelas.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.sel,
@@ -837,17 +849,6 @@ namespace PedidoTela.Formularios
             this.pnlContenedorGrid.Size = new System.Drawing.Size(1358, 379);
             this.pnlContenedorGrid.TabIndex = 61;
             // 
-            // button1
-            // 
-            this.button1.Image = global::PedidoTela.Formularios.Properties.Resources._4544831_business_comerce_delivery_return_shop_121431;
-            this.button1.Location = new System.Drawing.Point(937, 7);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(157, 42);
-            this.button1.TabIndex = 6;
-            this.button1.Text = "Inventario Externo";
-            this.button1.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
-            this.button1.UseVisualStyleBackColor = true;
-            // 
             // frmSolicitudListaTelas
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
@@ -949,6 +950,6 @@ namespace PedidoTela.Formularios
         private System.Windows.Forms.DataGridViewTextBoxColumn fechaEstado;
         private System.Windows.Forms.DataGridViewTextBoxColumn idSolTela;
         private System.Windows.Forms.Button btnSalir;
-        private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.Button btnInventarioExt;
     }
 }

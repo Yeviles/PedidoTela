@@ -29,8 +29,8 @@ namespace PedidoTela.Formularios
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
             this.btnConfirmarSIP = new System.Windows.Forms.Button();
             this.lbSolicitadoPor = new System.Windows.Forms.Label();
             this.lbCargo = new System.Windows.Forms.Label();
@@ -89,7 +89,7 @@ namespace PedidoTela.Formularios
             this.textBox29 = new System.Windows.Forms.TextBox();
             this.dateTimePicker2 = new System.Windows.Forms.DateTimePicker();
             this.panel2 = new System.Windows.Forms.Panel();
-            this.dtgInfoConsolidar = new System.Windows.Forms.DataGridView();
+            this.dgvInfoConsolidar = new System.Windows.Forms.DataGridView();
             this.codColor = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.descripColor = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.tiendas = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -104,7 +104,7 @@ namespace PedidoTela.Formularios
             this.mCalculados = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.mReservados = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.maSolicitar = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dtgTotalConsolidado = new System.Windows.Forms.DataGridView();
+            this.dgvTotalConsolidado = new System.Windows.Forms.DataGridView();
             this.dataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dataGridViewTextBoxColumn2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dataGridViewTextBoxColumn3 = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -125,8 +125,8 @@ namespace PedidoTela.Formularios
             this.button2 = new System.Windows.Forms.Button();
             this.button3 = new System.Windows.Forms.Button();
             this.panel2.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dtgInfoConsolidar)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.dtgTotalConsolidado)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dgvInfoConsolidar)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dgvTotalConsolidado)).BeginInit();
             this.panel9.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -681,23 +681,23 @@ namespace PedidoTela.Formularios
             this.panel2.Size = new System.Drawing.Size(1462, 262);
             this.panel2.TabIndex = 86;
             // 
-            // dtgInfoConsolidar
+            // dgvInfoConsolidar
             // 
-            this.dtgInfoConsolidar.AllowUserToAddRows = false;
-            this.dtgInfoConsolidar.AllowUserToDeleteRows = false;
-            this.dtgInfoConsolidar.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
-            this.dtgInfoConsolidar.AutoSizeRowsMode = System.Windows.Forms.DataGridViewAutoSizeRowsMode.DisplayedCells;
-            this.dtgInfoConsolidar.BackgroundColor = System.Drawing.Color.White;
-            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle1.BackColor = System.Drawing.SystemColors.ScrollBar;
-            dataGridViewCellStyle1.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle1.ForeColor = System.Drawing.Color.Navy;
-            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.Color.Navy;
-            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dtgInfoConsolidar.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
-            this.dtgInfoConsolidar.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dtgInfoConsolidar.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.dgvInfoConsolidar.AllowUserToAddRows = false;
+            this.dgvInfoConsolidar.AllowUserToDeleteRows = false;
+            this.dgvInfoConsolidar.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
+            this.dgvInfoConsolidar.AutoSizeRowsMode = System.Windows.Forms.DataGridViewAutoSizeRowsMode.DisplayedCells;
+            this.dgvInfoConsolidar.BackgroundColor = System.Drawing.Color.White;
+            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle3.BackColor = System.Drawing.SystemColors.ScrollBar;
+            dataGridViewCellStyle3.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle3.ForeColor = System.Drawing.Color.Navy;
+            dataGridViewCellStyle3.SelectionBackColor = System.Drawing.Color.Navy;
+            dataGridViewCellStyle3.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dgvInfoConsolidar.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle3;
+            this.dgvInfoConsolidar.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dgvInfoConsolidar.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.codColor,
             this.descripColor,
             this.tiendas,
@@ -712,18 +712,18 @@ namespace PedidoTela.Formularios
             this.mCalculados,
             this.mReservados,
             this.maSolicitar});
-            this.dtgInfoConsolidar.EnableHeadersVisualStyles = false;
-            this.dtgInfoConsolidar.Location = new System.Drawing.Point(14, 487);
-            this.dtgInfoConsolidar.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.dtgInfoConsolidar.MultiSelect = false;
-            this.dtgInfoConsolidar.Name = "dtgInfoConsolidar";
-            this.dtgInfoConsolidar.ReadOnly = true;
-            this.dtgInfoConsolidar.RightToLeft = System.Windows.Forms.RightToLeft.No;
-            this.dtgInfoConsolidar.RowHeadersWidth = 62;
-            this.dtgInfoConsolidar.RowTemplate.Height = 28;
-            this.dtgInfoConsolidar.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dtgInfoConsolidar.Size = new System.Drawing.Size(1462, 122);
-            this.dtgInfoConsolidar.TabIndex = 87;
+            this.dgvInfoConsolidar.EnableHeadersVisualStyles = false;
+            this.dgvInfoConsolidar.Location = new System.Drawing.Point(14, 487);
+            this.dgvInfoConsolidar.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.dgvInfoConsolidar.MultiSelect = false;
+            this.dgvInfoConsolidar.Name = "dgvInfoConsolidar";
+            this.dgvInfoConsolidar.ReadOnly = true;
+            this.dgvInfoConsolidar.RightToLeft = System.Windows.Forms.RightToLeft.No;
+            this.dgvInfoConsolidar.RowHeadersWidth = 62;
+            this.dgvInfoConsolidar.RowTemplate.Height = 28;
+            this.dgvInfoConsolidar.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
+            this.dgvInfoConsolidar.Size = new System.Drawing.Size(1462, 122);
+            this.dgvInfoConsolidar.TabIndex = 87;
             // 
             // codColor
             // 
@@ -823,23 +823,23 @@ namespace PedidoTela.Formularios
             this.maSolicitar.Name = "maSolicitar";
             this.maSolicitar.ReadOnly = true;
             // 
-            // dtgTotalConsolidado
+            // dgvTotalConsolidado
             // 
-            this.dtgTotalConsolidado.AllowUserToAddRows = false;
-            this.dtgTotalConsolidado.AllowUserToDeleteRows = false;
-            this.dtgTotalConsolidado.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
-            this.dtgTotalConsolidado.AutoSizeRowsMode = System.Windows.Forms.DataGridViewAutoSizeRowsMode.DisplayedCells;
-            this.dtgTotalConsolidado.BackgroundColor = System.Drawing.Color.White;
-            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle2.BackColor = System.Drawing.SystemColors.ScrollBar;
-            dataGridViewCellStyle2.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle2.ForeColor = System.Drawing.Color.Navy;
-            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.Color.Navy;
-            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dtgTotalConsolidado.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle2;
-            this.dtgTotalConsolidado.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dtgTotalConsolidado.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.dgvTotalConsolidado.AllowUserToAddRows = false;
+            this.dgvTotalConsolidado.AllowUserToDeleteRows = false;
+            this.dgvTotalConsolidado.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
+            this.dgvTotalConsolidado.AutoSizeRowsMode = System.Windows.Forms.DataGridViewAutoSizeRowsMode.DisplayedCells;
+            this.dgvTotalConsolidado.BackgroundColor = System.Drawing.Color.White;
+            dataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle4.BackColor = System.Drawing.SystemColors.ScrollBar;
+            dataGridViewCellStyle4.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle4.ForeColor = System.Drawing.Color.Navy;
+            dataGridViewCellStyle4.SelectionBackColor = System.Drawing.Color.Navy;
+            dataGridViewCellStyle4.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle4.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dgvTotalConsolidado.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle4;
+            this.dgvTotalConsolidado.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dgvTotalConsolidado.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.dataGridViewTextBoxColumn1,
             this.dataGridViewTextBoxColumn2,
             this.dataGridViewTextBoxColumn3,
@@ -854,18 +854,18 @@ namespace PedidoTela.Formularios
             this.kgCalculados,
             this.totalaPedir,
             this.undMedidaTela});
-            this.dtgTotalConsolidado.EnableHeadersVisualStyles = false;
-            this.dtgTotalConsolidado.Location = new System.Drawing.Point(11, 657);
-            this.dtgTotalConsolidado.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.dtgTotalConsolidado.MultiSelect = false;
-            this.dtgTotalConsolidado.Name = "dtgTotalConsolidado";
-            this.dtgTotalConsolidado.ReadOnly = true;
-            this.dtgTotalConsolidado.RightToLeft = System.Windows.Forms.RightToLeft.No;
-            this.dtgTotalConsolidado.RowHeadersWidth = 62;
-            this.dtgTotalConsolidado.RowTemplate.Height = 28;
-            this.dtgTotalConsolidado.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dtgTotalConsolidado.Size = new System.Drawing.Size(1465, 124);
-            this.dtgTotalConsolidado.TabIndex = 88;
+            this.dgvTotalConsolidado.EnableHeadersVisualStyles = false;
+            this.dgvTotalConsolidado.Location = new System.Drawing.Point(11, 657);
+            this.dgvTotalConsolidado.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.dgvTotalConsolidado.MultiSelect = false;
+            this.dgvTotalConsolidado.Name = "dgvTotalConsolidado";
+            this.dgvTotalConsolidado.ReadOnly = true;
+            this.dgvTotalConsolidado.RightToLeft = System.Windows.Forms.RightToLeft.No;
+            this.dgvTotalConsolidado.RowHeadersWidth = 62;
+            this.dgvTotalConsolidado.RowTemplate.Height = 28;
+            this.dgvTotalConsolidado.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
+            this.dgvTotalConsolidado.Size = new System.Drawing.Size(1465, 124);
+            this.dgvTotalConsolidado.TabIndex = 88;
             // 
             // dataGridViewTextBoxColumn1
             // 
@@ -1036,19 +1036,20 @@ namespace PedidoTela.Formularios
             this.ClientSize = new System.Drawing.Size(1488, 803);
             this.Controls.Add(this.panel9);
             this.Controls.Add(this.lbTotalconsolidado);
-            this.Controls.Add(this.dtgTotalConsolidado);
-            this.Controls.Add(this.dtgInfoConsolidar);
+            this.Controls.Add(this.dgvTotalConsolidado);
+            this.Controls.Add(this.dgvInfoConsolidar);
             this.Controls.Add(this.panel2);
             this.Controls.Add(this.lbInformacion);
             this.ForeColor = System.Drawing.Color.Black;
             this.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.Name = "FrmAgenciasExternos";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Agencias-Externos";
             this.Load += new System.EventHandler(this.FrmAgenciasExternos_Load);
             this.panel2.ResumeLayout(false);
             this.panel2.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dtgInfoConsolidar)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.dtgTotalConsolidado)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dgvInfoConsolidar)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dgvTotalConsolidado)).EndInit();
             this.panel9.ResumeLayout(false);
             this.ResumeLayout(false);
             this.PerformLayout();
@@ -1114,7 +1115,7 @@ namespace PedidoTela.Formularios
         private System.Windows.Forms.TextBox textBox29;
         private System.Windows.Forms.DateTimePicker dateTimePicker2;
         private System.Windows.Forms.Panel panel2;
-        private System.Windows.Forms.DataGridView dtgInfoConsolidar;
+        private System.Windows.Forms.DataGridView dgvInfoConsolidar;
         private System.Windows.Forms.DataGridViewTextBoxColumn codColor;
         private System.Windows.Forms.DataGridViewTextBoxColumn descripColor;
         private System.Windows.Forms.DataGridViewTextBoxColumn tiendas;
@@ -1129,7 +1130,7 @@ namespace PedidoTela.Formularios
         private System.Windows.Forms.DataGridViewTextBoxColumn mCalculados;
         private System.Windows.Forms.DataGridViewTextBoxColumn mReservados;
         private System.Windows.Forms.DataGridViewTextBoxColumn maSolicitar;
-        private System.Windows.Forms.DataGridView dtgTotalConsolidado;
+        private System.Windows.Forms.DataGridView dgvTotalConsolidado;
         private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn1;
         private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn2;
         private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn3;

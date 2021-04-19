@@ -238,6 +238,7 @@ namespace PedidoTela.Data.Acceso
                             clausulaWhere += "AND ";
                         }
                     }
+                    //O
                     if (objTela.Color.ToString() != "")
                     {
                         clausulaWhere += "pd.descripcion_vte = ?";
