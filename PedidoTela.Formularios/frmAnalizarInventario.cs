@@ -151,7 +151,8 @@ namespace PedidoTela.Formularios
                 prmLista[i].MCalculados.ToString(),
                 prmLista[i].MReservados.ToString(),
                 prmLista[i].Masolicitar.ToString(),
-                prmLista[i].IdSolTela.ToString()
+                prmLista[i].IdSolTela.ToString(),
+                prmLista[i].IdDetalleSolicitud.ToString()
                 ); 
                 }
             }
@@ -244,7 +245,7 @@ namespace PedidoTela.Formularios
             //    pedido = control.consultarPedido(DetalleSeleccionado[]);
             //}
                
-            bool b = false;
+            bool b = false, p = false;
             if (contador >= 1 && contador <= 1)
             {
                 for (int i = 0; i <= dgvAnalizarInventario.RowCount - 1; i++)
@@ -262,6 +263,7 @@ namespace PedidoTela.Formularios
                             if(pedido.Pedido == null)
                             {
                                 objInfo.Pedido = "0";
+                                p = true;
                             }
                             else
                             {
@@ -273,14 +275,14 @@ namespace PedidoTela.Formularios
                             //objInfo.Ensayo = dgvAnalizarInventario.Rows[i].Cells[1].Value.ToString();
                             objInfo.Referencia = dgvAnalizarInventario.Rows[i].Cells[2].Value.ToString();
                             objInfo.NomTela = DetalleSeleccionado[i].DesTela.ToString();
-                            objInfo.CodiTela = pedido.CodiTela.ToString();
+                            objInfo.CodiTela = DetalleSeleccionado[i].RefTela.ToString();
                             objInfo.Color = dgvAnalizarInventario.Rows[i].Cells[3].Value.ToString();
                             objInfo.Estado = DetalleSeleccionado[i].Estado.ToString();
                             objInfo.Disponible = pedido.Disponible;                    
-                            objInfo.CantidadReservado = DetalleSeleccionado[i].Masolicitar.ToString();
-                            objInfo.DiponibleTeorico = utilidades.DisponibleTeorico(pedido.Disponible.ToString(), DetalleSeleccionado[i].Masolicitar.ToString());
+                            objInfo.CantidadReservado = DetalleSeleccionado[i].CantidadReservado.ToString();
+                            objInfo.DiponibleTeorico = utilidades.DisponibleTeorico(pedido.Disponible.ToString(), DetalleSeleccionado[i].CantidadReservado.ToString());
                             objInfo.IdsolTela = int.Parse(DetalleSeleccionado[i].IdSolTela.ToString());
-
+                            objInfo.IdDetalleSolicitud = DetalleSeleccionado[i].IdDetalleSolicitud;
                             b = true;
                             listaSeleccionadas.Add(objInfo);
                         }
@@ -294,21 +296,30 @@ namespace PedidoTela.Formularios
                 }
                 if (b)
                 {
-                   frmDisponibleParaReserva frmDisponible = new frmDisponibleParaReserva(control, listaSeleccionadas);
-                    if (frmDisponible.ShowDialog() == DialogResult.OK)
+                    if (!p)
                     {
-                        
-                            
-                    for (int i = 0; i <= dgvAnalizarInventario.RowCount - 1; i++)
-                    {
-                        if (dgvAnalizarInventario.Rows[i].Cells[0].Value.Equals(true))//Columna de checks
+                        frmDisponibleParaReserva frmDisponible = new frmDisponibleParaReserva(control, listaSeleccionadas);
+
+
+                        if (frmDisponible.ShowDialog() == DialogResult.OK)
                         {
 
-                            Actualizar(control.consultarInvertario(int.Parse(DetalleSeleccionado[i].IdSolTela.ToString())));
+
+                            for (int i = 0; i <= dgvAnalizarInventario.RowCount - 1; i++)
+                            {
+                                if (dgvAnalizarInventario.Rows[i].Cells[0].Value.Equals(true))//Columna de checks
+                                {
+
+                                    Actualizar(control.consultarInvertario(int.Parse(DetalleSeleccionado[i].IdSolTela.ToString())));
+                                }
+                            }
+
+
                         }
                     }
-                        
-                       
+                    else
+                    {
+                        MessageBox.Show("El esayo seleccionado no puede Resevar No cuenta con un Disponible de pedido, gracias.", "Advertencia", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                     }
                 }
                 }

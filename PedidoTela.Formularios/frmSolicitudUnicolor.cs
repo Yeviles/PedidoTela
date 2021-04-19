@@ -100,6 +100,7 @@ namespace PedidoTela.Formularios
 
         private void dgvUnicolor_CellEndEdit(object sender, DataGridViewCellEventArgs e)
         {
+            dgvUnicolor.CurrentRow.Cells[10].ReadOnly = true;
             try
             {
                 if (dgvUnicolor.CurrentCell.Value != null)

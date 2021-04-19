@@ -29,7 +29,7 @@ namespace PedidoTela.Formularios
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle18 = new System.Windows.Forms.DataGridViewCellStyle();
             this.lbReferenciaTela = new System.Windows.Forms.Label();
             this.lbNombreTela = new System.Windows.Forms.Label();
             this.lbTipoTejido = new System.Windows.Forms.Label();
@@ -56,16 +56,21 @@ namespace PedidoTela.Formularios
             this.pnlSolicitudColor = new System.Windows.Forms.Panel();
             this.txbObservaciones = new System.Windows.Forms.RichTextBox();
             this.lbObservaciones = new System.Windows.Forms.Label();
-            this.btnAddColor = new System.Windows.Forms.Button();
             this.panel9 = new System.Windows.Forms.Panel();
             this.lblConsecutivo = new System.Windows.Forms.Label();
+            this.lbIdentificador = new System.Windows.Forms.Label();
+            this.btnAddColor = new System.Windows.Forms.Button();
+            this.lbSolicitud = new System.Windows.Forms.Label();
             this.btnConfirmar = new System.Windows.Forms.Button();
             this.btnGrabar = new System.Windows.Forms.Button();
             this.btnSalir = new System.Windows.Forms.Button();
-            this.lbIdentificador = new System.Windows.Forms.Label();
+            this.pictureBox1 = new System.Windows.Forms.PictureBox();
+            this.panel1 = new System.Windows.Forms.Panel();
             ((System.ComponentModel.ISupportInitialize)(this.dgvUnicolor)).BeginInit();
             this.pnlSolicitudColor.SuspendLayout();
             this.panel9.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
+            this.panel1.SuspendLayout();
             this.SuspendLayout();
             // 
             // lbReferenciaTela
@@ -180,14 +185,14 @@ namespace PedidoTela.Formularios
             this.dgvUnicolor.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.dgvUnicolor.AutoSizeRowsMode = System.Windows.Forms.DataGridViewAutoSizeRowsMode.DisplayedCells;
             this.dgvUnicolor.BackgroundColor = System.Drawing.Color.White;
-            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle1.BackColor = System.Drawing.SystemColors.ScrollBar;
-            dataGridViewCellStyle1.Font = new System.Drawing.Font("Verdana", 8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle1.ForeColor = System.Drawing.Color.Navy;
-            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.Color.Navy;
-            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dgvUnicolor.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
+            dataGridViewCellStyle18.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle18.BackColor = System.Drawing.SystemColors.ScrollBar;
+            dataGridViewCellStyle18.Font = new System.Drawing.Font("Verdana", 8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle18.ForeColor = System.Drawing.Color.Navy;
+            dataGridViewCellStyle18.SelectionBackColor = System.Drawing.Color.Navy;
+            dataGridViewCellStyle18.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle18.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dgvUnicolor.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle18;
             this.dgvUnicolor.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgvUnicolor.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.codColor,
@@ -323,6 +328,40 @@ namespace PedidoTela.Formularios
             this.lbObservaciones.TabIndex = 23;
             this.lbObservaciones.Text = "Observaciones Diseño";
             // 
+            // panel9
+            // 
+            this.panel9.BackColor = System.Drawing.SystemColors.ScrollBar;
+            this.panel9.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.panel9.Controls.Add(this.lblConsecutivo);
+            this.panel9.Controls.Add(this.btnConfirmar);
+            this.panel9.Controls.Add(this.btnGrabar);
+            this.panel9.Controls.Add(this.btnSalir);
+            this.panel9.Location = new System.Drawing.Point(12, 90);
+            this.panel9.Name = "panel9";
+            this.panel9.Size = new System.Drawing.Size(1362, 49);
+            this.panel9.TabIndex = 134;
+            // 
+            // lblConsecutivo
+            // 
+            this.lblConsecutivo.AutoSize = true;
+            this.lblConsecutivo.Font = new System.Drawing.Font("Verdana", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblConsecutivo.Location = new System.Drawing.Point(545, 15);
+            this.lblConsecutivo.Name = "lblConsecutivo";
+            this.lblConsecutivo.Size = new System.Drawing.Size(0, 20);
+            this.lblConsecutivo.TabIndex = 98;
+            // 
+            // lbIdentificador
+            // 
+            this.lbIdentificador.AutoSize = true;
+            this.lbIdentificador.BackColor = System.Drawing.Color.Transparent;
+            this.lbIdentificador.Font = new System.Drawing.Font("Verdana", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lbIdentificador.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
+            this.lbIdentificador.Location = new System.Drawing.Point(174, 33);
+            this.lbIdentificador.Name = "lbIdentificador";
+            this.lbIdentificador.Size = new System.Drawing.Size(19, 23);
+            this.lbIdentificador.TabIndex = 99;
+            this.lbIdentificador.Text = "-";
+            // 
             // btnAddColor
             // 
             this.btnAddColor.Image = global::PedidoTela.Formularios.Properties.Resources._1492790881_6add_84227;
@@ -336,27 +375,18 @@ namespace PedidoTela.Formularios
             this.btnAddColor.UseVisualStyleBackColor = true;
             this.btnAddColor.Click += new System.EventHandler(this.btnAddColor_Click);
             // 
-            // panel9
+            // lbSolicitud
             // 
-            this.panel9.BackColor = System.Drawing.SystemColors.ScrollBar;
-            this.panel9.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.panel9.Controls.Add(this.lblConsecutivo);
-            this.panel9.Controls.Add(this.btnConfirmar);
-            this.panel9.Controls.Add(this.btnGrabar);
-            this.panel9.Controls.Add(this.btnSalir);
-            this.panel9.Location = new System.Drawing.Point(12, 90);
-            this.panel9.Name = "panel9";
-            this.panel9.Size = new System.Drawing.Size(1365, 49);
-            this.panel9.TabIndex = 134;
-            // 
-            // lblConsecutivo
-            // 
-            this.lblConsecutivo.AutoSize = true;
-            this.lblConsecutivo.Font = new System.Drawing.Font("Verdana", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblConsecutivo.Location = new System.Drawing.Point(545, 15);
-            this.lblConsecutivo.Name = "lblConsecutivo";
-            this.lblConsecutivo.Size = new System.Drawing.Size(0, 20);
-            this.lblConsecutivo.TabIndex = 98;
+            this.lbSolicitud.AutoSize = true;
+            this.lbSolicitud.BackColor = System.Drawing.SystemColors.ScrollBar;
+            this.lbSolicitud.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
+            this.lbSolicitud.Font = new System.Drawing.Font("Verdana", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lbSolicitud.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.lbSolicitud.Location = new System.Drawing.Point(44, 5);
+            this.lbSolicitud.Name = "lbSolicitud";
+            this.lbSolicitud.Size = new System.Drawing.Size(161, 22);
+            this.lbSolicitud.TabIndex = 150;
+            this.lbSolicitud.Text = "Solicitud Unicolor";
             // 
             // btnConfirmar
             // 
@@ -402,17 +432,26 @@ namespace PedidoTela.Formularios
             this.btnSalir.UseVisualStyleBackColor = true;
             this.btnSalir.Click += new System.EventHandler(this.btnSalir_Click);
             // 
-            // lbIdentificador
+            // pictureBox1
             // 
-            this.lbIdentificador.AutoSize = true;
-            this.lbIdentificador.BackColor = System.Drawing.Color.Transparent;
-            this.lbIdentificador.Font = new System.Drawing.Font("Verdana", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lbIdentificador.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.lbIdentificador.Location = new System.Drawing.Point(174, 33);
-            this.lbIdentificador.Name = "lbIdentificador";
-            this.lbIdentificador.Size = new System.Drawing.Size(19, 23);
-            this.lbIdentificador.TabIndex = 99;
-            this.lbIdentificador.Text = "-";
+            this.pictureBox1.BackColor = System.Drawing.SystemColors.ScrollBar;
+            this.pictureBox1.Image = global::PedidoTela.Formularios.Properties.Resources.seleccion4;
+            this.pictureBox1.Location = new System.Drawing.Point(3, 0);
+            this.pictureBox1.Name = "pictureBox1";
+            this.pictureBox1.Size = new System.Drawing.Size(31, 33);
+            this.pictureBox1.TabIndex = 151;
+            this.pictureBox1.TabStop = false;
+            // 
+            // panel1
+            // 
+            this.panel1.BackColor = System.Drawing.SystemColors.ScrollBar;
+            this.panel1.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
+            this.panel1.Controls.Add(this.lbSolicitud);
+            this.panel1.Controls.Add(this.pictureBox1);
+            this.panel1.Location = new System.Drawing.Point(321, 320);
+            this.panel1.Name = "panel1";
+            this.panel1.Size = new System.Drawing.Size(205, 37);
+            this.panel1.TabIndex = 152;
             // 
             // frmSolicitudUnicolor
             // 
@@ -420,6 +459,7 @@ namespace PedidoTela.Formularios
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1386, 788);
+            this.Controls.Add(this.panel1);
             this.Controls.Add(this.lbIdentificador);
             this.Controls.Add(this.panel9);
             this.Controls.Add(this.btnAddColor);
@@ -437,6 +477,9 @@ namespace PedidoTela.Formularios
             this.pnlSolicitudColor.PerformLayout();
             this.panel9.ResumeLayout(false);
             this.panel9.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
+            this.panel1.ResumeLayout(false);
+            this.panel1.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -476,5 +519,8 @@ namespace PedidoTela.Formularios
         private System.Windows.Forms.DataGridViewTextBoxColumn otros;
         private System.Windows.Forms.DataGridViewTextBoxColumn totalUnidades;
         private System.Windows.Forms.DataGridViewTextBoxColumn eliminar;
+        private System.Windows.Forms.Label lbSolicitud;
+        private System.Windows.Forms.PictureBox pictureBox1;
+        private System.Windows.Forms.Panel panel1;
     }
 }

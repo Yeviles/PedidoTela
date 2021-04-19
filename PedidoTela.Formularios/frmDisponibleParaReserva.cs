@@ -18,6 +18,7 @@ namespace PedidoTela.Formularios
     public partial class frmDisponibleParaReserva : MaterialSkin.Controls.MaterialForm
     {
         Controlador controlador = new Controlador();
+        Utilidades utilidades = new Utilidades();
         List<DisponibleParaReserva> listDetalle = new List<DisponibleParaReserva>();
         private decimal metrosReservar;
 
@@ -100,7 +101,18 @@ namespace PedidoTela.Formularios
                             decimal valor = Decimal.Parse(dgvDisponibleReservar.CurrentCell.Value.ToString());
                             decimal vfinal = Decimal.Round(valor, 2);
                             dgvDisponibleReservar.CurrentCell.Value = vfinal;
-                            MetrosReservar = vfinal; 
+                            MetrosReservar = vfinal;
+                            if(MetrosReservar <= Convert.ToDecimal(dgvDisponibleReservar.Rows[e.RowIndex].Cells[7].Value))
+                            {
+                            dgvDisponibleReservar.Rows[e.RowIndex].Cells[8].Value = + MetrosReservar;
+                            dgvDisponibleReservar.Rows[e.RowIndex].Cells[9].Value = utilidades.DisponibleTeorico(dgvDisponibleReservar.Rows[e.RowIndex].Cells[7].Value.ToString(),MetrosReservar.ToString());
+                            }
+                            else
+                            {
+                                dgvDisponibleReservar.Rows[e.RowIndex].Cells[10].Value = ""; 
+                                MessageBox.Show("Los metros a reservar no pueden superar la cantidad disponible, gracias.", "Advertencia", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+
+                            }
                         }
                     }
                 }
@@ -122,9 +134,9 @@ namespace PedidoTela.Formularios
                 {
 
 
-                    if (controlador.setMaReservar(int.Parse(row.Cells[11].Value.ToString()), row.Cells[10].Value.ToString()))
+                    if (controlador.setMaReservar(int.Parse(row.Cells[11].Value.ToString()), row.Cells[10].Value.ToString(), row.Cells[8].Value.ToString()))
                     {
-                        MessageBox.Show("Información Actualizada con éxito.", "Información", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                        MessageBox.Show("Información Actualizada con éxito, datos actualizados (metros a reservar y cantidad Reservada)", "Información", MessageBoxButtons.OK, MessageBoxIcon.Information);
                         DialogResult = DialogResult.OK;
                     }
                 }

@@ -12,7 +12,7 @@ namespace PedidoTela.Data.Acceso
     {
         #region Consultas
         private readonly string UpdateEstado = " update cfc_spt_tipo_solicitud set estado =?, fecha_estado=? where id_solicitud = ?;";
-        private readonly string UpdateMaReservar = "update cfc_spt_sol_tela set m_reservar =? where idsolicitud = ?;";
+        private readonly string UpdateMaReservar = "update cfc_spt_sol_tela set m_reservar =?, cantidad_reservado = ? where idsolicitud = ?;";
         private readonly string actualizar = "update cfc_spt_sol_tela set m_calculados=?, m_reservar =?, m_solicitar=? where idsolicitud = ?;";
         private readonly string consultarTodo = "select identificador, NVL(m_calculados,'') as m_calculados,  NVL(m_reservar,'') as m_reservar,  NVL(m_solicitar,'') as m_solicitar,consumo from cfc_spt_sol_tela where idsolicitud = ? ;";
         
@@ -42,7 +42,7 @@ namespace PedidoTela.Data.Acceso
         }
 
         
-        public string setMaReservar(int  idSolTela, string maReservar)
+        public string setMaReservar(int  idSolTela, string maReservar, string cantidadReservada)
         {
             string respuesta = "";
             try
@@ -51,6 +51,7 @@ namespace PedidoTela.Data.Acceso
                 {
 
                     con.Parametros.Add(new IfxParameter("@m_reservar", maReservar));
+                    con.Parametros.Add(new IfxParameter("@cantidad_reservado", cantidadReservada));
                     con.Parametros.Add(new IfxParameter("@idsolicitud", idSolTela));
                     var datos = con.EjecutarConsulta(UpdateMaReservar);
 

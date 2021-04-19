@@ -71,9 +71,14 @@ namespace PedidoTela.Formularios
             this.btnSalir = new System.Windows.Forms.Button();
             this.btnAddColor = new System.Windows.Forms.Button();
             this.lbIdentificador = new System.Windows.Forms.Label();
+            this.panel1 = new System.Windows.Forms.Panel();
+            this.lbSolicitud = new System.Windows.Forms.Label();
+            this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.pnlSolicitudColor.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvPlano)).BeginInit();
             this.panel9.SuspendLayout();
+            this.panel1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.SuspendLayout();
             // 
             // pnlSolicitudColor
@@ -465,11 +470,46 @@ namespace PedidoTela.Formularios
             this.lbIdentificador.TabIndex = 136;
             this.lbIdentificador.Text = "-";
             // 
+            // panel1
+            // 
+            this.panel1.BackColor = System.Drawing.SystemColors.ScrollBar;
+            this.panel1.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
+            this.panel1.Controls.Add(this.lbSolicitud);
+            this.panel1.Controls.Add(this.pictureBox1);
+            this.panel1.Location = new System.Drawing.Point(319, 268);
+            this.panel1.Name = "panel1";
+            this.panel1.Size = new System.Drawing.Size(286, 37);
+            this.panel1.TabIndex = 154;
+            // 
+            // lbSolicitud
+            // 
+            this.lbSolicitud.AutoSize = true;
+            this.lbSolicitud.BackColor = System.Drawing.SystemColors.ScrollBar;
+            this.lbSolicitud.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
+            this.lbSolicitud.Font = new System.Drawing.Font("Verdana", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lbSolicitud.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.lbSolicitud.Location = new System.Drawing.Point(44, 5);
+            this.lbSolicitud.Name = "lbSolicitud";
+            this.lbSolicitud.Size = new System.Drawing.Size(225, 22);
+            this.lbSolicitud.TabIndex = 150;
+            this.lbSolicitud.Text = "Solicitud Plano Preteñido";
+            // 
+            // pictureBox1
+            // 
+            this.pictureBox1.BackColor = System.Drawing.SystemColors.ScrollBar;
+            this.pictureBox1.Image = global::PedidoTela.Formularios.Properties.Resources.seleccion4;
+            this.pictureBox1.Location = new System.Drawing.Point(3, 0);
+            this.pictureBox1.Name = "pictureBox1";
+            this.pictureBox1.Size = new System.Drawing.Size(31, 33);
+            this.pictureBox1.TabIndex = 151;
+            this.pictureBox1.TabStop = false;
+            // 
             // frmSolicitudPlanoPretenido
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1386, 788);
+            this.Controls.Add(this.panel1);
             this.Controls.Add(this.lbIdentificador);
             this.Controls.Add(this.btnAddColor);
             this.Controls.Add(this.panel9);
@@ -488,6 +528,9 @@ namespace PedidoTela.Formularios
             ((System.ComponentModel.ISupportInitialize)(this.dgvPlano)).EndInit();
             this.panel9.ResumeLayout(false);
             this.panel9.PerformLayout();
+            this.panel1.ResumeLayout(false);
+            this.panel1.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -535,5 +578,8 @@ namespace PedidoTela.Formularios
         private System.Windows.Forms.DataGridViewTextBoxColumn otros;
         private System.Windows.Forms.DataGridViewTextBoxColumn totalUnidades;
         private System.Windows.Forms.DataGridViewTextBoxColumn eliminar;
+        private System.Windows.Forms.Panel panel1;
+        private System.Windows.Forms.Label lbSolicitud;
+        private System.Windows.Forms.PictureBox pictureBox1;
     }
 }

@@ -24,9 +24,10 @@ namespace PedidoTela.Entidades.Logica
         private string metrosaReservar;
         private string ensayo;
         private int idsolTela;
+        private string idDetalleSolicitud;
         public DisponibleParaReserva() { }
 
-        public DisponibleParaReserva(string disenadora, string pedido, string referencia, string nomTela, string codiTela, string color, string desColor, decimal anchoTrazo, string desTalla, string estado, decimal disponible, string cantidadReservado, string diponibleTeorico, string metrosaReservar, string ensayo, int idsolTela)
+        public DisponibleParaReserva(string disenadora, string pedido, string referencia, string nomTela, string codiTela, string color, string desColor, decimal anchoTrazo, string desTalla, string estado, decimal disponible, string cantidadReservado, string diponibleTeorico, string metrosaReservar, string ensayo, int idsolTela, string idDetalleSolicitud = null)
         {
             this.disenadora = disenadora;
             this.pedido = pedido;
@@ -44,6 +45,7 @@ namespace PedidoTela.Entidades.Logica
             this.metrosaReservar = metrosaReservar;
             this.ensayo = ensayo;
             this.idsolTela = idsolTela;
+            this.IdDetalleSolicitud = idDetalleSolicitud;
         }
 
         public string Disenadora { get => disenadora; set => disenadora = value; }
@@ -62,5 +64,6 @@ namespace PedidoTela.Entidades.Logica
         public string DesColor { get => desColor; set => desColor = value; }
         public decimal AnchoTrazo { get => anchoTrazo; set => anchoTrazo = value; }
         public string DesTalla { get => desTalla; set => desTalla = value; }
+        public string IdDetalleSolicitud { get => idDetalleSolicitud; set => idDetalleSolicitud = value; }
     }
 }

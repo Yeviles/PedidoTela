@@ -45,17 +45,15 @@ namespace PedidoTela.Formularios
             btnImgPunos.Enabled = false;
             btnImgTiras.Enabled = false;
 
-            //dgvCuellos1.RowCount = 3;
-            //dgvCuellos1.Rows[0].HeaderCell.Value = "Cuellos";
-            //dgvCuellos1.Rows[1].HeaderCell.Value = "Puños";
-            //dgvCuellos1.Rows[2].HeaderCell.Value = "Tiras";
-
             //dgvCuellos1.HeadersCellVisible = false;
             dgvCuellos1.RowHeadersVisible = false;
+            dgvCuellos2.Columns["codH1"].HeaderCell.ToolTipText = "Doble Clic para seleccionar Color.";
+            dgvCuellos2.Columns["codH2"].HeaderCell.ToolTipText = "Doble Clic para seleccionar Color.";
+            dgvCuellos2.Columns["codH3"].HeaderCell.ToolTipText = "Doble Clic para seleccionar Color.";
+            dgvCuellos2.Columns["codH4"].HeaderCell.ToolTipText = "Doble Clic para seleccionar Color.";
+            dgvCuellos2.Columns["codH5"].HeaderCell.ToolTipText = "Doble Clic para seleccionar Color.";
 
-            //dgvCuellos1.Rows[0].Visible = false;
-            //dgvCuellos1.Rows[1].Visible = false;
-            //dgvCuellos1.Rows[2].Visible = false;
+
 
             CargarCuellosTiras();
 
@@ -384,6 +382,7 @@ namespace PedidoTela.Formularios
 
                     if (fila.Cells[0].Value != null && fila.Cells[0].Value.ToString() == "Cuellos")
                     {
+                        fila.DefaultCellStyle.BackColor = Color.White;
                         fila.ReadOnly = false;
                         pnlCuellos.Enabled = true;
                         btnImgCuellos.Enabled = true;
@@ -397,6 +396,7 @@ namespace PedidoTela.Formularios
                 {
                     if (fila.Cells[0].Value != null && fila.Cells[0].Value.ToString() == "Cuellos")
                     {
+                        fila.DefaultCellStyle.BackColor = Color.PaleGoldenrod;
                         fila.ReadOnly = true;
                     }
 
@@ -419,6 +419,7 @@ namespace PedidoTela.Formularios
 
                     if (fila.Cells[0].Value != null && fila.Cells[0].Value.ToString() == "Puños")
                     {
+                        fila.DefaultCellStyle.BackColor = Color.White;
                         fila.ReadOnly = false;
                         pnlPunos.Enabled = true;
                         btnImgPunos.Enabled = true;
@@ -432,6 +433,7 @@ namespace PedidoTela.Formularios
 
                     if (fila.Cells[0].Value != null && fila.Cells[0].Value.ToString() == "Puños")
                     {
+                        fila.DefaultCellStyle.BackColor = Color.PaleGoldenrod;
                         fila.ReadOnly = true;
                     }
                 }
@@ -452,6 +454,7 @@ namespace PedidoTela.Formularios
 
                     if (fila.Cells[0].Value != null && fila.Cells[0].Value.ToString() == "Tiras")
                     {
+                        fila.DefaultCellStyle.BackColor = Color.White;
                         fila.ReadOnly = false;
                         pnlTiras.Enabled = true;
                         btnImgTiras.Enabled = true;
@@ -467,6 +470,7 @@ namespace PedidoTela.Formularios
 
                     if (fila.Cells[0].Value != null && fila.Cells[0].Value.ToString() == "Tiras")
                     {
+                        fila.DefaultCellStyle.BackColor = Color.PaleGoldenrod;
                         fila.ReadOnly = true;
                     }
                 }
@@ -522,6 +526,7 @@ namespace PedidoTela.Formularios
                 if (buscarColor.ShowDialog() == DialogResult.OK)
                 {
                     Objeto obj = buscarColor.Elemento;
+                    //dgvCuellos2.Rows[e.RowIndex].Cells[13].ReadOnly = true;
                     if (e.ColumnIndex == 2 || e.ColumnIndex == 3)
                     {
                         dgvCuellos2.Rows[e.RowIndex].Cells[2].Value = obj.Id;
@@ -550,13 +555,14 @@ namespace PedidoTela.Formularios
                 }
             }
             if (dgvCuellos2.Columns[e.ColumnIndex].Name == "eliminar")
-            {
+            {    
                 dgvCuellos2.Rows.Remove(dgvCuellos2.CurrentRow);
             }
         }
 
         private void dgvCuellos2_CellEndEdit(object sender, DataGridViewCellEventArgs e)
         {
+            dgvCuellos2.CurrentRow.Cells[13].ReadOnly = true;
             if (e.ColumnIndex == 12)
             {
                 if (dgvCuellos2.CurrentCell.Value != null && dgvCuellos2.CurrentCell.Value.ToString().Trim() != "")
@@ -571,6 +577,8 @@ namespace PedidoTela.Formularios
                     }
                 }
             }
+           
+            
         }
 
         private void dgvCuellos1_CellEndEdit(object sender, DataGridViewCellEventArgs e)
@@ -668,10 +676,12 @@ namespace PedidoTela.Formularios
             }
             else
             {
+                dgvCuellos1.DefaultCellStyle.BackColor = Color.PaleGoldenrod;
                 dgvCuellos1.RowCount = 3;
                 dgvCuellos1.Rows[0].HeaderCell.Value = "Cuellos";
                 dgvCuellos1.Rows[0].Cells[0].Value = "Cuellos";
                 dgvCuellos1.Rows[0].ReadOnly = true;
+                
 
                 dgvCuellos1.Rows[1].HeaderCell.Value = "Puños";
                 dgvCuellos1.Rows[1].Cells[0].Value = "Puños";

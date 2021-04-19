@@ -22,11 +22,12 @@ namespace PedidoTela.Entidades.Logica
         private string solicitud;
         private string color;
         private string clase;
-        private bool coordinado;
-        private int numDibujo;
+        private string coordinado;
+        private string numDibujo;
+
 
         public ListaTela() { }
-        public ListaTela(string tipoSolicitud, string muestrario, string ocasionUso, string tema, string entrada, string disenador, string ensayoRefSimilar, string estado, string fechaTienda, string refTela, string nomTela, string solicitud, string color, string clase, bool coordinado, int numDibujo)
+        public ListaTela(string tipoSolicitud, string muestrario, string ocasionUso, string tema, string entrada, string disenador, string ensayoRefSimilar, string estado, string fechaTienda, string refTela, string nomTela, string solicitud, string color, string clase, string coordinado, string numDibujo)
         {
             this.TipoSolicitud = tipoSolicitud;
             this.Muestrario = muestrario;
@@ -60,7 +61,7 @@ namespace PedidoTela.Entidades.Logica
         public string Solicitud { get => solicitud; set => solicitud = value; }
         public string Color { get => color; set => color = value; }
         public string Clase { get => clase; set => clase = value; }
-        public bool Coordinado { get => coordinado; set => coordinado = value; }
-        public int NumDibujo { get => numDibujo; set => numDibujo = value; }
+        public string Coordinado { get => coordinado; set => coordinado = value; }
+        public string NumDibujo { get => numDibujo; set => numDibujo = value; }
     }
 }

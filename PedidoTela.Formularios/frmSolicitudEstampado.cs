@@ -109,7 +109,7 @@ namespace PedidoTela.Formularios
             {
                 txbCoordinaCon.ReadOnly = false;
                 txbCoordinaCon.Focus();
-                txbCoordinaCon.BackColor = Color.LightGoldenrodYellow;
+                txbCoordinaCon.BackColor = Color.White;
                 cbxNoCoordinado.Checked = false;
             }
            
@@ -120,7 +120,7 @@ namespace PedidoTela.Formularios
             if(cbxNoCoordinado.Checked)
             {
                 txbCoordinaCon.ReadOnly = true;
-                txbCoordinaCon.BackColor = Color.White;
+                txbCoordinaCon.BackColor = Color.LightGoldenrodYellow;
                 cbxSiCoordinado.Checked = false;
 
             }
@@ -175,6 +175,7 @@ namespace PedidoTela.Formularios
 
         private void dvgEstampado_CellClick(object sender, DataGridViewCellEventArgs e)
         {
+            dvgEstampado.CurrentRow.Cells[12].ReadOnly = true;
             if (dvgEstampado.Columns[e.ColumnIndex].Name == "fondo" || dvgEstampado.Columns[e.ColumnIndex].Name == "descripcionFondo")
             {
                 frmBuscarColor buscarColor = new frmBuscarColor(controlador);

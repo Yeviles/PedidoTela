@@ -54,6 +54,7 @@ namespace PedidoTela.Formularios
             this.mReservados = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.maSolicitar = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.idSolTela = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.idDetalleSolicitud = new System.Windows.Forms.DataGridViewTextBoxColumn();
             ((System.ComponentModel.ISupportInitialize)(this.dgvAnalizarInventario)).BeginInit();
             this.panel9.SuspendLayout();
             this.SuspendLayout();
@@ -92,7 +93,8 @@ namespace PedidoTela.Formularios
             this.mCalculados,
             this.mReservados,
             this.maSolicitar,
-            this.idSolTela});
+            this.idSolTela,
+            this.idDetalleSolicitud});
             this.dgvAnalizarInventario.EnableHeadersVisualStyles = false;
             this.dgvAnalizarInventario.Location = new System.Drawing.Point(12, 160);
             this.dgvAnalizarInventario.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
@@ -285,6 +287,13 @@ namespace PedidoTela.Formularios
             this.idSolTela.Name = "idSolTela";
             this.idSolTela.Visible = false;
             // 
+            // idDetalleSolicitud
+            // 
+            this.idDetalleSolicitud.HeaderText = "idDetalleSolicitud";
+            this.idDetalleSolicitud.MinimumWidth = 6;
+            this.idDetalleSolicitud.Name = "idDetalleSolicitud";
+            this.idDetalleSolicitud.Visible = false;
+            // 
             // frmAnalizarInventario
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
@@ -330,5 +339,6 @@ namespace PedidoTela.Formularios
         private System.Windows.Forms.DataGridViewTextBoxColumn mReservados;
         private System.Windows.Forms.DataGridViewTextBoxColumn maSolicitar;
         private System.Windows.Forms.DataGridViewTextBoxColumn idSolTela;
+        private System.Windows.Forms.DataGridViewTextBoxColumn idDetalleSolicitud;
     }
 }

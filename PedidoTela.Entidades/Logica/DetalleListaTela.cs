@@ -48,10 +48,12 @@ namespace PedidoTela.Entidades.Logica
         private string masolicitar;
         private string tipo;
         private int idSolTela;
+        private string cantidadReservado;
+        private string idDetalleSolicitud;
 
         public DetalleListaTela() { }
 
-        public DetalleListaTela(bool sel, string solicitud, string tipoSolicitud, string ensayo, string refSimilar, int numDibujos, string codFondo, string fondo, string tipoTela, string coordinado, string coordinadoCon, string refTela, string desTela, string vte, string desColor, string totaUnidades, string consumo, string marca, string muestrario, string ocasionUso, string tema, string entrada, string fechaTienda, string disenador, string obsDiseno, string fechaSolTelas, string estado, string fechaEstado, string tiendas, string exito, string cencosud, string sao, string comercio, string rosado, string otros, string mCalculados, string mReservados, string masolicitar, string tipo, int idSolTela)
+        public DetalleListaTela(bool sel, string solicitud, string tipoSolicitud, string ensayo, string refSimilar, int numDibujos, string codFondo, string fondo, string tipoTela, string coordinado, string coordinadoCon, string refTela, string desTela, string vte, string desColor, string totaUnidades, string consumo, string marca, string muestrario, string ocasionUso, string tema, string entrada, string fechaTienda, string disenador, string obsDiseno, string fechaSolTelas, string estado, string fechaEstado, string tiendas, string exito, string cencosud, string sao, string comercio, string rosado, string otros, string mCalculados, string mReservados, string masolicitar, string tipo, int idSolTela, string cantidadReservado, string idDetalleSolicitud = null)
         {
             this.Sel = sel;
             this.Solicitud = solicitud;
@@ -93,6 +95,8 @@ namespace PedidoTela.Entidades.Logica
             this.Masolicitar = masolicitar;
             this.Tipo = tipo;
             this.IdSolTela = idSolTela;
+            this.CantidadReservado = cantidadReservado;
+            this.IdDetalleSolicitud = idDetalleSolicitud;
         }
 
         public bool Sel { get => sel; set => sel = value; }
@@ -135,5 +139,7 @@ namespace PedidoTela.Entidades.Logica
         public string Masolicitar { get => masolicitar; set => masolicitar = value; }
         public string Tipo { get => tipo; set => tipo = value; }
         public int IdSolTela { get => idSolTela; set => idSolTela = value; }
+        public string CantidadReservado { get => cantidadReservado; set => cantidadReservado = value; }
+        public string IdDetalleSolicitud { get => idDetalleSolicitud; set => idDetalleSolicitud = value; }
     }
 }

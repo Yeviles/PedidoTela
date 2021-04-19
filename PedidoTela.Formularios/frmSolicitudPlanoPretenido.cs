@@ -130,6 +130,7 @@ namespace PedidoTela.Formularios
 
         private void dgvPlano_CellEndEdit(object sender, DataGridViewCellEventArgs e)
         {
+            dgvPlano.CurrentRow.Cells[20].ReadOnly = true;
             int ultimaColumna = dgvPlano.ColumnCount - 2;
             if (e.ColumnIndex > 11 && e.ColumnIndex < ultimaColumna) {
                 try

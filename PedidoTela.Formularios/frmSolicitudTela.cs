@@ -432,6 +432,13 @@ namespace PedidoTela.Formularios
             {
                 cargarTexBox(cbxTipo, controlador.getReferencia(txbEnsRefDigitado.Text));
                 dgvDetalleConsumo.Rows.Clear();
+
+                txbTema.BackColor = Color.LightGoldenrodYellow;
+                txbDisenador.BackColor = Color.LightGoldenrodYellow;
+                txbOcasionUso.BackColor = Color.LightGoldenrodYellow;
+                txbMuestrario.BackColor = Color.LightGoldenrodYellow;
+                txbEntrada.BackColor = Color.LightGoldenrodYellow;
+                txbAnio.BackColor = Color.LightGoldenrodYellow;
                 txbSku.Clear();
                 dtpFechaTienda.Value = DateTime.Now;
             }

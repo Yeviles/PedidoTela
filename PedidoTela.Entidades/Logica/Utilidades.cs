@@ -49,8 +49,9 @@ namespace PedidoTela.Entidades.Logica
             decimal r = (mReservar.ToString() != null && mReservar.ToString() != "") ? decimal.Parse(mReservar.ToString(), culture) : 0;
 
             decimal total = ((d) - (r));
+            Math.Abs(total);
             decimal vfinal = Decimal.Round(total, 2);
-            Math.Abs(vfinal);
+            
             string result = Convert.ToString(vfinal).Replace(",", ".");
 
             return result;

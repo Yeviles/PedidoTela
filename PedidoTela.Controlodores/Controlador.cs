@@ -544,11 +544,11 @@ namespace PedidoTela.Controlodores
             return (objDetalleEditado.setEstadoSolicitud(idSolTela, estado,fechaEstado) == "ok") ? true : false;
 
         }
-        public bool setMaReservar(int idSolTela, string maReservar)
+        public bool setMaReservar(int idSolTela, string maReservar, string cantidadReservada)
         {
             D_AnalizarInventario objDetalleEditado = new D_AnalizarInventario();
             // return (d_Detalle.Agregar(detalle) == "ok") ? true : false;
-            return (objDetalleEditado.setMaReservar(idSolTela, maReservar) == "ok") ? true : false;
+            return (objDetalleEditado.setMaReservar(idSolTela, maReservar, cantidadReservada) == "ok") ? true : false;
 
         }
         public bool AtualizarCalculados(int idSolTela, string mCalculados,string maReservar, string maSolicitar)

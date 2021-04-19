@@ -19,6 +19,7 @@ namespace PedidoTela.Formularios
         Validar validacion = new Validar();
         List<DetalleListaTela> detalle = new List<DetalleListaTela>();
         Utilidades utilidades = new Utilidades();
+        string validarCoordinado = "";
 
         public List<DetalleListaTela> Detalle { get => detalle; set => detalle = value; }
        
@@ -39,7 +40,7 @@ namespace PedidoTela.Formularios
 
             // ToolTips
             this.ttMuestrario.SetToolTip(this.cbxMuestrario, "Campo Obligatorio");
-            this.ttNomTela.SetToolTip(this.cbxNomTela, "Campo Obligatorio");
+           // this.ttNomTela.SetToolTip(this.cbxNomTela, "Campo Obligatorio");
         }
         
         private void frmSolicitudListaTelas_Load_1(object sender, EventArgs e)
@@ -58,7 +59,12 @@ namespace PedidoTela.Formularios
             cargarCombobox(cbxNomTela, controlador.getNomTelas());
             cargarCombobox(cbxRefTela, controlador.getRefTelas());
             cargarCombobox(cbxColor, controlador.getColoresT());
- 
+            //DateTime fecha = new DateTime();
+            //DateTime.TryParse("01/01/1753", out fecha);
+            //dtpFechaTienda.Value = fecha; 
+            //dtpFechaTienda.Format = DateTimePickerFormat.Custom;
+            //dtpFechaTienda.CustomFormat = " ";
+
 
             //Assign Click event to the DataGridView Cell.
             dgvSolicitudTelas.CellContentClick += new DataGridViewCellEventHandler(dgvSolicitudTelas_CellClick);
@@ -138,8 +144,14 @@ namespace PedidoTela.Formularios
                 MessageBox.Show("Campo obligatorio,Por favor, seleccione un valor para Tipo Muestrario", "Advertencia", MessageBoxButtons.OK, MessageBoxIcon.Warning);
             }
             else
-            { 
+            {
+                //string fecha = "";
+                //if (dtpFechaTienda.Value.ToString("dd/MM/yyyy") != "01/01/1753")
+                //{
+                //   fecha = dtpFechaTienda.Value.ToString("dd/MM/yyyy");
+                //}
                 string fecha = dtpFechaTienda.Value.ToString("dd/MM/yyyy");
+               
 
                 objTela.TipoSolicitud = (cbxTipoSolicitud.SelectedIndex != -1 && cbxTipoSolicitud.SelectedItem.ToString() != "") ? cbxTipoSolicitud.SelectedText.ToString() : "";
                 objTela.Muestrario = cbxMuestrario.GetItemText(cbxMuestrario.SelectedItem);
@@ -149,30 +161,31 @@ namespace PedidoTela.Formularios
                 objTela.Disenador = cbxDisenador.GetItemText(cbxDisenador.SelectedItem);
                 objTela.EnsayoRefSimilar = txbEnsayoRef.Text.Trim();
                 objTela.Estado = txbEstado.Text.Trim();
+                
                 objTela.FechaTienda = fecha;
                 objTela.RefTela = cbxRefTela.GetItemText(cbxRefTela.SelectedItem);
                 objTela.NomTela = cbxNomTela.GetItemText(cbxNomTela.SelectedItem);
                 objTela.Solicitud = txbSolicitud.Text.Trim();
                 objTela.Color = cbxColor.GetItemText(cbxColor.SelectedItem);
-                objTela.Clase = txbClase.Text.Trim();
-                objTela.Coordinado = (cbxSiCoordinado.Checked) ? true : false;
-                objTela.NumDibujo = (txbNdibujo.Text != null && txbNdibujo.Text.ToString() != "") ? int.Parse(txbNdibujo.Text.ToString().Trim()) : 0;
+                objTela.Clase = txbClase.Text.Trim();   
+                objTela.Coordinado = validarCoordinado;
+                objTela.NumDibujo = txbNdibujo.Text.Trim();
 
                 dgvSolicitudTelas.Rows.Clear();
                 Detalle = controlador.consultarListaTelas(objTela);
                 cargarDataGridView(Detalle);
-                // Vacía las cajas de texto del plIncial 
-                validacion.limpiar(pnlInicial);
-                //Limpian los ComboBox 
-                cbxMuestrario.SelectedIndex = -1;
-                cbxTipoSolicitud.SelectedIndex = -1;
-                cbxOcasionUso.SelectedIndex = -1;
-                cbxTema.SelectedIndex = -1;
-                cbxEntrada.SelectedIndex = -1;
-                cbxDisenador.SelectedIndex = -1;
-                cbxNomTela.SelectedIndex = -1;
-                cbxRefTela.SelectedIndex = -1;
-                cbxColor.SelectedIndex = -1;
+                //// Vacía las cajas de texto del plIncial 
+                //validacion.limpiar(pnlInicial);
+                ////Limpian los ComboBox 
+                //cbxMuestrario.SelectedIndex = -1;
+                //cbxTipoSolicitud.SelectedIndex = -1;
+                //cbxOcasionUso.SelectedIndex = -1;
+                //cbxTema.SelectedIndex = -1;
+                //cbxEntrada.SelectedIndex = -1;
+                //cbxDisenador.SelectedIndex = -1;
+                //cbxNomTela.SelectedIndex = -1;
+                //cbxRefTela.SelectedIndex = -1;
+                //cbxColor.SelectedIndex = -1;
 
               }
 
@@ -312,7 +325,9 @@ namespace PedidoTela.Formularios
                     objInfo.MReservados = Detalle[i].MReservados.ToString();
                     objInfo.Masolicitar = utilidades.mSolicitar(objInfo.MCalculados, Detalle[i].MReservados.ToString());
                     controlador.setMCalculados(int.Parse(dgvSolicitudTelas.Rows[i].Cells[28].Value.ToString()), utilidades.mCalculados2(dgvSolicitudTelas.Rows[i].Cells[15].Value.ToString(), dgvSolicitudTelas.Rows[i].Cells[16].Value.ToString()));
+                    objInfo.CantidadReservado = (Detalle[i].CantidadReservado != null && Detalle[i].CantidadReservado != "") ? Detalle[i].CantidadReservado : "0";
                     objInfo.IdSolTela = Detalle[i].IdSolTela;
+                    objInfo.IdDetalleSolicitud = Detalle[i].IdDetalleSolicitud;
                     listaSeleccionadas.Add(objInfo);
                 }
 
@@ -344,6 +359,7 @@ namespace PedidoTela.Formularios
             if (cbxNoCoordinado.Checked)
             {
                 cbxSiCoordinado.Checked = false;
+                validarCoordinado = "false";
 
             }
         }
@@ -358,6 +374,7 @@ namespace PedidoTela.Formularios
             if (cbxSiCoordinado.Checked)
             {
                 cbxNoCoordinado.Checked = false;
+                validarCoordinado = "true";
             }
            
         }
@@ -420,6 +437,13 @@ namespace PedidoTela.Formularios
         private void cbxDisenador_KeyPress(object sender, KeyPressEventArgs e)
         {
             e.KeyChar = Char.ToUpper(e.KeyChar);
+        }
+
+        private void btnSalir_Click(object sender, EventArgs e)
+        {
+            frmInicial frmInicial = new frmInicial();
+            this.Close();
+            frmInicial.Show();
         }
     }
 }
