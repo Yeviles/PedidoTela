@@ -145,7 +145,7 @@ namespace PedidoTela.Formularios
                 string fecha = dtpFechaTienda.Value.ToString("dd/MM/yyyy");
                
 
-                objTela.TipoSolicitud = (cbxTipoSolicitud.SelectedIndex != -1 && cbxTipoSolicitud.SelectedItem.ToString() != "") ? cbxTipoSolicitud.SelectedText.ToString() : "";
+                objTela.TipoSolicitud = (cbxTipoSolicitud.SelectedIndex != -1 && cbxTipoSolicitud.Text != "") ? cbxTipoSolicitud.Text.ToString() : "";
                 objTela.Muestrario = cbxMuestrario.GetItemText(cbxMuestrario.SelectedItem);
                 objTela.OcasionUso = cbxOcasionUso.GetItemText(cbxOcasionUso.SelectedItem);
                 objTela.Tema = cbxTema.GetItemText(cbxTema.SelectedItem);
@@ -255,9 +255,14 @@ namespace PedidoTela.Formularios
             /// Cuenta cuantas filas de la DataGridView (dgvSolicitudTelas) en la vista frmSolicitudListaTelas ha sido chequeada (seleccionada).
             int contador = utilidades.ContarChecked(dgvSolicitudTelas);
             /// Realiza el respectivo método que retorna la lista de filas Seleccionadas
-            List<DetalleListaTela> listaFilasSeleccionadas = ListaFilasSeleccionadas();
-            frmAnalizarInventario frmAnalizarInventario = new frmAnalizarInventario(controlador, listaFilasSeleccionadas, contador);
-         
+            if (contador > 1)
+            {
+                List<DetalleListaTela> listaFilasSeleccionadas = ListaFilasSeleccionadas();
+                frmAnalizarInventario frmAnalizarInventario = new frmAnalizarInventario(controlador, listaFilasSeleccionadas, contador);
+            }
+            else {
+                MessageBox.Show("Por favor seleccione al menos dos items", "Advertencia", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+            }
         }
        
         /// <summary>

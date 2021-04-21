@@ -30,8 +30,9 @@ namespace PedidoTela.Formularios
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
-            Microsoft.Reporting.WinForms.ReportDataSource reportDataSource2 = new Microsoft.Reporting.WinForms.ReportDataSource();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
+            Microsoft.Reporting.WinForms.ReportDataSource reportDataSource1 = new Microsoft.Reporting.WinForms.ReportDataSource();
+            this.ReporteReservaTelaBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.panel1 = new System.Windows.Forms.Panel();
             this.btnSalir = new System.Windows.Forms.Button();
             this.pnlInicial = new System.Windows.Forms.Panel();
@@ -55,12 +56,15 @@ namespace PedidoTela.Formularios
             this.codigoColor = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.cantidad = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.reportViewer1 = new Microsoft.Reporting.WinForms.ReportViewer();
-            this.ReporteReservaTelaBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            ((System.ComponentModel.ISupportInitialize)(this.ReporteReservaTelaBindingSource)).BeginInit();
             this.panel1.SuspendLayout();
             this.pnlInicial.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvReserva)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.ReporteReservaTelaBindingSource)).BeginInit();
             this.SuspendLayout();
+            // 
+            // ReporteReservaTelaBindingSource
+            // 
+            this.ReporteReservaTelaBindingSource.DataSource = typeof(PedidoTela.Entidades.Logica.ReporteReservaTela);
             // 
             // panel1
             // 
@@ -204,16 +208,15 @@ namespace PedidoTela.Formularios
             this.dgvReserva.AllowUserToAddRows = false;
             this.dgvReserva.AllowUserToDeleteRows = false;
             this.dgvReserva.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
-            this.dgvReserva.AutoSizeRowsMode = System.Windows.Forms.DataGridViewAutoSizeRowsMode.DisplayedCells;
             this.dgvReserva.BackgroundColor = System.Drawing.Color.White;
-            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle2.BackColor = System.Drawing.SystemColors.ScrollBar;
-            dataGridViewCellStyle2.Font = new System.Drawing.Font("Verdana", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle2.ForeColor = System.Drawing.Color.Navy;
-            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.SystemColors.ScrollBar;
-            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.Color.Navy;
-            dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dgvReserva.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle2;
+            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle1.BackColor = System.Drawing.SystemColors.ScrollBar;
+            dataGridViewCellStyle1.Font = new System.Drawing.Font("Verdana", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle1.ForeColor = System.Drawing.Color.Navy;
+            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.ScrollBar;
+            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.Color.Navy;
+            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dgvReserva.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
             this.dgvReserva.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgvReserva.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.ensayoReferencia,
@@ -228,11 +231,13 @@ namespace PedidoTela.Formularios
             this.dgvReserva.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.dgvReserva.MultiSelect = false;
             this.dgvReserva.Name = "dgvReserva";
+            this.dgvReserva.ReadOnly = true;
             this.dgvReserva.RightToLeft = System.Windows.Forms.RightToLeft.No;
+            this.dgvReserva.RowHeadersVisible = false;
             this.dgvReserva.RowHeadersWidth = 62;
             this.dgvReserva.RowTemplate.Height = 28;
             this.dgvReserva.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dgvReserva.Size = new System.Drawing.Size(656, 534);
+            this.dgvReserva.Size = new System.Drawing.Size(560, 534);
             this.dgvReserva.TabIndex = 62;
             // 
             // ensayoReferencia
@@ -240,58 +245,61 @@ namespace PedidoTela.Formularios
             this.ensayoReferencia.HeaderText = "Referencia / Ensayo";
             this.ensayoReferencia.MinimumWidth = 8;
             this.ensayoReferencia.Name = "ensayoReferencia";
+            this.ensayoReferencia.ReadOnly = true;
             // 
             // Muestrario
             // 
             this.Muestrario.HeaderText = "Muestrario";
             this.Muestrario.MinimumWidth = 8;
             this.Muestrario.Name = "Muestrario";
+            this.Muestrario.ReadOnly = true;
             // 
             // tema
             // 
             this.tema.HeaderText = "Tema";
             this.tema.MinimumWidth = 8;
             this.tema.Name = "tema";
+            this.tema.ReadOnly = true;
             // 
             // entrada
             // 
             this.entrada.HeaderText = "Entrada";
             this.entrada.MinimumWidth = 8;
             this.entrada.Name = "entrada";
+            this.entrada.ReadOnly = true;
             // 
             // pedido
             // 
             this.pedido.HeaderText = "No de pedido reservado";
             this.pedido.MinimumWidth = 8;
             this.pedido.Name = "pedido";
+            this.pedido.ReadOnly = true;
             // 
             // codigoColor
             // 
             this.codigoColor.HeaderText = "Color pedido";
             this.codigoColor.MinimumWidth = 8;
             this.codigoColor.Name = "codigoColor";
+            this.codigoColor.ReadOnly = true;
             // 
             // cantidad
             // 
             this.cantidad.HeaderText = "Cantidad reservada";
             this.cantidad.MinimumWidth = 8;
             this.cantidad.Name = "cantidad";
+            this.cantidad.ReadOnly = true;
             // 
             // reportViewer1
             // 
-            reportDataSource2.Name = "DataSet1";
-            reportDataSource2.Value = this.ReporteReservaTelaBindingSource;
-            this.reportViewer1.LocalReport.DataSources.Add(reportDataSource2);
+            reportDataSource1.Name = "DataSet1";
+            reportDataSource1.Value = this.ReporteReservaTelaBindingSource;
+            this.reportViewer1.LocalReport.DataSources.Add(reportDataSource1);
             this.reportViewer1.LocalReport.ReportEmbeddedResource = "PedidoTela.Formularios.PDFReporteReserva.rdlc";
-            this.reportViewer1.Location = new System.Drawing.Point(666, 204);
+            this.reportViewer1.Location = new System.Drawing.Point(569, 204);
             this.reportViewer1.Name = "reportViewer1";
             this.reportViewer1.ServerReport.BearerToken = null;
-            this.reportViewer1.Size = new System.Drawing.Size(696, 534);
+            this.reportViewer1.Size = new System.Drawing.Size(793, 534);
             this.reportViewer1.TabIndex = 63;
-            // 
-            // ReporteReservaTelaBindingSource
-            // 
-            this.ReporteReservaTelaBindingSource.DataSource = typeof(PedidoTela.Entidades.Logica.ReporteReservaTela);
             // 
             // frmImprimirSIP
             // 
@@ -305,11 +313,11 @@ namespace PedidoTela.Formularios
             this.Name = "frmImprimirSIP";
             this.Text = "Imprimir SIP";
             this.Load += new System.EventHandler(this.frmImprimirSIP_Load);
+            ((System.ComponentModel.ISupportInitialize)(this.ReporteReservaTelaBindingSource)).EndInit();
             this.panel1.ResumeLayout(false);
             this.pnlInicial.ResumeLayout(false);
             this.pnlInicial.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvReserva)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.ReporteReservaTelaBindingSource)).EndInit();
             this.ResumeLayout(false);
 
         }
