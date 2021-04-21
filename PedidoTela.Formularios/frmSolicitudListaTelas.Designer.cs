@@ -30,7 +30,7 @@ namespace PedidoTela.Formularios
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
             this.panel1 = new System.Windows.Forms.Panel();
             this.btnInventarioExt = new System.Windows.Forms.Button();
             this.btnDevolucion = new System.Windows.Forms.Button();
@@ -89,6 +89,8 @@ namespace PedidoTela.Formularios
             this.estado = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.fechaEstado = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.idSolTela = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.idProgramador = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.descPrenda = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.pnlInicial = new System.Windows.Forms.Panel();
             this.btnSalir = new System.Windows.Forms.Button();
             this.cbxColor = new System.Windows.Forms.ComboBox();
@@ -131,7 +133,7 @@ namespace PedidoTela.Formularios
             // 
             // btnInventarioExt
             // 
-            this.btnInventarioExt.Image = global::PedidoTela.Formularios.Properties.Resources._4544831_business_comerce_delivery_return_shop_121431;
+            this.btnInventarioExt.Image = global::PedidoTela.Formularios.Properties.Resources.invenExt;
             this.btnInventarioExt.Location = new System.Drawing.Point(466, 5);
             this.btnInventarioExt.Name = "btnInventarioExt";
             this.btnInventarioExt.Size = new System.Drawing.Size(157, 42);
@@ -389,14 +391,14 @@ namespace PedidoTela.Formularios
             this.dgvSolicitudTelas.AllowUserToDeleteRows = false;
             this.dgvSolicitudTelas.AutoSizeRowsMode = System.Windows.Forms.DataGridViewAutoSizeRowsMode.DisplayedCells;
             this.dgvSolicitudTelas.BackgroundColor = System.Drawing.Color.White;
-            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle2.BackColor = System.Drawing.SystemColors.ScrollBar;
-            dataGridViewCellStyle2.Font = new System.Drawing.Font("Verdana", 8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle2.ForeColor = System.Drawing.Color.Navy;
-            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.SystemColors.ScrollBar;
-            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.Color.Navy;
-            dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dgvSolicitudTelas.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle2;
+            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle1.BackColor = System.Drawing.SystemColors.ScrollBar;
+            dataGridViewCellStyle1.Font = new System.Drawing.Font("Verdana", 8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle1.ForeColor = System.Drawing.Color.Navy;
+            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.ScrollBar;
+            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.Color.Navy;
+            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dgvSolicitudTelas.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
             this.dgvSolicitudTelas.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgvSolicitudTelas.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.sel,
@@ -427,7 +429,9 @@ namespace PedidoTela.Formularios
             this.fechaSolTelas,
             this.estado,
             this.fechaEstado,
-            this.idSolTela});
+            this.idSolTela,
+            this.idProgramador,
+            this.descPrenda});
             this.dgvSolicitudTelas.EnableHeadersVisualStyles = false;
             this.dgvSolicitudTelas.Location = new System.Drawing.Point(-52, 22);
             this.dgvSolicitudTelas.Name = "dgvSolicitudTelas";
@@ -644,6 +648,20 @@ namespace PedidoTela.Formularios
             this.idSolTela.Name = "idSolTela";
             this.idSolTela.Visible = false;
             this.idSolTela.Width = 125;
+            // 
+            // idProgramador
+            // 
+            this.idProgramador.HeaderText = "idProgramador";
+            this.idProgramador.MinimumWidth = 6;
+            this.idProgramador.Name = "idProgramador";
+            this.idProgramador.Width = 125;
+            // 
+            // descPrenda
+            // 
+            this.descPrenda.HeaderText = "descPrenda";
+            this.descPrenda.MinimumWidth = 6;
+            this.descPrenda.Name = "descPrenda";
+            this.descPrenda.Width = 125;
             // 
             // pnlInicial
             // 
@@ -920,6 +938,8 @@ namespace PedidoTela.Formularios
         private System.Windows.Forms.ComboBox cbxNomTela;
         private System.Windows.Forms.ComboBox cbxRefTela;
         private System.Windows.Forms.ComboBox cbxColor;
+        private System.Windows.Forms.Button btnSalir;
+        private System.Windows.Forms.Button btnInventarioExt;
         private System.Windows.Forms.DataGridViewCheckBoxColumn sel;
         private System.Windows.Forms.DataGridViewTextBoxColumn solicitud;
         private System.Windows.Forms.DataGridViewTextBoxColumn tipoSolicitud;
@@ -949,7 +969,7 @@ namespace PedidoTela.Formularios
         private System.Windows.Forms.DataGridViewTextBoxColumn estado;
         private System.Windows.Forms.DataGridViewTextBoxColumn fechaEstado;
         private System.Windows.Forms.DataGridViewTextBoxColumn idSolTela;
-        private System.Windows.Forms.Button btnSalir;
-        private System.Windows.Forms.Button btnInventarioExt;
+        private System.Windows.Forms.DataGridViewTextBoxColumn idProgramador;
+        private System.Windows.Forms.DataGridViewTextBoxColumn descPrenda;
     }
 }

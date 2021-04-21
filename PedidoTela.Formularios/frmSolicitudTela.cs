@@ -27,14 +27,16 @@ namespace PedidoTela.Formularios
         private string muestrario;
         private string id_disenador;
         private string codi_linea;
-
+        private string idProgramador;
+       
         public string Idmundo { get => idmundo; set => idmundo = value; }
         public string Codi_capsula { get => codi_capsula; set => codi_capsula = value; }
         public string Codi_entrada { get => codi_entrada; set => codi_entrada = value; }
         public string Muestrario { get => muestrario; set => muestrario = value; }
         public string Id_disenador { get => id_disenador; set => id_disenador = value; }
         public string Codi_linea { get => codi_linea; set => codi_linea = value; }
-
+        public string IdProgramador { get => idProgramador; set => idProgramador = value; }
+     
         public frmSolicitudTela()
         {
             InitializeComponent();
@@ -50,7 +52,6 @@ namespace PedidoTela.Formularios
             dgvDetalleConsumo.Columns["ensayoRef"].HeaderCell.ToolTipText = "Doble clic para seleccionar tipo de solicitud ";
             dgvDetalleConsumo.Columns["tipoSolicitud"].HeaderCell.ToolTipText = "Doble clic para seleccionar tipo de solicitud";
             dgvDetalleConsumo.Columns["desPrenda"].HeaderCell.ToolTipText = "Doble clic para seleccionar tipo de solicitud";
-
 
         }
 
@@ -85,6 +86,8 @@ namespace PedidoTela.Formularios
                 Muestrario = prmlista[0].Nmro_muestrario.ToString();
                 Id_disenador = prmlista[0].Id_disenador.ToString();
                 Codi_linea = prmlista[0].Codi_linea.ToString();
+                IdProgramador = prmlista[0].Idprogramador.ToString();
+
 
             }
             else
@@ -109,10 +112,10 @@ namespace PedidoTela.Formularios
                     prmLista[i].Desc_prenda.ToString(),
                     prmLista[i].Codigo_tela.ToString(),
                     prmLista[i].Descripcion_tela.ToString(),
-                    prmLista[i].Consumo_est.ToString().Replace(",",".")
+                    prmLista[i].Consumo_est.ToString().Replace(",", ".")
 
                     );
-                    
+                  
                 }
             }
             else
@@ -175,6 +178,7 @@ namespace PedidoTela.Formularios
                     txbSku.Text = prmLista[i].Sku.ToString();
                     dtpFechaTienda.Value = (prmLista[i].FechaTienda.ToString() != "") ? DateTime.Parse(prmLista[i].FechaTienda.ToString()) : DateTime.Now;
                     txbMuestrario.Text = prmLista[i].Muestrario.ToString();
+               
                 }
             }
             else
@@ -637,6 +641,10 @@ namespace PedidoTela.Formularios
                     elemento.Muestrario = Muestrario.ToString();
                     elemento.Id_disenador = Id_disenador.ToString();
                     elemento.Codi_linea = Codi_linea.ToString();
+                    elemento.IdProgramador = int.Parse(IdProgramador.ToString());
+                  
+
+
                     //elemento.Idsolicitud = (int)dgvDetalleConsumo.Rows[i].Cells[8].Value;
                     listaDetalleconsumo.Add(elemento);
                 }

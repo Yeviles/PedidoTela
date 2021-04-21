@@ -29,8 +29,8 @@ namespace PedidoTela.Formularios
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle5 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle6 = new System.Windows.Forms.DataGridViewCellStyle();
             this.btnConfirmarSIP = new System.Windows.Forms.Button();
             this.lbSolicitadoPor = new System.Windows.Forms.Label();
             this.lbCargo = new System.Windows.Forms.Label();
@@ -43,7 +43,6 @@ namespace PedidoTela.Formularios
             this.lbNombreTela = new System.Windows.Forms.Label();
             this.lbAnchoTela = new System.Windows.Forms.Label();
             this.lbRendimiento = new System.Windows.Forms.Label();
-            this.lbComposicion = new System.Windows.Forms.Label();
             this.lbMuestrario = new System.Windows.Forms.Label();
             this.lbTema = new System.Windows.Forms.Label();
             this.lbOcasionUso = new System.Windows.Forms.Label();
@@ -59,36 +58,34 @@ namespace PedidoTela.Formularios
             this.lbOrdenCompra = new System.Windows.Forms.Label();
             this.lbFechaLegada = new System.Windows.Forms.Label();
             this.lbInformacion = new System.Windows.Forms.Label();
-            this.dateTimePicker1 = new System.Windows.Forms.DateTimePicker();
-            this.textBox1 = new System.Windows.Forms.TextBox();
-            this.textBox2 = new System.Windows.Forms.TextBox();
-            this.textBox3 = new System.Windows.Forms.TextBox();
-            this.textBox4 = new System.Windows.Forms.TextBox();
-            this.textBox5 = new System.Windows.Forms.TextBox();
-            this.textBox6 = new System.Windows.Forms.TextBox();
-            this.textBox7 = new System.Windows.Forms.TextBox();
-            this.textBox8 = new System.Windows.Forms.TextBox();
-            this.textBox9 = new System.Windows.Forms.TextBox();
-            this.textBox10 = new System.Windows.Forms.TextBox();
-            this.textBox11 = new System.Windows.Forms.TextBox();
-            this.textBox12 = new System.Windows.Forms.TextBox();
-            this.textBox13 = new System.Windows.Forms.TextBox();
-            this.textBox14 = new System.Windows.Forms.TextBox();
-            this.textBox15 = new System.Windows.Forms.TextBox();
-            this.textBox16 = new System.Windows.Forms.TextBox();
-            this.textBox17 = new System.Windows.Forms.TextBox();
-            this.textBox18 = new System.Windows.Forms.TextBox();
-            this.textBox19 = new System.Windows.Forms.TextBox();
-            this.textBox20 = new System.Windows.Forms.TextBox();
-            this.textBox22 = new System.Windows.Forms.TextBox();
-            this.textBox24 = new System.Windows.Forms.TextBox();
-            this.textBox25 = new System.Windows.Forms.TextBox();
-            this.textBox26 = new System.Windows.Forms.TextBox();
-            this.textBox27 = new System.Windows.Forms.TextBox();
-            this.textBox28 = new System.Windows.Forms.TextBox();
-            this.textBox29 = new System.Windows.Forms.TextBox();
-            this.dateTimePicker2 = new System.Windows.Forms.DateTimePicker();
-            this.panel2 = new System.Windows.Forms.Panel();
+            this.txtSolicitadoPor = new System.Windows.Forms.TextBox();
+            this.txtCargo = new System.Windows.Forms.TextBox();
+            this.txtDepartamento = new System.Windows.Forms.TextBox();
+            this.txtTelefono = new System.Windows.Forms.TextBox();
+            this.txtExtencion = new System.Windows.Forms.TextBox();
+            this.txtRefTela = new System.Windows.Forms.TextBox();
+            this.txtNomTela = new System.Windows.Forms.TextBox();
+            this.txtAnchoTela = new System.Windows.Forms.TextBox();
+            this.txtTipoTejido = new System.Windows.Forms.TextBox();
+            this.txtRendimiento = new System.Windows.Forms.TextBox();
+            this.txtFondo = new System.Windows.Forms.TextBox();
+            this.txtMuestrario = new System.Windows.Forms.TextBox();
+            this.txtOcasionUso = new System.Windows.Forms.TextBox();
+            this.txtTema = new System.Windows.Forms.TextBox();
+            this.txtEntrada = new System.Windows.Forms.TextBox();
+            this.txtDisenadora = new System.Windows.Forms.TextBox();
+            this.txtEnsayoRef = new System.Windows.Forms.TextBox();
+            this.txtDescPrenda = new System.Windows.Forms.TextBox();
+            this.txtProveedor = new System.Windows.Forms.TextBox();
+            this.txtNit = new System.Windows.Forms.TextBox();
+            this.txtContacto = new System.Windows.Forms.TextBox();
+            this.txtPedidoAgencia = new System.Windows.Forms.TextBox();
+            this.txtOrdenCompra = new System.Windows.Forms.TextBox();
+            this.dtpFechaLlegada = new System.Windows.Forms.DateTimePicker();
+            this.pnlEncabezado = new System.Windows.Forms.Panel();
+            this.cbxComposicion = new System.Windows.Forms.ComboBox();
+            this.txtFechaTienda = new System.Windows.Forms.TextBox();
+            this.lbComposicion = new System.Windows.Forms.Label();
             this.dgvInfoConsolidar = new System.Windows.Forms.DataGridView();
             this.codColor = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.descripColor = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -105,8 +102,8 @@ namespace PedidoTela.Formularios
             this.mReservados = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.maSolicitar = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dgvTotalConsolidado = new System.Windows.Forms.DataGridView();
-            this.dataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dataGridViewTextBoxColumn2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.codigoColor = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.desColor = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dataGridViewTextBoxColumn3 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dataGridViewTextBoxColumn4 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dataGridViewTextBoxColumn5 = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -121,10 +118,9 @@ namespace PedidoTela.Formularios
             this.undMedidaTela = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.lbTotalconsolidado = new System.Windows.Forms.Label();
             this.panel9 = new System.Windows.Forms.Panel();
-            this.button1 = new System.Windows.Forms.Button();
-            this.button2 = new System.Windows.Forms.Button();
-            this.button3 = new System.Windows.Forms.Button();
-            this.panel2.SuspendLayout();
+            this.btnGrabar = new System.Windows.Forms.Button();
+            this.btnSalir = new System.Windows.Forms.Button();
+            this.pnlEncabezado.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvInfoConsolidar)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dgvTotalConsolidado)).BeginInit();
             this.panel9.SuspendLayout();
@@ -133,12 +129,14 @@ namespace PedidoTela.Formularios
             // btnConfirmarSIP
             // 
             this.btnConfirmarSIP.Font = new System.Drawing.Font("Verdana", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnConfirmarSIP.Location = new System.Drawing.Point(346, 2);
+            this.btnConfirmarSIP.Image = global::PedidoTela.Formularios.Properties.Resources.mbriprint_99560;
+            this.btnConfirmarSIP.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnConfirmarSIP.Location = new System.Drawing.Point(177, 3);
             this.btnConfirmarSIP.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.btnConfirmarSIP.Name = "btnConfirmarSIP";
             this.btnConfirmarSIP.Size = new System.Drawing.Size(174, 50);
             this.btnConfirmarSIP.TabIndex = 3;
-            this.btnConfirmarSIP.Text = "Confirmar SIP";
+            this.btnConfirmarSIP.Text = "Imprimir SIP";
             this.btnConfirmarSIP.UseVisualStyleBackColor = true;
             // 
             // lbSolicitadoPor
@@ -240,15 +238,6 @@ namespace PedidoTela.Formularios
             this.lbRendimiento.TabIndex = 38;
             this.lbRendimiento.Text = "Rendimiento:";
             // 
-            // lbComposicion
-            // 
-            this.lbComposicion.AutoSize = true;
-            this.lbComposicion.Location = new System.Drawing.Point(1100, 70);
-            this.lbComposicion.Name = "lbComposicion";
-            this.lbComposicion.Size = new System.Drawing.Size(92, 17);
-            this.lbComposicion.TabIndex = 39;
-            this.lbComposicion.Text = "Composición:";
-            // 
             // lbMuestrario
             // 
             this.lbMuestrario.AutoSize = true;
@@ -279,7 +268,7 @@ namespace PedidoTela.Formularios
             // lbEntrada
             // 
             this.lbEntrada.AutoSize = true;
-            this.lbEntrada.Location = new System.Drawing.Point(1107, 93);
+            this.lbEntrada.Location = new System.Drawing.Point(1107, 94);
             this.lbEntrada.Name = "lbEntrada";
             this.lbEntrada.Size = new System.Drawing.Size(62, 17);
             this.lbEntrada.TabIndex = 43;
@@ -288,7 +277,7 @@ namespace PedidoTela.Formularios
             // lbFechaTienda
             // 
             this.lbFechaTienda.AutoSize = true;
-            this.lbFechaTienda.Location = new System.Drawing.Point(3, 110);
+            this.lbFechaTienda.Location = new System.Drawing.Point(366, 114);
             this.lbFechaTienda.Name = "lbFechaTienda";
             this.lbFechaTienda.Size = new System.Drawing.Size(99, 17);
             this.lbFechaTienda.TabIndex = 44;
@@ -297,7 +286,7 @@ namespace PedidoTela.Formularios
             // lbEnsayoRef
             // 
             this.lbEnsayoRef.AutoSize = true;
-            this.lbEnsayoRef.Location = new System.Drawing.Point(4, 138);
+            this.lbEnsayoRef.Location = new System.Drawing.Point(1, 113);
             this.lbEnsayoRef.Name = "lbEnsayoRef";
             this.lbEnsayoRef.Size = new System.Drawing.Size(135, 17);
             this.lbEnsayoRef.TabIndex = 45;
@@ -306,7 +295,7 @@ namespace PedidoTela.Formularios
             // label19
             // 
             this.label19.AutoSize = true;
-            this.label19.Location = new System.Drawing.Point(368, 110);
+            this.label19.Location = new System.Drawing.Point(731, 121);
             this.label19.Name = "label19";
             this.label19.Size = new System.Drawing.Size(95, 17);
             this.label19.TabIndex = 46;
@@ -315,7 +304,7 @@ namespace PedidoTela.Formularios
             // lbDescripcionPrenda
             // 
             this.lbDescripcionPrenda.AutoSize = true;
-            this.lbDescripcionPrenda.Location = new System.Drawing.Point(4, 167);
+            this.lbDescripcionPrenda.Location = new System.Drawing.Point(1093, 125);
             this.lbDescripcionPrenda.Name = "lbDescripcionPrenda";
             this.lbDescripcionPrenda.Size = new System.Drawing.Size(136, 17);
             this.lbDescripcionPrenda.TabIndex = 47;
@@ -385,301 +374,318 @@ namespace PedidoTela.Formularios
             this.lbInformacion.TabIndex = 54;
             this.lbInformacion.Text = "Información a Consolidar:";
             // 
-            // dateTimePicker1
+            // txtSolicitadoPor
             // 
-            this.dateTimePicker1.Location = new System.Drawing.Point(135, 108);
-            this.dateTimePicker1.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.dateTimePicker1.Name = "dateTimePicker1";
-            this.dateTimePicker1.Size = new System.Drawing.Size(215, 22);
-            this.dateTimePicker1.TabIndex = 55;
+            this.txtSolicitadoPor.BackColor = System.Drawing.Color.LightGoldenrodYellow;
+            this.txtSolicitadoPor.Location = new System.Drawing.Point(135, 10);
+            this.txtSolicitadoPor.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.txtSolicitadoPor.Name = "txtSolicitadoPor";
+            this.txtSolicitadoPor.ReadOnly = true;
+            this.txtSolicitadoPor.Size = new System.Drawing.Size(215, 22);
+            this.txtSolicitadoPor.TabIndex = 56;
             // 
-            // textBox1
+            // txtCargo
             // 
-            this.textBox1.Location = new System.Drawing.Point(135, 10);
-            this.textBox1.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(215, 22);
-            this.textBox1.TabIndex = 56;
+            this.txtCargo.BackColor = System.Drawing.Color.LightGoldenrodYellow;
+            this.txtCargo.Location = new System.Drawing.Point(500, 13);
+            this.txtCargo.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.txtCargo.Name = "txtCargo";
+            this.txtCargo.ReadOnly = true;
+            this.txtCargo.Size = new System.Drawing.Size(215, 22);
+            this.txtCargo.TabIndex = 57;
             // 
-            // textBox2
+            // txtDepartamento
             // 
-            this.textBox2.Location = new System.Drawing.Point(500, 13);
-            this.textBox2.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.textBox2.Name = "textBox2";
-            this.textBox2.Size = new System.Drawing.Size(215, 22);
-            this.textBox2.TabIndex = 57;
+            this.txtDepartamento.BackColor = System.Drawing.Color.LightGoldenrodYellow;
+            this.txtDepartamento.Location = new System.Drawing.Point(872, 19);
+            this.txtDepartamento.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.txtDepartamento.Name = "txtDepartamento";
+            this.txtDepartamento.ReadOnly = true;
+            this.txtDepartamento.Size = new System.Drawing.Size(215, 22);
+            this.txtDepartamento.TabIndex = 58;
             // 
-            // textBox3
+            // txtTelefono
             // 
-            this.textBox3.Location = new System.Drawing.Point(872, 19);
-            this.textBox3.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.textBox3.Name = "textBox3";
-            this.textBox3.Size = new System.Drawing.Size(215, 22);
-            this.textBox3.TabIndex = 58;
+            this.txtTelefono.BackColor = System.Drawing.Color.LightGoldenrodYellow;
+            this.txtTelefono.Location = new System.Drawing.Point(1235, 17);
+            this.txtTelefono.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.txtTelefono.Name = "txtTelefono";
+            this.txtTelefono.ReadOnly = true;
+            this.txtTelefono.Size = new System.Drawing.Size(215, 22);
+            this.txtTelefono.TabIndex = 59;
             // 
-            // textBox4
+            // txtExtencion
             // 
-            this.textBox4.Location = new System.Drawing.Point(1217, 17);
-            this.textBox4.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.textBox4.Name = "textBox4";
-            this.textBox4.Size = new System.Drawing.Size(215, 22);
-            this.textBox4.TabIndex = 59;
+            this.txtExtencion.Location = new System.Drawing.Point(135, 35);
+            this.txtExtencion.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.txtExtencion.Name = "txtExtencion";
+            this.txtExtencion.Size = new System.Drawing.Size(215, 22);
+            this.txtExtencion.TabIndex = 60;
+            this.txtExtencion.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtExtencion_KeyPress);
             // 
-            // textBox5
+            // txtRefTela
             // 
-            this.textBox5.Location = new System.Drawing.Point(135, 35);
-            this.textBox5.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.textBox5.Name = "textBox5";
-            this.textBox5.Size = new System.Drawing.Size(215, 22);
-            this.textBox5.TabIndex = 60;
+            this.txtRefTela.BackColor = System.Drawing.Color.LightGoldenrodYellow;
+            this.txtRefTela.Location = new System.Drawing.Point(500, 39);
+            this.txtRefTela.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.txtRefTela.Name = "txtRefTela";
+            this.txtRefTela.ReadOnly = true;
+            this.txtRefTela.Size = new System.Drawing.Size(215, 22);
+            this.txtRefTela.TabIndex = 61;
             // 
-            // textBox6
+            // txtNomTela
             // 
-            this.textBox6.Location = new System.Drawing.Point(500, 39);
-            this.textBox6.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.textBox6.Name = "textBox6";
-            this.textBox6.Size = new System.Drawing.Size(215, 22);
-            this.textBox6.TabIndex = 61;
+            this.txtNomTela.BackColor = System.Drawing.Color.LightGoldenrodYellow;
+            this.txtNomTela.Location = new System.Drawing.Point(135, 60);
+            this.txtNomTela.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.txtNomTela.Name = "txtNomTela";
+            this.txtNomTela.ReadOnly = true;
+            this.txtNomTela.Size = new System.Drawing.Size(215, 22);
+            this.txtNomTela.TabIndex = 62;
             // 
-            // textBox7
+            // txtAnchoTela
             // 
-            this.textBox7.Location = new System.Drawing.Point(135, 58);
-            this.textBox7.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.textBox7.Name = "textBox7";
-            this.textBox7.Size = new System.Drawing.Size(215, 22);
-            this.textBox7.TabIndex = 62;
+            this.txtAnchoTela.Location = new System.Drawing.Point(500, 63);
+            this.txtAnchoTela.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.txtAnchoTela.Name = "txtAnchoTela";
+            this.txtAnchoTela.Size = new System.Drawing.Size(215, 22);
+            this.txtAnchoTela.TabIndex = 63;
+            this.txtAnchoTela.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtAnchoTela_KeyPress);
             // 
-            // textBox8
+            // txtTipoTejido
             // 
-            this.textBox8.Location = new System.Drawing.Point(500, 62);
-            this.textBox8.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.textBox8.Name = "textBox8";
-            this.textBox8.Size = new System.Drawing.Size(215, 22);
-            this.textBox8.TabIndex = 63;
+            this.txtTipoTejido.BackColor = System.Drawing.Color.LightGoldenrodYellow;
+            this.txtTipoTejido.Location = new System.Drawing.Point(872, 44);
+            this.txtTipoTejido.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.txtTipoTejido.Name = "txtTipoTejido";
+            this.txtTipoTejido.ReadOnly = true;
+            this.txtTipoTejido.Size = new System.Drawing.Size(215, 22);
+            this.txtTipoTejido.TabIndex = 64;
             // 
-            // textBox9
+            // txtRendimiento
             // 
-            this.textBox9.Location = new System.Drawing.Point(872, 44);
-            this.textBox9.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.textBox9.Name = "textBox9";
-            this.textBox9.Size = new System.Drawing.Size(215, 22);
-            this.textBox9.TabIndex = 64;
+            this.txtRendimiento.Location = new System.Drawing.Point(872, 69);
+            this.txtRendimiento.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.txtRendimiento.Name = "txtRendimiento";
+            this.txtRendimiento.Size = new System.Drawing.Size(215, 22);
+            this.txtRendimiento.TabIndex = 65;
+            this.txtRendimiento.TextChanged += new System.EventHandler(this.txtRendimiento_TextChanged);
+            this.txtRendimiento.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtRendimiento_KeyPress);
             // 
-            // textBox10
+            // txtFondo
             // 
-            this.textBox10.Location = new System.Drawing.Point(872, 69);
-            this.textBox10.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.textBox10.Name = "textBox10";
-            this.textBox10.Size = new System.Drawing.Size(215, 22);
-            this.textBox10.TabIndex = 65;
+            this.txtFondo.BackColor = System.Drawing.Color.LightGoldenrodYellow;
+            this.txtFondo.Location = new System.Drawing.Point(1235, 42);
+            this.txtFondo.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.txtFondo.Name = "txtFondo";
+            this.txtFondo.ReadOnly = true;
+            this.txtFondo.Size = new System.Drawing.Size(215, 22);
+            this.txtFondo.TabIndex = 66;
             // 
-            // textBox11
+            // txtMuestrario
             // 
-            this.textBox11.Location = new System.Drawing.Point(1217, 42);
-            this.textBox11.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.textBox11.Name = "textBox11";
-            this.textBox11.Size = new System.Drawing.Size(215, 22);
-            this.textBox11.TabIndex = 66;
+            this.txtMuestrario.BackColor = System.Drawing.Color.LightGoldenrodYellow;
+            this.txtMuestrario.Location = new System.Drawing.Point(135, 85);
+            this.txtMuestrario.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.txtMuestrario.Name = "txtMuestrario";
+            this.txtMuestrario.ReadOnly = true;
+            this.txtMuestrario.Size = new System.Drawing.Size(215, 22);
+            this.txtMuestrario.TabIndex = 68;
             // 
-            // textBox12
+            // txtOcasionUso
             // 
-            this.textBox12.Location = new System.Drawing.Point(1217, 67);
-            this.textBox12.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.textBox12.Name = "textBox12";
-            this.textBox12.Size = new System.Drawing.Size(215, 22);
-            this.textBox12.TabIndex = 67;
+            this.txtOcasionUso.BackColor = System.Drawing.Color.LightGoldenrodYellow;
+            this.txtOcasionUso.Location = new System.Drawing.Point(500, 88);
+            this.txtOcasionUso.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.txtOcasionUso.Name = "txtOcasionUso";
+            this.txtOcasionUso.ReadOnly = true;
+            this.txtOcasionUso.Size = new System.Drawing.Size(215, 22);
+            this.txtOcasionUso.TabIndex = 69;
             // 
-            // textBox13
+            // txtTema
             // 
-            this.textBox13.Location = new System.Drawing.Point(135, 84);
-            this.textBox13.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.textBox13.Name = "textBox13";
-            this.textBox13.Size = new System.Drawing.Size(215, 22);
-            this.textBox13.TabIndex = 68;
+            this.txtTema.BackColor = System.Drawing.Color.LightGoldenrodYellow;
+            this.txtTema.Location = new System.Drawing.Point(872, 94);
+            this.txtTema.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.txtTema.Name = "txtTema";
+            this.txtTema.ReadOnly = true;
+            this.txtTema.Size = new System.Drawing.Size(215, 22);
+            this.txtTema.TabIndex = 70;
             // 
-            // textBox14
+            // txtEntrada
             // 
-            this.textBox14.Location = new System.Drawing.Point(500, 87);
-            this.textBox14.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.textBox14.Name = "textBox14";
-            this.textBox14.Size = new System.Drawing.Size(215, 22);
-            this.textBox14.TabIndex = 69;
+            this.txtEntrada.BackColor = System.Drawing.Color.LightGoldenrodYellow;
+            this.txtEntrada.Location = new System.Drawing.Point(1235, 94);
+            this.txtEntrada.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.txtEntrada.Name = "txtEntrada";
+            this.txtEntrada.ReadOnly = true;
+            this.txtEntrada.Size = new System.Drawing.Size(215, 22);
+            this.txtEntrada.TabIndex = 71;
             // 
-            // textBox15
+            // txtDisenadora
             // 
-            this.textBox15.Location = new System.Drawing.Point(872, 97);
-            this.textBox15.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.textBox15.Name = "textBox15";
-            this.textBox15.Size = new System.Drawing.Size(215, 22);
-            this.textBox15.TabIndex = 70;
+            this.txtDisenadora.BackColor = System.Drawing.Color.LightGoldenrodYellow;
+            this.txtDisenadora.Location = new System.Drawing.Point(872, 120);
+            this.txtDisenadora.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.txtDisenadora.Name = "txtDisenadora";
+            this.txtDisenadora.ReadOnly = true;
+            this.txtDisenadora.Size = new System.Drawing.Size(215, 22);
+            this.txtDisenadora.TabIndex = 72;
             // 
-            // textBox16
+            // txtEnsayoRef
             // 
-            this.textBox16.Location = new System.Drawing.Point(1217, 91);
-            this.textBox16.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.textBox16.Name = "textBox16";
-            this.textBox16.Size = new System.Drawing.Size(215, 22);
-            this.textBox16.TabIndex = 71;
+            this.txtEnsayoRef.BackColor = System.Drawing.Color.LightGoldenrodYellow;
+            this.txtEnsayoRef.Location = new System.Drawing.Point(137, 112);
+            this.txtEnsayoRef.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.txtEnsayoRef.Name = "txtEnsayoRef";
+            this.txtEnsayoRef.ReadOnly = true;
+            this.txtEnsayoRef.Size = new System.Drawing.Size(213, 22);
+            this.txtEnsayoRef.TabIndex = 73;
             // 
-            // textBox17
+            // txtDescPrenda
             // 
-            this.textBox17.Location = new System.Drawing.Point(500, 111);
-            this.textBox17.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.textBox17.Name = "textBox17";
-            this.textBox17.Size = new System.Drawing.Size(215, 22);
-            this.textBox17.TabIndex = 72;
+            this.txtDescPrenda.BackColor = System.Drawing.Color.LightGoldenrodYellow;
+            this.txtDescPrenda.Location = new System.Drawing.Point(1235, 121);
+            this.txtDescPrenda.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.txtDescPrenda.Name = "txtDescPrenda";
+            this.txtDescPrenda.ReadOnly = true;
+            this.txtDescPrenda.Size = new System.Drawing.Size(215, 22);
+            this.txtDescPrenda.TabIndex = 79;
             // 
-            // textBox18
+            // txtProveedor
             // 
-            this.textBox18.Location = new System.Drawing.Point(135, 138);
-            this.textBox18.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.textBox18.Name = "textBox18";
-            this.textBox18.Size = new System.Drawing.Size(213, 22);
-            this.textBox18.TabIndex = 73;
+            this.txtProveedor.Location = new System.Drawing.Point(135, 193);
+            this.txtProveedor.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.txtProveedor.Name = "txtProveedor";
+            this.txtProveedor.Size = new System.Drawing.Size(215, 22);
+            this.txtProveedor.TabIndex = 80;
             // 
-            // textBox19
+            // txtNit
             // 
-            this.textBox19.Location = new System.Drawing.Point(1217, 133);
-            this.textBox19.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.textBox19.Name = "textBox19";
-            this.textBox19.Size = new System.Drawing.Size(215, 22);
-            this.textBox19.TabIndex = 74;
+            this.txtNit.Location = new System.Drawing.Point(500, 193);
+            this.txtNit.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.txtNit.Name = "txtNit";
+            this.txtNit.Size = new System.Drawing.Size(215, 22);
+            this.txtNit.TabIndex = 81;
             // 
-            // textBox20
+            // txtContacto
             // 
-            this.textBox20.Location = new System.Drawing.Point(872, 138);
-            this.textBox20.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.textBox20.Name = "textBox20";
-            this.textBox20.Size = new System.Drawing.Size(215, 22);
-            this.textBox20.TabIndex = 75;
+            this.txtContacto.Location = new System.Drawing.Point(872, 193);
+            this.txtContacto.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.txtContacto.Name = "txtContacto";
+            this.txtContacto.Size = new System.Drawing.Size(215, 22);
+            this.txtContacto.TabIndex = 82;
             // 
-            // textBox22
+            // txtPedidoAgencia
             // 
-            this.textBox22.Location = new System.Drawing.Point(500, 141);
-            this.textBox22.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.textBox22.Name = "textBox22";
-            this.textBox22.Size = new System.Drawing.Size(215, 22);
-            this.textBox22.TabIndex = 77;
+            this.txtPedidoAgencia.Location = new System.Drawing.Point(1224, 195);
+            this.txtPedidoAgencia.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.txtPedidoAgencia.Name = "txtPedidoAgencia";
+            this.txtPedidoAgencia.Size = new System.Drawing.Size(208, 22);
+            this.txtPedidoAgencia.TabIndex = 83;
             // 
-            // textBox24
+            // txtOrdenCompra
             // 
-            this.textBox24.Location = new System.Drawing.Point(135, 167);
-            this.textBox24.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.textBox24.Name = "textBox24";
-            this.textBox24.Size = new System.Drawing.Size(1297, 22);
-            this.textBox24.TabIndex = 79;
+            this.txtOrdenCompra.Location = new System.Drawing.Point(135, 225);
+            this.txtOrdenCompra.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.txtOrdenCompra.Name = "txtOrdenCompra";
+            this.txtOrdenCompra.Size = new System.Drawing.Size(213, 22);
+            this.txtOrdenCompra.TabIndex = 84;
             // 
-            // textBox25
+            // dtpFechaLlegada
             // 
-            this.textBox25.Location = new System.Drawing.Point(135, 193);
-            this.textBox25.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.textBox25.Name = "textBox25";
-            this.textBox25.Size = new System.Drawing.Size(215, 22);
-            this.textBox25.TabIndex = 80;
+            this.dtpFechaLlegada.Location = new System.Drawing.Point(500, 223);
+            this.dtpFechaLlegada.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.dtpFechaLlegada.Name = "dtpFechaLlegada";
+            this.dtpFechaLlegada.Size = new System.Drawing.Size(215, 22);
+            this.dtpFechaLlegada.TabIndex = 85;
             // 
-            // textBox26
+            // pnlEncabezado
             // 
-            this.textBox26.Location = new System.Drawing.Point(500, 193);
-            this.textBox26.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.textBox26.Name = "textBox26";
-            this.textBox26.Size = new System.Drawing.Size(215, 22);
-            this.textBox26.TabIndex = 81;
+            this.pnlEncabezado.BackColor = System.Drawing.SystemColors.ScrollBar;
+            this.pnlEncabezado.Controls.Add(this.cbxComposicion);
+            this.pnlEncabezado.Controls.Add(this.txtFechaTienda);
+            this.pnlEncabezado.Controls.Add(this.txtAnchoTela);
+            this.pnlEncabezado.Controls.Add(this.dtpFechaLlegada);
+            this.pnlEncabezado.Controls.Add(this.lbSolicitadoPor);
+            this.pnlEncabezado.Controls.Add(this.txtOrdenCompra);
+            this.pnlEncabezado.Controls.Add(this.lbCargo);
+            this.pnlEncabezado.Controls.Add(this.txtPedidoAgencia);
+            this.pnlEncabezado.Controls.Add(this.lbDepartamento);
+            this.pnlEncabezado.Controls.Add(this.txtContacto);
+            this.pnlEncabezado.Controls.Add(this.lbTelefono);
+            this.pnlEncabezado.Controls.Add(this.txtNit);
+            this.pnlEncabezado.Controls.Add(this.lbExtencion);
+            this.pnlEncabezado.Controls.Add(this.txtProveedor);
+            this.pnlEncabezado.Controls.Add(this.lbReferenciaTela);
+            this.pnlEncabezado.Controls.Add(this.txtDescPrenda);
+            this.pnlEncabezado.Controls.Add(this.label7);
+            this.pnlEncabezado.Controls.Add(this.lbFondo);
+            this.pnlEncabezado.Controls.Add(this.lbNombreTela);
+            this.pnlEncabezado.Controls.Add(this.lbAnchoTela);
+            this.pnlEncabezado.Controls.Add(this.lbRendimiento);
+            this.pnlEncabezado.Controls.Add(this.lbComposicion);
+            this.pnlEncabezado.Controls.Add(this.txtEnsayoRef);
+            this.pnlEncabezado.Controls.Add(this.lbMuestrario);
+            this.pnlEncabezado.Controls.Add(this.txtDisenadora);
+            this.pnlEncabezado.Controls.Add(this.lbTema);
+            this.pnlEncabezado.Controls.Add(this.txtEntrada);
+            this.pnlEncabezado.Controls.Add(this.lbOcasionUso);
+            this.pnlEncabezado.Controls.Add(this.txtTema);
+            this.pnlEncabezado.Controls.Add(this.lbEntrada);
+            this.pnlEncabezado.Controls.Add(this.txtOcasionUso);
+            this.pnlEncabezado.Controls.Add(this.lbFechaTienda);
+            this.pnlEncabezado.Controls.Add(this.txtMuestrario);
+            this.pnlEncabezado.Controls.Add(this.lbEnsayoRef);
+            this.pnlEncabezado.Controls.Add(this.label19);
+            this.pnlEncabezado.Controls.Add(this.txtFondo);
+            this.pnlEncabezado.Controls.Add(this.lbDescripcionPrenda);
+            this.pnlEncabezado.Controls.Add(this.txtRendimiento);
+            this.pnlEncabezado.Controls.Add(this.lbNit);
+            this.pnlEncabezado.Controls.Add(this.txtTipoTejido);
+            this.pnlEncabezado.Controls.Add(this.lbContacto);
+            this.pnlEncabezado.Controls.Add(this.lbProveedor);
+            this.pnlEncabezado.Controls.Add(this.txtNomTela);
+            this.pnlEncabezado.Controls.Add(this.lbPedidoAgencia);
+            this.pnlEncabezado.Controls.Add(this.txtRefTela);
+            this.pnlEncabezado.Controls.Add(this.lbOrdenCompra);
+            this.pnlEncabezado.Controls.Add(this.txtExtencion);
+            this.pnlEncabezado.Controls.Add(this.lbFechaLegada);
+            this.pnlEncabezado.Controls.Add(this.txtTelefono);
+            this.pnlEncabezado.Controls.Add(this.txtDepartamento);
+            this.pnlEncabezado.Controls.Add(this.txtSolicitadoPor);
+            this.pnlEncabezado.Controls.Add(this.txtCargo);
+            this.pnlEncabezado.Location = new System.Drawing.Point(14, 162);
+            this.pnlEncabezado.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.pnlEncabezado.Name = "pnlEncabezado";
+            this.pnlEncabezado.Size = new System.Drawing.Size(1462, 262);
+            this.pnlEncabezado.TabIndex = 86;
             // 
-            // textBox27
+            // cbxComposicion
             // 
-            this.textBox27.Location = new System.Drawing.Point(872, 193);
-            this.textBox27.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.textBox27.Name = "textBox27";
-            this.textBox27.Size = new System.Drawing.Size(215, 22);
-            this.textBox27.TabIndex = 82;
+            this.cbxComposicion.FormattingEnabled = true;
+            this.cbxComposicion.Location = new System.Drawing.Point(1235, 65);
+            this.cbxComposicion.Name = "cbxComposicion";
+            this.cbxComposicion.Size = new System.Drawing.Size(215, 24);
+            this.cbxComposicion.TabIndex = 87;
             // 
-            // textBox28
+            // txtFechaTienda
             // 
-            this.textBox28.Location = new System.Drawing.Point(1224, 195);
-            this.textBox28.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.textBox28.Name = "textBox28";
-            this.textBox28.Size = new System.Drawing.Size(208, 22);
-            this.textBox28.TabIndex = 83;
+            this.txtFechaTienda.BackColor = System.Drawing.Color.LightGoldenrodYellow;
+            this.txtFechaTienda.Location = new System.Drawing.Point(502, 114);
+            this.txtFechaTienda.Name = "txtFechaTienda";
+            this.txtFechaTienda.ReadOnly = true;
+            this.txtFechaTienda.Size = new System.Drawing.Size(213, 22);
+            this.txtFechaTienda.TabIndex = 86;
             // 
-            // textBox29
+            // lbComposicion
             // 
-            this.textBox29.Location = new System.Drawing.Point(135, 225);
-            this.textBox29.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.textBox29.Name = "textBox29";
-            this.textBox29.Size = new System.Drawing.Size(213, 22);
-            this.textBox29.TabIndex = 84;
-            // 
-            // dateTimePicker2
-            // 
-            this.dateTimePicker2.Location = new System.Drawing.Point(500, 223);
-            this.dateTimePicker2.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.dateTimePicker2.Name = "dateTimePicker2";
-            this.dateTimePicker2.Size = new System.Drawing.Size(215, 22);
-            this.dateTimePicker2.TabIndex = 85;
-            // 
-            // panel2
-            // 
-            this.panel2.BackColor = System.Drawing.SystemColors.ScrollBar;
-            this.panel2.Controls.Add(this.textBox8);
-            this.panel2.Controls.Add(this.dateTimePicker2);
-            this.panel2.Controls.Add(this.lbSolicitadoPor);
-            this.panel2.Controls.Add(this.textBox29);
-            this.panel2.Controls.Add(this.lbCargo);
-            this.panel2.Controls.Add(this.textBox28);
-            this.panel2.Controls.Add(this.lbDepartamento);
-            this.panel2.Controls.Add(this.textBox27);
-            this.panel2.Controls.Add(this.lbTelefono);
-            this.panel2.Controls.Add(this.textBox26);
-            this.panel2.Controls.Add(this.lbExtencion);
-            this.panel2.Controls.Add(this.textBox25);
-            this.panel2.Controls.Add(this.lbReferenciaTela);
-            this.panel2.Controls.Add(this.textBox24);
-            this.panel2.Controls.Add(this.label7);
-            this.panel2.Controls.Add(this.lbFondo);
-            this.panel2.Controls.Add(this.textBox22);
-            this.panel2.Controls.Add(this.lbNombreTela);
-            this.panel2.Controls.Add(this.lbAnchoTela);
-            this.panel2.Controls.Add(this.textBox20);
-            this.panel2.Controls.Add(this.lbRendimiento);
-            this.panel2.Controls.Add(this.textBox19);
-            this.panel2.Controls.Add(this.lbComposicion);
-            this.panel2.Controls.Add(this.textBox18);
-            this.panel2.Controls.Add(this.lbMuestrario);
-            this.panel2.Controls.Add(this.textBox17);
-            this.panel2.Controls.Add(this.lbTema);
-            this.panel2.Controls.Add(this.textBox16);
-            this.panel2.Controls.Add(this.lbOcasionUso);
-            this.panel2.Controls.Add(this.textBox15);
-            this.panel2.Controls.Add(this.lbEntrada);
-            this.panel2.Controls.Add(this.textBox14);
-            this.panel2.Controls.Add(this.lbFechaTienda);
-            this.panel2.Controls.Add(this.textBox13);
-            this.panel2.Controls.Add(this.lbEnsayoRef);
-            this.panel2.Controls.Add(this.textBox12);
-            this.panel2.Controls.Add(this.label19);
-            this.panel2.Controls.Add(this.textBox11);
-            this.panel2.Controls.Add(this.lbDescripcionPrenda);
-            this.panel2.Controls.Add(this.textBox10);
-            this.panel2.Controls.Add(this.lbNit);
-            this.panel2.Controls.Add(this.textBox9);
-            this.panel2.Controls.Add(this.lbContacto);
-            this.panel2.Controls.Add(this.lbProveedor);
-            this.panel2.Controls.Add(this.textBox7);
-            this.panel2.Controls.Add(this.lbPedidoAgencia);
-            this.panel2.Controls.Add(this.textBox6);
-            this.panel2.Controls.Add(this.lbOrdenCompra);
-            this.panel2.Controls.Add(this.textBox5);
-            this.panel2.Controls.Add(this.lbFechaLegada);
-            this.panel2.Controls.Add(this.textBox4);
-            this.panel2.Controls.Add(this.dateTimePicker1);
-            this.panel2.Controls.Add(this.textBox3);
-            this.panel2.Controls.Add(this.textBox1);
-            this.panel2.Controls.Add(this.textBox2);
-            this.panel2.Location = new System.Drawing.Point(14, 162);
-            this.panel2.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(1462, 262);
-            this.panel2.TabIndex = 86;
+            this.lbComposicion.AutoSize = true;
+            this.lbComposicion.Location = new System.Drawing.Point(1100, 70);
+            this.lbComposicion.Name = "lbComposicion";
+            this.lbComposicion.Size = new System.Drawing.Size(92, 17);
+            this.lbComposicion.TabIndex = 39;
+            this.lbComposicion.Text = "Composición:";
             // 
             // dgvInfoConsolidar
             // 
@@ -688,14 +694,14 @@ namespace PedidoTela.Formularios
             this.dgvInfoConsolidar.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.dgvInfoConsolidar.AutoSizeRowsMode = System.Windows.Forms.DataGridViewAutoSizeRowsMode.DisplayedCells;
             this.dgvInfoConsolidar.BackgroundColor = System.Drawing.Color.White;
-            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle3.BackColor = System.Drawing.SystemColors.ScrollBar;
-            dataGridViewCellStyle3.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle3.ForeColor = System.Drawing.Color.Navy;
-            dataGridViewCellStyle3.SelectionBackColor = System.Drawing.Color.Navy;
-            dataGridViewCellStyle3.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dgvInfoConsolidar.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle3;
+            dataGridViewCellStyle5.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle5.BackColor = System.Drawing.SystemColors.ScrollBar;
+            dataGridViewCellStyle5.Font = new System.Drawing.Font("Verdana", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle5.ForeColor = System.Drawing.Color.Navy;
+            dataGridViewCellStyle5.SelectionBackColor = System.Drawing.SystemColors.ScrollBar;
+            dataGridViewCellStyle5.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle5.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dgvInfoConsolidar.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle5;
             this.dgvInfoConsolidar.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgvInfoConsolidar.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.codColor,
@@ -721,9 +727,11 @@ namespace PedidoTela.Formularios
             this.dgvInfoConsolidar.RightToLeft = System.Windows.Forms.RightToLeft.No;
             this.dgvInfoConsolidar.RowHeadersWidth = 62;
             this.dgvInfoConsolidar.RowTemplate.Height = 28;
+            this.dgvInfoConsolidar.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
             this.dgvInfoConsolidar.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dgvInfoConsolidar.Size = new System.Drawing.Size(1462, 122);
             this.dgvInfoConsolidar.TabIndex = 87;
+            this.dgvInfoConsolidar.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvInfoConsolidar_CellClick);
             // 
             // codColor
             // 
@@ -830,18 +838,18 @@ namespace PedidoTela.Formularios
             this.dgvTotalConsolidado.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.dgvTotalConsolidado.AutoSizeRowsMode = System.Windows.Forms.DataGridViewAutoSizeRowsMode.DisplayedCells;
             this.dgvTotalConsolidado.BackgroundColor = System.Drawing.Color.White;
-            dataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle4.BackColor = System.Drawing.SystemColors.ScrollBar;
-            dataGridViewCellStyle4.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle4.ForeColor = System.Drawing.Color.Navy;
-            dataGridViewCellStyle4.SelectionBackColor = System.Drawing.Color.Navy;
-            dataGridViewCellStyle4.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle4.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dgvTotalConsolidado.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle4;
+            dataGridViewCellStyle6.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle6.BackColor = System.Drawing.SystemColors.ScrollBar;
+            dataGridViewCellStyle6.Font = new System.Drawing.Font("Verdana", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle6.ForeColor = System.Drawing.Color.Navy;
+            dataGridViewCellStyle6.SelectionBackColor = System.Drawing.SystemColors.ScrollBar;
+            dataGridViewCellStyle6.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle6.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dgvTotalConsolidado.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle6;
             this.dgvTotalConsolidado.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgvTotalConsolidado.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
-            this.dataGridViewTextBoxColumn1,
-            this.dataGridViewTextBoxColumn2,
+            this.codigoColor,
+            this.desColor,
             this.dataGridViewTextBoxColumn3,
             this.dataGridViewTextBoxColumn4,
             this.dataGridViewTextBoxColumn5,
@@ -859,111 +867,99 @@ namespace PedidoTela.Formularios
             this.dgvTotalConsolidado.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.dgvTotalConsolidado.MultiSelect = false;
             this.dgvTotalConsolidado.Name = "dgvTotalConsolidado";
-            this.dgvTotalConsolidado.ReadOnly = true;
             this.dgvTotalConsolidado.RightToLeft = System.Windows.Forms.RightToLeft.No;
             this.dgvTotalConsolidado.RowHeadersWidth = 62;
             this.dgvTotalConsolidado.RowTemplate.Height = 28;
-            this.dgvTotalConsolidado.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
+            this.dgvTotalConsolidado.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
+            this.dgvTotalConsolidado.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.CellSelect;
             this.dgvTotalConsolidado.Size = new System.Drawing.Size(1465, 124);
             this.dgvTotalConsolidado.TabIndex = 88;
+            this.dgvTotalConsolidado.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvTotalConsolidado_CellClick);
+            this.dgvTotalConsolidado.CellEndEdit += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvTotalConsolidado_CellEndEdit);
             // 
-            // dataGridViewTextBoxColumn1
+            // codigoColor
             // 
-            this.dataGridViewTextBoxColumn1.HeaderText = "Cod Color";
-            this.dataGridViewTextBoxColumn1.MinimumWidth = 8;
-            this.dataGridViewTextBoxColumn1.Name = "dataGridViewTextBoxColumn1";
-            this.dataGridViewTextBoxColumn1.ReadOnly = true;
+            this.codigoColor.HeaderText = "Cod Color";
+            this.codigoColor.MinimumWidth = 8;
+            this.codigoColor.Name = "codigoColor";
             // 
-            // dataGridViewTextBoxColumn2
+            // desColor
             // 
-            this.dataGridViewTextBoxColumn2.HeaderText = "Descripción Color";
-            this.dataGridViewTextBoxColumn2.MinimumWidth = 8;
-            this.dataGridViewTextBoxColumn2.Name = "dataGridViewTextBoxColumn2";
-            this.dataGridViewTextBoxColumn2.ReadOnly = true;
+            this.desColor.HeaderText = "Descripción Color";
+            this.desColor.MinimumWidth = 8;
+            this.desColor.Name = "desColor";
             // 
             // dataGridViewTextBoxColumn3
             // 
             this.dataGridViewTextBoxColumn3.HeaderText = "Tiendas";
             this.dataGridViewTextBoxColumn3.MinimumWidth = 8;
             this.dataGridViewTextBoxColumn3.Name = "dataGridViewTextBoxColumn3";
-            this.dataGridViewTextBoxColumn3.ReadOnly = true;
             // 
             // dataGridViewTextBoxColumn4
             // 
             this.dataGridViewTextBoxColumn4.HeaderText = "Éxito";
             this.dataGridViewTextBoxColumn4.MinimumWidth = 8;
             this.dataGridViewTextBoxColumn4.Name = "dataGridViewTextBoxColumn4";
-            this.dataGridViewTextBoxColumn4.ReadOnly = true;
             // 
             // dataGridViewTextBoxColumn5
             // 
             this.dataGridViewTextBoxColumn5.HeaderText = "Cencosud";
             this.dataGridViewTextBoxColumn5.MinimumWidth = 8;
             this.dataGridViewTextBoxColumn5.Name = "dataGridViewTextBoxColumn5";
-            this.dataGridViewTextBoxColumn5.ReadOnly = true;
             // 
             // dataGridViewTextBoxColumn6
             // 
             this.dataGridViewTextBoxColumn6.HeaderText = "SAO";
             this.dataGridViewTextBoxColumn6.MinimumWidth = 8;
             this.dataGridViewTextBoxColumn6.Name = "dataGridViewTextBoxColumn6";
-            this.dataGridViewTextBoxColumn6.ReadOnly = true;
             // 
             // dataGridViewTextBoxColumn7
             // 
             this.dataGridViewTextBoxColumn7.HeaderText = "Comercio Org.";
             this.dataGridViewTextBoxColumn7.MinimumWidth = 8;
             this.dataGridViewTextBoxColumn7.Name = "dataGridViewTextBoxColumn7";
-            this.dataGridViewTextBoxColumn7.ReadOnly = true;
             // 
             // dataGridViewTextBoxColumn8
             // 
             this.dataGridViewTextBoxColumn8.HeaderText = "Rosado";
             this.dataGridViewTextBoxColumn8.MinimumWidth = 8;
             this.dataGridViewTextBoxColumn8.Name = "dataGridViewTextBoxColumn8";
-            this.dataGridViewTextBoxColumn8.ReadOnly = true;
             // 
             // dataGridViewTextBoxColumn9
             // 
             this.dataGridViewTextBoxColumn9.HeaderText = "Otros";
             this.dataGridViewTextBoxColumn9.MinimumWidth = 8;
             this.dataGridViewTextBoxColumn9.Name = "dataGridViewTextBoxColumn9";
-            this.dataGridViewTextBoxColumn9.ReadOnly = true;
             // 
             // dataGridViewTextBoxColumn10
             // 
             this.dataGridViewTextBoxColumn10.HeaderText = "Total Unidades";
             this.dataGridViewTextBoxColumn10.MinimumWidth = 8;
             this.dataGridViewTextBoxColumn10.Name = "dataGridViewTextBoxColumn10";
-            this.dataGridViewTextBoxColumn10.ReadOnly = true;
             // 
             // dataGridViewTextBoxColumn11
             // 
             this.dataGridViewTextBoxColumn11.HeaderText = "M Calculados";
             this.dataGridViewTextBoxColumn11.MinimumWidth = 8;
             this.dataGridViewTextBoxColumn11.Name = "dataGridViewTextBoxColumn11";
-            this.dataGridViewTextBoxColumn11.ReadOnly = true;
             // 
             // kgCalculados
             // 
             this.kgCalculados.HeaderText = "Kg Calculados";
             this.kgCalculados.MinimumWidth = 8;
             this.kgCalculados.Name = "kgCalculados";
-            this.kgCalculados.ReadOnly = true;
             // 
             // totalaPedir
             // 
             this.totalaPedir.HeaderText = "Total a Pedir";
             this.totalaPedir.MinimumWidth = 8;
             this.totalaPedir.Name = "totalaPedir";
-            this.totalaPedir.ReadOnly = true;
             // 
             // undMedidaTela
             // 
             this.undMedidaTela.HeaderText = "und Medida Tela";
             this.undMedidaTela.MinimumWidth = 8;
             this.undMedidaTela.Name = "undMedidaTela";
-            this.undMedidaTela.ReadOnly = true;
             // 
             // lbTotalconsolidado
             // 
@@ -979,75 +975,65 @@ namespace PedidoTela.Formularios
             // 
             this.panel9.BackColor = System.Drawing.SystemColors.ScrollBar;
             this.panel9.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.panel9.Controls.Add(this.button1);
             this.panel9.Controls.Add(this.btnConfirmarSIP);
-            this.panel9.Controls.Add(this.button2);
-            this.panel9.Controls.Add(this.button3);
+            this.panel9.Controls.Add(this.btnGrabar);
+            this.panel9.Controls.Add(this.btnSalir);
             this.panel9.Location = new System.Drawing.Point(14, 82);
             this.panel9.Name = "panel9";
             this.panel9.Size = new System.Drawing.Size(1464, 56);
             this.panel9.TabIndex = 136;
             // 
-            // button1
+            // btnGrabar
             // 
-            this.button1.Font = new System.Drawing.Font("Verdana", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button1.Image = global::PedidoTela.Formularios.Properties.Resources._1492790860_8check_84164;
-            this.button1.Location = new System.Drawing.Point(173, 2);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(174, 50);
-            this.button1.TabIndex = 96;
-            this.button1.Text = "Confirmar";
-            this.button1.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.button1.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
-            this.button1.UseVisualStyleBackColor = true;
+            this.btnGrabar.BackColor = System.Drawing.Color.LightGray;
+            this.btnGrabar.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.btnGrabar.Font = new System.Drawing.Font("Verdana", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnGrabar.Image = global::PedidoTela.Formularios.Properties.Resources.record_icon_icons_com_64775__1_;
+            this.btnGrabar.Location = new System.Drawing.Point(2, 2);
+            this.btnGrabar.Name = "btnGrabar";
+            this.btnGrabar.Size = new System.Drawing.Size(174, 50);
+            this.btnGrabar.TabIndex = 95;
+            this.btnGrabar.Text = "Grabar";
+            this.btnGrabar.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.btnGrabar.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
+            this.btnGrabar.UseVisualStyleBackColor = false;
+            this.btnGrabar.Click += new System.EventHandler(this.btnGrabar_Click);
             // 
-            // button2
+            // btnSalir
             // 
-            this.button2.BackColor = System.Drawing.Color.LightGray;
-            this.button2.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.button2.Font = new System.Drawing.Font("Verdana", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button2.Image = global::PedidoTela.Formularios.Properties.Resources.record_icon_icons_com_64775__1_;
-            this.button2.Location = new System.Drawing.Point(2, 2);
-            this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(174, 50);
-            this.button2.TabIndex = 95;
-            this.button2.Text = "Grabar";
-            this.button2.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.button2.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
-            this.button2.UseVisualStyleBackColor = false;
-            // 
-            // button3
-            // 
-            this.button3.Font = new System.Drawing.Font("Verdana", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button3.Image = global::PedidoTela.Formularios.Properties.Resources.logout_exit_icon_176185;
-            this.button3.Location = new System.Drawing.Point(520, 2);
-            this.button3.Name = "button3";
-            this.button3.Size = new System.Drawing.Size(174, 50);
-            this.button3.TabIndex = 97;
-            this.button3.Text = "Salir";
-            this.button3.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.button3.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
-            this.button3.UseVisualStyleBackColor = true;
+            this.btnSalir.Font = new System.Drawing.Font("Verdana", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnSalir.Image = global::PedidoTela.Formularios.Properties.Resources.logout_exit_icon_176185;
+            this.btnSalir.Location = new System.Drawing.Point(350, 3);
+            this.btnSalir.Name = "btnSalir";
+            this.btnSalir.Size = new System.Drawing.Size(174, 50);
+            this.btnSalir.TabIndex = 97;
+            this.btnSalir.Text = "Salir";
+            this.btnSalir.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.btnSalir.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
+            this.btnSalir.UseVisualStyleBackColor = true;
+            this.btnSalir.Click += new System.EventHandler(this.btnSalir_Click);
             // 
             // FrmAgenciasExternos
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1488, 803);
+            this.ClientSize = new System.Drawing.Size(1492, 888);
             this.Controls.Add(this.panel9);
             this.Controls.Add(this.lbTotalconsolidado);
             this.Controls.Add(this.dgvTotalConsolidado);
             this.Controls.Add(this.dgvInfoConsolidar);
-            this.Controls.Add(this.panel2);
+            this.Controls.Add(this.pnlEncabezado);
             this.Controls.Add(this.lbInformacion);
             this.ForeColor = System.Drawing.Color.Black;
             this.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.MaximizeBox = false;
             this.Name = "FrmAgenciasExternos";
+            this.RightToLeft = System.Windows.Forms.RightToLeft.No;
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Agencias-Externos";
             this.Load += new System.EventHandler(this.FrmAgenciasExternos_Load);
-            this.panel2.ResumeLayout(false);
-            this.panel2.PerformLayout();
+            this.pnlEncabezado.ResumeLayout(false);
+            this.pnlEncabezado.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvInfoConsolidar)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.dgvTotalConsolidado)).EndInit();
             this.panel9.ResumeLayout(false);
@@ -1069,7 +1055,6 @@ namespace PedidoTela.Formularios
         private System.Windows.Forms.Label lbNombreTela;
         private System.Windows.Forms.Label lbAnchoTela;
         private System.Windows.Forms.Label lbRendimiento;
-        private System.Windows.Forms.Label lbComposicion;
         private System.Windows.Forms.Label lbMuestrario;
         private System.Windows.Forms.Label lbTema;
         private System.Windows.Forms.Label lbOcasionUso;
@@ -1085,36 +1070,31 @@ namespace PedidoTela.Formularios
         private System.Windows.Forms.Label lbOrdenCompra;
         private System.Windows.Forms.Label lbFechaLegada;
         private System.Windows.Forms.Label lbInformacion;
-        private System.Windows.Forms.DateTimePicker dateTimePicker1;
-        private System.Windows.Forms.TextBox textBox1;
-        private System.Windows.Forms.TextBox textBox2;
-        private System.Windows.Forms.TextBox textBox3;
-        private System.Windows.Forms.TextBox textBox4;
-        private System.Windows.Forms.TextBox textBox5;
-        private System.Windows.Forms.TextBox textBox6;
-        private System.Windows.Forms.TextBox textBox7;
-        private System.Windows.Forms.TextBox textBox8;
-        private System.Windows.Forms.TextBox textBox9;
-        private System.Windows.Forms.TextBox textBox10;
-        private System.Windows.Forms.TextBox textBox11;
-        private System.Windows.Forms.TextBox textBox12;
-        private System.Windows.Forms.TextBox textBox13;
-        private System.Windows.Forms.TextBox textBox14;
-        private System.Windows.Forms.TextBox textBox15;
-        private System.Windows.Forms.TextBox textBox16;
-        private System.Windows.Forms.TextBox textBox17;
-        private System.Windows.Forms.TextBox textBox18;
-        private System.Windows.Forms.TextBox textBox19;
-        private System.Windows.Forms.TextBox textBox20;
-        private System.Windows.Forms.TextBox textBox22;
-        private System.Windows.Forms.TextBox textBox24;
-        private System.Windows.Forms.TextBox textBox25;
-        private System.Windows.Forms.TextBox textBox26;
-        private System.Windows.Forms.TextBox textBox27;
-        private System.Windows.Forms.TextBox textBox28;
-        private System.Windows.Forms.TextBox textBox29;
-        private System.Windows.Forms.DateTimePicker dateTimePicker2;
-        private System.Windows.Forms.Panel panel2;
+        private System.Windows.Forms.TextBox txtSolicitadoPor;
+        private System.Windows.Forms.TextBox txtCargo;
+        private System.Windows.Forms.TextBox txtDepartamento;
+        private System.Windows.Forms.TextBox txtTelefono;
+        private System.Windows.Forms.TextBox txtExtencion;
+        private System.Windows.Forms.TextBox txtRefTela;
+        private System.Windows.Forms.TextBox txtNomTela;
+        private System.Windows.Forms.TextBox txtAnchoTela;
+        private System.Windows.Forms.TextBox txtTipoTejido;
+        private System.Windows.Forms.TextBox txtRendimiento;
+        private System.Windows.Forms.TextBox txtFondo;
+        private System.Windows.Forms.TextBox txtMuestrario;
+        private System.Windows.Forms.TextBox txtOcasionUso;
+        private System.Windows.Forms.TextBox txtTema;
+        private System.Windows.Forms.TextBox txtEntrada;
+        private System.Windows.Forms.TextBox txtDisenadora;
+        private System.Windows.Forms.TextBox txtEnsayoRef;
+        private System.Windows.Forms.TextBox txtDescPrenda;
+        private System.Windows.Forms.TextBox txtProveedor;
+        private System.Windows.Forms.TextBox txtNit;
+        private System.Windows.Forms.TextBox txtContacto;
+        private System.Windows.Forms.TextBox txtPedidoAgencia;
+        private System.Windows.Forms.TextBox txtOrdenCompra;
+        private System.Windows.Forms.DateTimePicker dtpFechaLlegada;
+        private System.Windows.Forms.Panel pnlEncabezado;
         private System.Windows.Forms.DataGridView dgvInfoConsolidar;
         private System.Windows.Forms.DataGridViewTextBoxColumn codColor;
         private System.Windows.Forms.DataGridViewTextBoxColumn descripColor;
@@ -1131,8 +1111,13 @@ namespace PedidoTela.Formularios
         private System.Windows.Forms.DataGridViewTextBoxColumn mReservados;
         private System.Windows.Forms.DataGridViewTextBoxColumn maSolicitar;
         private System.Windows.Forms.DataGridView dgvTotalConsolidado;
-        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn1;
-        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn2;
+        private System.Windows.Forms.Label lbTotalconsolidado;
+        private System.Windows.Forms.Panel panel9;
+        private System.Windows.Forms.Button btnGrabar;
+        private System.Windows.Forms.Button btnSalir;
+        private System.Windows.Forms.TextBox txtFechaTienda;
+        private System.Windows.Forms.DataGridViewTextBoxColumn codigoColor;
+        private System.Windows.Forms.DataGridViewTextBoxColumn desColor;
         private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn3;
         private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn4;
         private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn5;
@@ -1145,10 +1130,7 @@ namespace PedidoTela.Formularios
         private System.Windows.Forms.DataGridViewTextBoxColumn kgCalculados;
         private System.Windows.Forms.DataGridViewTextBoxColumn totalaPedir;
         private System.Windows.Forms.DataGridViewTextBoxColumn undMedidaTela;
-        private System.Windows.Forms.Label lbTotalconsolidado;
-        private System.Windows.Forms.Panel panel9;
-        private System.Windows.Forms.Button button1;
-        private System.Windows.Forms.Button button2;
-        private System.Windows.Forms.Button button3;
+        private System.Windows.Forms.ComboBox cbxComposicion;
+        private System.Windows.Forms.Label lbComposicion;
     }
 }

@@ -17,9 +17,11 @@ namespace PedidoTela.Formularios
     {
         Controlador controlador = new Controlador();
         Validar validacion = new Validar();
+        
         List<DetalleListaTela> detalle = new List<DetalleListaTela>();
         Utilidades utilidades = new Utilidades();
         string validarCoordinado = "";
+        int idSolicitudTelas = 0;
 
         public List<DetalleListaTela> Detalle { get => detalle; set => detalle = value; }
        
@@ -36,11 +38,9 @@ namespace PedidoTela.Formularios
             btnEditar.Enabled = false;
             btnDevolucion.Enabled = false;
 
-           
 
             // ToolTips
             this.ttMuestrario.SetToolTip(this.cbxMuestrario, "Campo Obligatorio");
-           // this.ttNomTela.SetToolTip(this.cbxNomTela, "Campo Obligatorio");
         }
         
         private void frmSolicitudListaTelas_Load_1(object sender, EventArgs e)
@@ -48,7 +48,6 @@ namespace PedidoTela.Formularios
             SkinManager.Theme = MaterialSkin.MaterialSkinManager.Themes.LIGHT;
             SkinManager.ColorScheme = new ColorScheme(Primary.Blue900, Primary.Grey500, Primary.Grey200, Accent.Green100, TextShade.WHITE);
 
-            //cargarCombobox(cbxTipoSolicitud, controlador.getTipoSocitud());
             cargarCombobox(cbxTipoSolicitud, controlador.getTipoSol());
             cargarCombobox(cbxMuestrario, controlador.getListaMuestrario());
             cargarCombobox(cbxOcasionUso, controlador.getListaOcasionUso());
@@ -59,14 +58,7 @@ namespace PedidoTela.Formularios
             cargarCombobox(cbxNomTela, controlador.getNomTelas());
             cargarCombobox(cbxRefTela, controlador.getRefTelas());
             cargarCombobox(cbxColor, controlador.getColoresT());
-            //DateTime fecha = new DateTime();
-            //DateTime.TryParse("01/01/1753", out fecha);
-            //dtpFechaTienda.Value = fecha; 
-            //dtpFechaTienda.Format = DateTimePickerFormat.Custom;
-            //dtpFechaTienda.CustomFormat = " ";
 
-
-            //Assign Click event to the DataGridView Cell.
             dgvSolicitudTelas.CellContentClick += new DataGridViewCellEventHandler(dgvSolicitudTelas_CellClick);
 
 
@@ -210,24 +202,6 @@ namespace PedidoTela.Formularios
                     {
                         prmLista[i].Coordinado = "SI";
                     }
-                    //if (prmLista[i].Tipo == "Ensayo")
-                    //{
-                    //    /// dgvSolicitudTelas.Rows.Add( prmLista[i].Ensayo);
-                    //    prmLista[i].Ensayo = prmLista[i].RefSimilar;
-
-                    //}
-                    //else
-                    //{
-                    //    prmLista[i].Ensayo = "";
-                    //}
-                    //if (prmLista[i].Tipo == "Referencia")
-                    //{
-                    //    prmLista[i].RefSimilar = prmLista[i].RefSimilar;
-                    //}
-                    //else
-                    //{
-                    //    prmLista[i].RefSimilar = "";
-                    //}
                     dgvSolicitudTelas.Rows.Add(prmLista[i].Sel.ToString(),
                     prmLista[i].Solicitud.ToString(),
                     prmLista[i].TipoSolicitud.ToString(),
@@ -256,8 +230,12 @@ namespace PedidoTela.Formularios
                     prmLista[i].FechaSolTelas.ToString(),
                     prmLista[i].Estado.ToString(),
                     prmLista[i].FechaEstado.ToString(),
-                    prmLista[i].IdSolTela.ToString());
-
+                    prmLista[i].IdSolTela.ToString(),
+                    prmLista[i].IdProgramador.ToString(),
+                    prmLista[i].DescPrenda.ToString()
+                    );
+                    this.idSolicitudTelas = prmLista[i].IdSolTela;
+                 
                 }
             }
             else
@@ -293,7 +271,7 @@ namespace PedidoTela.Formularios
             int contador = utilidades.ContarChecked(dgvSolicitudTelas);
             /// Realiza el respectivo método que retorna la lista de filas Seleccionadas
             List<DetalleListaTela> listaFilasSeleccionadas = ListaFilasSeleccionadas();
-            FrmAgenciasExternos frmAgenciasExterno = new FrmAgenciasExternos(controlador, listaFilasSeleccionadas, contador);
+            FrmAgenciasExternos frmAgenciasExterno = new FrmAgenciasExternos(controlador, listaFilasSeleccionadas, contador, idSolicitudTelas);
         }
         
         /// <summary>
@@ -355,6 +333,9 @@ namespace PedidoTela.Formularios
                     objInfo.CantidadReservado = (Detalle[i].CantidadReservado != null && Detalle[i].CantidadReservado != "") ? Detalle[i].CantidadReservado : "0";
                     objInfo.IdSolTela = Detalle[i].IdSolTela;
                     objInfo.IdDetalleSolicitud = Detalle[i].IdDetalleSolicitud;
+                    objInfo.IdProgramador = Detalle[i].IdProgramador;
+                    objInfo.DescPrenda = Detalle[i].DescPrenda;
+
                     listaSeleccionadas.Add(objInfo);
                 }
 

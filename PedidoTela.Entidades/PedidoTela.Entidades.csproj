@@ -50,6 +50,9 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Logica\AgenciasExternos.cs" />
+    <Compile Include="Logica\AgenciasInfoConsolidar.cs" />
+    <Compile Include="Logica\AgenciaTotalConsolidar.cs" />
     <Compile Include="Logica\AnalizarInventario.cs" />
     <Compile Include="Logica\DetalleCuelloDos.cs" />
     <Compile Include="Form1.cs">

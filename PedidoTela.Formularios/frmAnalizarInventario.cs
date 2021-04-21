@@ -250,11 +250,11 @@ namespace PedidoTela.Formularios
             {
                 for (int i = 0; i <= dgvAnalizarInventario.RowCount - 1; i++)
                 {
-                    // método para consultar pedido
                     DisponibleParaReserva objInfo = new DisponibleParaReserva();
 
                     if (Convert.ToBoolean(dgvAnalizarInventario.Rows[i].Cells["sel"].Value) == true)
                     {
+                    // método para consultar pedido
                         pedido = control.consultarPedido(DetalleSeleccionado[i].RefSimilar, DetalleSeleccionado[i].RefTela, DetalleSeleccionado[i].Vte);
                         
                         if (dgvAnalizarInventario.Rows[i].Cells["mReservados"].Value.ToString() == "" || dgvAnalizarInventario.Rows[i].Cells["mReservados"].Value == null)
