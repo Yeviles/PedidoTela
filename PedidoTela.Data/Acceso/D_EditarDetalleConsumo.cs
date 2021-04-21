@@ -32,7 +32,7 @@ namespace PedidoTela.Data.Acceso
 
         private readonly string UpdatePorId = "update cfc_spt_sol_tela set referencia_tela=?, desc_tela=?, consumo=?, sku=?, fecha_tienda=? where identificador = ? and idsolicitud = ?;";
         
-        private readonly string iserttodo = "INSERT INTO cfc_spt_sol_tela (identificador,idmundo,codi_capsula,codi_entrada, tipo, desc_prenda, referencia_tela, desc_tela, consumo, sku, fecha_tienda,muestrario,idusuario,codi_linea) VALUES(?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?,?,?,?);";
+        private readonly string iserttodo = "INSERT INTO cfc_spt_sol_tela (identificador,idmundo,codi_capsula,codi_entrada, tipo, desc_prenda, referencia_tela, desc_tela, consumo, sku, fecha_tienda,muestrario,idusuario,codi_linea,id_programador) VALUES(?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?,?,?,?,?);";
 
         #endregion
 
@@ -270,6 +270,7 @@ namespace PedidoTela.Data.Acceso
                     con.Parametros.Add(new IfxParameter("@muestrario", prmDetalleCon[i].Muestrario.ToString()));
                     con.Parametros.Add(new IfxParameter("@idusuario", prmDetalleCon[i].Id_disenador.ToString()));
                     con.Parametros.Add(new IfxParameter("@codi_linea", prmDetalleCon[i].Codi_linea.ToString()));
+                    con.Parametros.Add(new IfxParameter("@id_programador", prmDetalleCon[i].IdProgramador.ToString()));
 
                     var datos = con.EjecutarConsulta(iserttodo);
                     con.cerrarConexion();

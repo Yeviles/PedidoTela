@@ -124,9 +124,6 @@
   <data name="finger_hand_5531" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\imgs\finger_hand_5531.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="cancel_89309" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\imgs\cancel_89309.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
   <data name="checkmark1" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\imgs\checkmark.ico;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
@@ -139,8 +136,14 @@
   <data name="1492790860-8check_84164" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\imgs\1492790860-8check_84164.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
+  <data name="1492790881-6add_84227" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\imgs\1492790881-6add_84227.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
   <data name="mbriedit_99563" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\imgs\mbriedit_99563.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="seleccion4" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\imgs\seleccion4.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="Booking_icon-icons.com_55957" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\imgs\Booking_icon-icons.com_55957.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
@@ -154,6 +157,9 @@
   <data name="record_icon-icons.com_64775 (1)" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\imgs\record_icon-icons.com_64775 (1).png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
+  <data name="arrow-6_90997" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\imgs\arrow-6_90997.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
   <data name="arrow_up_upload_icon_123739" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\imgs\arrow_up_upload_icon_123739.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
@@ -163,20 +169,17 @@
   <data name="logout_exit_icon_176185" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\imgs\logout_exit_icon_176185.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
+  <data name="cancel_89309" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\imgs\cancel_89309.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="cargaImg" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\imgs\cargaImg.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
   <data name="1491254401-detailinformationmenudata_82977" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\imgs\1491254401-detailinformationmenudata_82977.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="seleccion" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\imgs\seleccion.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="cargaImg" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\imgs\cargaImg.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="1492790881-6add_84227" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\imgs\1492790881-6add_84227.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="arrow-6_90997" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\imgs\arrow-6_90997.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="mbrifile_99464" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\imgs\mbrifile_99464.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
@@ -184,7 +187,7 @@
   <data name="cancel_113581" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\imgs\cancel_113581.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="seleccion4" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\imgs\seleccion4.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="invenExt" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\imgs\invenExt.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
 </root>

@@ -12,8 +12,14 @@ using System.Threading.Tasks;
 
 namespace PedidoTela.Controlodores
 {
+    
+
     public class Controlador
     {
+        private int idUsuario;
+
+        public int IdUsuario { get => idUsuario; set => idUsuario = value; }
+
         #region Métodos de búsqueda
         #region Métodos de Color
         public List<Objeto> getColores()
@@ -570,6 +576,88 @@ namespace PedidoTela.Controlodores
         {
             D_DisponibleParaReserva d_Unicolor = new D_DisponibleParaReserva();
             return d_Unicolor.Consultar(identificador, codigoTela, CodigoColor);
+        }
+        #endregion
+
+        #region Métodos Agencias Externos
+
+        public bool consultarIdAgenciasExt(int idSolTelas)
+        {
+            D_AgenciasExterno agencias = new D_AgenciasExterno();
+            return agencias.consultarIdentificador(idSolTelas);
+        }
+
+        public bool ActualizarAgenciasExt(AgenciasExternos agenciasExternos)
+        {
+           D_AgenciasExterno actuAgencias = new D_AgenciasExterno();
+            return (actuAgencias.Actualizar(agenciasExternos) == "ok") ? true : false;
+        }
+        public bool addAgenciaExt(AgenciasExternos agenciasExternos)
+        {
+            D_AgenciasExterno d_agencias = new D_AgenciasExterno();
+            return (d_agencias.Agregar(agenciasExternos) == "ok") ? true : false;
+        }
+
+        public int getIdAgenciasExt(int idSolTela)
+        {
+            D_AgenciasExterno d_agencias = new D_AgenciasExterno();
+            return d_agencias.ConsultarId(idSolTela);
+        }
+        //la primera datagridView del frmAgenciasEsternos
+        public List<int> getIdInfoaConsolidar(int idAgencias)
+        {
+            D_AgenciasInfoConsolidar d_infoConsolidar = new D_AgenciasInfoConsolidar();
+            return d_infoConsolidar.ConsultarId(idAgencias);
+        }
+
+        public List<int> getIdTotalConsolidado(int idAgencias)
+        {
+            D_AgenciasTotalConsolidado d_totalConsolidar = new D_AgenciasTotalConsolidado();
+            return d_totalConsolidar.ConsultarId(idAgencias);
+        }
+
+        public bool ActualizarInfoConsolidar(AgenciasInfoConsolidar agenciasInfoConsolidar, int idDetalle)
+        {
+            D_AgenciasInfoConsolidar objDetalleEditado = new D_AgenciasInfoConsolidar();
+            return (objDetalleEditado.Actualizar(agenciasInfoConsolidar, idDetalle) == "ok") ? true : false;
+        }
+        public void addInfoConsolidar(AgenciasInfoConsolidar detalle)
+        {
+            D_AgenciasInfoConsolidar d_infoConsolidar = new D_AgenciasInfoConsolidar();
+            d_infoConsolidar.Agregar(detalle);
+        }
+        public bool ActualizarTotalConsolidar(AgenciaTotalConsolidar agenciasTotalConsolidar, int idDetalle)
+        {
+            D_AgenciasTotalConsolidado objDetalleEditado = new D_AgenciasTotalConsolidado();
+            return (objDetalleEditado.Actualizar(agenciasTotalConsolidar, idDetalle) == "ok") ? true : false;
+        }
+        public void addTotalConsolidar(AgenciaTotalConsolidar detalle)
+        {
+            D_AgenciasTotalConsolidado d_totalConsolidar = new D_AgenciasTotalConsolidado();
+            d_totalConsolidar.Agregar(detalle);
+        }
+        public List<Objeto> getComposicion()
+        {
+            D_Composicion objTipo = new D_Composicion();
+
+            return objTipo.getComposicion();
+        }
+        public AgenciasExternos getAgenciasExt(int idSolTela)
+        {
+            D_AgenciasExterno d_agencias = new D_AgenciasExterno();
+            return d_agencias.Consultar(idSolTela);
+        }
+        //obtiene el detalle de la primera DataGridView es decir, información a consolidar.
+        public List<AgenciasInfoConsolidar> getInfoConsolidar(int idAgencias)
+        {
+           D_AgenciasInfoConsolidar d_AgenciasInfoCon = new D_AgenciasInfoConsolidar();
+            return d_AgenciasInfoCon.getDetalleInfoConsolidar(idAgencias);
+        }
+        //obtiene el detalle de la segunda DataGridView es decir, Total consolidado.
+        public List<AgenciaTotalConsolidar> getTotalConsolidado(int idAgencias)
+        {
+            D_AgenciasTotalConsolidado d_AgenciasTotalCon = new D_AgenciasTotalConsolidado();
+            return d_AgenciasTotalCon.getDetalleTotalConsolidado(idAgencias);
         }
         #endregion
     }

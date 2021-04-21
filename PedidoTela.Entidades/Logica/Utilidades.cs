@@ -24,6 +24,7 @@ namespace PedidoTela.Entidades.Logica
             string result = Convert.ToString(vfinal).Replace(",","."); 
             return result;
         }
+       
         public string mSolicitar(string mCalculado, string mReservar)
         {
             /*M a Solicitar debe ser la diferencia entre M Calculados  -  Mreservados. */
@@ -41,6 +42,7 @@ namespace PedidoTela.Entidades.Logica
             return result;
 
         }
+       
         public string DisponibleTeorico(string disponible, string mReservar)
         {
             /*Para este  campo  se requiere   que  el  sistema  realice   siguiente    operación  (  Disponible -  Cantidad    Reservada )  */
@@ -56,6 +58,7 @@ namespace PedidoTela.Entidades.Logica
 
             return result;
         }
+       
         public int ContarChecked(DataGridView prmDataGridView)
         {
             //CONTAR SOLO CHECKS SELECCIONADOS
@@ -69,6 +72,7 @@ namespace PedidoTela.Entidades.Logica
             }
             return contador;
         }
+       
         public int Cifras(int numero)
         {
             int contador = 0;
@@ -80,5 +84,7 @@ namespace PedidoTela.Entidades.Logica
             }
             return contador;
         }
+
+       
     }
 }

@@ -29,7 +29,7 @@ namespace PedidoTela.Data.Acceso
                            "   CONCAT(CONCAT(NVL(du.rosado,''), NVL(de.rosado,'')), NVL(pd.rosado,'')) as rosado, "+
                            "   CONCAT(CONCAT(NVL(du.otros,''), NVL(de.otros,'')), NVL(pd.otros,'')) as otros, NVL(li.desc_linea,'') as desc_linea, "+
                            "   NVL(st.m_calculados,'') as m_calculados, NVL(st.m_reservar,'') as m_reservar, NVL(st.m_solicitar,'') as m_solicitar,st.idsolicitud,NVL(st.cantidad_reservado,'') as cantidad_reservado,  " +
-                           "   CONCAT(CONCAT(CONCAT(NVL(du.id,''),NVL(de.iddetalleest,'')),NVL(pd.id,'')), NVL(cd.iddetallecuellodos,'')) as idDetalleSol " +
+                           "   CONCAT(CONCAT(CONCAT(NVL(du.id,''),NVL(de.iddetalleest,'')),NVL(pd.id,'')), NVL(cd.iddetallecuellodos,'')) as idDetalleSol, st.id_programador, st.desc_prenda " +
                            "   from  cfc_spt_tipo_solicitud ts "+
                            "   left join cfc_spt_sol_tela st "+
                            "   on ts.id_solicitud = st.idsolicitud "+
@@ -238,25 +238,20 @@ namespace PedidoTela.Data.Acceso
                             clausulaWhere += "AND ";
                         }
                     }
-                    //O
+                   
                     if (objTela.Color.ToString() != "")
                     {
-                        clausulaWhere += "pd.descripcion_vte = ?";
-                        con.Parametros.Add(new IfxParameter("@descripcion_vte", objTela.Color.ToString()));
-                        if (objTela.Clase.ToString().Trim() != "" || objTela.Coordinado.ToString().Trim() != "" || objTela.NumDibujo.ToString().ToString() != "")
+                        clausulaWhere += "pd.descripcion_vte = ? OR cd.descripcion_vte = ? OR de.desc_color = ? OR c.desc_color = ? ";
+                        con.Parametros.Add(new IfxParameter("@pd.descripcion_vte", objTela.Color.ToString()));
+                        con.Parametros.Add(new IfxParameter("@cd.descripcion_vte", objTela.Color.ToString()));
+                        con.Parametros.Add(new IfxParameter("@de.desc_color", objTela.Color.ToString()));
+                        con.Parametros.Add(new IfxParameter("@c.desc_color", objTela.Color.ToString()));
+                        if (objTela.Clase.ToString().Trim() != "" || objTela.Coordinado.ToString().Trim() != "" || objTela.NumDibujo.ToString().Trim() != "")
                         {
                             clausulaWhere += "AND ";
                         }
                     }
-                    if (objTela.Color.ToString() != "")
-                    {
-                        clausulaWhere += "cd.descripcion_vte = ? ";
-                        con.Parametros.Add(new IfxParameter("@descripcion_vte", objTela.Color.ToString()));
-                        if (objTela.Clase.ToString().Trim() != "" || objTela.Coordinado.ToString().Trim() != "" || objTela.NumDibujo.ToString().ToString() != "")
-                        {
-                            clausulaWhere += "AND ";
-                        }
-                }
+     
                 //if (objTela.Clase.ToString() != "")
                 //{
                 //    clausulaWhere += "upper(f.clase) = ? ";
@@ -342,7 +337,7 @@ namespace PedidoTela.Data.Acceso
                         detalle.DesColor = datosDataReader["descripcion_vte"].ToString().Trim();
                         detalle.TotaUnidades = datosDataReader["total_unidades"].ToString().Trim();
                         detalle.Consumo = datosDataReader["consumo"].ToString().Trim();
-                        detalle.Marca = datosDataReader["desc_linea"].ToString().Trim(); ;
+                        detalle.Marca = datosDataReader["desc_linea"].ToString().Trim(); 
                         detalle.Muestrario = datosDataReader["muestrario"].ToString().Trim();
                         detalle.OcasionUso = datosDataReader["ocasion_uso"].ToString().Trim();
                         detalle.Tema = datosDataReader["tema"].ToString().Trim();
@@ -366,6 +361,9 @@ namespace PedidoTela.Data.Acceso
                         detalle.IdSolTela = int.Parse(datosDataReader["idsolicitud"].ToString().Trim());
                         detalle.CantidadReservado = datosDataReader["cantidad_reservado"].ToString().Trim();
                         detalle.IdDetalleSolicitud = datosDataReader["idDetalleSol"].ToString().Trim();
+                        detalle.IdProgramador = int.Parse(datosDataReader["id_programador"].ToString().Trim());
+                        detalle.DescPrenda = datosDataReader["desc_prenda"].ToString().Trim();
+
 
                     listaTelas.Add(detalle);
                     };
