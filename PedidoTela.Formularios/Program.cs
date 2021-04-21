@@ -30,7 +30,7 @@ namespace PedidoTela.Formularios
             //Application.Run(new frmPedidoaMontarPretenido());
             //Application.Run(new frmPedidoaMontarEstampado());
             //Application.Run(new frmPedidoaMontarCuellos());
-            //Application.Run(new frmPrueba());
+            //Application.Run(new frmAgenciasExterno());
         }
     }
 }

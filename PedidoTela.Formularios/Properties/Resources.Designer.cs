@@ -253,6 +253,16 @@ namespace PedidoTela.Formularios.Properties {
         /// <summary>
         ///   Busca un recurso adaptado de tipo System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap print2 {
+            get {
+                object obj = ResourceManager.GetObject("print2", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Busca un recurso adaptado de tipo System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap record_icon_icons_com_64775__1_ {
             get {
                 object obj = ResourceManager.GetObject("record_icon-icons.com_64775 (1)", resourceCulture);

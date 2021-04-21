@@ -16,15 +16,20 @@ namespace PedidoTela.Formularios
 {
     public partial class FrmAgenciasExternos : MaterialSkin.Controls.MaterialForm
     {
+        #region Variables
         Controlador control = new Controlador();
         Validar validacion = new Validar();
         int idsolTela, id;
-        bool bandera = false;
-        
+        bool bandera = false;   
         List<DetalleListaTela> detalleSeleccionado = new List<DetalleListaTela>();
+        #endregion
+
+        #region Getter && Setter
         public List<DetalleListaTela> DetalleSeleccionado { get => detalleSeleccionado; set => detalleSeleccionado = value; }
         public int IdsolTela { get => idsolTela; set => idsolTela = value; }
+        #endregion
 
+        #region Constructor
         public FrmAgenciasExternos(Controlador controlador, List<DetalleListaTela> listaSeleccionada, int numFilasSelccionadas, int idSolicitudTelas)
         {
             InitializeComponent();
@@ -37,12 +42,11 @@ namespace PedidoTela.Formularios
             Validaciones(DetalleSeleccionado, numFilasSelccionadas);
 
         }
+        #endregion
 
+        #region Método inicial de Carga
         private void FrmAgenciasExternos_Load(object sender, EventArgs e)
         {
-            SkinManager.Theme = MaterialSkin.MaterialSkinManager.Themes.LIGHT;
-            SkinManager.ColorScheme = new ColorScheme(Primary.Blue900, Primary.Grey500, Primary.Grey200, Accent.Green100, TextShade.WHITE);
-
             cargarCombobox(cbxComposicion, control.getComposicion());
             txtCargo.Text = "Analista";
             txtDepartamento.Text = "Cortes B";
@@ -52,165 +56,20 @@ namespace PedidoTela.Formularios
             txtNit.MaxLength = 12;
             txtContacto.MaxLength = 20;
             txtOrdenCompra.MaxLength = 12;
+            // ToolTipText
+            dgvInfoConsolidar.Columns["descripColor"].HeaderCell.ToolTipText = "Clic item si desea modificar";
+            dgvInfoConsolidar.Columns["codColor"].HeaderCell.ToolTipText = "Clic item si desea modificar";
+
+            dgvTotalConsolidado.Columns["mC"].HeaderCell.ToolTipText = "(Consumo * Total Unidades)*1.10";
+            dgvTotalConsolidado.Columns["desColor"].HeaderCell.ToolTipText = "Clic item si desea modificar";
+            dgvTotalConsolidado.Columns["codigoColor"].HeaderCell.ToolTipText = "Clic item si desea modificar";
+            dgvTotalConsolidado.Columns["kgCalculados"].HeaderCell.ToolTipText = "(M a solicitar /Rendimiento)";
+
 
         }
-        
-        /// <summary>
-        /// Se válida que en la lista (List<DetalleListaTela> listaSeleccionada) que llega al contructor por argumentos, tenga un atributo estado y que 
-        /// este contenga valor de Por Analizar o Reserva Parcial, si cumple esta condición procede a llenar el encabezado  y las DataGridView de la vista actual.
-        /// </summary>
-        /// <param name="prmLista"> Lista de tipo DetalleListaTela, la cual representa las filas seleccionadas en el vista frmSolicitudListaTelas. </param>
-        /// <param name="cont">Cantidad de filas que han sido seleccionadas en la vista frmSolicitudListaTelas.</param>
-        public void Validaciones(List<DetalleListaTela> prmLista, int numfilasSeleccionadas)
-        {
-            int b = 0;
-           
-            if (numfilasSeleccionadas >= 2)
-            {
-                for (int i = 0; i < prmLista.Count; i++)
-                {
-                    if (prmLista[i].Estado == "Por Analizar" || prmLista[i].Estado == "Reserva parcial")
-                    {
-                        b += 1;
-                    }
-                }
-                if (b == prmLista.Count)
-                {
-                    this.Show();
-                    Cargar();
-                    if (!this.bandera)
-                    {
+        #endregion
 
-                        //Carga el DataGridView (dgvInfoConsolidar) el cual pertenece a la sección de información a consolidar.
-                        cargarDgvInfoConsolidar(prmLista);
-                        //Carga el DataGridView (dgvTotalConsolidado) el cual pertenece a la sección de total consolidado.
-                        cargarDgvTotalConsolidar(prmLista);
-                    }
-                }
-                else
-                {
-                    MessageBox.Show("El estado de solicitud No corresponde a Por Analizar o Reserva Parcial", "Advertencia", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                    this.Close();
-                }
-
-            }
-            else
-            {
-                MessageBox.Show("Debe seleccionar mínimo dos filas.", "Advertencia", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                this.Close();
-            }
-        }
-
-        private void cargarDgvInfoConsolidar(List<DetalleListaTela> prmLista)
-        {
-
-            if (prmLista.Count != 0)
-            {
-                for (int i = 0; i < prmLista.Count; i++)
-                {
-
-                    dgvInfoConsolidar.Rows.Add(prmLista[i].Vte.ToString(),
-                    prmLista[i].DesColor.ToString(),
-                    prmLista[i].Tiendas.ToString(),
-                    prmLista[i].Exito.ToString(),
-                    prmLista[i].Cencosud.ToString(),
-                    prmLista[i].Sao.ToString(),
-                    prmLista[i].Comercio.ToString(),
-                    prmLista[i].Rosado.ToString(),
-                    prmLista[i].Otros.ToString(),
-                    prmLista[i].TotaUnidades.ToString(),
-                    prmLista[i].Consumo.ToString(),
-                    prmLista[i].MCalculados.ToString(),
-                    prmLista[i].MReservados.ToString(),
-                    prmLista[i].Masolicitar.ToString()
-                    //prmLista[i].IdSolTela.ToString(),
-                    //prmLista[i].IdDetalleSolicitud.ToString()
-                    );
-                    txtSolicitadoPor.Text = control.IdUsuario.ToString();
-                    txtNomTela.Text = prmLista[i].DesTela.ToString();
-                    txtRefTela.Text = prmLista[i].RefTela.ToString();
-                    txtTipoTejido.Text = prmLista[i].TipoTela.ToString();
-                    txtFondo.Text = prmLista[i].Fondo.ToString();
-                    txtMuestrario.Text = prmLista[i].Muestrario.ToString();
-                    txtOcasionUso.Text = prmLista[i].OcasionUso.ToString();
-                    txtFechaTienda.Text = prmLista[i].FechaTienda.ToString();
-                    txtDisenadora.Text = prmLista[i].Disenador.ToString();
-                    txtEnsayoRef.Text = prmLista[i].RefSimilar.ToString();
-                    txtTema.Text = prmLista[i].Tema.ToString();
-                    txtEntrada.Text = prmLista[i].Entrada.ToString();
-                    txtDescPrenda.Text = prmLista[i].DescPrenda.ToString();
-                   
-                    IdsolTela = prmLista[i].IdSolTela;
-                    
-                }
-            }
-            else
-            {
-                MessageBox.Show("No existe información sobre su consulta", "Advertencia", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-            }
-        }
-        
-        private void cargarDgvTotalConsolidar(List<DetalleListaTela> prmLista)
-        {
-
-            if (prmLista.Count != 0)
-            {
-                for (int i = 0; i < prmLista.Count; i++)
-                {
-
-                    dgvTotalConsolidado.Rows.Add(prmLista[i].Vte.ToString(),
-                    prmLista[i].DesColor.ToString(),
-                    prmLista[i].Tiendas.ToString(),
-                    prmLista[i].Exito.ToString(),
-                    prmLista[i].Cencosud.ToString(),
-                    prmLista[i].Sao.ToString(),
-                    prmLista[i].Comercio.ToString(),
-                    prmLista[i].Rosado.ToString(),
-                    prmLista[i].Otros.ToString(),
-                    prmLista[i].TotaUnidades.ToString(),
-                    prmLista[i].MCalculados.ToString()
-                   
-                    //prmLista[i].IdSolTela.ToString(),
-                    //prmLista[i].IdDetalleSolicitud.ToString()
-                    );
-                    
-                }
-            }
-            else
-            {
-                MessageBox.Show("No existe información sobre su consulta", "Advertencia", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-            }
-           
-        }
-
-        private void cargarCombobox(ComboBox prmCombo, List<Objeto> prmLista)
-        {
-            prmCombo.DataSource = prmLista;
-            prmCombo.DisplayMember = "Nombre";
-            prmCombo.ValueMember = "Id";
-            prmCombo.SelectedIndex = -1;
-            prmCombo.AutoCompleteCustomSource = cargarCombobox(prmLista);
-            prmCombo.AutoCompleteMode = AutoCompleteMode.Suggest;
-            prmCombo.AutoCompleteSource = AutoCompleteSource.CustomSource;
-
-        }
-
-        /// <summary>
-        /// Permite el autocompletado de los comboBox mostrados en la vista.
-        /// </summary>
-        /// <param name="prmLista">Lista de tipo objeto la cual es autocompletada.</param>
-        /// <returns></returns>
-        private AutoCompleteStringCollection cargarCombobox(List<Objeto> prmLista)
-        {
-            AutoCompleteStringCollection datos = new AutoCompleteStringCollection();
-            foreach (Objeto obj in prmLista)
-            {
-                datos.Add(obj.Nombre);
-            }
-            return datos;
-        }
-
-
+        #region Eventos
         private void btnSalir_Click(object sender, EventArgs e)
         {
             this.Close();
@@ -497,7 +356,179 @@ namespace PedidoTela.Formularios
                 
             }
         }
-        
+        #endregion
+
+        #region Métodos
+        /// <summary>
+        /// Se válida que en la lista (List<DetalleListaTela> listaSeleccionada) que llega al contructor por argumentos, tenga un atributo estado y que 
+        /// este contenga valor de Por Analizar o Reserva Parcial, si cumple esta condición procede a llenar el encabezado  y las DataGridView de la vista actual.
+        /// </summary>
+        /// <param name="prmLista"> Lista de tipo DetalleListaTela, la cual representa las filas seleccionadas en el vista frmSolicitudListaTelas. </param>
+        /// <param name="cont">Cantidad de filas que han sido seleccionadas en la vista frmSolicitudListaTelas.</param>
+        public void Validaciones(List<DetalleListaTela> prmLista, int numfilasSeleccionadas)
+        {
+            int b = 0;
+           
+            if (numfilasSeleccionadas >= 2)
+            {
+                for (int i = 0; i < prmLista.Count; i++)
+                {
+                    if (prmLista[i].Estado == "Por Analizar" || prmLista[i].Estado == "Reserva parcial")
+                    {
+                        b += 1;
+                    }
+                }
+                if (b == prmLista.Count)
+                {
+                    this.Show();
+                    Cargar();
+                    if (!this.bandera)
+                    {
+
+                        //Carga el DataGridView (dgvInfoConsolidar) el cual pertenece a la sección de información a consolidar.
+                        cargarDgvInfoConsolidar(prmLista);
+                        //Carga el DataGridView (dgvTotalConsolidado) el cual pertenece a la sección de total consolidado.
+                        cargarDgvTotalConsolidar(prmLista);
+                    }
+                }
+                else
+                {
+                    MessageBox.Show("El estado de solicitud No corresponde a Por Analizar o Reserva Parcial", "Advertencia", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    this.Close();
+                }
+
+            }
+            else
+            {
+                MessageBox.Show("Debe seleccionar mínimo dos filas.", "Advertencia", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                this.Close();
+            }
+        }
+
+        /// <summary>
+        /// Carga el DataGridView (dgvInfoConsolidar) con la información solicitada.
+        /// </summary>
+        /// <param name="prmLista">Lista de tipo DetalleLista contiene la informacion a cargar en la DatagridView.</param>
+        private void cargarDgvInfoConsolidar(List<DetalleListaTela> prmLista)
+        {
+
+            if (prmLista.Count != 0)
+            {
+                for (int i = 0; i < prmLista.Count; i++)
+                {
+
+                    dgvInfoConsolidar.Rows.Add(prmLista[i].Vte.ToString(),
+                    prmLista[i].DesColor.ToString(),
+                    prmLista[i].Tiendas.ToString(),
+                    prmLista[i].Exito.ToString(),
+                    prmLista[i].Cencosud.ToString(),
+                    prmLista[i].Sao.ToString(),
+                    prmLista[i].Comercio.ToString(),
+                    prmLista[i].Rosado.ToString(),
+                    prmLista[i].Otros.ToString(),
+                    prmLista[i].TotaUnidades.ToString(),
+                    prmLista[i].Consumo.ToString(),
+                    prmLista[i].MCalculados.ToString(),
+                    prmLista[i].MReservados.ToString(),
+                    prmLista[i].Masolicitar.ToString()
+                    //prmLista[i].IdSolTela.ToString(),
+                    //prmLista[i].IdDetalleSolicitud.ToString()
+                    );
+                    txtSolicitadoPor.Text = control.IdUsuario.ToString();
+                    txtNomTela.Text = prmLista[i].DesTela.ToString();
+                    txtRefTela.Text = prmLista[i].RefTela.ToString();
+                    txtTipoTejido.Text = prmLista[i].TipoTela.ToString();
+                    txtFondo.Text = prmLista[i].Fondo.ToString();
+                    txtMuestrario.Text = prmLista[i].Muestrario.ToString();
+                    txtOcasionUso.Text = prmLista[i].OcasionUso.ToString();
+                    txtFechaTienda.Text = prmLista[i].FechaTienda.ToString();
+                    txtDisenadora.Text = prmLista[i].Disenador.ToString();
+                    txtEnsayoRef.Text = prmLista[i].RefSimilar.ToString();
+                    txtTema.Text = prmLista[i].Tema.ToString();
+                    txtEntrada.Text = prmLista[i].Entrada.ToString();
+                    txtDescPrenda.Text = prmLista[i].DescPrenda.ToString();
+                   
+                    IdsolTela = prmLista[i].IdSolTela;
+                    
+                }
+            }
+            else
+            {
+                MessageBox.Show("No existe información sobre su consulta", "Advertencia", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+            }
+        }
+
+        /// <summary>
+        /// Carga el DataGridView (dgvToltalConsolidar) con la información solicitada.
+        /// </summary>
+        /// <param name="prmLista">Lista de tipo DetalleLista contiene la informacion a cargar en la DatagridView.</param>
+        private void cargarDgvTotalConsolidar(List<DetalleListaTela> prmLista)
+        {
+
+            if (prmLista.Count != 0)
+            {
+                for (int i = 0; i < prmLista.Count; i++)
+                {
+
+                    dgvTotalConsolidado.Rows.Add(prmLista[i].Vte.ToString(),
+                    prmLista[i].DesColor.ToString(),
+                    prmLista[i].Tiendas.ToString(),
+                    prmLista[i].Exito.ToString(),
+                    prmLista[i].Cencosud.ToString(),
+                    prmLista[i].Sao.ToString(),
+                    prmLista[i].Comercio.ToString(),
+                    prmLista[i].Rosado.ToString(),
+                    prmLista[i].Otros.ToString(),
+                    prmLista[i].TotaUnidades.ToString(),
+                    prmLista[i].MCalculados.ToString()
+                   
+                    //prmLista[i].IdSolTela.ToString(),
+                    //prmLista[i].IdDetalleSolicitud.ToString()
+                    );
+                    
+                }
+            }
+            else
+            {
+                MessageBox.Show("No existe información sobre su consulta", "Advertencia", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+            }
+           
+        }
+
+        /// <summary>
+        /// Permite realizar la carga de los datos para el ComboBox (cbxComposicion).
+        /// </summary>
+        /// <param name="prmLista">Lista de tipo Objeto,la cual tiene los datos para Composicion.</param>
+        private void cargarCombobox(ComboBox prmCombo, List<Objeto> prmLista)
+        {
+            prmCombo.DataSource = prmLista;
+            prmCombo.DisplayMember = "Nombre";
+            prmCombo.ValueMember = "Id";
+            prmCombo.SelectedIndex = -1;
+            prmCombo.AutoCompleteCustomSource = cargarCombobox(prmLista);
+            prmCombo.AutoCompleteMode = AutoCompleteMode.Suggest;
+            prmCombo.AutoCompleteSource = AutoCompleteSource.CustomSource;
+
+        }
+
+        /// <summary>
+        /// Permite el autocompletado de los comboBox mostrados en la vista.
+        /// </summary>
+        /// <param name="prmLista">Lista de tipo objeto la cual es autocompletada.</param>
+        /// <returns></returns>
+        private AutoCompleteStringCollection cargarCombobox(List<Objeto> prmLista)
+        {
+            AutoCompleteStringCollection datos = new AutoCompleteStringCollection();
+            foreach (Objeto obj in prmLista)
+            {
+                datos.Add(obj.Nombre);
+            }
+            return datos;
+        }
+
+        /// <summary>
+        /// Realiza el cargue inicial de los datos para la vista (frmAgenciasExternos).
+        /// </summary>
         private void Cargar()
         {
             AgenciasExternos objAgencias = control.getAgenciasExt(IdsolTela);
@@ -563,5 +594,6 @@ namespace PedidoTela.Formularios
               
             }
         }
+        #endregion
     }
 }
