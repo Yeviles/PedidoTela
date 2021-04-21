@@ -16,15 +16,19 @@ namespace PedidoTela.Formularios
 {
     public partial class frmAnalizarInventario : MaterialSkin.Controls.MaterialForm
     {
+        #region variables
         Controlador control = new Controlador();
         List<DetalleListaTela> detalleSeleccionado = new List<DetalleListaTela>();
         Utilidades utilidades = new Utilidades();
         private int mReservar;
-
+        #endregion
+        #region Getter && Setter
         public List<DetalleListaTela> DetalleSeleccionado { get => detalleSeleccionado; set => detalleSeleccionado = value; }
 
         public int MReservar { get => mReservar; set => mReservar = value; }
-       
+        #endregion
+
+        #region Constructor
         public frmAnalizarInventario(Controlador controlador, List<DetalleListaTela> listaSeleccionada, int contador)
         {
             InitializeComponent();
@@ -32,11 +36,10 @@ namespace PedidoTela.Formularios
             control = controlador;
             //Validación de las condiciones para mostrar las filas seleccionadas en esta vista.
             validacionesDatosIguales(DetalleSeleccionado, contador);
-         
         }
         
         public frmAnalizarInventario() { }
-
+        #endregion
         private void frmReservaTela_Load(object sender, EventArgs e)
         {
             SkinManager.Theme = MaterialSkin.MaterialSkinManager.Themes.LIGHT;
@@ -49,124 +52,8 @@ namespace PedidoTela.Formularios
             dgvAnalizarInventario.Columns["maSolicitar"].HeaderCell.ToolTipText = "(mCalculados - mReservados)";
 
         }
-        /// <summary>
-        /// Válida que La  referencia   y /o  descripción de  la   tela  debe  ser  igual, además realiza un llamado al método validarDatosDiferentes
-        /// cuando dicha condición no se cumple.
-        /// </summary>
-        /// <param name="prmLista">Lista de la todas filas seleccionadas en el frmSolicitudListas.</param>
-        /// <param name="cont">Número de filas seleccionadas.</param>
-        public void validacionesDatosIguales(List<DetalleListaTela> prmLista, int cont)
-        {  
-            int b = 0;
-            string desTela = prmLista[0].DesTela;
-            if (cont >= 2)
-            {
-                for (int i = 0; i < prmLista.Count; i++)
-                {
-                    if (prmLista[i].DesTela.ToString() == desTela && prmLista[i].Estado == "Por Analizar" || prmLista[i].Estado == "Reserva parcial")
-                    {
-                        b += 1;
-                    }
-                }
-                if (b == prmLista.Count)
-                {
-                    this.Show();
-                    cargarDataGridView(prmLista);
-                   // DialogResult = DialogResult.OK;
-                }
-                else
-                {
-                    //MessageBox.Show("La  referencia   y /o  descripción de  la   tela  debe  ser  igual", "Advertencia", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                    validarDatosDiferentes(prmLista, cont);
-                }
 
-            }
-            else
-            {
-                MessageBox.Show("Debe seleccionar mínimo dos filas.", "Advertencia", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                this.Close();
-            }
-        }
-
-        /// <summary>
-        /// Válida que  Descripción de tela diferentes solo en el caso que el campo cordinado este marcado como Si.
-        /// Imprime un solo mensaje indicando que la condición del método validacionesDatosIguales no se cumplio tanto como la condición propia.
-        /// </summary>
-        /// <param name="prmLista">Lista de la todas filas seleccionadas en el frmSolicitudListas.</param>
-        /// <param name="cont">Número de filas seleccionadas.</param>
-        public void validarDatosDiferentes (List<DetalleListaTela> prmLista, int cont)
-        {
-            string desTela = prmLista[0].DesTela;
-            int b = 0;
-            if (cont >= 2 && cont <= 3)
-            {
-                for (int i = 0; i < prmLista.Count; i++)
-                {
-                    if (prmLista[i].Estado == "Por Analizar" || prmLista[i].Estado == "Reserva parcial" && prmLista[i].Coordinado == "SI")
-                    {
-                        b += 1;
-                    }
-                }
-                if (b == prmLista.Count)
-                {
-                    this.Show();
-                    cargarDataGridView(prmLista);
-                }
-                else
-                {
-                    MessageBox.Show("No se cumple alguna de estas dos condiciones: \n 1. Descripción de tela diferentes solo en el caso que el campo cordinado este marcado como Si. \n 2. La  referencia   y /o  descripción de  la   tela  debe  ser  igual", "Advertencia", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                    //MessageBox.Show("La  referencia   y /o  descripción de  la   tela  debe  ser  igual", "Advertencia", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                    this.Close();
-                }
-            }
-            else
-            {
-                MessageBox.Show("Descripción de tela Diferentes, solo se permite seleccionar máximo 3 filas mínimo 2 filas. ","Advertencia", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-            }
-
-        }
-        
-        private void cargarDataGridView(List<DetalleListaTela> prmLista)
-        {
-
-           if (prmLista.Count != 0)
-            {
-                for (int i = 0; i < prmLista.Count; i++)
-                {
-
-                dgvAnalizarInventario.Rows.Add(prmLista[i].Sel.ToString(),
-                prmLista[i].Ensayo.ToString(),
-                prmLista[i].RefSimilar.ToString(),
-                prmLista[i].Vte.ToString(),
-                prmLista[i].DesColor.ToString(),
-                prmLista[i].Tiendas.ToString(),
-                prmLista[i].Exito.ToString(),
-                prmLista[i].Cencosud.ToString(),
-                prmLista[i].Sao.ToString(),
-                prmLista[i].Comercio.ToString(),
-                prmLista[i].Rosado.ToString(),
-                prmLista[i].Otros.ToString(),
-                prmLista[i].TotaUnidades.ToString(),
-                prmLista[i].Consumo.ToString(),
-                prmLista[i].MCalculados.ToString(),
-                prmLista[i].MReservados.ToString(),
-                prmLista[i].Masolicitar.ToString(),
-                prmLista[i].IdSolTela.ToString(),
-                prmLista[i].IdDetalleSolicitud.ToString()
-                ); 
-                }
-            }
-            else
-            {
-                MessageBox.Show("No existe información sobre su consulta", "Advertencia", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-            }
-        }
-
-        private void btnSalir_Click(object sender, EventArgs e)
-        {
-            this.Close();
-        }
-
+        #region Eventos
         private void btnGrabar_Click(object sender, EventArgs e)
         {
             int conChecked = utilidades.ContarChecked(dgvAnalizarInventario);
@@ -240,11 +127,6 @@ namespace PedidoTela.Formularios
             List<DisponibleParaReserva> listaSeleccionadas = new List<DisponibleParaReserva>();
             int contador = utilidades.ContarChecked(dgvAnalizarInventario);
             DisponibleParaReserva pedido = new DisponibleParaReserva();
-            //for (int i = 0; i < DetalleSeleccionado.Count; i++)
-            //{
-            //    pedido = control.consultarPedido(DetalleSeleccionado[]);
-            //}
-               
             bool b = false, p = false;
             if (contador >= 1 && contador <= 1)
             {
@@ -267,7 +149,6 @@ namespace PedidoTela.Formularios
                             }
                             else
                             {
-
                                 objInfo.Pedido = pedido.Pedido.ToString();
                             }
 
@@ -288,11 +169,10 @@ namespace PedidoTela.Formularios
                         }
                         else
                         {
-                            MessageBox.Show("Gracias, ya se ha guardado una Reserva.", "Advertencia", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                            MessageBox.Show("Ya se ha guardado una Reserva.", "Advertencia", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                             b = false;
                         }
                     }
-
                 }
                 if (b)
                 {
@@ -300,11 +180,8 @@ namespace PedidoTela.Formularios
                     {
                         frmDisponibleParaReserva frmDisponible = new frmDisponibleParaReserva(control, listaSeleccionadas);
 
-
                         if (frmDisponible.ShowDialog() == DialogResult.OK)
                         {
-
-
                             for (int i = 0; i <= dgvAnalizarInventario.RowCount - 1; i++)
                             {
                                 if (dgvAnalizarInventario.Rows[i].Cells[0].Value.Equals(true))//Columna de checks
@@ -313,40 +190,31 @@ namespace PedidoTela.Formularios
                                     Actualizar(control.consultarInvertario(int.Parse(DetalleSeleccionado[i].IdSolTela.ToString())));
                                 }
                             }
-
-
                         }
                     }
                     else
                     {
-                        MessageBox.Show("El esayo seleccionado no puede Resevar No cuenta con un Disponible de pedido, gracias.", "Advertencia", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                    }
-                }
-                }
-                else
-                {
-                    MessageBox.Show("Debe seleccionar una única fila para realizar la reserva.", "Advertencia", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                }
-            
-        }
-        
-        private void Actualizar(List<AnalizarInventario> objAtualizar)
-        {
-            foreach (DataGridViewRow row in dgvAnalizarInventario.Rows)
-            {
-                if (row.Cells[0].Value.Equals(true))//Columna de checks
-                {
-                    for (int i = 0; i <= objAtualizar.Count -1; i++)
-                    {
-                        //dgvAnalizarInventario.Rows[row.Index].Cells[14].Value = utilidades.mCalculados2(objAtualizar[0].MCalculados.ToString().Trim(), objAtualizar[0].Consumo.ToString().Trim());
-                        dgvAnalizarInventario.Rows[row.Index].Cells[15].Value = objAtualizar[0].MReservados.ToString().Trim();
-                        dgvAnalizarInventario.Rows[row.Index].Cells[16].Value = utilidades.mSolicitar(objAtualizar[0].MCalculados.ToString().Trim(), objAtualizar[0].MReservados.ToString().Trim());
+                        MessageBox.Show("No se puede realizar la reserva. \nEl item seleccionado no tiene disponible de pedido.", "Advertencia", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                     }
                 }
             }
-           
+            else
+            {
+                MessageBox.Show("Debe seleccionar una única fila para realizar la reserva.", "Advertencia", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+            }
         }
-        
+
+        private void btnImprimir_Click(object sender, EventArgs e)
+        {
+            frmImprimirSIP imprimir = new frmImprimirSIP(control);
+            imprimir.ShowDialog();
+        }
+
+        private void btnSalir_Click(object sender, EventArgs e)
+        {
+            this.Close();
+        }
+
         private void dgvAnalizarInventario_CellClick(object sender, DataGridViewCellEventArgs e)
         {
             dgvAnalizarInventario.EndEdit();
@@ -368,5 +236,139 @@ namespace PedidoTela.Formularios
             }
 
         }
+        #endregion
+
+        #region métodos
+
+        /// <summary>
+        /// Válida que La  referencia   y /o  descripción de  la   tela  debe  ser  igual, además realiza un llamado al método validarDatosDiferentes
+        /// cuando dicha condición no se cumple.
+        /// </summary>
+        /// <param name="prmLista">Lista de la todas filas seleccionadas en el frmSolicitudListas.</param>
+        /// <param name="cont">Número de filas seleccionadas.</param>
+        public void validacionesDatosIguales(List<DetalleListaTela> prmLista, int cont)
+        {
+            int b = 0;
+            string desTela = prmLista[0].DesTela;
+            if (cont >= 2)
+            {
+                for (int i = 0; i < prmLista.Count; i++)
+                {
+                    if (prmLista[i].DesTela.ToString() == desTela && prmLista[i].Estado == "Por Analizar" || prmLista[i].Estado == "Reserva parcial")
+                    {
+                        b += 1;
+                    }
+                }
+                if (b == prmLista.Count)
+                {
+                    this.Show();
+                    cargarDataGridView(prmLista);
+                    // DialogResult = DialogResult.OK;
+                }
+                else
+                {
+                    //MessageBox.Show("La  referencia   y /o  descripción de  la   tela  debe  ser  igual", "Advertencia", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    validarDatosDiferentes(prmLista, cont);
+                }
+
+            }
+            else
+            {
+                MessageBox.Show("Debe seleccionar mínimo dos filas.", "Advertencia", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                this.Close();
+            }
+        }
+
+        /// <summary>
+        /// Válida que  Descripción de tela diferentes solo en el caso que el campo cordinado este marcado como Si.
+        /// Imprime un solo mensaje indicando que la condición del método validacionesDatosIguales no se cumplio tanto como la condición propia.
+        /// </summary>
+        /// <param name="prmLista">Lista de la todas filas seleccionadas en el frmSolicitudListas.</param>
+        /// <param name="cont">Número de filas seleccionadas.</param>
+        public void validarDatosDiferentes(List<DetalleListaTela> prmLista, int cont)
+        {
+            string desTela = prmLista[0].DesTela;
+            int b = 0;
+            if (cont >= 2 && cont <= 3)
+            {
+                for (int i = 0; i < prmLista.Count; i++)
+                {
+                    if (prmLista[i].Estado == "Por Analizar" || prmLista[i].Estado == "Reserva parcial" && prmLista[i].Coordinado == "SI")
+                    {
+                        b += 1;
+                    }
+                }
+                if (b == prmLista.Count)
+                {
+                    this.Show();
+                    cargarDataGridView(prmLista);
+                }
+                else
+                {
+                    MessageBox.Show("No se cumple alguna de estas dos condiciones: \n 1. Descripción de tela diferentes solo en el caso que el campo cordinado este marcado como Si. \n 2. La  referencia   y /o  descripción de  la   tela  debe  ser  igual", "Advertencia", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    //MessageBox.Show("La  referencia   y /o  descripción de  la   tela  debe  ser  igual", "Advertencia", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    this.Close();
+                }
+            }
+            else
+            {
+                MessageBox.Show("Descripción de tela Diferentes, solo se permite seleccionar máximo 3 filas mínimo 2 filas. ", "Advertencia", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+            }
+
+        }
+
+        private void cargarDataGridView(List<DetalleListaTela> prmLista)
+        {
+
+            if (prmLista.Count != 0)
+            {
+                for (int i = 0; i < prmLista.Count; i++)
+                {
+
+                    dgvAnalizarInventario.Rows.Add(prmLista[i].Sel.ToString(),
+                    prmLista[i].Ensayo.ToString(),
+                    prmLista[i].RefSimilar.ToString(),
+                    prmLista[i].Vte.ToString(),
+                    prmLista[i].DesColor.ToString(),
+                    prmLista[i].Tiendas.ToString(),
+                    prmLista[i].Exito.ToString(),
+                    prmLista[i].Cencosud.ToString(),
+                    prmLista[i].Sao.ToString(),
+                    prmLista[i].Comercio.ToString(),
+                    prmLista[i].Rosado.ToString(),
+                    prmLista[i].Otros.ToString(),
+                    prmLista[i].TotaUnidades.ToString(),
+                    prmLista[i].Consumo.ToString(),
+                    prmLista[i].MCalculados.ToString(),
+                    prmLista[i].MReservados.ToString(),
+                    prmLista[i].Masolicitar.ToString(),
+                    prmLista[i].IdSolTela.ToString(),
+                    prmLista[i].IdDetalleSolicitud.ToString()
+                    );
+                }
+            }
+            else
+            {
+                MessageBox.Show("No existe información sobre su consulta", "Advertencia", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+            }
+        }
+
+        private void Actualizar(List<AnalizarInventario> objAtualizar)
+        {
+            foreach (DataGridViewRow row in dgvAnalizarInventario.Rows)
+            {
+                if (row.Cells[0].Value.Equals(true))//Columna de checks
+                {
+                    for (int i = 0; i <= objAtualizar.Count -1; i++)
+                    {
+                        //dgvAnalizarInventario.Rows[row.Index].Cells[14].Value = utilidades.mCalculados2(objAtualizar[0].MCalculados.ToString().Trim(), objAtualizar[0].Consumo.ToString().Trim());
+                        dgvAnalizarInventario.Rows[row.Index].Cells[15].Value = objAtualizar[0].MReservados.ToString().Trim();
+                        dgvAnalizarInventario.Rows[row.Index].Cells[16].Value = utilidades.mSolicitar(objAtualizar[0].MCalculados.ToString().Trim(), objAtualizar[0].MReservados.ToString().Trim());
+                    }
+                }
+            }
+           
+        }
+        #endregion
     }
 }
