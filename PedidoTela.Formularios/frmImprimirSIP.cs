@@ -16,105 +16,51 @@ namespace PedidoTela.Formularios
     public partial class frmImprimirSIP : MaterialSkin.Controls.MaterialForm
     {
         private Controlador control;
-        private List<ReporteReservaTela> lista;
+        private int idSolicitudTela;
 
-        public frmImprimirSIP(Controlador control)
+        public frmImprimirSIP(Controlador control, int idSolicitudTela)
         {
             this.control = control;
-            lista = new List<ReporteReservaTela>();
+            this.idSolicitudTela = idSolicitudTela;
             InitializeComponent();
         }
 
         private void frmImprimirSIP_Load(object sender, EventArgs e)
         {
-            cargarCombobox(cbxTipoSolicitud, control.getTipoSol());
-            cargarCombobox(cbxMuestrario, control.getListaMuestrario());
-            cargarCombobox(cbxTema, control.getListaTema());
-            cargarCombobox(cbxEntrada, control.getListaEntrada());
-            this.reportViewer1.RefreshReport();
-        }
-
-        #region otros métodos
-        /*<summary> Carga toda la información de los comboBox mostrados en la vista. </summary>
-        <param name="prmCombo">ComboBox a llenar.</param>
-        <param name="prmLista">Lista de tipo Objeto, la cual es cargada en el comboBox.</param>*/
-        private void cargarCombobox(ComboBox prmCombo, List<Objeto> prmLista)
-        {
-            prmCombo.DataSource = prmLista;
-            prmCombo.DisplayMember = "Nombre";
-            prmCombo.ValueMember = "Id";
-            prmCombo.SelectedIndex = -1;
-            prmCombo.AutoCompleteCustomSource = cargarCombobox(prmLista);
-            prmCombo.AutoCompleteMode = AutoCompleteMode.Suggest;
-            prmCombo.AutoCompleteSource = AutoCompleteSource.CustomSource;
-
-        }
-
-        /* <summary> Permite el autocompletado de los comboBox mostrados en la vista.</summary>
-        <param name="prmLista">Lista de tipo objeto la cual es autocompletada.</param>
-        <returns></returns>*/
-        private AutoCompleteStringCollection cargarCombobox(List<Objeto> prmLista)
-        {
-            AutoCompleteStringCollection datos = new AutoCompleteStringCollection();
-            foreach (Objeto obj in prmLista)
-            {
-                datos.Add(obj.Nombre);
-            }
-            return datos;
-        }
-        #endregion
-
-        private void btnConsultar_Click(object sender, EventArgs e)
-        {
-            dgvReserva.Rows.Clear();
-            ListaTela objTela = new ListaTela();
-            objTela.TipoSolicitud = (cbxTipoSolicitud.SelectedIndex != -1 && cbxTipoSolicitud.Text  != "") ? cbxTipoSolicitud.Text.ToString() : "";
-            objTela.EnsayoRefSimilar = txbEnsayoRef.Text.Trim();
-            objTela.Muestrario = cbxMuestrario.GetItemText(cbxMuestrario.SelectedItem);
-            objTela.Tema = cbxTema.GetItemText(cbxTema.SelectedItem);
-            objTela.Entrada = cbxEntrada.GetItemText(cbxEntrada.SelectedItem);
-            objTela.Disenador = "";
-            objTela.OcasionUso = "";
-            objTela.Estado = "";
-            objTela.FechaTienda = "";
-            objTela.RefTela = "";
-            objTela.NomTela = "";
-            objTela.Solicitud = "";
-            objTela.Color = "";
-            objTela.Clase = "";
-            objTela.Coordinado = "";
-            objTela.NumDibujo = "";
-            List<DetalleListaTela> detalles = control.consultarListaTelas(objTela);
-            lista = new List<ReporteReservaTela>();
-            if (detalles != null) {
-                foreach (DetalleListaTela detalle in detalles)
-                {
-                    if (detalle.CantidadReservado != "" && detalle.CantidadReservado != "0")
-                    {
-                        ReporteReservaTela item = new ReporteReservaTela();
-                        item.Muestrario = detalle.Muestrario;
-                        item.Tema = detalle.Muestrario;
-                        item.Entrada = detalle.Entrada;
-                        item.EnsayoReferencia = (detalle.Ensayo != null && detalle.Ensayo != "") ? detalle.Ensayo : detalle.RefSimilar;
-                        item.NumeroPedido = control.consultarPedido(detalle.IdProgramador, detalle.RefTela, detalle.Vte).Pedido;
-                        item.Color = detalle.DesColor;
-                        item.Cantidad = detalle.CantidadReservado;
-                        lista.Add(item);
-                    }
-                }
-
-                foreach (ReporteReservaTela item in lista) {
-                    dgvReserva.Rows.Add((object)item.EnsayoReferencia, (object) item.Muestrario, (object)item.Tema, (object)item.Entrada, (object)item.NumeroPedido, (object)item.Color, (object)item.Cantidad);
-                }
-            }
-            cargarReporte();
-        }
-
-        private void cargarReporte() {
-            ReportDataSource rds1 = new ReportDataSource("DataSet1", lista);
+            AgenciasExternos agencia = control.getAgenciasExt(idSolicitudTela);
+            List<AgenciasSIP> lista = new List<AgenciasSIP>();
+            List<AgenciasInfoConsolidar> listaInfoConsolidar = control.getInfoConsolidar(agencia.IdAgencias);
+            List<AgenciaTotalConsolidar> listaTotalConsolidado = control.getTotalConsolidado(agencia.IdAgencias);
+            this.reportViewer1.LocalReport.SetParameters(new ReportParameter("referencia", agencia.NombreTela));
+            this.reportViewer1.LocalReport.SetParameters(new ReportParameter("solicitud", agencia.SolicitadoPor));
+            this.reportViewer1.LocalReport.SetParameters(new ReportParameter("extension", agencia.Extencion));
+            this.reportViewer1.LocalReport.SetParameters(new ReportParameter("pedido", agencia.PedidoAgencia));
+            this.reportViewer1.LocalReport.SetParameters(new ReportParameter("orden", agencia.OrdenCompra));
             this.reportViewer1.LocalReport.DataSources.Clear();
-            this.reportViewer1.LocalReport.DataSources.Add(rds1);
+            if (listaInfoConsolidar != null && listaTotalConsolidado != null) {
+                int i = 0;
+                foreach (AgenciaTotalConsolidar elem in listaTotalConsolidado) {
+                    AgenciasSIP obj = new AgenciasSIP();
+                    obj.Color = elem.DesColor;
+                    obj.MCalculados = listaInfoConsolidar[i].MaSolicitar.ToString();
+                    obj.KgCalculados = elem.KgCalculados.ToString();
+                    lista.Add(obj);
+                    i++;
+                }
+                ReportDataSource rds1 = new ReportDataSource("agencia", lista);
+                //ReportDataSource rds2 = new ReportDataSource("infoconsolidar", listaInfoConsolidar);
+                //ReportDataSource rds3 = new ReportDataSource("totalconsolidar", listaTotalConsolidado);
+                this.reportViewer1.LocalReport.DataSources.Add(rds1);
+                //this.reportViewer1.LocalReport.DataSources.Add(rds2);
+                //this.reportViewer1.LocalReport.DataSources.Add(rds3);
+            }
+            
             this.reportViewer1.RefreshReport();
+        }
+
+        private void btnSalir_Click(object sender, EventArgs e)
+        {
+            this.Close();
         }
     }
 }

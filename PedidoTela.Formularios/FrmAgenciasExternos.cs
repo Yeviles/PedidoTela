@@ -526,6 +526,17 @@ namespace PedidoTela.Formularios
             return datos;
         }
 
+        private void btnConfirmarSIP_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void btnImprimirSIP_Click(object sender, EventArgs e)
+        {
+            frmImprimirSIP imprimir = new frmImprimirSIP(control, IdsolTela);
+            imprimir.ShowDialog();
+        }
+
         /// <summary>
         /// Realiza el cargue inicial de los datos para la vista (frmAgenciasExternos).
         /// </summary>
@@ -573,7 +584,7 @@ namespace PedidoTela.Formularios
                     dgvInfoConsolidar.Rows.Add(obj.CodColor, obj.DesColor, obj.Tiendas, obj.Exito,
                         obj.Cencosud, obj.Sao, obj.ComercioOrg, obj.Rosado, obj.Otros, obj.TotalUnidades, obj.Consumo, obj.MCalculados, obj.MReservados, obj.MaSolicitar);
                 }
-                btnGrabar.Enabled = false;
+                //btnGrabar.Enabled = false;
             }
 
             /*Carga detalle Toltal a  Consolidar*/
@@ -585,12 +596,12 @@ namespace PedidoTela.Formularios
                     dgvTotalConsolidado.Rows.Add(obj.CodColor, obj.DesColor, obj.Tiendas, obj.Exito,
                         obj.Cencosud, obj.Sao, obj.ComercioOrg, obj.Rosado, obj.Otros, obj.TotalUnidades, obj.MCalculados, obj.KgCalculados, obj.TotalaPedir, obj.UniMedidaTela);
                 }
-                btnGrabar.Enabled = false;
+                //btnGrabar.Enabled = false;
             }
           
                 this.bandera = true;
-                dgvInfoConsolidar.ReadOnly = true;
-                dgvTotalConsolidado.ReadOnly = true;
+                //dgvInfoConsolidar.ReadOnly = true;
+                //dgvTotalConsolidado.ReadOnly = true;
               
             }
         }

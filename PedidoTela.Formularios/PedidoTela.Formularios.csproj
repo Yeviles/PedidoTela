@@ -53,10 +53,10 @@
     <StartupObject>PedidoTela.Formularios.Program</StartupObject>
   </PropertyGroup>
   <PropertyGroup>
-    <ManifestCertificateThumbprint>5A1D1C8C6E14271BEFF359C1BC982EEA417EC09E</ManifestCertificateThumbprint>
+    <ManifestCertificateThumbprint>06A8CF0EB8BCDB18280BDC23487FC17F890E8E3C</ManifestCertificateThumbprint>
   </PropertyGroup>
   <PropertyGroup>
-    <ManifestKeyFile>PedidoTela.Formularios_2_TemporaryKey.pfx</ManifestKeyFile>
+    <ManifestKeyFile>PedidoTela.Formularios_1_TemporaryKey.pfx</ManifestKeyFile>
   </PropertyGroup>
   <PropertyGroup>
     <GenerateManifests>true</GenerateManifests>
@@ -139,6 +139,12 @@
     </Compile>
     <Compile Include="frmEditarDsolicitudTela.Designer.cs">
       <DependentUpon>frmEditarDsolicitudTela.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frmImprimirReserva.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmImprimirReserva.Designer.cs">
+      <DependentUpon>frmImprimirReserva.cs</DependentUpon>
     </Compile>
     <Compile Include="frmImprimirSIP.cs">
       <SubType>Form</SubType>
@@ -272,6 +278,9 @@
     <EmbeddedResource Include="frmEditarDsolicitudTela.resx">
       <DependentUpon>frmEditarDsolicitudTela.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="frmImprimirReserva.resx">
+      <DependentUpon>frmImprimirReserva.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="frmImprimirSIP.resx">
       <DependentUpon>frmImprimirSIP.cs</DependentUpon>
     </EmbeddedResource>
@@ -329,6 +338,7 @@
     <EmbeddedResource Include="frmSolicitudUnicolor.resx">
       <DependentUpon>frmSolicitudUnicolor.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="PDFImprimirSIP.rdlc" />
     <EmbeddedResource Include="PDFReporteReserva.rdlc" />
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
@@ -339,6 +349,10 @@
     <None Include="PedidoTela.Formularios_1_TemporaryKey.pfx" />
     <None Include="PedidoTela.Formularios_2_TemporaryKey.pfx" />
     <None Include="PedidoTela.Formularios_TemporaryKey.pfx" />
+    <None Include="Properties\DataSources\PedidoTela.Entidades.Logica.AgenciasExternos.datasource" />
+    <None Include="Properties\DataSources\PedidoTela.Entidades.Logica.AgenciasInfoConsolidar.datasource" />
+    <None Include="Properties\DataSources\PedidoTela.Entidades.Logica.AgenciasSIP.datasource" />
+    <None Include="Properties\DataSources\PedidoTela.Entidades.Logica.AgenciaTotalConsolidar.datasource" />
     <None Include="Properties\DataSources\PedidoTela.Entidades.Logica.ReporteReservaTela.datasource" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
@@ -457,6 +471,8 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="imgs\print2.png" />
+  </ItemGroup>
+  <ItemGroup>
     <Content Include="SqlServerTypes\readme.htm" />
     <Content Include="SqlServerTypes\x64\msvcr120.dll">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>

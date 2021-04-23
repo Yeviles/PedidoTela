@@ -206,7 +206,7 @@ namespace PedidoTela.Formularios
 
         private void btnImprimir_Click(object sender, EventArgs e)
         {
-            frmImprimirSIP imprimir = new frmImprimirSIP(control);
+            frmImprimirReserva imprimir = new frmImprimirReserva(control);
             imprimir.ShowDialog();
         }
 

@@ -29,8 +29,8 @@ namespace PedidoTela.Formularios
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle5 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle6 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
             this.lbSolicitadoPor = new System.Windows.Forms.Label();
             this.lbCargo = new System.Windows.Forms.Label();
             this.lbDepartamento = new System.Windows.Forms.Label();
@@ -101,11 +101,6 @@ namespace PedidoTela.Formularios
             this.mReservados = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.maSolicitar = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dgvTotalConsolidado = new System.Windows.Forms.DataGridView();
-            this.lbTotalconsolidado = new System.Windows.Forms.Label();
-            this.panel9 = new System.Windows.Forms.Panel();
-            this.btnConfirmarSIP = new System.Windows.Forms.Button();
-            this.btnGrabar = new System.Windows.Forms.Button();
-            this.btnSalir = new System.Windows.Forms.Button();
             this.codigoColor = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.desColor = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dataGridViewTextBoxColumn3 = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -120,6 +115,11 @@ namespace PedidoTela.Formularios
             this.kgCalculados = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.totalaPedir = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.undMedidaTela = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.lbTotalconsolidado = new System.Windows.Forms.Label();
+            this.panel9 = new System.Windows.Forms.Panel();
+            this.btnImprimirSIP = new System.Windows.Forms.Button();
+            this.btnGrabar = new System.Windows.Forms.Button();
+            this.btnSalir = new System.Windows.Forms.Button();
             this.pnlEncabezado.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvInfoConsolidar)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dgvTotalConsolidado)).BeginInit();
@@ -131,7 +131,7 @@ namespace PedidoTela.Formularios
             this.lbSolicitadoPor.AutoSize = true;
             this.lbSolicitadoPor.Location = new System.Drawing.Point(17, 12);
             this.lbSolicitadoPor.Name = "lbSolicitadoPor";
-            this.lbSolicitadoPor.Size = new System.Drawing.Size(110, 17);
+            this.lbSolicitadoPor.Size = new System.Drawing.Size(90, 13);
             this.lbSolicitadoPor.TabIndex = 28;
             this.lbSolicitadoPor.Text = "Solicitado por:";
             // 
@@ -140,7 +140,7 @@ namespace PedidoTela.Formularios
             this.lbCargo.AutoSize = true;
             this.lbCargo.Location = new System.Drawing.Point(464, 9);
             this.lbCargo.Name = "lbCargo";
-            this.lbCargo.Size = new System.Drawing.Size(56, 17);
+            this.lbCargo.Size = new System.Drawing.Size(47, 13);
             this.lbCargo.TabIndex = 29;
             this.lbCargo.Text = "Cargo:";
             // 
@@ -149,7 +149,7 @@ namespace PedidoTela.Formularios
             this.lbDepartamento.AutoSize = true;
             this.lbDepartamento.Location = new System.Drawing.Point(944, 15);
             this.lbDepartamento.Name = "lbDepartamento";
-            this.lbDepartamento.Size = new System.Drawing.Size(115, 17);
+            this.lbDepartamento.Size = new System.Drawing.Size(94, 13);
             this.lbDepartamento.TabIndex = 30;
             this.lbDepartamento.Text = "Departamento:";
             // 
@@ -158,7 +158,7 @@ namespace PedidoTela.Formularios
             this.lbTelefono.AutoSize = true;
             this.lbTelefono.Location = new System.Drawing.Point(15, 148);
             this.lbTelefono.Name = "lbTelefono";
-            this.lbTelefono.Size = new System.Drawing.Size(72, 17);
+            this.lbTelefono.Size = new System.Drawing.Size(60, 13);
             this.lbTelefono.TabIndex = 31;
             this.lbTelefono.Text = "Telefono:";
             // 
@@ -167,7 +167,7 @@ namespace PedidoTela.Formularios
             this.lbExtencion.AutoSize = true;
             this.lbExtencion.Location = new System.Drawing.Point(15, 40);
             this.lbExtencion.Name = "lbExtencion";
-            this.lbExtencion.Size = new System.Drawing.Size(83, 17);
+            this.lbExtencion.Size = new System.Drawing.Size(67, 13);
             this.lbExtencion.TabIndex = 32;
             this.lbExtencion.Text = "Extención:";
             // 
@@ -176,7 +176,7 @@ namespace PedidoTela.Formularios
             this.lbReferenciaTela.AutoSize = true;
             this.lbReferenciaTela.Location = new System.Drawing.Point(464, 34);
             this.lbReferenciaTela.Name = "lbReferenciaTela";
-            this.lbReferenciaTela.Size = new System.Drawing.Size(117, 17);
+            this.lbReferenciaTela.Size = new System.Drawing.Size(100, 13);
             this.lbReferenciaTela.TabIndex = 33;
             this.lbReferenciaTela.Text = "Referencia Tela:";
             // 
@@ -185,7 +185,7 @@ namespace PedidoTela.Formularios
             this.label7.AutoSize = true;
             this.label7.Location = new System.Drawing.Point(944, 42);
             this.label7.Name = "label7";
-            this.label7.Size = new System.Drawing.Size(90, 17);
+            this.label7.Size = new System.Drawing.Size(74, 13);
             this.label7.TabIndex = 34;
             this.label7.Text = "Tipo Tejido:";
             // 
@@ -194,7 +194,7 @@ namespace PedidoTela.Formularios
             this.lbFondo.AutoSize = true;
             this.lbFondo.Location = new System.Drawing.Point(467, 144);
             this.lbFondo.Name = "lbFondo";
-            this.lbFondo.Size = new System.Drawing.Size(58, 17);
+            this.lbFondo.Size = new System.Drawing.Size(46, 13);
             this.lbFondo.TabIndex = 35;
             this.lbFondo.Text = "Fondo:";
             // 
@@ -203,7 +203,7 @@ namespace PedidoTela.Formularios
             this.lbNombreTela.AutoSize = true;
             this.lbNombreTela.Location = new System.Drawing.Point(17, 65);
             this.lbNombreTela.Name = "lbNombreTela";
-            this.lbNombreTela.Size = new System.Drawing.Size(100, 17);
+            this.lbNombreTela.Size = new System.Drawing.Size(84, 13);
             this.lbNombreTela.TabIndex = 36;
             this.lbNombreTela.Text = "Nombre Tela:";
             // 
@@ -212,7 +212,7 @@ namespace PedidoTela.Formularios
             this.lbAnchoTela.AutoSize = true;
             this.lbAnchoTela.Location = new System.Drawing.Point(466, 57);
             this.lbAnchoTela.Name = "lbAnchoTela";
-            this.lbAnchoTela.Size = new System.Drawing.Size(89, 17);
+            this.lbAnchoTela.Size = new System.Drawing.Size(74, 13);
             this.lbAnchoTela.TabIndex = 37;
             this.lbAnchoTela.Text = "Ancho Tela:";
             // 
@@ -221,7 +221,7 @@ namespace PedidoTela.Formularios
             this.lbRendimiento.AutoSize = true;
             this.lbRendimiento.Location = new System.Drawing.Point(944, 64);
             this.lbRendimiento.Name = "lbRendimiento";
-            this.lbRendimiento.Size = new System.Drawing.Size(101, 17);
+            this.lbRendimiento.Size = new System.Drawing.Size(83, 13);
             this.lbRendimiento.TabIndex = 38;
             this.lbRendimiento.Text = "Rendimiento:";
             // 
@@ -230,7 +230,7 @@ namespace PedidoTela.Formularios
             this.lbMuestrario.AutoSize = true;
             this.lbMuestrario.Location = new System.Drawing.Point(17, 93);
             this.lbMuestrario.Name = "lbMuestrario";
-            this.lbMuestrario.Size = new System.Drawing.Size(88, 17);
+            this.lbMuestrario.Size = new System.Drawing.Size(72, 13);
             this.lbMuestrario.TabIndex = 40;
             this.lbMuestrario.Text = "Muestrario:";
             // 
@@ -239,7 +239,7 @@ namespace PedidoTela.Formularios
             this.lbTema.AutoSize = true;
             this.lbTema.Location = new System.Drawing.Point(944, 90);
             this.lbTema.Name = "lbTema";
-            this.lbTema.Size = new System.Drawing.Size(50, 17);
+            this.lbTema.Size = new System.Drawing.Size(43, 13);
             this.lbTema.TabIndex = 41;
             this.lbTema.Text = "Tema:";
             // 
@@ -248,7 +248,7 @@ namespace PedidoTela.Formularios
             this.lbOcasionUso.AutoSize = true;
             this.lbOcasionUso.Location = new System.Drawing.Point(467, 82);
             this.lbOcasionUso.Name = "lbOcasionUso";
-            this.lbOcasionUso.Size = new System.Drawing.Size(123, 17);
+            this.lbOcasionUso.Size = new System.Drawing.Size(100, 13);
             this.lbOcasionUso.TabIndex = 42;
             this.lbOcasionUso.Text = "Ocasión de Uso:";
             // 
@@ -257,7 +257,7 @@ namespace PedidoTela.Formularios
             this.lbEntrada.AutoSize = true;
             this.lbEntrada.Location = new System.Drawing.Point(15, 174);
             this.lbEntrada.Name = "lbEntrada";
-            this.lbEntrada.Size = new System.Drawing.Size(69, 17);
+            this.lbEntrada.Size = new System.Drawing.Size(56, 13);
             this.lbEntrada.TabIndex = 43;
             this.lbEntrada.Text = "Entrada:";
             // 
@@ -266,7 +266,7 @@ namespace PedidoTela.Formularios
             this.lbFechaTienda.AutoSize = true;
             this.lbFechaTienda.Location = new System.Drawing.Point(468, 112);
             this.lbFechaTienda.Name = "lbFechaTienda";
-            this.lbFechaTienda.Size = new System.Drawing.Size(105, 17);
+            this.lbFechaTienda.Size = new System.Drawing.Size(87, 13);
             this.lbFechaTienda.TabIndex = 44;
             this.lbFechaTienda.Text = "Fecha Tienda:";
             // 
@@ -275,7 +275,7 @@ namespace PedidoTela.Formularios
             this.lbEnsayoRef.AutoSize = true;
             this.lbEnsayoRef.Location = new System.Drawing.Point(16, 120);
             this.lbEnsayoRef.Name = "lbEnsayoRef";
-            this.lbEnsayoRef.Size = new System.Drawing.Size(149, 17);
+            this.lbEnsayoRef.Size = new System.Drawing.Size(124, 13);
             this.lbEnsayoRef.TabIndex = 45;
             this.lbEnsayoRef.Text = "Ensayo/Ref. Similar:";
             // 
@@ -284,7 +284,7 @@ namespace PedidoTela.Formularios
             this.label19.AutoSize = true;
             this.label19.Location = new System.Drawing.Point(944, 119);
             this.label19.Name = "label19";
-            this.label19.Size = new System.Drawing.Size(105, 17);
+            this.label19.Size = new System.Drawing.Size(87, 13);
             this.label19.TabIndex = 46;
             this.label19.Text = "Diseñador(a):";
             // 
@@ -293,7 +293,7 @@ namespace PedidoTela.Formularios
             this.lbDescripcionPrenda.AutoSize = true;
             this.lbDescripcionPrenda.Location = new System.Drawing.Point(466, 171);
             this.lbDescripcionPrenda.Name = "lbDescripcionPrenda";
-            this.lbDescripcionPrenda.Size = new System.Drawing.Size(147, 17);
+            this.lbDescripcionPrenda.Size = new System.Drawing.Size(122, 13);
             this.lbDescripcionPrenda.TabIndex = 47;
             this.lbDescripcionPrenda.Text = "Descripción Prenda:";
             // 
@@ -302,7 +302,7 @@ namespace PedidoTela.Formularios
             this.lbNit.AutoSize = true;
             this.lbNit.Location = new System.Drawing.Point(467, 197);
             this.lbNit.Name = "lbNit";
-            this.lbNit.Size = new System.Drawing.Size(33, 17);
+            this.lbNit.Size = new System.Drawing.Size(27, 13);
             this.lbNit.TabIndex = 48;
             this.lbNit.Text = "Nit:";
             // 
@@ -311,7 +311,7 @@ namespace PedidoTela.Formularios
             this.lbContacto.AutoSize = true;
             this.lbContacto.Location = new System.Drawing.Point(944, 180);
             this.lbContacto.Name = "lbContacto";
-            this.lbContacto.Size = new System.Drawing.Size(78, 17);
+            this.lbContacto.Size = new System.Drawing.Size(63, 13);
             this.lbContacto.TabIndex = 49;
             this.lbContacto.Text = "Contacto:";
             // 
@@ -320,7 +320,7 @@ namespace PedidoTela.Formularios
             this.lbProveedor.AutoSize = true;
             this.lbProveedor.Location = new System.Drawing.Point(15, 199);
             this.lbProveedor.Name = "lbProveedor";
-            this.lbProveedor.Size = new System.Drawing.Size(85, 17);
+            this.lbProveedor.Size = new System.Drawing.Size(71, 13);
             this.lbProveedor.TabIndex = 50;
             this.lbProveedor.Text = "Proveedor:";
             // 
@@ -329,7 +329,7 @@ namespace PedidoTela.Formularios
             this.lbPedidoAgencia.AutoSize = true;
             this.lbPedidoAgencia.Location = new System.Drawing.Point(944, 208);
             this.lbPedidoAgencia.Name = "lbPedidoAgencia";
-            this.lbPedidoAgencia.Size = new System.Drawing.Size(119, 17);
+            this.lbPedidoAgencia.Size = new System.Drawing.Size(99, 13);
             this.lbPedidoAgencia.TabIndex = 51;
             this.lbPedidoAgencia.Text = "Pedido Agencia:";
             // 
@@ -338,7 +338,7 @@ namespace PedidoTela.Formularios
             this.lbOrdenCompra.AutoSize = true;
             this.lbOrdenCompra.Location = new System.Drawing.Point(14, 224);
             this.lbOrdenCompra.Name = "lbOrdenCompra";
-            this.lbOrdenCompra.Size = new System.Drawing.Size(117, 17);
+            this.lbOrdenCompra.Size = new System.Drawing.Size(97, 13);
             this.lbOrdenCompra.TabIndex = 52;
             this.lbOrdenCompra.Text = "Orden Compra:";
             // 
@@ -347,7 +347,7 @@ namespace PedidoTela.Formularios
             this.lbFechaLegada.AutoSize = true;
             this.lbFechaLegada.Location = new System.Drawing.Point(468, 224);
             this.lbFechaLegada.Name = "lbFechaLegada";
-            this.lbFechaLegada.Size = new System.Drawing.Size(138, 17);
+            this.lbFechaLegada.Size = new System.Drawing.Size(117, 13);
             this.lbFechaLegada.TabIndex = 53;
             this.lbFechaLegada.Text = "Fecha llegada Tela:";
             // 
@@ -357,7 +357,7 @@ namespace PedidoTela.Formularios
             this.lbInformacion.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
             this.lbInformacion.Location = new System.Drawing.Point(17, 457);
             this.lbInformacion.Name = "lbInformacion";
-            this.lbInformacion.Size = new System.Drawing.Size(191, 19);
+            this.lbInformacion.Size = new System.Drawing.Size(159, 15);
             this.lbInformacion.TabIndex = 54;
             this.lbInformacion.Text = "Información a Consolidar:";
             // 
@@ -368,7 +368,7 @@ namespace PedidoTela.Formularios
             this.txtSolicitadoPor.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.txtSolicitadoPor.Name = "txtSolicitadoPor";
             this.txtSolicitadoPor.ReadOnly = true;
-            this.txtSolicitadoPor.Size = new System.Drawing.Size(215, 23);
+            this.txtSolicitadoPor.Size = new System.Drawing.Size(215, 20);
             this.txtSolicitadoPor.TabIndex = 56;
             // 
             // txtCargo
@@ -378,7 +378,7 @@ namespace PedidoTela.Formularios
             this.txtCargo.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.txtCargo.Name = "txtCargo";
             this.txtCargo.ReadOnly = true;
-            this.txtCargo.Size = new System.Drawing.Size(215, 23);
+            this.txtCargo.Size = new System.Drawing.Size(215, 20);
             this.txtCargo.TabIndex = 57;
             // 
             // txtDepartamento
@@ -388,7 +388,7 @@ namespace PedidoTela.Formularios
             this.txtDepartamento.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.txtDepartamento.Name = "txtDepartamento";
             this.txtDepartamento.ReadOnly = true;
-            this.txtDepartamento.Size = new System.Drawing.Size(215, 23);
+            this.txtDepartamento.Size = new System.Drawing.Size(215, 20);
             this.txtDepartamento.TabIndex = 58;
             // 
             // txtTelefono
@@ -398,7 +398,7 @@ namespace PedidoTela.Formularios
             this.txtTelefono.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.txtTelefono.Name = "txtTelefono";
             this.txtTelefono.ReadOnly = true;
-            this.txtTelefono.Size = new System.Drawing.Size(215, 23);
+            this.txtTelefono.Size = new System.Drawing.Size(215, 20);
             this.txtTelefono.TabIndex = 59;
             // 
             // txtExtencion
@@ -406,7 +406,7 @@ namespace PedidoTela.Formularios
             this.txtExtencion.Location = new System.Drawing.Point(189, 36);
             this.txtExtencion.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.txtExtencion.Name = "txtExtencion";
-            this.txtExtencion.Size = new System.Drawing.Size(215, 23);
+            this.txtExtencion.Size = new System.Drawing.Size(215, 20);
             this.txtExtencion.TabIndex = 60;
             this.txtExtencion.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtExtencion_KeyPress);
             // 
@@ -417,7 +417,7 @@ namespace PedidoTela.Formularios
             this.txtRefTela.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.txtRefTela.Name = "txtRefTela";
             this.txtRefTela.ReadOnly = true;
-            this.txtRefTela.Size = new System.Drawing.Size(215, 23);
+            this.txtRefTela.Size = new System.Drawing.Size(215, 20);
             this.txtRefTela.TabIndex = 61;
             // 
             // txtNomTela
@@ -427,7 +427,7 @@ namespace PedidoTela.Formularios
             this.txtNomTela.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.txtNomTela.Name = "txtNomTela";
             this.txtNomTela.ReadOnly = true;
-            this.txtNomTela.Size = new System.Drawing.Size(215, 23);
+            this.txtNomTela.Size = new System.Drawing.Size(215, 20);
             this.txtNomTela.TabIndex = 62;
             // 
             // txtAnchoTela
@@ -435,7 +435,7 @@ namespace PedidoTela.Formularios
             this.txtAnchoTela.Location = new System.Drawing.Point(654, 61);
             this.txtAnchoTela.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.txtAnchoTela.Name = "txtAnchoTela";
-            this.txtAnchoTela.Size = new System.Drawing.Size(215, 23);
+            this.txtAnchoTela.Size = new System.Drawing.Size(215, 20);
             this.txtAnchoTela.TabIndex = 63;
             this.txtAnchoTela.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtAnchoTela_KeyPress);
             // 
@@ -446,7 +446,7 @@ namespace PedidoTela.Formularios
             this.txtTipoTejido.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.txtTipoTejido.Name = "txtTipoTejido";
             this.txtTipoTejido.ReadOnly = true;
-            this.txtTipoTejido.Size = new System.Drawing.Size(215, 23);
+            this.txtTipoTejido.Size = new System.Drawing.Size(215, 20);
             this.txtTipoTejido.TabIndex = 64;
             // 
             // txtRendimiento
@@ -454,7 +454,7 @@ namespace PedidoTela.Formularios
             this.txtRendimiento.Location = new System.Drawing.Point(1111, 65);
             this.txtRendimiento.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.txtRendimiento.Name = "txtRendimiento";
-            this.txtRendimiento.Size = new System.Drawing.Size(215, 23);
+            this.txtRendimiento.Size = new System.Drawing.Size(215, 20);
             this.txtRendimiento.TabIndex = 65;
             this.txtRendimiento.TextChanged += new System.EventHandler(this.txtRendimiento_TextChanged);
             this.txtRendimiento.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtRendimiento_KeyPress);
@@ -466,7 +466,7 @@ namespace PedidoTela.Formularios
             this.txtFondo.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.txtFondo.Name = "txtFondo";
             this.txtFondo.ReadOnly = true;
-            this.txtFondo.Size = new System.Drawing.Size(215, 23);
+            this.txtFondo.Size = new System.Drawing.Size(215, 20);
             this.txtFondo.TabIndex = 66;
             // 
             // txtMuestrario
@@ -476,7 +476,7 @@ namespace PedidoTela.Formularios
             this.txtMuestrario.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.txtMuestrario.Name = "txtMuestrario";
             this.txtMuestrario.ReadOnly = true;
-            this.txtMuestrario.Size = new System.Drawing.Size(215, 23);
+            this.txtMuestrario.Size = new System.Drawing.Size(215, 20);
             this.txtMuestrario.TabIndex = 68;
             // 
             // txtOcasionUso
@@ -486,7 +486,7 @@ namespace PedidoTela.Formularios
             this.txtOcasionUso.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.txtOcasionUso.Name = "txtOcasionUso";
             this.txtOcasionUso.ReadOnly = true;
-            this.txtOcasionUso.Size = new System.Drawing.Size(215, 23);
+            this.txtOcasionUso.Size = new System.Drawing.Size(215, 20);
             this.txtOcasionUso.TabIndex = 69;
             // 
             // txtTema
@@ -496,7 +496,7 @@ namespace PedidoTela.Formularios
             this.txtTema.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.txtTema.Name = "txtTema";
             this.txtTema.ReadOnly = true;
-            this.txtTema.Size = new System.Drawing.Size(215, 23);
+            this.txtTema.Size = new System.Drawing.Size(215, 20);
             this.txtTema.TabIndex = 70;
             // 
             // txtEntrada
@@ -506,7 +506,7 @@ namespace PedidoTela.Formularios
             this.txtEntrada.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.txtEntrada.Name = "txtEntrada";
             this.txtEntrada.ReadOnly = true;
-            this.txtEntrada.Size = new System.Drawing.Size(215, 23);
+            this.txtEntrada.Size = new System.Drawing.Size(215, 20);
             this.txtEntrada.TabIndex = 71;
             // 
             // txtDisenadora
@@ -516,7 +516,7 @@ namespace PedidoTela.Formularios
             this.txtDisenadora.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.txtDisenadora.Name = "txtDisenadora";
             this.txtDisenadora.ReadOnly = true;
-            this.txtDisenadora.Size = new System.Drawing.Size(215, 23);
+            this.txtDisenadora.Size = new System.Drawing.Size(215, 20);
             this.txtDisenadora.TabIndex = 72;
             // 
             // txtEnsayoRef
@@ -526,7 +526,7 @@ namespace PedidoTela.Formularios
             this.txtEnsayoRef.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.txtEnsayoRef.Name = "txtEnsayoRef";
             this.txtEnsayoRef.ReadOnly = true;
-            this.txtEnsayoRef.Size = new System.Drawing.Size(216, 23);
+            this.txtEnsayoRef.Size = new System.Drawing.Size(216, 20);
             this.txtEnsayoRef.TabIndex = 73;
             // 
             // txtDescPrenda
@@ -536,7 +536,7 @@ namespace PedidoTela.Formularios
             this.txtDescPrenda.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.txtDescPrenda.Name = "txtDescPrenda";
             this.txtDescPrenda.ReadOnly = true;
-            this.txtDescPrenda.Size = new System.Drawing.Size(215, 23);
+            this.txtDescPrenda.Size = new System.Drawing.Size(215, 20);
             this.txtDescPrenda.TabIndex = 79;
             // 
             // txtProveedor
@@ -544,7 +544,7 @@ namespace PedidoTela.Formularios
             this.txtProveedor.Location = new System.Drawing.Point(189, 195);
             this.txtProveedor.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.txtProveedor.Name = "txtProveedor";
-            this.txtProveedor.Size = new System.Drawing.Size(215, 23);
+            this.txtProveedor.Size = new System.Drawing.Size(215, 20);
             this.txtProveedor.TabIndex = 80;
             // 
             // txtNit
@@ -552,7 +552,7 @@ namespace PedidoTela.Formularios
             this.txtNit.Location = new System.Drawing.Point(654, 193);
             this.txtNit.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.txtNit.Name = "txtNit";
-            this.txtNit.Size = new System.Drawing.Size(215, 23);
+            this.txtNit.Size = new System.Drawing.Size(215, 20);
             this.txtNit.TabIndex = 81;
             // 
             // txtContacto
@@ -560,7 +560,7 @@ namespace PedidoTela.Formularios
             this.txtContacto.Location = new System.Drawing.Point(1111, 174);
             this.txtContacto.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.txtContacto.Name = "txtContacto";
-            this.txtContacto.Size = new System.Drawing.Size(215, 23);
+            this.txtContacto.Size = new System.Drawing.Size(215, 20);
             this.txtContacto.TabIndex = 82;
             // 
             // txtPedidoAgencia
@@ -568,7 +568,7 @@ namespace PedidoTela.Formularios
             this.txtPedidoAgencia.Location = new System.Drawing.Point(1111, 202);
             this.txtPedidoAgencia.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.txtPedidoAgencia.Name = "txtPedidoAgencia";
-            this.txtPedidoAgencia.Size = new System.Drawing.Size(215, 23);
+            this.txtPedidoAgencia.Size = new System.Drawing.Size(215, 20);
             this.txtPedidoAgencia.TabIndex = 83;
             // 
             // txtOrdenCompra
@@ -576,7 +576,7 @@ namespace PedidoTela.Formularios
             this.txtOrdenCompra.Location = new System.Drawing.Point(189, 222);
             this.txtOrdenCompra.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.txtOrdenCompra.Name = "txtOrdenCompra";
-            this.txtOrdenCompra.Size = new System.Drawing.Size(215, 23);
+            this.txtOrdenCompra.Size = new System.Drawing.Size(215, 20);
             this.txtOrdenCompra.TabIndex = 84;
             // 
             // dtpFechaLlegada
@@ -584,7 +584,7 @@ namespace PedidoTela.Formularios
             this.dtpFechaLlegada.Location = new System.Drawing.Point(654, 221);
             this.dtpFechaLlegada.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.dtpFechaLlegada.Name = "dtpFechaLlegada";
-            this.dtpFechaLlegada.Size = new System.Drawing.Size(215, 23);
+            this.dtpFechaLlegada.Size = new System.Drawing.Size(215, 20);
             this.dtpFechaLlegada.TabIndex = 85;
             // 
             // pnlEncabezado
@@ -654,7 +654,7 @@ namespace PedidoTela.Formularios
             this.cbxComposicion.Location = new System.Drawing.Point(1111, 145);
             this.cbxComposicion.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.cbxComposicion.Name = "cbxComposicion";
-            this.cbxComposicion.Size = new System.Drawing.Size(215, 24);
+            this.cbxComposicion.Size = new System.Drawing.Size(215, 20);
             this.cbxComposicion.TabIndex = 87;
             // 
             // txtFechaTienda
@@ -664,7 +664,7 @@ namespace PedidoTela.Formularios
             this.txtFechaTienda.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.txtFechaTienda.Name = "txtFechaTienda";
             this.txtFechaTienda.ReadOnly = true;
-            this.txtFechaTienda.Size = new System.Drawing.Size(213, 23);
+            this.txtFechaTienda.Size = new System.Drawing.Size(213, 20);
             this.txtFechaTienda.TabIndex = 86;
             // 
             // lbComposicion
@@ -672,7 +672,7 @@ namespace PedidoTela.Formularios
             this.lbComposicion.AutoSize = true;
             this.lbComposicion.Location = new System.Drawing.Point(944, 152);
             this.lbComposicion.Name = "lbComposicion";
-            this.lbComposicion.Size = new System.Drawing.Size(103, 17);
+            this.lbComposicion.Size = new System.Drawing.Size(85, 13);
             this.lbComposicion.TabIndex = 39;
             this.lbComposicion.Text = "Composición:";
             // 
@@ -683,14 +683,14 @@ namespace PedidoTela.Formularios
             this.dgvInfoConsolidar.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.dgvInfoConsolidar.AutoSizeRowsMode = System.Windows.Forms.DataGridViewAutoSizeRowsMode.DisplayedCells;
             this.dgvInfoConsolidar.BackgroundColor = System.Drawing.Color.White;
-            dataGridViewCellStyle5.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle5.BackColor = System.Drawing.SystemColors.ScrollBar;
-            dataGridViewCellStyle5.Font = new System.Drawing.Font("Verdana", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle5.ForeColor = System.Drawing.Color.Navy;
-            dataGridViewCellStyle5.SelectionBackColor = System.Drawing.SystemColors.ScrollBar;
-            dataGridViewCellStyle5.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle5.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dgvInfoConsolidar.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle5;
+            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle1.BackColor = System.Drawing.SystemColors.ScrollBar;
+            dataGridViewCellStyle1.Font = new System.Drawing.Font("Verdana", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle1.ForeColor = System.Drawing.Color.Navy;
+            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.ScrollBar;
+            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dgvInfoConsolidar.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
             this.dgvInfoConsolidar.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgvInfoConsolidar.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.codColor,
@@ -827,14 +827,14 @@ namespace PedidoTela.Formularios
             this.dgvTotalConsolidado.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.dgvTotalConsolidado.AutoSizeRowsMode = System.Windows.Forms.DataGridViewAutoSizeRowsMode.DisplayedCells;
             this.dgvTotalConsolidado.BackgroundColor = System.Drawing.Color.White;
-            dataGridViewCellStyle6.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle6.BackColor = System.Drawing.SystemColors.ScrollBar;
-            dataGridViewCellStyle6.Font = new System.Drawing.Font("Verdana", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle6.ForeColor = System.Drawing.Color.Navy;
-            dataGridViewCellStyle6.SelectionBackColor = System.Drawing.SystemColors.ScrollBar;
-            dataGridViewCellStyle6.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle6.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dgvTotalConsolidado.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle6;
+            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle2.BackColor = System.Drawing.SystemColors.ScrollBar;
+            dataGridViewCellStyle2.Font = new System.Drawing.Font("Verdana", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle2.ForeColor = System.Drawing.Color.Navy;
+            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.SystemColors.ScrollBar;
+            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dgvTotalConsolidado.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle2;
             this.dgvTotalConsolidado.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgvTotalConsolidado.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.codigoColor,
@@ -865,74 +865,6 @@ namespace PedidoTela.Formularios
             this.dgvTotalConsolidado.TabIndex = 88;
             this.dgvTotalConsolidado.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvTotalConsolidado_CellClick);
             this.dgvTotalConsolidado.CellEndEdit += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvTotalConsolidado_CellEndEdit);
-            // 
-            // lbTotalconsolidado
-            // 
-            this.lbTotalconsolidado.AutoSize = true;
-            this.lbTotalconsolidado.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
-            this.lbTotalconsolidado.Location = new System.Drawing.Point(13, 609);
-            this.lbTotalconsolidado.Name = "lbTotalconsolidado";
-            this.lbTotalconsolidado.Size = new System.Drawing.Size(142, 19);
-            this.lbTotalconsolidado.TabIndex = 89;
-            this.lbTotalconsolidado.Text = "Total consolidado: ";
-            // 
-            // panel9
-            // 
-            this.panel9.BackColor = System.Drawing.SystemColors.ScrollBar;
-            this.panel9.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.panel9.Controls.Add(this.btnConfirmarSIP);
-            this.panel9.Controls.Add(this.btnGrabar);
-            this.panel9.Controls.Add(this.btnSalir);
-            this.panel9.Location = new System.Drawing.Point(13, 82);
-            this.panel9.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.panel9.Name = "panel9";
-            this.panel9.Size = new System.Drawing.Size(1358, 56);
-            this.panel9.TabIndex = 136;
-            // 
-            // btnConfirmarSIP
-            // 
-            this.btnConfirmarSIP.Font = new System.Drawing.Font("Verdana", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnConfirmarSIP.Image = global::PedidoTela.Formularios.Properties.Resources.mbriprint_99560;
-            this.btnConfirmarSIP.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnConfirmarSIP.Location = new System.Drawing.Point(175, 3);
-            this.btnConfirmarSIP.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.btnConfirmarSIP.Name = "btnConfirmarSIP";
-            this.btnConfirmarSIP.Size = new System.Drawing.Size(198, 50);
-            this.btnConfirmarSIP.TabIndex = 3;
-            this.btnConfirmarSIP.Text = "Imprimir SIP";
-            this.btnConfirmarSIP.UseVisualStyleBackColor = true;
-            // 
-            // btnGrabar
-            // 
-            this.btnGrabar.BackColor = System.Drawing.Color.LightGray;
-            this.btnGrabar.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.btnGrabar.Font = new System.Drawing.Font("Verdana", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnGrabar.Image = global::PedidoTela.Formularios.Properties.Resources.record_icon_icons_com_64775__1_;
-            this.btnGrabar.Location = new System.Drawing.Point(3, 2);
-            this.btnGrabar.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.btnGrabar.Name = "btnGrabar";
-            this.btnGrabar.Size = new System.Drawing.Size(173, 50);
-            this.btnGrabar.TabIndex = 95;
-            this.btnGrabar.Text = "Grabar";
-            this.btnGrabar.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.btnGrabar.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
-            this.btnGrabar.UseVisualStyleBackColor = false;
-            this.btnGrabar.Click += new System.EventHandler(this.btnGrabar_Click);
-            // 
-            // btnSalir
-            // 
-            this.btnSalir.Font = new System.Drawing.Font("Verdana", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnSalir.Image = global::PedidoTela.Formularios.Properties.Resources.logout_exit_icon_176185;
-            this.btnSalir.Location = new System.Drawing.Point(375, 3);
-            this.btnSalir.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.btnSalir.Name = "btnSalir";
-            this.btnSalir.Size = new System.Drawing.Size(173, 50);
-            this.btnSalir.TabIndex = 97;
-            this.btnSalir.Text = "Salir";
-            this.btnSalir.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.btnSalir.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
-            this.btnSalir.UseVisualStyleBackColor = true;
-            this.btnSalir.Click += new System.EventHandler(this.btnSalir_Click);
             // 
             // codigoColor
             // 
@@ -1018,9 +950,78 @@ namespace PedidoTela.Formularios
             this.undMedidaTela.MinimumWidth = 8;
             this.undMedidaTela.Name = "undMedidaTela";
             // 
+            // lbTotalconsolidado
+            // 
+            this.lbTotalconsolidado.AutoSize = true;
+            this.lbTotalconsolidado.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
+            this.lbTotalconsolidado.Location = new System.Drawing.Point(13, 609);
+            this.lbTotalconsolidado.Name = "lbTotalconsolidado";
+            this.lbTotalconsolidado.Size = new System.Drawing.Size(116, 15);
+            this.lbTotalconsolidado.TabIndex = 89;
+            this.lbTotalconsolidado.Text = "Total consolidado: ";
+            // 
+            // panel9
+            // 
+            this.panel9.BackColor = System.Drawing.SystemColors.ScrollBar;
+            this.panel9.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.panel9.Controls.Add(this.btnImprimirSIP);
+            this.panel9.Controls.Add(this.btnGrabar);
+            this.panel9.Controls.Add(this.btnSalir);
+            this.panel9.Location = new System.Drawing.Point(13, 82);
+            this.panel9.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.panel9.Name = "panel9";
+            this.panel9.Size = new System.Drawing.Size(1358, 56);
+            this.panel9.TabIndex = 136;
+            // 
+            // btnImprimirSIP
+            // 
+            this.btnImprimirSIP.Font = new System.Drawing.Font("Verdana", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnImprimirSIP.Image = global::PedidoTela.Formularios.Properties.Resources.mbriprint_99560;
+            this.btnImprimirSIP.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnImprimirSIP.Location = new System.Drawing.Point(175, 3);
+            this.btnImprimirSIP.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.btnImprimirSIP.Name = "btnImprimirSIP";
+            this.btnImprimirSIP.Size = new System.Drawing.Size(198, 50);
+            this.btnImprimirSIP.TabIndex = 3;
+            this.btnImprimirSIP.Text = "Imprimir SIP";
+            this.btnImprimirSIP.UseVisualStyleBackColor = true;
+            this.btnImprimirSIP.Click += new System.EventHandler(this.btnImprimirSIP_Click);
+            // 
+            // btnGrabar
+            // 
+            this.btnGrabar.BackColor = System.Drawing.Color.LightGray;
+            this.btnGrabar.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.btnGrabar.Font = new System.Drawing.Font("Verdana", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnGrabar.Image = global::PedidoTela.Formularios.Properties.Resources.record_icon_icons_com_64775__1_;
+            this.btnGrabar.Location = new System.Drawing.Point(3, 2);
+            this.btnGrabar.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.btnGrabar.Name = "btnGrabar";
+            this.btnGrabar.Size = new System.Drawing.Size(173, 50);
+            this.btnGrabar.TabIndex = 95;
+            this.btnGrabar.Text = "Grabar";
+            this.btnGrabar.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.btnGrabar.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
+            this.btnGrabar.UseVisualStyleBackColor = false;
+            this.btnGrabar.Click += new System.EventHandler(this.btnGrabar_Click);
+            // 
+            // btnSalir
+            // 
+            this.btnSalir.Font = new System.Drawing.Font("Verdana", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnSalir.Image = global::PedidoTela.Formularios.Properties.Resources.logout_exit_icon_176185;
+            this.btnSalir.Location = new System.Drawing.Point(375, 3);
+            this.btnSalir.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.btnSalir.Name = "btnSalir";
+            this.btnSalir.Size = new System.Drawing.Size(173, 50);
+            this.btnSalir.TabIndex = 97;
+            this.btnSalir.Text = "Salir";
+            this.btnSalir.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.btnSalir.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
+            this.btnSalir.UseVisualStyleBackColor = true;
+            this.btnSalir.Click += new System.EventHandler(this.btnSalir_Click);
+            // 
             // FrmAgenciasExternos
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1383, 788);
             this.Controls.Add(this.panel9);
@@ -1049,7 +1050,7 @@ namespace PedidoTela.Formularios
         }
 
         #endregion
-        private System.Windows.Forms.Button btnConfirmarSIP;
+        private System.Windows.Forms.Button btnImprimirSIP;
         private System.Windows.Forms.Label lbSolicitadoPor;
         private System.Windows.Forms.Label lbCargo;
         private System.Windows.Forms.Label lbDepartamento;
