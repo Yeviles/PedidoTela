@@ -170,7 +170,7 @@ namespace PedidoTela.Formularios
                     prmLista[i].ReferenciaTela.ToString(),
                     prmLista[i].DescripcionTela.ToString(),   
                     // tener en cuenta la configuración regional para los decimales. 
-                    decimal.Round(decimal.Parse(prmLista[i].Consumo.ToString().Replace(".", ",")), 2).ToString(),
+                    decimal.Round(decimal.Parse(prmLista[i].Consumo.ToString().Replace(",", ".")), 2).ToString(),
                     "",
                     "",
                      prmLista[i].Idsolicitud.ToString()
@@ -493,7 +493,7 @@ namespace PedidoTela.Formularios
                 if (dgvDetalleConsumo.CurrentCell.Value != null && dgvDetalleConsumo.CurrentCell.Value.ToString().Trim() != "")
                 {
                     dgvDetalleConsumo.CurrentCell.Value = dgvDetalleConsumo.CurrentCell.Value.ToString().Trim().Replace(",", ".");
-                    dgvDetalleConsumo.CurrentCell.Value = Regex.Replace(dgvDetalleConsumo.CurrentCell.Value.ToString().Trim(), @"[^0-9,]", "");
+                    //dgvDetalleConsumo.CurrentCell.Value = Regex.Replace(dgvDetalleConsumo.CurrentCell.Value.ToString().Trim(), @"[^0-9,]", "");
                     if (dgvDetalleConsumo.CurrentCell.Value != null && dgvDetalleConsumo.CurrentCell.Value.ToString().Trim() != "") {
                         decimal valor = Decimal.Parse(dgvDetalleConsumo.CurrentCell.Value.ToString());
                         decimal vfinal = Decimal.Round(valor, 2);

@@ -572,10 +572,10 @@ namespace PedidoTela.Controlodores
         #endregion
 
         #region Métodos Disponible para Reserva
-        public DisponibleParaReserva consultarPedido(string identificador, string codigoTela, string CodigoColor)
+        public DisponibleParaReserva consultarPedido(int idProgramador, string codigoTela, string CodigoColor)
         {
-            D_DisponibleParaReserva d_Unicolor = new D_DisponibleParaReserva();
-            return d_Unicolor.Consultar(identificador, codigoTela, CodigoColor);
+            D_DisponibleParaReserva d_disponibleParaReseva = new D_DisponibleParaReserva();
+            return d_disponibleParaReseva.Consultar(idProgramador, codigoTela, CodigoColor);
         }
         #endregion
 

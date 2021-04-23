@@ -96,7 +96,7 @@ namespace PedidoTela.Formularios
                         item.Tema = detalle.Muestrario;
                         item.Entrada = detalle.Entrada;
                         item.EnsayoReferencia = (detalle.Ensayo != null && detalle.Ensayo != "") ? detalle.Ensayo : detalle.RefSimilar;
-                        item.NumeroPedido = control.consultarPedido(detalle.RefSimilar, detalle.RefTela, detalle.Vte).Pedido;
+                        item.NumeroPedido = control.consultarPedido(detalle.IdProgramador, detalle.RefTela, detalle.Vte).Pedido;
                         item.Color = detalle.DesColor;
                         item.Cantidad = detalle.CantidadReservado;
                         lista.Add(item);

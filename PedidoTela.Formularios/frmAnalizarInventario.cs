@@ -137,7 +137,7 @@ namespace PedidoTela.Formularios
                     if (Convert.ToBoolean(dgvAnalizarInventario.Rows[i].Cells["sel"].Value) == true)
                     {
                     // método para consultar pedido
-                        pedido = control.consultarPedido(DetalleSeleccionado[i].RefSimilar, DetalleSeleccionado[i].RefTela, DetalleSeleccionado[i].Vte);
+                        pedido = control.consultarPedido(DetalleSeleccionado[i].IdProgramador, DetalleSeleccionado[i].RefTela, DetalleSeleccionado[i].Vte);
                         
                         if (dgvAnalizarInventario.Rows[i].Cells["mReservados"].Value.ToString() == "" || dgvAnalizarInventario.Rows[i].Cells["mReservados"].Value == null)
                         {

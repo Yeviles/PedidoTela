@@ -71,33 +71,31 @@ namespace PedidoTela.Data.Acceso
                            " GROUP BY 1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25,26,27,28,29,30,31 " +
                            " )";
 
-        public DisponibleParaReserva Consultar(string identificador, string codigoTela, string CodigoColor)
+        public DisponibleParaReserva Consultar(int idProgramador, string codigoTela, string CodigoColor)
             {
                 DisponibleParaReserva detalleReserva = new DisponibleParaReserva();
-                string[] objId = identificador.Split('-');
-                int idDdisenador = Convert.ToInt32(objId.GetValue(0));
-                // se hace uso del método cifras de la clase utilidades para contar las cifras de id del diseñador
-                //int cifrasIdDisenador = utilidades.Cifras(idDdisenador);
-            
+               //string[] objId = identificador.Split('-');
+                //int idDdisenador = Convert.ToInt32(objId.GetValue(0));
+                 
                 try
                 {
                     using (var con = new clsConexion())
                     {
 
 
-                    con.Parametros.Add(new IfxParameter("@codi_progra", idDdisenador.ToString("D4")));
+                    con.Parametros.Add(new IfxParameter("@codi_progra", idProgramador.ToString("D4")));
                     con.Parametros.Add(new IfxParameter("@codi_item", codigoTela));
                     con.Parametros.Add(new IfxParameter("@codi_color", CodigoColor));
 
-                    con.Parametros.Add(new IfxParameter("@codi_progra", idDdisenador.ToString("D4")));
+                    con.Parametros.Add(new IfxParameter("@codi_progra", idProgramador.ToString("D4")));
                     con.Parametros.Add(new IfxParameter("@codi_item", codigoTela));
                     con.Parametros.Add(new IfxParameter("@codi_color", CodigoColor));
 
-                    con.Parametros.Add(new IfxParameter("@codi_progra", idDdisenador.ToString("D4")));
+                    con.Parametros.Add(new IfxParameter("@codi_progra", idProgramador.ToString("D4")));
                     con.Parametros.Add(new IfxParameter("@codi_item", codigoTela));
                     con.Parametros.Add(new IfxParameter("@codi_color", CodigoColor));
 
-                    con.Parametros.Add(new IfxParameter("@codi_progra", idDdisenador.ToString("D4")));
+                    con.Parametros.Add(new IfxParameter("@codi_progra", idProgramador.ToString("D4")));
                     con.Parametros.Add(new IfxParameter("@codi_item", codigoTela));
                     con.Parametros.Add(new IfxParameter("@codi_color", CodigoColor));
 
