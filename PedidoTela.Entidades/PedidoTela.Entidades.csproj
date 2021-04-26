@@ -75,6 +75,7 @@
     <Compile Include="Logica\Estampado.cs" />
     <Compile Include="Logica\ListaTela.cs" />
     <Compile Include="Logica\Objeto.cs" />
+    <Compile Include="Logica\Pedido.cs" />
     <Compile Include="Logica\PlanoPretenido.cs" />
     <Compile Include="Logica\ReporteReservaTela.cs" />
     <Compile Include="Logica\TipoPedido.cs" />
