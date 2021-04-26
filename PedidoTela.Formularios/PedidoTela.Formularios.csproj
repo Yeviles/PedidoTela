@@ -53,10 +53,10 @@
     <StartupObject>PedidoTela.Formularios.Program</StartupObject>
   </PropertyGroup>
   <PropertyGroup>
-    <ManifestCertificateThumbprint>06A8CF0EB8BCDB18280BDC23487FC17F890E8E3C</ManifestCertificateThumbprint>
+    <ManifestCertificateThumbprint>A238136CF3F026080874BF9CD841A6794DFDEB88</ManifestCertificateThumbprint>
   </PropertyGroup>
   <PropertyGroup>
-    <ManifestKeyFile>PedidoTela.Formularios_1_TemporaryKey.pfx</ManifestKeyFile>
+    <ManifestKeyFile>PedidoTela.Formularios_3_TemporaryKey.pfx</ManifestKeyFile>
   </PropertyGroup>
   <PropertyGroup>
     <GenerateManifests>true</GenerateManifests>
@@ -348,6 +348,7 @@
     <None Include="packages.config" />
     <None Include="PedidoTela.Formularios_1_TemporaryKey.pfx" />
     <None Include="PedidoTela.Formularios_2_TemporaryKey.pfx" />
+    <None Include="PedidoTela.Formularios_3_TemporaryKey.pfx" />
     <None Include="PedidoTela.Formularios_TemporaryKey.pfx" />
     <None Include="Properties\DataSources\PedidoTela.Entidades.Logica.AgenciasExternos.datasource" />
     <None Include="Properties\DataSources\PedidoTela.Entidades.Logica.AgenciasInfoConsolidar.datasource" />

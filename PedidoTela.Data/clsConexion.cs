@@ -47,7 +47,7 @@ namespace PedidoTela.Data
         public void abrirConexion()
         {
             conexion.ConnectionString = conexionString;
-            conexion.Open();
+          conexion.Open();
         }
         public void cerrarConexion()
         {

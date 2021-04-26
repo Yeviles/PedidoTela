@@ -16,9 +16,6 @@ namespace PedidoTela.Controlodores
 
     public class Controlador
     {
-        private int idUsuario;
-
-        public int IdUsuario { get => idUsuario; set => idUsuario = value; }
 
         #region Métodos de búsqueda
         #region Métodos de Color

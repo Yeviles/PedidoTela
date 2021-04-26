@@ -328,7 +328,6 @@ namespace PedidoTela.Data.Acceso
                         detalle.CodFondo = datosDataReader["cod_fondo"].ToString().Trim();
                         detalle.Fondo = datosDataReader["des_fondo"].ToString().Trim();
                         detalle.TipoTela = datosDataReader["tipo_tela"].ToString().Trim();
-                        //7pl.coordinado = ? " + " OR es.coordinado = ? " + " OR un.coordinado = ? " + " OR cu.coordinado = ?
                         detalle.Coordinado = datosDataReader["coordinado"].ToString().Trim();
                         detalle.CoordinadoCon = datosDataReader["coordinado_con"].ToString().Trim();
                         detalle.RefTela = datosDataReader["referencia_tela"].ToString().Trim();
