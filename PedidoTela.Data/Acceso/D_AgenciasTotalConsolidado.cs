@@ -11,10 +11,10 @@ namespace PedidoTela.Data.Acceso
     public class D_AgenciasTotalConsolidado
     {
         #region Consultas
-        private readonly string consultaId = " SELECT id_totalconsolidar FROM cfc_spt_agen_totalconsolidar WHERE  idAgencias =?;";
+        private readonly string consultaId = "SELECT id_totalconsolidar FROM cfc_spt_agen_totalconsolidar WHERE  idAgencias =?;";
 
         private readonly string actualizar = "UPDATE cfc_spt_agen_totalconsolidar SET codigo_color=?, desc_color=?, tiendas=?, exito=?," +
-           " cencosud=?, sao=?, comercio=?, otros=?, total=?, m_calculados=?, kg_calculados=?, total_pedir=?, uni_medidatela=? WHERE id_totalconsolidar =?;";
+           " cencosud=?, sao=?, comercio=?, rosado=?, otros=?, total=?, m_calculados=?, kg_calculados=?, total_pedir=?, uni_medidatela=? WHERE id_totalconsolidar =?;";
        
         private readonly string consultaInsert = "INSERT INTO cfc_spt_agen_totalconsolidar (idAgencias,codigo_color,desc_color,tiendas,exito,cencosud,sao,comercio,rosado,otros,total,m_calculados,kg_calculados,total_pedir,uni_medidatela) " +
           " VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ? )";

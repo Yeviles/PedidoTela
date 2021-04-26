@@ -17,14 +17,14 @@ namespace PedidoTela.Formularios
     {
         Controlador controlador = new Controlador();
         Validar validacion = new Validar();
-        
+
         List<DetalleListaTela> detalle = new List<DetalleListaTela>();
         Utilidades utilidades = new Utilidades();
         string validarCoordinado = "";
         int idSolicitudTelas = 0;
 
         public List<DetalleListaTela> Detalle { get => detalle; set => detalle = value; }
-       
+
         public frmSolicitudListaTelas()
         {
             InitializeComponent();
@@ -32,7 +32,7 @@ namespace PedidoTela.Formularios
             dtpFechaTienda.CustomFormat = "dd/MM/yyyy";
             txbEstado.CharacterCasing = CharacterCasing.Upper;
             txbClase.CharacterCasing = CharacterCasing.Upper;
-            btnConsolidar.Enabled = false;
+
             btnVerDetalle.Enabled = false;
             btnImprimir.Enabled = false;
             btnEditar.Enabled = false;
@@ -42,7 +42,7 @@ namespace PedidoTela.Formularios
             // ToolTips
             this.ttMuestrario.SetToolTip(this.cbxMuestrario, "Campo Obligatorio");
         }
-        
+
         private void frmSolicitudListaTelas_Load_1(object sender, EventArgs e)
         {
             SkinManager.Theme = MaterialSkin.MaterialSkinManager.Themes.LIGHT;
@@ -63,7 +63,7 @@ namespace PedidoTela.Formularios
 
 
         }
-       
+
         /// <summary>
         /// Genera o estable que la columna inicial del DataGridView se pueda ser de verificación, es decir que la selección de las filas se realiza a traves CheckBoxColumn.
         /// </summary>
@@ -81,16 +81,16 @@ namespace PedidoTela.Formularios
                     if (Convert.ToBoolean(row.Cells["sel"].EditedFormattedValue) == false)
                     {
                         dgvSolicitudTelas.Rows[e.RowIndex].Cells["sel"].Value = true;
-                       
-                            //break;
-                        }
+
+                        //break;
+                    }
                     dgvSolicitudTelas.RefreshEdit();
-                    
-                }            
+
+                }
             }
 
-            }
-       
+        }
+
         /// <summary>
         /// Carga toda la información de los comboBox mostrados en la vista.
         /// </summary>
@@ -106,8 +106,8 @@ namespace PedidoTela.Formularios
             prmCombo.AutoCompleteMode = AutoCompleteMode.Suggest;
             prmCombo.AutoCompleteSource = AutoCompleteSource.CustomSource;
 
-        } 
-        
+        }
+
         /// <summary>
         /// Permite el autocompletado de los comboBox mostrados en la vista.
         /// </summary>
@@ -143,7 +143,7 @@ namespace PedidoTela.Formularios
                 //   fecha = dtpFechaTienda.Value.ToString("dd/MM/yyyy");
                 //}
                 string fecha = dtpFechaTienda.Value.ToString("dd/MM/yyyy");
-               
+
 
                 objTela.TipoSolicitud = (cbxTipoSolicitud.SelectedIndex != -1 && cbxTipoSolicitud.Text != "") ? cbxTipoSolicitud.Text.ToString() : "";
                 objTela.Muestrario = cbxMuestrario.GetItemText(cbxMuestrario.SelectedItem);
@@ -153,13 +153,13 @@ namespace PedidoTela.Formularios
                 objTela.Disenador = cbxDisenador.GetItemText(cbxDisenador.SelectedItem);
                 objTela.EnsayoRefSimilar = txbEnsayoRef.Text.Trim();
                 objTela.Estado = txbEstado.Text.Trim();
-                
+
                 objTela.FechaTienda = fecha;
                 objTela.RefTela = cbxRefTela.GetItemText(cbxRefTela.SelectedItem);
                 objTela.NomTela = cbxNomTela.GetItemText(cbxNomTela.SelectedItem);
                 objTela.Solicitud = txbSolicitud.Text.Trim();
                 objTela.Color = cbxColor.GetItemText(cbxColor.SelectedItem);
-                objTela.Clase = txbClase.Text.Trim();   
+                objTela.Clase = txbClase.Text.Trim();
                 objTela.Coordinado = validarCoordinado;
                 objTela.NumDibujo = txbNdibujo.Text.Trim();
 
@@ -179,18 +179,18 @@ namespace PedidoTela.Formularios
                 //cbxRefTela.SelectedIndex = -1;
                 //cbxColor.SelectedIndex = -1;
 
-              }
+            }
 
 
         }
-       
+
         /// <summary>
         /// Llena el DataGridview con la información filtrada y consultada.
         /// </summary>
         /// <param name="prmLista">Lista de tipo DetalleListaTela, información para llenar el DataGridView.</param>
         private void cargarDataGridView(List<DetalleListaTela> prmLista)
         {
-            
+
             if (prmLista.Count != 0)
             {
                 for (int i = 0; i < prmLista.Count; i++)
@@ -235,14 +235,14 @@ namespace PedidoTela.Formularios
                     prmLista[i].DescPrenda.ToString()
                     );
                     this.idSolicitudTelas = prmLista[i].IdSolTela;
-                 
+
                 }
             }
             else
             {
                 MessageBox.Show("No existe información sobre su consulta", "Advertencia", MessageBoxButtons.OK, MessageBoxIcon.Warning);
             }
-            
+
         }
 
         /// <summary>
@@ -264,7 +264,7 @@ namespace PedidoTela.Formularios
                 MessageBox.Show("Por favor seleccione al menos dos items", "Advertencia", MessageBoxButtons.OK, MessageBoxIcon.Warning);
             }
         }
-       
+
         /// <summary>
         /// Permite abrir la vista Agencias Externos a Traves del Botón InventarioExterno
         /// </summary>
@@ -278,7 +278,7 @@ namespace PedidoTela.Formularios
             List<DetalleListaTela> listaFilasSeleccionadas = ListaFilasSeleccionadas();
             FrmAgenciasExternos frmAgenciasExterno = new FrmAgenciasExternos(controlador, listaFilasSeleccionadas, contador, idSolicitudTelas);
         }
-        
+
         /// <summary>
         /// Genera una lista de tipo DetalleListaTela, la cual es representada por las filas seleccionadas en la dataGridView (dgvSolicitudTelas) es decir 
         /// en la vista frmSolicitudListaTelas, para más comprensión son las filas Chequedas. 
@@ -348,7 +348,7 @@ namespace PedidoTela.Formularios
             }
             return listaSeleccionadas;
         }
-        
+
         /// <summary>
         /// Válida  que txbNdibujos (Número de dibujos) sea puda ingresar solo letras. 
         /// </summary>
@@ -386,7 +386,7 @@ namespace PedidoTela.Formularios
                 cbxNoCoordinado.Checked = false;
                 validarCoordinado = "true";
             }
-           
+
         }
 
         /// <summary>
@@ -408,7 +408,7 @@ namespace PedidoTela.Formularios
         {
             e.KeyChar = Char.ToUpper(e.KeyChar);
         }
-       
+
         /// <summary>
         /// Estable que cbxOcasionUso (Ocasion de Uso) sea mayúscula.
         /// </summary>
@@ -461,6 +461,38 @@ namespace PedidoTela.Formularios
             frmInicial.Show();
         }
 
-      
+        private void btnConsolidar_Click(object sender, EventArgs e)
+        {
+            /// Cuenta cuantas filas de la DataGridView (dgvSolicitudTelas) en la vista frmSolicitudListaTelas ha sido chequeada (seleccionada).
+            int cantFilasSeleccionadas = utilidades.ContarChecked(dgvSolicitudTelas);
+            int b = 0;
+            if (cantFilasSeleccionadas > 1)
+            {
+                for (int i = 0; i < dgvSolicitudTelas.RowCount; i++)
+                {
+                    if (dgvSolicitudTelas.Rows[i].Cells[26].Value.ToString() == "Solicitud Inventario" || dgvSolicitudTelas.Rows[i].Cells[26].Value.ToString() == "Reserva parcial" || dgvSolicitudTelas.Rows[i].Cells[26].Value.ToString() == "Por Analizar")
+                    {
+                        b += 1;
+                    }
+                }
+                if (b == cantFilasSeleccionadas)
+                {
+                    /*Realiza el respectivo método que retorna la lista de filas Seleccionadas*/
+                    List<DetalleListaTela> listaFilasSeleccionadas = ListaFilasSeleccionadas();
+                    frmTipoPedidoaMontar frmTipoPedido = new frmTipoPedidoaMontar(controlador, listaFilasSeleccionadas, cantFilasSeleccionadas);
+                    frmTipoPedido.Show();
+                }
+                else
+                {
+                    MessageBox.Show("El estado de solicitud No corresponde a Solicitud de Inventario o Reserva Parcial.", "Advertencia", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                }
+            }
+            else
+            {
+                MessageBox.Show("Por favor seleccione al menos dos items.", "Advertencia", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                
+            }
+
+        }
     }
 }

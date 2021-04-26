@@ -35,12 +35,10 @@ namespace PedidoTela.Formularios
             InitializeComponent();
             DetalleSeleccionado = listaSeleccionada;
             control = controlador;
-            control.IdUsuario = 216;
             dtpFechaLlegada.Format = DateTimePickerFormat.Custom;
             dtpFechaLlegada.CustomFormat = "dd/MM/yyyy";
             IdsolTela = idSolicitudTelas;
             Validaciones(DetalleSeleccionado, numFilasSelccionadas);
-
         }
         #endregion
 
@@ -70,11 +68,23 @@ namespace PedidoTela.Formularios
         #endregion
 
         #region Eventos
+
+        /// <summary>
+        /// Cierra el formulario actual.
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void btnSalir_Click(object sender, EventArgs e)
         {
             this.Close();
         }
 
+        /// <summary>
+        /// Permite editar los campos código color y descripción del color, del dataGridView (dgvInfoConsolidar), mostrarndo el frmBuscarColor para su 
+        /// respectiva modificación.
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void dgvInfoConsolidar_CellClick(object sender, DataGridViewCellEventArgs e)
         {
             if (dgvInfoConsolidar.Columns[e.ColumnIndex].Name == "codColor" || dgvInfoConsolidar.Columns[e.ColumnIndex].Name == "descripColor")
@@ -91,8 +101,24 @@ namespace PedidoTela.Formularios
             }
         }
 
+        /// <summary>
+        /// Permite editar los campos código color y descripción del color, del dataGridView (dgvTotalConsolidado), mostrarndo el frmBuscarColor para su 
+        /// respectiva modificación.
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void dgvTotalConsolidado_CellClick(object sender, DataGridViewCellEventArgs e)
         {
+            dgvTotalConsolidado.CurrentRow.Cells[2].ReadOnly = true;
+            dgvTotalConsolidado.CurrentRow.Cells[3].ReadOnly = true;
+            dgvTotalConsolidado.CurrentRow.Cells[4].ReadOnly = true;
+            dgvTotalConsolidado.CurrentRow.Cells[5].ReadOnly = true;
+            dgvTotalConsolidado.CurrentRow.Cells[6].ReadOnly = true;
+            dgvTotalConsolidado.CurrentRow.Cells[7].ReadOnly = true;
+            dgvTotalConsolidado.CurrentRow.Cells[8].ReadOnly = true;
+            dgvTotalConsolidado.CurrentRow.Cells[9].ReadOnly = true;
+            dgvTotalConsolidado.CurrentRow.Cells[10].ReadOnly = true;
+
             if (dgvTotalConsolidado.Columns[e.ColumnIndex].Name == "codigoColor" || dgvTotalConsolidado.Columns[e.ColumnIndex].Name == "desColor")
             {
                 frmBuscarColor buscarColor = new frmBuscarColor(control);
@@ -105,10 +131,16 @@ namespace PedidoTela.Formularios
                 }
             }
           }
-
+        
+        /// <summary>
+        /// Proporciona a la comuna Total a Pedir de dataGridView (dgvToltalConsolidaddo) que se ingresen decimales.
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void dgvTotalConsolidado_CellEndEdit(object sender, DataGridViewCellEventArgs e)
         {
-            if (e.ColumnIndex == 12)
+           
+           if (e.ColumnIndex == 12)
             {
                 if (dgvTotalConsolidado.CurrentCell.Value != null && dgvTotalConsolidado.CurrentCell.Value.ToString().Trim() != "")
                 {
@@ -121,17 +153,32 @@ namespace PedidoTela.Formularios
                 }
             }
         }
-
+        
+        /// <summary>
+        /// Válida que el textBox (txtRendimiento) se ingresen únicamente decimales.
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void txtRendimiento_KeyPress(object sender, KeyPressEventArgs e)
         {
             validacion.validarDecimal(sender, e);    
          }
 
+        /// <summary>
+        /// Válida que textBox (txtAnchoTela) se ingresen únicamente Decimales.
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void txtAnchoTela_KeyPress(object sender, KeyPressEventArgs e)
         {
             validacion.validarDecimal(sender, e);
         }
 
+        /// <summary>
+        ///  Válida que textBox (txtExtencion) se ingresen únicamente Numeros.
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void txtExtencion_KeyPress(object sender, KeyPressEventArgs e)
         {
             validacion.SoloNumeros(e);
@@ -145,23 +192,24 @@ namespace PedidoTela.Formularios
         /// <param name="e"></param>
         private void txtRendimiento_TextChanged(object sender, EventArgs e)
         {
-           
-                for (int i = 0; i < dgvTotalConsolidado.RowCount; i++)
-                {
+            for (int i = 0; i < dgvTotalConsolidado.RowCount; i++)
+            {
                 if (txtRendimiento.Text != "")
                 {
-
-                    dgvTotalConsolidado.Rows[i].Cells[11].Value =Decimal.Round((decimal.Parse(dgvTotalConsolidado.Rows[i].Cells[10].Value.ToString()) / decimal.Parse(txtRendimiento.Text)),2);
-
+                    dgvTotalConsolidado.Rows[i].Cells[11].Value =Decimal.Round((decimal.Parse(dgvInfoConsolidar.Rows[i].Cells[13].Value.ToString()) / decimal.Parse(txtRendimiento.Text)),2);
                 }
                 else
                 {
                     dgvTotalConsolidado.Rows[i].Cells[11].Value = "";
                 }
-                
             }
         }
 
+        /// <summary>
+        /// Guarda la infromación de la vista (frmAgenciasExternos) en la BD, las entidades son: spt_agencias_externos, cfc_spt_agen_infoconsolidar  y cfc_spt_agen_totalconsolidar.
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void btnGrabar_Click(object sender, EventArgs e)
         {
             bool b = false;
@@ -243,7 +291,8 @@ namespace PedidoTela.Formularios
                             elemento.Contacto = txtContacto.Text.Trim();
                             elemento.PedidoAgencia = txtPedidoAgencia.Text.Trim();
                             elemento.OrdenCompra = txtOrdenCompra.Text.Trim();
-                            elemento.FechaLlegadaTela = dtpFechaLlegada.Value.ToString();
+                            string fecha = dtpFechaLlegada.Value.ToString("dd/MM/yyyy");
+                            elemento.FechaLlegadaTela = fecha;
                             elemento.IdSolTela = IdsolTela;
 
                             if (control.consultarIdAgenciasExt(IdsolTela))
@@ -336,7 +385,12 @@ namespace PedidoTela.Formularios
                                     }
 
                                 }
-                                  MessageBox.Show("Agencias-Externo se guardó con éxito", "Información", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                                string fechaAtualizada = DateTime.Now.ToString("dd/MM/yyyy");
+                                if (control.setEstado(IdsolTela, "Solicitud de Inventario", fechaAtualizada))
+                                {
+                                    MessageBox.Show("Agencias-Externo se guardó con éxito. \n Estado actualizado a Solicitud de Inventario.", "Información", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                                }
+                           // MessageBox.Show("Agencias-Externo se guardó con éxito", "Información", MessageBoxButtons.OK, MessageBoxIcon.Information);
 
                             }
                             catch
@@ -356,6 +410,44 @@ namespace PedidoTela.Formularios
                 
             }
         }
+
+        /// <summary>
+        ///  El sistema genera el siguiente formato Solicitud de Número de Pedido.  
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void btnImprimirSIP_Click(object sender, EventArgs e)
+        {
+            frmImprimirSIP imprimir = new frmImprimirSIP(control, IdsolTela);
+            imprimir.ShowDialog();
+        }
+
+        /// <summary>
+        /// Proporciona el color representativo para las filas de dataGridView (dgvInfoConsolidar) que No se pueden editar.
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void dgvInfoConsolidar_CellFormatting(object sender, DataGridViewCellFormattingEventArgs e)
+        {
+            if (e.ColumnIndex > 1 && e.ColumnIndex <= 13)
+            {
+                e.CellStyle.BackColor = Color.PaleGoldenrod;
+            }
+        }
+
+        /// <summary>
+        /// Proporciona el color representativo para las filas de dataGridView (dgvTotalConsolidado) que No se pueden editar.
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void dgvTotalConsolidado_CellFormatting(object sender, DataGridViewCellFormattingEventArgs e)
+        {
+            if (e.ColumnIndex > 1 && e.ColumnIndex <= 10)
+            {
+                e.CellStyle.BackColor = Color.PaleGoldenrod;
+            }
+        }
+
         #endregion
 
         #region Métodos
@@ -382,9 +474,9 @@ namespace PedidoTela.Formularios
                 {
                     this.Show();
                     Cargar();
+                    // Bandera controlada en el método Cargar()
                     if (!this.bandera)
                     {
-
                         //Carga el DataGridView (dgvInfoConsolidar) el cual pertenece a la sección de información a consolidar.
                         cargarDgvInfoConsolidar(prmLista);
                         //Carga el DataGridView (dgvTotalConsolidado) el cual pertenece a la sección de total consolidado.
@@ -400,7 +492,7 @@ namespace PedidoTela.Formularios
             }
             else
             {
-                MessageBox.Show("Debe seleccionar mínimo dos filas.", "Advertencia", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                MessageBox.Show("Por favor seleccione al menos dos items.", "Advertencia", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 this.Close();
             }
         }
@@ -411,7 +503,6 @@ namespace PedidoTela.Formularios
         /// <param name="prmLista">Lista de tipo DetalleLista contiene la informacion a cargar en la DatagridView.</param>
         private void cargarDgvInfoConsolidar(List<DetalleListaTela> prmLista)
         {
-
             if (prmLista.Count != 0)
             {
                 for (int i = 0; i < prmLista.Count; i++)
@@ -434,7 +525,7 @@ namespace PedidoTela.Formularios
                     //prmLista[i].IdSolTela.ToString(),
                     //prmLista[i].IdDetalleSolicitud.ToString()
                     );
-                    txtSolicitadoPor.Text = control.IdUsuario.ToString();
+                    txtSolicitadoPor.Text =DetalleSeleccionado[i].Disenador.ToString();
                     txtNomTela.Text = prmLista[i].DesTela.ToString();
                     txtRefTela.Text = prmLista[i].RefTela.ToString();
                     txtTipoTejido.Text = prmLista[i].TipoTela.ToString();
@@ -464,7 +555,6 @@ namespace PedidoTela.Formularios
         /// <param name="prmLista">Lista de tipo DetalleLista contiene la informacion a cargar en la DatagridView.</param>
         private void cargarDgvTotalConsolidar(List<DetalleListaTela> prmLista)
         {
-
             if (prmLista.Count != 0)
             {
                 for (int i = 0; i < prmLista.Count; i++)
@@ -526,17 +616,6 @@ namespace PedidoTela.Formularios
             return datos;
         }
 
-        private void btnConfirmarSIP_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void btnImprimirSIP_Click(object sender, EventArgs e)
-        {
-            frmImprimirSIP imprimir = new frmImprimirSIP(control, IdsolTela);
-            imprimir.ShowDialog();
-        }
-
         /// <summary>
         /// Realiza el cargue inicial de los datos para la vista (frmAgenciasExternos).
         /// </summary>
@@ -546,9 +625,8 @@ namespace PedidoTela.Formularios
             id = objAgencias.IdAgencias;
             if (id != 0)
             {
-             cbxComposicion.Text = objAgencias.Composicion;
-  
-                txtSolicitadoPor.Text = objAgencias.SolicitadoPor.ToString();
+                cbxComposicion.Text = objAgencias.Composicion;
+                txtSolicitadoPor.Text = objAgencias.Disenadora.ToString();
                 txtCargo.Text = objAgencias.Cargo.ToString();
                 txtDepartamento.Text = objAgencias.Departamento.ToString();
                 txtTelefono.Text = objAgencias.Telefono.ToString();
@@ -584,7 +662,6 @@ namespace PedidoTela.Formularios
                     dgvInfoConsolidar.Rows.Add(obj.CodColor, obj.DesColor, obj.Tiendas, obj.Exito,
                         obj.Cencosud, obj.Sao, obj.ComercioOrg, obj.Rosado, obj.Otros, obj.TotalUnidades, obj.Consumo, obj.MCalculados, obj.MReservados, obj.MaSolicitar);
                 }
-                //btnGrabar.Enabled = false;
             }
 
             /*Carga detalle Toltal a  Consolidar*/
@@ -596,12 +673,11 @@ namespace PedidoTela.Formularios
                     dgvTotalConsolidado.Rows.Add(obj.CodColor, obj.DesColor, obj.Tiendas, obj.Exito,
                         obj.Cencosud, obj.Sao, obj.ComercioOrg, obj.Rosado, obj.Otros, obj.TotalUnidades, obj.MCalculados, obj.KgCalculados, obj.TotalaPedir, obj.UniMedidaTela);
                 }
-                //btnGrabar.Enabled = false;
             }
-          
-                this.bandera = true;
-                //dgvInfoConsolidar.ReadOnly = true;
-                //dgvTotalConsolidado.ReadOnly = true;
+
+            /*Esta bandera controla el cargue los dataGridView, es decir, si es true, en método  cargarDgvInfoConsolidar(prmLista) y cargarDgvTotalConsolidar(prmLista),
+             * no se ejecutan, debido a que la información ya esta guardada en la BD. */
+            this.bandera = true;
               
             }
         }
