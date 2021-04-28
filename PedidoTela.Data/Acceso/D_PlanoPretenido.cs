@@ -11,8 +11,8 @@ namespace PedidoTela.Data.Acceso
     public class D_PlanoPretenido
     {
 
-        private readonly string consultaInsert = "INSERT INTO cfc_spt_sol_plano_pretenido (identificador, referencia_tela, coordinado, coordinado_con, observacion, id_sol_tela) VALUES(?, ?, ?, ?, ?, ?);";
-        private readonly string consultaAll = "SELECT idplano, identificador, referencia_tela, coordinado, coordinado_con, observacion FROM cfc_spt_sol_plano_pretenido WHERE id_sol_tela = ?;";
+        private readonly string consultaInsert = "INSERT INTO cfc_spt_sol_plano_pretenido (identificador, referencia_tela, coordinado, coordinado_con, observacion, id_sol_tela,tipo_tejido) VALUES(?, ?, ?, ?, ?, ?, ?);";
+        private readonly string consultaAll = "SELECT idplano, identificador, referencia_tela, coordinado, coordinado_con, observacion,tipo_tejido FROM cfc_spt_sol_plano_pretenido WHERE id_sol_tela = ?;";
         private readonly string consultaId = "SELECT idplano FROM cfc_spt_sol_plano_pretenido WHERE identificador = ?;";
         
         private readonly string consultaIdPla = "SELECT idplano FROM cfc_spt_sol_plano_pretenido WHERE id_sol_tela = ?;";
@@ -25,7 +25,7 @@ namespace PedidoTela.Data.Acceso
         
         private readonly string consultaUpdateConsecutivo = "UPDATE cfc_spt_sol_plano_pretenido set consecutivo=? WHERE idplano= ?;";
 
-        private readonly string actualizar = "UPDATE cfc_spt_sol_plano_pretenido SET referencia_tela =?, coordinado=?, coordinado_con=?, observacion=?,identificador=? WHERE id_sol_tela=?;";
+        private readonly string actualizar = "UPDATE cfc_spt_sol_plano_pretenido SET referencia_tela =?, coordinado=?, coordinado_con=?, observacion=?,identificador=?, tipo_tejido=? WHERE id_sol_tela=?;";
         
         public bool consultarIdentificador(int idSolTela)
         {
@@ -150,7 +150,8 @@ namespace PedidoTela.Data.Acceso
                         plano.Coordinado = so;
                         plano.CoordinadoCon = (datos["coordinado_con"].ToString().Trim().Length > 0) ? datos["coordinado_con"].ToString().Trim() : "";
                         plano.Observacion = datos["observacion"].ToString();
-                       // plano.Consecutivo = int.Parse(datos["consecutivo"].ToString());
+                        plano.TipoTejido = datos["tipo_tejido"].ToString();
+                       
                     }
                     con.cerrarConexion();
                 }
@@ -175,6 +176,7 @@ namespace PedidoTela.Data.Acceso
                     con.Parametros.Add(new IfxParameter("@coordinado_con", elemento.CoordinadoCon));
                     con.Parametros.Add(new IfxParameter("@observacion", elemento.Observacion));
                     con.Parametros.Add(new IfxParameter("@id_sol_tela",elemento.IdSolTela));
+                    con.Parametros.Add(new IfxParameter("@tipo_tejido",elemento.TipoTejido));
                     var datos = con.EjecutarConsulta(this.consultaInsert);
                     con.cerrarConexion();
                 }
@@ -221,6 +223,7 @@ namespace PedidoTela.Data.Acceso
                     con.Parametros.Add(new IfxParameter("@coordinado_con", prmPlano.CoordinadoCon));
                     con.Parametros.Add(new IfxParameter("@observacion", prmPlano.Observacion));
                     con.Parametros.Add(new IfxParameter("@identificador", prmPlano.Identificador));
+                    con.Parametros.Add(new IfxParameter("@tipo_tejido", prmPlano.TipoTejido));
                     con.Parametros.Add(new IfxParameter("@id_sol_tela", prmPlano.IdSolTela));
                     var datos = con.EjecutarConsulta(actualizar);
 

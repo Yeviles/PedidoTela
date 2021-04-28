@@ -175,14 +175,14 @@ namespace PedidoTela.Formularios
             this.panel9.Controls.Add(this.btnSalir);
             this.panel9.Location = new System.Drawing.Point(9, 9);
             this.panel9.Name = "panel9";
-            this.panel9.Size = new System.Drawing.Size(1337, 56);
+            this.panel9.Size = new System.Drawing.Size(1337, 47);
             this.panel9.TabIndex = 142;
             // 
             // lblConsecutivo
             // 
             this.lblConsecutivo.AutoSize = true;
             this.lblConsecutivo.Font = new System.Drawing.Font("Verdana", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblConsecutivo.Location = new System.Drawing.Point(557, 18);
+            this.lblConsecutivo.Location = new System.Drawing.Point(569, 13);
             this.lblConsecutivo.Name = "lblConsecutivo";
             this.lblConsecutivo.Size = new System.Drawing.Size(17, 20);
             this.lblConsecutivo.TabIndex = 100;
@@ -191,10 +191,10 @@ namespace PedidoTela.Formularios
             // btnConfirmar
             // 
             this.btnConfirmar.Font = new System.Drawing.Font("Verdana", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnConfirmar.Image = global::PedidoTela.Formularios.Properties.Resources._1492790860_8check_84164;
-            this.btnConfirmar.Location = new System.Drawing.Point(173, 2);
+            this.btnConfirmar.Image = global::PedidoTela.Formularios.Properties.Resources.confirmar1;
+            this.btnConfirmar.Location = new System.Drawing.Point(127, 1);
             this.btnConfirmar.Name = "btnConfirmar";
-            this.btnConfirmar.Size = new System.Drawing.Size(174, 50);
+            this.btnConfirmar.Size = new System.Drawing.Size(126, 41);
             this.btnConfirmar.TabIndex = 96;
             this.btnConfirmar.Text = "Confirmar";
             this.btnConfirmar.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
@@ -207,10 +207,10 @@ namespace PedidoTela.Formularios
             this.btnGrabar.BackColor = System.Drawing.Color.LightGray;
             this.btnGrabar.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.btnGrabar.Font = new System.Drawing.Font("Verdana", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnGrabar.Image = global::PedidoTela.Formularios.Properties.Resources.record_icon_icons_com_64775__1_;
-            this.btnGrabar.Location = new System.Drawing.Point(2, 2);
+            this.btnGrabar.Image = global::PedidoTela.Formularios.Properties.Resources.guardar2;
+            this.btnGrabar.Location = new System.Drawing.Point(2, 1);
             this.btnGrabar.Name = "btnGrabar";
-            this.btnGrabar.Size = new System.Drawing.Size(174, 50);
+            this.btnGrabar.Size = new System.Drawing.Size(126, 41);
             this.btnGrabar.TabIndex = 95;
             this.btnGrabar.Text = "Grabar";
             this.btnGrabar.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
@@ -221,10 +221,10 @@ namespace PedidoTela.Formularios
             // btnSalir
             // 
             this.btnSalir.Font = new System.Drawing.Font("Verdana", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnSalir.Image = global::PedidoTela.Formularios.Properties.Resources.logout_exit_icon_176185;
-            this.btnSalir.Location = new System.Drawing.Point(346, 2);
+            this.btnSalir.Image = global::PedidoTela.Formularios.Properties.Resources.salir2;
+            this.btnSalir.Location = new System.Drawing.Point(251, 2);
             this.btnSalir.Name = "btnSalir";
-            this.btnSalir.Size = new System.Drawing.Size(174, 50);
+            this.btnSalir.Size = new System.Drawing.Size(126, 41);
             this.btnSalir.TabIndex = 97;
             this.btnSalir.Text = "Salir";
             this.btnSalir.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
@@ -234,11 +234,11 @@ namespace PedidoTela.Formularios
             // 
             // btnAddColor
             // 
-            this.btnAddColor.Image = global::PedidoTela.Formularios.Properties.Resources._1492790881_6add_84227;
+            this.btnAddColor.Image = global::PedidoTela.Formularios.Properties.Resources.addColor;
             this.btnAddColor.ImageAlign = System.Drawing.ContentAlignment.MiddleRight;
             this.btnAddColor.Location = new System.Drawing.Point(15, 644);
             this.btnAddColor.Name = "btnAddColor";
-            this.btnAddColor.Size = new System.Drawing.Size(337, 62);
+            this.btnAddColor.Size = new System.Drawing.Size(181, 50);
             this.btnAddColor.TabIndex = 140;
             this.btnAddColor.Text = "Adicionar Color";
             this.btnAddColor.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;

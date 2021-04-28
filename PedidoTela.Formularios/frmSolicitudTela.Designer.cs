@@ -30,15 +30,14 @@ namespace PedidoTela.Formularios
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
             this.tbcPedidoTela = new System.Windows.Forms.TabControl();
             this.tbpAdicionarSolTela = new System.Windows.Forms.TabPage();
             this.pnlAdicionarSolicitud = new System.Windows.Forms.Panel();
             this.txbEnsRefDigitado = new System.Windows.Forms.TextBox();
             this.cbxTipo = new System.Windows.Forms.ComboBox();
             this.lbTipo = new System.Windows.Forms.Label();
-            this.btnConsultar = new System.Windows.Forms.Button();
             this.dtpFechaTienda = new System.Windows.Forms.DateTimePicker();
             this.label9 = new System.Windows.Forms.Label();
             this.txbDisenador = new System.Windows.Forms.TextBox();
@@ -57,10 +56,6 @@ namespace PedidoTela.Formularios
             this.lbDisenador = new System.Windows.Forms.Label();
             this.label7 = new System.Windows.Forms.Label();
             this.dgvDetalleConsumo = new System.Windows.Forms.DataGridView();
-            this.lbDetalleConsumo = new System.Windows.Forms.Label();
-            this.ttEnsayoRef = new System.Windows.Forms.ToolTip(this.components);
-            this.ttSku = new System.Windows.Forms.ToolTip(this.components);
-            this.ttTipo = new System.Windows.Forms.ToolTip(this.components);
             this.ensayoRef = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.tipoSolicitud = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.desPrenda = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -70,7 +65,12 @@ namespace PedidoTela.Formularios
             this.editar = new System.Windows.Forms.DataGridViewButtonColumn();
             this.guardar = new System.Windows.Forms.DataGridViewButtonColumn();
             this.id = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.lbDetalleConsumo = new System.Windows.Forms.Label();
+            this.ttEnsayoRef = new System.Windows.Forms.ToolTip(this.components);
+            this.ttSku = new System.Windows.Forms.ToolTip(this.components);
+            this.ttTipo = new System.Windows.Forms.ToolTip(this.components);
             this.btnSalir = new System.Windows.Forms.Button();
+            this.btnConsultar = new System.Windows.Forms.Button();
             this.tbcPedidoTela.SuspendLayout();
             this.tbpAdicionarSolTela.SuspendLayout();
             this.pnlAdicionarSolicitud.SuspendLayout();
@@ -164,18 +164,6 @@ namespace PedidoTela.Formularios
             this.lbTipo.Size = new System.Drawing.Size(44, 17);
             this.lbTipo.TabIndex = 61;
             this.lbTipo.Text = "Tipo:";
-            // 
-            // btnConsultar
-            // 
-            this.btnConsultar.Image = global::PedidoTela.Formularios.Properties.Resources.finger_hand_5531;
-            this.btnConsultar.Location = new System.Drawing.Point(1153, 122);
-            this.btnConsultar.Name = "btnConsultar";
-            this.btnConsultar.Size = new System.Drawing.Size(167, 58);
-            this.btnConsultar.TabIndex = 60;
-            this.btnConsultar.Text = "Consultar";
-            this.btnConsultar.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
-            this.btnConsultar.UseVisualStyleBackColor = true;
-            this.btnConsultar.Click += new System.EventHandler(this.btnConsultar_Click);
             // 
             // dtpFechaTienda
             // 
@@ -341,14 +329,14 @@ namespace PedidoTela.Formularios
             this.dgvDetalleConsumo.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.dgvDetalleConsumo.AutoSizeRowsMode = System.Windows.Forms.DataGridViewAutoSizeRowsMode.DisplayedCells;
             this.dgvDetalleConsumo.BackgroundColor = System.Drawing.Color.White;
-            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle3.BackColor = System.Drawing.SystemColors.ScrollBar;
-            dataGridViewCellStyle3.Font = new System.Drawing.Font("Verdana", 8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle3.ForeColor = System.Drawing.Color.Navy;
-            dataGridViewCellStyle3.SelectionBackColor = System.Drawing.SystemColors.ScrollBar;
-            dataGridViewCellStyle3.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dgvDetalleConsumo.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle3;
+            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle1.BackColor = System.Drawing.SystemColors.ScrollBar;
+            dataGridViewCellStyle1.Font = new System.Drawing.Font("Verdana", 8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle1.ForeColor = System.Drawing.Color.Navy;
+            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.ScrollBar;
+            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dgvDetalleConsumo.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
             this.dgvDetalleConsumo.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgvDetalleConsumo.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.ensayoRef,
@@ -369,11 +357,11 @@ namespace PedidoTela.Formularios
             this.dgvDetalleConsumo.ReadOnly = true;
             this.dgvDetalleConsumo.RightToLeft = System.Windows.Forms.RightToLeft.No;
             this.dgvDetalleConsumo.RowHeadersWidth = 62;
-            dataGridViewCellStyle4.Font = new System.Drawing.Font("Verdana", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle4.ForeColor = System.Drawing.Color.Black;
-            dataGridViewCellStyle4.SelectionBackColor = System.Drawing.Color.CornflowerBlue;
-            dataGridViewCellStyle4.SelectionForeColor = System.Drawing.Color.White;
-            this.dgvDetalleConsumo.RowsDefaultCellStyle = dataGridViewCellStyle4;
+            dataGridViewCellStyle2.Font = new System.Drawing.Font("Verdana", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle2.ForeColor = System.Drawing.Color.Black;
+            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.Color.CornflowerBlue;
+            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.Color.White;
+            this.dgvDetalleConsumo.RowsDefaultCellStyle = dataGridViewCellStyle2;
             this.dgvDetalleConsumo.RowTemplate.Height = 28;
             this.dgvDetalleConsumo.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
             this.dgvDetalleConsumo.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.CellSelect;
@@ -383,16 +371,6 @@ namespace PedidoTela.Formularios
             this.dgvDetalleConsumo.CellEndEdit += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvDetalleConsumo_CellEndEdit);
             this.dgvDetalleConsumo.CellFormatting += new System.Windows.Forms.DataGridViewCellFormattingEventHandler(this.dgvDetalleConsumo_CellFormatting);
             this.dgvDetalleConsumo.CellPainting += new System.Windows.Forms.DataGridViewCellPaintingEventHandler(this.dgvDetalleConsumo_CellPainting);
-            // 
-            // lbDetalleConsumo
-            // 
-            this.lbDetalleConsumo.AutoSize = true;
-            this.lbDetalleConsumo.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
-            this.lbDetalleConsumo.Location = new System.Drawing.Point(13, 221);
-            this.lbDetalleConsumo.Name = "lbDetalleConsumo";
-            this.lbDetalleConsumo.Size = new System.Drawing.Size(129, 19);
-            this.lbDetalleConsumo.TabIndex = 18;
-            this.lbDetalleConsumo.Text = "Detalle Consumo";
             // 
             // ensayoRef
             // 
@@ -456,21 +434,42 @@ namespace PedidoTela.Formularios
             this.id.MinimumWidth = 6;
             this.id.Name = "id";
             this.id.ReadOnly = true;
-            this.id.Visible = false;
+            // 
+            // lbDetalleConsumo
+            // 
+            this.lbDetalleConsumo.AutoSize = true;
+            this.lbDetalleConsumo.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
+            this.lbDetalleConsumo.Location = new System.Drawing.Point(13, 221);
+            this.lbDetalleConsumo.Name = "lbDetalleConsumo";
+            this.lbDetalleConsumo.Size = new System.Drawing.Size(129, 19);
+            this.lbDetalleConsumo.TabIndex = 18;
+            this.lbDetalleConsumo.Text = "Detalle Consumo";
             // 
             // btnSalir
             // 
             this.btnSalir.Font = new System.Drawing.Font("Verdana", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnSalir.Image = global::PedidoTela.Formularios.Properties.Resources.logout_exit_icon_176185;
-            this.btnSalir.Location = new System.Drawing.Point(973, 123);
+            this.btnSalir.Image = global::PedidoTela.Formularios.Properties.Resources.salir2;
+            this.btnSalir.Location = new System.Drawing.Point(973, 139);
             this.btnSalir.Name = "btnSalir";
-            this.btnSalir.Size = new System.Drawing.Size(174, 57);
+            this.btnSalir.Size = new System.Drawing.Size(174, 41);
             this.btnSalir.TabIndex = 98;
             this.btnSalir.Text = "Salir";
             this.btnSalir.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             this.btnSalir.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
             this.btnSalir.UseVisualStyleBackColor = true;
             this.btnSalir.Click += new System.EventHandler(this.btnSalir_Click);
+            // 
+            // btnConsultar
+            // 
+            this.btnConsultar.Image = global::PedidoTela.Formularios.Properties.Resources.finger_hand_5531;
+            this.btnConsultar.Location = new System.Drawing.Point(1153, 139);
+            this.btnConsultar.Name = "btnConsultar";
+            this.btnConsultar.Size = new System.Drawing.Size(167, 41);
+            this.btnConsultar.TabIndex = 60;
+            this.btnConsultar.Text = "Consultar";
+            this.btnConsultar.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
+            this.btnConsultar.UseVisualStyleBackColor = true;
+            this.btnConsultar.Click += new System.EventHandler(this.btnConsultar_Click);
             // 
             // frmSolicitudTela
             // 
@@ -526,6 +525,7 @@ namespace PedidoTela.Formularios
         private System.Windows.Forms.Label label7;
         private System.Windows.Forms.DataGridView dgvDetalleConsumo;
         private System.Windows.Forms.Label lbDetalleConsumo;
+        private System.Windows.Forms.Button btnSalir;
         private System.Windows.Forms.DataGridViewTextBoxColumn ensayoRef;
         private System.Windows.Forms.DataGridViewTextBoxColumn tipoSolicitud;
         private System.Windows.Forms.DataGridViewTextBoxColumn desPrenda;
@@ -535,7 +535,6 @@ namespace PedidoTela.Formularios
         private System.Windows.Forms.DataGridViewButtonColumn editar;
         private System.Windows.Forms.DataGridViewButtonColumn guardar;
         private System.Windows.Forms.DataGridViewTextBoxColumn id;
-        private System.Windows.Forms.Button btnSalir;
     }
 }
 

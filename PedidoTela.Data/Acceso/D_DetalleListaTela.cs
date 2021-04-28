@@ -12,7 +12,7 @@ namespace PedidoTela.Data.Acceso
     {
         #region Consultas
         string consulta1 = "select ts.consecutivo as solicitud,ts.tipo as tipo_solicitud,st.tipo as ensayo_ref, ts.identificador, NVL(es.n_dibujos,'0') as n_dibujos, " +
-                           "   NVL(de.fondo,'') as cod_fondo,NVL(de.des_fondo,'')as des_fondo,NVL(es.tipo_tejido,'') as tipo_tela, "+
+                           "   NVL(de.fondo,'') as cod_fondo,NVL(de.des_fondo,'')as des_fondo,CONCAT(CONCAT(NVL(es.tipo_tejido,''),NVL(un.tipo_tejido,'')),NVL(pl.tipo_tejido,'')) as tipo_tela, " +
                            "   CONCAT(CONCAT(CONCAT (NVL(pl.coordinado,''),NVL(es.coordinado,'')),NVL(un.coordinado,'')),NVL(cu.coordinado,'')) as coordinado, "+
                            "   CONCAT(CONCAT(CONCAT(NVL(un.coordinado_con,''),NVL(cu.coordinadocon,'')),NVL(es.coordinado_con,'')),NVL(pl.coordinado_con,'')) as coordinado_con, "+
                            "   st.referencia_tela,st.desc_tela, st.referencia_tela,st.desc_tela, (CONCAT(CONCAT(CONCAT(NVL(cd.codigo_vte,''),NVL(pd.codigo_vte,'')),NVL(du.codigo_color,'')),NVL(de.codigocolor,''))) as codigo_vte, "+
@@ -186,19 +186,19 @@ namespace PedidoTela.Data.Acceso
                         }
                     }
 
-                    //if (objTela.Estado.ToString() != "")
-                    //{
-                    //    clausulaWhere += "estado = ? ";
-                    //    con.Parametros.Add(new IfxParameter("@estado", objTela.Estado.ToString()));
+                    if (objTela.Estado.ToString() != "")
+                    {
+                        clausulaWhere += "ts.estado = ? ";
+                        con.Parametros.Add(new IfxParameter("@ts.estado", objTela.Estado.ToString()));
 
-                    //    if (objTela.FechaTienda.ToString().Trim() != "" || objTela.RefTela.ToString().Trim() != "" || objTela.NomTela.ToString().Trim() != "" || objTela.Solicitud.ToString().Trim() != ""
-                    //    || objTela.Color.ToString().Trim() != "" || objTela.Clase.ToString().Trim() != "" || objTela.Coordinado.ToString().Trim() != "" || objTela.NumDibujo.ToString().ToString() != "")
-                    //    {
-                    //        clausulaWhere += "AND ";
-                    //    }
-                //}
+                        if (objTela.FechaTienda.ToString().Trim() != "" || objTela.RefTela.ToString().Trim() != "" || objTela.NomTela.ToString().Trim() != "" || objTela.Solicitud.ToString().Trim() != ""
+                        || objTela.Color.ToString().Trim() != "" || objTela.Clase.ToString().Trim() != "" || objTela.Coordinado.ToString().Trim() != "" || objTela.NumDibujo.ToString().ToString() != "")
+                        {
+                            clausulaWhere += "AND ";
+                        }
+                    }
 
-                    if (objTela.FechaTienda.ToString() != "")
+                if (objTela.FechaTienda.ToString() != "")
                     {
                         clausulaWhere += "st.fecha_tienda = ? ";
                         con.Parametros.Add(new IfxParameter("@fecha_tienda", objTela.FechaTienda.ToString()));

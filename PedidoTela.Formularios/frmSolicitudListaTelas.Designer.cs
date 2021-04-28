@@ -30,7 +30,7 @@ namespace PedidoTela.Formularios
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
             this.panel1 = new System.Windows.Forms.Panel();
             this.btnSalir = new System.Windows.Forms.Button();
             this.btnInventarioExt = new System.Windows.Forms.Button();
@@ -99,7 +99,6 @@ namespace PedidoTela.Formularios
             this.cbxSiCoordinado = new System.Windows.Forms.CheckBox();
             this.cbxNoCoordinado = new System.Windows.Forms.CheckBox();
             this.dtpFechaTienda = new System.Windows.Forms.DateTimePicker();
-            this.txbEstado = new System.Windows.Forms.TextBox();
             this.cbxEntrada = new System.Windows.Forms.ComboBox();
             this.cbxTema = new System.Windows.Forms.ComboBox();
             this.cbxOcasionUso = new System.Windows.Forms.ComboBox();
@@ -110,6 +109,7 @@ namespace PedidoTela.Formularios
             this.ttMuestrario = new System.Windows.Forms.ToolTip(this.components);
             this.ttNomTela = new System.Windows.Forms.ToolTip(this.components);
             this.pnlContenedorGrid = new System.Windows.Forms.Panel();
+            this.cbxEstado = new System.Windows.Forms.ComboBox();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvSolicitudTelas)).BeginInit();
             this.pnlInicial.SuspendLayout();
@@ -407,14 +407,14 @@ namespace PedidoTela.Formularios
             this.dgvSolicitudTelas.AllowUserToDeleteRows = false;
             this.dgvSolicitudTelas.AutoSizeRowsMode = System.Windows.Forms.DataGridViewAutoSizeRowsMode.DisplayedCells;
             this.dgvSolicitudTelas.BackgroundColor = System.Drawing.Color.White;
-            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle1.BackColor = System.Drawing.SystemColors.ScrollBar;
-            dataGridViewCellStyle1.Font = new System.Drawing.Font("Verdana", 8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle1.ForeColor = System.Drawing.Color.Navy;
-            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.ScrollBar;
-            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.Color.Navy;
-            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dgvSolicitudTelas.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
+            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle3.BackColor = System.Drawing.SystemColors.ScrollBar;
+            dataGridViewCellStyle3.Font = new System.Drawing.Font("Verdana", 8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle3.ForeColor = System.Drawing.Color.Navy;
+            dataGridViewCellStyle3.SelectionBackColor = System.Drawing.SystemColors.ScrollBar;
+            dataGridViewCellStyle3.SelectionForeColor = System.Drawing.Color.Navy;
+            dataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dgvSolicitudTelas.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle3;
             this.dgvSolicitudTelas.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgvSolicitudTelas.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.sel,
@@ -684,13 +684,13 @@ namespace PedidoTela.Formularios
             // pnlInicial
             // 
             this.pnlInicial.BackColor = System.Drawing.SystemColors.ScrollBar;
+            this.pnlInicial.Controls.Add(this.cbxEstado);
             this.pnlInicial.Controls.Add(this.cbxColor);
             this.pnlInicial.Controls.Add(this.cbxRefTela);
             this.pnlInicial.Controls.Add(this.cbxNomTela);
             this.pnlInicial.Controls.Add(this.cbxSiCoordinado);
             this.pnlInicial.Controls.Add(this.cbxNoCoordinado);
             this.pnlInicial.Controls.Add(this.dtpFechaTienda);
-            this.pnlInicial.Controls.Add(this.txbEstado);
             this.pnlInicial.Controls.Add(this.cbxEntrada);
             this.pnlInicial.Controls.Add(this.cbxTema);
             this.pnlInicial.Controls.Add(this.cbxOcasionUso);
@@ -779,13 +779,6 @@ namespace PedidoTela.Formularios
             this.dtpFechaTienda.TabIndex = 67;
             this.dtpFechaTienda.Value = new System.DateTime(2021, 4, 16, 8, 41, 21, 0);
             // 
-            // txbEstado
-            // 
-            this.txbEstado.Location = new System.Drawing.Point(660, 132);
-            this.txbEstado.Name = "txbEstado";
-            this.txbEstado.Size = new System.Drawing.Size(224, 24);
-            this.txbEstado.TabIndex = 66;
-            // 
             // cbxEntrada
             // 
             this.cbxEntrada.FormattingEnabled = true;
@@ -870,6 +863,20 @@ namespace PedidoTela.Formularios
             this.pnlContenedorGrid.Size = new System.Drawing.Size(1358, 379);
             this.pnlContenedorGrid.TabIndex = 61;
             // 
+            // cbxEstado
+            // 
+            this.cbxEstado.FormattingEnabled = true;
+            this.cbxEstado.Items.AddRange(new object[] {
+            "Por Analizar",
+            "Reserva Total",
+            "Reserva Parcial",
+            "Solicitud Inventario",
+            "Radicado"});
+            this.cbxEstado.Location = new System.Drawing.Point(661, 129);
+            this.cbxEstado.Name = "cbxEstado";
+            this.cbxEstado.Size = new System.Drawing.Size(224, 24);
+            this.cbxEstado.TabIndex = 73;
+            // 
             // frmSolicitudListaTelas
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
@@ -931,7 +938,6 @@ namespace PedidoTela.Formularios
         private System.Windows.Forms.ComboBox cbxOcasionUso;
         private System.Windows.Forms.ComboBox cbxMuestrario;
         private System.Windows.Forms.ComboBox cbxDisenador;
-        private System.Windows.Forms.TextBox txbEstado;
         private System.Windows.Forms.DateTimePicker dtpFechaTienda;
         private System.Windows.Forms.CheckBox cbxSiCoordinado;
         private System.Windows.Forms.CheckBox cbxNoCoordinado;
@@ -974,5 +980,6 @@ namespace PedidoTela.Formularios
         private System.Windows.Forms.DataGridViewTextBoxColumn idSolTela;
         private System.Windows.Forms.DataGridViewTextBoxColumn idProgramador;
         private System.Windows.Forms.DataGridViewTextBoxColumn descPrenda;
+        private System.Windows.Forms.ComboBox cbxEstado;
     }
 }

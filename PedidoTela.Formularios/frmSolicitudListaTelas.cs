@@ -15,6 +15,7 @@ namespace PedidoTela.Formularios
 {
     public partial class frmSolicitudListaTelas : MaterialSkin.Controls.MaterialForm
     {
+        #region Variables
         Controlador controlador = new Controlador();
         Validar validacion = new Validar();
 
@@ -22,27 +23,31 @@ namespace PedidoTela.Formularios
         Utilidades utilidades = new Utilidades();
         string validarCoordinado = "";
         int idSolicitudTelas = 0;
+        #endregion
 
+        #region Setter && Getter 
         public List<DetalleListaTela> Detalle { get => detalle; set => detalle = value; }
+        #endregion
 
+        #region Constructor
         public frmSolicitudListaTelas()
         {
             InitializeComponent();
             dtpFechaTienda.Format = DateTimePickerFormat.Custom;
             dtpFechaTienda.CustomFormat = "dd/MM/yyyy";
-            txbEstado.CharacterCasing = CharacterCasing.Upper;
+           
             txbClase.CharacterCasing = CharacterCasing.Upper;
 
             btnVerDetalle.Enabled = false;
             btnImprimir.Enabled = false;
             btnEditar.Enabled = false;
             btnDevolucion.Enabled = false;
-
-
             // ToolTips
             this.ttMuestrario.SetToolTip(this.cbxMuestrario, "Campo Obligatorio");
         }
+        #endregion
 
+        #region Método inicial de Carga
         private void frmSolicitudListaTelas_Load_1(object sender, EventArgs e)
         {
             SkinManager.Theme = MaterialSkin.MaterialSkinManager.Themes.LIGHT;
@@ -63,6 +68,7 @@ namespace PedidoTela.Formularios
 
 
         }
+        #endregion
 
         /// <summary>
         /// Genera o estable que la columna inicial del DataGridView se pueda ser de verificación, es decir que la selección de las filas se realiza a traves CheckBoxColumn.
@@ -137,11 +143,6 @@ namespace PedidoTela.Formularios
             }
             else
             {
-                //string fecha = "";
-                //if (dtpFechaTienda.Value.ToString("dd/MM/yyyy") != "01/01/1753")
-                //{
-                //   fecha = dtpFechaTienda.Value.ToString("dd/MM/yyyy");
-                //}
                 string fecha = dtpFechaTienda.Value.ToString("dd/MM/yyyy");
 
 
@@ -152,7 +153,7 @@ namespace PedidoTela.Formularios
                 objTela.Entrada = cbxEntrada.GetItemText(cbxEntrada.SelectedItem);
                 objTela.Disenador = cbxDisenador.GetItemText(cbxDisenador.SelectedItem);
                 objTela.EnsayoRefSimilar = txbEnsayoRef.Text.Trim();
-                objTela.Estado = txbEstado.Text.Trim();
+                objTela.Estado = (cbxEstado.SelectedIndex != -1 && cbxEstado.Text != "") ? cbxEstado.Text.ToString() : "";
 
                 objTela.FechaTienda = fecha;
                 objTela.RefTela = cbxRefTela.GetItemText(cbxRefTela.SelectedItem);
@@ -166,18 +167,6 @@ namespace PedidoTela.Formularios
                 dgvSolicitudTelas.Rows.Clear();
                 Detalle = controlador.consultarListaTelas(objTela);
                 cargarDataGridView(Detalle);
-                //// Vacía las cajas de texto del plIncial 
-                //validacion.limpiar(pnlInicial);
-                ////Limpian los ComboBox 
-                //cbxMuestrario.SelectedIndex = -1;
-                //cbxTipoSolicitud.SelectedIndex = -1;
-                //cbxOcasionUso.SelectedIndex = -1;
-                //cbxTema.SelectedIndex = -1;
-                //cbxEntrada.SelectedIndex = -1;
-                //cbxDisenador.SelectedIndex = -1;
-                //cbxNomTela.SelectedIndex = -1;
-                //cbxRefTela.SelectedIndex = -1;
-                //cbxColor.SelectedIndex = -1;
 
             }
 

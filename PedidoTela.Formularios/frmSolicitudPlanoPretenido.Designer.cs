@@ -29,7 +29,7 @@ namespace PedidoTela.Formularios
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
             this.pnlSolicitudColor = new System.Windows.Forms.Panel();
             this.txbNomTela = new System.Windows.Forms.TextBox();
             this.lbReferenciaTela = new System.Windows.Forms.Label();
@@ -71,19 +71,21 @@ namespace PedidoTela.Formularios
             this.btnSalir = new System.Windows.Forms.Button();
             this.btnAddColor = new System.Windows.Forms.Button();
             this.lbIdentificador = new System.Windows.Forms.Label();
-            this.panel1 = new System.Windows.Forms.Panel();
             this.lbSolicitud = new System.Windows.Forms.Label();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
+            this.cbxTipoTejido = new System.Windows.Forms.ComboBox();
+            this.lbTipoTejido = new System.Windows.Forms.Label();
             this.pnlSolicitudColor.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvPlano)).BeginInit();
             this.panel9.SuspendLayout();
-            this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.SuspendLayout();
             // 
             // pnlSolicitudColor
             // 
             this.pnlSolicitudColor.BackColor = System.Drawing.SystemColors.ScrollBar;
+            this.pnlSolicitudColor.Controls.Add(this.cbxTipoTejido);
+            this.pnlSolicitudColor.Controls.Add(this.lbTipoTejido);
             this.pnlSolicitudColor.Controls.Add(this.txbNomTela);
             this.pnlSolicitudColor.Controls.Add(this.lbReferenciaTela);
             this.pnlSolicitudColor.Controls.Add(this.lbNombreTela);
@@ -95,13 +97,13 @@ namespace PedidoTela.Formularios
             this.pnlSolicitudColor.Controls.Add(this.txbRefTela);
             this.pnlSolicitudColor.Location = new System.Drawing.Point(12, 145);
             this.pnlSolicitudColor.Name = "pnlSolicitudColor";
-            this.pnlSolicitudColor.Size = new System.Drawing.Size(1365, 77);
+            this.pnlSolicitudColor.Size = new System.Drawing.Size(1359, 77);
             this.pnlSolicitudColor.TabIndex = 23;
             // 
             // txbNomTela
             // 
             this.txbNomTela.BackColor = System.Drawing.Color.LightGoldenrodYellow;
-            this.txbNomTela.Location = new System.Drawing.Point(557, 26);
+            this.txbNomTela.Location = new System.Drawing.Point(546, 10);
             this.txbNomTela.Name = "txbNomTela";
             this.txbNomTela.ReadOnly = true;
             this.txbNomTela.Size = new System.Drawing.Size(211, 24);
@@ -110,7 +112,7 @@ namespace PedidoTela.Formularios
             // lbReferenciaTela
             // 
             this.lbReferenciaTela.AutoSize = true;
-            this.lbReferenciaTela.Location = new System.Drawing.Point(26, 32);
+            this.lbReferenciaTela.Location = new System.Drawing.Point(25, 15);
             this.lbReferenciaTela.Name = "lbReferenciaTela";
             this.lbReferenciaTela.Size = new System.Drawing.Size(117, 17);
             this.lbReferenciaTela.TabIndex = 3;
@@ -119,7 +121,7 @@ namespace PedidoTela.Formularios
             // lbNombreTela
             // 
             this.lbNombreTela.AutoSize = true;
-            this.lbNombreTela.Location = new System.Drawing.Point(407, 30);
+            this.lbNombreTela.Location = new System.Drawing.Point(401, 16);
             this.lbNombreTela.Name = "lbNombreTela";
             this.lbNombreTela.Size = new System.Drawing.Size(122, 17);
             this.lbNombreTela.TabIndex = 4;
@@ -128,7 +130,7 @@ namespace PedidoTela.Formularios
             // cbxSiCoordinado
             // 
             this.cbxSiCoordinado.AutoSize = true;
-            this.cbxSiCoordinado.Location = new System.Drawing.Point(987, 30);
+            this.cbxSiCoordinado.Location = new System.Drawing.Point(965, 13);
             this.cbxSiCoordinado.Name = "cbxSiCoordinado";
             this.cbxSiCoordinado.Size = new System.Drawing.Size(43, 21);
             this.cbxSiCoordinado.TabIndex = 13;
@@ -139,7 +141,7 @@ namespace PedidoTela.Formularios
             // cbxNoCoordinado
             // 
             this.cbxNoCoordinado.AutoSize = true;
-            this.cbxNoCoordinado.Location = new System.Drawing.Point(919, 29);
+            this.cbxNoCoordinado.Location = new System.Drawing.Point(894, 12);
             this.cbxNoCoordinado.Name = "cbxNoCoordinado";
             this.cbxNoCoordinado.Size = new System.Drawing.Size(49, 21);
             this.cbxNoCoordinado.TabIndex = 12;
@@ -150,7 +152,7 @@ namespace PedidoTela.Formularios
             // lbCoordinado
             // 
             this.lbCoordinado.AutoSize = true;
-            this.lbCoordinado.Location = new System.Drawing.Point(807, 30);
+            this.lbCoordinado.Location = new System.Drawing.Point(777, 14);
             this.lbCoordinado.Name = "lbCoordinado";
             this.lbCoordinado.Size = new System.Drawing.Size(95, 17);
             this.lbCoordinado.TabIndex = 6;
@@ -158,16 +160,16 @@ namespace PedidoTela.Formularios
             // 
             // txbCoordinaCon
             // 
-            this.txbCoordinaCon.Location = new System.Drawing.Point(1151, 25);
+            this.txbCoordinaCon.Location = new System.Drawing.Point(1129, 11);
             this.txbCoordinaCon.Name = "txbCoordinaCon";
-            this.txbCoordinaCon.Size = new System.Drawing.Size(190, 24);
+            this.txbCoordinaCon.Size = new System.Drawing.Size(211, 24);
             this.txbCoordinaCon.TabIndex = 11;
             this.txbCoordinaCon.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txbCoordinaCon_KeyPress);
             // 
             // lbCoordinaCon
             // 
             this.lbCoordinaCon.AutoSize = true;
-            this.lbCoordinaCon.Location = new System.Drawing.Point(1038, 31);
+            this.lbCoordinaCon.Location = new System.Drawing.Point(1016, 14);
             this.lbCoordinaCon.Name = "lbCoordinaCon";
             this.lbCoordinaCon.Size = new System.Drawing.Size(107, 17);
             this.lbCoordinaCon.TabIndex = 7;
@@ -176,10 +178,10 @@ namespace PedidoTela.Formularios
             // txbRefTela
             // 
             this.txbRefTela.BackColor = System.Drawing.Color.LightGoldenrodYellow;
-            this.txbRefTela.Location = new System.Drawing.Point(171, 27);
+            this.txbRefTela.Location = new System.Drawing.Point(169, 12);
             this.txbRefTela.Name = "txbRefTela";
             this.txbRefTela.ReadOnly = true;
-            this.txbRefTela.Size = new System.Drawing.Size(208, 24);
+            this.txbRefTela.Size = new System.Drawing.Size(211, 24);
             this.txbRefTela.TabIndex = 8;
             // 
             // dgvPlano
@@ -189,14 +191,14 @@ namespace PedidoTela.Formularios
             this.dgvPlano.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.dgvPlano.AutoSizeRowsMode = System.Windows.Forms.DataGridViewAutoSizeRowsMode.DisplayedCells;
             this.dgvPlano.BackgroundColor = System.Drawing.Color.White;
-            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle2.BackColor = System.Drawing.SystemColors.ScrollBar;
-            dataGridViewCellStyle2.Font = new System.Drawing.Font("Verdana", 8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle2.ForeColor = System.Drawing.Color.Navy;
-            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.Color.Navy;
-            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dgvPlano.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle2;
+            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle1.BackColor = System.Drawing.SystemColors.ScrollBar;
+            dataGridViewCellStyle1.Font = new System.Drawing.Font("Verdana", 8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle1.ForeColor = System.Drawing.Color.Navy;
+            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.Color.Navy;
+            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dgvPlano.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
             this.dgvPlano.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgvPlano.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.vte,
@@ -221,14 +223,14 @@ namespace PedidoTela.Formularios
             this.totalUnidades,
             this.eliminar});
             this.dgvPlano.EnableHeadersVisualStyles = false;
-            this.dgvPlano.Location = new System.Drawing.Point(14, 313);
+            this.dgvPlano.Location = new System.Drawing.Point(14, 327);
             this.dgvPlano.MultiSelect = false;
             this.dgvPlano.Name = "dgvPlano";
             this.dgvPlano.RightToLeft = System.Windows.Forms.RightToLeft.No;
             this.dgvPlano.RowHeadersWidth = 62;
             this.dgvPlano.RowTemplate.Height = 28;
             this.dgvPlano.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.CellSelect;
-            this.dgvPlano.Size = new System.Drawing.Size(1365, 294);
+            this.dgvPlano.Size = new System.Drawing.Size(1357, 280);
             this.dgvPlano.TabIndex = 29;
             this.dgvPlano.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvPlano_CellClick);
             this.dgvPlano.CellEndEdit += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvPlano_CellEndEdit);
@@ -375,7 +377,7 @@ namespace PedidoTela.Formularios
             this.txtObservaciones.Location = new System.Drawing.Point(14, 680);
             this.txtObservaciones.MaxLength = 120;
             this.txtObservaciones.Name = "txtObservaciones";
-            this.txtObservaciones.Size = new System.Drawing.Size(1464, 91);
+            this.txtObservaciones.Size = new System.Drawing.Size(1357, 96);
             this.txtObservaciones.TabIndex = 30;
             this.txtObservaciones.Text = "";
             // 
@@ -389,7 +391,7 @@ namespace PedidoTela.Formularios
             this.panel9.Controls.Add(this.btnSalir);
             this.panel9.Location = new System.Drawing.Point(11, 77);
             this.panel9.Name = "panel9";
-            this.panel9.Size = new System.Drawing.Size(1365, 49);
+            this.panel9.Size = new System.Drawing.Size(1360, 47);
             this.panel9.TabIndex = 133;
             // 
             // lblConsecutivo
@@ -404,10 +406,10 @@ namespace PedidoTela.Formularios
             // btnConfirmar
             // 
             this.btnConfirmar.Font = new System.Drawing.Font("Verdana", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnConfirmar.Image = global::PedidoTela.Formularios.Properties.Resources._1492790860_8check_84164;
-            this.btnConfirmar.Location = new System.Drawing.Point(176, 3);
+            this.btnConfirmar.Image = global::PedidoTela.Formularios.Properties.Resources.confirmar1;
+            this.btnConfirmar.Location = new System.Drawing.Point(127, 1);
             this.btnConfirmar.Name = "btnConfirmar";
-            this.btnConfirmar.Size = new System.Drawing.Size(174, 43);
+            this.btnConfirmar.Size = new System.Drawing.Size(126, 41);
             this.btnConfirmar.TabIndex = 96;
             this.btnConfirmar.Text = "Confirmar";
             this.btnConfirmar.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
@@ -420,10 +422,10 @@ namespace PedidoTela.Formularios
             this.btnGrabar.BackColor = System.Drawing.Color.LightGray;
             this.btnGrabar.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.btnGrabar.Font = new System.Drawing.Font("Verdana", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnGrabar.Image = global::PedidoTela.Formularios.Properties.Resources.record_icon_icons_com_64775__1_;
-            this.btnGrabar.Location = new System.Drawing.Point(2, 3);
+            this.btnGrabar.Image = global::PedidoTela.Formularios.Properties.Resources.guardar2;
+            this.btnGrabar.Location = new System.Drawing.Point(2, 1);
             this.btnGrabar.Name = "btnGrabar";
-            this.btnGrabar.Size = new System.Drawing.Size(174, 43);
+            this.btnGrabar.Size = new System.Drawing.Size(126, 41);
             this.btnGrabar.TabIndex = 95;
             this.btnGrabar.Text = "Grabar";
             this.btnGrabar.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
@@ -434,10 +436,10 @@ namespace PedidoTela.Formularios
             // btnSalir
             // 
             this.btnSalir.Font = new System.Drawing.Font("Verdana", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnSalir.Image = global::PedidoTela.Formularios.Properties.Resources.logout_exit_icon_176185;
-            this.btnSalir.Location = new System.Drawing.Point(351, 3);
+            this.btnSalir.Image = global::PedidoTela.Formularios.Properties.Resources.salir2;
+            this.btnSalir.Location = new System.Drawing.Point(251, 2);
             this.btnSalir.Name = "btnSalir";
-            this.btnSalir.Size = new System.Drawing.Size(174, 43);
+            this.btnSalir.Size = new System.Drawing.Size(126, 41);
             this.btnSalir.TabIndex = 97;
             this.btnSalir.Text = "Salir";
             this.btnSalir.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
@@ -447,11 +449,11 @@ namespace PedidoTela.Formularios
             // 
             // btnAddColor
             // 
-            this.btnAddColor.Image = global::PedidoTela.Formularios.Properties.Resources._1492790881_6add_84227;
+            this.btnAddColor.Image = global::PedidoTela.Formularios.Properties.Resources.addColor;
             this.btnAddColor.ImageAlign = System.Drawing.ContentAlignment.MiddleRight;
             this.btnAddColor.Location = new System.Drawing.Point(11, 238);
             this.btnAddColor.Name = "btnAddColor";
-            this.btnAddColor.Size = new System.Drawing.Size(303, 69);
+            this.btnAddColor.Size = new System.Drawing.Size(181, 50);
             this.btnAddColor.TabIndex = 128;
             this.btnAddColor.Text = "Adicionar Color";
             this.btnAddColor.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
@@ -470,46 +472,57 @@ namespace PedidoTela.Formularios
             this.lbIdentificador.TabIndex = 136;
             this.lbIdentificador.Text = "-";
             // 
-            // panel1
-            // 
-            this.panel1.BackColor = System.Drawing.SystemColors.ScrollBar;
-            this.panel1.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
-            this.panel1.Controls.Add(this.lbSolicitud);
-            this.panel1.Controls.Add(this.pictureBox1);
-            this.panel1.Location = new System.Drawing.Point(319, 268);
-            this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(286, 37);
-            this.panel1.TabIndex = 154;
-            // 
             // lbSolicitud
             // 
             this.lbSolicitud.AutoSize = true;
-            this.lbSolicitud.BackColor = System.Drawing.SystemColors.ScrollBar;
+            this.lbSolicitud.BackColor = System.Drawing.SystemColors.Window;
             this.lbSolicitud.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
             this.lbSolicitud.Font = new System.Drawing.Font("Verdana", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lbSolicitud.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.lbSolicitud.Location = new System.Drawing.Point(44, 5);
+            this.lbSolicitud.Location = new System.Drawing.Point(625, 251);
             this.lbSolicitud.Name = "lbSolicitud";
-            this.lbSolicitud.Size = new System.Drawing.Size(225, 22);
+            this.lbSolicitud.Size = new System.Drawing.Size(278, 22);
             this.lbSolicitud.TabIndex = 150;
-            this.lbSolicitud.Text = "Solicitud Plano Preteñido";
+            this.lbSolicitud.Text = "SOLICITUD PLANO PRETEÑIDO";
             // 
             // pictureBox1
             // 
-            this.pictureBox1.BackColor = System.Drawing.SystemColors.ScrollBar;
+            this.pictureBox1.BackColor = System.Drawing.SystemColors.Window;
             this.pictureBox1.Image = global::PedidoTela.Formularios.Properties.Resources.seleccion4;
-            this.pictureBox1.Location = new System.Drawing.Point(3, 0);
+            this.pictureBox1.Location = new System.Drawing.Point(598, 246);
             this.pictureBox1.Name = "pictureBox1";
             this.pictureBox1.Size = new System.Drawing.Size(31, 33);
             this.pictureBox1.TabIndex = 151;
             this.pictureBox1.TabStop = false;
             // 
+            // cbxTipoTejido
+            // 
+            this.cbxTipoTejido.FormattingEnabled = true;
+            this.cbxTipoTejido.Items.AddRange(new object[] {
+            "PLANO",
+            "PUNTO",
+            "PRETEÑIDO"});
+            this.cbxTipoTejido.Location = new System.Drawing.Point(169, 42);
+            this.cbxTipoTejido.Name = "cbxTipoTejido";
+            this.cbxTipoTejido.Size = new System.Drawing.Size(211, 24);
+            this.cbxTipoTejido.TabIndex = 16;
+            // 
+            // lbTipoTejido
+            // 
+            this.lbTipoTejido.AutoSize = true;
+            this.lbTipoTejido.Location = new System.Drawing.Point(26, 45);
+            this.lbTipoTejido.Name = "lbTipoTejido";
+            this.lbTipoTejido.Size = new System.Drawing.Size(90, 17);
+            this.lbTipoTejido.TabIndex = 15;
+            this.lbTipoTejido.Text = "Tipo Tejido:";
+            // 
             // frmSolicitudPlanoPretenido
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1386, 788);
-            this.Controls.Add(this.panel1);
+            this.ClientSize = new System.Drawing.Size(1383, 788);
+            this.Controls.Add(this.pictureBox1);
+            this.Controls.Add(this.lbSolicitud);
             this.Controls.Add(this.lbIdentificador);
             this.Controls.Add(this.btnAddColor);
             this.Controls.Add(this.panel9);
@@ -528,8 +541,6 @@ namespace PedidoTela.Formularios
             ((System.ComponentModel.ISupportInitialize)(this.dgvPlano)).EndInit();
             this.panel9.ResumeLayout(false);
             this.panel9.PerformLayout();
-            this.panel1.ResumeLayout(false);
-            this.panel1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
@@ -578,8 +589,9 @@ namespace PedidoTela.Formularios
         private System.Windows.Forms.DataGridViewTextBoxColumn otros;
         private System.Windows.Forms.DataGridViewTextBoxColumn totalUnidades;
         private System.Windows.Forms.DataGridViewTextBoxColumn eliminar;
-        private System.Windows.Forms.Panel panel1;
         private System.Windows.Forms.Label lbSolicitud;
         private System.Windows.Forms.PictureBox pictureBox1;
+        private System.Windows.Forms.ComboBox cbxTipoTejido;
+        private System.Windows.Forms.Label lbTipoTejido;
     }
 }

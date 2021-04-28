@@ -101,6 +101,8 @@ namespace PedidoTela.Formularios
 
                     dgvInfoConsolidar.Rows.Add(prmLista[i].Vte.ToString(),
                     prmLista[i].DesColor.ToString(),
+                    prmLista[i].RefTela.ToString(),
+                    prmLista[i].DesTela.ToString(),
                     prmLista[i].Tiendas.ToString(),
                     prmLista[i].Exito.ToString(),
                     prmLista[i].Cencosud.ToString(),
@@ -162,6 +164,8 @@ namespace PedidoTela.Formularios
 
                     dgvTotalConsolidado.Rows.Add(prmLista[i].Vte.ToString(),
                     prmLista[i].DesColor.ToString(),
+                    prmLista[i].RefTela.ToString(),
+                    prmLista[i].DesTela.ToString(),
                     prmLista[i].Tiendas.ToString(),
                     prmLista[i].Exito.ToString(),
                     prmLista[i].Cencosud.ToString(),
@@ -244,7 +248,7 @@ namespace PedidoTela.Formularios
 
         private void dgvInfoConsolidar_CellFormatting(object sender, DataGridViewCellFormattingEventArgs e)
         {
-            if (e.ColumnIndex > 1 && e.ColumnIndex <= 9 || e.ColumnIndex >10 && e.ColumnIndex <=13)
+            if (e.ColumnIndex > 3 && e.ColumnIndex <= 9 || e.ColumnIndex >10 && e.ColumnIndex <=13)
             {
                 e.CellStyle.BackColor = Color.PaleGoldenrod;
             }
@@ -252,7 +256,7 @@ namespace PedidoTela.Formularios
 
         private void dgvTotalConsolidado_CellFormatting(object sender, DataGridViewCellFormattingEventArgs e)
         {
-            if (e.ColumnIndex > 1 && e.ColumnIndex <= 10)
+            if (e.ColumnIndex > 3 && e.ColumnIndex <= 10)
             {
                 e.CellStyle.BackColor = Color.PaleGoldenrod;
             }

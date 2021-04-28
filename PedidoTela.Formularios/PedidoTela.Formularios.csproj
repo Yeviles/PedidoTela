@@ -474,6 +474,17 @@
     <None Include="imgs\print2.png" />
   </ItemGroup>
   <ItemGroup>
+    <None Include="imgs\addColor.png" />
+    <None Include="imgs\guardar.png" />
+    <None Include="imgs\confirmar.png" />
+    <None Include="imgs\salir.png" />
+    <None Include="imgs\guardar1.png" />
+    <None Include="imgs\confirmar1.png" />
+    <None Include="imgs\guardar2.png" />
+    <None Include="imgs\salir2.png" />
+    <None Include="imgs\agregar.png" />
+    <None Include="imgs\volver.png" />
+    <None Include="imgs\aceptar.png" />
     <Content Include="SqlServerTypes\readme.htm" />
     <Content Include="SqlServerTypes\x64\msvcr120.dll">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>

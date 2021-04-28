@@ -29,7 +29,6 @@ namespace PedidoTela.Formularios
         /// </summary>
         private void InitializeComponent()
         {
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmTipoPedidoaMontar));
             this.lbSelecciontipo = new System.Windows.Forms.Label();
             this.panel1 = new System.Windows.Forms.Panel();
             this.panel2 = new System.Windows.Forms.Panel();
@@ -39,8 +38,8 @@ namespace PedidoTela.Formularios
             this.cbxPlanoPretenido = new System.Windows.Forms.CheckBox();
             this.cbxestampado = new System.Windows.Forms.CheckBox();
             this.cbxUnicolor = new System.Windows.Forms.CheckBox();
-            this.btnCancelar = new System.Windows.Forms.Button();
             this.btnAceptar = new System.Windows.Forms.Button();
+            this.btnCancelar = new System.Windows.Forms.Button();
             this.panel1.SuspendLayout();
             this.panel2.SuspendLayout();
             this.SuspendLayout();
@@ -63,7 +62,7 @@ namespace PedidoTela.Formularios
             this.panel1.Dock = System.Windows.Forms.DockStyle.Top;
             this.panel1.Location = new System.Drawing.Point(0, 0);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(420, 31);
+            this.panel1.Size = new System.Drawing.Size(381, 31);
             this.panel1.TabIndex = 16;
             // 
             // panel2
@@ -76,9 +75,9 @@ namespace PedidoTela.Formularios
             this.panel2.Controls.Add(this.cbxPlanoPretenido);
             this.panel2.Controls.Add(this.cbxestampado);
             this.panel2.Controls.Add(this.cbxUnicolor);
-            this.panel2.Location = new System.Drawing.Point(12, 51);
+            this.panel2.Location = new System.Drawing.Point(38, 51);
             this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(396, 339);
+            this.panel2.Size = new System.Drawing.Size(314, 237);
             this.panel2.TabIndex = 17;
             // 
             // cbxAgencias
@@ -86,7 +85,7 @@ namespace PedidoTela.Formularios
             this.cbxAgencias.AutoSize = true;
             this.cbxAgencias.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.cbxAgencias.Font = new System.Drawing.Font("Verdana", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.cbxAgencias.Location = new System.Drawing.Point(105, 281);
+            this.cbxAgencias.Location = new System.Drawing.Point(58, 184);
             this.cbxAgencias.Name = "cbxAgencias";
             this.cbxAgencias.Size = new System.Drawing.Size(193, 24);
             this.cbxAgencias.TabIndex = 9;
@@ -99,7 +98,7 @@ namespace PedidoTela.Formularios
             this.cbxCdoTresUno.AutoSize = true;
             this.cbxCdoTresUno.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.cbxCdoTresUno.Font = new System.Drawing.Font("Verdana", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.cbxCdoTresUno.Location = new System.Drawing.Point(105, 235);
+            this.cbxCdoTresUno.Location = new System.Drawing.Point(58, 154);
             this.cbxCdoTresUno.Name = "cbxCdoTresUno";
             this.cbxCdoTresUno.Size = new System.Drawing.Size(185, 24);
             this.cbxCdoTresUno.TabIndex = 8;
@@ -112,7 +111,7 @@ namespace PedidoTela.Formularios
             this.cbxCuePunTiras.AutoSize = true;
             this.cbxCuePunTiras.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.cbxCuePunTiras.Font = new System.Drawing.Font("Verdana", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.cbxCuePunTiras.Location = new System.Drawing.Point(105, 187);
+            this.cbxCuePunTiras.Location = new System.Drawing.Point(58, 124);
             this.cbxCuePunTiras.Name = "cbxCuePunTiras";
             this.cbxCuePunTiras.Size = new System.Drawing.Size(196, 24);
             this.cbxCuePunTiras.TabIndex = 7;
@@ -125,7 +124,7 @@ namespace PedidoTela.Formularios
             this.cbxPlanoPretenido.AutoSize = true;
             this.cbxPlanoPretenido.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.cbxPlanoPretenido.Font = new System.Drawing.Font("Verdana", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.cbxPlanoPretenido.Location = new System.Drawing.Point(105, 137);
+            this.cbxPlanoPretenido.Location = new System.Drawing.Point(58, 94);
             this.cbxPlanoPretenido.Name = "cbxPlanoPretenido";
             this.cbxPlanoPretenido.Size = new System.Drawing.Size(168, 24);
             this.cbxPlanoPretenido.TabIndex = 6;
@@ -138,7 +137,7 @@ namespace PedidoTela.Formularios
             this.cbxestampado.AutoSize = true;
             this.cbxestampado.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.cbxestampado.Font = new System.Drawing.Font("Verdana", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.cbxestampado.Location = new System.Drawing.Point(105, 86);
+            this.cbxestampado.Location = new System.Drawing.Point(58, 64);
             this.cbxestampado.Name = "cbxestampado";
             this.cbxestampado.Size = new System.Drawing.Size(123, 24);
             this.cbxestampado.TabIndex = 5;
@@ -151,7 +150,7 @@ namespace PedidoTela.Formularios
             this.cbxUnicolor.AutoSize = true;
             this.cbxUnicolor.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.cbxUnicolor.Font = new System.Drawing.Font("Verdana", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.cbxUnicolor.Location = new System.Drawing.Point(105, 32);
+            this.cbxUnicolor.Location = new System.Drawing.Point(58, 34);
             this.cbxUnicolor.Name = "cbxUnicolor";
             this.cbxUnicolor.Size = new System.Drawing.Size(96, 24);
             this.cbxUnicolor.TabIndex = 4;
@@ -160,44 +159,42 @@ namespace PedidoTela.Formularios
             this.cbxUnicolor.UseVisualStyleBackColor = true;
             this.cbxUnicolor.CheckedChanged += new System.EventHandler(this.cbxUnicolor_CheckedChanged);
             // 
+            // btnAceptar
+            // 
+            this.btnAceptar.BackColor = System.Drawing.Color.Gainsboro;
+            this.btnAceptar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnAceptar.Font = new System.Drawing.Font("Verdana", 8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnAceptar.Image = global::PedidoTela.Formularios.Properties.Resources.aceptar;
+            this.btnAceptar.Location = new System.Drawing.Point(229, 315);
+            this.btnAceptar.Name = "btnAceptar";
+            this.btnAceptar.Size = new System.Drawing.Size(123, 44);
+            this.btnAceptar.TabIndex = 10;
+            this.btnAceptar.Text = "Aceptar";
+            this.btnAceptar.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
+            this.btnAceptar.UseVisualStyleBackColor = false;
+            // 
             // btnCancelar
             // 
             this.btnCancelar.BackColor = System.Drawing.Color.Gainsboro;
             this.btnCancelar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnCancelar.Font = new System.Drawing.Font("Verdana", 8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnCancelar.ForeColor = System.Drawing.Color.Black;
-            this.btnCancelar.Image = global::PedidoTela.Formularios.Properties.Resources.mbrilogout_99583;
-            this.btnCancelar.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnCancelar.Location = new System.Drawing.Point(12, 411);
+            this.btnCancelar.Image = global::PedidoTela.Formularios.Properties.Resources.volver;
+            this.btnCancelar.Location = new System.Drawing.Point(38, 315);
             this.btnCancelar.Name = "btnCancelar";
-            this.btnCancelar.Size = new System.Drawing.Size(150, 70);
+            this.btnCancelar.Size = new System.Drawing.Size(123, 44);
             this.btnCancelar.TabIndex = 11;
             this.btnCancelar.Text = "Cancelar";
             this.btnCancelar.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
             this.btnCancelar.UseVisualStyleBackColor = false;
             this.btnCancelar.Click += new System.EventHandler(this.btnCancelar_Click);
             // 
-            // btnAceptar
-            // 
-            this.btnAceptar.BackColor = System.Drawing.Color.Gainsboro;
-            this.btnAceptar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnAceptar.Font = new System.Drawing.Font("Verdana", 8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnAceptar.Image = ((System.Drawing.Image)(resources.GetObject("btnAceptar.Image")));
-            this.btnAceptar.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnAceptar.Location = new System.Drawing.Point(258, 411);
-            this.btnAceptar.Name = "btnAceptar";
-            this.btnAceptar.Size = new System.Drawing.Size(150, 70);
-            this.btnAceptar.TabIndex = 10;
-            this.btnAceptar.Text = "Aceptar";
-            this.btnAceptar.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
-            this.btnAceptar.UseVisualStyleBackColor = false;
-            // 
             // frmTipoPedidoaMontar
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.ScrollBar;
-            this.ClientSize = new System.Drawing.Size(420, 505);
+            this.ClientSize = new System.Drawing.Size(381, 390);
             this.Controls.Add(this.btnAceptar);
             this.Controls.Add(this.btnCancelar);
             this.Controls.Add(this.panel2);

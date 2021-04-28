@@ -16,13 +16,16 @@ namespace PedidoTela.Formularios
 {
     public partial class frmSolicitudUnicolor : MaterialSkin.Controls.MaterialForm
     {
+        #region Variables 
         private Controlador control;
         private string identificador;
         private string codigoTela;
         private int id = 0, consecutivo = 0;
         public bool esClickBtnGrabar = false;
         private int idSolicitudTelas;
+        #endregion
 
+        #region Contructor
         public frmSolicitudUnicolor(Controlador control, string identificador, string codigoTela,string desTela, int idSolicitud)
         {
             this.control = control;
@@ -31,13 +34,10 @@ namespace PedidoTela.Formularios
             this.idSolicitudTelas = idSolicitud;
 
             InitializeComponent();
-
             lbIdentificador.Text = identificador;
-
-            TipoTejido tt = control.getTipoTejido(codigoTela);
+            //TipoTejido tt = control.getTipoTejido(codigoTela);
             txbRefTela.Text = codigoTela;
             txbNomTela.Text = desTela;
-            txbTipoTejido.Text = tt.NombreTipoTela;
             cargar();
             if (dgvUnicolor.RowCount < 0)
             {
@@ -50,17 +50,17 @@ namespace PedidoTela.Formularios
             }
 
         }
+        #endregion
 
+        #region Método inicial de Carga
         private void frmSolicitudUnicolor_Load(object sender, EventArgs e)
         {
             SkinManager.Theme = MaterialSkin.MaterialSkinManager.Themes.LIGHT;
             SkinManager.ColorScheme = new ColorScheme(Primary.Blue900, Primary.Grey500, Primary.Grey200, Accent.Green100, TextShade.WHITE);
         }
+        #endregion
 
-        private void btnSalir_Click(object sender, EventArgs e)
-        {
-            this.Close();
-        }
+        #region Eventos
 
         private void cbxSiCoordinado_CheckedChanged(object sender, EventArgs e)
         {
@@ -84,6 +84,11 @@ namespace PedidoTela.Formularios
 
             }
         }
+        
+        private void btnSalir_Click(object sender, EventArgs e)
+        {
+            this.Close();
+        }
 
         private void btnAddColor_Click(object sender, EventArgs e)
         {
@@ -98,50 +103,17 @@ namespace PedidoTela.Formularios
             }
         }
 
-        private void dgvUnicolor_CellEndEdit(object sender, DataGridViewCellEventArgs e)
-        {
-            dgvUnicolor.CurrentRow.Cells[10].ReadOnly = true;
-            try
-            {
-                if (dgvUnicolor.CurrentCell.Value != null)
-                {
-                    int ultimaColumna = dgvUnicolor.ColumnCount - 2;
-
-                    if (e.ColumnIndex > 1 && e.ColumnIndex < ultimaColumna)
-                    {
-                        dgvUnicolor.CurrentCell.Value = Regex.Replace(dgvUnicolor.CurrentCell.Value.ToString().Trim(), @"[^0-9]", "");
-
-                        if (dgvUnicolor.CurrentCell.Value.ToString() != "")
-                        {
-                            int total = 0;
-                            for (int i = 2; i < ultimaColumna; i++)
-                            {
-                                if (dgvUnicolor.Rows[e.RowIndex].Cells[i].Value != null && dgvUnicolor.Rows[e.RowIndex].Cells[i].Value.ToString() != "")
-                                {
-                                    total += int.Parse(dgvUnicolor.Rows[e.RowIndex].Cells[i].Value.ToString());
-                                }
-                            }
-                            dgvUnicolor.Rows[e.RowIndex].Cells[ultimaColumna].Value = total;
-                        }
-                    }
-                }
-            }
-            catch (ArgumentException aex)
-            {
-                dgvUnicolor.CurrentCell.Value = "";
-                MessageBox.Show("Unicamente se permiten valores numéricos", "TTipo de dato no permitido", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-            }
-         
-          
-        }
-
         private void btnGrabar_Click(object sender, EventArgs e)
         {
             bool b = false;
             List<int> listaIdDetalles = new List<int>();
             if (!cbxSiCoordinado.Checked && !cbxNoCoordinado.Checked)
             {
-                MessageBox.Show("Por favor, seleccione un valor para coordinado", "Advertencia", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                MessageBox.Show("Por favor, seleccione un valor para Coordinado", "Advertencia", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+            }
+            else if (cbxTipoTejido.SelectedIndex == -1)
+            {
+                MessageBox.Show("Por favor, seleccione un valor para Tipo tejido.", "Advertencia", MessageBoxButtons.OK, MessageBoxIcon.Warning);
             }
             else {
                 if (txbObservaciones.Text.Trim().Length > 0)
@@ -152,7 +124,7 @@ namespace PedidoTela.Formularios
                         elemento.Identificador = identificador;
                         elemento.ReferenciaTela = codigoTela;
                         elemento.DescripcionTela = txbNomTela.Text;
-                        elemento.TipoTejido = txbTipoTejido.Text;
+                        elemento.TipoTejido = cbxTipoTejido.SelectedItem.ToString();
                         elemento.Coordinado = (cbxSiCoordinado.Checked) ? true : false;
                         elemento.CoordinadoCon = (txbCoordinaCon.Text.Trim().Length > 0) ? txbCoordinaCon.Text.Trim() : "";
                         elemento.Observacion = (txbObservaciones.Text.Trim().Length > 0) ? txbObservaciones.Text.Trim() : "";
@@ -203,21 +175,20 @@ namespace PedidoTela.Formularios
                                 }
                             }
                             esClickBtnGrabar = true;
-                            //DialogResult = DialogResult.OK("Hola");
-                            MessageBox.Show("Unicolor se guardó con éxito", "Información", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                            MessageBox.Show("Unicolor se guardó con éxito.", "Información", MessageBoxButtons.OK, MessageBoxIcon.Information);
                            
                         }
                         catch 
                         {
-                            MessageBox.Show("Detalle unicolor no se pudo guardar", "Advertencia", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                            MessageBox.Show("Detalle unicolor no se pudo guardar.", "Advertencia", MessageBoxButtons.OK, MessageBoxIcon.Error);
                         }
                     }
                     else {
-                        MessageBox.Show("Por favor, adicione al menos un color", "Advertencia", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                        MessageBox.Show("Por favor, adicione al menos un color.", "Advertencia", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                     }
                 }
                 else {
-                    MessageBox.Show("Por favor, ingrese las observaciones de diseño", "Advertencia", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    MessageBox.Show("Por favor, ingrese las observaciones de diseño.", "Advertencia", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 }
             }
         }
@@ -255,10 +226,47 @@ namespace PedidoTela.Formularios
                 MessageBox.Show("Por favor, Grabe la Información.", "Advertencia", MessageBoxButtons.OK, MessageBoxIcon.Warning);
             }
         }
-
+        
         private void txbCoordinaCon_KeyPress(object sender, KeyPressEventArgs e)
         {
             e.KeyChar = Char.ToUpper(e.KeyChar);
+        }
+        
+        private void dgvUnicolor_CellEndEdit(object sender, DataGridViewCellEventArgs e)
+        {
+            dgvUnicolor.CurrentRow.Cells[10].ReadOnly = true;
+            try
+            {
+                if (dgvUnicolor.CurrentCell.Value != null)
+                {
+                    int ultimaColumna = dgvUnicolor.ColumnCount - 2;
+
+                    if (e.ColumnIndex > 1 && e.ColumnIndex < ultimaColumna)
+                    {
+                        dgvUnicolor.CurrentCell.Value = Regex.Replace(dgvUnicolor.CurrentCell.Value.ToString().Trim(), @"[^0-9]", "");
+
+                        if (dgvUnicolor.CurrentCell.Value.ToString() != "")
+                        {
+                            int total = 0;
+                            for (int i = 2; i < ultimaColumna; i++)
+                            {
+                                if (dgvUnicolor.Rows[e.RowIndex].Cells[i].Value != null && dgvUnicolor.Rows[e.RowIndex].Cells[i].Value.ToString() != "")
+                                {
+                                    total += int.Parse(dgvUnicolor.Rows[e.RowIndex].Cells[i].Value.ToString());
+                                }
+                            }
+                            dgvUnicolor.Rows[e.RowIndex].Cells[ultimaColumna].Value = total;
+                        }
+                    }
+                }
+            }
+            catch (ArgumentException aex)
+            {
+                dgvUnicolor.CurrentCell.Value = "";
+                MessageBox.Show("Unicamente se permiten valores numéricos", "TTipo de dato no permitido", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+            }
+         
+          
         }
 
         private void dgvUnicolor_CellPainting(object sender, DataGridViewCellPaintingEventArgs e)
@@ -286,9 +294,10 @@ namespace PedidoTela.Formularios
             }
         }
 
-        private void cargar() {
-            //int idUnicolor = (control.getIdUnicolor(identificador).ToString() != null && control.getIdUnicolor(identificador).ToString() != "") ? int.Parse(control.getIdUnicolor(identificador).ToString()) : 0;
+        #endregion
 
+        #region Métodos
+        private void cargar() {
             Unicolor unicolor = control.getUnicolor(idSolicitudTelas);
             id = unicolor.Id;
             if (unicolor.Coordinado) {
@@ -298,6 +307,7 @@ namespace PedidoTela.Formularios
             else {
                 cbxNoCoordinado.Checked = true;
             }
+            cbxTipoTejido.Text = unicolor.TipoTejido;
             txbObservaciones.Text = unicolor.Observacion;
             consecutivo = control.consultarConsecutivo(id);
             if (id != 0 && consecutivo != 0)
@@ -317,11 +327,8 @@ namespace PedidoTela.Formularios
                     dgvUnicolor.Rows.Add(obj.CodigoColor, obj.Descripcion, obj.Exito, obj.Tiendas,
                         obj.Cencosud, obj.Sao, obj.Comercio, obj.Rosado, obj.Otros, obj.Total);
                 }
-                //btnAddColor.Enabled = false;
-                //dgvUnicolor.ReadOnly = true;
-                //btnGrabar.Enabled = false;
-                //txbObservaciones.Enabled = false;
             }
         }
+        #endregion
     }
 }
