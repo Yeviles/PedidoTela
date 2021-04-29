@@ -455,18 +455,18 @@ namespace PedidoTela.Formularios
             this.panel9.Controls.Add(this.button1);
             this.panel9.Controls.Add(this.button2);
             this.panel9.Controls.Add(this.button3);
-            this.panel9.Location = new System.Drawing.Point(18, 19);
+            this.panel9.Location = new System.Drawing.Point(12, 11);
             this.panel9.Name = "panel9";
-            this.panel9.Size = new System.Drawing.Size(1314, 56);
+            this.panel9.Size = new System.Drawing.Size(1320, 47);
             this.panel9.TabIndex = 136;
             // 
             // button1
             // 
             this.button1.Font = new System.Drawing.Font("Verdana", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.button1.Image = global::PedidoTela.Formularios.Properties.Resources.confirmar1;
-            this.button1.Location = new System.Drawing.Point(173, 2);
+            this.button1.Location = new System.Drawing.Point(127, 3);
             this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(174, 50);
+            this.button1.Size = new System.Drawing.Size(126, 41);
             this.button1.TabIndex = 96;
             this.button1.Text = "Confirmar";
             this.button1.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
@@ -481,7 +481,7 @@ namespace PedidoTela.Formularios
             this.button2.Image = global::PedidoTela.Formularios.Properties.Resources.guardar2;
             this.button2.Location = new System.Drawing.Point(2, 2);
             this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(174, 50);
+            this.button2.Size = new System.Drawing.Size(126, 41);
             this.button2.TabIndex = 95;
             this.button2.Text = "Grabar";
             this.button2.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
@@ -492,9 +492,9 @@ namespace PedidoTela.Formularios
             // 
             this.button3.Font = new System.Drawing.Font("Verdana", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.button3.Image = global::PedidoTela.Formularios.Properties.Resources.salir2;
-            this.button3.Location = new System.Drawing.Point(346, 2);
+            this.button3.Location = new System.Drawing.Point(252, 3);
             this.button3.Name = "button3";
-            this.button3.Size = new System.Drawing.Size(174, 50);
+            this.button3.Size = new System.Drawing.Size(126, 41);
             this.button3.TabIndex = 97;
             this.button3.Text = "Salir";
             this.button3.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
@@ -636,7 +636,7 @@ namespace PedidoTela.Formularios
             // lbDiseñador
             // 
             this.lbDiseñador.AutoSize = true;
-            this.lbDiseñador.Location = new System.Drawing.Point(686, 119);
+            this.lbDiseñador.Location = new System.Drawing.Point(686, 117);
             this.lbDiseñador.Name = "lbDiseñador";
             this.lbDiseñador.Size = new System.Drawing.Size(105, 17);
             this.lbDiseñador.TabIndex = 32;
@@ -914,9 +914,9 @@ namespace PedidoTela.Formularios
             this.panel1.Controls.Add(this.label1);
             this.panel1.Controls.Add(this.dgvInfoConsolidar);
             this.panel1.Controls.Add(this.lbInformacion);
-            this.panel1.Location = new System.Drawing.Point(6, 76);
+            this.panel1.Location = new System.Drawing.Point(6, 65);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(1365, 700);
+            this.panel1.Size = new System.Drawing.Size(1374, 711);
             this.panel1.TabIndex = 139;
             // 
             // dgvTomarDelPedido
