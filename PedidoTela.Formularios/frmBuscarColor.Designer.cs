@@ -98,6 +98,8 @@ namespace PedidoTela.Formularios
             // 
             // dgvColores
             // 
+            this.dgvColores.AllowUserToAddRows = false;
+            this.dgvColores.AllowUserToDeleteRows = false;
             this.dgvColores.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgvColores.Location = new System.Drawing.Point(13, 128);
             this.dgvColores.Name = "dgvColores";

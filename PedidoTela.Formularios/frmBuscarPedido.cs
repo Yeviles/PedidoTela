@@ -31,7 +31,7 @@ namespace PedidoTela.Formularios
 
         private void btnBuscar_Click(object sender, EventArgs e)
         {
-            List<Pedido> lista = new List<Pedido>();
+            /*List<Pedido> lista = new List<Pedido>();
             if (txbPedido.Text.Trim().Length > 0)
             {
                 lista = control.buscarColorPorCodigo(txbPedido.Text.Trim());
@@ -44,7 +44,7 @@ namespace PedidoTela.Formularios
             {
                 lista = control.getColores();
             }
-            listar(lista);
+            listar(lista);*/
         }
     }
 }

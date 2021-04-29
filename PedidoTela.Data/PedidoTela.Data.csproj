@@ -99,6 +99,7 @@
     <Compile Include="Acceso\D_SolicitudTela.cs" />
     <Compile Include="Acceso\D_Tela.cs" />
     <Compile Include="Acceso\D_Tema.cs" />
+    <Compile Include="Acceso\D_TipoMarcacion.cs" />
     <Compile Include="Acceso\D_TipoPedido.cs" />
     <Compile Include="Acceso\D_TipoSolicitud.cs" />
     <Compile Include="Acceso\D_TipoTejido.cs" />

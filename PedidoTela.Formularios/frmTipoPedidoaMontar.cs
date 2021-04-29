@@ -18,30 +18,32 @@ namespace PedidoTela.Formularios
         private Controlador control= new Controlador();
         List<DetalleListaTela> detalleSeleccionado = new List<DetalleListaTela>();
         int contItemSeleccionado = 0;
+        frmPedidoaMotarUnicolor frmMontarUnicolor;
+        frmPedidoaMontarEstampado frmMontarEstampado;
+        frmPedidoaMontarPretenido frmMontarPretenido;
+        frmPedidoaMontarCuellos frmMontarCuellos;
+        frmPedidoaMontarCoordinado frmMontarCoordinado;
+        frmPedidoaMontarAgencias frmPedidoaMontarAgencias;
 
         public string Seleccion { get => seleccion; set => seleccion = value; }
-        public List<DetalleListaTela> DetalleSeleccionado { get => detalleSeleccionado; set => detalleSeleccionado = value; }
 
         public frmTipoPedidoaMontar(Controlador controlador, List<DetalleListaTela> listaSeleccionada, int contador)
         {
             InitializeComponent();
-            DetalleSeleccionado = listaSeleccionada;
+            detalleSeleccionado = listaSeleccionada;
             control = controlador;
             contItemSeleccionado = contador;
-            
         }
 
         private void cbxUnicolor_CheckedChanged(object sender, EventArgs e)
         {
             if (cbxUnicolor.Checked)
             {
-
                 cbxestampado.Checked = false;
                 cbxPlanoPretenido.Checked = false;
                 cbxCuePunTiras.Checked = false;
                 Seleccion = "unicolor";
-                frmPedidoaMotarUnicolor frmMontarUnicolor = new frmPedidoaMotarUnicolor(control, DetalleSeleccionado,contItemSeleccionado,Seleccion);
-
+                frmMontarUnicolor = new frmPedidoaMotarUnicolor(control, detalleSeleccionado, contItemSeleccionado, Seleccion);
             }
         }
 
@@ -53,6 +55,7 @@ namespace PedidoTela.Formularios
                 cbxPlanoPretenido.Checked = false;
                 cbxCuePunTiras.Checked = false;
                 Seleccion = "estampado";
+                frmMontarEstampado = new frmPedidoaMontarEstampado(control, detalleSeleccionado, contItemSeleccionado);
             }
         }
 
@@ -106,6 +109,37 @@ namespace PedidoTela.Formularios
         private void btnCancelar_Click(object sender, EventArgs e)
         {
             this.Close();
+        }
+
+        private void btnAceptar_Click(object sender, EventArgs e)
+        {
+            if (cbxUnicolor.Checked)
+            {
+                frmMontarUnicolor.ShowDialog();
+            }
+            else if (cbxestampado.Checked)
+            {
+                frmMontarEstampado.ShowDialog();
+            }
+            else if (cbxPlanoPretenido.Checked)
+            {
+                frmMontarPretenido.ShowDialog();
+            }
+            else if (cbxCuePunTiras.Checked)
+            {
+                frmMontarCuellos.ShowDialog();
+            }
+            else if (cbxCdoTresUno.Checked)
+            {
+                frmMontarCoordinado.ShowDialog();
+            }
+            else if (cbxAgencias.Checked)
+            {
+                frmPedidoaMontarAgencias.ShowDialog();
+            }
+            else {
+                MessageBox.Show("Por favor seleccione el tipo de pedido que desea montar", "Advertencia", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+            }
         }
     }
 }

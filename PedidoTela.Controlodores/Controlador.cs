@@ -657,5 +657,12 @@ namespace PedidoTela.Controlodores
             return d_AgenciasTotalCon.getDetalleTotalConsolidado(idAgencias);
         }
         #endregion
+
+        #region Métodos Consolidar
+        public List<Objeto> getTipoMarcacion() {
+            D_TipoMarcacion tm = new D_TipoMarcacion();
+            return tm.consultar();
+        }
+        #endregion
     }
 }
