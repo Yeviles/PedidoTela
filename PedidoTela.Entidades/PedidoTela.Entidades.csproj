@@ -73,13 +73,16 @@
     <Compile Include="Logica\EditarDetalleconsumo.cs" />
     <Compile Include="Logica\Ensayo.cs" />
     <Compile Include="Logica\Estampado.cs" />
+    <Compile Include="Logica\InfoConPedUnicolor.cs" />
     <Compile Include="Logica\ListaTela.cs" />
     <Compile Include="Logica\Objeto.cs" />
     <Compile Include="Logica\Pedido.cs" />
+    <Compile Include="Logica\PedMontarUnicolor.cs" />
     <Compile Include="Logica\PlanoPretenido.cs" />
     <Compile Include="Logica\ReporteReservaTela.cs" />
     <Compile Include="Logica\TipoPedido.cs" />
     <Compile Include="Logica\TipoTejido.cs" />
+    <Compile Include="Logica\TotalConPedUnicolor.cs" />
     <Compile Include="Logica\Unicolor.cs" />
     <Compile Include="Logica\Utilidades.cs" />
     <Compile Include="Logica\Validar.cs" />

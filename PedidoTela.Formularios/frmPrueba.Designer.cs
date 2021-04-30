@@ -29,6 +29,7 @@ namespace PedidoTela.Formularios
         /// </summary>
         private void InitializeComponent()
         {
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
             this.lbTotalCons = new System.Windows.Forms.Label();
             this.panel9 = new System.Windows.Forms.Panel();
             this.button1 = new System.Windows.Forms.Button();
@@ -52,8 +53,16 @@ namespace PedidoTela.Formularios
             this.textBox38 = new System.Windows.Forms.TextBox();
             this.label8 = new System.Windows.Forms.Label();
             this.label9 = new System.Windows.Forms.Label();
+            this.dgvTomarDelPedido = new System.Windows.Forms.DataGridView();
+            this.coColor = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.deColor = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Estado = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Disponible = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.button4 = new System.Windows.Forms.Button();
+            this.label3 = new System.Windows.Forms.Label();
             this.panel9.SuspendLayout();
             this.panel8.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dgvTomarDelPedido)).BeginInit();
             this.SuspendLayout();
             // 
             // lbTotalCons
@@ -276,11 +285,94 @@ namespace PedidoTela.Formularios
             this.label9.TabIndex = 123;
             this.label9.Text = "X";
             // 
+            // dgvTomarDelPedido
+            // 
+            this.dgvTomarDelPedido.AllowUserToAddRows = false;
+            this.dgvTomarDelPedido.AllowUserToDeleteRows = false;
+            this.dgvTomarDelPedido.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
+            this.dgvTomarDelPedido.AutoSizeRowsMode = System.Windows.Forms.DataGridViewAutoSizeRowsMode.DisplayedCells;
+            this.dgvTomarDelPedido.BackgroundColor = System.Drawing.Color.White;
+            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle1.BackColor = System.Drawing.SystemColors.ScrollBar;
+            dataGridViewCellStyle1.Font = new System.Drawing.Font("Verdana", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle1.ForeColor = System.Drawing.Color.Navy;
+            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.ScrollBar;
+            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dgvTomarDelPedido.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
+            this.dgvTomarDelPedido.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dgvTomarDelPedido.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.coColor,
+            this.deColor,
+            this.Estado,
+            this.Disponible});
+            this.dgvTomarDelPedido.EnableHeadersVisualStyles = false;
+            this.dgvTomarDelPedido.Location = new System.Drawing.Point(102, 271);
+            this.dgvTomarDelPedido.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.dgvTomarDelPedido.MultiSelect = false;
+            this.dgvTomarDelPedido.Name = "dgvTomarDelPedido";
+            this.dgvTomarDelPedido.RightToLeft = System.Windows.Forms.RightToLeft.No;
+            this.dgvTomarDelPedido.RowHeadersWidth = 62;
+            this.dgvTomarDelPedido.RowTemplate.Height = 28;
+            this.dgvTomarDelPedido.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.CellSelect;
+            this.dgvTomarDelPedido.Size = new System.Drawing.Size(1317, 144);
+            this.dgvTomarDelPedido.TabIndex = 146;
+            // 
+            // coColor
+            // 
+            this.coColor.HeaderText = "Cod Color";
+            this.coColor.MinimumWidth = 8;
+            this.coColor.Name = "coColor";
+            // 
+            // deColor
+            // 
+            this.deColor.HeaderText = "Descripción Color";
+            this.deColor.MinimumWidth = 8;
+            this.deColor.Name = "deColor";
+            // 
+            // Estado
+            // 
+            this.Estado.HeaderText = "estado";
+            this.Estado.MinimumWidth = 6;
+            this.Estado.Name = "Estado";
+            // 
+            // Disponible
+            // 
+            this.Disponible.HeaderText = "disponible";
+            this.Disponible.MinimumWidth = 6;
+            this.Disponible.Name = "Disponible";
+            // 
+            // button4
+            // 
+            this.button4.Font = new System.Drawing.Font("Verdana", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.button4.Image = global::PedidoTela.Formularios.Properties.Resources.agregar;
+            this.button4.Location = new System.Drawing.Point(103, 216);
+            this.button4.Name = "button4";
+            this.button4.Size = new System.Drawing.Size(174, 50);
+            this.button4.TabIndex = 144;
+            this.button4.Text = "Agregar";
+            this.button4.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.button4.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
+            this.button4.UseVisualStyleBackColor = true;
+            // 
+            // label3
+            // 
+            this.label3.AutoSize = true;
+            this.label3.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
+            this.label3.Location = new System.Drawing.Point(102, 181);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(125, 19);
+            this.label3.TabIndex = 145;
+            this.label3.Text = "Tomar del pedido:";
+            // 
             // frmPrueba
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1710, 1011);
+            this.Controls.Add(this.dgvTomarDelPedido);
+            this.Controls.Add(this.button4);
+            this.Controls.Add(this.label3);
             this.Controls.Add(this.panel8);
             this.Controls.Add(this.txbAnio);
             this.Controls.Add(this.txbTema);
@@ -300,6 +392,7 @@ namespace PedidoTela.Formularios
             this.panel9.ResumeLayout(false);
             this.panel8.ResumeLayout(false);
             this.panel8.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dgvTomarDelPedido)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -330,5 +423,12 @@ namespace PedidoTela.Formularios
         private System.Windows.Forms.TextBox textBox38;
         private System.Windows.Forms.Label label8;
         private System.Windows.Forms.Label label9;
+        private System.Windows.Forms.DataGridView dgvTomarDelPedido;
+        private System.Windows.Forms.DataGridViewTextBoxColumn coColor;
+        private System.Windows.Forms.DataGridViewTextBoxColumn deColor;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Estado;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Disponible;
+        private System.Windows.Forms.Button button4;
+        private System.Windows.Forms.Label label3;
     }
 }

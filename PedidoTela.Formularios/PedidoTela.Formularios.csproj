@@ -53,10 +53,11 @@
     <StartupObject>PedidoTela.Formularios.Program</StartupObject>
   </PropertyGroup>
   <PropertyGroup>
-    <ManifestCertificateThumbprint>06A8CF0EB8BCDB18280BDC23487FC17F890E8E3C</ManifestCertificateThumbprint>
+    <ManifestCertificateThumbprint>5A1D1C8C6E14271BEFF359C1BC982EEA417EC09E</ManifestCertificateThumbprint>
   </PropertyGroup>
   <PropertyGroup>
-    <ManifestKeyFile>PedidoTela.Formularios_1_TemporaryKey.pfx</ManifestKeyFile>
+    <ManifestKeyFile>
+    </ManifestKeyFile>
   </PropertyGroup>
   <PropertyGroup>
     <GenerateManifests>true</GenerateManifests>
