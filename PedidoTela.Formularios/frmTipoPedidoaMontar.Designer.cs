@@ -51,7 +51,7 @@ namespace PedidoTela.Formularios
             this.lbSelecciontipo.ForeColor = System.Drawing.Color.White;
             this.lbSelecciontipo.Location = new System.Drawing.Point(3, 0);
             this.lbSelecciontipo.Name = "lbSelecciontipo";
-            this.lbSelecciontipo.Size = new System.Drawing.Size(280, 20);
+            this.lbSelecciontipo.Size = new System.Drawing.Size(239, 17);
             this.lbSelecciontipo.TabIndex = 13;
             this.lbSelecciontipo.Text = "Selecione el tipo de pedido a Montar";
             // 
@@ -87,7 +87,7 @@ namespace PedidoTela.Formularios
             this.cbxAgencias.Font = new System.Drawing.Font("Verdana", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.cbxAgencias.Location = new System.Drawing.Point(58, 184);
             this.cbxAgencias.Name = "cbxAgencias";
-            this.cbxAgencias.Size = new System.Drawing.Size(193, 24);
+            this.cbxAgencias.Size = new System.Drawing.Size(162, 21);
             this.cbxAgencias.TabIndex = 9;
             this.cbxAgencias.Text = "Agencias- Externos";
             this.cbxAgencias.UseVisualStyleBackColor = true;
@@ -100,7 +100,7 @@ namespace PedidoTela.Formularios
             this.cbxCdoTresUno.Font = new System.Drawing.Font("Verdana", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.cbxCdoTresUno.Location = new System.Drawing.Point(58, 154);
             this.cbxCdoTresUno.Name = "cbxCdoTresUno";
-            this.cbxCdoTresUno.Size = new System.Drawing.Size(185, 24);
+            this.cbxCdoTresUno.Size = new System.Drawing.Size(155, 21);
             this.cbxCdoTresUno.TabIndex = 8;
             this.cbxCdoTresUno.Text = "Coordinado 3 en 1";
             this.cbxCdoTresUno.UseVisualStyleBackColor = true;
@@ -113,7 +113,7 @@ namespace PedidoTela.Formularios
             this.cbxCuePunTiras.Font = new System.Drawing.Font("Verdana", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.cbxCuePunTiras.Location = new System.Drawing.Point(58, 124);
             this.cbxCuePunTiras.Name = "cbxCuePunTiras";
-            this.cbxCuePunTiras.Size = new System.Drawing.Size(196, 24);
+            this.cbxCuePunTiras.Size = new System.Drawing.Size(164, 21);
             this.cbxCuePunTiras.TabIndex = 7;
             this.cbxCuePunTiras.Text = "Cuellos-Puños-Tiras";
             this.cbxCuePunTiras.UseVisualStyleBackColor = true;
@@ -126,7 +126,7 @@ namespace PedidoTela.Formularios
             this.cbxPlanoPretenido.Font = new System.Drawing.Font("Verdana", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.cbxPlanoPretenido.Location = new System.Drawing.Point(58, 94);
             this.cbxPlanoPretenido.Name = "cbxPlanoPretenido";
-            this.cbxPlanoPretenido.Size = new System.Drawing.Size(168, 24);
+            this.cbxPlanoPretenido.Size = new System.Drawing.Size(139, 21);
             this.cbxPlanoPretenido.TabIndex = 6;
             this.cbxPlanoPretenido.Text = "Plano- Preteñido";
             this.cbxPlanoPretenido.UseVisualStyleBackColor = true;
@@ -139,7 +139,7 @@ namespace PedidoTela.Formularios
             this.cbxestampado.Font = new System.Drawing.Font("Verdana", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.cbxestampado.Location = new System.Drawing.Point(58, 64);
             this.cbxestampado.Name = "cbxestampado";
-            this.cbxestampado.Size = new System.Drawing.Size(123, 24);
+            this.cbxestampado.Size = new System.Drawing.Size(103, 21);
             this.cbxestampado.TabIndex = 5;
             this.cbxestampado.Text = "Estampado";
             this.cbxestampado.UseVisualStyleBackColor = true;
@@ -152,7 +152,7 @@ namespace PedidoTela.Formularios
             this.cbxUnicolor.Font = new System.Drawing.Font("Verdana", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.cbxUnicolor.Location = new System.Drawing.Point(58, 34);
             this.cbxUnicolor.Name = "cbxUnicolor";
-            this.cbxUnicolor.Size = new System.Drawing.Size(96, 24);
+            this.cbxUnicolor.Size = new System.Drawing.Size(80, 21);
             this.cbxUnicolor.TabIndex = 4;
             this.cbxUnicolor.Text = "Unicolor";
             this.cbxUnicolor.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -172,6 +172,7 @@ namespace PedidoTela.Formularios
             this.btnAceptar.Text = "Aceptar";
             this.btnAceptar.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
             this.btnAceptar.UseVisualStyleBackColor = false;
+            this.btnAceptar.Click += new System.EventHandler(this.btnAceptar_Click);
             // 
             // btnCancelar
             // 
@@ -191,7 +192,7 @@ namespace PedidoTela.Formularios
             // 
             // frmTipoPedidoaMontar
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.ScrollBar;
             this.ClientSize = new System.Drawing.Size(381, 390);

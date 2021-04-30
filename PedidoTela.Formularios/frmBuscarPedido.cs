@@ -31,20 +31,20 @@ namespace PedidoTela.Formularios
 
         private void btnBuscar_Click(object sender, EventArgs e)
         {
-            //List<Pedido> lista = new List<Pedido>();
-            //if (txbPedido.Text.Trim().Length > 0)
-            //{
-            //    lista = control.buscarColorPorCodigo(txbPedido.Text.Trim());
-            //}
-            //else if (txbDescripcion.Text.Trim().Length > 0)
-            //{
-            //    lista = control.buscarColorPorDescripcion(txbColor.Text.Trim().ToUpper());
-            //}
-            //else
-            //{
-            //    lista = control.getColores();
-            //}
-            //listar(lista);
+            /*List<Pedido> lista = new List<Pedido>();
+            if (txbPedido.Text.Trim().Length > 0)
+            {
+                lista = control.buscarColorPorCodigo(txbPedido.Text.Trim());
+            }
+            else if (txbDescripcion.Text.Trim().Length > 0)
+            {
+                lista = control.buscarColorPorDescripcion(txbColor.Text.Trim().ToUpper());
+            }
+            else
+            {
+                lista = control.getColores();
+            }
+            listar(lista);*/
         }
     }
 }
