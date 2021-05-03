@@ -6,8 +6,9 @@ using System.Threading.Tasks;
 
 namespace PedidoTela.Entidades.Logica
 {
-    public class InfoConPedUnicolor
+    public class PedUnicolorInfoCon
     {
+        private int idPedUnicolor;
         private string codColor;
         private string descColor;
         private int tiendas;
@@ -20,11 +21,16 @@ namespace PedidoTela.Entidades.Logica
         private int totalUnidades;
         private decimal consumo;
         private decimal mCalculados;
+        private decimal mReservados;
         private decimal mSolicitar;
         private decimal kgCalculados;
 
-        public InfoConPedUnicolor(string codColor, string descColor, int tiendas, int exito, int cencosud, int sao, int comercioOrg, int rosado, int otros, int totalUnidades, decimal consumo, decimal mCalculados, decimal mSolicitar, decimal kgCalculados)
+        public PedUnicolorInfoCon() { }
+
+
+        public PedUnicolorInfoCon(int idPedUnicolor, string codColor, string descColor, int tiendas, int exito, int cencosud, int sao, int comercioOrg, int rosado, int otros, int totalUnidades, decimal consumo, decimal mCalculados, decimal mSolicitar, decimal kgCalculados, decimal mReservados)
         {
+            this.IdPedUnicolor = idPedUnicolor;
             this.CodColor = codColor;
             this.DescColor = descColor;
             this.Tiendas = tiendas;
@@ -39,6 +45,7 @@ namespace PedidoTela.Entidades.Logica
             this.MCalculados = mCalculados;
             this.MSolicitar = mSolicitar;
             this.KgCalculados = kgCalculados;
+            this.MReservados = mReservados;
         }
 
         public string CodColor { get => codColor; set => codColor = value; }
@@ -55,5 +62,7 @@ namespace PedidoTela.Entidades.Logica
         public decimal MCalculados { get => mCalculados; set => mCalculados = value; }
         public decimal MSolicitar { get => mSolicitar; set => mSolicitar = value; }
         public decimal KgCalculados { get => kgCalculados; set => kgCalculados = value; }
+        public int IdPedUnicolor { get => idPedUnicolor; set => idPedUnicolor = value; }
+        public decimal MReservados { get => mReservados; set => mReservados = value; }
     }
 }

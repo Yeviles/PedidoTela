@@ -17,17 +17,22 @@ namespace PedidoTela.Formularios
     {
         private String seleccion;
         private Controlador control = new Controlador();
-        List<DetalleListaTela> detalleSeleccionado = new List<DetalleListaTela>();
+        List<MontajeTelaDetalle> detalleSeleccionado = new List<MontajeTelaDetalle>();
+        List<int> listaIdSolicitudes= new List<int>();
+        List<string> listaEsayosRef = new List<string>();
+
         Validar validacion = new Validar();
-        int contItemSeleccionado = 0, idSolTela;
+        int contItemSeleccionado = 0, idSolTela,id, consecutivo=0;
         bool bandera = false;
 
         public string Seleccion { get => seleccion; set => seleccion = value; }
-        public List<DetalleListaTela> DetalleSeleccionado { get => detalleSeleccionado; set => detalleSeleccionado = value; }
+        public List<MontajeTelaDetalle> DetalleSeleccionado { get => detalleSeleccionado; set => detalleSeleccionado = value; }
         public int ContItemSeleccionado { get => contItemSeleccionado; set => contItemSeleccionado = value; }
         public int IdSolTela { get => idSolTela; set => idSolTela = value; }
+        public List<int> ListaIdSolicitudes { get => listaIdSolicitudes; set => listaIdSolicitudes = value; }
+        public List<string> ListaEsayosRef { get => listaEsayosRef; set => listaEsayosRef = value; }
 
-        public frmPedidoaMotarUnicolor(Controlador controlador, List<DetalleListaTela> listaSeleccionada, int contador, string tipoPedidoMontar)
+        public frmPedidoaMotarUnicolor(Controlador controlador, List<MontajeTelaDetalle> listaSeleccionada, int contador, string tipoPedidoMontar, int idSolTela)
         {
             InitializeComponent();
             control = controlador;
@@ -36,6 +41,7 @@ namespace PedidoTela.Formularios
             Seleccion = tipoPedidoMontar;
             dtpFechaLlegada.Format = DateTimePickerFormat.Custom;
             dtpFechaLlegada.CustomFormat = "dd/MM/yyyy";
+            IdSolTela = idSolTela;
             Validaciones(DetalleSeleccionado, ContItemSeleccionado);
 
         }
@@ -53,7 +59,7 @@ namespace PedidoTela.Formularios
         /// </summary>
         /// <param name="prmLista"> Lista de tipo DetalleListaTela, la cual representa las filas seleccionadas en el vista frmSolicitudListaTelas. </param>
         /// <param name="cont">Cantidad de filas que han sido seleccionadas en la vista frmSolicitudListaTelas.</param>
-        private void Validaciones(List<DetalleListaTela> prmLista, int numfilasSeleccionadas)
+        private void Validaciones(List<MontajeTelaDetalle> prmLista, int numfilasSeleccionadas)
         {
             int b = 0;
 
@@ -93,7 +99,7 @@ namespace PedidoTela.Formularios
             }
         }
         
-        private void cargarDgvInfoConsolidar(List<DetalleListaTela> prmLista)
+        private void cargarDgvInfoConsolidar(List<MontajeTelaDetalle> prmLista)
         {
             if (prmLista.Count != 0)
             {
@@ -120,9 +126,10 @@ namespace PedidoTela.Formularios
 
                     txtEnsayoRef.Text += prmLista[i].RefSimilar.ToString() + "\n";
                     txtDesPrenda.Text = prmLista[i].DescPrenda.ToString();
-                    idSolTela = prmLista[i].IdSolTela;
+                   // idSolTela = prmLista[i].IdSolTela;
                     IdSolTela = prmLista[i].IdSolTela;
-
+                    ListaIdSolicitudes.Add(prmLista[i].IdSolTela);
+                    ListaEsayosRef.Add(prmLista[i].RefSimilar);
                 }
                 txtNomTela.Text = prmLista[0].DesTela.ToString();
                 txtDisenador.Text = prmLista[0].Disenador.ToString();
@@ -133,7 +140,7 @@ namespace PedidoTela.Formularios
             }
         }
 
-        private void cargarDgvTotalConsolidar(List<DetalleListaTela> prmLista)
+        private void cargarDgvTotalConsolidar(List<MontajeTelaDetalle> prmLista)
         {
             if (prmLista.Count != 0)
             {
@@ -339,9 +346,300 @@ namespace PedidoTela.Formularios
             }
         }
 
+        /// <summary>
+        /// Boton  confirmar el  sistema  genera   un  consecutivo   y   la   solicitud     cambie  al   estado   Radicado.  
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void btnConfirmar_Click(object sender, EventArgs e)
+        {
+            //consulta el id que esta en la tabla  cfc_spt_sol_tela
+            //int idSolicitud = control.consultarIdsolicitud(identificador);
+            // Consulta el número máximo que representa el último consecutivo ingresado en la tabla cfc_spt_tipo_solicitud
+            int maxConsecutivo = control.consultarMaximo();
+            // Se asignar valores para la fecha. 
+            string fechaActual = DateTime.Now.ToString("dd/MM/yyyy");
+            // El estado que se le debe dar a solicitud cuando es confirmada
+
+            string estado = "Radicado";
+
+            if (id != 0)
+            {
+                for (int i = 0; i < ListaIdSolicitudes.Count; i++)
+                {
+                    control.agregarConsecutivo(ListaIdSolicitudes[i], id, "UNICOLOR", maxConsecutivo + 1, fechaActual, estado, fechaActual, ListaEsayosRef[i]);
+                }
+                    MessageBox.Show("El consecutivo se guardó con éxito.", "Información", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                // Deshabilita los diferentes botones y demás contenido del formulario que se quiere que no sea modificado una vez se confirme la solicitud.
+                btnConfirmar.Enabled = false;
+                btnGrabar.Enabled = false;
+                pnlEmcabezado.Enabled = false;
+                dgvInfoConsolidar.ReadOnly = true;
+                dgvTotalConsolidado.ReadOnly = true;
+
+                //consulta el consecutivo generado y se muestra en la vista.
+                consecutivo = control.consultarConsecutivo(id);
+                lblConsecutivo.Text = "Consecutivo: " + consecutivo;
+              //  DialogResult = DialogResult.OK;
+            }
+            else
+            {
+                MessageBox.Show("Por favor, Grabe la Información.", "Advertencia", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+            }
+        }
+
+        private void btnGrabar_Click(object sender, EventArgs e)
+        {
+            bool b = false; 
+            if (txtRendimiento.Text == "")
+            {
+                MessageBox.Show("Por favor, ingrese un valor para Rendimiento.", "Advertencia", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+            }           
+            else
+            {
+                if (cbxTipoMarcacion.SelectedIndex != -1)
+                {
+                    if (txtAnalista.Text != "")
+                    {
+                        if (txtDesPrenda.Text != "")
+                        {
+
+                            if (dgvInfoConsolidar.RowCount > 0 && dgvTotalConsolidado.RowCount > 0)
+                            {
+                                bool vacio = false;
+                                foreach (DataGridViewRow row in dgvTotalConsolidado.Rows)
+                                {
+                                    if (row.Cells[11].Value == null || row.Cells[12].Value == null || row.Cells[13].Value == null)
+                                    {
+                                        vacio = true;
+                                    }
+                                }
+                                if (!vacio)
+                                {
+                                    //Se obtiene el encabezado de la vista.
+                                    PedMontarUnicolor elemento = ObtenerEncabezado();
+                                    if (control.consultarIdPedUnicolor(IdSolTela))
+                                    {
+                                        control.actualizarPedUnicolor(elemento);
+                                        b = true;
+                                    }
+                                    else
+                                    {
+                                        control.addPedUnicolor(elemento);
+                                    }
+                                    //Agrega el Consolidado.
+                                    AgregarConsolidado();
+
+                                    //Consulta el id que se genero cuando se guarda la infromación del encabezado.
+                                    id = control.getIdPedUnicolor(IdSolTela);
+
+                                    //Lista con lis ids de cada uno de los detalles de la vista
+                                    List<int> listaIDInfoConsolidar = control.getIdPedUnicolorInfoCon(id);
+                                    List<int> listaIDtotalconsolidar = control.getIdPedUnicolorTotalCon(id);
+                                    try
+                                    {
+                                        for (int i = 0; i < dgvInfoConsolidar.RowCount; i++)
+                                        {
+                                            //Se obtiene la informacion de la primera dataGridView (dgvInfoConsolidar)
+                                            PedUnicolorInfoCon detalle = ObtenerInfoConsolidar(i);
+                                            if (b)
+                                            {
+                                                if (i < listaIDInfoConsolidar.Count)
+                                                {
+                                                 control.actuPedUnicolorInfoCon(detalle, listaIDInfoConsolidar[i]);
+                                                }
+                                                else { control.addPedUnicolorInfoCon(detalle);}
+                                            }
+                                            else { control.addPedUnicolorInfoCon(detalle);}
+                                        }
+                                        for (int i = 0; i < dgvTotalConsolidado.RowCount; i++)
+                                        {
+                                            //Se obtiene la informacion de la segunada dataGridView (dgvTotalConsolidado)
+                                            PedUnicolorTotalCon detalle = ObtenerTotalConsolidar(i);
+                                            if (b)
+                                            {
+                                                if (i < listaIDtotalconsolidar.Count)
+                                                {
+                                                    control.actuaPedUnicolorTotalConsol(detalle, listaIDtotalconsolidar[i]);
+                                                }
+                                                else{control.addPedUnicolorTotalCons(detalle);}
+                                            }
+                                            else{control.addPedUnicolorTotalCons(detalle);}
+                                        }
+
+                                        MessageBox.Show("Pedido Unicolor se guardó con éxito.", "Información", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                                    }
+                                    catch
+                                    {
+                                        MessageBox.Show("Pedido Unicolor no se pudo guardar.", "Advertencia", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                                    }
+                                }
+                                else
+                                {
+                                    MessageBox.Show("Los campos Kg Calculados, total a Pedir y unidad de Medida Tela deben estar llenos.", "Advertencia", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                                }
+                            }
+                            else
+                            {
+                                MessageBox.Show("Por favor, adicione al menos un color.", "Advertencia", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                            }
+                        }
+                        else
+                        {
+                            MessageBox.Show("Por favor, Ingrese un valor para Descripción Prenda.", "Advertencia", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                        }
+                    }
+                    else
+                    {
+                        MessageBox.Show("Por favor, Ingrese un valor para Analista Cortes B.", "Advertencia", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    }
+                }
+                else
+                {
+                   MessageBox.Show("Por favor, Seleccione un valor para Tipo de Marcación.", "Advertencia", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                }
+
+            }
+        }
+        /// <summary>
+        /// Obtine todo los elementos del encabezado de la vista.
+        /// </summary>
+        /// <returns></returns>
+        private PedMontarUnicolor ObtenerEncabezado()
+        {
+            PedMontarUnicolor elemento = new PedMontarUnicolor();
+            elemento.NomTela = txtNomTela.Text.Trim();
+            elemento.Disenador = txtDisenador.Text.Trim();
+            elemento.Rendimiento = decimal.Parse(txtRendimiento.Text.Trim());
+            elemento.EnsayoRef = txtEnsayoRef.Text.Trim();
+            elemento.DescPrenda = txtDesPrenda.Text.Trim();
+            elemento.Clase = cbxClase.SelectedItem.ToString();
+            elemento.TipoMarcacion = cbxTipoMarcacion.GetItemText(cbxTipoMarcacion.SelectedItem);
+            elemento.Rendimiento = decimal.Parse(txtRendimiento.Text.Trim());
+            elemento.AnalistasCortesB = txtAnalista.Text.Trim();
+            string fecha = dtpFechaLlegada.Value.ToString("dd/MM/yyyy");
+            elemento.FechaLlegada = fecha;
+            elemento.IdSolTela = IdSolTela;
+            return elemento;
+        }
+
+        /// <summary>
+        /// Se obtiene la informacion de la primera dataGridView (dgvInfoConsolidar)
+        /// </summary>
+        /// <param name="i">Índice de creación del objeto.</param>
+        /// <returns>Retorna un objeto de tipo PedUnicolorInfoCon el cual representa una fila del dataGridView.</returns>
+        private PedUnicolorInfoCon ObtenerInfoConsolidar(int i)
+        {
+            PedUnicolorInfoCon detalle = new PedUnicolorInfoCon();
+            detalle.IdPedUnicolor = id;
+            detalle.CodColor = (dgvInfoConsolidar.Rows[i].Cells[0].Value.ToString());
+            detalle.DescColor = (dgvInfoConsolidar.Rows[i].Cells[1].Value != null && dgvInfoConsolidar.Rows[i].Cells[1].Value.ToString() != "") ? dgvInfoConsolidar.Rows[i].Cells[1].Value.ToString() : "";
+            detalle.Tiendas = (dgvInfoConsolidar.Rows[i].Cells[2].Value != null && dgvInfoConsolidar.Rows[i].Cells[2].Value.ToString() != "") ? int.Parse(dgvInfoConsolidar.Rows[i].Cells[2].Value.ToString()) : 0;
+            detalle.Exito = (dgvInfoConsolidar.Rows[i].Cells[3].Value != null && dgvInfoConsolidar.Rows[i].Cells[3].Value.ToString() != "") ? int.Parse(dgvInfoConsolidar.Rows[i].Cells[3].Value.ToString()) : 0;
+            detalle.Cencosud = (dgvInfoConsolidar.Rows[i].Cells[4].Value != null && dgvInfoConsolidar.Rows[i].Cells[4].Value.ToString() != "") ? int.Parse(dgvInfoConsolidar.Rows[i].Cells[4].Value.ToString()) : 0;
+            detalle.Sao = (dgvInfoConsolidar.Rows[i].Cells[5].Value != null && dgvInfoConsolidar.Rows[i].Cells[5].Value.ToString() != "") ? int.Parse(dgvInfoConsolidar.Rows[i].Cells[5].Value.ToString()) : 0;
+            detalle.ComercioOrg = (dgvInfoConsolidar.Rows[i].Cells[6].Value != null && dgvInfoConsolidar.Rows[i].Cells[6].Value.ToString() != "") ? int.Parse(dgvInfoConsolidar.Rows[i].Cells[6].Value.ToString()) : 0;
+            detalle.Rosado = (dgvInfoConsolidar.Rows[i].Cells[7].Value != null && dgvInfoConsolidar.Rows[i].Cells[7].Value.ToString() != "") ? int.Parse(dgvInfoConsolidar.Rows[i].Cells[7].Value.ToString()) : 0;
+            detalle.Otros = (dgvInfoConsolidar.Rows[i].Cells[8].Value != null && dgvInfoConsolidar.Rows[i].Cells[8].Value.ToString() != "") ? int.Parse(dgvInfoConsolidar.Rows[i].Cells[8].Value.ToString()) : 0;
+            detalle.TotalUnidades = (dgvInfoConsolidar.Rows[i].Cells[9].Value != null && dgvInfoConsolidar.Rows[i].Cells[9].Value.ToString() != "") ? int.Parse(dgvInfoConsolidar.Rows[i].Cells[9].Value.ToString()) : 0;
+            detalle.Consumo = (dgvInfoConsolidar.Rows[i].Cells[10].Value != null && dgvInfoConsolidar.Rows[i].Cells[10].Value.ToString() != "") ? decimal.Parse(dgvInfoConsolidar.Rows[i].Cells[10].Value.ToString()) : 0;
+            detalle.MCalculados = (dgvInfoConsolidar.Rows[i].Cells[11].Value != null && dgvInfoConsolidar.Rows[i].Cells[11].Value.ToString() != "") ? decimal.Parse(dgvInfoConsolidar.Rows[i].Cells[11].Value.ToString()) : 0;
+            detalle.MReservados = (dgvInfoConsolidar.Rows[i].Cells[12].Value != null && dgvInfoConsolidar.Rows[i].Cells[12].Value.ToString() != "") ? decimal.Parse(dgvInfoConsolidar.Rows[i].Cells[12].Value.ToString()) : 0;
+            detalle.MSolicitar = (dgvInfoConsolidar.Rows[i].Cells[13].Value != null && dgvInfoConsolidar.Rows[i].Cells[13].Value.ToString() != "") ? decimal.Parse(dgvInfoConsolidar.Rows[i].Cells[13].Value.ToString()) : 0;
+            detalle.KgCalculados = (dgvInfoConsolidar.Rows[i].Cells[14].Value != null && dgvInfoConsolidar.Rows[i].Cells[14].Value.ToString() != "") ? decimal.Parse(dgvInfoConsolidar.Rows[i].Cells[14].Value.ToString()) : 0;
+            
+            return detalle;
+        }
+
+        private void btnImprimir_Click(object sender, EventArgs e)
+        {
+            //frmImprimirPedUnicolor frmPedUnicolor = new frmImprimirPedUnicolor(control,IdSolTela);
+            //frmPedUnicolor.Show();
+        }
+
+        /// <summary>
+        ///Se obtiene la informacion de la segunada dataGridView (dgvTotalConsolidado).
+        /// </summary>
+        /// <param name="i">Índice de creación del objeto.</param>
+        /// <returns>Retorna un objeto de tipo PedUnicolorTotalCon el cual representa una fila del dataGridView.</returns>
+        private PedUnicolorTotalCon ObtenerTotalConsolidar(int i)
+        {
+            PedUnicolorTotalCon detalle = new PedUnicolorTotalCon( );
+            detalle.IdPedUnicolor = id;
+            detalle.CodColor = (dgvTotalConsolidado.Rows[i].Cells[0].Value.ToString());
+            detalle.DescColor = (dgvTotalConsolidado.Rows[i].Cells[1].Value != null && dgvTotalConsolidado.Rows[i].Cells[1].Value.ToString() != "") ? dgvTotalConsolidado.Rows[i].Cells[1].Value.ToString() : "";
+            detalle.Tiendas = (dgvTotalConsolidado.Rows[i].Cells[2].Value != null && dgvTotalConsolidado.Rows[i].Cells[2].Value.ToString() != "") ? int.Parse(dgvTotalConsolidado.Rows[i].Cells[2].Value.ToString()) : 0;
+            detalle.Exito = (dgvTotalConsolidado.Rows[i].Cells[3].Value != null && dgvTotalConsolidado.Rows[i].Cells[3].Value.ToString() != "") ? int.Parse(dgvTotalConsolidado.Rows[i].Cells[3].Value.ToString()) : 0;
+            detalle.Cencosud = (dgvTotalConsolidado.Rows[i].Cells[4].Value != null && dgvTotalConsolidado.Rows[i].Cells[4].Value.ToString() != "") ? int.Parse(dgvTotalConsolidado.Rows[i].Cells[4].Value.ToString()) : 0;
+            detalle.Sao = (dgvTotalConsolidado.Rows[i].Cells[5].Value != null && dgvTotalConsolidado.Rows[i].Cells[5].Value.ToString() != "") ? int.Parse(dgvTotalConsolidado.Rows[i].Cells[5].Value.ToString()) : 0;
+            detalle.ComercioOrg = (dgvTotalConsolidado.Rows[i].Cells[6].Value != null && dgvTotalConsolidado.Rows[i].Cells[6].Value.ToString() != "") ? int.Parse(dgvTotalConsolidado.Rows[i].Cells[6].Value.ToString()) : 0;
+            detalle.Rosado = (dgvTotalConsolidado.Rows[i].Cells[7].Value != null && dgvTotalConsolidado.Rows[i].Cells[7].Value.ToString() != "") ? int.Parse(dgvTotalConsolidado.Rows[i].Cells[7].Value.ToString()) : 0;
+            detalle.Otros = (dgvTotalConsolidado.Rows[i].Cells[8].Value != null && dgvTotalConsolidado.Rows[i].Cells[8].Value.ToString() != "") ? int.Parse(dgvTotalConsolidado.Rows[i].Cells[8].Value.ToString()) : 0;
+            detalle.TotalUnidades = (dgvTotalConsolidado.Rows[i].Cells[9].Value != null && dgvTotalConsolidado.Rows[i].Cells[9].Value.ToString() != "") ? int.Parse(dgvTotalConsolidado.Rows[i].Cells[9].Value.ToString()) : 0;
+            detalle.MCalculados = (dgvTotalConsolidado.Rows[i].Cells[10].Value != null && dgvTotalConsolidado.Rows[i].Cells[10].Value.ToString() != "") ? decimal.Parse(dgvTotalConsolidado.Rows[i].Cells[10].Value.ToString()) : 0;
+            detalle.KgCalculados = (dgvTotalConsolidado.Rows[i].Cells[11].Value != null && dgvTotalConsolidado.Rows[i].Cells[11].Value.ToString() != "") ? decimal.Parse(dgvTotalConsolidado.Rows[i].Cells[11].Value.ToString()) : 0;
+            detalle.TotalPedir = (dgvTotalConsolidado.Rows[i].Cells[12].Value != null && dgvTotalConsolidado.Rows[i].Cells[12].Value.ToString() != "") ? decimal.Parse(dgvTotalConsolidado.Rows[i].Cells[12].Value.ToString()) : 0;
+            detalle.UniMedida = (dgvTotalConsolidado.Rows[i].Cells[13].Value != null && dgvTotalConsolidado.Rows[i].Cells[13].Value.ToString() != "") ? dgvTotalConsolidado.Rows[i].Cells[13].Value.ToString() : "";
+            return detalle;
+        }
+
+        /// <summary>
+        /// Agrega el consolidado a lista de solicitudes seleccionadas en la vista frmSolicitudListaTelas
+        /// </summary>
+        private void AgregarConsolidado()
+        {
+            int maxConsolidado = control.consultarMaxConsolidado();
+            for (int i = 0; i < ListaIdSolicitudes.Count; i++)
+            {
+                control.agregarConsolidado(ListaIdSolicitudes[i], maxConsolidado + 1);
+            }
+
+        }
+
         private void Cargar()
         {
-            
+            PedMontarUnicolor objPedUnicolor = control.getPedUnicolor(IdSolTela);
+            id = objPedUnicolor.IdPedUnicolor;
+            if (id != 0)
+            {
+    
+                txtNomTela.Text = objPedUnicolor.NomTela.ToString();
+                txtDisenador.Text = objPedUnicolor.Disenador.ToString();
+                txtEnsayoRef.Text = objPedUnicolor.EnsayoRef.ToString();
+                txtDesPrenda.Text = objPedUnicolor.DescPrenda.ToString();
+                cbxClase.Text = objPedUnicolor.Clase.ToString();
+                cbxTipoMarcacion.Text = objPedUnicolor.TipoMarcacion.ToString();
+                txtRendimiento.Text = objPedUnicolor.Rendimiento.ToString();
+                txtAnalista.Text = objPedUnicolor.AnalistasCortesB.ToString();
+                dtpFechaLlegada.Text = objPedUnicolor.FechaLlegada.ToString();
+
+                /*Carga detalle Información a  Consolidar*/
+                List<PedUnicolorInfoCon> listaInfoConsolidar = control.getPedUnicolorInfoCon(objPedUnicolor.IdPedUnicolor);
+                if (listaInfoConsolidar.Count > 0)
+                {
+                    foreach (PedUnicolorInfoCon obj in listaInfoConsolidar)
+                    {
+                        dgvInfoConsolidar.Rows.Add(obj.CodColor, obj.DescColor, obj.Tiendas, obj.Exito,
+                            obj.Cencosud, obj.Sao, obj.ComercioOrg, obj.Rosado, obj.Otros, obj.TotalUnidades, obj.Consumo, obj.MCalculados, obj.MReservados, obj.MSolicitar,obj.KgCalculados);
+                    }
+                }
+
+                /*Carga detalle Toltal a  Consolidar*/
+                List<PedUnicolorTotalCon> listaTotalConsolidado = control.getPedUnicolorTotalCon(objPedUnicolor.IdPedUnicolor);
+                if (listaTotalConsolidado.Count > 0)
+                {
+                    foreach (PedUnicolorTotalCon obj in listaTotalConsolidado)
+                    {
+                        dgvTotalConsolidado.Rows.Add(obj.CodColor, obj.DescColor, obj.Tiendas, obj.Exito,
+                            obj.Cencosud, obj.Sao, obj.ComercioOrg, obj.Rosado, obj.Otros, obj.TotalUnidades, obj.MCalculados, obj.KgCalculados, obj.TotalPedir, obj.UniMedida);
+                    }
+                }
+
+                /*Esta bandera controla el cargue los dataGridView, es decir, si es true, en método  cargarDgvInfoConsolidar(prmLista) y cargarDgvTotalConsolidar(prmLista),
+                 * no se ejecutan, debido a que la información ya esta guardada en la BD. */
+                this.bandera = true;
+
+            }
         }
 
     }

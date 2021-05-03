@@ -19,14 +19,14 @@ namespace PedidoTela.Formularios
         Controlador controlador = new Controlador();
         Validar validacion = new Validar();
 
-        List<DetalleListaTela> detalle = new List<DetalleListaTela>();
+        List<MontajeTelaDetalle> detalle = new List<MontajeTelaDetalle>();
         Utilidades utilidades = new Utilidades();
         string validarCoordinado = "";
         int idSolicitudTelas = 0;
         #endregion
 
         #region Setter && Getter 
-        public List<DetalleListaTela> Detalle { get => detalle; set => detalle = value; }
+        public List<MontajeTelaDetalle> Detalle { get => detalle; set => detalle = value; }
         #endregion
 
         #region Constructor
@@ -136,7 +136,7 @@ namespace PedidoTela.Formularios
         /// <param name="e"></param>
         private void btnConsultar_Click(object sender, EventArgs e)
         {
-            ListaTela objTela = new ListaTela();
+            MontajeTela objTela = new MontajeTela();
             if (cbxMuestrario.SelectedIndex == -1)
             {
                 MessageBox.Show("Campo obligatorio,Por favor, seleccione un valor para Tipo Muestrario", "Advertencia", MessageBoxButtons.OK, MessageBoxIcon.Warning);
@@ -177,7 +177,7 @@ namespace PedidoTela.Formularios
         /// Llena el DataGridview con la información filtrada y consultada.
         /// </summary>
         /// <param name="prmLista">Lista de tipo DetalleListaTela, información para llenar el DataGridView.</param>
-        private void cargarDataGridView(List<DetalleListaTela> prmLista)
+        private void cargarDataGridView(List<MontajeTelaDetalle> prmLista)
         {
 
             if (prmLista.Count != 0)
@@ -221,7 +221,9 @@ namespace PedidoTela.Formularios
                     prmLista[i].FechaEstado.ToString(),
                     prmLista[i].IdSolTela.ToString(),
                     prmLista[i].IdProgramador.ToString(),
-                    prmLista[i].DescPrenda.ToString()
+                    prmLista[i].DescPrenda.ToString(),
+                    prmLista[i].Consolidado.ToString()
+
                     );
                     this.idSolicitudTelas = prmLista[i].IdSolTela;
 
@@ -246,7 +248,7 @@ namespace PedidoTela.Formularios
             /// Realiza el respectivo método que retorna la lista de filas Seleccionadas
             if (contador > 1)
             {
-                List<DetalleListaTela> listaFilasSeleccionadas = ListaFilasSeleccionadas();
+                List<MontajeTelaDetalle> listaFilasSeleccionadas = ListaFilasSeleccionadas();
                 frmAnalizarInventario frmAnalizarInventario = new frmAnalizarInventario(controlador, listaFilasSeleccionadas, contador);
             }
             else {
@@ -264,7 +266,7 @@ namespace PedidoTela.Formularios
             /// Cuenta cuantas filas de la DataGridView (dgvSolicitudTelas) en la vista frmSolicitudListaTelas ha sido chequeada (seleccionada).
             int contador = utilidades.ContarChecked(dgvSolicitudTelas);
             /// Realiza el respectivo método que retorna la lista de filas Seleccionadas
-            List<DetalleListaTela> listaFilasSeleccionadas = ListaFilasSeleccionadas();
+            List<MontajeTelaDetalle> listaFilasSeleccionadas = ListaFilasSeleccionadas();
             FrmAgenciasExternos frmAgenciasExterno = new FrmAgenciasExternos(controlador, listaFilasSeleccionadas, contador, idSolicitudTelas);
         }
 
@@ -273,9 +275,9 @@ namespace PedidoTela.Formularios
         /// en la vista frmSolicitudListaTelas, para más comprensión son las filas Chequedas. 
         /// </summary>
         /// <returns>Retorna una Lista de Tipo DetalleLista, que representas las filas seleccionadas.</returns>
-        private List<DetalleListaTela> ListaFilasSeleccionadas()
+        private List<MontajeTelaDetalle> ListaFilasSeleccionadas()
         {
-            List<DetalleListaTela> listaSeleccionadas = new List<DetalleListaTela>();
+            List<MontajeTelaDetalle> listaSeleccionadas = new List<MontajeTelaDetalle>();
             //int contador = utilidades.ContarChecked(dgvSolicitudTelas);
 
             for (int i = 0; i <= dgvSolicitudTelas.RowCount - 1; i++)
@@ -283,7 +285,7 @@ namespace PedidoTela.Formularios
 
                 if (Convert.ToBoolean(dgvSolicitudTelas.Rows[i].Cells["sel"].Value) == true)
                 {
-                    DetalleListaTela objInfo = new DetalleListaTela();
+                    MontajeTelaDetalle objInfo = new MontajeTelaDetalle();
 
                     objInfo.Solicitud = dgvSolicitudTelas.Rows[i].Cells[1].Value.ToString();
                     objInfo.TipoSolicitud = dgvSolicitudTelas.Rows[i].Cells[2].Value.ToString();
@@ -358,7 +360,7 @@ namespace PedidoTela.Formularios
             if (cbxNoCoordinado.Checked)
             {
                 cbxSiCoordinado.Checked = false;
-                validarCoordinado = "false";
+                validarCoordinado = "f";
 
             }
         }
@@ -373,7 +375,7 @@ namespace PedidoTela.Formularios
             if (cbxSiCoordinado.Checked)
             {
                 cbxNoCoordinado.Checked = false;
-                validarCoordinado = "true";
+                validarCoordinado = "t";
             }
 
         }
@@ -459,21 +461,24 @@ namespace PedidoTela.Formularios
             {
                 for (int i = 0; i < dgvSolicitudTelas.RowCount; i++)
                 {
-                    if (dgvSolicitudTelas.Rows[i].Cells[26].Value.ToString() == "Solicitud Inventario" || dgvSolicitudTelas.Rows[i].Cells[26].Value.ToString() == "Reserva parcial" || dgvSolicitudTelas.Rows[i].Cells[26].Value.ToString() == "Por Analizar")
+                    if (dgvSolicitudTelas.Rows[i].Cells[0].Value.Equals(true))//Columna de checks
                     {
-                        b += 1;
+                        if (dgvSolicitudTelas.Rows[i].Cells[26].Value.ToString() == "Solicitud Inventario" || dgvSolicitudTelas.Rows[i].Cells[26].Value.ToString() == "Reserva parcial" || dgvSolicitudTelas.Rows[i].Cells[26].Value.ToString() == "Por Analizar")
+                        {
+                            b += 1;
+                        }
                     }
                 }
                 if (b == cantFilasSeleccionadas)
                 {
                     /*Realiza el respectivo método que retorna la lista de filas Seleccionadas*/
-                    List<DetalleListaTela> listaFilasSeleccionadas = ListaFilasSeleccionadas();
-                    frmTipoPedidoaMontar frmTipoPedido = new frmTipoPedidoaMontar(controlador, listaFilasSeleccionadas, cantFilasSeleccionadas);
+                    List<MontajeTelaDetalle> listaFilasSeleccionadas = ListaFilasSeleccionadas();
+                    frmTipoPedidoaMontar frmTipoPedido = new frmTipoPedidoaMontar(controlador, listaFilasSeleccionadas, cantFilasSeleccionadas, int.Parse(listaFilasSeleccionadas[0].IdSolTela.ToString()));
                     frmTipoPedido.Show();
                 }
                 else
                 {
-                    MessageBox.Show("El estado de solicitud No corresponde a Solicitud de Inventario o Reserva Parcial.", "Advertencia", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    MessageBox.Show("El estado de solicitud No corresponde a Solicitud de Inventario, Reserva Parcial o Por Analizar.", "Advertencia", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 }
             }
             else

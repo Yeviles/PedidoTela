@@ -29,8 +29,8 @@ namespace PedidoTela.Formularios
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
             this.lbSolicitadoPor = new System.Windows.Forms.Label();
             this.lbCargo = new System.Windows.Forms.Label();
             this.lbDepartamento = new System.Windows.Forms.Label();
@@ -101,11 +101,6 @@ namespace PedidoTela.Formularios
             this.mReservados = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.maSolicitar = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dgvTotalConsolidado = new System.Windows.Forms.DataGridView();
-            this.lbTotalconsolidado = new System.Windows.Forms.Label();
-            this.panel9 = new System.Windows.Forms.Panel();
-            this.btnImprimirSIP = new System.Windows.Forms.Button();
-            this.btnGrabar = new System.Windows.Forms.Button();
-            this.btnSalir = new System.Windows.Forms.Button();
             this.codigoColor = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.desColor = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dataGridViewTextBoxColumn3 = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -120,6 +115,11 @@ namespace PedidoTela.Formularios
             this.kgCalculados = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.totalaPedir = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.undMedidaTela = new System.Windows.Forms.DataGridViewComboBoxColumn();
+            this.lbTotalconsolidado = new System.Windows.Forms.Label();
+            this.panel9 = new System.Windows.Forms.Panel();
+            this.btnImprimirSIP = new System.Windows.Forms.Button();
+            this.btnGrabar = new System.Windows.Forms.Button();
+            this.btnSalir = new System.Windows.Forms.Button();
             this.pnlEncabezado.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvInfoConsolidar)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dgvTotalConsolidado)).BeginInit();
@@ -683,14 +683,14 @@ namespace PedidoTela.Formularios
             this.dgvInfoConsolidar.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.dgvInfoConsolidar.AutoSizeRowsMode = System.Windows.Forms.DataGridViewAutoSizeRowsMode.DisplayedCells;
             this.dgvInfoConsolidar.BackgroundColor = System.Drawing.Color.White;
-            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle1.BackColor = System.Drawing.SystemColors.ScrollBar;
-            dataGridViewCellStyle1.Font = new System.Drawing.Font("Verdana", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle1.ForeColor = System.Drawing.Color.Navy;
-            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.ScrollBar;
-            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dgvInfoConsolidar.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
+            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle3.BackColor = System.Drawing.SystemColors.ScrollBar;
+            dataGridViewCellStyle3.Font = new System.Drawing.Font("Verdana", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle3.ForeColor = System.Drawing.Color.Navy;
+            dataGridViewCellStyle3.SelectionBackColor = System.Drawing.SystemColors.ScrollBar;
+            dataGridViewCellStyle3.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dgvInfoConsolidar.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle3;
             this.dgvInfoConsolidar.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgvInfoConsolidar.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.codColor,
@@ -828,14 +828,14 @@ namespace PedidoTela.Formularios
             this.dgvTotalConsolidado.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.dgvTotalConsolidado.AutoSizeRowsMode = System.Windows.Forms.DataGridViewAutoSizeRowsMode.DisplayedCells;
             this.dgvTotalConsolidado.BackgroundColor = System.Drawing.Color.White;
-            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle2.BackColor = System.Drawing.SystemColors.ScrollBar;
-            dataGridViewCellStyle2.Font = new System.Drawing.Font("Verdana", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle2.ForeColor = System.Drawing.Color.Navy;
-            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.SystemColors.ScrollBar;
-            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dgvTotalConsolidado.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle2;
+            dataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle4.BackColor = System.Drawing.SystemColors.ScrollBar;
+            dataGridViewCellStyle4.Font = new System.Drawing.Font("Verdana", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle4.ForeColor = System.Drawing.Color.Navy;
+            dataGridViewCellStyle4.SelectionBackColor = System.Drawing.SystemColors.ScrollBar;
+            dataGridViewCellStyle4.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle4.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dgvTotalConsolidado.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle4;
             this.dgvTotalConsolidado.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgvTotalConsolidado.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.codigoColor,
@@ -867,75 +867,6 @@ namespace PedidoTela.Formularios
             this.dgvTotalConsolidado.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvTotalConsolidado_CellClick);
             this.dgvTotalConsolidado.CellEndEdit += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvTotalConsolidado_CellEndEdit);
             this.dgvTotalConsolidado.CellFormatting += new System.Windows.Forms.DataGridViewCellFormattingEventHandler(this.dgvTotalConsolidado_CellFormatting);
-            // 
-            // lbTotalconsolidado
-            // 
-            this.lbTotalconsolidado.AutoSize = true;
-            this.lbTotalconsolidado.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
-            this.lbTotalconsolidado.Location = new System.Drawing.Point(13, 609);
-            this.lbTotalconsolidado.Name = "lbTotalconsolidado";
-            this.lbTotalconsolidado.Size = new System.Drawing.Size(142, 19);
-            this.lbTotalconsolidado.TabIndex = 89;
-            this.lbTotalconsolidado.Text = "Total consolidado: ";
-            // 
-            // panel9
-            // 
-            this.panel9.BackColor = System.Drawing.SystemColors.ScrollBar;
-            this.panel9.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.panel9.Controls.Add(this.btnImprimirSIP);
-            this.panel9.Controls.Add(this.btnGrabar);
-            this.panel9.Controls.Add(this.btnSalir);
-            this.panel9.Location = new System.Drawing.Point(13, 82);
-            this.panel9.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.panel9.Name = "panel9";
-            this.panel9.Size = new System.Drawing.Size(1358, 56);
-            this.panel9.TabIndex = 136;
-            // 
-            // btnImprimirSIP
-            // 
-            this.btnImprimirSIP.Font = new System.Drawing.Font("Verdana", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnImprimirSIP.Image = global::PedidoTela.Formularios.Properties.Resources.mbriprint_99560;
-            this.btnImprimirSIP.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnImprimirSIP.Location = new System.Drawing.Point(175, 3);
-            this.btnImprimirSIP.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.btnImprimirSIP.Name = "btnImprimirSIP";
-            this.btnImprimirSIP.Size = new System.Drawing.Size(198, 50);
-            this.btnImprimirSIP.TabIndex = 3;
-            this.btnImprimirSIP.Text = "Imprimir SIP";
-            this.btnImprimirSIP.UseVisualStyleBackColor = true;
-            this.btnImprimirSIP.Click += new System.EventHandler(this.btnImprimirSIP_Click);
-            // 
-            // btnGrabar
-            // 
-            this.btnGrabar.BackColor = System.Drawing.Color.LightGray;
-            this.btnGrabar.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.btnGrabar.Font = new System.Drawing.Font("Verdana", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnGrabar.Image = global::PedidoTela.Formularios.Properties.Resources.record_icon_icons_com_64775__1_;
-            this.btnGrabar.Location = new System.Drawing.Point(3, 2);
-            this.btnGrabar.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.btnGrabar.Name = "btnGrabar";
-            this.btnGrabar.Size = new System.Drawing.Size(173, 50);
-            this.btnGrabar.TabIndex = 95;
-            this.btnGrabar.Text = "Grabar";
-            this.btnGrabar.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.btnGrabar.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
-            this.btnGrabar.UseVisualStyleBackColor = false;
-            this.btnGrabar.Click += new System.EventHandler(this.btnGrabar_Click);
-            // 
-            // btnSalir
-            // 
-            this.btnSalir.Font = new System.Drawing.Font("Verdana", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnSalir.Image = global::PedidoTela.Formularios.Properties.Resources.logout_exit_icon_176185;
-            this.btnSalir.Location = new System.Drawing.Point(375, 3);
-            this.btnSalir.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.btnSalir.Name = "btnSalir";
-            this.btnSalir.Size = new System.Drawing.Size(173, 50);
-            this.btnSalir.TabIndex = 97;
-            this.btnSalir.Text = "Salir";
-            this.btnSalir.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.btnSalir.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
-            this.btnSalir.UseVisualStyleBackColor = true;
-            this.btnSalir.Click += new System.EventHandler(this.btnSalir_Click);
             // 
             // codigoColor
             // 
@@ -1026,6 +957,75 @@ namespace PedidoTela.Formularios
             this.undMedidaTela.Name = "undMedidaTela";
             this.undMedidaTela.Resizable = System.Windows.Forms.DataGridViewTriState.True;
             this.undMedidaTela.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic;
+            // 
+            // lbTotalconsolidado
+            // 
+            this.lbTotalconsolidado.AutoSize = true;
+            this.lbTotalconsolidado.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
+            this.lbTotalconsolidado.Location = new System.Drawing.Point(13, 609);
+            this.lbTotalconsolidado.Name = "lbTotalconsolidado";
+            this.lbTotalconsolidado.Size = new System.Drawing.Size(142, 19);
+            this.lbTotalconsolidado.TabIndex = 89;
+            this.lbTotalconsolidado.Text = "Total consolidado: ";
+            // 
+            // panel9
+            // 
+            this.panel9.BackColor = System.Drawing.SystemColors.ScrollBar;
+            this.panel9.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.panel9.Controls.Add(this.btnImprimirSIP);
+            this.panel9.Controls.Add(this.btnGrabar);
+            this.panel9.Controls.Add(this.btnSalir);
+            this.panel9.Location = new System.Drawing.Point(13, 82);
+            this.panel9.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.panel9.Name = "panel9";
+            this.panel9.Size = new System.Drawing.Size(1358, 47);
+            this.panel9.TabIndex = 136;
+            // 
+            // btnImprimirSIP
+            // 
+            this.btnImprimirSIP.Font = new System.Drawing.Font("Verdana", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnImprimirSIP.Image = global::PedidoTela.Formularios.Properties.Resources.imprimir;
+            this.btnImprimirSIP.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnImprimirSIP.Location = new System.Drawing.Point(127, 2);
+            this.btnImprimirSIP.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.btnImprimirSIP.Name = "btnImprimirSIP";
+            this.btnImprimirSIP.Size = new System.Drawing.Size(162, 41);
+            this.btnImprimirSIP.TabIndex = 3;
+            this.btnImprimirSIP.Text = "Imprimir SIP";
+            this.btnImprimirSIP.UseVisualStyleBackColor = true;
+            this.btnImprimirSIP.Click += new System.EventHandler(this.btnImprimirSIP_Click);
+            // 
+            // btnGrabar
+            // 
+            this.btnGrabar.BackColor = System.Drawing.Color.LightGray;
+            this.btnGrabar.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.btnGrabar.Font = new System.Drawing.Font("Verdana", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnGrabar.Image = global::PedidoTela.Formularios.Properties.Resources.guardar2;
+            this.btnGrabar.Location = new System.Drawing.Point(3, 2);
+            this.btnGrabar.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.btnGrabar.Name = "btnGrabar";
+            this.btnGrabar.Size = new System.Drawing.Size(126, 41);
+            this.btnGrabar.TabIndex = 95;
+            this.btnGrabar.Text = "Grabar";
+            this.btnGrabar.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.btnGrabar.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
+            this.btnGrabar.UseVisualStyleBackColor = false;
+            this.btnGrabar.Click += new System.EventHandler(this.btnGrabar_Click);
+            // 
+            // btnSalir
+            // 
+            this.btnSalir.Font = new System.Drawing.Font("Verdana", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnSalir.Image = global::PedidoTela.Formularios.Properties.Resources.salir2;
+            this.btnSalir.Location = new System.Drawing.Point(277, 2);
+            this.btnSalir.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.btnSalir.Name = "btnSalir";
+            this.btnSalir.Size = new System.Drawing.Size(126, 41);
+            this.btnSalir.TabIndex = 97;
+            this.btnSalir.Text = "Salir";
+            this.btnSalir.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.btnSalir.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
+            this.btnSalir.UseVisualStyleBackColor = true;
+            this.btnSalir.Click += new System.EventHandler(this.btnSalir_Click);
             // 
             // FrmAgenciasExternos
             // 

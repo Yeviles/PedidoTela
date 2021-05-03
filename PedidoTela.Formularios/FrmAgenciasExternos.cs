@@ -21,16 +21,16 @@ namespace PedidoTela.Formularios
         Validar validacion = new Validar();
         int idsolTela, id;
         bool bandera = false;   
-        List<DetalleListaTela> detalleSeleccionado = new List<DetalleListaTela>();
+        List<MontajeTelaDetalle> detalleSeleccionado = new List<MontajeTelaDetalle>();
         #endregion
 
         #region Getter && Setter
-        public List<DetalleListaTela> DetalleSeleccionado { get => detalleSeleccionado; set => detalleSeleccionado = value; }
+        public List<MontajeTelaDetalle> DetalleSeleccionado { get => detalleSeleccionado; set => detalleSeleccionado = value; }
         public int IdsolTela { get => idsolTela; set => idsolTela = value; }
         #endregion
 
         #region Constructor
-        public FrmAgenciasExternos(Controlador controlador, List<DetalleListaTela> listaSeleccionada, int numFilasSelccionadas, int idSolicitudTelas)
+        public FrmAgenciasExternos(Controlador controlador, List<MontajeTelaDetalle> listaSeleccionada, int numFilasSelccionadas, int idSolicitudTelas)
         {
             InitializeComponent();
             DetalleSeleccionado = listaSeleccionada;
@@ -457,7 +457,7 @@ namespace PedidoTela.Formularios
         /// </summary>
         /// <param name="prmLista"> Lista de tipo DetalleListaTela, la cual representa las filas seleccionadas en el vista frmSolicitudListaTelas. </param>
         /// <param name="cont">Cantidad de filas que han sido seleccionadas en la vista frmSolicitudListaTelas.</param>
-        public void Validaciones(List<DetalleListaTela> prmLista, int numfilasSeleccionadas)
+        public void Validaciones(List<MontajeTelaDetalle> prmLista, int numfilasSeleccionadas)
         {
             int b = 0;
            
@@ -501,7 +501,7 @@ namespace PedidoTela.Formularios
         /// Carga el DataGridView (dgvInfoConsolidar) con la información solicitada.
         /// </summary>
         /// <param name="prmLista">Lista de tipo DetalleLista contiene la informacion a cargar en la DatagridView.</param>
-        private void cargarDgvInfoConsolidar(List<DetalleListaTela> prmLista)
+        private void cargarDgvInfoConsolidar(List<MontajeTelaDetalle> prmLista)
         {
             if (prmLista.Count != 0)
             {
@@ -553,7 +553,7 @@ namespace PedidoTela.Formularios
         /// Carga el DataGridView (dgvToltalConsolidar) con la información solicitada.
         /// </summary>
         /// <param name="prmLista">Lista de tipo DetalleLista contiene la informacion a cargar en la DatagridView.</param>
-        private void cargarDgvTotalConsolidar(List<DetalleListaTela> prmLista)
+        private void cargarDgvTotalConsolidar(List<MontajeTelaDetalle> prmLista)
         {
             if (prmLista.Count != 0)
             {

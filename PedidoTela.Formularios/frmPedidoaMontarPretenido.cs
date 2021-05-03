@@ -8,52 +8,65 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using PedidoTela.Entidades.Logica;
+using PedidoTela.Controlodores;
 
 namespace PedidoTela.Formularios
 {
     public partial class frmPedidoaMontarPretenido : MaterialSkin.Controls.MaterialForm
 
     {
-        public frmPedidoaMontarPretenido()
+        #region Variables
+        private Controlador control = new Controlador();
+        #endregion
+        #region Constructor
+        public frmPedidoaMontarPretenido(Controlador controlador)
         {
+            
             InitializeComponent();
+            this.control = controlador;
         }
+        #endregion
 
+        #region Método inicial de Carga
         private void frmPedidoaMontarPretenido_Load(object sender, EventArgs e)
         {
-            SkinManager.Theme = MaterialSkin.MaterialSkinManager.Themes.LIGHT;
-            SkinManager.ColorScheme = new ColorScheme(Primary.Blue900, Primary.Grey500, Primary.Grey200, Accent.Green100, TextShade.WHITE);
-
+            cargarCombobox(cbxTipoMarcacion, control.getTipoMarcacion());
         }
+        #endregion
 
-        
+        #region Eventos
 
-        private void textBox17_TextChanged(object sender, EventArgs e)
+        #endregion
+
+        #region Métodos
+
+        private void cargarCombobox(ComboBox combo, List<Objeto> lista)
         {
-
+            combo.DataSource = lista;
+            combo.DisplayMember = "Nombre";
+            combo.ValueMember = "Id";
+            combo.SelectedIndex = -1;
+            combo.AutoCompleteCustomSource = cargarCombobox(lista);
+            combo.AutoCompleteMode = AutoCompleteMode.Suggest;
+            combo.AutoCompleteSource = AutoCompleteSource.CustomSource;
         }
 
-        private void cbxSiCoordinadoCue_CheckedChanged(object sender, EventArgs e)
+        /*<summary> Permite el autocompletado de un comboBox </summary>
+         * <param name="lista">Lista de tipo objeto</param>
+         * <returns></returns>*/
+        private AutoCompleteStringCollection cargarCombobox(List<Objeto> lista)
         {
-
+            AutoCompleteStringCollection datos = new AutoCompleteStringCollection();
+            foreach (Objeto obj in lista)
+            {
+                datos.Add(obj.Nombre);
+            }
+            return datos;
         }
+        #endregion
 
-        private void cbxNoCoordinadoCue_CheckedChanged(object sender, EventArgs e)
-        {
-
-        }
-
-        private void textBox12_TextChanged(object sender, EventArgs e)
-        {
-
-        }
-
-        private void textBox11_TextChanged(object sender, EventArgs e)
-        {
-
-        }
-
-        private void textBox5_TextChanged(object sender, EventArgs e)
+        private void button1_Click(object sender, EventArgs e)
         {
 
         }

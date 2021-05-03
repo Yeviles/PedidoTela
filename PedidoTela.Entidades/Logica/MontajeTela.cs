@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace PedidoTela.Entidades.Logica
 {
-   public  class ListaTela
+   public  class MontajeTela
     {
         private string tipoSolicitud;
         private string muestrario;
@@ -26,8 +26,8 @@ namespace PedidoTela.Entidades.Logica
         private string numDibujo;
 
 
-        public ListaTela() { }
-        public ListaTela(string tipoSolicitud, string muestrario, string ocasionUso, string tema, string entrada, string disenador, string ensayoRefSimilar, string estado, string fechaTienda, string refTela, string nomTela, string solicitud, string color, string clase, string coordinado, string numDibujo)
+        public MontajeTela() { }
+        public MontajeTela(string tipoSolicitud, string muestrario, string ocasionUso, string tema, string entrada, string disenador, string ensayoRefSimilar, string estado, string fechaTienda, string refTela, string nomTela, string solicitud, string color, string clase, string coordinado, string numDibujo)
         {
             this.TipoSolicitud = tipoSolicitud;
             this.Muestrario = muestrario;

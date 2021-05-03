@@ -67,7 +67,7 @@ namespace PedidoTela.Formularios
         private void btnConsultar_Click(object sender, EventArgs e)
         {
             dgvReserva.Rows.Clear();
-            ListaTela objTela = new ListaTela();
+            MontajeTela objTela = new MontajeTela();
             objTela.TipoSolicitud = (cbxTipoSolicitud.SelectedIndex != -1 && cbxTipoSolicitud.Text  != "") ? cbxTipoSolicitud.Text.ToString() : "";
             objTela.EnsayoRefSimilar = txbEnsayoRef.Text.Trim();
             objTela.Muestrario = cbxMuestrario.GetItemText(cbxMuestrario.SelectedItem);
@@ -84,10 +84,10 @@ namespace PedidoTela.Formularios
             objTela.Clase = "";
             objTela.Coordinado = "";
             objTela.NumDibujo = "";
-            List<DetalleListaTela> detalles = control.consultarListaTelas(objTela);
+            List<MontajeTelaDetalle> detalles = control.consultarListaTelas(objTela);
             lista = new List<ReporteReservaTela>();
             if (detalles != null) {
-                foreach (DetalleListaTela detalle in detalles)
+                foreach (MontajeTelaDetalle detalle in detalles)
                 {
                     if (detalle.CantidadReservado != "" && detalle.CantidadReservado != "0")
                     {

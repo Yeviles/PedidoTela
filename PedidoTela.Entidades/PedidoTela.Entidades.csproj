@@ -66,15 +66,15 @@
     <Compile Include="Logica\DetalleConsumo.cs" />
     <Compile Include="Logica\DetalleCuelloUno.cs" />
     <Compile Include="Logica\DetalleEstampado.cs" />
-    <Compile Include="Logica\DetalleListaTela.cs" />
+    <Compile Include="Logica\MontajeTelaDetalle.cs" />
     <Compile Include="Logica\DetallePlanoPretenido.cs" />
     <Compile Include="Logica\DetalleUnicolor.cs" />
     <Compile Include="Logica\DisponibleParaReserva.cs" />
     <Compile Include="Logica\EditarDetalleconsumo.cs" />
     <Compile Include="Logica\Ensayo.cs" />
     <Compile Include="Logica\Estampado.cs" />
-    <Compile Include="Logica\InfoConPedUnicolor.cs" />
-    <Compile Include="Logica\ListaTela.cs" />
+    <Compile Include="Logica\PedUnicolorInfoCon.cs" />
+    <Compile Include="Logica\MontajeTela.cs" />
     <Compile Include="Logica\Objeto.cs" />
     <Compile Include="Logica\Pedido.cs" />
     <Compile Include="Logica\PedMontarUnicolor.cs" />
@@ -82,7 +82,7 @@
     <Compile Include="Logica\ReporteReservaTela.cs" />
     <Compile Include="Logica\TipoPedido.cs" />
     <Compile Include="Logica\TipoTejido.cs" />
-    <Compile Include="Logica\TotalConPedUnicolor.cs" />
+    <Compile Include="Logica\PedUnicolorTotalCon.cs" />
     <Compile Include="Logica\Unicolor.cs" />
     <Compile Include="Logica\Utilidades.cs" />
     <Compile Include="Logica\Validar.cs" />

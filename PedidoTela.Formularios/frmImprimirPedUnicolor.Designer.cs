@@ -1,7 +1,7 @@
 ﻿
 namespace PedidoTela.Formularios
 {
-    partial class frmImprimirSIP
+    partial class frmImprimirPedUnicolor
     {
         /// <summary>
         /// Required designer variable.
@@ -29,40 +29,29 @@ namespace PedidoTela.Formularios
         /// </summary>
         private void InitializeComponent()
         {
-            this.reportViewer1 = new Microsoft.Reporting.WinForms.ReportViewer();
             this.panel1 = new System.Windows.Forms.Panel();
             this.btnSalir = new System.Windows.Forms.Button();
+            this.reportViewer1 = new Microsoft.Reporting.WinForms.ReportViewer();
             this.panel1.SuspendLayout();
             this.SuspendLayout();
-            // 
-            // reportViewer1
-            // 
-            this.reportViewer1.LocalReport.ReportEmbeddedResource = "PedidoTela.Formularios.PDFImprimirSIP.rdlc";
-            this.reportViewer1.Location = new System.Drawing.Point(-1, 140);
-            this.reportViewer1.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
-            this.reportViewer1.Name = "reportViewer1";
-            this.reportViewer1.ServerReport.BearerToken = null;
-            this.reportViewer1.Size = new System.Drawing.Size(1379, 780);
-            this.reportViewer1.TabIndex = 64;
             // 
             // panel1
             // 
             this.panel1.BackColor = System.Drawing.SystemColors.ScrollBar;
             this.panel1.Controls.Add(this.btnSalir);
-            this.panel1.Location = new System.Drawing.Point(0, 79);
-            this.panel1.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.panel1.Location = new System.Drawing.Point(12, 85);
+            this.panel1.Margin = new System.Windows.Forms.Padding(4);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(1821, 60);
-            this.panel1.TabIndex = 65;
+            this.panel1.Size = new System.Drawing.Size(1346, 47);
+            this.panel1.TabIndex = 66;
             // 
             // btnSalir
             // 
             this.btnSalir.Font = new System.Drawing.Font("Verdana", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnSalir.Image = global::PedidoTela.Formularios.Properties.Resources.logout_exit_icon_176185;
-            this.btnSalir.Location = new System.Drawing.Point(4, 5);
-            this.btnSalir.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.btnSalir.Image = global::PedidoTela.Formularios.Properties.Resources.volver;
+            this.btnSalir.Location = new System.Drawing.Point(3, 3);
             this.btnSalir.Name = "btnSalir";
-            this.btnSalir.Size = new System.Drawing.Size(232, 52);
+            this.btnSalir.Size = new System.Drawing.Size(126, 41);
             this.btnSalir.TabIndex = 98;
             this.btnSalir.Text = "Salir";
             this.btnSalir.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
@@ -70,17 +59,27 @@ namespace PedidoTela.Formularios
             this.btnSalir.UseVisualStyleBackColor = true;
             this.btnSalir.Click += new System.EventHandler(this.btnSalir_Click);
             // 
-            // frmImprimirSIP
+            // reportViewer1
+            // 
+            this.reportViewer1.LocalReport.ReportEmbeddedResource = "PedidoTela.Formularios.PDFPedidoUnicolor.rdlc";
+            this.reportViewer1.Location = new System.Drawing.Point(12, 158);
+            this.reportViewer1.Name = "reportViewer1";
+            this.reportViewer1.ServerReport.BearerToken = null;
+            this.reportViewer1.Size = new System.Drawing.Size(1346, 607);
+            this.reportViewer1.TabIndex = 67;
+            // 
+            // frmImprimirPedUnicolor
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1379, 922);
-            this.Controls.Add(this.panel1);
+            this.ClientSize = new System.Drawing.Size(1383, 788);
             this.Controls.Add(this.reportViewer1);
-            this.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
-            this.Name = "frmImprimirSIP";
-            this.Text = "Imprimir SIP";
-            this.Load += new System.EventHandler(this.frmImprimirSIP_Load);
+            this.Controls.Add(this.panel1);
+            this.MaximizeBox = false;
+            this.Name = "frmImprimirPedUnicolor";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
+            this.Text = "Imprimir Pedido Unicolor";
+            this.Load += new System.EventHandler(this.frmImprimirPedUnicolor_Load);
             this.panel1.ResumeLayout(false);
             this.ResumeLayout(false);
 
@@ -88,8 +87,8 @@ namespace PedidoTela.Formularios
 
         #endregion
 
-        private Microsoft.Reporting.WinForms.ReportViewer reportViewer1;
         private System.Windows.Forms.Panel panel1;
         private System.Windows.Forms.Button btnSalir;
+        private Microsoft.Reporting.WinForms.ReportViewer reportViewer1;
     }
 }

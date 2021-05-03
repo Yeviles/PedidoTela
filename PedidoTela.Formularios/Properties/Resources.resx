@@ -121,9 +121,6 @@
   <data name="seleccion" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\imgs\seleccion.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="salir1" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\imgs\salir.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
   <data name="mbriedit_99563" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\imgs\mbriedit_99563.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
@@ -142,8 +139,8 @@
   <data name="guardar" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\imgs\guardar.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="seleccion4" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\imgs\seleccion4.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="consolidate_icon_135744" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\imgs\consolidate_icon_135744.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="confirmar1" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\imgs\confirmar1.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
@@ -165,6 +162,9 @@
   </data>
   <data name="1492790860-8check_84164" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\imgs\1492790860-8check_84164.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="guardar2" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\imgs\guardar2.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="print2" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\imgs\print2.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
@@ -196,14 +196,17 @@
   <data name="arrow_up_upload_icon_123739" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\imgs\arrow_up_upload_icon_123739.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
+  <data name="aceptar" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\imgs\aceptar.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
   <data name="seleccion2" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\imgs\seleccion2.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="1491254401-detailinformationmenudata_82977" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\imgs\1491254401-detailinformationmenudata_82977.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="guardar2" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\imgs\guardar2.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="seleccion4" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\imgs\seleccion4.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="seleccion3" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\imgs\seleccion3.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
@@ -223,10 +226,10 @@
   <data name="checkmark1" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\imgs\checkmark.ico;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="consolidate_icon_135744" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\imgs\consolidate_icon_135744.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="salir1" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\imgs\salir.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="aceptar" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\imgs\aceptar.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="imprimir" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\imgs\imprimir.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
 </root>

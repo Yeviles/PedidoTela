@@ -8,6 +8,7 @@ namespace PedidoTela.Entidades.Logica
 {
     public class PedMontarUnicolor
     {
+        private int idPedUnicolor;
         private string nomTela;
         private string disenador;
         private string ensayoRef;
@@ -17,8 +18,10 @@ namespace PedidoTela.Entidades.Logica
         private decimal rendimiento;
         private string analistasCortesB;
         private string fechaLlegada;
+        private int idSolTela;
 
-        public PedMontarUnicolor(string nomTela, string disenador, string ensayoRef, string descPrenda, string clase, string tipoMarcacion, decimal rendimiento, string analistasCortesB, string fechaLlegada)
+        public PedMontarUnicolor() { }
+        public PedMontarUnicolor(string nomTela, string disenador, string ensayoRef, string descPrenda, string clase, string tipoMarcacion, decimal rendimiento, string analistasCortesB, string fechaLlegada, int idPedUnicolor = 0, int idSolTela = 0)
         {
             this.NomTela = nomTela;
             this.Disenador = disenador;
@@ -29,6 +32,8 @@ namespace PedidoTela.Entidades.Logica
             this.Rendimiento = rendimiento;
             this.AnalistasCortesB = analistasCortesB;
             this.FechaLlegada = fechaLlegada;
+            this.IdPedUnicolor = idPedUnicolor;
+            this.IdSolTela = idSolTela;
         }
 
         public string NomTela { get => nomTela; set => nomTela = value; }
@@ -40,5 +45,7 @@ namespace PedidoTela.Entidades.Logica
         public decimal Rendimiento { get => rendimiento; set => rendimiento = value; }
         public string AnalistasCortesB { get => analistasCortesB; set => analistasCortesB = value; }
         public string FechaLlegada { get => fechaLlegada; set => fechaLlegada = value; }
+        public int IdPedUnicolor { get => idPedUnicolor; set => idPedUnicolor = value; }
+        public int IdSolTela { get => idSolTela; set => idSolTela = value; }
     }
 }

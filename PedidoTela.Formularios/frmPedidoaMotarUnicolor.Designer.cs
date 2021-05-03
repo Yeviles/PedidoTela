@@ -29,40 +29,9 @@ namespace PedidoTela.Formularios
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
             this.dgvInfoConsolidar = new System.Windows.Forms.DataGridView();
-            this.lbInformacion = new System.Windows.Forms.Label();
-            this.lbTotalconsolidado = new System.Windows.Forms.Label();
-            this.dgvTotalConsolidado = new System.Windows.Forms.DataGridView();
-            this.panel9 = new System.Windows.Forms.Panel();
-            this.button1 = new System.Windows.Forms.Button();
-            this.button2 = new System.Windows.Forms.Button();
-            this.button3 = new System.Windows.Forms.Button();
-            this.lbTipomarcacion = new System.Windows.Forms.Label();
-            this.lbDescripcionP = new System.Windows.Forms.Label();
-            this.lbRendimientoTela = new System.Windows.Forms.Label();
-            this.lbNombreTela = new System.Windows.Forms.Label();
-            this.lbFechaLlegada = new System.Windows.Forms.Label();
-            this.lbClase = new System.Windows.Forms.Label();
-            this.lbDiseñador = new System.Windows.Forms.Label();
-            this.lbAnalista = new System.Windows.Forms.Label();
-            this.txtNomTela = new System.Windows.Forms.TextBox();
-            this.txtRendimiento = new System.Windows.Forms.TextBox();
-            this.txtDisenador = new System.Windows.Forms.TextBox();
-            this.lbEnsayoRef = new System.Windows.Forms.Label();
-            this.txtAnalista = new System.Windows.Forms.TextBox();
-            this.pnlEmcabezado = new System.Windows.Forms.Panel();
-            this.cbxClase = new System.Windows.Forms.ComboBox();
-            this.dtpFechaLlegada = new System.Windows.Forms.DateTimePicker();
-            this.panel1 = new System.Windows.Forms.Panel();
-            this.txtEnsayoRef = new System.Windows.Forms.RichTextBox();
-            this.cbxTipoMarcacion = new System.Windows.Forms.ComboBox();
-            this.txtDesPrenda = new System.Windows.Forms.RichTextBox();
-            this.textBox4 = new System.Windows.Forms.TextBox();
-            this.textBox5 = new System.Windows.Forms.TextBox();
-            this.textBox3 = new System.Windows.Forms.TextBox();
-            this.lbTomarPedido = new System.Windows.Forms.Label();
             this.codColor = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.descripColor = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.tiendas = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -78,6 +47,9 @@ namespace PedidoTela.Formularios
             this.mReservados = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.maSolicitar = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.kgCalculados1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.lbInformacion = new System.Windows.Forms.Label();
+            this.lbTotalconsolidado = new System.Windows.Forms.Label();
+            this.dgvTotalConsolidado = new System.Windows.Forms.DataGridView();
             this.codigoColor = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.desColor = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dataGridViewTextBoxColumn3 = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -92,6 +64,36 @@ namespace PedidoTela.Formularios
             this.kgCalculados = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.totalaPedir = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.undMedidaTela = new System.Windows.Forms.DataGridViewComboBoxColumn();
+            this.panel9 = new System.Windows.Forms.Panel();
+            this.btnImprimir = new System.Windows.Forms.Button();
+            this.lblConsecutivo = new System.Windows.Forms.Label();
+            this.btnConfirmar = new System.Windows.Forms.Button();
+            this.btnGrabar = new System.Windows.Forms.Button();
+            this.button3 = new System.Windows.Forms.Button();
+            this.lbTipomarcacion = new System.Windows.Forms.Label();
+            this.lbDescripcionP = new System.Windows.Forms.Label();
+            this.lbRendimientoTela = new System.Windows.Forms.Label();
+            this.lbNombreTela = new System.Windows.Forms.Label();
+            this.lbFechaLlegada = new System.Windows.Forms.Label();
+            this.lbClase = new System.Windows.Forms.Label();
+            this.lbDiseñador = new System.Windows.Forms.Label();
+            this.lbAnalista = new System.Windows.Forms.Label();
+            this.txtNomTela = new System.Windows.Forms.TextBox();
+            this.txtRendimiento = new System.Windows.Forms.TextBox();
+            this.txtDisenador = new System.Windows.Forms.TextBox();
+            this.lbEnsayoRef = new System.Windows.Forms.Label();
+            this.txtAnalista = new System.Windows.Forms.TextBox();
+            this.pnlEmcabezado = new System.Windows.Forms.Panel();
+            this.textBox4 = new System.Windows.Forms.TextBox();
+            this.txtDesPrenda = new System.Windows.Forms.RichTextBox();
+            this.cbxTipoMarcacion = new System.Windows.Forms.ComboBox();
+            this.textBox5 = new System.Windows.Forms.TextBox();
+            this.txtEnsayoRef = new System.Windows.Forms.RichTextBox();
+            this.textBox3 = new System.Windows.Forms.TextBox();
+            this.lbTomarPedido = new System.Windows.Forms.Label();
+            this.cbxClase = new System.Windows.Forms.ComboBox();
+            this.dtpFechaLlegada = new System.Windows.Forms.DateTimePicker();
+            this.panel1 = new System.Windows.Forms.Panel();
             ((System.ComponentModel.ISupportInitialize)(this.dgvInfoConsolidar)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dgvTotalConsolidado)).BeginInit();
             this.panel9.SuspendLayout();
@@ -106,14 +108,14 @@ namespace PedidoTela.Formularios
             this.dgvInfoConsolidar.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.dgvInfoConsolidar.AutoSizeRowsMode = System.Windows.Forms.DataGridViewAutoSizeRowsMode.DisplayedCells;
             this.dgvInfoConsolidar.BackgroundColor = System.Drawing.Color.White;
-            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle3.BackColor = System.Drawing.SystemColors.ScrollBar;
-            dataGridViewCellStyle3.Font = new System.Drawing.Font("Verdana", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle3.ForeColor = System.Drawing.Color.Navy;
-            dataGridViewCellStyle3.SelectionBackColor = System.Drawing.SystemColors.ScrollBar;
-            dataGridViewCellStyle3.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dgvInfoConsolidar.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle3;
+            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle1.BackColor = System.Drawing.SystemColors.ScrollBar;
+            dataGridViewCellStyle1.Font = new System.Drawing.Font("Verdana", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle1.ForeColor = System.Drawing.Color.Navy;
+            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.ScrollBar;
+            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dgvInfoConsolidar.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
             this.dgvInfoConsolidar.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgvInfoConsolidar.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.codColor,
@@ -147,6 +149,96 @@ namespace PedidoTela.Formularios
             this.dgvInfoConsolidar.CellEndEdit += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvInfoConsolidar_CellEndEdit);
             this.dgvInfoConsolidar.CellFormatting += new System.Windows.Forms.DataGridViewCellFormattingEventHandler(this.dgvInfoConsolidar_CellFormatting);
             // 
+            // codColor
+            // 
+            this.codColor.HeaderText = "Cod Color";
+            this.codColor.MinimumWidth = 8;
+            this.codColor.Name = "codColor";
+            // 
+            // descripColor
+            // 
+            this.descripColor.HeaderText = "Descripción Color";
+            this.descripColor.MinimumWidth = 8;
+            this.descripColor.Name = "descripColor";
+            // 
+            // tiendas
+            // 
+            this.tiendas.HeaderText = "Tiendas";
+            this.tiendas.MinimumWidth = 8;
+            this.tiendas.Name = "tiendas";
+            // 
+            // exito
+            // 
+            this.exito.HeaderText = "Éxito";
+            this.exito.MinimumWidth = 8;
+            this.exito.Name = "exito";
+            // 
+            // cencosud
+            // 
+            this.cencosud.HeaderText = "Cencosud";
+            this.cencosud.MinimumWidth = 8;
+            this.cencosud.Name = "cencosud";
+            // 
+            // sao
+            // 
+            this.sao.HeaderText = "SAO";
+            this.sao.MinimumWidth = 8;
+            this.sao.Name = "sao";
+            // 
+            // comercioOrg
+            // 
+            this.comercioOrg.HeaderText = "Comercio Org.";
+            this.comercioOrg.MinimumWidth = 8;
+            this.comercioOrg.Name = "comercioOrg";
+            // 
+            // rosado
+            // 
+            this.rosado.HeaderText = "Rosado";
+            this.rosado.MinimumWidth = 8;
+            this.rosado.Name = "rosado";
+            // 
+            // otros
+            // 
+            this.otros.HeaderText = "Otros";
+            this.otros.MinimumWidth = 8;
+            this.otros.Name = "otros";
+            // 
+            // totalUnidades
+            // 
+            this.totalUnidades.HeaderText = "Total Unidades";
+            this.totalUnidades.MinimumWidth = 8;
+            this.totalUnidades.Name = "totalUnidades";
+            // 
+            // consumo
+            // 
+            this.consumo.HeaderText = "Consumo";
+            this.consumo.MinimumWidth = 8;
+            this.consumo.Name = "consumo";
+            // 
+            // mCalculados
+            // 
+            this.mCalculados.HeaderText = "M Calculados";
+            this.mCalculados.MinimumWidth = 8;
+            this.mCalculados.Name = "mCalculados";
+            // 
+            // mReservados
+            // 
+            this.mReservados.HeaderText = "M Reservados";
+            this.mReservados.MinimumWidth = 8;
+            this.mReservados.Name = "mReservados";
+            // 
+            // maSolicitar
+            // 
+            this.maSolicitar.HeaderText = "M a Solicitar";
+            this.maSolicitar.MinimumWidth = 8;
+            this.maSolicitar.Name = "maSolicitar";
+            // 
+            // kgCalculados1
+            // 
+            this.kgCalculados1.HeaderText = "KG Calculados";
+            this.kgCalculados1.MinimumWidth = 8;
+            this.kgCalculados1.Name = "kgCalculados1";
+            // 
             // lbInformacion
             // 
             this.lbInformacion.AutoSize = true;
@@ -174,14 +266,14 @@ namespace PedidoTela.Formularios
             this.dgvTotalConsolidado.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.dgvTotalConsolidado.AutoSizeRowsMode = System.Windows.Forms.DataGridViewAutoSizeRowsMode.DisplayedCells;
             this.dgvTotalConsolidado.BackgroundColor = System.Drawing.Color.White;
-            dataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle4.BackColor = System.Drawing.SystemColors.ScrollBar;
-            dataGridViewCellStyle4.Font = new System.Drawing.Font("Verdana", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle4.ForeColor = System.Drawing.Color.Navy;
-            dataGridViewCellStyle4.SelectionBackColor = System.Drawing.SystemColors.ScrollBar;
-            dataGridViewCellStyle4.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle4.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dgvTotalConsolidado.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle4;
+            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle2.BackColor = System.Drawing.SystemColors.ScrollBar;
+            dataGridViewCellStyle2.Font = new System.Drawing.Font("Verdana", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle2.ForeColor = System.Drawing.Color.Navy;
+            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.SystemColors.ScrollBar;
+            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dgvTotalConsolidado.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle2;
             this.dgvTotalConsolidado.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgvTotalConsolidado.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.codigoColor,
@@ -215,51 +307,168 @@ namespace PedidoTela.Formularios
             this.dgvTotalConsolidado.CellEndEdit += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvTotalConsolidado_CellEndEdit);
             this.dgvTotalConsolidado.CellFormatting += new System.Windows.Forms.DataGridViewCellFormattingEventHandler(this.dgvTotalConsolidado_CellFormatting);
             // 
+            // codigoColor
+            // 
+            this.codigoColor.HeaderText = "Cod Color";
+            this.codigoColor.MinimumWidth = 8;
+            this.codigoColor.Name = "codigoColor";
+            // 
+            // desColor
+            // 
+            this.desColor.HeaderText = "Descripción Color";
+            this.desColor.MinimumWidth = 8;
+            this.desColor.Name = "desColor";
+            // 
+            // dataGridViewTextBoxColumn3
+            // 
+            this.dataGridViewTextBoxColumn3.HeaderText = "Tiendas";
+            this.dataGridViewTextBoxColumn3.MinimumWidth = 8;
+            this.dataGridViewTextBoxColumn3.Name = "dataGridViewTextBoxColumn3";
+            // 
+            // dataGridViewTextBoxColumn4
+            // 
+            this.dataGridViewTextBoxColumn4.HeaderText = "Éxito";
+            this.dataGridViewTextBoxColumn4.MinimumWidth = 8;
+            this.dataGridViewTextBoxColumn4.Name = "dataGridViewTextBoxColumn4";
+            // 
+            // dataGridViewTextBoxColumn5
+            // 
+            this.dataGridViewTextBoxColumn5.HeaderText = "Cencosud";
+            this.dataGridViewTextBoxColumn5.MinimumWidth = 8;
+            this.dataGridViewTextBoxColumn5.Name = "dataGridViewTextBoxColumn5";
+            // 
+            // dataGridViewTextBoxColumn6
+            // 
+            this.dataGridViewTextBoxColumn6.HeaderText = "SAO";
+            this.dataGridViewTextBoxColumn6.MinimumWidth = 8;
+            this.dataGridViewTextBoxColumn6.Name = "dataGridViewTextBoxColumn6";
+            // 
+            // dataGridViewTextBoxColumn7
+            // 
+            this.dataGridViewTextBoxColumn7.HeaderText = "Comercio Org.";
+            this.dataGridViewTextBoxColumn7.MinimumWidth = 8;
+            this.dataGridViewTextBoxColumn7.Name = "dataGridViewTextBoxColumn7";
+            // 
+            // dataGridViewTextBoxColumn8
+            // 
+            this.dataGridViewTextBoxColumn8.HeaderText = "Rosado";
+            this.dataGridViewTextBoxColumn8.MinimumWidth = 8;
+            this.dataGridViewTextBoxColumn8.Name = "dataGridViewTextBoxColumn8";
+            // 
+            // dataGridViewTextBoxColumn9
+            // 
+            this.dataGridViewTextBoxColumn9.HeaderText = "Otros";
+            this.dataGridViewTextBoxColumn9.MinimumWidth = 8;
+            this.dataGridViewTextBoxColumn9.Name = "dataGridViewTextBoxColumn9";
+            // 
+            // dataGridViewTextBoxColumn10
+            // 
+            this.dataGridViewTextBoxColumn10.HeaderText = "Total Unidades";
+            this.dataGridViewTextBoxColumn10.MinimumWidth = 8;
+            this.dataGridViewTextBoxColumn10.Name = "dataGridViewTextBoxColumn10";
+            // 
+            // dataGridViewTextBoxColumn11
+            // 
+            this.dataGridViewTextBoxColumn11.HeaderText = "M Calculados";
+            this.dataGridViewTextBoxColumn11.MinimumWidth = 8;
+            this.dataGridViewTextBoxColumn11.Name = "dataGridViewTextBoxColumn11";
+            // 
+            // kgCalculados
+            // 
+            this.kgCalculados.HeaderText = "Kg Calculados";
+            this.kgCalculados.MinimumWidth = 8;
+            this.kgCalculados.Name = "kgCalculados";
+            // 
+            // totalaPedir
+            // 
+            this.totalaPedir.HeaderText = "Total a Pedir";
+            this.totalaPedir.MinimumWidth = 8;
+            this.totalaPedir.Name = "totalaPedir";
+            // 
+            // undMedidaTela
+            // 
+            this.undMedidaTela.HeaderText = "und Medida Tela";
+            this.undMedidaTela.Items.AddRange(new object[] {
+            "M",
+            "Kg",
+            "UND"});
+            this.undMedidaTela.MinimumWidth = 8;
+            this.undMedidaTela.Name = "undMedidaTela";
+            this.undMedidaTela.Resizable = System.Windows.Forms.DataGridViewTriState.True;
+            this.undMedidaTela.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic;
+            // 
             // panel9
             // 
             this.panel9.BackColor = System.Drawing.SystemColors.ScrollBar;
             this.panel9.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.panel9.Controls.Add(this.button1);
-            this.panel9.Controls.Add(this.button2);
+            this.panel9.Controls.Add(this.btnImprimir);
+            this.panel9.Controls.Add(this.lblConsecutivo);
+            this.panel9.Controls.Add(this.btnConfirmar);
+            this.panel9.Controls.Add(this.btnGrabar);
             this.panel9.Controls.Add(this.button3);
             this.panel9.Location = new System.Drawing.Point(12, 11);
             this.panel9.Name = "panel9";
             this.panel9.Size = new System.Drawing.Size(1353, 47);
             this.panel9.TabIndex = 136;
             // 
-            // button1
+            // btnImprimir
             // 
-            this.button1.Font = new System.Drawing.Font("Verdana", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button1.Image = global::PedidoTela.Formularios.Properties.Resources.confirmar1;
-            this.button1.Location = new System.Drawing.Point(127, 3);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(126, 41);
-            this.button1.TabIndex = 96;
-            this.button1.Text = "Confirmar";
-            this.button1.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.button1.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
-            this.button1.UseVisualStyleBackColor = true;
+            this.btnImprimir.Font = new System.Drawing.Font("Verdana", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnImprimir.Image = global::PedidoTela.Formularios.Properties.Resources.imprimir;
+            this.btnImprimir.Location = new System.Drawing.Point(251, 2);
+            this.btnImprimir.Name = "btnImprimir";
+            this.btnImprimir.Size = new System.Drawing.Size(126, 41);
+            this.btnImprimir.TabIndex = 100;
+            this.btnImprimir.Text = "Imprimir";
+            this.btnImprimir.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.btnImprimir.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
+            this.btnImprimir.UseVisualStyleBackColor = true;
+            this.btnImprimir.Click += new System.EventHandler(this.btnImprimir_Click);
             // 
-            // button2
+            // lblConsecutivo
             // 
-            this.button2.BackColor = System.Drawing.Color.LightGray;
-            this.button2.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.button2.Font = new System.Drawing.Font("Verdana", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button2.Image = global::PedidoTela.Formularios.Properties.Resources.guardar2;
-            this.button2.Location = new System.Drawing.Point(3, 3);
-            this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(126, 41);
-            this.button2.TabIndex = 95;
-            this.button2.Text = "Grabar";
-            this.button2.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.button2.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
-            this.button2.UseVisualStyleBackColor = false;
+            this.lblConsecutivo.AutoSize = true;
+            this.lblConsecutivo.Font = new System.Drawing.Font("Verdana", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblConsecutivo.Location = new System.Drawing.Point(610, 13);
+            this.lblConsecutivo.Name = "lblConsecutivo";
+            this.lblConsecutivo.Size = new System.Drawing.Size(0, 20);
+            this.lblConsecutivo.TabIndex = 99;
+            // 
+            // btnConfirmar
+            // 
+            this.btnConfirmar.Font = new System.Drawing.Font("Verdana", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnConfirmar.Image = global::PedidoTela.Formularios.Properties.Resources.confirmar1;
+            this.btnConfirmar.Location = new System.Drawing.Point(127, 3);
+            this.btnConfirmar.Name = "btnConfirmar";
+            this.btnConfirmar.Size = new System.Drawing.Size(126, 41);
+            this.btnConfirmar.TabIndex = 96;
+            this.btnConfirmar.Text = "Confirmar";
+            this.btnConfirmar.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.btnConfirmar.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
+            this.btnConfirmar.UseVisualStyleBackColor = true;
+            this.btnConfirmar.Click += new System.EventHandler(this.btnConfirmar_Click);
+            // 
+            // btnGrabar
+            // 
+            this.btnGrabar.BackColor = System.Drawing.Color.LightGray;
+            this.btnGrabar.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.btnGrabar.Font = new System.Drawing.Font("Verdana", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnGrabar.Image = global::PedidoTela.Formularios.Properties.Resources.guardar2;
+            this.btnGrabar.Location = new System.Drawing.Point(3, 3);
+            this.btnGrabar.Name = "btnGrabar";
+            this.btnGrabar.Size = new System.Drawing.Size(126, 41);
+            this.btnGrabar.TabIndex = 95;
+            this.btnGrabar.Text = "Grabar";
+            this.btnGrabar.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.btnGrabar.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
+            this.btnGrabar.UseVisualStyleBackColor = false;
+            this.btnGrabar.Click += new System.EventHandler(this.btnGrabar_Click);
             // 
             // button3
             // 
             this.button3.Font = new System.Drawing.Font("Verdana", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.button3.Image = global::PedidoTela.Formularios.Properties.Resources.salir2;
-            this.button3.Location = new System.Drawing.Point(251, 3);
+            this.button3.Location = new System.Drawing.Point(375, 3);
             this.button3.Name = "button3";
             this.button3.Size = new System.Drawing.Size(126, 41);
             this.button3.TabIndex = 97;
@@ -418,6 +627,65 @@ namespace PedidoTela.Formularios
             this.pnlEmcabezado.Size = new System.Drawing.Size(1353, 232);
             this.pnlEmcabezado.TabIndex = 32;
             // 
+            // textBox4
+            // 
+            this.textBox4.Location = new System.Drawing.Point(1009, 4);
+            this.textBox4.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.textBox4.Name = "textBox4";
+            this.textBox4.Size = new System.Drawing.Size(133, 23);
+            this.textBox4.TabIndex = 141;
+            // 
+            // txtDesPrenda
+            // 
+            this.txtDesPrenda.Location = new System.Drawing.Point(180, 162);
+            this.txtDesPrenda.Name = "txtDesPrenda";
+            this.txtDesPrenda.Size = new System.Drawing.Size(552, 51);
+            this.txtDesPrenda.TabIndex = 141;
+            this.txtDesPrenda.Text = "";
+            // 
+            // cbxTipoMarcacion
+            // 
+            this.cbxTipoMarcacion.FormattingEnabled = true;
+            this.cbxTipoMarcacion.Location = new System.Drawing.Point(542, 30);
+            this.cbxTipoMarcacion.Name = "cbxTipoMarcacion";
+            this.cbxTipoMarcacion.Size = new System.Drawing.Size(180, 24);
+            this.cbxTipoMarcacion.TabIndex = 140;
+            // 
+            // textBox5
+            // 
+            this.textBox5.Location = new System.Drawing.Point(1159, 4);
+            this.textBox5.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.textBox5.Name = "textBox5";
+            this.textBox5.Size = new System.Drawing.Size(133, 23);
+            this.textBox5.TabIndex = 139;
+            // 
+            // txtEnsayoRef
+            // 
+            this.txtEnsayoRef.BackColor = System.Drawing.Color.LightGoldenrodYellow;
+            this.txtEnsayoRef.Location = new System.Drawing.Point(180, 58);
+            this.txtEnsayoRef.Name = "txtEnsayoRef";
+            this.txtEnsayoRef.ReadOnly = true;
+            this.txtEnsayoRef.Size = new System.Drawing.Size(180, 96);
+            this.txtEnsayoRef.TabIndex = 139;
+            this.txtEnsayoRef.Text = "";
+            // 
+            // textBox3
+            // 
+            this.textBox3.Location = new System.Drawing.Point(859, 4);
+            this.textBox3.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.textBox3.Name = "textBox3";
+            this.textBox3.Size = new System.Drawing.Size(133, 23);
+            this.textBox3.TabIndex = 138;
+            // 
+            // lbTomarPedido
+            // 
+            this.lbTomarPedido.AutoSize = true;
+            this.lbTomarPedido.Location = new System.Drawing.Point(731, 7);
+            this.lbTomarPedido.Name = "lbTomarPedido";
+            this.lbTomarPedido.Size = new System.Drawing.Size(134, 17);
+            this.lbTomarPedido.TabIndex = 137;
+            this.lbTomarPedido.Text = "Tomar del pedido:";
+            // 
             // cbxClase
             // 
             this.cbxClase.FormattingEnabled = true;
@@ -452,245 +720,6 @@ namespace PedidoTela.Formularios
             this.panel1.Size = new System.Drawing.Size(1374, 711);
             this.panel1.TabIndex = 139;
             // 
-            // txtEnsayoRef
-            // 
-            this.txtEnsayoRef.BackColor = System.Drawing.Color.LightGoldenrodYellow;
-            this.txtEnsayoRef.Location = new System.Drawing.Point(180, 58);
-            this.txtEnsayoRef.Name = "txtEnsayoRef";
-            this.txtEnsayoRef.ReadOnly = true;
-            this.txtEnsayoRef.Size = new System.Drawing.Size(180, 96);
-            this.txtEnsayoRef.TabIndex = 139;
-            this.txtEnsayoRef.Text = "";
-            // 
-            // cbxTipoMarcacion
-            // 
-            this.cbxTipoMarcacion.FormattingEnabled = true;
-            this.cbxTipoMarcacion.Location = new System.Drawing.Point(542, 30);
-            this.cbxTipoMarcacion.Name = "cbxTipoMarcacion";
-            this.cbxTipoMarcacion.Size = new System.Drawing.Size(180, 24);
-            this.cbxTipoMarcacion.TabIndex = 140;
-            // 
-            // txtDesPrenda
-            // 
-            this.txtDesPrenda.Location = new System.Drawing.Point(180, 162);
-            this.txtDesPrenda.Name = "txtDesPrenda";
-            this.txtDesPrenda.Size = new System.Drawing.Size(552, 51);
-            this.txtDesPrenda.TabIndex = 141;
-            this.txtDesPrenda.Text = "";
-            // 
-            // textBox4
-            // 
-            this.textBox4.Location = new System.Drawing.Point(1009, 4);
-            this.textBox4.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.textBox4.Name = "textBox4";
-            this.textBox4.Size = new System.Drawing.Size(133, 23);
-            this.textBox4.TabIndex = 141;
-            // 
-            // textBox5
-            // 
-            this.textBox5.Location = new System.Drawing.Point(1159, 4);
-            this.textBox5.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.textBox5.Name = "textBox5";
-            this.textBox5.Size = new System.Drawing.Size(133, 23);
-            this.textBox5.TabIndex = 139;
-            // 
-            // textBox3
-            // 
-            this.textBox3.Location = new System.Drawing.Point(859, 4);
-            this.textBox3.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.textBox3.Name = "textBox3";
-            this.textBox3.Size = new System.Drawing.Size(133, 23);
-            this.textBox3.TabIndex = 138;
-            // 
-            // lbTomarPedido
-            // 
-            this.lbTomarPedido.AutoSize = true;
-            this.lbTomarPedido.Location = new System.Drawing.Point(731, 7);
-            this.lbTomarPedido.Name = "lbTomarPedido";
-            this.lbTomarPedido.Size = new System.Drawing.Size(134, 17);
-            this.lbTomarPedido.TabIndex = 137;
-            this.lbTomarPedido.Text = "Tomar del pedido:";
-            // 
-            // codColor
-            // 
-            this.codColor.HeaderText = "Cod Color";
-            this.codColor.MinimumWidth = 8;
-            this.codColor.Name = "codColor";
-            // 
-            // descripColor
-            // 
-            this.descripColor.HeaderText = "Descripción Color";
-            this.descripColor.MinimumWidth = 8;
-            this.descripColor.Name = "descripColor";
-            // 
-            // tiendas
-            // 
-            this.tiendas.HeaderText = "Tiendas";
-            this.tiendas.MinimumWidth = 8;
-            this.tiendas.Name = "tiendas";
-            // 
-            // exito
-            // 
-            this.exito.HeaderText = "Éxito";
-            this.exito.MinimumWidth = 8;
-            this.exito.Name = "exito";
-            // 
-            // cencosud
-            // 
-            this.cencosud.HeaderText = "Cencosud";
-            this.cencosud.MinimumWidth = 8;
-            this.cencosud.Name = "cencosud";
-            // 
-            // sao
-            // 
-            this.sao.HeaderText = "SAO";
-            this.sao.MinimumWidth = 8;
-            this.sao.Name = "sao";
-            // 
-            // comercioOrg
-            // 
-            this.comercioOrg.HeaderText = "Comercio Org.";
-            this.comercioOrg.MinimumWidth = 8;
-            this.comercioOrg.Name = "comercioOrg";
-            // 
-            // rosado
-            // 
-            this.rosado.HeaderText = "Rosado";
-            this.rosado.MinimumWidth = 8;
-            this.rosado.Name = "rosado";
-            // 
-            // otros
-            // 
-            this.otros.HeaderText = "Otros";
-            this.otros.MinimumWidth = 8;
-            this.otros.Name = "otros";
-            // 
-            // totalUnidades
-            // 
-            this.totalUnidades.HeaderText = "Total Unidades";
-            this.totalUnidades.MinimumWidth = 8;
-            this.totalUnidades.Name = "totalUnidades";
-            // 
-            // consumo
-            // 
-            this.consumo.HeaderText = "Consumo";
-            this.consumo.MinimumWidth = 8;
-            this.consumo.Name = "consumo";
-            // 
-            // mCalculados
-            // 
-            this.mCalculados.HeaderText = "M Calculados";
-            this.mCalculados.MinimumWidth = 8;
-            this.mCalculados.Name = "mCalculados";
-            // 
-            // mReservados
-            // 
-            this.mReservados.HeaderText = "M Reservados";
-            this.mReservados.MinimumWidth = 8;
-            this.mReservados.Name = "mReservados";
-            // 
-            // maSolicitar
-            // 
-            this.maSolicitar.HeaderText = "M a Solicitar";
-            this.maSolicitar.MinimumWidth = 8;
-            this.maSolicitar.Name = "maSolicitar";
-            // 
-            // kgCalculados1
-            // 
-            this.kgCalculados1.HeaderText = "KG Calculados";
-            this.kgCalculados1.MinimumWidth = 8;
-            this.kgCalculados1.Name = "kgCalculados1";
-            // 
-            // codigoColor
-            // 
-            this.codigoColor.HeaderText = "Cod Color";
-            this.codigoColor.MinimumWidth = 8;
-            this.codigoColor.Name = "codigoColor";
-            // 
-            // desColor
-            // 
-            this.desColor.HeaderText = "Descripción Color";
-            this.desColor.MinimumWidth = 8;
-            this.desColor.Name = "desColor";
-            // 
-            // dataGridViewTextBoxColumn3
-            // 
-            this.dataGridViewTextBoxColumn3.HeaderText = "Tiendas";
-            this.dataGridViewTextBoxColumn3.MinimumWidth = 8;
-            this.dataGridViewTextBoxColumn3.Name = "dataGridViewTextBoxColumn3";
-            // 
-            // dataGridViewTextBoxColumn4
-            // 
-            this.dataGridViewTextBoxColumn4.HeaderText = "Éxito";
-            this.dataGridViewTextBoxColumn4.MinimumWidth = 8;
-            this.dataGridViewTextBoxColumn4.Name = "dataGridViewTextBoxColumn4";
-            // 
-            // dataGridViewTextBoxColumn5
-            // 
-            this.dataGridViewTextBoxColumn5.HeaderText = "Cencosud";
-            this.dataGridViewTextBoxColumn5.MinimumWidth = 8;
-            this.dataGridViewTextBoxColumn5.Name = "dataGridViewTextBoxColumn5";
-            // 
-            // dataGridViewTextBoxColumn6
-            // 
-            this.dataGridViewTextBoxColumn6.HeaderText = "SAO";
-            this.dataGridViewTextBoxColumn6.MinimumWidth = 8;
-            this.dataGridViewTextBoxColumn6.Name = "dataGridViewTextBoxColumn6";
-            // 
-            // dataGridViewTextBoxColumn7
-            // 
-            this.dataGridViewTextBoxColumn7.HeaderText = "Comercio Org.";
-            this.dataGridViewTextBoxColumn7.MinimumWidth = 8;
-            this.dataGridViewTextBoxColumn7.Name = "dataGridViewTextBoxColumn7";
-            // 
-            // dataGridViewTextBoxColumn8
-            // 
-            this.dataGridViewTextBoxColumn8.HeaderText = "Rosado";
-            this.dataGridViewTextBoxColumn8.MinimumWidth = 8;
-            this.dataGridViewTextBoxColumn8.Name = "dataGridViewTextBoxColumn8";
-            // 
-            // dataGridViewTextBoxColumn9
-            // 
-            this.dataGridViewTextBoxColumn9.HeaderText = "Otros";
-            this.dataGridViewTextBoxColumn9.MinimumWidth = 8;
-            this.dataGridViewTextBoxColumn9.Name = "dataGridViewTextBoxColumn9";
-            // 
-            // dataGridViewTextBoxColumn10
-            // 
-            this.dataGridViewTextBoxColumn10.HeaderText = "Total Unidades";
-            this.dataGridViewTextBoxColumn10.MinimumWidth = 8;
-            this.dataGridViewTextBoxColumn10.Name = "dataGridViewTextBoxColumn10";
-            // 
-            // dataGridViewTextBoxColumn11
-            // 
-            this.dataGridViewTextBoxColumn11.HeaderText = "M Calculados";
-            this.dataGridViewTextBoxColumn11.MinimumWidth = 8;
-            this.dataGridViewTextBoxColumn11.Name = "dataGridViewTextBoxColumn11";
-            // 
-            // kgCalculados
-            // 
-            this.kgCalculados.HeaderText = "Kg Calculados";
-            this.kgCalculados.MinimumWidth = 8;
-            this.kgCalculados.Name = "kgCalculados";
-            // 
-            // totalaPedir
-            // 
-            this.totalaPedir.HeaderText = "Total a Pedir";
-            this.totalaPedir.MinimumWidth = 8;
-            this.totalaPedir.Name = "totalaPedir";
-            // 
-            // undMedidaTela
-            // 
-            this.undMedidaTela.HeaderText = "und Medida Tela";
-            this.undMedidaTela.Items.AddRange(new object[] {
-            "M",
-            "Kg",
-            "UND"});
-            this.undMedidaTela.MinimumWidth = 8;
-            this.undMedidaTela.Name = "undMedidaTela";
-            this.undMedidaTela.Resizable = System.Windows.Forms.DataGridViewTriState.True;
-            this.undMedidaTela.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic;
-            // 
             // frmPedidoaMotarUnicolor
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
@@ -707,6 +736,7 @@ namespace PedidoTela.Formularios
             ((System.ComponentModel.ISupportInitialize)(this.dgvInfoConsolidar)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.dgvTotalConsolidado)).EndInit();
             this.panel9.ResumeLayout(false);
+            this.panel9.PerformLayout();
             this.pnlEmcabezado.ResumeLayout(false);
             this.pnlEmcabezado.PerformLayout();
             this.panel1.ResumeLayout(false);
@@ -721,8 +751,8 @@ namespace PedidoTela.Formularios
         private System.Windows.Forms.Label lbTotalconsolidado;
         private System.Windows.Forms.DataGridView dgvTotalConsolidado;
         private System.Windows.Forms.Panel panel9;
-        private System.Windows.Forms.Button button1;
-        private System.Windows.Forms.Button button2;
+        private System.Windows.Forms.Button btnConfirmar;
+        private System.Windows.Forms.Button btnGrabar;
         private System.Windows.Forms.Button button3;
         private System.Windows.Forms.Label lbTipomarcacion;
         private System.Windows.Forms.Label lbDescripcionP;
@@ -777,5 +807,7 @@ namespace PedidoTela.Formularios
         private System.Windows.Forms.DataGridViewTextBoxColumn kgCalculados;
         private System.Windows.Forms.DataGridViewTextBoxColumn totalaPedir;
         private System.Windows.Forms.DataGridViewComboBoxColumn undMedidaTela;
+        private System.Windows.Forms.Label lblConsecutivo;
+        private System.Windows.Forms.Button btnImprimir;
     }
 }
