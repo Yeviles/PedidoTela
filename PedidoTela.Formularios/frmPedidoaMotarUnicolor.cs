@@ -72,159 +72,84 @@ namespace PedidoTela.Formularios
         }
         #endregion
 
-        /// <summary>
-        /// Se válida que en la lista (List<DetalleListaTela> listaSeleccionada) que llega al contructor por argumentos, tenga un atributo estado y que 
-        /// este contenga valor de Solicitud de Inventario o Reserva Parcial, si cumple esta condición procede a llenar el encabezado  y las DataGridView de la vista actual.
-        /// </summary>
-        /// <param name="prmLista"> Lista de tipo DetalleListaTela, la cual representa las filas seleccionadas en el vista frmSolicitudListaTelas. </param>
-        /// <param name="cont">Cantidad de filas que han sido seleccionadas en la vista frmSolicitudListaTelas.</param>
-        private void Validaciones(List<MontajeTelaDetalle> prmLista, int numfilasSeleccionadas)
-        {
-            int b = 0;
-
-            if (numfilasSeleccionadas >= 2)
-            {
-                for (int i = 0; i < prmLista.Count; i++)
-                {
-                    if (prmLista[i].Estado == "Solicitud Inventario" || prmLista[i].Estado == "Reserva parcial" || prmLista[i].Estado == "Por Analizar")
-                    {
-                        b += 1;
-                    }
-                }
-                if (b == prmLista.Count)
-                {
-                    this.Show();
-                    Cargar();
-                    // Bandera controlada en el método Cargar()
-                    if (!this.bandera)
-                    {
-                        //Carga el DataGridView (dgvInfoConsolidar) el cual pertenece a la sección de información a consolidar.
-                        cargarDgvInfoConsolidar(prmLista);
-                        //Carga el DataGridView (dgvTotalConsolidado) el cual pertenece a la sección de total consolidado.
-                        cargarDgvTotalConsolidar(prmLista);
-                    }
-                }
-                else
-                {
-                    MessageBox.Show("El estado de solicitud No corresponde a Solicitud de Inventario o Reserva Parcial.", "Advertencia", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                    this.Close();
-                }
-
-            }
-            else
-            {
-                MessageBox.Show("Por favor seleccione al menos dos items.", "Advertencia", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                this.Close();
-            }
-        }
-        
-        private void cargarDgvInfoConsolidar(List<MontajeTelaDetalle> prmLista)
-        {
-            if (prmLista.Count != 0)
-            {
-                for (int i = 0; i < prmLista.Count; i++)
-                {
-
-                    dgvInfoConsolidar.Rows.Add(prmLista[i].Vte.ToString(),
-                    prmLista[i].DesColor.ToString(),
-                    prmLista[i].Tiendas.ToString(),
-                    prmLista[i].Exito.ToString(),
-                    prmLista[i].Cencosud.ToString(),
-                    prmLista[i].Sao.ToString(),
-                    prmLista[i].Comercio.ToString(),
-                    prmLista[i].Rosado.ToString(),
-                    prmLista[i].Otros.ToString(),
-                    prmLista[i].TotaUnidades.ToString(),
-                    prmLista[i].Consumo.ToString(),
-                    prmLista[i].MCalculados.ToString(),
-                    prmLista[i].MReservados.ToString(),
-                    prmLista[i].Masolicitar.ToString()
-                    //prmLista[i].IdSolTela.ToString(),
-                    //prmLista[i].IdDetalleSolicitud.ToString()
-                    );
-
-                    txtEnsayoRef.Text += prmLista[i].RefSimilar.ToString() + "\n";
-                    txtDesPrenda.Text = prmLista[i].DescPrenda.ToString();
-                   // idSolTela = prmLista[i].IdSolTela;
-                    IdSolTela = prmLista[i].IdSolTela;
-                    ListaIdSolicitudes.Add(prmLista[i].IdSolTela);
-                    ListaEsayosRef.Add(prmLista[i].RefSimilar);
-                }
-                txtNomTela.Text = prmLista[0].DesTela.ToString();
-                txtDisenador.Text = prmLista[0].Disenador.ToString();
-            }
-            else
-            {
-                MessageBox.Show("No existe información sobre su consulta", "Advertencia", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-            }
-        }
-
-        private void cargarDgvTotalConsolidar(List<MontajeTelaDetalle> prmLista)
-        {
-            if (prmLista.Count != 0)
-            {
-                for (int i = 0; i < prmLista.Count; i++)
-                {
-
-                    dgvTotalConsolidado.Rows.Add(prmLista[i].Vte.ToString(),
-                    prmLista[i].DesColor.ToString(),
-                    prmLista[i].Tiendas.ToString(),
-                    prmLista[i].Exito.ToString(),
-                    prmLista[i].Cencosud.ToString(),
-                    prmLista[i].Sao.ToString(),
-                    prmLista[i].Comercio.ToString(),
-                    prmLista[i].Rosado.ToString(),
-                    prmLista[i].Otros.ToString(),
-                    prmLista[i].TotaUnidades.ToString(),
-                    prmLista[i].MCalculados.ToString()
-
-                    //prmLista[i].IdSolTela.ToString(),
-                    //prmLista[i].IdDetalleSolicitud.ToString()
-                    );
-
-                }
-            }
-            else
-            {
-                MessageBox.Show("No existe información sobre su consulta", "Advertencia", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-            }
-
-        }
-
-        private void cargarCombobox(ComboBox combo, List<Objeto> lista)
-        {
-            combo.DataSource = lista;
-            combo.DisplayMember = "Nombre";
-            combo.ValueMember = "Id";
-            combo.SelectedIndex = -1;
-            combo.AutoCompleteCustomSource = cargarCombobox(lista);
-            combo.AutoCompleteMode = AutoCompleteMode.Suggest;
-            combo.AutoCompleteSource = AutoCompleteSource.CustomSource;
-        }
-
-        /*<summary> Permite el autocompletado de un comboBox </summary>
-         * <param name="lista">Lista de tipo objeto</param>
-         * <returns></returns>*/
-        private AutoCompleteStringCollection cargarCombobox(List<Objeto> lista)
-        {
-            AutoCompleteStringCollection datos = new AutoCompleteStringCollection();
-            foreach (Objeto obj in lista)
-            {
-                datos.Add(obj.Nombre);
-            }
-            return datos;
-        }
-        
-        private void button3_Click(object sender, EventArgs e)
-        {
-            this.Close();
-        }
+        #region Eventos
 
         private void txtRendimiento_KeyPress(object sender, KeyPressEventArgs e)
         {
             validacion.validarDecimal(sender, e);
         }
 
+        private void dgvInfoConsolidar_CellFormatting(object sender, DataGridViewCellFormattingEventArgs e)
+        {
+            if (e.ColumnIndex > 1 && e.ColumnIndex < 10 || e.ColumnIndex == 11)
+            {
+                e.CellStyle.BackColor = Color.PaleGoldenrod;
+            }
+        }
+
+        private void dgvTotalConsolidado_CellFormatting(object sender, DataGridViewCellFormattingEventArgs e)
+        {
+            if (e.ColumnIndex > 1 && e.ColumnIndex <= 10)
+            {
+                e.CellStyle.BackColor = Color.PaleGoldenrod;
+            }
+        }
+        
+        private void dgvInfoConsolidar_CellEndEdit(object sender, DataGridViewCellEventArgs e)
+        {
+           
+            if (e.ColumnIndex == 10|| e.ColumnIndex == 12)
+            {
+                try
+                {
+                    if (dgvInfoConsolidar.CurrentCell.Value != null && dgvInfoConsolidar.CurrentCell.Value.ToString().Trim() != "")
+                    {
+                        if (dgvInfoConsolidar.CurrentCell.Value != null && dgvInfoConsolidar.CurrentCell.Value.ToString().Trim() != "")
+                        {
+                            decimal valor = decimal.Parse(dgvInfoConsolidar.CurrentCell.Value.ToString());
+                            decimal vfinal = Decimal.Round(valor, 2);
+                            dgvInfoConsolidar.CurrentCell.Value = valor;
+
+                        }
+                        if (dgvInfoConsolidar.Rows[e.RowIndex].Cells[12].Value.ToString() == "")
+                        {
+                            dgvInfoConsolidar.Rows[e.RowIndex].Cells[13].Value = decimal.Parse(dgvInfoConsolidar.Rows[e.RowIndex].Cells[11].Value.ToString()) - decimal.Parse(dgvInfoConsolidar.Rows[e.RowIndex].Cells[12].Value.ToString());
+                        }
+                    }
+                 
+                }
+                catch
+                {
+                    dgvInfoConsolidar.CurrentCell.Value = "";
+                    MessageBox.Show("Unicamente se permiten valores numéricos", "TTipo de dato no permitido", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                }
+            }
+        }
+
+        private void dgvTotalConsolidado_CellEndEdit(object sender, DataGridViewCellEventArgs e)
+        {
+            if (e.ColumnIndex == 12)
+            {
+                try
+                {
+                    if (dgvTotalConsolidado.CurrentCell.Value != null && dgvTotalConsolidado.CurrentCell.Value.ToString().Trim() != "")
+                    {
+                        if (dgvTotalConsolidado.CurrentCell.Value != null && dgvTotalConsolidado.CurrentCell.Value.ToString().Trim() != "")
+                        {
+                            decimal valor = decimal.Parse(dgvTotalConsolidado.CurrentCell.Value.ToString());
+                            decimal vfinal = Decimal.Round(valor, 2);
+                            dgvTotalConsolidado.CurrentCell.Value = valor;
+                        }
+                    }
+                }
+                catch
+                {
+                    dgvTotalConsolidado.CurrentCell.Value = "";
+                    MessageBox.Show("Unicamente se permiten valores numéricos", "TTipo de dato no permitido", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                }
+            }
+        }
+        
         private void dgvInfoConsolidar_CellClick(object sender, DataGridViewCellEventArgs e)
         {
             dgvInfoConsolidar.CurrentRow.Cells[2].ReadOnly = true;
@@ -252,76 +177,7 @@ namespace PedidoTela.Formularios
 
             }
         }
-
-        private void dgvInfoConsolidar_CellFormatting(object sender, DataGridViewCellFormattingEventArgs e)
-        {
-            if (e.ColumnIndex > 1 && e.ColumnIndex < 10 || e.ColumnIndex == 11)
-            {
-                e.CellStyle.BackColor = Color.PaleGoldenrod;
-            }
-        }
-
-        private void dgvTotalConsolidado_CellFormatting(object sender, DataGridViewCellFormattingEventArgs e)
-        {
-            if (e.ColumnIndex > 1 && e.ColumnIndex <= 10)
-            {
-                e.CellStyle.BackColor = Color.PaleGoldenrod;
-            }
-        }
-
-        private void dgvTotalConsolidado_CellEndEdit(object sender, DataGridViewCellEventArgs e)
-        {
-            if (e.ColumnIndex == 12)
-            {
-                try
-                {
-                    if (dgvTotalConsolidado.CurrentCell.Value != null && dgvTotalConsolidado.CurrentCell.Value.ToString().Trim() != "")
-                    {
-                        if (dgvTotalConsolidado.CurrentCell.Value != null && dgvTotalConsolidado.CurrentCell.Value.ToString().Trim() != "")
-                        {
-                            decimal valor = decimal.Parse(dgvTotalConsolidado.CurrentCell.Value.ToString());
-                            decimal vfinal = Decimal.Round(valor, 2);
-                            dgvTotalConsolidado.CurrentCell.Value = valor;
-                        }
-                    }
-                }
-                catch
-                {
-                    dgvTotalConsolidado.CurrentCell.Value = "";
-                    MessageBox.Show("Unicamente se permiten valores numéricos", "TTipo de dato no permitido", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                }
-            }
-        }
-
-        private void dgvInfoConsolidar_CellEndEdit(object sender, DataGridViewCellEventArgs e)
-        {
-            if (e.ColumnIndex == 10 || e.ColumnIndex == 12)
-            {
-                try
-                {
-                    if (dgvInfoConsolidar.CurrentCell.Value != null && dgvInfoConsolidar.CurrentCell.Value.ToString().Trim() != "")
-                    {
-                        if (dgvInfoConsolidar.CurrentCell.Value != null && dgvInfoConsolidar.CurrentCell.Value.ToString().Trim() != "")
-                        {
-                            decimal valor = decimal.Parse(dgvInfoConsolidar.CurrentCell.Value.ToString());
-                            decimal vfinal = Decimal.Round(valor, 2);
-                            dgvInfoConsolidar.CurrentCell.Value = valor;
-
-                        }
-                    }
-                    if (dgvInfoConsolidar.Rows[e.RowIndex].Cells[12].Value.ToString() != "")
-                    {
-                        dgvInfoConsolidar.Rows[e.RowIndex].Cells[13].Value = decimal.Parse(dgvInfoConsolidar.Rows[e.RowIndex].Cells[11].Value.ToString()) - decimal.Parse(dgvInfoConsolidar.Rows[e.RowIndex].Cells[12].Value.ToString());
-                    }
-                }
-                catch
-                {
-                    dgvInfoConsolidar.CurrentCell.Value = "";
-                    MessageBox.Show("Unicamente se permiten valores numéricos", "TTipo de dato no permitido", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                }
-            }
-        }
-
+        
         private void dgvTotalConsolidado_CellClick(object sender, DataGridViewCellEventArgs e)
         {
             dgvTotalConsolidado.CurrentRow.Cells[2].ReadOnly = true;
@@ -519,28 +375,164 @@ namespace PedidoTela.Formularios
 
             }
         }
-        /// <summary>
-        /// Obtine todo los elementos del encabezado de la vista.
-        /// </summary>
-        /// <returns></returns>
-        private PedMontarUnicolor ObtenerEncabezado()
+
+        private void btnImprimir_Click(object sender, EventArgs e)
         {
-            PedMontarUnicolor elemento = new PedMontarUnicolor();
-            elemento.NomTela = txtNomTela.Text.Trim();
-            elemento.Disenador = txtDisenador.Text.Trim();
-            elemento.Rendimiento = decimal.Parse(txtRendimiento.Text.Trim());
-            elemento.EnsayoRef = txtEnsayoRef.Text.Trim();
-            elemento.DescPrenda = txtDesPrenda.Text.Trim();
-            elemento.Clase = cbxClase.SelectedItem.ToString();
-            elemento.TipoMarcacion = cbxTipoMarcacion.GetItemText(cbxTipoMarcacion.SelectedItem);
-            elemento.Rendimiento = decimal.Parse(txtRendimiento.Text.Trim());
-            elemento.AnalistasCortesB = txtAnalista.Text.Trim();
-            string fecha = dtpFechaLlegada.Value.ToString("dd/MM/yyyy");
-            elemento.FechaLlegada = fecha;
-            elemento.IdSolTela = IdSolTela;
-            return elemento;
+            frmImprimirPedUnicolor frmPedUnicolor = new frmImprimirPedUnicolor(control,IdSolTela);
+            frmPedUnicolor.Show();
         }
 
+        private void btnSalir_Click(object sender, EventArgs e)
+        {
+            this.Close();
+        }
+
+        #endregion
+
+        #region Métodos
+        /// <summary>
+        /// Se válida que en la lista (List<DetalleListaTela> listaSeleccionada) que llega al contructor por argumentos, tenga un atributo estado y que 
+        /// este contenga valor de Solicitud de Inventario o Reserva Parcial, si cumple esta condición procede a llenar el encabezado  y las DataGridView de la vista actual.
+        /// </summary>
+        /// <param name="prmLista"> Lista de tipo DetalleListaTela, la cual representa las filas seleccionadas en el vista frmSolicitudListaTelas. </param>
+        /// <param name="cont">Cantidad de filas que han sido seleccionadas en la vista frmSolicitudListaTelas.</param>
+        private void Validaciones(List<MontajeTelaDetalle> prmLista, int numfilasSeleccionadas)
+        {
+            int b = 0;
+
+            if (numfilasSeleccionadas >= 2)
+            {
+                for (int i = 0; i < prmLista.Count; i++)
+                {
+                    if (prmLista[i].Estado == "Solicitud Inventario" || prmLista[i].Estado == "Reserva parcial" || prmLista[i].Estado == "Por Analizar")
+                    {
+                        b += 1;
+                    }
+                }
+                if (b == prmLista.Count)
+                {
+                    this.Show();
+                    Cargar();
+                    // Bandera controlada en el método Cargar()
+                    if (!this.bandera)
+                    {
+                        //Carga el DataGridView (dgvInfoConsolidar) el cual pertenece a la sección de información a consolidar.
+                        cargarDgvInfoConsolidar(prmLista);
+                        //Carga el DataGridView (dgvTotalConsolidado) el cual pertenece a la sección de total consolidado.
+                        cargarDgvTotalConsolidar(prmLista);
+                    }
+                }
+                else
+                {
+                    MessageBox.Show("El estado de solicitud No corresponde a Solicitud de Inventario o Reserva Parcial.", "Advertencia", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    this.Close();
+                }
+
+            }
+            else
+            {
+                MessageBox.Show("Por favor seleccione al menos dos items.", "Advertencia", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                this.Close();
+            }
+        }
+        
+        private void cargarDgvInfoConsolidar(List<MontajeTelaDetalle> prmLista)
+        {
+            if (prmLista.Count != 0)
+            {
+                for (int i = 0; i < prmLista.Count; i++)
+                {
+
+                    dgvInfoConsolidar.Rows.Add(prmLista[i].Vte.ToString(),
+                    prmLista[i].DesColor.ToString(),
+                    prmLista[i].Tiendas.ToString(),
+                    prmLista[i].Exito.ToString(),
+                    prmLista[i].Cencosud.ToString(),
+                    prmLista[i].Sao.ToString(),
+                    prmLista[i].Comercio.ToString(),
+                    prmLista[i].Rosado.ToString(),
+                    prmLista[i].Otros.ToString(),
+                    prmLista[i].TotaUnidades.ToString(),
+                    prmLista[i].Consumo.ToString(),
+                    prmLista[i].MCalculados.ToString(),
+                    prmLista[i].MReservados.ToString(),
+                    prmLista[i].Masolicitar.ToString()
+                    //prmLista[i].IdSolTela.ToString(),
+                    //prmLista[i].IdDetalleSolicitud.ToString()
+                    );
+
+                    txtEnsayoRef.Text += prmLista[i].RefSimilar.ToString() + "\n";
+                    txtDesPrenda.Text = prmLista[i].DescPrenda.ToString();
+                   // idSolTela = prmLista[i].IdSolTela;
+                    IdSolTela = prmLista[i].IdSolTela;
+                    ListaIdSolicitudes.Add(prmLista[i].IdSolTela);
+                    ListaEsayosRef.Add(prmLista[i].RefSimilar);
+                }
+                txtNomTela.Text = prmLista[0].DesTela.ToString();
+                txtDisenador.Text = prmLista[0].Disenador.ToString();
+            }
+            else
+            {
+                MessageBox.Show("No existe información sobre su consulta", "Advertencia", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+            }
+        }
+
+        private void cargarDgvTotalConsolidar(List<MontajeTelaDetalle> prmLista)
+        {
+            if (prmLista.Count != 0)
+            {
+                for (int i = 0; i < prmLista.Count; i++)
+                {
+
+                    dgvTotalConsolidado.Rows.Add(prmLista[i].Vte.ToString(),
+                    prmLista[i].DesColor.ToString(),
+                    prmLista[i].Tiendas.ToString(),
+                    prmLista[i].Exito.ToString(),
+                    prmLista[i].Cencosud.ToString(),
+                    prmLista[i].Sao.ToString(),
+                    prmLista[i].Comercio.ToString(),
+                    prmLista[i].Rosado.ToString(),
+                    prmLista[i].Otros.ToString(),
+                    prmLista[i].TotaUnidades.ToString(),
+                    prmLista[i].MCalculados.ToString()
+
+                    //prmLista[i].IdSolTela.ToString(),
+                    //prmLista[i].IdDetalleSolicitud.ToString()
+                    );
+
+                }
+            }
+            else
+            {
+                MessageBox.Show("No existe información sobre su consulta", "Advertencia", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+            }
+
+        }
+
+        private void cargarCombobox(ComboBox combo, List<Objeto> lista)
+        {
+            combo.DataSource = lista;
+            combo.DisplayMember = "Nombre";
+            combo.ValueMember = "Id";
+            combo.SelectedIndex = -1;
+            combo.AutoCompleteCustomSource = cargarCombobox(lista);
+            combo.AutoCompleteMode = AutoCompleteMode.Suggest;
+            combo.AutoCompleteSource = AutoCompleteSource.CustomSource;
+        }
+
+        /*<summary> Permite el autocompletado de un comboBox </summary>
+         * <param name="lista">Lista de tipo objeto</param>
+         * <returns></returns>*/
+        private AutoCompleteStringCollection cargarCombobox(List<Objeto> lista)
+        {
+            AutoCompleteStringCollection datos = new AutoCompleteStringCollection();
+            foreach (Objeto obj in lista)
+            {
+                datos.Add(obj.Nombre);
+            }
+            return datos;
+        }
+       
         /// <summary>
         /// Se obtiene la informacion de la primera dataGridView (dgvInfoConsolidar)
         /// </summary>
@@ -569,15 +561,26 @@ namespace PedidoTela.Formularios
             return detalle;
         }
 
-        private void btnImprimir_Click(object sender, EventArgs e)
+        /// <summary>
+        /// Obtine todo los elementos del encabezado de la vista.
+        /// </summary>
+        /// <returns></returns>
+        private PedMontarUnicolor ObtenerEncabezado()
         {
-            frmImprimirPedUnicolor frmPedUnicolor = new frmImprimirPedUnicolor(control,IdSolTela);
-            frmPedUnicolor.Show();
-        }
-
-        private void btnSalir_Click(object sender, EventArgs e)
-        {
-            this.Close();
+            PedMontarUnicolor elemento = new PedMontarUnicolor();
+            elemento.NomTela = txtNomTela.Text.Trim();
+            elemento.Disenador = txtDisenador.Text.Trim();
+            elemento.Rendimiento = decimal.Parse(txtRendimiento.Text.Trim());
+            elemento.EnsayoRef = txtEnsayoRef.Text.Trim();
+            elemento.DescPrenda = txtDesPrenda.Text.Trim();
+            elemento.Clase = cbxClase.SelectedItem.ToString();
+            elemento.TipoMarcacion = cbxTipoMarcacion.GetItemText(cbxTipoMarcacion.SelectedItem);
+            elemento.Rendimiento = decimal.Parse(txtRendimiento.Text.Trim());
+            elemento.AnalistasCortesB = txtAnalista.Text.Trim();
+            string fecha = dtpFechaLlegada.Value.ToString("dd/MM/yyyy");
+            elemento.FechaLlegada = fecha;
+            elemento.IdSolTela = IdSolTela;
+            return elemento;
         }
 
         /// <summary>
@@ -607,7 +610,7 @@ namespace PedidoTela.Formularios
         }
 
         /// <summary>
-        /// Agrega el consolidado a lista de solicitudes seleccionadas en la vista frmSolicitudListaTelas
+        /// Agrega el consolidado a lista de solicitudes seleccionadas en la vista frmSolicitudListaTelas, al momento d e dar clic en Guardar.
         /// </summary>
         private void AgregarConsolidado()
         {
@@ -664,6 +667,6 @@ namespace PedidoTela.Formularios
 
             }
         }
-
+        #endregion
     }
 }
