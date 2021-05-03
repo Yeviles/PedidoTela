@@ -6,8 +6,9 @@ using System.Threading.Tasks;
 
 namespace PedidoTela.Entidades.Logica
 {
-    public class DetalleListaTela
+    public class MontajeTelaDetalle
     {
+        private string consolidado;
         private bool sel;
         private string solicitud;
         private string tipoSolicitud;
@@ -53,10 +54,10 @@ namespace PedidoTela.Entidades.Logica
         private int idProgramador;
         private string descPrenda;
 
-        public DetalleListaTela() {}
+        public MontajeTelaDetalle() {}
 
 
-        public DetalleListaTela(bool sel, string solicitud, string tipoSolicitud, string ensayo, string refSimilar, int numDibujos, string codFondo, string fondo, string tipoTela, string coordinado, string coordinadoCon, string refTela, string desTela, string vte, string desColor, string totaUnidades, string consumo, string marca, string muestrario, string ocasionUso, string tema, string entrada, string fechaTienda, string disenador, string obsDiseno, string fechaSolTelas, string estado, string fechaEstado, string tiendas, string exito, string cencosud, string sao, string comercio, string rosado, string otros, string mCalculados, string mReservados, string masolicitar, string tipo, int idSolTela, string cantidadReservado, string idDetalleSolicitud = null, int idProgramador = 0, string descPrenda = null)
+        public MontajeTelaDetalle(bool sel, string solicitud, string tipoSolicitud, string ensayo, string refSimilar, int numDibujos, string codFondo, string fondo, string tipoTela, string coordinado, string coordinadoCon, string refTela, string desTela, string vte, string desColor, string totaUnidades, string consumo, string marca, string muestrario, string ocasionUso, string tema, string entrada, string fechaTienda, string disenador, string obsDiseno, string fechaSolTelas, string estado, string fechaEstado, string tiendas, string exito, string cencosud, string sao, string comercio, string rosado, string otros, string mCalculados, string mReservados, string masolicitar, string tipo, int idSolTela, string cantidadReservado, string idDetalleSolicitud = null, int idProgramador = 0, string descPrenda = null, string consolidado = null)
         {
             this.Sel = sel;
             this.Solicitud = solicitud;
@@ -102,6 +103,7 @@ namespace PedidoTela.Entidades.Logica
             this.IdDetalleSolicitud = idDetalleSolicitud;
             this.IdProgramador = idProgramador;
             this.DescPrenda = descPrenda;
+            this.Consolidado = consolidado;
         }
 
         public bool Sel { get => sel; set => sel = value; }
@@ -148,5 +150,6 @@ namespace PedidoTela.Entidades.Logica
         public string IdDetalleSolicitud { get => idDetalleSolicitud; set => idDetalleSolicitud = value; }
         public int IdProgramador { get => idProgramador; set => idProgramador = value; }
         public string DescPrenda { get => descPrenda; set => descPrenda = value; }
+        public string Consolidado { get => consolidado; set => consolidado = value; }
     }
 }

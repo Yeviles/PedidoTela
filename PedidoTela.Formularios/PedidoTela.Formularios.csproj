@@ -73,21 +73,19 @@
       <HintPath>..\packages\MaterialSkin.0.2.1\lib\MaterialSkin.dll</HintPath>
     </Reference>
     <Reference Include="Microsoft.ReportViewer.Common, Version=15.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\ReportViewer\Microsoft.ReportViewer.Common.dll</HintPath>
+      <HintPath>..\packages\Microsoft.ReportingServices.ReportViewerControl.Winforms.150.1449.0\lib\net40\Microsoft.ReportViewer.Common.dll</HintPath>
     </Reference>
-    <Reference Include="Microsoft.ReportViewer.DataVisualization">
-      <HintPath>..\ReportViewer\Microsoft.ReportViewer.DataVisualization.dll</HintPath>
+    <Reference Include="Microsoft.ReportViewer.DataVisualization, Version=15.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.ReportingServices.ReportViewerControl.Winforms.150.1449.0\lib\net40\Microsoft.ReportViewer.DataVisualization.dll</HintPath>
     </Reference>
-    <Reference Include="Microsoft.ReportViewer.Design">
-      <HintPath>..\ReportViewer\Microsoft.ReportViewer.Design.dll</HintPath>
+    <Reference Include="Microsoft.ReportViewer.Design, Version=15.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.ReportingServices.ReportViewerControl.Winforms.150.1449.0\lib\net40\Microsoft.ReportViewer.Design.dll</HintPath>
     </Reference>
-    <Reference Include="Microsoft.ReportViewer.ProcessingObjectModel, Version=15.2.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\ReportViewer\Microsoft.ReportViewer.ProcessingObjectModel.dll</HintPath>
+    <Reference Include="Microsoft.ReportViewer.ProcessingObjectModel, Version=15.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.ReportingServices.ReportViewerControl.Winforms.150.1449.0\lib\net40\Microsoft.ReportViewer.ProcessingObjectModel.dll</HintPath>
     </Reference>
-    <Reference Include="Microsoft.ReportViewer.WinForms">
-      <HintPath>..\ReportViewer\Microsoft.ReportViewer.WinForms.dll</HintPath>
+    <Reference Include="Microsoft.ReportViewer.WinForms, Version=15.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.ReportingServices.ReportViewerControl.Winforms.150.1449.0\lib\net40\Microsoft.ReportViewer.WinForms.dll</HintPath>
     </Reference>
     <Reference Include="Microsoft.SqlServer.Types, Version=14.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91, processorArchitecture=MSIL">
       <HintPath>..\packages\Microsoft.SqlServer.Types.14.0.1016.290\lib\net40\Microsoft.SqlServer.Types.dll</HintPath>
@@ -146,6 +144,12 @@
     </Compile>
     <Compile Include="frmEditarDsolicitudTela.Designer.cs">
       <DependentUpon>frmEditarDsolicitudTela.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frmImprimirPedUnicolor.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmImprimirPedUnicolor.Designer.cs">
+      <DependentUpon>frmImprimirPedUnicolor.cs</DependentUpon>
     </Compile>
     <Compile Include="frmImprimirReserva.cs">
       <SubType>Form</SubType>
@@ -288,6 +292,9 @@
     <EmbeddedResource Include="frmEditarDsolicitudTela.resx">
       <DependentUpon>frmEditarDsolicitudTela.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="frmImprimirPedUnicolor.resx">
+      <DependentUpon>frmImprimirPedUnicolor.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="frmImprimirReserva.resx">
       <DependentUpon>frmImprimirReserva.cs</DependentUpon>
     </EmbeddedResource>
@@ -349,6 +356,7 @@
       <DependentUpon>frmSolicitudUnicolor.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="PDFImprimirSIP.rdlc" />
+    <EmbeddedResource Include="PDFPedidoUnicolor.rdlc" />
     <EmbeddedResource Include="PDFReporteReserva.rdlc" />
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
@@ -360,10 +368,14 @@
     <None Include="PedidoTela.Formularios_2_TemporaryKey.pfx" />
     <None Include="PedidoTela.Formularios_3_TemporaryKey.pfx" />
     <None Include="PedidoTela.Formularios_TemporaryKey.pfx" />
+    <None Include="Properties\DataSources\frmPedidoaMotarUnicolor.datasource" />
     <None Include="Properties\DataSources\PedidoTela.Entidades.Logica.AgenciasExternos.datasource" />
     <None Include="Properties\DataSources\PedidoTela.Entidades.Logica.AgenciasInfoConsolidar.datasource" />
     <None Include="Properties\DataSources\PedidoTela.Entidades.Logica.AgenciasSIP.datasource" />
     <None Include="Properties\DataSources\PedidoTela.Entidades.Logica.AgenciaTotalConsolidar.datasource" />
+    <None Include="Properties\DataSources\PedidoTela.Entidades.Logica.PedMontarUnicolor.datasource" />
+    <None Include="Properties\DataSources\PedidoTela.Entidades.Logica.PedUnicolorInfoCon.datasource" />
+    <None Include="Properties\DataSources\PedidoTela.Entidades.Logica.PedUnicolorTotalCon.datasource" />
     <None Include="Properties\DataSources\PedidoTela.Entidades.Logica.ReporteReservaTela.datasource" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
@@ -451,13 +463,7 @@
     <None Include="imgs\Booking_icon-icons.com_55957.png" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="imgs\seleccion.png" />
-  </ItemGroup>
-  <ItemGroup>
     <None Include="imgs\seleccion2.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="imgs\seleccion3.png" />
   </ItemGroup>
   <ItemGroup>
     <None Include="imgs\seleccion4.png" />
@@ -486,8 +492,6 @@
   <ItemGroup>
     <None Include="imgs\addColor.png" />
     <None Include="imgs\guardar.png" />
-    <None Include="imgs\confirmar.png" />
-    <None Include="imgs\salir.png" />
     <None Include="imgs\guardar1.png" />
     <None Include="imgs\confirmar1.png" />
     <None Include="imgs\guardar2.png" />
@@ -495,6 +499,7 @@
     <None Include="imgs\agregar.png" />
     <None Include="imgs\volver.png" />
     <None Include="imgs\aceptar.png" />
+    <None Include="imgs\imprimir.png" />
     <Content Include="SqlServerTypes\readme.htm" />
     <Content Include="SqlServerTypes\x64\msvcr120.dll">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>

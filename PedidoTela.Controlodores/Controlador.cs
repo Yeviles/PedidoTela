@@ -501,10 +501,10 @@ namespace PedidoTela.Controlodores
         #endregion
 
         #region Métodos de Solicitud lista telas
-        public List<DetalleListaTela> consultarListaTelas(ListaTela lista)
+        public List<MontajeTelaDetalle> consultarListaTelas(MontajeTela lista)
         {
             D_DetalleListaTela d_detalle = new D_DetalleListaTela();
-            return d_detalle.Consultar(lista);
+            return d_detalle.ConsultarPedido(lista);
         }
         public List<Objeto> getNomTelas()
         {
@@ -528,13 +528,13 @@ namespace PedidoTela.Controlodores
         {
             D_DetalleListaTela objTipo = new D_DetalleListaTela();
 
-            return objTipo.getTipoSol();
+            return objTipo.ConsultarTipoSolocitud();
         }
         public bool setMCalculados(int  idSolTela, string mCalculados)
         {
             D_DetalleListaTela objDetalleEditado = new D_DetalleListaTela();
             // return (d_Detalle.Agregar(detalle) == "ok") ? true : false;
-            return (objDetalleEditado.setMCalculados(idSolTela, mCalculados) == "ok") ? true : false;
+            return (objDetalleEditado.ActualizarMCalculados(idSolTela, mCalculados) == "ok") ? true : false;
 
         }
         #endregion
@@ -658,10 +658,92 @@ namespace PedidoTela.Controlodores
         }
         #endregion
 
+        #region Pedido a montar Unicolor
+        public PedMontarUnicolor getPedUnicolor(int idSolTela)
+        {
+           D_PedMontarUnicolor d_pedUnicolor = new D_PedMontarUnicolor();
+            return d_pedUnicolor.Consultar(idSolTela);
+        }
+
+        public bool addPedUnicolor(PedMontarUnicolor pedUnicolor)
+        {
+           D_PedMontarUnicolor d_pedUnicolor = new D_PedMontarUnicolor();
+            return (d_pedUnicolor.Agregar(pedUnicolor) == "ok") ? true : false;
+        }
+
+        public int getIdPedUnicolor(int idSolTela)
+        {
+            D_PedMontarUnicolor d_pedUnicolor = new D_PedMontarUnicolor();
+            return d_pedUnicolor.ConsultarId(idSolTela);
+        }
+        /* se agrgar el primer detalle de la vista frmPedidoaMontarUnicolor*/
+        public void addPedUnicolorInfoCon(PedUnicolorInfoCon detalle)
+        {
+            D_PedUnicolorInfoCon d_infoConsolidar = new D_PedUnicolorInfoCon();
+            d_infoConsolidar.Agregar(detalle);
+        }
+        public void addPedUnicolorTotalCons(PedUnicolorTotalCon detalle)
+        {
+            D_PedUnicolorTotalCon d_totalConsolidar = new D_PedUnicolorTotalCon();
+            d_totalConsolidar.Agregar(detalle);
+        }
+        public bool consultarIdPedUnicolor(int idSolTelas)
+        {
+            D_PedMontarUnicolor d_pedUnicolor = new D_PedMontarUnicolor();
+            return d_pedUnicolor.consultarIdentificador(idSolTelas);
+        }
+        public bool actualizarPedUnicolor(PedMontarUnicolor pedUnicolor)
+        {
+            D_PedMontarUnicolor actuPedUnicolor = new D_PedMontarUnicolor();
+            return (actuPedUnicolor.Actualizar(pedUnicolor) == "ok") ? true : false;
+        }
+        public List<int> getIdPedUnicolorInfoCon(int idPedUnicolor)
+        {
+            D_PedUnicolorInfoCon d_infoConsolidar = new D_PedUnicolorInfoCon();
+            return d_infoConsolidar.ConsultarId(idPedUnicolor);
+        }
+        public List<int> getIdPedUnicolorTotalCon(int idPedUnicolor)
+        {
+            D_PedUnicolorTotalCon d_totalConsolidar = new D_PedUnicolorTotalCon();
+            return d_totalConsolidar.ConsultarId(idPedUnicolor);
+        }
+        public bool actuPedUnicolorInfoCon(PedUnicolorInfoCon infoConsolidar, int idDetalle)
+        {
+            D_PedUnicolorInfoCon objInfoConsolidar = new D_PedUnicolorInfoCon();
+            return (objInfoConsolidar.Actualizar(infoConsolidar, idDetalle) == "ok") ? true : false;
+        }
+        public bool actuaPedUnicolorTotalConsol(PedUnicolorTotalCon totalConsolidar, int idDetalle)
+        {
+            D_PedUnicolorTotalCon objToltalCon = new D_PedUnicolorTotalCon();
+            return (objToltalCon.Actualizar(totalConsolidar, idDetalle) == "ok") ? true : false;
+        }
+        public List<PedUnicolorInfoCon> getPedUnicolorInfoCon(int idPedUnicolor)
+        {
+            D_PedUnicolorInfoCon d_pedUniInfoCon = new D_PedUnicolorInfoCon();
+            return d_pedUniInfoCon.getDetalleInfoConsolidar(idPedUnicolor);
+        }
+        public List<PedUnicolorTotalCon> getPedUnicolorTotalCon(int idPedUnicolor)
+        {
+            D_PedUnicolorTotalCon d_pedUniTotalcon = new D_PedUnicolorTotalCon();
+            return d_pedUniTotalcon.getDetalleTotalConsolidado(idPedUnicolor);
+        }
+        #endregion
+
+
         #region Métodos Consolidar
         public List<Objeto> getTipoMarcacion() {
             D_TipoMarcacion tm = new D_TipoMarcacion();
             return tm.consultar();
+        }
+        public int consultarMaxConsolidado()
+        {
+            D_Consolidado d_consolidado = new D_Consolidado();
+            return d_consolidado.ConsultarMaxConsolidado();
+        }
+        public bool agregarConsolidado(int prmIdsolicitud,  int prmConsolidado)
+        {
+            D_Consolidado d_consolidado = new D_Consolidado();
+            return (d_consolidado.ActualizarConsolidado(prmIdsolicitud, prmConsolidado) == "ok") ? true : false;
         }
         #endregion
     }

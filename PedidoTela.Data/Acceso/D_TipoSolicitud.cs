@@ -11,9 +11,11 @@ namespace PedidoTela.Data.Acceso
     {
         #region Consultas
         private readonly string agregarConsecutivo = "insert into cfc_spt_tipo_solicitud (id_solicitud, id_tipo, tipo, consecutivo,fecha_solicitud,estado,fecha_estado,identificador) values(?, ?, ?, ?, ?, ?, ?, ?);";
+            
         private readonly string consConsecutivo = "select consecutivo FROM cfc_spt_tipo_solicitud where id_tipo = ?;";
 
         private readonly string consultaMax = "select max(consecutivo) as max from  cfc_spt_tipo_solicitud;";
+        
            #endregion
 
         /// <summary>
@@ -133,8 +135,6 @@ namespace PedidoTela.Data.Acceso
                 Console.WriteLine("Error: " + ex.Message);
             }
             return max;
-        }
-
-
+        } 
     }
 }

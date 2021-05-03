@@ -18,18 +18,18 @@ namespace PedidoTela.Formularios
     {
         #region variables
         Controlador control = new Controlador();
-        List<DetalleListaTela> detalleSeleccionado = new List<DetalleListaTela>();
+        List<MontajeTelaDetalle> detalleSeleccionado = new List<MontajeTelaDetalle>();
         Utilidades utilidades = new Utilidades();
         private int mReservar;
         #endregion
         #region Getter && Setter
-        public List<DetalleListaTela> DetalleSeleccionado { get => detalleSeleccionado; set => detalleSeleccionado = value; }
+        public List<MontajeTelaDetalle> DetalleSeleccionado { get => detalleSeleccionado; set => detalleSeleccionado = value; }
 
         public int MReservar { get => mReservar; set => mReservar = value; }
         #endregion
 
         #region Constructor
-        public frmAnalizarInventario(Controlador controlador, List<DetalleListaTela> listaSeleccionada, int contador)
+        public frmAnalizarInventario(Controlador controlador, List<MontajeTelaDetalle> listaSeleccionada, int contador)
         {
             InitializeComponent();
             DetalleSeleccionado = listaSeleccionada;
@@ -246,7 +246,7 @@ namespace PedidoTela.Formularios
         /// </summary>
         /// <param name="prmLista">Lista de la todas filas seleccionadas en el frmSolicitudListas.</param>
         /// <param name="cont">Número de filas seleccionadas.</param>
-        public void validacionesDatosIguales(List<DetalleListaTela> prmLista, int cont)
+        public void validacionesDatosIguales(List<MontajeTelaDetalle> prmLista, int cont)
         {
             int b = 0;
             string desTela = prmLista[0].DesTela;
@@ -285,7 +285,7 @@ namespace PedidoTela.Formularios
         /// </summary>
         /// <param name="prmLista">Lista de la todas filas seleccionadas en el frmSolicitudListas.</param>
         /// <param name="cont">Número de filas seleccionadas.</param>
-        public void validarDatosDiferentes(List<DetalleListaTela> prmLista, int cont)
+        public void validarDatosDiferentes(List<MontajeTelaDetalle> prmLista, int cont)
         {
             string desTela = prmLista[0].DesTela;
             int b = 0;
@@ -317,7 +317,7 @@ namespace PedidoTela.Formularios
 
         }
 
-        private void cargarDataGridView(List<DetalleListaTela> prmLista)
+        private void cargarDataGridView(List<MontajeTelaDetalle> prmLista)
         {
 
             if (prmLista.Count != 0)

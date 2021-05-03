@@ -79,6 +79,7 @@
     <Compile Include="Acceso\D_AnalizarInventario.cs" />
     <Compile Include="Acceso\D_Color.cs" />
     <Compile Include="Acceso\D_Composicion.cs" />
+    <Compile Include="Acceso\D_Consolidado.cs" />
     <Compile Include="Acceso\D_CuellosTiras.cs" />
     <Compile Include="Acceso\D_DetalleConsumo.cs" />
     <Compile Include="Acceso\D_DetalleCuelloDos.cs" />
@@ -95,6 +96,9 @@
     <Compile Include="Acceso\D_Estampado.cs" />
     <Compile Include="Acceso\D_Muestrario.cs" />
     <Compile Include="Acceso\D_OcasionUso.cs" />
+    <Compile Include="Acceso\D_PedMontarUnicolor.cs" />
+    <Compile Include="Acceso\D_PedUnicolorInfoCon.cs" />
+    <Compile Include="Acceso\D_PedUnicolorTotalCon.cs" />
     <Compile Include="Acceso\D_PlanoPretenido.cs" />
     <Compile Include="Acceso\D_SolicitudTela.cs" />
     <Compile Include="Acceso\D_Tela.cs" />

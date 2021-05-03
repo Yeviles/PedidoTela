@@ -30,7 +30,7 @@ namespace PedidoTela.Formularios
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
             this.panel1 = new System.Windows.Forms.Panel();
             this.btnSalir = new System.Windows.Forms.Button();
             this.btnInventarioExt = new System.Windows.Forms.Button();
@@ -61,6 +61,24 @@ namespace PedidoTela.Formularios
             this.txbNdibujo = new System.Windows.Forms.TextBox();
             this.txbEnsayoRef = new System.Windows.Forms.TextBox();
             this.dgvSolicitudTelas = new System.Windows.Forms.DataGridView();
+            this.pnlInicial = new System.Windows.Forms.Panel();
+            this.cbxEstado = new System.Windows.Forms.ComboBox();
+            this.cbxColor = new System.Windows.Forms.ComboBox();
+            this.cbxRefTela = new System.Windows.Forms.ComboBox();
+            this.cbxNomTela = new System.Windows.Forms.ComboBox();
+            this.cbxSiCoordinado = new System.Windows.Forms.CheckBox();
+            this.cbxNoCoordinado = new System.Windows.Forms.CheckBox();
+            this.dtpFechaTienda = new System.Windows.Forms.DateTimePicker();
+            this.cbxEntrada = new System.Windows.Forms.ComboBox();
+            this.cbxTema = new System.Windows.Forms.ComboBox();
+            this.cbxOcasionUso = new System.Windows.Forms.ComboBox();
+            this.cbxMuestrario = new System.Windows.Forms.ComboBox();
+            this.cbxDisenador = new System.Windows.Forms.ComboBox();
+            this.cbxTipoSolicitud = new System.Windows.Forms.ComboBox();
+            this.btnConsultar = new System.Windows.Forms.Button();
+            this.ttMuestrario = new System.Windows.Forms.ToolTip(this.components);
+            this.ttNomTela = new System.Windows.Forms.ToolTip(this.components);
+            this.pnlContenedorGrid = new System.Windows.Forms.Panel();
             this.sel = new System.Windows.Forms.DataGridViewCheckBoxColumn();
             this.solicitud = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.tipoSolicitud = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -92,24 +110,7 @@ namespace PedidoTela.Formularios
             this.idSolTela = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.idProgramador = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.descPrenda = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.pnlInicial = new System.Windows.Forms.Panel();
-            this.cbxColor = new System.Windows.Forms.ComboBox();
-            this.cbxRefTela = new System.Windows.Forms.ComboBox();
-            this.cbxNomTela = new System.Windows.Forms.ComboBox();
-            this.cbxSiCoordinado = new System.Windows.Forms.CheckBox();
-            this.cbxNoCoordinado = new System.Windows.Forms.CheckBox();
-            this.dtpFechaTienda = new System.Windows.Forms.DateTimePicker();
-            this.cbxEntrada = new System.Windows.Forms.ComboBox();
-            this.cbxTema = new System.Windows.Forms.ComboBox();
-            this.cbxOcasionUso = new System.Windows.Forms.ComboBox();
-            this.cbxMuestrario = new System.Windows.Forms.ComboBox();
-            this.cbxDisenador = new System.Windows.Forms.ComboBox();
-            this.cbxTipoSolicitud = new System.Windows.Forms.ComboBox();
-            this.btnConsultar = new System.Windows.Forms.Button();
-            this.ttMuestrario = new System.Windows.Forms.ToolTip(this.components);
-            this.ttNomTela = new System.Windows.Forms.ToolTip(this.components);
-            this.pnlContenedorGrid = new System.Windows.Forms.Panel();
-            this.cbxEstado = new System.Windows.Forms.ComboBox();
+            this.consolidado = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvSolicitudTelas)).BeginInit();
             this.pnlInicial.SuspendLayout();
@@ -405,16 +406,17 @@ namespace PedidoTela.Formularios
             // 
             this.dgvSolicitudTelas.AllowUserToAddRows = false;
             this.dgvSolicitudTelas.AllowUserToDeleteRows = false;
+            this.dgvSolicitudTelas.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.dgvSolicitudTelas.AutoSizeRowsMode = System.Windows.Forms.DataGridViewAutoSizeRowsMode.DisplayedCells;
             this.dgvSolicitudTelas.BackgroundColor = System.Drawing.Color.White;
-            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle3.BackColor = System.Drawing.SystemColors.ScrollBar;
-            dataGridViewCellStyle3.Font = new System.Drawing.Font("Verdana", 8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle3.ForeColor = System.Drawing.Color.Navy;
-            dataGridViewCellStyle3.SelectionBackColor = System.Drawing.SystemColors.ScrollBar;
-            dataGridViewCellStyle3.SelectionForeColor = System.Drawing.Color.Navy;
-            dataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dgvSolicitudTelas.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle3;
+            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle1.BackColor = System.Drawing.SystemColors.ScrollBar;
+            dataGridViewCellStyle1.Font = new System.Drawing.Font("Verdana", 8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle1.ForeColor = System.Drawing.Color.Navy;
+            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.ScrollBar;
+            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.Color.Navy;
+            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dgvSolicitudTelas.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
             this.dgvSolicitudTelas.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgvSolicitudTelas.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.sel,
@@ -447,239 +449,19 @@ namespace PedidoTela.Formularios
             this.fechaEstado,
             this.idSolTela,
             this.idProgramador,
-            this.descPrenda});
+            this.descPrenda,
+            this.consolidado});
             this.dgvSolicitudTelas.EnableHeadersVisualStyles = false;
-            this.dgvSolicitudTelas.Location = new System.Drawing.Point(-52, 22);
+            this.dgvSolicitudTelas.Location = new System.Drawing.Point(12, 14);
             this.dgvSolicitudTelas.Name = "dgvSolicitudTelas";
             this.dgvSolicitudTelas.RightToLeft = System.Windows.Forms.RightToLeft.No;
             this.dgvSolicitudTelas.RowHeadersWidth = 62;
             this.dgvSolicitudTelas.RowTemplate.Height = 28;
+            this.dgvSolicitudTelas.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
             this.dgvSolicitudTelas.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dgvSolicitudTelas.Size = new System.Drawing.Size(3027, 453);
             this.dgvSolicitudTelas.TabIndex = 58;
             this.dgvSolicitudTelas.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvSolicitudTelas_CellClick);
-            // 
-            // sel
-            // 
-            this.sel.HeaderText = "Sel ";
-            this.sel.MinimumWidth = 8;
-            this.sel.Name = "sel";
-            this.sel.Resizable = System.Windows.Forms.DataGridViewTriState.True;
-            this.sel.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic;
-            this.sel.Width = 60;
-            // 
-            // solicitud
-            // 
-            this.solicitud.HeaderText = "Solicitud";
-            this.solicitud.MinimumWidth = 8;
-            this.solicitud.Name = "solicitud";
-            this.solicitud.Width = 90;
-            // 
-            // tipoSolicitud
-            // 
-            this.tipoSolicitud.HeaderText = "Tipo Solicitud";
-            this.tipoSolicitud.MinimumWidth = 8;
-            this.tipoSolicitud.Name = "tipoSolicitud";
-            this.tipoSolicitud.Width = 109;
-            // 
-            // ensayo
-            // 
-            this.ensayo.HeaderText = "Solicitud por";
-            this.ensayo.MinimumWidth = 8;
-            this.ensayo.Name = "ensayo";
-            this.ensayo.Width = 109;
-            // 
-            // referenciaSimilar
-            // 
-            this.referenciaSimilar.HeaderText = "Referencia / Ensayo";
-            this.referenciaSimilar.MinimumWidth = 8;
-            this.referenciaSimilar.Name = "referenciaSimilar";
-            this.referenciaSimilar.Width = 110;
-            // 
-            // noDibujos
-            // 
-            this.noDibujos.HeaderText = "N° Dibujos";
-            this.noDibujos.MinimumWidth = 8;
-            this.noDibujos.Name = "noDibujos";
-            this.noDibujos.Width = 60;
-            // 
-            // codFondo
-            // 
-            this.codFondo.HeaderText = "Cod fondo";
-            this.codFondo.MinimumWidth = 8;
-            this.codFondo.Name = "codFondo";
-            this.codFondo.Width = 109;
-            // 
-            // fondo
-            // 
-            this.fondo.HeaderText = "Fondo";
-            this.fondo.MinimumWidth = 8;
-            this.fondo.Name = "fondo";
-            this.fondo.Width = 109;
-            // 
-            // tipoTela
-            // 
-            this.tipoTela.HeaderText = "Tipo Tela";
-            this.tipoTela.MinimumWidth = 8;
-            this.tipoTela.Name = "tipoTela";
-            this.tipoTela.Width = 109;
-            // 
-            // coordinado
-            // 
-            this.coordinado.HeaderText = "Coordinado";
-            this.coordinado.MinimumWidth = 8;
-            this.coordinado.Name = "coordinado";
-            this.coordinado.Width = 125;
-            // 
-            // coordinaCon
-            // 
-            this.coordinaCon.HeaderText = "Coordina Con";
-            this.coordinaCon.MinimumWidth = 8;
-            this.coordinaCon.Name = "coordinaCon";
-            this.coordinaCon.Width = 109;
-            // 
-            // referenciaTela
-            // 
-            this.referenciaTela.HeaderText = "Refencia Tela";
-            this.referenciaTela.MinimumWidth = 8;
-            this.referenciaTela.Name = "referenciaTela";
-            this.referenciaTela.Width = 109;
-            // 
-            // descripcionTela
-            // 
-            this.descripcionTela.HeaderText = "Descripción Tela";
-            this.descripcionTela.MinimumWidth = 8;
-            this.descripcionTela.Name = "descripcionTela";
-            this.descripcionTela.Width = 109;
-            // 
-            // codColor
-            // 
-            this.codColor.HeaderText = "Cod color /Vte";
-            this.codColor.MinimumWidth = 8;
-            this.codColor.Name = "codColor";
-            this.codColor.Width = 109;
-            // 
-            // descripcionColor
-            // 
-            this.descripcionColor.HeaderText = "Descripción Color";
-            this.descripcionColor.MinimumWidth = 8;
-            this.descripcionColor.Name = "descripcionColor";
-            this.descripcionColor.Width = 110;
-            // 
-            // totaUnidades
-            // 
-            this.totaUnidades.HeaderText = "Tota Unidades";
-            this.totaUnidades.MinimumWidth = 8;
-            this.totaUnidades.Name = "totaUnidades";
-            this.totaUnidades.Width = 70;
-            // 
-            // consumo
-            // 
-            this.consumo.HeaderText = "Consumo";
-            this.consumo.MinimumWidth = 8;
-            this.consumo.Name = "consumo";
-            this.consumo.Width = 109;
-            // 
-            // marca
-            // 
-            this.marca.HeaderText = "Marca";
-            this.marca.MinimumWidth = 8;
-            this.marca.Name = "marca";
-            this.marca.Width = 109;
-            // 
-            // muestrario
-            // 
-            this.muestrario.HeaderText = "Muestrario";
-            this.muestrario.MinimumWidth = 8;
-            this.muestrario.Name = "muestrario";
-            this.muestrario.Width = 109;
-            // 
-            // ocasionUso
-            // 
-            this.ocasionUso.HeaderText = "Ocasión de uso";
-            this.ocasionUso.MinimumWidth = 8;
-            this.ocasionUso.Name = "ocasionUso";
-            this.ocasionUso.Width = 109;
-            // 
-            // tema
-            // 
-            this.tema.HeaderText = "Tema";
-            this.tema.MinimumWidth = 8;
-            this.tema.Name = "tema";
-            this.tema.Width = 109;
-            // 
-            // entrada
-            // 
-            this.entrada.HeaderText = "Entrada";
-            this.entrada.MinimumWidth = 8;
-            this.entrada.Name = "entrada";
-            this.entrada.Width = 70;
-            // 
-            // fechaTiendas
-            // 
-            this.fechaTiendas.HeaderText = "Fecha Tiendas";
-            this.fechaTiendas.MinimumWidth = 8;
-            this.fechaTiendas.Name = "fechaTiendas";
-            this.fechaTiendas.Width = 109;
-            // 
-            // disenador
-            // 
-            this.disenador.HeaderText = "Diseñador ";
-            this.disenador.MinimumWidth = 8;
-            this.disenador.Name = "disenador";
-            this.disenador.Width = 140;
-            // 
-            // observacionDiseño
-            // 
-            this.observacionDiseño.HeaderText = "Observacion Diseño";
-            this.observacionDiseño.MinimumWidth = 8;
-            this.observacionDiseño.Name = "observacionDiseño";
-            this.observacionDiseño.Width = 140;
-            // 
-            // fechaSolTelas
-            // 
-            this.fechaSolTelas.HeaderText = "Fecha Solicitud telas";
-            this.fechaSolTelas.MinimumWidth = 8;
-            this.fechaSolTelas.Name = "fechaSolTelas";
-            this.fechaSolTelas.Width = 109;
-            // 
-            // estado
-            // 
-            this.estado.HeaderText = "Estado";
-            this.estado.MinimumWidth = 8;
-            this.estado.Name = "estado";
-            this.estado.Width = 109;
-            // 
-            // fechaEstado
-            // 
-            this.fechaEstado.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.fechaEstado.HeaderText = "Fecha Estado";
-            this.fechaEstado.MinimumWidth = 8;
-            this.fechaEstado.Name = "fechaEstado";
-            // 
-            // idSolTela
-            // 
-            this.idSolTela.HeaderText = "idSolTela";
-            this.idSolTela.MinimumWidth = 6;
-            this.idSolTela.Name = "idSolTela";
-            this.idSolTela.Visible = false;
-            this.idSolTela.Width = 125;
-            // 
-            // idProgramador
-            // 
-            this.idProgramador.HeaderText = "idProgramador";
-            this.idProgramador.MinimumWidth = 6;
-            this.idProgramador.Name = "idProgramador";
-            this.idProgramador.Visible = false;
-            this.idProgramador.Width = 125;
-            // 
-            // descPrenda
-            // 
-            this.descPrenda.HeaderText = "descPrenda";
-            this.descPrenda.MinimumWidth = 6;
-            this.descPrenda.Name = "descPrenda";
-            this.descPrenda.Visible = false;
-            this.descPrenda.Width = 125;
             // 
             // pnlInicial
             // 
@@ -722,6 +504,20 @@ namespace PedidoTela.Formularios
             this.pnlInicial.Name = "pnlInicial";
             this.pnlInicial.Size = new System.Drawing.Size(1358, 213);
             this.pnlInicial.TabIndex = 60;
+            // 
+            // cbxEstado
+            // 
+            this.cbxEstado.FormattingEnabled = true;
+            this.cbxEstado.Items.AddRange(new object[] {
+            "Por Analizar",
+            "Reserva Total",
+            "Reserva Parcial",
+            "Solicitud Inventario",
+            "Radicado"});
+            this.cbxEstado.Location = new System.Drawing.Point(661, 129);
+            this.cbxEstado.Name = "cbxEstado";
+            this.cbxEstado.Size = new System.Drawing.Size(224, 24);
+            this.cbxEstado.TabIndex = 73;
             // 
             // cbxColor
             // 
@@ -863,19 +659,203 @@ namespace PedidoTela.Formularios
             this.pnlContenedorGrid.Size = new System.Drawing.Size(1358, 379);
             this.pnlContenedorGrid.TabIndex = 61;
             // 
-            // cbxEstado
+            // sel
             // 
-            this.cbxEstado.FormattingEnabled = true;
-            this.cbxEstado.Items.AddRange(new object[] {
-            "Por Analizar",
-            "Reserva Total",
-            "Reserva Parcial",
-            "Solicitud Inventario",
-            "Radicado"});
-            this.cbxEstado.Location = new System.Drawing.Point(661, 129);
-            this.cbxEstado.Name = "cbxEstado";
-            this.cbxEstado.Size = new System.Drawing.Size(224, 24);
-            this.cbxEstado.TabIndex = 73;
+            this.sel.HeaderText = "Sel ";
+            this.sel.MinimumWidth = 8;
+            this.sel.Name = "sel";
+            this.sel.Resizable = System.Windows.Forms.DataGridViewTriState.True;
+            this.sel.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic;
+            // 
+            // solicitud
+            // 
+            this.solicitud.HeaderText = "Solicitud";
+            this.solicitud.MinimumWidth = 8;
+            this.solicitud.Name = "solicitud";
+            // 
+            // tipoSolicitud
+            // 
+            this.tipoSolicitud.HeaderText = "Tipo Solicitud";
+            this.tipoSolicitud.MinimumWidth = 8;
+            this.tipoSolicitud.Name = "tipoSolicitud";
+            // 
+            // ensayo
+            // 
+            this.ensayo.HeaderText = "Solicitud por";
+            this.ensayo.MinimumWidth = 8;
+            this.ensayo.Name = "ensayo";
+            // 
+            // referenciaSimilar
+            // 
+            this.referenciaSimilar.HeaderText = "Referencia / Ensayo";
+            this.referenciaSimilar.MinimumWidth = 8;
+            this.referenciaSimilar.Name = "referenciaSimilar";
+            // 
+            // noDibujos
+            // 
+            this.noDibujos.HeaderText = "N° Dibujos";
+            this.noDibujos.MinimumWidth = 8;
+            this.noDibujos.Name = "noDibujos";
+            // 
+            // codFondo
+            // 
+            this.codFondo.HeaderText = "Cod fondo";
+            this.codFondo.MinimumWidth = 8;
+            this.codFondo.Name = "codFondo";
+            // 
+            // fondo
+            // 
+            this.fondo.HeaderText = "Fondo";
+            this.fondo.MinimumWidth = 8;
+            this.fondo.Name = "fondo";
+            // 
+            // tipoTela
+            // 
+            this.tipoTela.HeaderText = "Tipo Tela";
+            this.tipoTela.MinimumWidth = 8;
+            this.tipoTela.Name = "tipoTela";
+            // 
+            // coordinado
+            // 
+            this.coordinado.HeaderText = "Coordinado";
+            this.coordinado.MinimumWidth = 8;
+            this.coordinado.Name = "coordinado";
+            // 
+            // coordinaCon
+            // 
+            this.coordinaCon.HeaderText = "Coordina Con";
+            this.coordinaCon.MinimumWidth = 8;
+            this.coordinaCon.Name = "coordinaCon";
+            // 
+            // referenciaTela
+            // 
+            this.referenciaTela.HeaderText = "Refencia Tela";
+            this.referenciaTela.MinimumWidth = 8;
+            this.referenciaTela.Name = "referenciaTela";
+            // 
+            // descripcionTela
+            // 
+            this.descripcionTela.HeaderText = "Descripción Tela";
+            this.descripcionTela.MinimumWidth = 8;
+            this.descripcionTela.Name = "descripcionTela";
+            // 
+            // codColor
+            // 
+            this.codColor.HeaderText = "Cod color /Vte";
+            this.codColor.MinimumWidth = 8;
+            this.codColor.Name = "codColor";
+            // 
+            // descripcionColor
+            // 
+            this.descripcionColor.HeaderText = "Descripción Color";
+            this.descripcionColor.MinimumWidth = 8;
+            this.descripcionColor.Name = "descripcionColor";
+            // 
+            // totaUnidades
+            // 
+            this.totaUnidades.HeaderText = "Tota Unidades";
+            this.totaUnidades.MinimumWidth = 8;
+            this.totaUnidades.Name = "totaUnidades";
+            // 
+            // consumo
+            // 
+            this.consumo.HeaderText = "Consumo";
+            this.consumo.MinimumWidth = 8;
+            this.consumo.Name = "consumo";
+            // 
+            // marca
+            // 
+            this.marca.HeaderText = "Marca";
+            this.marca.MinimumWidth = 8;
+            this.marca.Name = "marca";
+            // 
+            // muestrario
+            // 
+            this.muestrario.HeaderText = "Muestrario";
+            this.muestrario.MinimumWidth = 8;
+            this.muestrario.Name = "muestrario";
+            // 
+            // ocasionUso
+            // 
+            this.ocasionUso.HeaderText = "Ocasión de uso";
+            this.ocasionUso.MinimumWidth = 8;
+            this.ocasionUso.Name = "ocasionUso";
+            // 
+            // tema
+            // 
+            this.tema.HeaderText = "Tema";
+            this.tema.MinimumWidth = 8;
+            this.tema.Name = "tema";
+            // 
+            // entrada
+            // 
+            this.entrada.HeaderText = "Entrada";
+            this.entrada.MinimumWidth = 8;
+            this.entrada.Name = "entrada";
+            // 
+            // fechaTiendas
+            // 
+            this.fechaTiendas.HeaderText = "Fecha Tiendas";
+            this.fechaTiendas.MinimumWidth = 8;
+            this.fechaTiendas.Name = "fechaTiendas";
+            // 
+            // disenador
+            // 
+            this.disenador.HeaderText = "Diseñador ";
+            this.disenador.MinimumWidth = 8;
+            this.disenador.Name = "disenador";
+            // 
+            // observacionDiseño
+            // 
+            this.observacionDiseño.HeaderText = "Observacion Diseño";
+            this.observacionDiseño.MinimumWidth = 8;
+            this.observacionDiseño.Name = "observacionDiseño";
+            // 
+            // fechaSolTelas
+            // 
+            this.fechaSolTelas.HeaderText = "Fecha Solicitud telas";
+            this.fechaSolTelas.MinimumWidth = 8;
+            this.fechaSolTelas.Name = "fechaSolTelas";
+            // 
+            // estado
+            // 
+            this.estado.HeaderText = "Estado";
+            this.estado.MinimumWidth = 8;
+            this.estado.Name = "estado";
+            // 
+            // fechaEstado
+            // 
+            this.fechaEstado.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.fechaEstado.HeaderText = "Fecha Estado";
+            this.fechaEstado.MinimumWidth = 8;
+            this.fechaEstado.Name = "fechaEstado";
+            // 
+            // idSolTela
+            // 
+            this.idSolTela.HeaderText = "idSolTela";
+            this.idSolTela.MinimumWidth = 6;
+            this.idSolTela.Name = "idSolTela";
+            this.idSolTela.Visible = false;
+            // 
+            // idProgramador
+            // 
+            this.idProgramador.HeaderText = "idProgramador";
+            this.idProgramador.MinimumWidth = 6;
+            this.idProgramador.Name = "idProgramador";
+            this.idProgramador.Visible = false;
+            // 
+            // descPrenda
+            // 
+            this.descPrenda.HeaderText = "descPrenda";
+            this.descPrenda.MinimumWidth = 6;
+            this.descPrenda.Name = "descPrenda";
+            this.descPrenda.Visible = false;
+            // 
+            // consolidado
+            // 
+            this.consolidado.HeaderText = "Consolidado";
+            this.consolidado.MinimumWidth = 6;
+            this.consolidado.Name = "consolidado";
             // 
             // frmSolicitudListaTelas
             // 
@@ -949,6 +929,7 @@ namespace PedidoTela.Formularios
         private System.Windows.Forms.ComboBox cbxColor;
         private System.Windows.Forms.Button btnSalir;
         private System.Windows.Forms.Button btnInventarioExt;
+        private System.Windows.Forms.ComboBox cbxEstado;
         private System.Windows.Forms.DataGridViewCheckBoxColumn sel;
         private System.Windows.Forms.DataGridViewTextBoxColumn solicitud;
         private System.Windows.Forms.DataGridViewTextBoxColumn tipoSolicitud;
@@ -980,6 +961,6 @@ namespace PedidoTela.Formularios
         private System.Windows.Forms.DataGridViewTextBoxColumn idSolTela;
         private System.Windows.Forms.DataGridViewTextBoxColumn idProgramador;
         private System.Windows.Forms.DataGridViewTextBoxColumn descPrenda;
-        private System.Windows.Forms.ComboBox cbxEstado;
+        private System.Windows.Forms.DataGridViewTextBoxColumn consolidado;
     }
 }

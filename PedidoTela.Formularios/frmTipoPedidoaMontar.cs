@@ -16,8 +16,8 @@ namespace PedidoTela.Formularios
     {
         private String seleccion;
         private Controlador control= new Controlador();
-        List<DetalleListaTela> detalleSeleccionado = new List<DetalleListaTela>();
-        int contItemSeleccionado = 0;
+        List<MontajeTelaDetalle> detalleSeleccionado = new List<MontajeTelaDetalle>();
+        int contItemSeleccionado = 0, idSolTela;
         frmPedidoaMotarUnicolor frmMontarUnicolor;
         frmPedidoaMontarEstampado frmMontarEstampado;
         frmPedidoaMontarPretenido frmMontarPretenido;
@@ -26,12 +26,14 @@ namespace PedidoTela.Formularios
         frmPedidoaMontarAgencias frmPedidoaMontarAgencias;
 
         public string Seleccion { get => seleccion; set => seleccion = value; }
+        public int IdSolTela { get => idSolTela; set => idSolTela = value; }
 
-        public frmTipoPedidoaMontar(Controlador controlador, List<DetalleListaTela> listaSeleccionada, int contador)
+        public frmTipoPedidoaMontar(Controlador controlador, List<MontajeTelaDetalle> listaSeleccionada, int contador, int idSolTela)
         {
             InitializeComponent();
             detalleSeleccionado = listaSeleccionada;
             control = controlador;
+            IdSolTela = idSolTela;
             contItemSeleccionado = contador;
         }
 
@@ -43,7 +45,7 @@ namespace PedidoTela.Formularios
                 cbxPlanoPretenido.Checked = false;
                 cbxCuePunTiras.Checked = false;
                 Seleccion = "unicolor";
-                frmMontarUnicolor = new frmPedidoaMotarUnicolor(control, detalleSeleccionado, contItemSeleccionado, Seleccion);
+                frmMontarUnicolor = new frmPedidoaMotarUnicolor(control, detalleSeleccionado, contItemSeleccionado, Seleccion, IdSolTela);
             }
         }
 
