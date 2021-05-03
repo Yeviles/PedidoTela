@@ -33,12 +33,132 @@ namespace PedidoTela.Formularios
             cargarDgvTotalConsolidar(solicitudes);
         }
 
+        #region Eventos
         private void frmPedidoaMontarEstampado_Load(object sender, EventArgs e)
         {
             SkinManager.Theme = MaterialSkin.MaterialSkinManager.Themes.LIGHT;
             SkinManager.ColorScheme = new ColorScheme(Primary.Blue900, Primary.Grey500, Primary.Grey200, Accent.Green100, TextShade.WHITE);
             cargarCombobox(cbxTipoMarcacion, control.getTipoMarcacion());
+        }      
+
+        private void txtRendimiento_TextChanged(object sender, EventArgs e)
+        {
+            if (txtRendimiento.Text.Trim() != "")
+            {
+                for (int i = 0; i < dgvTotalConsolidado.RowCount; i++)
+                {
+                    decimal valor = decimal.Parse(dgvInfoConsolidar.Rows[i].Cells[15].Value.ToString()) / decimal.Parse(txtRendimiento.Text.Trim());
+                    dgvInfoConsolidar.Rows[i].Cells[16].Value = Decimal.Round(valor, 2);
+                }                
+            }
         }
+
+        private void txtRendimiento_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (txtRendimiento.Text.Trim() != "")
+            {
+                validacion.validarDecimal(sender, e);
+            }
+        }
+
+        private void dgvInfoConsolidar_CellClick(object sender, DataGridViewCellEventArgs e)
+        {
+            if (e.ColumnIndex == 0 || e.ColumnIndex == 1)
+            {
+                frmBuscarColor buscarColor = new frmBuscarColor(control);
+                buscarColor.StartPosition = FormStartPosition.CenterScreen;
+                if (buscarColor.ShowDialog() == DialogResult.OK)
+                {
+                    Objeto obj = buscarColor.Elemento;
+                    dgvInfoConsolidar.Rows[e.RowIndex].Cells[0].Value = obj.Id;
+                    dgvInfoConsolidar.Rows[e.RowIndex].Cells[1].Value = obj.Nombre;
+
+                    dgvTotalConsolidado.Rows[e.RowIndex].Cells[0].Value = obj.Id;
+                    dgvTotalConsolidado.Rows[e.RowIndex].Cells[1].Value = obj.Nombre;
+                }
+            }
+            else if (e.ColumnIndex == 2 || e.ColumnIndex == 3)
+            {
+                frmBuscarColor buscarColor = new frmBuscarColor(control);
+                buscarColor.StartPosition = FormStartPosition.CenterScreen;
+                if (buscarColor.ShowDialog() == DialogResult.OK)
+                {
+                    Objeto obj = buscarColor.Elemento;
+                    dgvInfoConsolidar.Rows[e.RowIndex].Cells[2].Value = obj.Id;
+                    dgvInfoConsolidar.Rows[e.RowIndex].Cells[3].Value = obj.Nombre;
+
+                    dgvTotalConsolidado.Rows[e.RowIndex].Cells[2].Value = obj.Id;
+                    dgvTotalConsolidado.Rows[e.RowIndex].Cells[3].Value = obj.Nombre;
+                }
+            }
+        }
+
+        private void dgvInfoConsolidar_CellEndEdit(object sender, DataGridViewCellEventArgs e)
+        {
+            if (e.ColumnIndex == 14)
+            {
+                try
+                {
+                    if (dgvInfoConsolidar.CurrentCell.Value != null && dgvInfoConsolidar.CurrentCell.Value.ToString().Trim() != "")
+                    {
+                        decimal valor = decimal.Parse(dgvInfoConsolidar.Rows[e.RowIndex].Cells[13].Value.ToString()) - decimal.Parse(dgvInfoConsolidar.Rows[e.RowIndex].Cells[14].Value.ToString());
+                        dgvInfoConsolidar.Rows[e.RowIndex].Cells[15].Value = decimal.Round(valor, 2);
+
+                        if (txtRendimiento.Text.Trim() != "")
+                        {
+                            dgvInfoConsolidar.Rows[e.RowIndex].Cells[16].Value = decimal.Round(valor - decimal.Parse(txtRendimiento.Text));
+                        }
+                    }
+                    else {
+                        dgvInfoConsolidar.Rows[e.RowIndex].Cells[16].Value = "";
+                    }
+                }
+                catch (Exception ex)
+                {
+                    dgvInfoConsolidar.CurrentCell.Value = "";
+                    MessageBox.Show("Tipo de dato no permitido\nSólo se permiten valores numéricos", "Advertencia", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                }
+            }
+        }
+
+        private void dgvTotalConsolidado_CellEndEdit(object sender, DataGridViewCellEventArgs e)
+        {
+            
+        }
+
+        #region Formato grillas
+        private void dgvInfoConsolidar_CellFormatting(object sender, DataGridViewCellFormattingEventArgs e)
+        {
+            if (e.ColumnIndex > 3 && e.ColumnIndex <= 9 || e.ColumnIndex > 10 && e.ColumnIndex <= 13)
+            {
+                e.CellStyle.BackColor = Color.PaleGoldenrod;
+            }
+        }
+
+        private void dgvTotalConsolidado_CellFormatting(object sender, DataGridViewCellFormattingEventArgs e)
+        {
+            if (e.ColumnIndex > 3 && e.ColumnIndex <= 10)
+            {
+                e.CellStyle.BackColor = Color.PaleGoldenrod;
+            }
+        }
+        #endregion
+        #region Botones
+        private void btnGrabar_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void btnConfirmar_Click(object sender, EventArgs e)
+        {
+
+        }
+        private void btnSalir_Click(object sender, EventArgs e)
+        {
+            this.Close();
+        }
+        #endregion
+        #endregion
 
         private void cargarDgvInfoConsolidar(List<DetalleListaTela> prmLista)
         {
@@ -63,7 +183,7 @@ namespace PedidoTela.Formularios
                         prmLista[i].MReservados.ToString(),
                         prmLista[i].Masolicitar.ToString()
                     );
-                    
+
                     txtEnsayoRef.Text += prmLista[i].RefSimilar.ToString() + "\n";
                     txtDesPrenda.Text = prmLista[i].DescPrenda.ToString();
                     idSolTela = prmLista[i].IdSolTela;
@@ -75,11 +195,6 @@ namespace PedidoTela.Formularios
             {
                 MessageBox.Show("No existe información sobre su consulta", "Advertencia", MessageBoxButtons.OK, MessageBoxIcon.Warning);
             }
-        }
-
-        private void btnSalir_Click(object sender, EventArgs e)
-        {
-            this.Close();
         }
 
         private void cargarDgvTotalConsolidar(List<DetalleListaTela> prmLista)
@@ -107,6 +222,25 @@ namespace PedidoTela.Formularios
             else
             {
                 MessageBox.Show("No existe información sobre su consulta", "Advertencia", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+            }
+        }
+
+        private void calcularTotalesPorColores() {
+            List<Objeto> contadores = new List<Objeto>();
+            //Se llena la lista con los códigos de los colores
+            Objeto color = new Objeto();
+            color.Id = dgvInfoConsolidar.Rows[0].Cells[0].Value.ToString();
+            contadores.Add(color);
+            for (int i = 0; i < dgvInfoConsolidar.RowCount; i++)
+            {
+                foreach (Objeto obj in contadores)
+                {
+                    if (dgvInfoConsolidar.Rows[i].Cells[0].Value.ToString() != obj.Id)
+                    {
+                        color = new Objeto();
+                        color.Id = dgvInfoConsolidar.Rows[i].Cells[0].Value.ToString();
+                    }
+                }
             }
         }
 
