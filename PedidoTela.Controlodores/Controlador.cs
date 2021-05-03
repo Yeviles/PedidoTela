@@ -740,10 +740,10 @@ namespace PedidoTela.Controlodores
             D_Consolidado d_consolidado = new D_Consolidado();
             return d_consolidado.ConsultarMaxConsolidado();
         }
-        public bool agregarConsolidado(int prmIdsolicitud,  int prmConsolidado)
+        public bool agregarConsolidado(int prmIdsolicitud,  int prmConsolidado, string prmFecha, string prmEstado)
         {
             D_Consolidado d_consolidado = new D_Consolidado();
-            return (d_consolidado.ActualizarConsolidado(prmIdsolicitud, prmConsolidado) == "ok") ? true : false;
+            return (d_consolidado.ActualizarConsolidado(prmIdsolicitud, prmConsolidado, prmFecha, prmEstado) == "ok") ? true : false;
         }
         #endregion
     }

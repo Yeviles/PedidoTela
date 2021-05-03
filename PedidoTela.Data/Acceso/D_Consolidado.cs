@@ -10,7 +10,7 @@ namespace PedidoTela.Data.Acceso
     public class D_Consolidado
     {
         #region Consulas
-        private readonly string actuConsolidado = "UPDATE cfc_spt_tipo_solicitud SET consolidado=? WHERE id_solicitud=?; ";
+        private readonly string actuConsolidado = "UPDATE cfc_spt_tipo_solicitud SET consolidado=?, fecha_estado=?, estado =? WHERE id_solicitud=?; ";
 
         private readonly string conMaxConsolidado = "select max(consolidado) as max_Consolidado from  cfc_spt_tipo_solicitud;";
 
@@ -18,7 +18,7 @@ namespace PedidoTela.Data.Acceso
 
         #region Métodos de Actualización
 
-        public string ActualizarConsolidado(int prmIdsolicitud, int prmConsolidado)
+        public string ActualizarConsolidado(int prmIdsolicitud, int prmConsolidado, string prmFecha, string prmEstado)
         {
             string respuesta = "";
             try
@@ -26,7 +26,9 @@ namespace PedidoTela.Data.Acceso
                 using (var con = new clsConexion())
                 {
                     con.Parametros.Add(new IfxParameter("@consolidado", prmConsolidado));
-                    con.Parametros.Add(new IfxParameter("@id_solicitud ", prmIdsolicitud));
+                    con.Parametros.Add(new IfxParameter("@fecha_estado", prmFecha));
+                    con.Parametros.Add(new IfxParameter("@estado", prmEstado));
+                    con.Parametros.Add(new IfxParameter("@id_solicitud", prmIdsolicitud));
 
                     var datos = con.EjecutarConsulta(this.actuConsolidado);
                     con.cerrarConexion();
