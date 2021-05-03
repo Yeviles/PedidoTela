@@ -15,6 +15,7 @@ namespace PedidoTela.Formularios
 {
     public partial class frmPedidoaMotarUnicolor : MaterialSkin.Controls.MaterialForm
     {
+        #region Variables
         private String seleccion;
         private Controlador control = new Controlador();
         List<MontajeTelaDetalle> detalleSeleccionado = new List<MontajeTelaDetalle>();
@@ -24,7 +25,9 @@ namespace PedidoTela.Formularios
         Validar validacion = new Validar();
         int contItemSeleccionado = 0, idSolTela,id, consecutivo=0;
         bool bandera = false;
+        #endregion
 
+        #region Setter && Getter
         public string Seleccion { get => seleccion; set => seleccion = value; }
         public List<MontajeTelaDetalle> DetalleSeleccionado { get => detalleSeleccionado; set => detalleSeleccionado = value; }
         public int ContItemSeleccionado { get => contItemSeleccionado; set => contItemSeleccionado = value; }
@@ -32,6 +35,9 @@ namespace PedidoTela.Formularios
         public List<int> ListaIdSolicitudes { get => listaIdSolicitudes; set => listaIdSolicitudes = value; }
         public List<string> ListaEsayosRef { get => listaEsayosRef; set => listaEsayosRef = value; }
 
+        #endregion
+
+        #region Constructor
         public frmPedidoaMotarUnicolor(Controlador controlador, List<MontajeTelaDetalle> listaSeleccionada, int contador, string tipoPedidoMontar, int idSolTela)
         {
             InitializeComponent();
@@ -45,13 +51,26 @@ namespace PedidoTela.Formularios
             Validaciones(DetalleSeleccionado, ContItemSeleccionado);
 
         }
+        #endregion
 
+        #region Método inicial de Carga
         private void frmPedidoaMotarUnicolor_Load(object sender, EventArgs e)
         {
-            SkinManager.Theme = MaterialSkin.MaterialSkinManager.Themes.LIGHT;
-            SkinManager.ColorScheme = new ColorScheme(Primary.Blue900, Primary.Grey500, Primary.Grey200, Accent.Green100, TextShade.WHITE);
             cargarCombobox(cbxTipoMarcacion, control.getTipoMarcacion());
+            
+            dgvInfoConsolidar.Columns["descripColor"].HeaderCell.ToolTipText = "Clic item si desea modificar";
+            dgvInfoConsolidar.Columns["codColor"].HeaderCell.ToolTipText = "Clic item si desea modificar";
+            dgvInfoConsolidar.Columns["mCalculados"].HeaderCell.ToolTipText = "(Consumo * Total Unidades)*1.10";
+            dgvInfoConsolidar.Columns["maSolicitar"].HeaderCell.ToolTipText = "M calculados -  M reservados";
+            dgvInfoConsolidar.Columns["kgCalculados1"].HeaderCell.ToolTipText = "M a solicitar / Rendimiento";
+
+            dgvTotalConsolidado.Columns["codigoColor"].HeaderCell.ToolTipText = "Clic item si desea modificar";
+            dgvTotalConsolidado.Columns["desColor"].HeaderCell.ToolTipText = "Clic item si desea modificar";
+            dgvTotalConsolidado.Columns["mCalcu"].HeaderCell.ToolTipText = "(Consumo * Total Unidades)*1.10";
+            dgvTotalConsolidado.Columns["kgCalculados"].HeaderCell.ToolTipText = "M a solicitar / Rendimiento";
+
         }
+        #endregion
 
         /// <summary>
         /// Se válida que en la lista (List<DetalleListaTela> listaSeleccionada) que llega al contructor por argumentos, tenga un atributo estado y que 
@@ -353,23 +372,23 @@ namespace PedidoTela.Formularios
         /// <param name="e"></param>
         private void btnConfirmar_Click(object sender, EventArgs e)
         {
-            //consulta el id que esta en la tabla  cfc_spt_sol_tela
-            //int idSolicitud = control.consultarIdsolicitud(identificador);
-            // Consulta el número máximo que representa el último consecutivo ingresado en la tabla cfc_spt_tipo_solicitud
-            int maxConsecutivo = control.consultarMaximo();
+            // Consulta el número máximo que representa el último Consolidado actualizado en la tabla cfc_spt_tipo_solicitud
+            int maxConsecutivo = control.consultarMaxConsolidado();
+           
             // Se asignar valores para la fecha. 
             string fechaActual = DateTime.Now.ToString("dd/MM/yyyy");
+            
             // El estado que se le debe dar a solicitud cuando es confirmada
-
             string estado = "Radicado";
 
             if (id != 0)
             {
                 for (int i = 0; i < ListaIdSolicitudes.Count; i++)
                 {
-                    control.agregarConsecutivo(ListaIdSolicitudes[i], id, "UNICOLOR", maxConsecutivo + 1, fechaActual, estado, fechaActual, ListaEsayosRef[i]);
+                    control.agregarConsolidado(ListaIdSolicitudes[i], maxConsecutivo + 1, fechaActual, estado);
                 }
-                    MessageBox.Show("El consecutivo se guardó con éxito.", "Información", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                MessageBox.Show("La información se guardó con éxito. \n El estado se actualizó a Radicado.", "Información", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                
                 // Deshabilita los diferentes botones y demás contenido del formulario que se quiere que no sea modificado una vez se confirme la solicitud.
                 btnConfirmar.Enabled = false;
                 btnGrabar.Enabled = false;
@@ -380,7 +399,6 @@ namespace PedidoTela.Formularios
                 //consulta el consecutivo generado y se muestra en la vista.
                 consecutivo = control.consultarConsecutivo(id);
                 lblConsecutivo.Text = "Consecutivo: " + consecutivo;
-              //  DialogResult = DialogResult.OK;
             }
             else
             {
@@ -553,8 +571,13 @@ namespace PedidoTela.Formularios
 
         private void btnImprimir_Click(object sender, EventArgs e)
         {
-            //frmImprimirPedUnicolor frmPedUnicolor = new frmImprimirPedUnicolor(control,IdSolTela);
-            //frmPedUnicolor.Show();
+            frmImprimirPedUnicolor frmPedUnicolor = new frmImprimirPedUnicolor(control,IdSolTela);
+            frmPedUnicolor.Show();
+        }
+
+        private void btnSalir_Click(object sender, EventArgs e)
+        {
+            this.Close();
         }
 
         /// <summary>
@@ -591,7 +614,7 @@ namespace PedidoTela.Formularios
             int maxConsolidado = control.consultarMaxConsolidado();
             for (int i = 0; i < ListaIdSolicitudes.Count; i++)
             {
-                control.agregarConsolidado(ListaIdSolicitudes[i], maxConsolidado + 1);
+                control.agregarConsolidado(ListaIdSolicitudes[i], maxConsolidado + 1, "","");
             }
 
         }
