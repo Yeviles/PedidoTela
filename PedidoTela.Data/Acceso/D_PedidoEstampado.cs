@@ -1,4 +1,5 @@
 ﻿using IBM.Data.Informix;
+using PedidoTela.Entidades;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -23,9 +24,9 @@ namespace PedidoTela.Data.Acceso
         private readonly string consutarTodo = "SELECT id_ped_estampado, nom_tela, disenador, ensayo_ref, desc_prenda, clase, tipo_marcacion, rendimiento, analista_corteb, fecha_llegada FROM cfc_spt_ped_estampado WHERE id_solicitud =?;";
         #endregion
 
-        public PedidoEstampado Consultar(int idSolicitud)
+        public PedidoAMontar Consultar(int idSolicitud)
         {
-            PedidoEstampado pedido = new PedidoEstampado();
+            PedidoAMontar pedido = new PedidoAMontar();
             try
             {
                 using (var con = new clsConexion())
@@ -99,7 +100,7 @@ namespace PedidoTela.Data.Acceso
             }
         }
 
-        public string Agregar(PedidoEstampado elemento)
+        public string Agregar(PedidoAMontar elemento)
         {
             string respuesta = "";
             try
@@ -130,7 +131,7 @@ namespace PedidoTela.Data.Acceso
             return respuesta;
         }
 
-        public string Actualizar(PedidoEstampado elemento)
+        public string Actualizar(PedidoAMontar elemento)
         {
             string respuesta = "";
             try
