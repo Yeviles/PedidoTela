@@ -17,13 +17,13 @@ namespace PedidoTela.Formularios
     {
         #region variables
         private Controlador control = new Controlador();
-        private List<DetalleListaTela> solicitudes = new List<DetalleListaTela>();
+        private List<MontajeTelaDetalle> solicitudes = new List<MontajeTelaDetalle>();
         private Validar validacion = new Validar();
         private int contador = 0, idSolTela;
         private bool bandera = false;
         #endregion
 
-        public frmPedidoaMontarEstampado(Controlador control, List<DetalleListaTela> solicitudes, int contador)
+        public frmPedidoaMontarEstampado(Controlador control, List<MontajeTelaDetalle> solicitudes, int contador)
         {
             InitializeComponent();
             this.control = control;
@@ -146,7 +146,15 @@ namespace PedidoTela.Formularios
         #region Botones
         private void btnGrabar_Click(object sender, EventArgs e)
         {
-
+            
+            if (txtRendimiento.Text.Trim() != "")
+            {
+                
+            }
+            else
+            {
+                MessageBox.Show("Por favor ingrese un valor en el campo rendimiento.", "Advertencia", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+            }
         }
 
         private void btnConfirmar_Click(object sender, EventArgs e)
@@ -160,7 +168,7 @@ namespace PedidoTela.Formularios
         #endregion
         #endregion
 
-        private void cargarDgvInfoConsolidar(List<DetalleListaTela> prmLista)
+        private void cargarDgvInfoConsolidar(List<MontajeTelaDetalle> prmLista)
         {
             if (prmLista.Count != 0)
             {
@@ -197,7 +205,7 @@ namespace PedidoTela.Formularios
             }
         }
 
-        private void cargarDgvTotalConsolidar(List<DetalleListaTela> prmLista)
+        private void cargarDgvTotalConsolidar(List<MontajeTelaDetalle> prmLista)
         {
             if (prmLista.Count != 0)
             {

@@ -667,7 +667,7 @@ namespace PedidoTela.Formularios
             // btnConfirmar
             // 
             this.btnConfirmar.Font = new System.Drawing.Font("Verdana", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnConfirmar.Image = global::PedidoTela.Formularios.Properties.Resources._1492790860_8check_84164;
+            this.btnConfirmar.Image = global::PedidoTela.Formularios.Properties.Resources.confirmar1;
             this.btnConfirmar.Location = new System.Drawing.Point(175, 2);
             this.btnConfirmar.Name = "btnConfirmar";
             this.btnConfirmar.Size = new System.Drawing.Size(174, 50);
@@ -683,7 +683,7 @@ namespace PedidoTela.Formularios
             this.btnGrabar.BackColor = System.Drawing.Color.LightGray;
             this.btnGrabar.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.btnGrabar.Font = new System.Drawing.Font("Verdana", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnGrabar.Image = global::PedidoTela.Formularios.Properties.Resources.record_icon_icons_com_64775__1_;
+            this.btnGrabar.Image = global::PedidoTela.Formularios.Properties.Resources.guardar2;
             this.btnGrabar.Location = new System.Drawing.Point(2, 2);
             this.btnGrabar.Name = "btnGrabar";
             this.btnGrabar.Size = new System.Drawing.Size(174, 50);
@@ -697,7 +697,7 @@ namespace PedidoTela.Formularios
             // btnSalir
             // 
             this.btnSalir.Font = new System.Drawing.Font("Verdana", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnSalir.Image = global::PedidoTela.Formularios.Properties.Resources.logout_exit_icon_176185;
+            this.btnSalir.Image = global::PedidoTela.Formularios.Properties.Resources.salir2;
             this.btnSalir.Location = new System.Drawing.Point(348, 2);
             this.btnSalir.Name = "btnSalir";
             this.btnSalir.Size = new System.Drawing.Size(174, 50);

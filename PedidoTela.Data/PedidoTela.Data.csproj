@@ -96,6 +96,7 @@
     <Compile Include="Acceso\D_Estampado.cs" />
     <Compile Include="Acceso\D_Muestrario.cs" />
     <Compile Include="Acceso\D_OcasionUso.cs" />
+    <Compile Include="Acceso\D_PedidoEstampado.cs" />
     <Compile Include="Acceso\D_PedMontarUnicolor.cs" />
     <Compile Include="Acceso\D_PedUnicolorInfoCon.cs" />
     <Compile Include="Acceso\D_PedUnicolorTotalCon.cs" />

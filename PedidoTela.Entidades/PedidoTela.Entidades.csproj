@@ -73,6 +73,7 @@
     <Compile Include="Logica\EditarDetalleconsumo.cs" />
     <Compile Include="Logica\Ensayo.cs" />
     <Compile Include="Logica\Estampado.cs" />
+    <Compile Include="Logica\PedidoAMontar.cs" />
     <Compile Include="Logica\PedUnicolorInfoCon.cs" />
     <Compile Include="Logica\MontajeTela.cs" />
     <Compile Include="Logica\Objeto.cs" />
