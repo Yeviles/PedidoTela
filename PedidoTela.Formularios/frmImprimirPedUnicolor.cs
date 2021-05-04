@@ -37,11 +37,11 @@ namespace PedidoTela.Formularios
 
             if (objPedUnicolor.Id != 0)
             {
-                List<PedidoUnicolorInformacion> listaInfoConsolidar = control.getPedUnicolorInfoCon(objPedUnicolor.Id);
-                List<PedidoUnicolorTotal> listaTotalConsolidado = control.getPedUnicolorTotalCon(objPedUnicolor.Id);
+                List<PedidoMontarInformacion> listaInfoConsolidar = control.getPedUnicolorInfoCon(objPedUnicolor.Id);
+                List<PedidoMontarTotal> listaTotalConsolidado = control.getPedUnicolorTotalCon(objPedUnicolor.Id);
 
-                List<PedidoUnicolorInformacion> lista = new List<PedidoUnicolorInformacion>();
-                List<PedidoUnicolorTotal> lista1 = new List<PedidoUnicolorTotal>();
+                List<PedidoMontarInformacion> lista = new List<PedidoMontarInformacion>();
+                List<PedidoMontarTotal> lista1 = new List<PedidoMontarTotal>();
 
                 this.reportViewer1.LocalReport.SetParameters(new ReportParameter("nomTela", objPedUnicolor.Tela));
                 this.reportViewer1.LocalReport.SetParameters(new ReportParameter("disenador", objPedUnicolor.Disenador));
@@ -57,11 +57,11 @@ namespace PedidoTela.Formularios
                 if (listaInfoConsolidar != null && listaTotalConsolidado != null)
                 {
                     int i = 0;
-                    foreach (PedidoUnicolorInformacion elem in listaInfoConsolidar)
+                    foreach (PedidoMontarInformacion elem in listaInfoConsolidar)
                     {
-                        PedidoUnicolorInformacion obj = new PedidoUnicolorInformacion();
-                        obj.CodColor = elem.CodColor;
-                        obj.DescColor = elem.DescColor;
+                        PedidoMontarInformacion obj = new PedidoMontarInformacion();
+                        obj.CodigoColor = elem.CodigoColor;
+                        obj.DescripcionColor = elem.DescripcionColor;
                         obj.Tiendas = elem.Tiendas;
                         obj.Exito = elem.Exito;
                         obj.Cencosud = elem.Cencosud;
@@ -77,11 +77,11 @@ namespace PedidoTela.Formularios
                         lista.Add(obj);
                         i++;
                     }
-                    foreach (PedidoUnicolorTotal elem in listaTotalConsolidado)
+                    foreach (PedidoMontarTotal elem in listaTotalConsolidado)
                     {
-                        PedidoUnicolorTotal obj = new PedidoUnicolorTotal();
-                        obj.CodColor = elem.CodColor;
-                        obj.DescColor = elem.DescColor;
+                        PedidoMontarTotal obj = new PedidoMontarTotal();
+                        obj.CodidoColor = elem.CodidoColor;
+                        obj.DescripcionColor = elem.DescripcionColor;
                         obj.Tiendas = elem.Tiendas;
                         obj.Exito = elem.Exito;
                         obj.Cencosud = elem.Cencosud;
@@ -93,7 +93,7 @@ namespace PedidoTela.Formularios
                         obj.MCalculados = elem.MCalculados;
                         obj.KgCalculados = elem.KgCalculados;
                         obj.TotalPedir = elem.TotalPedir;
-                        obj.UniMedida = elem.UniMedida;
+                        obj.UnidadMedida = elem.UnidadMedida;
                         lista1.Add(obj);
                         i++;
                     }

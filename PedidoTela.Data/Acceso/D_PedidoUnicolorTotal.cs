@@ -24,16 +24,16 @@ namespace PedidoTela.Data.Acceso
         #endregion
 
         #region Métodos Agregar
-        public string Agregar(PedidoUnicolorTotal elemento)
+        public string Agregar(PedidoMontarTotal elemento)
         {
             string respuesta = "";
             try
             {
                 using (var con = new clsConexion())
                 {
-                    con.Parametros.Add(new IfxParameter("@id_ped_unicolor", elemento.IdPedUnicolor));
-                    con.Parametros.Add(new IfxParameter("@cod_color", elemento.CodColor));
-                    con.Parametros.Add(new IfxParameter("@desc_color", elemento.DescColor));
+                    con.Parametros.Add(new IfxParameter("@id_ped_unicolor", elemento.IdPedidoAmontar));
+                    con.Parametros.Add(new IfxParameter("@cod_color", elemento.CodidoColor));
+                    con.Parametros.Add(new IfxParameter("@desc_color", elemento.DescripcionColor));
                     con.Parametros.Add(new IfxParameter("@tiendas", elemento.Tiendas));
                     con.Parametros.Add(new IfxParameter("@exito", elemento.Exito));
                     con.Parametros.Add(new IfxParameter("@cencosud", elemento.Cencosud));
@@ -45,7 +45,7 @@ namespace PedidoTela.Data.Acceso
                     con.Parametros.Add(new IfxParameter("@m_calculados", elemento.MCalculados));
                     con.Parametros.Add(new IfxParameter("@kg_calculados", elemento.KgCalculados));
                     con.Parametros.Add(new IfxParameter("@total_pedir", elemento.TotalPedir));
-                    con.Parametros.Add(new IfxParameter("@uni_medidatela", elemento.UniMedida));
+                    con.Parametros.Add(new IfxParameter("@uni_medidatela", elemento.UnidadMedida));
 
 
                     var datos = con.EjecutarConsulta(this.consultaInsert);
@@ -86,9 +86,9 @@ namespace PedidoTela.Data.Acceso
             return lista;
         }
 
-        public List<PedidoUnicolorTotal> ConsultarTotalConsolidado(int idPedUnicolor)
+        public List<PedidoMontarTotal> ConsultarTotalConsolidado(int idPedUnicolor)
         {
-            List<PedidoUnicolorTotal> lista = new List<PedidoUnicolorTotal>();
+            List<PedidoMontarTotal> lista = new List<PedidoMontarTotal>();
             try
             {
                 using (var con = new clsConexion())
@@ -97,9 +97,9 @@ namespace PedidoTela.Data.Acceso
                     var datos = con.EjecutarConsulta(this.consultarTodo);
                     while (datos.Read())
                     {
-                        PedidoUnicolorTotal detalle = new PedidoUnicolorTotal();
-                        detalle.CodColor = datos["cod_color"].ToString();
-                        detalle.DescColor = datos["desc_color"].ToString().Trim();
+                        PedidoMontarTotal detalle = new PedidoMontarTotal();
+                        detalle.CodidoColor = datos["cod_color"].ToString();
+                        detalle.DescripcionColor = datos["desc_color"].ToString().Trim();
                         detalle.Tiendas = int.Parse(datos["tiendas"].ToString().Trim());
                         detalle.Exito = int.Parse(datos["exito"].ToString());
                         detalle.Cencosud = int.Parse(datos["cencosud"].ToString());
@@ -111,7 +111,7 @@ namespace PedidoTela.Data.Acceso
                         detalle.MCalculados = decimal.Parse(datos["m_calculados"].ToString());
                         detalle.KgCalculados = decimal.Parse(datos["kg_calculados"].ToString());
                         detalle.TotalPedir = decimal.Parse(datos["total_pedir"].ToString());
-                        detalle.UniMedida = datos["uni_medidatela"].ToString();
+                        detalle.UnidadMedida = datos["uni_medidatela"].ToString();
 
                         lista.Add(detalle);
                     }
@@ -127,7 +127,7 @@ namespace PedidoTela.Data.Acceso
         #endregion
 
         #region Métodos Actualizar
-        public string Actualizar(PedidoUnicolorTotal elemento, int idDetalle)
+        public string Actualizar(PedidoMontarTotal elemento, int idDetalle)
         {
             string respuesta = "";
             try
@@ -135,8 +135,8 @@ namespace PedidoTela.Data.Acceso
                 //UPDATE 
                 using (var con = new clsConexion())
                 {
-                    con.Parametros.Add(new IfxParameter("@cod_color", elemento.CodColor));
-                    con.Parametros.Add(new IfxParameter("@desc_color", elemento.DescColor));
+                    con.Parametros.Add(new IfxParameter("@cod_color", elemento.CodidoColor));
+                    con.Parametros.Add(new IfxParameter("@desc_color", elemento.DescripcionColor));
                     con.Parametros.Add(new IfxParameter("@tiendas", elemento.Tiendas));
                     con.Parametros.Add(new IfxParameter("@exito", elemento.Exito));
                     con.Parametros.Add(new IfxParameter("@cencosud", elemento.Cencosud));
@@ -148,7 +148,7 @@ namespace PedidoTela.Data.Acceso
                     con.Parametros.Add(new IfxParameter("@m_calculados", elemento.MCalculados));
                     con.Parametros.Add(new IfxParameter("@kg_calculados", elemento.KgCalculados));
                     con.Parametros.Add(new IfxParameter("@total_pedir", elemento.TotalPedir));
-                    con.Parametros.Add(new IfxParameter("@uni_medidatela", elemento.UniMedida));
+                    con.Parametros.Add(new IfxParameter("@uni_medidatela", elemento.UnidadMedida));
 
                     con.Parametros.Add(new IfxParameter("@id_totalconsolidar", idDetalle));
                     var datos = con.EjecutarConsulta(actualizar);

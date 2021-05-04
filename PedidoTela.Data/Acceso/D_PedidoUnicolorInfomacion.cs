@@ -24,16 +24,16 @@ namespace PedidoTela.Data.Acceso
         #endregion
 
         #region Métodos Agregar
-        public string Agregar(PedidoUnicolorInformacion elemento)
+        public string Agregar(PedidoMontarInformacion elemento)
         {
             string respuesta = "";
             try
             {
                 using (var con = new clsConexion())
                 {
-                    con.Parametros.Add(new IfxParameter("@id_ped_unicolor", elemento.IdPedUnicolor));
-                    con.Parametros.Add(new IfxParameter("@cod_color", elemento.CodColor));
-                    con.Parametros.Add(new IfxParameter("@desc_color", elemento.DescColor));
+                    con.Parametros.Add(new IfxParameter("@id_ped_unicolor", elemento.IdPedidoAMontar));
+                    con.Parametros.Add(new IfxParameter("@cod_color", elemento.CodigoColor));
+                    con.Parametros.Add(new IfxParameter("@desc_color", elemento.DescripcionColor));
                     con.Parametros.Add(new IfxParameter("@tiendas", elemento.Tiendas));
                     con.Parametros.Add(new IfxParameter("@exito", elemento.Exito));
                     con.Parametros.Add(new IfxParameter("@cencosud", elemento.Cencosud));
@@ -86,9 +86,9 @@ namespace PedidoTela.Data.Acceso
             return lista;
         }
       
-        public List<PedidoUnicolorInformacion> ConsultarInfoConsolidar(int prmIdPedunicolor)
+        public List<PedidoMontarInformacion> ConsultarInfoConsolidar(int prmIdPedunicolor)
         {
-            List<PedidoUnicolorInformacion> lista = new List<PedidoUnicolorInformacion>();
+            List<PedidoMontarInformacion> lista = new List<PedidoMontarInformacion>();
             try
             {
                 using (var con = new clsConexion())
@@ -98,9 +98,9 @@ namespace PedidoTela.Data.Acceso
                     var datos = con.EjecutarConsulta(this.consultarTodo);
                     while (datos.Read())
                     {
-                        PedidoUnicolorInformacion detalle = new PedidoUnicolorInformacion();
-                        detalle.CodColor = datos["cod_color"].ToString();
-                        detalle.DescColor = datos["desc_color"].ToString().Trim();
+                        PedidoMontarInformacion detalle = new PedidoMontarInformacion();
+                        detalle.CodigoColor = datos["cod_color"].ToString();
+                        detalle.DescripcionColor = datos["desc_color"].ToString().Trim();
                         detalle.Tiendas = int.Parse(datos["tiendas"].ToString().Trim());
                         detalle.Exito = int.Parse(datos["exito"].ToString());
                         detalle.Cencosud = int.Parse(datos["cencosud"].ToString());
@@ -129,7 +129,7 @@ namespace PedidoTela.Data.Acceso
         #endregion
 
         #region Métodos Actualizar
-        public string Actualizar(PedidoUnicolorInformacion elemento, int prmIdDetalle)
+        public string Actualizar(PedidoMontarInformacion elemento, int prmIdDetalle)
         {
             string respuesta = "";
             try
@@ -137,8 +137,8 @@ namespace PedidoTela.Data.Acceso
                 //UPDATE 
                 using (var con = new clsConexion())
                 {
-                    con.Parametros.Add(new IfxParameter("@cod_color", elemento.CodColor));
-                    con.Parametros.Add(new IfxParameter("@desc_color", elemento.DescColor));
+                    con.Parametros.Add(new IfxParameter("@cod_color", elemento.CodigoColor));
+                    con.Parametros.Add(new IfxParameter("@desc_color", elemento.DescripcionColor));
                     con.Parametros.Add(new IfxParameter("@tiendas", elemento.Tiendas));
                     con.Parametros.Add(new IfxParameter("@exito", elemento.Exito));
                     con.Parametros.Add(new IfxParameter("@cencosud", elemento.Cencosud));

@@ -316,7 +316,7 @@ namespace PedidoTela.Formularios
                                         for (int i = 0; i < dgvInfoConsolidar.RowCount; i++)
                                         {
                                             //Se obtiene la información de la primera dataGridView (dgvInfoConsolidar)
-                                            PedidoUnicolorInformacion detalle = ObtenerInfoConsolidar(i);
+                                            PedidoMontarInformacion detalle = ObtenerInfoConsolidar(i);
                                             if (b)
                                             {
                                                 if (i < listaIDInfoConsolidar.Count)
@@ -330,7 +330,7 @@ namespace PedidoTela.Formularios
                                         for (int i = 0; i < dgvTotalConsolidado.RowCount; i++)
                                         {
                                             //Se obtiene la información de la segunada dataGridView (dgvTotalConsolidado)
-                                            PedidoUnicolorTotal detalle = ObtenerTotalConsolidar(i);
+                                            PedidoMontarTotal detalle = ObtenerTotalConsolidar(i);
                                             if (b)
                                             {
                                                 if (i < listaIDtotalconsolidar.Count)
@@ -540,12 +540,12 @@ namespace PedidoTela.Formularios
         /// </summary>
         /// <param name="i">Índice de creación del objeto.</param>
         /// <returns>Retorna un objeto de tipo PedUnicolorInfoCon el cual representa una fila del dataGridView.</returns>
-        private PedidoUnicolorInformacion ObtenerInfoConsolidar(int i)
+        private PedidoMontarInformacion ObtenerInfoConsolidar(int i)
         {
-            PedidoUnicolorInformacion detalle = new PedidoUnicolorInformacion();
-            detalle.IdPedUnicolor = id;
-            detalle.CodColor = (dgvInfoConsolidar.Rows[i].Cells[0].Value.ToString());
-            detalle.DescColor = (dgvInfoConsolidar.Rows[i].Cells[1].Value != null && dgvInfoConsolidar.Rows[i].Cells[1].Value.ToString() != "") ? dgvInfoConsolidar.Rows[i].Cells[1].Value.ToString() : "";
+            PedidoMontarInformacion detalle = new PedidoMontarInformacion();
+            detalle.IdPedidoAMontar = id;
+            detalle.CodigoColor = (dgvInfoConsolidar.Rows[i].Cells[0].Value.ToString());
+            detalle.DescripcionColor = (dgvInfoConsolidar.Rows[i].Cells[1].Value != null && dgvInfoConsolidar.Rows[i].Cells[1].Value.ToString() != "") ? dgvInfoConsolidar.Rows[i].Cells[1].Value.ToString() : "";
             detalle.Tiendas = (dgvInfoConsolidar.Rows[i].Cells[2].Value != null && dgvInfoConsolidar.Rows[i].Cells[2].Value.ToString() != "") ? int.Parse(dgvInfoConsolidar.Rows[i].Cells[2].Value.ToString()) : 0;
             detalle.Exito = (dgvInfoConsolidar.Rows[i].Cells[3].Value != null && dgvInfoConsolidar.Rows[i].Cells[3].Value.ToString() != "") ? int.Parse(dgvInfoConsolidar.Rows[i].Cells[3].Value.ToString()) : 0;
             detalle.Cencosud = (dgvInfoConsolidar.Rows[i].Cells[4].Value != null && dgvInfoConsolidar.Rows[i].Cells[4].Value.ToString() != "") ? int.Parse(dgvInfoConsolidar.Rows[i].Cells[4].Value.ToString()) : 0;
@@ -590,12 +590,12 @@ namespace PedidoTela.Formularios
         /// </summary>
         /// <param name="i">Índice de creación del objeto.</param>
         /// <returns>Retorna un objeto de tipo PedUnicolorTotalCon el cual representa una fila del dataGridView.</returns>
-        private PedidoUnicolorTotal ObtenerTotalConsolidar(int i)
+        private PedidoMontarTotal ObtenerTotalConsolidar(int i)
         {
-            PedidoUnicolorTotal detalle = new PedidoUnicolorTotal( );
-            detalle.IdPedUnicolor = id;
-            detalle.CodColor = (dgvTotalConsolidado.Rows[i].Cells[0].Value.ToString());
-            detalle.DescColor = (dgvTotalConsolidado.Rows[i].Cells[1].Value != null && dgvTotalConsolidado.Rows[i].Cells[1].Value.ToString() != "") ? dgvTotalConsolidado.Rows[i].Cells[1].Value.ToString() : "";
+            PedidoMontarTotal detalle = new PedidoMontarTotal( );
+            detalle.IdPedidoAmontar = id;
+            detalle.CodidoColor = (dgvTotalConsolidado.Rows[i].Cells[0].Value.ToString());
+            detalle.DescripcionColor = (dgvTotalConsolidado.Rows[i].Cells[1].Value != null && dgvTotalConsolidado.Rows[i].Cells[1].Value.ToString() != "") ? dgvTotalConsolidado.Rows[i].Cells[1].Value.ToString() : "";
             detalle.Tiendas = (dgvTotalConsolidado.Rows[i].Cells[2].Value != null && dgvTotalConsolidado.Rows[i].Cells[2].Value.ToString() != "") ? int.Parse(dgvTotalConsolidado.Rows[i].Cells[2].Value.ToString()) : 0;
             detalle.Exito = (dgvTotalConsolidado.Rows[i].Cells[3].Value != null && dgvTotalConsolidado.Rows[i].Cells[3].Value.ToString() != "") ? int.Parse(dgvTotalConsolidado.Rows[i].Cells[3].Value.ToString()) : 0;
             detalle.Cencosud = (dgvTotalConsolidado.Rows[i].Cells[4].Value != null && dgvTotalConsolidado.Rows[i].Cells[4].Value.ToString() != "") ? int.Parse(dgvTotalConsolidado.Rows[i].Cells[4].Value.ToString()) : 0;
@@ -607,7 +607,7 @@ namespace PedidoTela.Formularios
             detalle.MCalculados = (dgvTotalConsolidado.Rows[i].Cells[10].Value != null && dgvTotalConsolidado.Rows[i].Cells[10].Value.ToString() != "") ? decimal.Parse(dgvTotalConsolidado.Rows[i].Cells[10].Value.ToString()) : 0;
             detalle.KgCalculados = (dgvTotalConsolidado.Rows[i].Cells[11].Value != null && dgvTotalConsolidado.Rows[i].Cells[11].Value.ToString() != "") ? decimal.Parse(dgvTotalConsolidado.Rows[i].Cells[11].Value.ToString()) : 0;
             detalle.TotalPedir = (dgvTotalConsolidado.Rows[i].Cells[12].Value != null && dgvTotalConsolidado.Rows[i].Cells[12].Value.ToString() != "") ? decimal.Parse(dgvTotalConsolidado.Rows[i].Cells[12].Value.ToString()) : 0;
-            detalle.UniMedida = (dgvTotalConsolidado.Rows[i].Cells[13].Value != null && dgvTotalConsolidado.Rows[i].Cells[13].Value.ToString() != "") ? dgvTotalConsolidado.Rows[i].Cells[13].Value.ToString() : "";
+            detalle.UnidadMedida = (dgvTotalConsolidado.Rows[i].Cells[13].Value != null && dgvTotalConsolidado.Rows[i].Cells[13].Value.ToString() != "") ? dgvTotalConsolidado.Rows[i].Cells[13].Value.ToString() : "";
             return detalle;
         }
 
@@ -642,24 +642,24 @@ namespace PedidoTela.Formularios
                 dtpFechaLlegada.Text = objPedUnicolor.FechaLlegada.ToString();
 
                 /*Carga detalle Información a  Consolidar*/
-                List<PedidoUnicolorInformacion> listaInfoConsolidar = control.getPedUnicolorInfoCon(objPedUnicolor.Id);
+                List<PedidoMontarInformacion> listaInfoConsolidar = control.getPedUnicolorInfoCon(objPedUnicolor.Id);
                 if (listaInfoConsolidar.Count > 0)
                 {
-                    foreach (PedidoUnicolorInformacion obj in listaInfoConsolidar)
+                    foreach (PedidoMontarInformacion obj in listaInfoConsolidar)
                     {
-                        dgvInfoConsolidar.Rows.Add(obj.CodColor, obj.DescColor, obj.Tiendas, obj.Exito,
+                        dgvInfoConsolidar.Rows.Add(obj.CodigoColor, obj.DescripcionColor, obj.Tiendas, obj.Exito,
                             obj.Cencosud, obj.Sao, obj.ComercioOrg, obj.Rosado, obj.Otros, obj.TotalUnidades, obj.Consumo, obj.MCalculados, obj.MReservados, obj.MSolicitar,obj.KgCalculados);
                     }
                 }
 
                 /*Carga detalle Toltal a  Consolidar*/
-                List<PedidoUnicolorTotal> listaTotalConsolidado = control.getPedUnicolorTotalCon(objPedUnicolor.Id);
+                List<PedidoMontarTotal> listaTotalConsolidado = control.getPedUnicolorTotalCon(objPedUnicolor.Id);
                 if (listaTotalConsolidado.Count > 0)
                 {
-                    foreach (PedidoUnicolorTotal obj in listaTotalConsolidado)
+                    foreach (PedidoMontarTotal obj in listaTotalConsolidado)
                     {
-                        dgvTotalConsolidado.Rows.Add(obj.CodColor, obj.DescColor, obj.Tiendas, obj.Exito,
-                            obj.Cencosud, obj.Sao, obj.ComercioOrg, obj.Rosado, obj.Otros, obj.TotalUnidades, obj.MCalculados, obj.KgCalculados, obj.TotalPedir, obj.UniMedida);
+                        dgvTotalConsolidado.Rows.Add(obj.CodidoColor, obj.DescripcionColor, obj.Tiendas, obj.Exito,
+                            obj.Cencosud, obj.Sao, obj.ComercioOrg, obj.Rosado, obj.Otros, obj.TotalUnidades, obj.MCalculados, obj.KgCalculados, obj.TotalPedir, obj.UnidadMedida);
                     }
                 }
 

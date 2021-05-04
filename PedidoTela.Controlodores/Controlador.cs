@@ -658,7 +658,7 @@ namespace PedidoTela.Controlodores
         }
         #endregion
 
-        #region Pedido a montar Unicolor
+        #region Pedido Unicolor
         public PedidoAMontar getPedUnicolor(int idSolTela)
         {
            D_PedidoUnicolor d_pedUnicolor = new D_PedidoUnicolor();
@@ -677,12 +677,12 @@ namespace PedidoTela.Controlodores
             return d_pedUnicolor.ConsultarId(idSolTela);
         }
         /* se agrgar el primer detalle de la vista frmPedidoaMontarUnicolor*/
-        public void addPedUnicolorInfoCon(PedidoUnicolorInformacion detalle)
+        public void addPedUnicolorInfoCon(PedidoMontarInformacion detalle)
         {
             D_PedidoUnicolorInfomacion d_infoConsolidar = new D_PedidoUnicolorInfomacion();
             d_infoConsolidar.Agregar(detalle);
         }
-        public void addPedUnicolorTotalCons(PedidoUnicolorTotal detalle)
+        public void addPedUnicolorTotalCons(PedidoMontarTotal detalle)
         {
             D_PedidoUnicolorTotal d_totalConsolidar = new D_PedidoUnicolorTotal();
             d_totalConsolidar.Agregar(detalle);
@@ -707,28 +707,65 @@ namespace PedidoTela.Controlodores
             D_PedidoUnicolorTotal d_totalConsolidar = new D_PedidoUnicolorTotal();
             return d_totalConsolidar.ConsultarId(idPedUnicolor);
         }
-        public bool actuPedUnicolorInfoCon(PedidoUnicolorInformacion infoConsolidar, int idDetalle)
+        public bool actuPedUnicolorInfoCon(PedidoMontarInformacion infoConsolidar, int idDetalle)
         {
             D_PedidoUnicolorInfomacion objInfoConsolidar = new D_PedidoUnicolorInfomacion();
             return (objInfoConsolidar.Actualizar(infoConsolidar, idDetalle) == "ok") ? true : false;
         }
-        public bool actuaPedUnicolorTotalConsol(PedidoUnicolorTotal totalConsolidar, int idDetalle)
+        public bool actuaPedUnicolorTotalConsol(PedidoMontarTotal totalConsolidar, int idDetalle)
         {
             D_PedidoUnicolorTotal objToltalCon = new D_PedidoUnicolorTotal();
             return (objToltalCon.Actualizar(totalConsolidar, idDetalle) == "ok") ? true : false;
         }
-        public List<PedidoUnicolorInformacion> getPedUnicolorInfoCon(int idPedUnicolor)
+        public List<PedidoMontarInformacion> getPedUnicolorInfoCon(int idPedUnicolor)
         {
             D_PedidoUnicolorInfomacion d_pedUniInfoCon = new D_PedidoUnicolorInfomacion();
             return d_pedUniInfoCon.ConsultarInfoConsolidar(idPedUnicolor);
         }
-        public List<PedidoUnicolorTotal> getPedUnicolorTotalCon(int idPedUnicolor)
+        public List<PedidoMontarTotal> getPedUnicolorTotalCon(int idPedUnicolor)
         {
             D_PedidoUnicolorTotal d_pedUniTotalcon = new D_PedidoUnicolorTotal();
             return d_pedUniTotalcon.ConsultarTotalConsolidado(idPedUnicolor);
         }
         #endregion
 
+        #region Pedido Plano Preteñido
+        
+        /// <summary>
+        /// Permite consultar si el ensayo o referencia ya se encuentra alamacenado.
+        /// </summary>
+        /// <param name="prmIdSolicitudTelas">Id de la solitud de tela,</param>
+        /// <returns>Retor True si ya está alamcenado, False de los contrario</returns>
+        public bool consultarIdPedidoPlano(int prmIdSolicitudTelas)
+        {
+            D_PedidoPlanoPretenido d_pedidoPlano = new D_PedidoPlanoPretenido();
+            return d_pedidoPlano.consultarIdentificador(prmIdSolicitudTelas);
+        }
+
+        /// <summary>
+        /// Permite Actualizar los campos de la entidad cfc_spt_ped_plano
+        /// </summary>
+        /// <param name="prmPedidoPlano">Objeto de Tipo PedidoAMontar, el cual representa el encabezado de la vista pedido a Montar Plano Preteñido.</param>
+        /// <returns>Retorn True si ha Actualizado la información, False de lo contrario.</returns>
+        public bool actualizarPedidoPlano(PedidoAMontar prmPedidoPlano)
+        {
+            D_PedidoPlanoPretenido d_pedidoPlano = new D_PedidoPlanoPretenido();
+            return (d_pedidoPlano.Actualizar(prmPedidoPlano) == "ok") ? true : false;
+        }
+
+        /// <summary>
+        /// Almacena la información en la entidad cfc_spt_ped_plano
+        /// </summary>
+        /// <param name="prmPedidoPlano">Objeto de tipo PedidoAMontar, el cual representa el encabezado de la vista Pedido a Montar Unicolor.</param>
+        /// <returns>Retorna True si se ha guardado correctamente la información, False de lo contrario.</returns>
+        public bool agregarPedidoPlano(PedidoAMontar prmPedidoPlano)
+        {
+            D_PedidoPlanoPretenido d_pedidoPlano = new D_PedidoPlanoPretenido();
+            return (d_pedidoPlano.Agregar(prmPedidoPlano) == "ok") ? true : false;
+        }
+
+
+        #endregion
 
         #region Métodos Consolidar
         public List<Objeto> getTipoMarcacion() {

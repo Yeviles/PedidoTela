@@ -74,7 +74,7 @@
     <Compile Include="Logica\Ensayo.cs" />
     <Compile Include="Logica\Estampado.cs" />
     <Compile Include="Logica\PedidoAMontar.cs" />
-    <Compile Include="Logica\PedidoUnicolorInformacion.cs" />
+    <Compile Include="Logica\PedidoMontarInformacion.cs" />
     <Compile Include="Logica\MontajeTela.cs" />
     <Compile Include="Logica\Objeto.cs" />
     <Compile Include="Logica\Pedido.cs" />
@@ -82,7 +82,7 @@
     <Compile Include="Logica\ReporteReservaTela.cs" />
     <Compile Include="Logica\TipoPedido.cs" />
     <Compile Include="Logica\TipoTejido.cs" />
-    <Compile Include="Logica\PedidoUnicolorTotal.cs" />
+    <Compile Include="Logica\PedidoMontarTotal.cs" />
     <Compile Include="Logica\Unicolor.cs" />
     <Compile Include="Logica\Utilidades.cs" />
     <Compile Include="Logica\Validar.cs" />

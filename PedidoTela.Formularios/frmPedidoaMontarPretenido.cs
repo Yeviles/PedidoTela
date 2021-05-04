@@ -10,6 +10,7 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using PedidoTela.Entidades.Logica;
 using PedidoTela.Controlodores;
+using PedidoTela.Entidades;
 
 namespace PedidoTela.Formularios
 {
@@ -19,7 +20,7 @@ namespace PedidoTela.Formularios
         #region Variables
         private Controlador control = new Controlador();
         List<MontajeTelaDetalle> detalleSeleccionado = new List<MontajeTelaDetalle>();
-        int idSolicitudTelas;
+        int idSolicitudTelas=0, id=0;
         #endregion
 
         #region Setter && Getter
@@ -81,14 +82,14 @@ namespace PedidoTela.Formularios
             //                    {
             //                        //Se obtiene el encabezado de la vista.
             //                        PedidoAMontar elemento = ObtenerEncabezado();
-            //                        if (control.consultarIdPedUnicolor(IdSolTela))
+            //                        if (control.consultarIdPedidoPlano(IdSolicitudTelas))
             //                        {
-            //                            control.actualizarPedUnicolor(elemento);
+            //                            control.actualizarPedidoPlano(elemento);
             //                            b = true;
             //                        }
             //                        else
             //                        {
-            //                            control.addPedUnicolor(elemento);
+            //                            control.agregarPedidoPlano(elemento);
             //                        }
             //                        //Agrega el Consolidado.
             //                        AgregarConsolidado();
@@ -162,7 +163,7 @@ namespace PedidoTela.Formularios
             //        MessageBox.Show("Por favor, Seleccione un valor para Tipo de Marcación.", "Advertencia", MessageBoxButtons.OK, MessageBoxIcon.Warning);
             //    }
 
-           // }
+            //}
         }
 
         private void btnConfirmar_Click(object sender, EventArgs e)
@@ -197,23 +198,36 @@ namespace PedidoTela.Formularios
             return datos;
         }
 
-        //private PedidoAMontar ObtenerEncabezado()
-        //{
-        //    PedidoAMontar elemento = new PedidoAMontar();
-        //    elemento.NomTela = txtNomTela.Text.Trim();
-        //    elemento.Disenador = txtDisenador.Text.Trim();
-        //    elemento.Rendimiento = decimal.Parse(txtRendimiento.Text.Trim());
-        //    elemento.EnsayoRef = txtEnsayoRef.Text.Trim();
-        //    elemento.DescPrenda = txtDesPrenda.Text.Trim();
-        //    elemento.Clase = cbxClase.SelectedItem.ToString();
-        //    elemento.TipoMarcacion = cbxTipoMarcacion.GetItemText(cbxTipoMarcacion.SelectedItem);
-        //    elemento.Rendimiento = decimal.Parse(txtRendimiento.Text.Trim());
-        //    elemento.AnalistasCortesB = txtAnalista.Text.Trim();
-        //    string fecha = dtpFechaLlegada.Value.ToString("dd/MM/yyyy");
-        //    elemento.FechaLlegada = fecha;
-        //    elemento.IdSolTela = IdSolicitudTelas;
-        //    return elemento;
-        //}
+        private PedidoAMontar ObtenerEncabezado()
+        {
+            PedidoAMontar elemento = new PedidoAMontar();
+            elemento.Tela = txtNomTela.Text.Trim();
+            elemento.Disenador = txtDisenador.Text.Trim();
+            elemento.Rendimiento = decimal.Parse(txtRendimiento.Text.Trim());
+            elemento.EnsayoReferencia = txtEnsayoRef.Text.Trim();
+            elemento.DescripcionPrenda = txtDesPrenda.Text.Trim();
+            elemento.Clase = cbxClase.SelectedItem.ToString();
+            elemento.TipoMarcacion = cbxTipoMarcacion.GetItemText(cbxTipoMarcacion.SelectedItem);
+            elemento.Rendimiento = decimal.Parse(txtRendimiento.Text.Trim());
+            elemento.AnalistasCortesB = txtAnalista.Text.Trim();
+            string fecha = dtpFechaLlegada.Value.ToString("dd/MM/yyyy");
+            elemento.FechaLlegada = fecha;
+            elemento.IdSolicitud = IdSolicitudTelas;
+            return elemento;
+        }
+
+        /// <summary>
+        /// Agrega el consolidado a lista de solicitudes seleccionadas en la vista frmSolicitudListaTelas, al momento de dar clic en Guardar.
+        /// </summary>
+        private void AgregarConsolidado()
+        {
+            //int maxConsolidado = control.consultarMaxConsolidado();
+            //for (int i = 0; i < ListaIdSolicitudes.Count; i++)
+            //{
+            //    control.agregarConsolidado(ListaIdSolicitudes[i], maxConsolidado + 1, "", "");
+            //}
+
+        }
 
         #endregion
 
