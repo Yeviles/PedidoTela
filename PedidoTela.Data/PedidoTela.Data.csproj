@@ -97,9 +97,9 @@
     <Compile Include="Acceso\D_Muestrario.cs" />
     <Compile Include="Acceso\D_OcasionUso.cs" />
     <Compile Include="Acceso\D_PedidoEstampado.cs" />
-    <Compile Include="Acceso\D_PedMontarUnicolor.cs" />
-    <Compile Include="Acceso\D_PedUnicolorInfoCon.cs" />
-    <Compile Include="Acceso\D_PedUnicolorTotalCon.cs" />
+    <Compile Include="Acceso\D_PedidoUnicolor.cs" />
+    <Compile Include="Acceso\D_PedidoUnicolorInfomacion.cs" />
+    <Compile Include="Acceso\D_PedidoUnicolorTotal.cs" />
     <Compile Include="Acceso\D_PlanoPretenido.cs" />
     <Compile Include="Acceso\D_SolicitudTela.cs" />
     <Compile Include="Acceso\D_Tela.cs" />

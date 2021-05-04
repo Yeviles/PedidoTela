@@ -69,6 +69,7 @@ namespace PedidoTela.Formularios
                 cbxestampado.Checked = false;
                 cbxCuePunTiras.Checked = false;
                 Seleccion = "planoPre";
+                frmMontarPretenido = new frmPedidoaMontarPretenido(control, detalleSeleccionado, IdSolTela);
             }
         }
 

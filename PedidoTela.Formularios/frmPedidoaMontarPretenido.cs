@@ -18,13 +18,23 @@ namespace PedidoTela.Formularios
     {
         #region Variables
         private Controlador control = new Controlador();
+        List<MontajeTelaDetalle> detalleSeleccionado = new List<MontajeTelaDetalle>();
+        int idSolicitudTelas;
         #endregion
+
+        #region Setter && Getter
+        public List<MontajeTelaDetalle> DetalleSeleccionado { get => detalleSeleccionado; set => detalleSeleccionado = value; }
+        public int IdSolicitudTelas { get => idSolicitudTelas; set => idSolicitudTelas = value; }
+        #endregion
+
         #region Constructor
-        public frmPedidoaMontarPretenido(Controlador controlador)
+        public frmPedidoaMontarPretenido(Controlador controlador, List<MontajeTelaDetalle> listaSeleccionada, int idsolTela)
         {
             
             InitializeComponent();
+            DetalleSeleccionado = listaSeleccionada;
             this.control = controlador;
+            IdSolicitudTelas = idsolTela;
         }
         #endregion
 
@@ -36,7 +46,129 @@ namespace PedidoTela.Formularios
         #endregion
 
         #region Eventos
+        private void btnSalir_Click(object sender, EventArgs e)
+        {
+            this.Close();
+        }
 
+        private void btnGrabar_Click(object sender, EventArgs e)
+        {
+            //bool b = false;
+            //if (txtRendimiento.Text == "")
+            //{
+            //    MessageBox.Show("Por favor, ingrese un valor para Rendimiento.", "Advertencia", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+            //}
+            //else
+            //{
+            //    if (cbxTipoMarcacion.SelectedIndex != -1)
+            //    {
+            //        if (txtAnalista.Text != "")
+            //        {
+            //            if (txtDesPrenda.Text != "")
+            //            {
+
+            //                if (dgvInfoConsolidar.RowCount > 0 && dgvTotalConsolidado.RowCount > 0)
+            //                {
+            //                    bool vacio = false;
+            //                    foreach (DataGridViewRow row in dgvTotalConsolidado.Rows)
+            //                    {
+            //                        if (row.Cells[11].Value == null || row.Cells[12].Value == null || row.Cells[13].Value == null)
+            //                        {
+            //                            vacio = true;
+            //                        }
+            //                    }
+            //                    if (!vacio)
+            //                    {
+            //                        //Se obtiene el encabezado de la vista.
+            //                        PedidoAMontar elemento = ObtenerEncabezado();
+            //                        if (control.consultarIdPedUnicolor(IdSolTela))
+            //                        {
+            //                            control.actualizarPedUnicolor(elemento);
+            //                            b = true;
+            //                        }
+            //                        else
+            //                        {
+            //                            control.addPedUnicolor(elemento);
+            //                        }
+            //                        //Agrega el Consolidado.
+            //                        AgregarConsolidado();
+
+            //                        //Consulta el id que se genero cuando se guarda la infromación del encabezado.
+            //                        id = control.getIdPedUnicolor(IdSolicitudTelas);
+
+            //                        //Lista con lis ids de cada uno de los detalles de la vista
+            //                        List<int> listaIDInfoConsolidar = control.getIdPedUnicolorInfoCon(id);
+            //                        List<int> listaIDtotalconsolidar = control.getIdPedUnicolorTotalCon(id);
+            //                        try
+            //                        {
+            //                            for (int i = 0; i < dgvInfoConsolidar.RowCount; i++)
+            //                            {
+            //                                //Se obtiene la informacion de la primera dataGridView (dgvInfoConsolidar)
+            //                                PedUnicolorInfoCon detalle = ObtenerInfoConsolidar(i);
+            //                                if (b)
+            //                                {
+            //                                    if (i < listaIDInfoConsolidar.Count)
+            //                                    {
+            //                                        control.actuPedUnicolorInfoCon(detalle, listaIDInfoConsolidar[i]);
+            //                                    }
+            //                                    else { control.addPedUnicolorInfoCon(detalle); }
+            //                                }
+            //                                else { control.addPedUnicolorInfoCon(detalle); }
+            //                            }
+            //                            for (int i = 0; i < dgvTotalConsolidado.RowCount; i++)
+            //                            {
+            //                                //Se obtiene la informacion de la segunada dataGridView (dgvTotalConsolidado)
+            //                                PedUnicolorTotalCon detalle = ObtenerTotalConsolidar(i);
+            //                                if (b)
+            //                                {
+            //                                    if (i < listaIDtotalconsolidar.Count)
+            //                                    {
+            //                                        control.actuaPedUnicolorTotalConsol(detalle, listaIDtotalconsolidar[i]);
+            //                                    }
+            //                                    else { control.addPedUnicolorTotalCons(detalle); }
+            //                                }
+            //                                else { control.addPedUnicolorTotalCons(detalle); }
+            //                            }
+
+            //                            MessageBox.Show("Pedido Unicolor se guardó con éxito.", "Información", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            //                        }
+            //                        catch
+            //                        {
+            //                            MessageBox.Show("Pedido Unicolor no se pudo guardar.", "Advertencia", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            //                        }
+            //                    }
+            //                    else
+            //                    {
+            //                        MessageBox.Show("Los campos Kg Calculados, total a Pedir y unidad de Medida Tela deben estar llenos.", "Advertencia", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+            //                    }
+            //                }
+            //                else
+            //                {
+            //                    MessageBox.Show("Por favor, adicione al menos un color.", "Advertencia", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+            //                }
+            //            }
+            //            else
+            //            {
+            //                MessageBox.Show("Por favor, Ingrese un valor para Descripción Prenda.", "Advertencia", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+            //            }
+            //        }
+            //        else
+            //        {
+            //            MessageBox.Show("Por favor, Ingrese un valor para Analista Cortes B.", "Advertencia", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+            //        }
+            //    }
+            //    else
+            //    {
+            //        MessageBox.Show("Por favor, Seleccione un valor para Tipo de Marcación.", "Advertencia", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+            //    }
+
+           // }
+        }
+
+        private void btnConfirmar_Click(object sender, EventArgs e)
+        {
+
+        }
         #endregion
 
         #region Métodos
@@ -64,11 +196,26 @@ namespace PedidoTela.Formularios
             }
             return datos;
         }
+
+        //private PedidoAMontar ObtenerEncabezado()
+        //{
+        //    PedidoAMontar elemento = new PedidoAMontar();
+        //    elemento.NomTela = txtNomTela.Text.Trim();
+        //    elemento.Disenador = txtDisenador.Text.Trim();
+        //    elemento.Rendimiento = decimal.Parse(txtRendimiento.Text.Trim());
+        //    elemento.EnsayoRef = txtEnsayoRef.Text.Trim();
+        //    elemento.DescPrenda = txtDesPrenda.Text.Trim();
+        //    elemento.Clase = cbxClase.SelectedItem.ToString();
+        //    elemento.TipoMarcacion = cbxTipoMarcacion.GetItemText(cbxTipoMarcacion.SelectedItem);
+        //    elemento.Rendimiento = decimal.Parse(txtRendimiento.Text.Trim());
+        //    elemento.AnalistasCortesB = txtAnalista.Text.Trim();
+        //    string fecha = dtpFechaLlegada.Value.ToString("dd/MM/yyyy");
+        //    elemento.FechaLlegada = fecha;
+        //    elemento.IdSolTela = IdSolicitudTelas;
+        //    return elemento;
+        //}
+
         #endregion
 
-        private void button1_Click(object sender, EventArgs e)
-        {
-
-        }
     }
 }

@@ -1,5 +1,6 @@
 ﻿using MaterialSkin;
 using PedidoTela.Controlodores;
+using PedidoTela.Entidades;
 using PedidoTela.Entidades.Logica;
 using System;
 using System.Collections.Generic;
@@ -291,7 +292,7 @@ namespace PedidoTela.Formularios
                                 if (!vacio)
                                 {
                                     //Se obtiene el encabezado de la vista.
-                                    PedMontarUnicolor elemento = ObtenerEncabezado();
+                                    PedidoAMontar elemento = ObtenerEncabezado();
                                     if (control.consultarIdPedUnicolor(IdSolTela))
                                     {
                                         control.actualizarPedUnicolor(elemento);
@@ -307,15 +308,15 @@ namespace PedidoTela.Formularios
                                     //Consulta el id que se genero cuando se guarda la infromación del encabezado.
                                     id = control.getIdPedUnicolor(IdSolTela);
 
-                                    //Lista con lis ids de cada uno de los detalles de la vista
+                                    //Lista con los ids de cada uno de los detalles de la vista
                                     List<int> listaIDInfoConsolidar = control.getIdPedUnicolorInfoCon(id);
                                     List<int> listaIDtotalconsolidar = control.getIdPedUnicolorTotalCon(id);
                                     try
                                     {
                                         for (int i = 0; i < dgvInfoConsolidar.RowCount; i++)
                                         {
-                                            //Se obtiene la informacion de la primera dataGridView (dgvInfoConsolidar)
-                                            PedUnicolorInfoCon detalle = ObtenerInfoConsolidar(i);
+                                            //Se obtiene la información de la primera dataGridView (dgvInfoConsolidar)
+                                            PedidoUnicolorInformacion detalle = ObtenerInfoConsolidar(i);
                                             if (b)
                                             {
                                                 if (i < listaIDInfoConsolidar.Count)
@@ -328,8 +329,8 @@ namespace PedidoTela.Formularios
                                         }
                                         for (int i = 0; i < dgvTotalConsolidado.RowCount; i++)
                                         {
-                                            //Se obtiene la informacion de la segunada dataGridView (dgvTotalConsolidado)
-                                            PedUnicolorTotalCon detalle = ObtenerTotalConsolidar(i);
+                                            //Se obtiene la información de la segunada dataGridView (dgvTotalConsolidado)
+                                            PedidoUnicolorTotal detalle = ObtenerTotalConsolidar(i);
                                             if (b)
                                             {
                                                 if (i < listaIDtotalconsolidar.Count)
@@ -390,6 +391,7 @@ namespace PedidoTela.Formularios
         #endregion
 
         #region Métodos
+
         /// <summary>
         /// Se válida que en la lista (List<DetalleListaTela> listaSeleccionada) que llega al contructor por argumentos, tenga un atributo estado y que 
         /// este contenga valor de Solicitud de Inventario o Reserva Parcial, si cumple esta condición procede a llenar el encabezado  y las DataGridView de la vista actual.
@@ -538,9 +540,9 @@ namespace PedidoTela.Formularios
         /// </summary>
         /// <param name="i">Índice de creación del objeto.</param>
         /// <returns>Retorna un objeto de tipo PedUnicolorInfoCon el cual representa una fila del dataGridView.</returns>
-        private PedUnicolorInfoCon ObtenerInfoConsolidar(int i)
+        private PedidoUnicolorInformacion ObtenerInfoConsolidar(int i)
         {
-            PedUnicolorInfoCon detalle = new PedUnicolorInfoCon();
+            PedidoUnicolorInformacion detalle = new PedidoUnicolorInformacion();
             detalle.IdPedUnicolor = id;
             detalle.CodColor = (dgvInfoConsolidar.Rows[i].Cells[0].Value.ToString());
             detalle.DescColor = (dgvInfoConsolidar.Rows[i].Cells[1].Value != null && dgvInfoConsolidar.Rows[i].Cells[1].Value.ToString() != "") ? dgvInfoConsolidar.Rows[i].Cells[1].Value.ToString() : "";
@@ -565,21 +567,21 @@ namespace PedidoTela.Formularios
         /// Obtine todo los elementos del encabezado de la vista.
         /// </summary>
         /// <returns></returns>
-        private PedMontarUnicolor ObtenerEncabezado()
+        private PedidoAMontar ObtenerEncabezado()
         {
-            PedMontarUnicolor elemento = new PedMontarUnicolor();
-            elemento.NomTela = txtNomTela.Text.Trim();
+            PedidoAMontar elemento = new PedidoAMontar();
+            elemento.Tela = txtNomTela.Text.Trim();
             elemento.Disenador = txtDisenador.Text.Trim();
             elemento.Rendimiento = decimal.Parse(txtRendimiento.Text.Trim());
-            elemento.EnsayoRef = txtEnsayoRef.Text.Trim();
-            elemento.DescPrenda = txtDesPrenda.Text.Trim();
+            elemento.EnsayoReferencia = txtEnsayoRef.Text.Trim();
+            elemento.DescripcionPrenda = txtDesPrenda.Text.Trim();
             elemento.Clase = cbxClase.SelectedItem.ToString();
             elemento.TipoMarcacion = cbxTipoMarcacion.GetItemText(cbxTipoMarcacion.SelectedItem);
             elemento.Rendimiento = decimal.Parse(txtRendimiento.Text.Trim());
             elemento.AnalistasCortesB = txtAnalista.Text.Trim();
             string fecha = dtpFechaLlegada.Value.ToString("dd/MM/yyyy");
             elemento.FechaLlegada = fecha;
-            elemento.IdSolTela = IdSolTela;
+            elemento.IdSolicitud = IdSolTela;
             return elemento;
         }
 
@@ -588,9 +590,9 @@ namespace PedidoTela.Formularios
         /// </summary>
         /// <param name="i">Índice de creación del objeto.</param>
         /// <returns>Retorna un objeto de tipo PedUnicolorTotalCon el cual representa una fila del dataGridView.</returns>
-        private PedUnicolorTotalCon ObtenerTotalConsolidar(int i)
+        private PedidoUnicolorTotal ObtenerTotalConsolidar(int i)
         {
-            PedUnicolorTotalCon detalle = new PedUnicolorTotalCon( );
+            PedidoUnicolorTotal detalle = new PedidoUnicolorTotal( );
             detalle.IdPedUnicolor = id;
             detalle.CodColor = (dgvTotalConsolidado.Rows[i].Cells[0].Value.ToString());
             detalle.DescColor = (dgvTotalConsolidado.Rows[i].Cells[1].Value != null && dgvTotalConsolidado.Rows[i].Cells[1].Value.ToString() != "") ? dgvTotalConsolidado.Rows[i].Cells[1].Value.ToString() : "";
@@ -624,15 +626,15 @@ namespace PedidoTela.Formularios
 
         private void Cargar()
         {
-            PedMontarUnicolor objPedUnicolor = control.getPedUnicolor(IdSolTela);
-            id = objPedUnicolor.IdPedUnicolor;
+            PedidoAMontar objPedUnicolor = control.getPedUnicolor(IdSolTela);
+            id = objPedUnicolor.Id;
             if (id != 0)
             {
     
-                txtNomTela.Text = objPedUnicolor.NomTela.ToString();
+                txtNomTela.Text = objPedUnicolor.Tela.ToString();
                 txtDisenador.Text = objPedUnicolor.Disenador.ToString();
-                txtEnsayoRef.Text = objPedUnicolor.EnsayoRef.ToString();
-                txtDesPrenda.Text = objPedUnicolor.DescPrenda.ToString();
+                txtEnsayoRef.Text = objPedUnicolor.EnsayoReferencia.ToString();
+                txtDesPrenda.Text = objPedUnicolor.DescripcionPrenda.ToString();
                 cbxClase.Text = objPedUnicolor.Clase.ToString();
                 cbxTipoMarcacion.Text = objPedUnicolor.TipoMarcacion.ToString();
                 txtRendimiento.Text = objPedUnicolor.Rendimiento.ToString();
@@ -640,10 +642,10 @@ namespace PedidoTela.Formularios
                 dtpFechaLlegada.Text = objPedUnicolor.FechaLlegada.ToString();
 
                 /*Carga detalle Información a  Consolidar*/
-                List<PedUnicolorInfoCon> listaInfoConsolidar = control.getPedUnicolorInfoCon(objPedUnicolor.IdPedUnicolor);
+                List<PedidoUnicolorInformacion> listaInfoConsolidar = control.getPedUnicolorInfoCon(objPedUnicolor.Id);
                 if (listaInfoConsolidar.Count > 0)
                 {
-                    foreach (PedUnicolorInfoCon obj in listaInfoConsolidar)
+                    foreach (PedidoUnicolorInformacion obj in listaInfoConsolidar)
                     {
                         dgvInfoConsolidar.Rows.Add(obj.CodColor, obj.DescColor, obj.Tiendas, obj.Exito,
                             obj.Cencosud, obj.Sao, obj.ComercioOrg, obj.Rosado, obj.Otros, obj.TotalUnidades, obj.Consumo, obj.MCalculados, obj.MReservados, obj.MSolicitar,obj.KgCalculados);
@@ -651,10 +653,10 @@ namespace PedidoTela.Formularios
                 }
 
                 /*Carga detalle Toltal a  Consolidar*/
-                List<PedUnicolorTotalCon> listaTotalConsolidado = control.getPedUnicolorTotalCon(objPedUnicolor.IdPedUnicolor);
+                List<PedidoUnicolorTotal> listaTotalConsolidado = control.getPedUnicolorTotalCon(objPedUnicolor.Id);
                 if (listaTotalConsolidado.Count > 0)
                 {
-                    foreach (PedUnicolorTotalCon obj in listaTotalConsolidado)
+                    foreach (PedidoUnicolorTotal obj in listaTotalConsolidado)
                     {
                         dgvTotalConsolidado.Rows.Add(obj.CodColor, obj.DescColor, obj.Tiendas, obj.Exito,
                             obj.Cencosud, obj.Sao, obj.ComercioOrg, obj.Rosado, obj.Otros, obj.TotalUnidades, obj.MCalculados, obj.KgCalculados, obj.TotalPedir, obj.UniMedida);

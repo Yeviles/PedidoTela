@@ -659,73 +659,73 @@ namespace PedidoTela.Controlodores
         #endregion
 
         #region Pedido a montar Unicolor
-        public PedMontarUnicolor getPedUnicolor(int idSolTela)
+        public PedidoAMontar getPedUnicolor(int idSolTela)
         {
-           D_PedMontarUnicolor d_pedUnicolor = new D_PedMontarUnicolor();
+           D_PedidoUnicolor d_pedUnicolor = new D_PedidoUnicolor();
             return d_pedUnicolor.Consultar(idSolTela);
         }
 
-        public bool addPedUnicolor(PedMontarUnicolor pedUnicolor)
+        public bool addPedUnicolor(PedidoAMontar pedUnicolor)
         {
-           D_PedMontarUnicolor d_pedUnicolor = new D_PedMontarUnicolor();
+           D_PedidoUnicolor d_pedUnicolor = new D_PedidoUnicolor();
             return (d_pedUnicolor.Agregar(pedUnicolor) == "ok") ? true : false;
         }
 
         public int getIdPedUnicolor(int idSolTela)
         {
-            D_PedMontarUnicolor d_pedUnicolor = new D_PedMontarUnicolor();
+            D_PedidoUnicolor d_pedUnicolor = new D_PedidoUnicolor();
             return d_pedUnicolor.ConsultarId(idSolTela);
         }
         /* se agrgar el primer detalle de la vista frmPedidoaMontarUnicolor*/
-        public void addPedUnicolorInfoCon(PedUnicolorInfoCon detalle)
+        public void addPedUnicolorInfoCon(PedidoUnicolorInformacion detalle)
         {
-            D_PedUnicolorInfoCon d_infoConsolidar = new D_PedUnicolorInfoCon();
+            D_PedidoUnicolorInfomacion d_infoConsolidar = new D_PedidoUnicolorInfomacion();
             d_infoConsolidar.Agregar(detalle);
         }
-        public void addPedUnicolorTotalCons(PedUnicolorTotalCon detalle)
+        public void addPedUnicolorTotalCons(PedidoUnicolorTotal detalle)
         {
-            D_PedUnicolorTotalCon d_totalConsolidar = new D_PedUnicolorTotalCon();
+            D_PedidoUnicolorTotal d_totalConsolidar = new D_PedidoUnicolorTotal();
             d_totalConsolidar.Agregar(detalle);
         }
         public bool consultarIdPedUnicolor(int idSolTelas)
         {
-            D_PedMontarUnicolor d_pedUnicolor = new D_PedMontarUnicolor();
+            D_PedidoUnicolor d_pedUnicolor = new D_PedidoUnicolor();
             return d_pedUnicolor.consultarIdentificador(idSolTelas);
         }
-        public bool actualizarPedUnicolor(PedMontarUnicolor pedUnicolor)
+        public bool actualizarPedUnicolor(PedidoAMontar pedUnicolor)
         {
-            D_PedMontarUnicolor actuPedUnicolor = new D_PedMontarUnicolor();
+            D_PedidoUnicolor actuPedUnicolor = new D_PedidoUnicolor();
             return (actuPedUnicolor.Actualizar(pedUnicolor) == "ok") ? true : false;
         }
         public List<int> getIdPedUnicolorInfoCon(int idPedUnicolor)
         {
-            D_PedUnicolorInfoCon d_infoConsolidar = new D_PedUnicolorInfoCon();
+            D_PedidoUnicolorInfomacion d_infoConsolidar = new D_PedidoUnicolorInfomacion();
             return d_infoConsolidar.ConsultarId(idPedUnicolor);
         }
         public List<int> getIdPedUnicolorTotalCon(int idPedUnicolor)
         {
-            D_PedUnicolorTotalCon d_totalConsolidar = new D_PedUnicolorTotalCon();
+            D_PedidoUnicolorTotal d_totalConsolidar = new D_PedidoUnicolorTotal();
             return d_totalConsolidar.ConsultarId(idPedUnicolor);
         }
-        public bool actuPedUnicolorInfoCon(PedUnicolorInfoCon infoConsolidar, int idDetalle)
+        public bool actuPedUnicolorInfoCon(PedidoUnicolorInformacion infoConsolidar, int idDetalle)
         {
-            D_PedUnicolorInfoCon objInfoConsolidar = new D_PedUnicolorInfoCon();
+            D_PedidoUnicolorInfomacion objInfoConsolidar = new D_PedidoUnicolorInfomacion();
             return (objInfoConsolidar.Actualizar(infoConsolidar, idDetalle) == "ok") ? true : false;
         }
-        public bool actuaPedUnicolorTotalConsol(PedUnicolorTotalCon totalConsolidar, int idDetalle)
+        public bool actuaPedUnicolorTotalConsol(PedidoUnicolorTotal totalConsolidar, int idDetalle)
         {
-            D_PedUnicolorTotalCon objToltalCon = new D_PedUnicolorTotalCon();
+            D_PedidoUnicolorTotal objToltalCon = new D_PedidoUnicolorTotal();
             return (objToltalCon.Actualizar(totalConsolidar, idDetalle) == "ok") ? true : false;
         }
-        public List<PedUnicolorInfoCon> getPedUnicolorInfoCon(int idPedUnicolor)
+        public List<PedidoUnicolorInformacion> getPedUnicolorInfoCon(int idPedUnicolor)
         {
-            D_PedUnicolorInfoCon d_pedUniInfoCon = new D_PedUnicolorInfoCon();
-            return d_pedUniInfoCon.getDetalleInfoConsolidar(idPedUnicolor);
+            D_PedidoUnicolorInfomacion d_pedUniInfoCon = new D_PedidoUnicolorInfomacion();
+            return d_pedUniInfoCon.ConsultarInfoConsolidar(idPedUnicolor);
         }
-        public List<PedUnicolorTotalCon> getPedUnicolorTotalCon(int idPedUnicolor)
+        public List<PedidoUnicolorTotal> getPedUnicolorTotalCon(int idPedUnicolor)
         {
-            D_PedUnicolorTotalCon d_pedUniTotalcon = new D_PedUnicolorTotalCon();
-            return d_pedUniTotalcon.getDetalleTotalConsolidado(idPedUnicolor);
+            D_PedidoUnicolorTotal d_pedUniTotalcon = new D_PedidoUnicolorTotal();
+            return d_pedUniTotalcon.ConsultarTotalConsolidado(idPedUnicolor);
         }
         #endregion
 

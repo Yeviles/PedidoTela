@@ -8,21 +8,23 @@ using System.Threading.Tasks;
 
 namespace PedidoTela.Data.Acceso
 {
-    public class D_PedUnicolorTotalCon
+    public class D_PedidoUnicolorTotal
     {
         #region Consultas 
-        private readonly string consultaInsert = "INSERT INTO cfc_spt_pedunicolor_totalcon (id_ped_unicolor,cod_color,desc_color,tiendas,exito,cencosud,sao,comercio,rosado,otros,total_uni,m_calculados,kg_calculados,total_pedir,uni_medidatela) " +
+        private readonly string consultaInsert = "INSERT INTO cfc_spt_ped_unicolor_total (id_ped_unicolor,cod_color,desc_color,tiendas,exito,cencosud,sao,comercio,rosado,otros,total_uni,m_calculados,kg_calculados,total_pedir,uni_medidatela) " +
           " VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ? )";
 
-        private readonly string consultaId = "SELECT id_totalconsolidar FROM cfc_spt_pedunicolor_totalcon WHERE  id_ped_unicolor =?;";
+        private readonly string consultaId = "SELECT id_totalconsolidar FROM cfc_spt_ped_unicolor_total WHERE  id_ped_unicolor =?;";
 
-        private readonly string actualizar = "UPDATE cfc_spt_pedunicolor_totalcon SET cod_color=?, desc_color=?, tiendas=?, exito=?," +
+        private readonly string actualizar = "UPDATE cfc_spt_ped_unicolor_total SET cod_color=?, desc_color=?, tiendas=?, exito=?," +
            " cencosud=?, sao=?, comercio=?, rosado=?, otros=?, total_uni=?, m_calculados=?, kg_calculados=?, total_pedir=?, uni_medidatela=? WHERE id_totalconsolidar =?;";
 
-        private readonly string consultarTodo = "SELECT cod_color,desc_color,tiendas,exito,cencosud,sao,comercio,rosado,otros,total_uni,m_calculados,kg_calculados,total_pedir,uni_medidatela FROM cfc_spt_pedunicolor_totalcon WHERE id_ped_unicolor =?; ";
+        private readonly string consultarTodo = "SELECT cod_color,desc_color,tiendas,exito,cencosud,sao,comercio,rosado,otros,total_uni,m_calculados,kg_calculados,total_pedir,uni_medidatela FROM cfc_spt_ped_unicolor_total WHERE id_ped_unicolor =?; ";
 
         #endregion
-        public string Agregar(PedUnicolorTotalCon elemento)
+
+        #region Métodos Agregar
+        public string Agregar(PedidoUnicolorTotal elemento)
         {
             string respuesta = "";
             try
@@ -56,7 +58,9 @@ namespace PedidoTela.Data.Acceso
             }
             return respuesta;
         }
+        #endregion
 
+        #region Métodos Consultar
         public List<int> ConsultarId(int iPedunicolor)
         {
             int id = 0;
@@ -82,7 +86,48 @@ namespace PedidoTela.Data.Acceso
             return lista;
         }
 
-        public string Actualizar(PedUnicolorTotalCon elemento, int idDetalle)
+        public List<PedidoUnicolorTotal> ConsultarTotalConsolidado(int idPedUnicolor)
+        {
+            List<PedidoUnicolorTotal> lista = new List<PedidoUnicolorTotal>();
+            try
+            {
+                using (var con = new clsConexion())
+                {
+                    con.Parametros.Add(new IfxParameter("@id_ped_unicolor ", idPedUnicolor));
+                    var datos = con.EjecutarConsulta(this.consultarTodo);
+                    while (datos.Read())
+                    {
+                        PedidoUnicolorTotal detalle = new PedidoUnicolorTotal();
+                        detalle.CodColor = datos["cod_color"].ToString();
+                        detalle.DescColor = datos["desc_color"].ToString().Trim();
+                        detalle.Tiendas = int.Parse(datos["tiendas"].ToString().Trim());
+                        detalle.Exito = int.Parse(datos["exito"].ToString());
+                        detalle.Cencosud = int.Parse(datos["cencosud"].ToString());
+                        detalle.Sao = int.Parse(datos["sao"].ToString());
+                        detalle.ComercioOrg = int.Parse(datos["comercio"].ToString());
+                        detalle.Rosado = int.Parse(datos["rosado"].ToString());
+                        detalle.Otros = int.Parse(datos["otros"].ToString());
+                        detalle.TotalUnidades = int.Parse(datos["total_uni"].ToString());
+                        detalle.MCalculados = decimal.Parse(datos["m_calculados"].ToString());
+                        detalle.KgCalculados = decimal.Parse(datos["kg_calculados"].ToString());
+                        detalle.TotalPedir = decimal.Parse(datos["total_pedir"].ToString());
+                        detalle.UniMedida = datos["uni_medidatela"].ToString();
+
+                        lista.Add(detalle);
+                    }
+                    con.cerrarConexion();
+                }
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine("Error: " + ex.Message);
+            }
+            return lista;
+        }
+        #endregion
+
+        #region Métodos Actualizar
+        public string Actualizar(PedidoUnicolorTotal elemento, int idDetalle)
         {
             string respuesta = "";
             try
@@ -119,44 +164,6 @@ namespace PedidoTela.Data.Acceso
             }
             return respuesta;
         }
-
-        public List<PedUnicolorTotalCon> getDetalleTotalConsolidado(int idPedUnicolor)
-        {
-            List<PedUnicolorTotalCon> lista = new List<PedUnicolorTotalCon>();
-            try
-            {
-                using (var con = new clsConexion())
-                {
-                    con.Parametros.Add(new IfxParameter("@id_ped_unicolor ", idPedUnicolor));
-                    var datos = con.EjecutarConsulta(this.consultarTodo);
-                    while (datos.Read())
-                    {
-                        PedUnicolorTotalCon detalle = new PedUnicolorTotalCon();
-                        detalle.CodColor = datos["cod_color"].ToString();
-                        detalle.DescColor = datos["desc_color"].ToString().Trim();
-                        detalle.Tiendas = int.Parse(datos["tiendas"].ToString().Trim());
-                        detalle.Exito = int.Parse(datos["exito"].ToString());
-                        detalle.Cencosud = int.Parse(datos["cencosud"].ToString());
-                        detalle.Sao = int.Parse(datos["sao"].ToString());
-                        detalle.ComercioOrg = int.Parse(datos["comercio"].ToString());
-                        detalle.Rosado = int.Parse(datos["rosado"].ToString());
-                        detalle.Otros = int.Parse(datos["otros"].ToString());
-                        detalle.TotalUnidades = int.Parse(datos["total_uni"].ToString());
-                        detalle.MCalculados = decimal.Parse(datos["m_calculados"].ToString());
-                        detalle.KgCalculados = decimal.Parse(datos["kg_calculados"].ToString());
-                        detalle.TotalPedir = decimal.Parse(datos["total_pedir"].ToString());
-                        detalle.UniMedida = datos["uni_medidatela"].ToString();
-
-                        lista.Add(detalle);
-                    }
-                    con.cerrarConexion();
-                }
-            }
-            catch (Exception ex)
-            {
-                Console.WriteLine("Error: " + ex.Message);
-            }
-            return lista;
-        }
+        #endregion
     }
 }

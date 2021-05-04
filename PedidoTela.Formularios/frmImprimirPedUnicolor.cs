@@ -11,6 +11,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using PedidoTela.Entidades;
 
 namespace PedidoTela.Formularios
 {
@@ -32,20 +33,20 @@ namespace PedidoTela.Formularios
             SkinManager.Theme = MaterialSkin.MaterialSkinManager.Themes.LIGHT;
             SkinManager.ColorScheme = new ColorScheme(Primary.Blue900, Primary.Grey500, Primary.Grey200, Accent.Green100, TextShade.WHITE);
 
-            PedMontarUnicolor objPedUnicolor = control.getPedUnicolor(idSolTela);
+            PedidoAMontar objPedUnicolor = control.getPedUnicolor(idSolTela);
 
-            if (objPedUnicolor.IdPedUnicolor != 0)
+            if (objPedUnicolor.Id != 0)
             {
-                List<PedUnicolorInfoCon> listaInfoConsolidar = control.getPedUnicolorInfoCon(objPedUnicolor.IdPedUnicolor);
-                List<PedUnicolorTotalCon> listaTotalConsolidado = control.getPedUnicolorTotalCon(objPedUnicolor.IdPedUnicolor);
+                List<PedidoUnicolorInformacion> listaInfoConsolidar = control.getPedUnicolorInfoCon(objPedUnicolor.Id);
+                List<PedidoUnicolorTotal> listaTotalConsolidado = control.getPedUnicolorTotalCon(objPedUnicolor.Id);
 
-                List<PedUnicolorInfoCon> lista = new List<PedUnicolorInfoCon>();
-                List<PedUnicolorTotalCon> lista1 = new List<PedUnicolorTotalCon>();
+                List<PedidoUnicolorInformacion> lista = new List<PedidoUnicolorInformacion>();
+                List<PedidoUnicolorTotal> lista1 = new List<PedidoUnicolorTotal>();
 
-                this.reportViewer1.LocalReport.SetParameters(new ReportParameter("nomTela", objPedUnicolor.NomTela));
+                this.reportViewer1.LocalReport.SetParameters(new ReportParameter("nomTela", objPedUnicolor.Tela));
                 this.reportViewer1.LocalReport.SetParameters(new ReportParameter("disenador", objPedUnicolor.Disenador));
-                this.reportViewer1.LocalReport.SetParameters(new ReportParameter("ensayo_ref", objPedUnicolor.EnsayoRef));
-                this.reportViewer1.LocalReport.SetParameters(new ReportParameter("desc_prenda", objPedUnicolor.DescPrenda));
+                this.reportViewer1.LocalReport.SetParameters(new ReportParameter("ensayo_ref", objPedUnicolor.EnsayoReferencia));
+                this.reportViewer1.LocalReport.SetParameters(new ReportParameter("desc_prenda", objPedUnicolor.DescripcionPrenda));
                 this.reportViewer1.LocalReport.SetParameters(new ReportParameter("fecha_llegada", objPedUnicolor.FechaLlegada));
                 this.reportViewer1.LocalReport.SetParameters(new ReportParameter("clase", objPedUnicolor.Clase));
                 this.reportViewer1.LocalReport.SetParameters(new ReportParameter("tipo_marcacion", objPedUnicolor.TipoMarcacion));
@@ -56,9 +57,9 @@ namespace PedidoTela.Formularios
                 if (listaInfoConsolidar != null && listaTotalConsolidado != null)
                 {
                     int i = 0;
-                    foreach (PedUnicolorInfoCon elem in listaInfoConsolidar)
+                    foreach (PedidoUnicolorInformacion elem in listaInfoConsolidar)
                     {
-                        PedUnicolorInfoCon obj = new PedUnicolorInfoCon();
+                        PedidoUnicolorInformacion obj = new PedidoUnicolorInformacion();
                         obj.CodColor = elem.CodColor;
                         obj.DescColor = elem.DescColor;
                         obj.Tiendas = elem.Tiendas;
@@ -76,9 +77,9 @@ namespace PedidoTela.Formularios
                         lista.Add(obj);
                         i++;
                     }
-                    foreach (PedUnicolorTotalCon elem in listaTotalConsolidado)
+                    foreach (PedidoUnicolorTotal elem in listaTotalConsolidado)
                     {
-                        PedUnicolorTotalCon obj = new PedUnicolorTotalCon();
+                        PedidoUnicolorTotal obj = new PedidoUnicolorTotal();
                         obj.CodColor = elem.CodColor;
                         obj.DescColor = elem.DescColor;
                         obj.Tiendas = elem.Tiendas;

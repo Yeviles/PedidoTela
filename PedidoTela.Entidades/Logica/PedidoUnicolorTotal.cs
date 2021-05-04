@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace PedidoTela.Entidades.Logica
 {
-    public class PedUnicolorTotalCon
+    public class PedidoUnicolorTotal
     {
         private int idPedUnicolor;
         private string codColor;
@@ -24,9 +24,9 @@ namespace PedidoTela.Entidades.Logica
         private decimal totalPedir;
         private string uniMedida;
 
-        public PedUnicolorTotalCon() { }
+        public PedidoUnicolorTotal() { }
 
-        public PedUnicolorTotalCon(string codColor, string descColor, int tiendas, int exito, int cencosud, int sao, int comercioOrg, int rosado, int otros, int totalUnidades, decimal mCalculados, decimal kgCalculados, decimal totalPedir, string uniMedida, int idPedUnicolor)
+        public PedidoUnicolorTotal(string codColor, string descColor, int tiendas, int exito, int cencosud, int sao, int comercioOrg, int rosado, int otros, int totalUnidades, decimal mCalculados, decimal kgCalculados, decimal totalPedir, string uniMedida, int idPedUnicolor)
         {
             this.CodColor = codColor;
             this.DescColor = descColor;
