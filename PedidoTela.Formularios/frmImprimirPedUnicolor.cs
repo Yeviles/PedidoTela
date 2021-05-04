@@ -2,6 +2,7 @@
 using PedidoTela.Controlodores;
 using PedidoTela.Entidades.Logica;
 using System;
+using MaterialSkin;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -28,11 +29,13 @@ namespace PedidoTela.Formularios
 
         private void frmImprimirPedUnicolor_Load(object sender, EventArgs e)
         {
-            if (idSolTela != 0)
+            SkinManager.Theme = MaterialSkin.MaterialSkinManager.Themes.LIGHT;
+            SkinManager.ColorScheme = new ColorScheme(Primary.Blue900, Primary.Grey500, Primary.Grey200, Accent.Green100, TextShade.WHITE);
+
+            PedMontarUnicolor objPedUnicolor = control.getPedUnicolor(idSolTela);
+
+            if (objPedUnicolor.IdPedUnicolor != 0)
             {
-
-
-                PedMontarUnicolor objPedUnicolor = control.getPedUnicolor(idSolTela);
                 List<PedUnicolorInfoCon> listaInfoConsolidar = control.getPedUnicolorInfoCon(objPedUnicolor.IdPedUnicolor);
                 List<PedUnicolorTotalCon> listaTotalConsolidado = control.getPedUnicolorTotalCon(objPedUnicolor.IdPedUnicolor);
 

@@ -29,27 +29,26 @@ namespace PedidoTela.Formularios
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
             this.dgvInfoConsolidar = new System.Windows.Forms.DataGridView();
-            this.codColor = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.descripColor = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.tiendas = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.exito = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.cencosud = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.sao = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.comercioOrg = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.rosado = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.otros = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.totalUnidades = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.consumo = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.mCalculados = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.mReservados = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.maSolicitar = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.kgCalculados1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.lbInformacion = new System.Windows.Forms.Label();
             this.lbTotalconsolidado = new System.Windows.Forms.Label();
             this.dgvTotalConsolidado = new System.Windows.Forms.DataGridView();
+            this.codigoColor = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.desColor = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dataGridViewTextBoxColumn3 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dataGridViewTextBoxColumn4 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dataGridViewTextBoxColumn5 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dataGridViewTextBoxColumn6 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dataGridViewTextBoxColumn7 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dataGridViewTextBoxColumn8 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dataGridViewTextBoxColumn9 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dataGridViewTextBoxColumn10 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.mCalcu = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.kgCalculados = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.totalaPedir = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.undMedidaTela = new System.Windows.Forms.DataGridViewComboBoxColumn();
             this.panel9 = new System.Windows.Forms.Panel();
             this.btnImprimir = new System.Windows.Forms.Button();
             this.lblConsecutivo = new System.Windows.Forms.Label();
@@ -80,20 +79,21 @@ namespace PedidoTela.Formularios
             this.cbxClase = new System.Windows.Forms.ComboBox();
             this.dtpFechaLlegada = new System.Windows.Forms.DateTimePicker();
             this.panel1 = new System.Windows.Forms.Panel();
-            this.codigoColor = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.desColor = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dataGridViewTextBoxColumn3 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dataGridViewTextBoxColumn4 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dataGridViewTextBoxColumn5 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dataGridViewTextBoxColumn6 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dataGridViewTextBoxColumn7 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dataGridViewTextBoxColumn8 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dataGridViewTextBoxColumn9 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dataGridViewTextBoxColumn10 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.mCalcu = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.kgCalculados = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.totalaPedir = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.undMedidaTela = new System.Windows.Forms.DataGridViewComboBoxColumn();
+            this.codColor = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.descripColor = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.tiendas = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.exito = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.cencosud = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.sao = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.comercioOrg = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.rosado = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.otros = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.totalUnidades = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.consumo = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.mCalculados = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.mReservados = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.maSolicitar = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.kgCalculados1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             ((System.ComponentModel.ISupportInitialize)(this.dgvInfoConsolidar)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dgvTotalConsolidado)).BeginInit();
             this.panel9.SuspendLayout();
@@ -108,14 +108,14 @@ namespace PedidoTela.Formularios
             this.dgvInfoConsolidar.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.dgvInfoConsolidar.AutoSizeRowsMode = System.Windows.Forms.DataGridViewAutoSizeRowsMode.DisplayedCells;
             this.dgvInfoConsolidar.BackgroundColor = System.Drawing.Color.White;
-            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle3.BackColor = System.Drawing.SystemColors.ScrollBar;
-            dataGridViewCellStyle3.Font = new System.Drawing.Font("Verdana", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle3.ForeColor = System.Drawing.Color.Navy;
-            dataGridViewCellStyle3.SelectionBackColor = System.Drawing.SystemColors.ScrollBar;
-            dataGridViewCellStyle3.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dgvInfoConsolidar.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle3;
+            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle1.BackColor = System.Drawing.SystemColors.ScrollBar;
+            dataGridViewCellStyle1.Font = new System.Drawing.Font("Verdana", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle1.ForeColor = System.Drawing.Color.Navy;
+            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.ScrollBar;
+            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dgvInfoConsolidar.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
             this.dgvInfoConsolidar.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgvInfoConsolidar.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.codColor,
@@ -149,96 +149,6 @@ namespace PedidoTela.Formularios
             this.dgvInfoConsolidar.CellEndEdit += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvInfoConsolidar_CellEndEdit);
             this.dgvInfoConsolidar.CellFormatting += new System.Windows.Forms.DataGridViewCellFormattingEventHandler(this.dgvInfoConsolidar_CellFormatting);
             // 
-            // codColor
-            // 
-            this.codColor.HeaderText = "Cod Color";
-            this.codColor.MinimumWidth = 8;
-            this.codColor.Name = "codColor";
-            // 
-            // descripColor
-            // 
-            this.descripColor.HeaderText = "Descripción Color";
-            this.descripColor.MinimumWidth = 8;
-            this.descripColor.Name = "descripColor";
-            // 
-            // tiendas
-            // 
-            this.tiendas.HeaderText = "Tiendas";
-            this.tiendas.MinimumWidth = 8;
-            this.tiendas.Name = "tiendas";
-            // 
-            // exito
-            // 
-            this.exito.HeaderText = "Éxito";
-            this.exito.MinimumWidth = 8;
-            this.exito.Name = "exito";
-            // 
-            // cencosud
-            // 
-            this.cencosud.HeaderText = "Cencosud";
-            this.cencosud.MinimumWidth = 8;
-            this.cencosud.Name = "cencosud";
-            // 
-            // sao
-            // 
-            this.sao.HeaderText = "SAO";
-            this.sao.MinimumWidth = 8;
-            this.sao.Name = "sao";
-            // 
-            // comercioOrg
-            // 
-            this.comercioOrg.HeaderText = "Comercio Org.";
-            this.comercioOrg.MinimumWidth = 8;
-            this.comercioOrg.Name = "comercioOrg";
-            // 
-            // rosado
-            // 
-            this.rosado.HeaderText = "Rosado";
-            this.rosado.MinimumWidth = 8;
-            this.rosado.Name = "rosado";
-            // 
-            // otros
-            // 
-            this.otros.HeaderText = "Otros";
-            this.otros.MinimumWidth = 8;
-            this.otros.Name = "otros";
-            // 
-            // totalUnidades
-            // 
-            this.totalUnidades.HeaderText = "Total Unidades";
-            this.totalUnidades.MinimumWidth = 8;
-            this.totalUnidades.Name = "totalUnidades";
-            // 
-            // consumo
-            // 
-            this.consumo.HeaderText = "Consumo";
-            this.consumo.MinimumWidth = 8;
-            this.consumo.Name = "consumo";
-            // 
-            // mCalculados
-            // 
-            this.mCalculados.HeaderText = "M Calculados";
-            this.mCalculados.MinimumWidth = 8;
-            this.mCalculados.Name = "mCalculados";
-            // 
-            // mReservados
-            // 
-            this.mReservados.HeaderText = "M Reservados";
-            this.mReservados.MinimumWidth = 8;
-            this.mReservados.Name = "mReservados";
-            // 
-            // maSolicitar
-            // 
-            this.maSolicitar.HeaderText = "M a Solicitar";
-            this.maSolicitar.MinimumWidth = 8;
-            this.maSolicitar.Name = "maSolicitar";
-            // 
-            // kgCalculados1
-            // 
-            this.kgCalculados1.HeaderText = "KG Calculados";
-            this.kgCalculados1.MinimumWidth = 8;
-            this.kgCalculados1.Name = "kgCalculados1";
-            // 
             // lbInformacion
             // 
             this.lbInformacion.AutoSize = true;
@@ -266,14 +176,14 @@ namespace PedidoTela.Formularios
             this.dgvTotalConsolidado.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.dgvTotalConsolidado.AutoSizeRowsMode = System.Windows.Forms.DataGridViewAutoSizeRowsMode.DisplayedCells;
             this.dgvTotalConsolidado.BackgroundColor = System.Drawing.Color.White;
-            dataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle4.BackColor = System.Drawing.SystemColors.ScrollBar;
-            dataGridViewCellStyle4.Font = new System.Drawing.Font("Verdana", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle4.ForeColor = System.Drawing.Color.Navy;
-            dataGridViewCellStyle4.SelectionBackColor = System.Drawing.SystemColors.ScrollBar;
-            dataGridViewCellStyle4.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle4.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dgvTotalConsolidado.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle4;
+            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle2.BackColor = System.Drawing.SystemColors.ScrollBar;
+            dataGridViewCellStyle2.Font = new System.Drawing.Font("Verdana", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle2.ForeColor = System.Drawing.Color.Navy;
+            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.SystemColors.ScrollBar;
+            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dgvTotalConsolidado.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle2;
             this.dgvTotalConsolidado.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgvTotalConsolidado.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.codigoColor,
@@ -306,6 +216,96 @@ namespace PedidoTela.Formularios
             this.dgvTotalConsolidado.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvTotalConsolidado_CellClick);
             this.dgvTotalConsolidado.CellEndEdit += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvTotalConsolidado_CellEndEdit);
             this.dgvTotalConsolidado.CellFormatting += new System.Windows.Forms.DataGridViewCellFormattingEventHandler(this.dgvTotalConsolidado_CellFormatting);
+            // 
+            // codigoColor
+            // 
+            this.codigoColor.HeaderText = "Cod Color";
+            this.codigoColor.MinimumWidth = 8;
+            this.codigoColor.Name = "codigoColor";
+            // 
+            // desColor
+            // 
+            this.desColor.HeaderText = "Descripción Color";
+            this.desColor.MinimumWidth = 8;
+            this.desColor.Name = "desColor";
+            // 
+            // dataGridViewTextBoxColumn3
+            // 
+            this.dataGridViewTextBoxColumn3.HeaderText = "Tiendas";
+            this.dataGridViewTextBoxColumn3.MinimumWidth = 8;
+            this.dataGridViewTextBoxColumn3.Name = "dataGridViewTextBoxColumn3";
+            // 
+            // dataGridViewTextBoxColumn4
+            // 
+            this.dataGridViewTextBoxColumn4.HeaderText = "Éxito";
+            this.dataGridViewTextBoxColumn4.MinimumWidth = 8;
+            this.dataGridViewTextBoxColumn4.Name = "dataGridViewTextBoxColumn4";
+            // 
+            // dataGridViewTextBoxColumn5
+            // 
+            this.dataGridViewTextBoxColumn5.HeaderText = "Cencosud";
+            this.dataGridViewTextBoxColumn5.MinimumWidth = 8;
+            this.dataGridViewTextBoxColumn5.Name = "dataGridViewTextBoxColumn5";
+            // 
+            // dataGridViewTextBoxColumn6
+            // 
+            this.dataGridViewTextBoxColumn6.HeaderText = "SAO";
+            this.dataGridViewTextBoxColumn6.MinimumWidth = 8;
+            this.dataGridViewTextBoxColumn6.Name = "dataGridViewTextBoxColumn6";
+            // 
+            // dataGridViewTextBoxColumn7
+            // 
+            this.dataGridViewTextBoxColumn7.HeaderText = "Comercio Org.";
+            this.dataGridViewTextBoxColumn7.MinimumWidth = 8;
+            this.dataGridViewTextBoxColumn7.Name = "dataGridViewTextBoxColumn7";
+            // 
+            // dataGridViewTextBoxColumn8
+            // 
+            this.dataGridViewTextBoxColumn8.HeaderText = "Rosado";
+            this.dataGridViewTextBoxColumn8.MinimumWidth = 8;
+            this.dataGridViewTextBoxColumn8.Name = "dataGridViewTextBoxColumn8";
+            // 
+            // dataGridViewTextBoxColumn9
+            // 
+            this.dataGridViewTextBoxColumn9.HeaderText = "Otros";
+            this.dataGridViewTextBoxColumn9.MinimumWidth = 8;
+            this.dataGridViewTextBoxColumn9.Name = "dataGridViewTextBoxColumn9";
+            // 
+            // dataGridViewTextBoxColumn10
+            // 
+            this.dataGridViewTextBoxColumn10.HeaderText = "Total Unidades";
+            this.dataGridViewTextBoxColumn10.MinimumWidth = 8;
+            this.dataGridViewTextBoxColumn10.Name = "dataGridViewTextBoxColumn10";
+            // 
+            // mCalcu
+            // 
+            this.mCalcu.HeaderText = "M Calculados";
+            this.mCalcu.MinimumWidth = 8;
+            this.mCalcu.Name = "mCalcu";
+            // 
+            // kgCalculados
+            // 
+            this.kgCalculados.HeaderText = "Kg Calculados";
+            this.kgCalculados.MinimumWidth = 8;
+            this.kgCalculados.Name = "kgCalculados";
+            // 
+            // totalaPedir
+            // 
+            this.totalaPedir.HeaderText = "Total a Pedir";
+            this.totalaPedir.MinimumWidth = 8;
+            this.totalaPedir.Name = "totalaPedir";
+            // 
+            // undMedidaTela
+            // 
+            this.undMedidaTela.HeaderText = "und Medida Tela";
+            this.undMedidaTela.Items.AddRange(new object[] {
+            "M",
+            "Kg",
+            "UND"});
+            this.undMedidaTela.MinimumWidth = 8;
+            this.undMedidaTela.Name = "undMedidaTela";
+            this.undMedidaTela.Resizable = System.Windows.Forms.DataGridViewTriState.True;
+            this.undMedidaTela.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic;
             // 
             // panel9
             // 
@@ -630,95 +630,95 @@ namespace PedidoTela.Formularios
             this.panel1.Size = new System.Drawing.Size(1374, 711);
             this.panel1.TabIndex = 139;
             // 
-            // codigoColor
+            // codColor
             // 
-            this.codigoColor.HeaderText = "Cod Color";
-            this.codigoColor.MinimumWidth = 8;
-            this.codigoColor.Name = "codigoColor";
+            this.codColor.HeaderText = "Cod Color";
+            this.codColor.MinimumWidth = 8;
+            this.codColor.Name = "codColor";
             // 
-            // desColor
+            // descripColor
             // 
-            this.desColor.HeaderText = "Descripción Color";
-            this.desColor.MinimumWidth = 8;
-            this.desColor.Name = "desColor";
+            this.descripColor.HeaderText = "Descripción Color";
+            this.descripColor.MinimumWidth = 8;
+            this.descripColor.Name = "descripColor";
             // 
-            // dataGridViewTextBoxColumn3
+            // tiendas
             // 
-            this.dataGridViewTextBoxColumn3.HeaderText = "Tiendas";
-            this.dataGridViewTextBoxColumn3.MinimumWidth = 8;
-            this.dataGridViewTextBoxColumn3.Name = "dataGridViewTextBoxColumn3";
+            this.tiendas.HeaderText = "Tiendas";
+            this.tiendas.MinimumWidth = 8;
+            this.tiendas.Name = "tiendas";
             // 
-            // dataGridViewTextBoxColumn4
+            // exito
             // 
-            this.dataGridViewTextBoxColumn4.HeaderText = "Éxito";
-            this.dataGridViewTextBoxColumn4.MinimumWidth = 8;
-            this.dataGridViewTextBoxColumn4.Name = "dataGridViewTextBoxColumn4";
+            this.exito.HeaderText = "Éxito";
+            this.exito.MinimumWidth = 8;
+            this.exito.Name = "exito";
             // 
-            // dataGridViewTextBoxColumn5
+            // cencosud
             // 
-            this.dataGridViewTextBoxColumn5.HeaderText = "Cencosud";
-            this.dataGridViewTextBoxColumn5.MinimumWidth = 8;
-            this.dataGridViewTextBoxColumn5.Name = "dataGridViewTextBoxColumn5";
+            this.cencosud.HeaderText = "Cencosud";
+            this.cencosud.MinimumWidth = 8;
+            this.cencosud.Name = "cencosud";
             // 
-            // dataGridViewTextBoxColumn6
+            // sao
             // 
-            this.dataGridViewTextBoxColumn6.HeaderText = "SAO";
-            this.dataGridViewTextBoxColumn6.MinimumWidth = 8;
-            this.dataGridViewTextBoxColumn6.Name = "dataGridViewTextBoxColumn6";
+            this.sao.HeaderText = "SAO";
+            this.sao.MinimumWidth = 8;
+            this.sao.Name = "sao";
             // 
-            // dataGridViewTextBoxColumn7
+            // comercioOrg
             // 
-            this.dataGridViewTextBoxColumn7.HeaderText = "Comercio Org.";
-            this.dataGridViewTextBoxColumn7.MinimumWidth = 8;
-            this.dataGridViewTextBoxColumn7.Name = "dataGridViewTextBoxColumn7";
+            this.comercioOrg.HeaderText = "Comercio Org.";
+            this.comercioOrg.MinimumWidth = 8;
+            this.comercioOrg.Name = "comercioOrg";
             // 
-            // dataGridViewTextBoxColumn8
+            // rosado
             // 
-            this.dataGridViewTextBoxColumn8.HeaderText = "Rosado";
-            this.dataGridViewTextBoxColumn8.MinimumWidth = 8;
-            this.dataGridViewTextBoxColumn8.Name = "dataGridViewTextBoxColumn8";
+            this.rosado.HeaderText = "Rosado";
+            this.rosado.MinimumWidth = 8;
+            this.rosado.Name = "rosado";
             // 
-            // dataGridViewTextBoxColumn9
+            // otros
             // 
-            this.dataGridViewTextBoxColumn9.HeaderText = "Otros";
-            this.dataGridViewTextBoxColumn9.MinimumWidth = 8;
-            this.dataGridViewTextBoxColumn9.Name = "dataGridViewTextBoxColumn9";
+            this.otros.HeaderText = "Otros";
+            this.otros.MinimumWidth = 8;
+            this.otros.Name = "otros";
             // 
-            // dataGridViewTextBoxColumn10
+            // totalUnidades
             // 
-            this.dataGridViewTextBoxColumn10.HeaderText = "Total Unidades";
-            this.dataGridViewTextBoxColumn10.MinimumWidth = 8;
-            this.dataGridViewTextBoxColumn10.Name = "dataGridViewTextBoxColumn10";
+            this.totalUnidades.HeaderText = "Total Unidades";
+            this.totalUnidades.MinimumWidth = 8;
+            this.totalUnidades.Name = "totalUnidades";
             // 
-            // mCalcu
+            // consumo
             // 
-            this.mCalcu.HeaderText = "M Calculados";
-            this.mCalcu.MinimumWidth = 8;
-            this.mCalcu.Name = "mCalcu";
+            this.consumo.HeaderText = "Consumo";
+            this.consumo.MinimumWidth = 8;
+            this.consumo.Name = "consumo";
             // 
-            // kgCalculados
+            // mCalculados
             // 
-            this.kgCalculados.HeaderText = "Kg Calculados";
-            this.kgCalculados.MinimumWidth = 8;
-            this.kgCalculados.Name = "kgCalculados";
+            this.mCalculados.HeaderText = "M Calculados";
+            this.mCalculados.MinimumWidth = 8;
+            this.mCalculados.Name = "mCalculados";
             // 
-            // totalaPedir
+            // mReservados
             // 
-            this.totalaPedir.HeaderText = "Total a Pedir";
-            this.totalaPedir.MinimumWidth = 8;
-            this.totalaPedir.Name = "totalaPedir";
+            this.mReservados.HeaderText = "M Reservados";
+            this.mReservados.MinimumWidth = 8;
+            this.mReservados.Name = "mReservados";
             // 
-            // undMedidaTela
+            // maSolicitar
             // 
-            this.undMedidaTela.HeaderText = "und Medida Tela";
-            this.undMedidaTela.Items.AddRange(new object[] {
-            "M",
-            "Kg",
-            "UND"});
-            this.undMedidaTela.MinimumWidth = 8;
-            this.undMedidaTela.Name = "undMedidaTela";
-            this.undMedidaTela.Resizable = System.Windows.Forms.DataGridViewTriState.True;
-            this.undMedidaTela.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic;
+            this.maSolicitar.HeaderText = "M a Solicitar";
+            this.maSolicitar.MinimumWidth = 8;
+            this.maSolicitar.Name = "maSolicitar";
+            // 
+            // kgCalculados1
+            // 
+            this.kgCalculados1.HeaderText = "KG Calculados";
+            this.kgCalculados1.MinimumWidth = 8;
+            this.kgCalculados1.Name = "kgCalculados1";
             // 
             // frmPedidoaMotarUnicolor
             // 
@@ -729,6 +729,7 @@ namespace PedidoTela.Formularios
             this.Controls.Add(this.panel1);
             this.Font = new System.Drawing.Font("Verdana", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.MaximizeBox = false;
             this.Name = "frmPedidoaMotarUnicolor";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Pedido a Motar Unicolor";
@@ -778,21 +779,6 @@ namespace PedidoTela.Formularios
         private System.Windows.Forms.TextBox textBox5;
         private System.Windows.Forms.TextBox textBox3;
         private System.Windows.Forms.Label lbTomarPedido;
-        private System.Windows.Forms.DataGridViewTextBoxColumn codColor;
-        private System.Windows.Forms.DataGridViewTextBoxColumn descripColor;
-        private System.Windows.Forms.DataGridViewTextBoxColumn tiendas;
-        private System.Windows.Forms.DataGridViewTextBoxColumn exito;
-        private System.Windows.Forms.DataGridViewTextBoxColumn cencosud;
-        private System.Windows.Forms.DataGridViewTextBoxColumn sao;
-        private System.Windows.Forms.DataGridViewTextBoxColumn comercioOrg;
-        private System.Windows.Forms.DataGridViewTextBoxColumn rosado;
-        private System.Windows.Forms.DataGridViewTextBoxColumn otros;
-        private System.Windows.Forms.DataGridViewTextBoxColumn totalUnidades;
-        private System.Windows.Forms.DataGridViewTextBoxColumn consumo;
-        private System.Windows.Forms.DataGridViewTextBoxColumn mCalculados;
-        private System.Windows.Forms.DataGridViewTextBoxColumn mReservados;
-        private System.Windows.Forms.DataGridViewTextBoxColumn maSolicitar;
-        private System.Windows.Forms.DataGridViewTextBoxColumn kgCalculados1;
         private System.Windows.Forms.Label lblConsecutivo;
         private System.Windows.Forms.Button btnImprimir;
         private System.Windows.Forms.DataGridViewTextBoxColumn codigoColor;
@@ -809,5 +795,20 @@ namespace PedidoTela.Formularios
         private System.Windows.Forms.DataGridViewTextBoxColumn kgCalculados;
         private System.Windows.Forms.DataGridViewTextBoxColumn totalaPedir;
         private System.Windows.Forms.DataGridViewComboBoxColumn undMedidaTela;
+        private System.Windows.Forms.DataGridViewTextBoxColumn codColor;
+        private System.Windows.Forms.DataGridViewTextBoxColumn descripColor;
+        private System.Windows.Forms.DataGridViewTextBoxColumn tiendas;
+        private System.Windows.Forms.DataGridViewTextBoxColumn exito;
+        private System.Windows.Forms.DataGridViewTextBoxColumn cencosud;
+        private System.Windows.Forms.DataGridViewTextBoxColumn sao;
+        private System.Windows.Forms.DataGridViewTextBoxColumn comercioOrg;
+        private System.Windows.Forms.DataGridViewTextBoxColumn rosado;
+        private System.Windows.Forms.DataGridViewTextBoxColumn otros;
+        private System.Windows.Forms.DataGridViewTextBoxColumn totalUnidades;
+        private System.Windows.Forms.DataGridViewTextBoxColumn consumo;
+        private System.Windows.Forms.DataGridViewTextBoxColumn mCalculados;
+        private System.Windows.Forms.DataGridViewTextBoxColumn mReservados;
+        private System.Windows.Forms.DataGridViewTextBoxColumn maSolicitar;
+        private System.Windows.Forms.DataGridViewTextBoxColumn kgCalculados1;
     }
 }
