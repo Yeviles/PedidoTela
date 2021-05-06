@@ -658,7 +658,15 @@ namespace PedidoTela.Controlodores
         }
         #endregion
 
+
         #region Pedido Unicolor
+        #region Encabezado
+        public bool consultarIdPedUnicolor(int idSolTelas)
+        {
+            D_PedidoUnicolor d_pedUnicolor = new D_PedidoUnicolor();
+            return d_pedUnicolor.consultarIdentificador(idSolTelas);
+        }
+       
         public PedidoAMontar getPedUnicolor(int idSolTela)
         {
            D_PedidoUnicolor d_pedUnicolor = new D_PedidoUnicolor();
@@ -676,61 +684,86 @@ namespace PedidoTela.Controlodores
             D_PedidoUnicolor d_pedUnicolor = new D_PedidoUnicolor();
             return d_pedUnicolor.ConsultarId(idSolTela);
         }
+        
+        public bool actualizarPedUnicolor(PedidoAMontar pedUnicolor)
+        {
+            D_PedidoUnicolor actuPedUnicolor = new D_PedidoUnicolor();
+            return (actuPedUnicolor.Actualizar(pedUnicolor) == "ok") ? true : false;
+        }
+        #endregion
+
+        #region Infomación a Consolidar
+
         /* se agrgar el primer detalle de la vista frmPedidoaMontarUnicolor*/
         public void addPedUnicolorInfoCon(PedidoMontarInformacion detalle)
         {
             D_PedidoUnicolorInfomacion d_infoConsolidar = new D_PedidoUnicolorInfomacion();
             d_infoConsolidar.Agregar(detalle);
         }
-        public void addPedUnicolorTotalCons(PedidoMontarTotal detalle)
-        {
-            D_PedidoUnicolorTotal d_totalConsolidar = new D_PedidoUnicolorTotal();
-            d_totalConsolidar.Agregar(detalle);
-        }
-        public bool consultarIdPedUnicolor(int idSolTelas)
-        {
-            D_PedidoUnicolor d_pedUnicolor = new D_PedidoUnicolor();
-            return d_pedUnicolor.consultarIdentificador(idSolTelas);
-        }
-        public bool actualizarPedUnicolor(PedidoAMontar pedUnicolor)
-        {
-            D_PedidoUnicolor actuPedUnicolor = new D_PedidoUnicolor();
-            return (actuPedUnicolor.Actualizar(pedUnicolor) == "ok") ? true : false;
-        }
+        
         public List<int> getIdPedUnicolorInfoCon(int idPedUnicolor)
         {
             D_PedidoUnicolorInfomacion d_infoConsolidar = new D_PedidoUnicolorInfomacion();
             return d_infoConsolidar.ConsultarId(idPedUnicolor);
         }
-        public List<int> getIdPedUnicolorTotalCon(int idPedUnicolor)
-        {
-            D_PedidoUnicolorTotal d_totalConsolidar = new D_PedidoUnicolorTotal();
-            return d_totalConsolidar.ConsultarId(idPedUnicolor);
-        }
+        
         public bool actuPedUnicolorInfoCon(PedidoMontarInformacion infoConsolidar, int idDetalle)
         {
             D_PedidoUnicolorInfomacion objInfoConsolidar = new D_PedidoUnicolorInfomacion();
             return (objInfoConsolidar.Actualizar(infoConsolidar, idDetalle) == "ok") ? true : false;
         }
-        public bool actuaPedUnicolorTotalConsol(PedidoMontarTotal totalConsolidar, int idDetalle)
-        {
-            D_PedidoUnicolorTotal objToltalCon = new D_PedidoUnicolorTotal();
-            return (objToltalCon.Actualizar(totalConsolidar, idDetalle) == "ok") ? true : false;
-        }
+       
         public List<PedidoMontarInformacion> getPedUnicolorInfoCon(int idPedUnicolor)
         {
             D_PedidoUnicolorInfomacion d_pedUniInfoCon = new D_PedidoUnicolorInfomacion();
             return d_pedUniInfoCon.ConsultarInfoConsolidar(idPedUnicolor);
         }
+        
+        #endregion
+
+        #region Total consolidar
+        public void addPedUnicolorTotalCons(PedidoMontarTotal detalle)
+        {
+            D_PedidoUnicolorTotal d_totalConsolidar = new D_PedidoUnicolorTotal();
+            d_totalConsolidar.Agregar(detalle);
+        }
+        
+        public List<int> getIdPedUnicolorTotalCon(int idPedUnicolor)
+        {
+            D_PedidoUnicolorTotal d_totalConsolidar = new D_PedidoUnicolorTotal();
+            return d_totalConsolidar.ConsultarId(idPedUnicolor);
+        }
+       
+        public bool actuaPedUnicolorTotalConsol(PedidoMontarTotal totalConsolidar, int idDetalle)
+        {
+            D_PedidoUnicolorTotal objToltalCon = new D_PedidoUnicolorTotal();
+            return (objToltalCon.Actualizar(totalConsolidar, idDetalle) == "ok") ? true : false;
+        }
+        
         public List<PedidoMontarTotal> getPedUnicolorTotalCon(int idPedUnicolor)
         {
             D_PedidoUnicolorTotal d_pedUniTotalcon = new D_PedidoUnicolorTotal();
             return d_pedUniTotalcon.ConsultarTotalConsolidado(idPedUnicolor);
         }
+
+        #endregion
+
         #endregion
 
         #region Pedido Plano Preteñido
-        
+
+        #region Encabezado
+        /// <summary>
+        /// Obtiene la información almacenada referente a la vista frmPedidoMontarPreteñido
+        /// </summary>
+        /// <param name="idSolTela">Id de la solicitud de telas.</param>
+        /// <returns>Retorna un objeto de tipo PedidoAMontar.</returns>
+        public PedidoAMontar getPedidoPlano(int idSolTela)
+        {
+            D_PedidoPlanoPretenido d_pedidoPlano = new D_PedidoPlanoPretenido();
+            return d_pedidoPlano.Consultar(idSolTela);
+        }
+
         /// <summary>
         /// Permite consultar si el ensayo o referencia ya se encuentra alamacenado.
         /// </summary>
@@ -740,6 +773,11 @@ namespace PedidoTela.Controlodores
         {
             D_PedidoPlanoPretenido d_pedidoPlano = new D_PedidoPlanoPretenido();
             return d_pedidoPlano.consultarIdentificador(prmIdSolicitudTelas);
+        }
+        public int getIdPedplano(int idSolTela)
+        {
+            D_PedidoPlanoPretenido d_pedPlano = new D_PedidoPlanoPretenido();
+            return d_pedPlano.ConsultarId(idSolTela);
         }
 
         /// <summary>
@@ -763,7 +801,90 @@ namespace PedidoTela.Controlodores
             D_PedidoPlanoPretenido d_pedidoPlano = new D_PedidoPlanoPretenido();
             return (d_pedidoPlano.Agregar(prmPedidoPlano) == "ok") ? true : false;
         }
+        #endregion
 
+        #region Información a Consolidar
+        /// <summary>
+        /// Devuelve una lista de enteros, que representa todos los detalles guardados para un ensayo o referencia específica.
+        /// </summary>
+        /// <param name="prmIdPedidoPlano"></param>
+        /// <returns>Retorna una lista de enteros.</returns>
+        public List<int> getIdPedPlanoInformacion(int prmIdPedidoPlano)
+        {
+            D_PedidoPlanoInformacion d_infoConsolidar = new D_PedidoPlanoInformacion();
+            return d_infoConsolidar.ConsultarId(prmIdPedidoPlano);
+        }
+
+        /// <summary>
+        /// Agrega cada una de las filas de DatagridView (dgvInfoConsolidar) 
+        /// </summary>
+        /// <param name="detalle">Objeto de tipo PedidoMontarTotal que representa la fial actual.</param>
+        public void addPedidoPlanoInfo(PedidoMontarInformacion detalle)
+        {
+            D_PedidoPlanoInformacion d_infoConsolidar = new D_PedidoPlanoInformacion();
+            d_infoConsolidar.Agregar(detalle);
+        }
+
+        /// <summary>
+        /// Actualiza los campos de la entidad cfc_spt_ped_plano_info, la cual representa el detalle de la primera dataGridView presentada en la vista frmPedidoMontarPreteñido.
+        /// </summary>
+        /// <param name="prmInfoConsolidar"></param>
+        /// <param name="idDetalle"></param>
+        /// <returns></returns>
+        public bool actualizarPedPlanoInformacion(PedidoMontarInformacion prmInfoConsolidar, int idDetalle)
+        {
+            D_PedidoPlanoInformacion objInfoConsolidar = new D_PedidoPlanoInformacion();
+            return (objInfoConsolidar.Actualizar(prmInfoConsolidar, idDetalle) == "ok") ? true : false;
+        }
+
+        public List<PedidoMontarInformacion> getPedidoPlanoInfo(int idPedUnicolor)
+        {
+            D_PedidoPlanoInformacion d_pedUniInfoCon = new D_PedidoPlanoInformacion();
+            return d_pedUniInfoCon.ConsultarInfoConsolidar(idPedUnicolor);
+        }
+        #endregion
+
+        #region Métodos Total a Consolidar 
+        /// <summary>
+        /// Devuelve una lista de enteros, que representa todos los detalles para un ensayo o referencia específico.
+        /// </summary>
+        /// <param name="prmIdPedidoPlano"></param>
+        /// <returns>Retorna una lista de enteros.</returns>
+        public List<int> getIdPedPlanoTotal(int prmIdPedidoPlano)
+        {
+            D_PedidoPlanoTotal d_totalConsolidar = new D_PedidoPlanoTotal();
+            return d_totalConsolidar.ConsultarId(prmIdPedidoPlano);
+        }
+
+        /// <summary>
+        /// Agrega cada una de las filas de DatagridView (dgvTotalConsolidar) 
+        /// </summary>
+        /// <param name="detalle">Objeto de tipo PedidoMontarTotal que representa la fila actual.</param>
+        public void addPedPlanoTotal(PedidoMontarTotal detalle)
+        {
+            D_PedidoPlanoTotal d_totalConsolidar = new D_PedidoPlanoTotal();
+            d_totalConsolidar.Agregar(detalle);
+        }
+
+        /// <summary>
+        /// Actualiza los campos de la entidad cfc_spt_ped_plano_total, la cual representa el detalle de la segunda dataGridView presentada en la vista frmPedidoMontarPreteñido.
+        /// </summary>
+        /// <param name="prmTotalConsolidar">Objeto de tipo PedidoMontarTotal.</param>
+        /// <param name="prmIdDetalle"></param>
+        /// <returns>Retorna True si ha actualizado correctamente la información, False de lo contrario.</returns>
+        public bool actualizarPedPedidoTotal(PedidoMontarTotal prmTotalConsolidar, int prmIdDetalle)
+        {
+            D_PedidoPlanoTotal d_totalConsolidar = new D_PedidoPlanoTotal();
+            return (d_totalConsolidar.Actualizar(prmTotalConsolidar, prmIdDetalle) == "ok") ? true : false;
+        }
+
+        public List<PedidoMontarTotal> getPedidoPlanoTotal(int idPedUnicolor)
+        {
+            D_PedidoPlanoTotal d_pedUniTotalcon = new D_PedidoPlanoTotal();
+            return d_pedUniTotalcon.ConsultarTotalConsolidado(idPedUnicolor);
+        }
+
+        #endregion
 
         #endregion
 
@@ -777,10 +898,25 @@ namespace PedidoTela.Controlodores
             D_Consolidado d_consolidado = new D_Consolidado();
             return d_consolidado.ConsultarMaxConsolidado();
         }
-        public bool agregarConsolidado(int prmIdsolicitud,  int prmConsolidado, string prmFecha, string prmEstado)
+        public int consultarMaxConsecutivoPedido()
+        {
+            D_Consolidado d_solicitud = new D_Consolidado();
+            return d_solicitud.consultarMaxconsecutivo();
+        }
+        public bool agregarConsecutivo(int prmIdsolicitud,  int prmConsecutivo, string prmFecha, string prmEstado)
         {
             D_Consolidado d_consolidado = new D_Consolidado();
-            return (d_consolidado.ActualizarConsolidado(prmIdsolicitud, prmConsolidado, prmFecha, prmEstado) == "ok") ? true : false;
+            return (d_consolidado.AgregarConsecutivo(prmIdsolicitud, prmConsecutivo, prmFecha, prmEstado) == "ok") ? true : false;
+        }
+        public bool agregarConsolidado(int prmIdsolicitud, int prmConsolidado)
+        {
+            D_Consolidado d_consolidado = new D_Consolidado();
+            return (d_consolidado.ActualizarConsolidado(prmIdsolicitud, prmConsolidado) == "ok") ? true : false;
+        }
+        public int consultarConsecutivoPedido(int prmIdSolicitud)
+        {
+            D_Consolidado d_solicitud = new D_Consolidado();
+            return (d_solicitud.consultarConsecutivoPedido(prmIdSolicitud));
         }
         #endregion
     }
