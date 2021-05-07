@@ -49,7 +49,8 @@ namespace PedidoTela.Formularios
             dtpFechaLlegada.Format = DateTimePickerFormat.Custom;
             dtpFechaLlegada.CustomFormat = "dd/MM/yyyy";
             IdSolTela = idSolTela;
-            Validaciones(DetalleSeleccionado, ContItemSeleccionado);
+            llenarListasolicitudes(DetalleSeleccionado);
+            Iniciar(DetalleSeleccionado, ContItemSeleccionado);
 
         }
         #endregion
@@ -105,24 +106,31 @@ namespace PedidoTela.Formularios
                 {
                     if (dgvInfoConsolidar.CurrentCell.Value != null && dgvInfoConsolidar.CurrentCell.Value.ToString().Trim() != "")
                     {
-                        if (dgvInfoConsolidar.CurrentCell.Value != null && dgvInfoConsolidar.CurrentCell.Value.ToString().Trim() != "")
-                        {
-                            decimal valor = decimal.Parse(dgvInfoConsolidar.CurrentCell.Value.ToString());
-                            decimal vfinal = Decimal.Round(valor, 2);
-                            dgvInfoConsolidar.CurrentCell.Value = valor;
+                        decimal valor = decimal.Parse(dgvInfoConsolidar.CurrentCell.Value.ToString());
+                        decimal vfinal = Decimal.Round(valor, 2);
+                        dgvInfoConsolidar.CurrentCell.Value = valor;
 
-                        }
-                        if (dgvInfoConsolidar.Rows[e.RowIndex].Cells[12].Value.ToString() == "")
+                        if (decimal.Parse(dgvInfoConsolidar.Rows[e.RowIndex].Cells[12].Value.ToString()) < decimal.Parse(dgvInfoConsolidar.Rows[e.RowIndex].Cells[11].Value.ToString()))
                         {
                             dgvInfoConsolidar.Rows[e.RowIndex].Cells[13].Value = decimal.Parse(dgvInfoConsolidar.Rows[e.RowIndex].Cells[11].Value.ToString()) - decimal.Parse(dgvInfoConsolidar.Rows[e.RowIndex].Cells[12].Value.ToString());
                         }
+                        else
+                        {
+                            dgvInfoConsolidar.Rows[e.RowIndex].Cells[13].Value = "";
+                            MessageBox.Show("El campo M Reservar no debe ser mayor al compo M Calculados", "Advertencia", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                        }
+
                     }
-                 
-                }
+                    else
+                    {
+                        dgvInfoConsolidar.Rows[e.RowIndex].Cells[13].Value = dgvInfoConsolidar.Rows[e.RowIndex].Cells[11].Value;
+                    }
+
+            }
                 catch
                 {
                     dgvInfoConsolidar.CurrentCell.Value = "";
-                    MessageBox.Show("Unicamente se permiten valores numéricos", "TTipo de dato no permitido", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    MessageBox.Show("Unicamente se permiten valores numéricos", "Tipo de dato no permitido", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 }
             }
         }
@@ -135,18 +143,15 @@ namespace PedidoTela.Formularios
                 {
                     if (dgvTotalConsolidado.CurrentCell.Value != null && dgvTotalConsolidado.CurrentCell.Value.ToString().Trim() != "")
                     {
-                        if (dgvTotalConsolidado.CurrentCell.Value != null && dgvTotalConsolidado.CurrentCell.Value.ToString().Trim() != "")
-                        {
-                            decimal valor = decimal.Parse(dgvTotalConsolidado.CurrentCell.Value.ToString());
-                            decimal vfinal = Decimal.Round(valor, 2);
-                            dgvTotalConsolidado.CurrentCell.Value = valor;
-                        }
+                        decimal valor = decimal.Parse(dgvTotalConsolidado.CurrentCell.Value.ToString());
+                        decimal vfinal = Decimal.Round(valor, 2);
+                        dgvTotalConsolidado.CurrentCell.Value = valor;                      
                     }
                 }
                 catch
                 {
                     dgvTotalConsolidado.CurrentCell.Value = "";
-                    MessageBox.Show("Unicamente se permiten valores numéricos", "TTipo de dato no permitido", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    MessageBox.Show("Unicamente se permiten valores numéricos", "Tipo de dato no permitido", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 }
             }
         }
@@ -229,32 +234,30 @@ namespace PedidoTela.Formularios
         /// <param name="e"></param>
         private void btnConfirmar_Click(object sender, EventArgs e)
         {
-            // Consulta el número máximo que representa el último Consolidado actualizado en la tabla cfc_spt_tipo_solicitud
-            int maxConsecutivo = control.consultarMaxConsolidado();
-           
+            int maxConsecutivo = control.consultarMaxConsecutivoPedido();
             // Se asignar valores para la fecha. 
             string fechaActual = DateTime.Now.ToString("dd/MM/yyyy");
-            
             // El estado que se le debe dar a solicitud cuando es confirmada
+
             string estado = "Radicado";
 
             if (id != 0)
             {
                 for (int i = 0; i < ListaIdSolicitudes.Count; i++)
                 {
-                    control.agregarConsolidado(ListaIdSolicitudes[i], maxConsecutivo + 1, fechaActual, estado);
+                    control.agregarConsecutivo(ListaIdSolicitudes[i], maxConsecutivo + 1, fechaActual, estado);
                 }
                 MessageBox.Show("La información se guardó con éxito. \n El estado se actualizó a Radicado.", "Información", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                
+
                 // Deshabilita los diferentes botones y demás contenido del formulario que se quiere que no sea modificado una vez se confirme la solicitud.
                 btnConfirmar.Enabled = false;
                 btnGrabar.Enabled = false;
-                pnlEmcabezado.Enabled = false;
+
                 dgvInfoConsolidar.ReadOnly = true;
                 dgvTotalConsolidado.ReadOnly = true;
 
                 //consulta el consecutivo generado y se muestra en la vista.
-                consecutivo = control.consultarConsecutivo(id);
+                consecutivo = control.consultarConsecutivoPedido(IdSolTela);
                 lblConsecutivo.Text = "Consecutivo: " + consecutivo;
             }
             else
@@ -391,51 +394,31 @@ namespace PedidoTela.Formularios
         #endregion
 
         #region Métodos
-
+        private void llenarListasolicitudes(List<MontajeTelaDetalle> prmLista)
+        {
+            for (int i = 0; i < prmLista.Count; i++)
+            {
+                ListaIdSolicitudes.Add(prmLista[i].IdSolTela);
+            }
+        }
         /// <summary>
         /// Se válida que en la lista (List<DetalleListaTela> listaSeleccionada) que llega al contructor por argumentos, tenga un atributo estado y que 
         /// este contenga valor de Solicitud de Inventario o Reserva Parcial, si cumple esta condición procede a llenar el encabezado  y las DataGridView de la vista actual.
         /// </summary>
         /// <param name="prmLista"> Lista de tipo DetalleListaTela, la cual representa las filas seleccionadas en el vista frmSolicitudListaTelas. </param>
         /// <param name="cont">Cantidad de filas que han sido seleccionadas en la vista frmSolicitudListaTelas.</param>
-        private void Validaciones(List<MontajeTelaDetalle> prmLista, int numfilasSeleccionadas)
+        private void Iniciar(List<MontajeTelaDetalle> prmLista, int numfilasSeleccionadas)
         {
-            int b = 0;
-
-            if (numfilasSeleccionadas >= 2)
+            Cargar();
+            // Bandera controlada en el método Cargar()
+            if (!this.bandera)
             {
-                for (int i = 0; i < prmLista.Count; i++)
-                {
-                    if (prmLista[i].Estado == "Solicitud Inventario" || prmLista[i].Estado == "Reserva parcial" || prmLista[i].Estado == "Por Analizar")
-                    {
-                        b += 1;
-                    }
-                }
-                if (b == prmLista.Count)
-                {
-                    this.Show();
-                    Cargar();
-                    // Bandera controlada en el método Cargar()
-                    if (!this.bandera)
-                    {
-                        //Carga el DataGridView (dgvInfoConsolidar) el cual pertenece a la sección de información a consolidar.
-                        cargarDgvInfoConsolidar(prmLista);
-                        //Carga el DataGridView (dgvTotalConsolidado) el cual pertenece a la sección de total consolidado.
-                        cargarDgvTotalConsolidar(prmLista);
-                    }
-                }
-                else
-                {
-                    MessageBox.Show("El estado de solicitud No corresponde a Solicitud de Inventario o Reserva Parcial.", "Advertencia", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                    this.Close();
-                }
-
+                //Carga el DataGridView (dgvInfoConsolidar) el cual pertenece a la sección de información a consolidar.
+                cargarDgvInfoConsolidar(prmLista);
+                //Carga el DataGridView (dgvTotalConsolidado) el cual pertenece a la sección de total consolidado.
+                cargarDgvTotalConsolidar(prmLista);
             }
-            else
-            {
-                MessageBox.Show("Por favor seleccione al menos dos items.", "Advertencia", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                this.Close();
-            }
+            
         }
         
         private void cargarDgvInfoConsolidar(List<MontajeTelaDetalle> prmLista)
@@ -619,7 +602,7 @@ namespace PedidoTela.Formularios
             int maxConsolidado = control.consultarMaxConsolidado();
             for (int i = 0; i < ListaIdSolicitudes.Count; i++)
             {
-                control.agregarConsolidado(ListaIdSolicitudes[i], maxConsolidado + 1, "","");
+                control.agregarConsolidado(ListaIdSolicitudes[i], maxConsolidado + 1);
             }
 
         }

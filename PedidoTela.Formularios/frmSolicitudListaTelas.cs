@@ -314,6 +314,16 @@ namespace PedidoTela.Formularios
                     objInfo.FechaSolTelas = dgvSolicitudTelas.Rows[i].Cells[25].Value.ToString();
                     objInfo.Estado = dgvSolicitudTelas.Rows[i].Cells[26].Value.ToString();
                     objInfo.FechaEstado = dgvSolicitudTelas.Rows[i].Cells[27].Value.ToString();
+                    objInfo.CodigoH1 = Detalle[i].CodigoH1;
+                    objInfo.DescripcionH1 = Detalle[i].DescripcionH1.ToString();
+                    objInfo.CodigoH2 = Detalle[i].CodigoH2;
+                    objInfo.DescripcionH2 = Detalle[i].DescripcionH2.ToString();
+                    objInfo.CodigoH3 = Detalle[i].CodigoH3;
+                    objInfo.DescripcionH3 = Detalle[i].DescripcionH3.ToString();
+                    objInfo.CodigoH4 = Detalle[i].CodigoH4;
+                    objInfo.DescripcionH4 = Detalle[i].DescripcionH4.ToString();
+                    objInfo.CodigoH5 = Detalle[i].CodigoH5;
+                    objInfo.DescripcionH5 = Detalle[i].DescripcionH5.ToString();
                     objInfo.Tiendas = Detalle[i].Tiendas.ToString();
                     objInfo.Exito = Detalle[i].Exito.ToString();
                     objInfo.Cencosud = Detalle[i].Cencosud.ToString();

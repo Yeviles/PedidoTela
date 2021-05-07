@@ -44,7 +44,7 @@ namespace PedidoTela.Formularios
         }
         #endregion
 
-        #region Método inicia de carga
+        #region Método inicial de carga
         private void frmSolicitudPlanoPretenido_Load(object sender, EventArgs e)
         {
             SkinManager.Theme = MaterialSkin.MaterialSkinManager.Themes.LIGHT;
