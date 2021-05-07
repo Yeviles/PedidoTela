@@ -63,8 +63,11 @@ namespace PedidoTela.Formularios
                 {
                     for (int i = 0; i < dgvTotalConsolidado.RowCount; i++)
                     {
-                        decimal valor = decimal.Parse(dgvInfoConsolidar.Rows[i].Cells[15].Value.ToString()) / decimal.Parse(txtRendimiento.Text.Trim());
-                        dgvInfoConsolidar.Rows[i].Cells[16].Value = Decimal.Round(valor, 2);
+                        if (dgvInfoConsolidar.Rows[i].Cells[15].Value != null && dgvInfoConsolidar.Rows[i].Cells[15].Value.ToString() != "") {
+                            decimal mSolicitar = decimal.Parse(dgvInfoConsolidar.Rows[i].Cells[15].Value.ToString());
+                            decimal rendimiento = decimal.Parse(txtRendimiento.Text.Trim());
+                            dgvInfoConsolidar.Rows[i].Cells[16].Value = calcularKgCalculados(mSolicitar, rendimiento);
+                        }
                     }
                 }
                 calcularTotalesPorColores();
@@ -119,23 +122,109 @@ namespace PedidoTela.Formularios
 
         private void dgvInfoConsolidar_CellEndEdit(object sender, DataGridViewCellEventArgs e)
         {
-            if (e.ColumnIndex == 14)
+            if (e.ColumnIndex == 12) //Cuando cambia el consumo [12] cambia M Calculados [13]
             {
                 try
                 {
                     if (dgvInfoConsolidar.CurrentCell.Value != null && dgvInfoConsolidar.CurrentCell.Value.ToString().Trim() != "")
                     {
-                        decimal valor = decimal.Parse(dgvInfoConsolidar.Rows[e.RowIndex].Cells[13].Value.ToString()) - decimal.Parse(dgvInfoConsolidar.Rows[e.RowIndex].Cells[14].Value.ToString());
-                        dgvInfoConsolidar.Rows[e.RowIndex].Cells[15].Value = decimal.Round(valor, 2);
+                        dgvInfoConsolidar.CurrentCell.Value = dgvInfoConsolidar.CurrentCell.Value.ToString().Replace(",", ".");
+                        dgvInfoConsolidar.CurrentCell.Value = Regex.Replace(dgvInfoConsolidar.CurrentCell.Value.ToString(), @"[^0-9.]", "");
 
-                        if (txtRendimiento.Text.Trim() != "")
+                        if (dgvInfoConsolidar.CurrentCell.Value != null && dgvInfoConsolidar.CurrentCell.Value.ToString().Trim() != "")
                         {
-                            decimal rendimiento = decimal.Parse(txtRendimiento.Text);
-                            dgvInfoConsolidar.Rows[e.RowIndex].Cells[16].Value = decimal.Round(valor/rendimiento, 2);
+                            decimal consumo = decimal.Parse(dgvInfoConsolidar.CurrentCell.Value.ToString());
+                            int totalUnidades = int.Parse(dgvInfoConsolidar.Rows[e.RowIndex].Cells[11].Value.ToString());
+                            dgvInfoConsolidar.Rows[e.RowIndex].Cells[13].Value = calcularMCalculados(consumo, totalUnidades);
+
+
+                            // cuando cambia M Calculados [13] se actualiza M Solicitar [15]
+                            if (dgvInfoConsolidar.Rows[e.RowIndex].Cells[13].Value != null && dgvInfoConsolidar.Rows[e.RowIndex].Cells[13].Value.ToString().Trim() != "")
+                            {
+                                decimal mCalculados = decimal.Parse(dgvInfoConsolidar.Rows[e.RowIndex].Cells[13].Value.ToString());
+
+                                if (dgvInfoConsolidar.Rows[e.RowIndex].Cells[14].Value != null && dgvInfoConsolidar.Rows[e.RowIndex].Cells[14].Value.ToString() != "")
+                                {
+                                    decimal mReservados = decimal.Parse(dgvInfoConsolidar.Rows[e.RowIndex].Cells[14].Value.ToString());
+                                    dgvInfoConsolidar.Rows[e.RowIndex].Cells[15].Value = calcularMSolicitar(mCalculados, mReservados);
+                                }
+                                else
+                                {
+                                    dgvInfoConsolidar.Rows[e.RowIndex].Cells[15].Value = mCalculados;
+                                }
+                            }
+                            else
+                            {
+                                dgvInfoConsolidar.Rows[e.RowIndex].Cells[15].Value = "";
+                            }
+
                         }
-                        calcularTotalesPorColores();
+                    }
+                    else
+                    {
+                        dgvInfoConsolidar.Rows[e.RowIndex].Cells[16].Value = "";
+                        dgvInfoConsolidar.Rows[e.RowIndex].Cells[13].Value = "";
+                        dgvInfoConsolidar.Rows[e.RowIndex].Cells[15].Value = "";
+                    }
+                }
+                catch (Exception ex)
+                {
+                    dgvInfoConsolidar.CurrentCell.Value = "";
+                    MessageBox.Show("Tipo de dato no permitido\nSólo se permiten valores numéricos", "Advertencia", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                }
+            }
+            else if (e.ColumnIndex == 13) // cuando cambia M Calculados [13] se actualiza M Solicitar [15]
+            {
+                if (dgvInfoConsolidar.CurrentCell.Value != null && dgvInfoConsolidar.CurrentCell.Value.ToString().Trim() != "")
+                {
+                    decimal mCalculados = decimal.Parse(dgvInfoConsolidar.Rows[e.RowIndex].Cells[13].Value.ToString());
+
+                    if (dgvInfoConsolidar.Rows[e.RowIndex].Cells[14].Value != null && dgvInfoConsolidar.Rows[e.RowIndex].Cells[14].Value.ToString() != "")
+                    {
+                        decimal mReservados = decimal.Parse(dgvInfoConsolidar.Rows[e.RowIndex].Cells[14].Value.ToString());
+                        dgvInfoConsolidar.Rows[e.RowIndex].Cells[15].Value = calcularMSolicitar(mCalculados, mReservados);
                     }
                     else {
+                        dgvInfoConsolidar.Rows[e.RowIndex].Cells[15].Value = mCalculados;
+                    }
+                }
+                else {
+                    dgvInfoConsolidar.Rows[e.RowIndex].Cells[15].Value = "";
+                }
+            }
+            else if (e.ColumnIndex == 14) // cuando cambia M Reservados [14] cambia el M Solicitar [15]
+            {
+                try
+                {
+                    if (dgvInfoConsolidar.CurrentCell.Value != null && dgvInfoConsolidar.CurrentCell.Value.ToString().Trim() != "")
+                    {
+                        if (dgvInfoConsolidar.Rows[e.RowIndex].Cells[13].Value != null && dgvInfoConsolidar.Rows[e.RowIndex].Cells[13].Value.ToString() != "")
+                        {
+                            decimal mReservados = decimal.Parse(dgvInfoConsolidar.CurrentCell.Value.ToString());
+                            decimal mCalculados = decimal.Parse(dgvInfoConsolidar.Rows[e.RowIndex].Cells[13].Value.ToString());
+                            if (mCalculados >= mReservados) {
+                                decimal mSolicitar = calcularMSolicitar(mCalculados, mReservados); ;
+                                dgvInfoConsolidar.Rows[e.RowIndex].Cells[15].Value = mSolicitar;
+
+                                if (txtRendimiento.Text.Trim() != "")
+                                {
+                                    decimal rendimiento = decimal.Parse(txtRendimiento.Text);
+                                    dgvInfoConsolidar.Rows[e.RowIndex].Cells[16].Value = decimal.Round(mSolicitar / rendimiento, 2);
+                                }
+                            }
+                            else
+                            {
+                                dgvInfoConsolidar.CurrentCell.Value = "";
+                                MessageBox.Show("M Reservados no puede ser mayor a M Calculados", "Advertencia", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                            }
+                        }
+                        else {
+                            dgvInfoConsolidar.CurrentCell.Value = "";
+                            MessageBox.Show("Por favor ingrese el consumo", "Advertencia", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                        }
+                    }
+                    else
+                    {
                         dgvInfoConsolidar.Rows[e.RowIndex].Cells[16].Value = "";
                     }
                 }
@@ -145,6 +234,7 @@ namespace PedidoTela.Formularios
                     MessageBox.Show("Tipo de dato no permitido\nSólo se permiten valores numéricos", "Advertencia", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 }
             }
+            calcularTotalesPorColores();
         }
 
         private void dgvTotalConsolidado_CellEndEdit(object sender, DataGridViewCellEventArgs e)
@@ -196,7 +286,7 @@ namespace PedidoTela.Formularios
             }
         }
 
-        private void btnGrabar_Click(object sender, EventArgs e)
+        private void btnGrabar_Click(object sender, EventArgs e) 
         {
             if (cbxClase.SelectedIndex != -1)
             {
@@ -210,60 +300,64 @@ namespace PedidoTela.Formularios
                             {
                                 if (dgvInfoConsolidar.RowCount > 0 && dgvTotalConsolidado.RowCount > 0)
                                 {
-                                    if (!validarValoresReserva())
-                                    {
-                                        if (!validarTotalAPedir())
+                                    if (!validarValoresConsumo()) {
+                                        if (!validarValoresReserva())
                                         {
-
-                                            if (!validarUnidadTotal())
+                                            if (!validarTotalAPedir())
                                             {
-                                                PedidoAMontar pedido = new PedidoAMontar();
-                                                pedido.Id = id;
-                                                pedido.Tela = txtNomTela.Text.Trim();
-                                                pedido.Disenador = txtDisenador.Text.Trim();
-                                                pedido.Rendimiento = decimal.Parse(txtRendimiento.Text.Trim());
-                                                pedido.EnsayoReferencia = txtEnsayoRef.Text.Trim();
-                                                pedido.DescripcionPrenda = txtDesPrenda.Text.Trim();
-                                                pedido.Clase = cbxClase.SelectedItem.ToString();
-                                                pedido.TipoMarcacion = ((Objeto)cbxTipoMarcacion.SelectedItem).Nombre;
-                                                pedido.Rendimiento = decimal.Parse(txtRendimiento.Text.Trim());
-                                                pedido.AnalistasCortesB = txtAnalista.Text.Trim();
-                                                pedido.FechaLlegada = dtpFechaLlegada.Value.ToString("dd/MM/yyyy");
-                                                pedido.IdSolicitud = idSolicitud;
-                                                if (control.existePedidoEstampado(idSolicitud))
+
+                                                if (!validarUnidadTotal())
                                                 {
-                                                    control.actualizarPedidoEstampado(pedido);
+                                                    PedidoAMontar pedido = new PedidoAMontar();
+                                                    pedido.Id = id;
+                                                    pedido.Tela = txtNomTela.Text.Trim();
+                                                    pedido.Disenador = txtDisenador.Text.Trim();
+                                                    pedido.Rendimiento = decimal.Parse(txtRendimiento.Text.Trim());
+                                                    pedido.EnsayoReferencia = txtEnsayoRef.Text.Trim();
+                                                    pedido.DescripcionPrenda = txtDesPrenda.Text.Trim();
+                                                    pedido.Clase = cbxClase.SelectedItem.ToString();
+                                                    pedido.TipoMarcacion = ((Objeto)cbxTipoMarcacion.SelectedItem).Nombre;
+                                                    pedido.Rendimiento = decimal.Parse(txtRendimiento.Text.Trim());
+                                                    pedido.AnalistasCortesB = txtAnalista.Text.Trim();
+                                                    pedido.FechaLlegada = dtpFechaLlegada.Value.ToString("dd/MM/yyyy");
+                                                    pedido.IdSolicitud = idSolicitud;
+                                                    if (control.existePedidoEstampado(idSolicitud))
+                                                    {
+                                                        control.actualizarPedidoEstampado(pedido);
+                                                    }
+                                                    else
+                                                    {
+                                                        control.addPedidoEstampado(pedido);
+                                                        pedido.Id = control.getIdPedidoEstampado(idSolicitud);
+                                                    }
+                                                    if (pedido.Id != 0)
+                                                    {
+                                                        control.eliminarPedidoEstampadoTotal(pedido.Id);
+                                                        control.eliminarPedidoEstampadoInformacion(pedido.Id);
+                                                        guardarInformacion(pedido.Id);
+                                                        guardarTotal(pedido.Id);
+                                                    }
+                                                    //Agrega el Consolidado.
+                                                    AgregarConsolidado();
+
+                                                    MessageBox.Show("Pedido Estampado se guardó con éxito.", "Información", MessageBoxButtons.OK, MessageBoxIcon.Information);
                                                 }
                                                 else
                                                 {
-                                                    control.addPedidoEstampado(pedido);
-                                                    pedido.Id = control.getIdPedidoEstampado(idSolicitud);
+                                                    MessageBox.Show("Por favor seleccione los valores para la columna: Unidad medida tela.", "Advertencia", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                                                 }
-                                                if (pedido.Id != 0)
-                                                {
-                                                    control.eliminarPedidoEstampadoTotal(pedido.Id);
-                                                    control.eliminarPedidoEstampadoInformacion(pedido.Id);
-                                                    guardarInformacion(pedido.Id);
-                                                    guardarTotal(pedido.Id);
-                                                }
-                                                //Agrega el Consolidado.
-                                                //AgregarConsolidado();
-
-                                                MessageBox.Show("Pedido Estampado se guardó con éxito.", "Información", MessageBoxButtons.OK, MessageBoxIcon.Information);
                                             }
                                             else
                                             {
-                                                MessageBox.Show("Por favor seleccione los valores para la columna: Unidad medida tela.", "Advertencia", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                                                MessageBox.Show("Por favor ingrese los valores para la columna: Total a pedir.", "Advertencia", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                                             }
                                         }
                                         else
                                         {
-                                            MessageBox.Show("Por favor ingrese los valores para la columna: Total a pedir.", "Advertencia", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                                            MessageBox.Show("Por favor ingrese los valores para la columna: M Reservados.", "Advertencia", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                                         }
-                                    }
-                                    else
-                                    {
-                                        MessageBox.Show("Por favor ingrese los valores para la columna: M Reservados.", "Advertencia", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                                    } else {
+                                        MessageBox.Show("Por favor ingrese los valores para la columna: Consumo.", "Advertencia", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                                     }
                                 }
                             }
@@ -342,8 +436,8 @@ namespace PedidoTela.Formularios
                     dgvInfoConsolidar.Rows.Add(
                         prmLista[i].Vte.ToString(),
                         prmLista[i].DesColor.ToString(),
-                        prmLista[i].RefTela.ToString(),
-                        prmLista[i].DesTela.ToString(),
+                        prmLista[i].CodFondo.ToString(),
+                        prmLista[i].Fondo.ToString(),
                         prmLista[i].Tiendas.ToString(),
                         prmLista[i].Exito.ToString(),
                         prmLista[i].Cencosud.ToString(),
@@ -421,25 +515,36 @@ namespace PedidoTela.Formularios
 
             if (totales.Count != 0)
             {
-                dgvTotalConsolidado.Rows.Clear();
+                //Si hay más filas en total consolidado que colores se eliminan filas
+                if (totales.Count < dgvTotalConsolidado.Rows.Count) {
+                    for (int i = totales.Count; i < dgvTotalConsolidado.Rows.Count; i++) {
+                        dgvTotalConsolidado.Rows.RemoveAt(i);
+                    }
+                }//Si hay más colores que filas en total consolidado se agregan filas
+                else if (totales.Count > dgvTotalConsolidado.Rows.Count)
+                {
+                    for (int i = dgvTotalConsolidado.Rows.Count; i < totales.Count; i++)
+                    {
+                        dgvTotalConsolidado.Rows.Add();
+                    }
+                }
+                //Se agrega la información en las filas
                 for (int i = 0; i < totales.Count; i++)
                 {
-                    dgvTotalConsolidado.Rows.Add(
-                        totales[i].CodidoColor,
-                        totales[i].DescripcionColor,
-                        totales[i].Fondo,
-                        totales[i].DescripcionFondo,
-                        totales[i].Tiendas.ToString(),
-                        totales[i].Exito.ToString(),
-                        totales[i].Cencosud.ToString(),
-                        totales[i].Sao.ToString(),
-                        totales[i].ComercioOrg.ToString(),
-                        totales[i].Rosado.ToString(),
-                        totales[i].Otros.ToString(),
-                        totales[i].TotalUnidades.ToString(),
-                        totales[i].MCalculados.ToString(),
-                        totales[i].KgCalculados.ToString()
-                    );
+                    dgvTotalConsolidado.Rows[i].Cells[0].Value = totales[i].CodidoColor;
+                    dgvTotalConsolidado.Rows[i].Cells[1].Value = totales[i].DescripcionColor.ToUpper();
+                    dgvTotalConsolidado.Rows[i].Cells[2].Value = totales[i].Fondo;
+                    dgvTotalConsolidado.Rows[i].Cells[3].Value = totales[i].DescripcionFondo.ToUpper();
+                    dgvTotalConsolidado.Rows[i].Cells[4].Value = totales[i].Tiendas.ToString();
+                    dgvTotalConsolidado.Rows[i].Cells[5].Value = totales[i].Exito.ToString();
+                    dgvTotalConsolidado.Rows[i].Cells[6].Value = totales[i].Cencosud.ToString();
+                    dgvTotalConsolidado.Rows[i].Cells[7].Value = totales[i].Sao.ToString();
+                    dgvTotalConsolidado.Rows[i].Cells[8].Value = totales[i].ComercioOrg.ToString();
+                    dgvTotalConsolidado.Rows[i].Cells[9].Value = totales[i].Rosado.ToString();
+                    dgvTotalConsolidado.Rows[i].Cells[10].Value = totales[i].Otros.ToString();
+                    dgvTotalConsolidado.Rows[i].Cells[11].Value = totales[i].TotalUnidades.ToString();
+                    dgvTotalConsolidado.Rows[i].Cells[12].Value = totales[i].MCalculados.ToString();
+                    dgvTotalConsolidado.Rows[i].Cells[13].Value = totales[i].KgCalculados.ToString();
                 }
             }
             else
@@ -448,6 +553,18 @@ namespace PedidoTela.Formularios
             }
         }
 
+        private bool validarValoresConsumo()
+        {
+            bool vacio = false;
+            foreach (DataGridViewRow row in dgvInfoConsolidar.Rows)
+            {
+                if (row.Cells[12].Value == null || row.Cells[12].Value == "")
+                {
+                    vacio = true;
+                }
+            }
+            return vacio;
+        }
         private bool validarValoresReserva() {
             bool vacio = false;
             foreach (DataGridViewRow row in dgvInfoConsolidar.Rows)
@@ -600,6 +717,20 @@ namespace PedidoTela.Formularios
                 total.UnidadMedida = row.Cells[15].Value.ToString();
                 control.addPedidoEstampadoTotal(total);
             }
+        }
+
+        private decimal calcularMCalculados(decimal consumo, int totalUnidades) {
+            return decimal.Round(consumo * totalUnidades * decimal.Parse("1.10"), 2);
+        }
+
+        private decimal calcularMSolicitar(decimal mCalculados, decimal mReservados)
+        {
+            return decimal.Round(mCalculados - mReservados, 2);
+        }
+
+        private decimal calcularKgCalculados(decimal mSolicitar, decimal rendimiento)
+        {
+            return decimal.Round(mSolicitar / rendimiento, 2);
         }
 
         #endregion
