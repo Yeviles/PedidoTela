@@ -105,7 +105,7 @@ namespace PedidoTela.Formularios
                 try
                 {
                     if (dgvInfoConsolidar.CurrentCell.Value != null && dgvInfoConsolidar.CurrentCell.Value.ToString().Trim() != "")
-                    {                     
+                    {
                         decimal valor = decimal.Parse(dgvInfoConsolidar.CurrentCell.Value.ToString());
                         decimal vfinal = Decimal.Round(valor, 2);
                         dgvInfoConsolidar.CurrentCell.Value = valor;
@@ -119,10 +119,14 @@ namespace PedidoTela.Formularios
                             dgvInfoConsolidar.Rows[e.RowIndex].Cells[13].Value = "";
                             MessageBox.Show("El campo M Reservar no debe ser mayor al compo M Calculados", "Advertencia", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                         }
-                        
+
                     }
-                 
-                }
+                    else
+                    {
+                        dgvInfoConsolidar.Rows[e.RowIndex].Cells[13].Value = dgvInfoConsolidar.Rows[e.RowIndex].Cells[11].Value;
+                    }
+
+            }
                 catch
                 {
                     dgvInfoConsolidar.CurrentCell.Value = "";

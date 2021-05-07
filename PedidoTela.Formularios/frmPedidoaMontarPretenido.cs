@@ -651,6 +651,12 @@ namespace PedidoTela.Formularios
             return detalle;
         }
 
+        private void btnImprimir_Click(object sender, EventArgs e)
+        {
+            frmImprimirPedidoPlano frmPedUnicolor = new frmImprimirPedidoPlano(control, IdSolicitudTelas);
+            frmPedUnicolor.Show();
+        }
+
         /// <summary>
         /// Válida que algunos campos requeridos del DatagridView (dgvInfoConsolidar) no esten vacíos.
         /// </summary>
