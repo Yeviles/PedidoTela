@@ -9,8 +9,10 @@ namespace PedidoTela.Entidades.Logica
     public class PedidoMontarTotal
     {
         private int idPedidoAmontar;
-        private string codidoColor;
+        private string codigoColor;
         private string descripcionColor;
+        private string fondo;
+        private string descripcionFondo;
         private int codigoH1;
         private string descripcionH1;
         private int codigoH2;
@@ -36,11 +38,13 @@ namespace PedidoTela.Entidades.Logica
 
         public PedidoMontarTotal() { }
 
-        public PedidoMontarTotal(int idPedidoAmontar, string codidoColor, string descripcionColor, int codigoH1, string descripcionH1, int codigoH2, string descripcionH2, int codigoH3, string descripcionH3, int codigoH4, string descripcionH4, int codigoH5, string descripcionH5, int tiendas, int exito, int cencosud, int sao, int comercioOrg, int rosado, int otros, int totalUnidades, decimal mCalculados, decimal kgCalculados, decimal totalPedir, string unidadMedida)
+        public PedidoMontarTotal(int idPedidoAmontar, string codigoColor, string descripcionColor, string fondo, string descripcionFondo, int codigoH1, string descripcionH1, int codigoH2, string descripcionH2, int codigoH3, string descripcionH3, int codigoH4, string descripcionH4, int codigoH5, string descripcionH5, int tiendas, int exito, int cencosud, int sao, int comercioOrg, int rosado, int otros, int totalUnidades, decimal mCalculados, decimal kgCalculados, decimal totalPedir, string unidadMedida)
         {
             this.IdPedidoAmontar = idPedidoAmontar;
-            this.CodidoColor = codidoColor;
+            this.CodidoColor = codigoColor;
             this.DescripcionColor = descripcionColor;
+            this.Fondo = fondo;
+            this.DescripcionFondo = descripcionFondo;
             this.CodigoH1 = codigoH1;
             this.DescripcionH1 = descripcionH1;
             this.CodigoH2 = codigoH2;
@@ -66,8 +70,10 @@ namespace PedidoTela.Entidades.Logica
         }
 
         public int IdPedidoAmontar { get => idPedidoAmontar; set => idPedidoAmontar = value; }
-        public string CodidoColor { get => codidoColor; set => codidoColor = value; }
+        public string CodidoColor { get => codigoColor; set => codigoColor = value; }
         public string DescripcionColor { get => descripcionColor; set => descripcionColor = value; }
+        public string Fondo { get => fondo; set => fondo = value; }
+        public string DescripcionFondo { get => descripcionFondo; set => descripcionFondo = value; }
         public int CodigoH1 { get => codigoH1; set => codigoH1 = value; }
         public string DescripcionH1 { get => descripcionH1; set => descripcionH1 = value; }
         public int CodigoH2 { get => codigoH2; set => codigoH2 = value; }

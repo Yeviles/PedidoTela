@@ -79,7 +79,7 @@ namespace PedidoTela.Data.Acceso
             return id;
         }
 
-        public bool consultarPorIdentificador(int idSolicitud)
+        public bool consultarExistePedido(int idSolicitud)
         {
             string ensayo;
             using (var administrador = new clsConexion())
@@ -93,7 +93,7 @@ namespace PedidoTela.Data.Acceso
                     administrador.cerrarConexion();
                     return true;
                 }
-                catch
+                catch (Exception)
                 {
                     return false;
                 }
@@ -107,7 +107,7 @@ namespace PedidoTela.Data.Acceso
             {
                 using (var con = new clsConexion())
                 {
-
+                    con.Parametros.Add(new IfxParameter("@id_solicitud", elemento.IdSolicitud));
                     con.Parametros.Add(new IfxParameter("@nom_tela", elemento.Tela));
                     con.Parametros.Add(new IfxParameter("@disenador", elemento.Disenador));
                     con.Parametros.Add(new IfxParameter("@ensayo_ref", elemento.EnsayoReferencia));
@@ -117,8 +117,7 @@ namespace PedidoTela.Data.Acceso
                     con.Parametros.Add(new IfxParameter("@rendimiento", elemento.Rendimiento));
                     con.Parametros.Add(new IfxParameter("@analista_corteb", elemento.AnalistasCortesB));
                     con.Parametros.Add(new IfxParameter("@fecha_llegada", elemento.FechaLlegada));
-                    con.Parametros.Add(new IfxParameter("@id_solicitud", elemento.IdSolicitud));
-
+                    
                     var datos = con.EjecutarConsulta(this.consultaInsert);
                     con.cerrarConexion();
                 }
@@ -138,6 +137,7 @@ namespace PedidoTela.Data.Acceso
             {
                 using (var con = new clsConexion())
                 {
+                    con.Parametros.Add(new IfxParameter("@id_solicitud", elemento.IdSolicitud));
                     con.Parametros.Add(new IfxParameter("@nom_tela", elemento.Tela));
                     con.Parametros.Add(new IfxParameter("@disenador", elemento.Disenador));
                     con.Parametros.Add(new IfxParameter("@ensayo_ref", elemento.EnsayoReferencia));
@@ -147,8 +147,6 @@ namespace PedidoTela.Data.Acceso
                     con.Parametros.Add(new IfxParameter("@rendimiento", elemento.Rendimiento));
                     con.Parametros.Add(new IfxParameter("@analista_corteb", elemento.AnalistasCortesB));
                     con.Parametros.Add(new IfxParameter("@fecha_llegada", elemento.FechaLlegada));
-
-                    con.Parametros.Add(new IfxParameter("@id_solicitud", elemento.IdSolicitud));
                     var datos = con.EjecutarConsulta(actualizar);
 
                     con.cerrarConexion();

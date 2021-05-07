@@ -729,8 +729,95 @@ namespace PedidoTela.Controlodores
         }
         #endregion
 
-        #region Pedido Plano Preteñido
+        #region Pedido Estampado
+        public PedidoAMontar getPedidoEstampado(int idSolicitud)
+        {
+            D_PedidoEstampado d_PedidoEstampado = new D_PedidoEstampado();
+            return d_PedidoEstampado.Consultar(idSolicitud);
+        }
+
+        public int getIdPedidoEstampado(int idSolicitud)
+        {
+            D_PedidoEstampado d_PedidoEstampado = new D_PedidoEstampado();
+            return d_PedidoEstampado.ConsultarId(idSolicitud);
+        }
+
+        public bool existePedidoEstampado(int idSolicitud)
+        {
+            D_PedidoEstampado d_PedidoEstampado = new D_PedidoEstampado();
+            return d_PedidoEstampado.consultarExistePedido(idSolicitud);
+        }
+        public bool addPedidoEstampado(PedidoAMontar pedido)
+        {
+            D_PedidoEstampado d_PedidoEstampado = new D_PedidoEstampado();
+            return (d_PedidoEstampado.Agregar(pedido) == "ok") ? true : false;
+        }
+        public bool actualizarPedidoEstampado(PedidoAMontar pedido)
+        {
+            D_PedidoEstampado d_PedidoEstampado = new D_PedidoEstampado();
+            return (d_PedidoEstampado.Actualizar(pedido) == "ok") ? true : false;
+        }
         
+
+        //Información
+        public List<int> getIdPedidoEstampadoInformacion(int idPedido)
+        {
+            D_PedidoEstampadoInfomacion d_PedidoEstampadoInfomacion = new D_PedidoEstampadoInfomacion();
+            return d_PedidoEstampadoInfomacion.ConsultarId(idPedido);
+        }
+        public void addPedidoEstampadoInformacion(PedidoMontarInformacion detalle)
+        {
+            D_PedidoEstampadoInfomacion d_PedidoEstampadoInfomacion = new D_PedidoEstampadoInfomacion();
+            d_PedidoEstampadoInfomacion.Agregar(detalle);
+        }
+        public bool actualizarPedidoEstampadoInformacion(PedidoMontarInformacion informacion, int idDetalle)
+        {
+            D_PedidoEstampadoInfomacion d_PedidoEstampadoInfomacion = new D_PedidoEstampadoInfomacion();
+            return (d_PedidoEstampadoInfomacion.Actualizar(informacion, idDetalle) == "ok") ? true : false;
+        }
+        public List<PedidoMontarInformacion> getPedidoEstampadoInformacion(int idPedido)
+        {
+            D_PedidoEstampadoInfomacion d_PedidoEstampadoInfomacion = new D_PedidoEstampadoInfomacion();
+            return d_PedidoEstampadoInfomacion.Consultar(idPedido);
+        }
+        public void eliminarPedidoEstampadoInformacion(int idPedido)
+        {
+            D_PedidoEstampadoInfomacion d_PedidoEstampadoInfomacion = new D_PedidoEstampadoInfomacion();
+            d_PedidoEstampadoInfomacion.EliminarPorPedido(idPedido);
+        }
+
+        //Total
+        public List<int> getIdPedidoEstampadoTotal(int idPedUnicolor)
+        {
+            D_PedidoEstampadoTotal d_PedidoEstampadoTotal = new D_PedidoEstampadoTotal();
+            return d_PedidoEstampadoTotal.ConsultarId(idPedUnicolor);
+        }
+        public List<PedidoMontarTotal> getPedidoEstampadoTotal(int idPedUnicolor)
+        {
+            D_PedidoEstampadoTotal d_PedidoEstampadoTotal = new D_PedidoEstampadoTotal();
+            return d_PedidoEstampadoTotal.ConsultarTotalConsolidado(idPedUnicolor);
+        }
+
+        public void addPedidoEstampadoTotal(PedidoMontarTotal detalle)
+        {
+            D_PedidoEstampadoTotal d_PedidoEstampadoTotal = new D_PedidoEstampadoTotal();
+            d_PedidoEstampadoTotal.Agregar(detalle);
+        }
+        public bool actualizarPedidoEstampadoTotal(PedidoMontarTotal totalConsolidar, int idDetalle)
+        {
+            D_PedidoEstampadoTotal d_PedidoEstampadoTotal = new D_PedidoEstampadoTotal();
+            return (d_PedidoEstampadoTotal.Actualizar(totalConsolidar, idDetalle) == "ok") ? true : false;
+        }
+
+        public void eliminarPedidoEstampadoTotal(int idPedido)
+        {
+            D_PedidoEstampadoTotal d_PedidoEstampadoTotal = new D_PedidoEstampadoTotal();
+            d_PedidoEstampadoTotal.EliminarPorPedido(idPedido);
+        }
+        #endregion
+
+        #region Pedido Plano Preteñido
+
         /// <summary>
         /// Permite consultar si el ensayo o referencia ya se encuentra alamacenado.
         /// </summary>
