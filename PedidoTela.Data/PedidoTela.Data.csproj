@@ -113,6 +113,7 @@
     <Compile Include="Acceso\D_TipoPedido.cs" />
     <Compile Include="Acceso\D_TipoSolicitud.cs" />
     <Compile Include="Acceso\D_TipoTejido.cs" />
+    <Compile Include="Acceso\D_TomarDelPedido.cs" />
     <Compile Include="Acceso\D_Unicolor.cs" />
     <Compile Include="clsConexion.cs" />
     <Compile Include="Form1.cs">

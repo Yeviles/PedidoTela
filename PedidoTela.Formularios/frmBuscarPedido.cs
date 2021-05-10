@@ -15,12 +15,14 @@ namespace PedidoTela.Formularios
     public partial class frmBuscarPedido : MaterialSkin.Controls.MaterialForm
     {
         Controlador control;
-        private Pedido elemento;
+        private TomarDelPedido elemento;
 
-        public frmBuscarPedido()
+        public TomarDelPedido Elemento { get => elemento; set => elemento = value; }
+
+        public frmBuscarPedido(Controlador control)
         {
             this.control = control;
-            elemento = new Pedido();
+            Elemento = new TomarDelPedido();
             InitializeComponent();
         }
 
@@ -31,20 +33,64 @@ namespace PedidoTela.Formularios
 
         private void btnBuscar_Click(object sender, EventArgs e)
         {
-            /*List<Pedido> lista = new List<Pedido>();
+            List<TomarDelPedido> lista = new List<TomarDelPedido>();
             if (txbPedido.Text.Trim().Length > 0)
             {
-                lista = control.buscarColorPorCodigo(txbPedido.Text.Trim());
+                lista = control.consultarPorNumeroPedido(txbPedido.Text.Trim());
             }
-            else if (txbDescripcion.Text.Trim().Length > 0)
+            else if (txbColor.Text.Trim().Length > 0)
             {
-                lista = control.buscarColorPorDescripcion(txbColor.Text.Trim().ToUpper());
+                lista = control.consultarPorCodigoColor(txbColor.Text.Trim());
             }
-            else
+
+            listar(lista);
+        }
+
+        private void listar(List<TomarDelPedido> lista)
+        {
+            dgvPedidos.Rows.Clear();
+            dgvPedidos.Columns.Clear();
+            dgvPedidos.DataSource = null;
+            dgvPedidos.Columns.Add("Column0", "Número Pedido");
+            dgvPedidos.Columns.Add("Column1", "Codigo Color");
+            dgvPedidos.Columns.Add("Column2", "Estado");
+            dgvPedidos.Columns.Add("Column3", "Disponible");
+
+            foreach (TomarDelPedido elemento in lista)
             {
-                lista = control.getColores();
+                dgvPedidos.Rows.Add(elemento.NumeroPedido, elemento.CodigoColor,elemento.Estado,elemento.Disponible);
             }
-            listar(lista);*/
+            dgvPedidos.Columns[0].ReadOnly = true;
+            dgvPedidos.Columns[1].ReadOnly = true;
+            dgvPedidos.Columns[2].ReadOnly = true;
+            dgvPedidos.Columns[3].ReadOnly = true;
+
+            dgvPedidos.Columns[0].AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
+            dgvPedidos.Columns[1].AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
+            dgvPedidos.Columns[2].AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
+            dgvPedidos.Columns[3].AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
+        }
+
+        private void dgvPedidos_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
+        {
+            Elemento.NumeroPedido = dgvPedidos.CurrentRow.Cells[0].Value.ToString();
+            Elemento.CodigoColor = int.Parse(dgvPedidos.CurrentRow.Cells[1].Value.ToString());
+            Elemento.Estado = dgvPedidos.CurrentRow.Cells[2].Value.ToString();
+            Elemento.Disponible = decimal.Parse(dgvPedidos.CurrentRow.Cells[3].Value.ToString());
+            this.DialogResult = DialogResult.OK;
+            this.Close();
+        }
+
+        private void txbPedido_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (e.KeyChar == (Char)Keys.Enter)
+            {
+                string codigo = txbPedido.Text.Trim().ToUpper();
+                if (codigo.Length > 0)
+                {
+                    listar(control.consultarPorNumeroPedido(codigo));
+                }
+            }
         }
     }
 }

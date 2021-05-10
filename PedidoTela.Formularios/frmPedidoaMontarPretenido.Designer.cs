@@ -34,19 +34,22 @@ namespace PedidoTela.Formularios
             this.lbTotalconsolidado = new System.Windows.Forms.Label();
             this.lbInformacion = new System.Windows.Forms.Label();
             this.panel1 = new System.Windows.Forms.Panel();
+            this.btnAgregarPedido = new System.Windows.Forms.Button();
+            this.dgvPedidos = new System.Windows.Forms.DataGridView();
+            this.Column1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column3 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column4 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.cbxTipoMarcacion = new System.Windows.Forms.ComboBox();
             this.cbxClase = new System.Windows.Forms.ComboBox();
             this.txtAnalista = new System.Windows.Forms.TextBox();
             this.txtDesPrenda = new System.Windows.Forms.RichTextBox();
             this.txtEnsayoRef = new System.Windows.Forms.RichTextBox();
             this.dtpFechaLlegada = new System.Windows.Forms.DateTimePicker();
-            this.textBox4 = new System.Windows.Forms.TextBox();
             this.txtRendimiento = new System.Windows.Forms.TextBox();
             this.lbEnsayoRef = new System.Windows.Forms.Label();
             this.txtDisenador = new System.Windows.Forms.TextBox();
             this.txtNomTela = new System.Windows.Forms.TextBox();
-            this.textBox5 = new System.Windows.Forms.TextBox();
-            this.textBox3 = new System.Windows.Forms.TextBox();
             this.lbAnalista = new System.Windows.Forms.Label();
             this.lbDiseñador = new System.Windows.Forms.Label();
             this.lbClase = new System.Windows.Forms.Label();
@@ -108,12 +111,13 @@ namespace PedidoTela.Formularios
             this.totaPedir = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.uniMedidaTela = new System.Windows.Forms.DataGridViewComboBoxColumn();
             this.panel9 = new System.Windows.Forms.Panel();
-            this.lblConsecutivo = new System.Windows.Forms.Label();
             this.btnImprimir = new System.Windows.Forms.Button();
+            this.lblConsecutivo = new System.Windows.Forms.Label();
             this.btnConfirmar = new System.Windows.Forms.Button();
             this.btnGrabar = new System.Windows.Forms.Button();
             this.btnSalir = new System.Windows.Forms.Button();
             this.panel1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dgvPedidos)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dgvInfoConsolidar)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dgvTotalConsolidado)).BeginInit();
             this.panel9.SuspendLayout();
@@ -142,19 +146,18 @@ namespace PedidoTela.Formularios
             // panel1
             // 
             this.panel1.BackColor = System.Drawing.SystemColors.ScrollBar;
+            this.panel1.Controls.Add(this.btnAgregarPedido);
+            this.panel1.Controls.Add(this.dgvPedidos);
             this.panel1.Controls.Add(this.cbxTipoMarcacion);
             this.panel1.Controls.Add(this.cbxClase);
             this.panel1.Controls.Add(this.txtAnalista);
             this.panel1.Controls.Add(this.txtDesPrenda);
             this.panel1.Controls.Add(this.txtEnsayoRef);
             this.panel1.Controls.Add(this.dtpFechaLlegada);
-            this.panel1.Controls.Add(this.textBox4);
             this.panel1.Controls.Add(this.txtRendimiento);
             this.panel1.Controls.Add(this.lbEnsayoRef);
             this.panel1.Controls.Add(this.txtDisenador);
             this.panel1.Controls.Add(this.txtNomTela);
-            this.panel1.Controls.Add(this.textBox5);
-            this.panel1.Controls.Add(this.textBox3);
             this.panel1.Controls.Add(this.lbAnalista);
             this.panel1.Controls.Add(this.lbDiseñador);
             this.panel1.Controls.Add(this.lbClase);
@@ -169,6 +172,67 @@ namespace PedidoTela.Formularios
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(1356, 234);
             this.panel1.TabIndex = 95;
+            // 
+            // btnAgregarPedido
+            // 
+            this.btnAgregarPedido.Location = new System.Drawing.Point(1199, 4);
+            this.btnAgregarPedido.Name = "btnAgregarPedido";
+            this.btnAgregarPedido.Size = new System.Drawing.Size(143, 33);
+            this.btnAgregarPedido.TabIndex = 148;
+            this.btnAgregarPedido.Text = "Agregar pedido";
+            this.btnAgregarPedido.UseVisualStyleBackColor = true;
+            this.btnAgregarPedido.Click += new System.EventHandler(this.btnAgregarPedido_Click);
+            // 
+            // dgvPedidos
+            // 
+            this.dgvPedidos.AllowUserToAddRows = false;
+            this.dgvPedidos.AllowUserToDeleteRows = false;
+            this.dgvPedidos.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
+            this.dgvPedidos.BackgroundColor = System.Drawing.SystemColors.Window;
+            this.dgvPedidos.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.dgvPedidos.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dgvPedidos.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.Column1,
+            this.Column2,
+            this.Column3,
+            this.Column4});
+            this.dgvPedidos.Location = new System.Drawing.Point(784, 40);
+            this.dgvPedidos.MultiSelect = false;
+            this.dgvPedidos.Name = "dgvPedidos";
+            this.dgvPedidos.ReadOnly = true;
+            this.dgvPedidos.RowHeadersVisible = false;
+            this.dgvPedidos.RowHeadersWidth = 51;
+            this.dgvPedidos.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
+            this.dgvPedidos.Size = new System.Drawing.Size(558, 178);
+            this.dgvPedidos.TabIndex = 147;
+            // 
+            // Column1
+            // 
+            this.Column1.HeaderText = "No pedido";
+            this.Column1.MinimumWidth = 6;
+            this.Column1.Name = "Column1";
+            this.Column1.ReadOnly = true;
+            // 
+            // Column2
+            // 
+            this.Column2.HeaderText = "Color";
+            this.Column2.MinimumWidth = 6;
+            this.Column2.Name = "Column2";
+            this.Column2.ReadOnly = true;
+            // 
+            // Column3
+            // 
+            this.Column3.HeaderText = "Estado";
+            this.Column3.MinimumWidth = 6;
+            this.Column3.Name = "Column3";
+            this.Column3.ReadOnly = true;
+            // 
+            // Column4
+            // 
+            this.Column4.HeaderText = "Disponible";
+            this.Column4.MinimumWidth = 6;
+            this.Column4.Name = "Column4";
+            this.Column4.ReadOnly = true;
             // 
             // cbxTipoMarcacion
             // 
@@ -188,6 +252,7 @@ namespace PedidoTela.Formularios
             this.cbxClase.Name = "cbxClase";
             this.cbxClase.Size = new System.Drawing.Size(180, 24);
             this.cbxClase.TabIndex = 144;
+            this.cbxClase.SelectedIndexChanged += new System.EventHandler(this.cbxClase_SelectedIndexChanged);
             // 
             // txtAnalista
             // 
@@ -222,14 +287,6 @@ namespace PedidoTela.Formularios
             this.dtpFechaLlegada.Name = "dtpFechaLlegada";
             this.dtpFechaLlegada.Size = new System.Drawing.Size(180, 23);
             this.dtpFechaLlegada.TabIndex = 76;
-            // 
-            // textBox4
-            // 
-            this.textBox4.Location = new System.Drawing.Point(1075, 9);
-            this.textBox4.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.textBox4.Name = "textBox4";
-            this.textBox4.Size = new System.Drawing.Size(133, 23);
-            this.textBox4.TabIndex = 73;
             // 
             // txtRendimiento
             // 
@@ -269,22 +326,6 @@ namespace PedidoTela.Formularios
             this.txtNomTela.ReadOnly = true;
             this.txtNomTela.Size = new System.Drawing.Size(180, 23);
             this.txtNomTela.TabIndex = 40;
-            // 
-            // textBox5
-            // 
-            this.textBox5.Location = new System.Drawing.Point(1214, 10);
-            this.textBox5.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.textBox5.Name = "textBox5";
-            this.textBox5.Size = new System.Drawing.Size(133, 23);
-            this.textBox5.TabIndex = 39;
-            // 
-            // textBox3
-            // 
-            this.textBox3.Location = new System.Drawing.Point(936, 9);
-            this.textBox3.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.textBox3.Name = "textBox3";
-            this.textBox3.Size = new System.Drawing.Size(133, 23);
-            this.textBox3.TabIndex = 37;
             // 
             // lbAnalista
             // 
@@ -374,6 +415,7 @@ namespace PedidoTela.Formularios
             this.dgvInfoConsolidar.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.dgvInfoConsolidar.AutoSizeRowsMode = System.Windows.Forms.DataGridViewAutoSizeRowsMode.DisplayedCells;
             this.dgvInfoConsolidar.BackgroundColor = System.Drawing.Color.White;
+            this.dgvInfoConsolidar.BorderStyle = System.Windows.Forms.BorderStyle.None;
             dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
             dataGridViewCellStyle3.BackColor = System.Drawing.SystemColors.ScrollBar;
             dataGridViewCellStyle3.Font = new System.Drawing.Font("Verdana", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -581,6 +623,7 @@ namespace PedidoTela.Formularios
             this.dgvTotalConsolidado.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.dgvTotalConsolidado.AutoSizeRowsMode = System.Windows.Forms.DataGridViewAutoSizeRowsMode.DisplayedCells;
             this.dgvTotalConsolidado.BackgroundColor = System.Drawing.Color.White;
+            this.dgvTotalConsolidado.BorderStyle = System.Windows.Forms.BorderStyle.None;
             dataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
             dataGridViewCellStyle4.BackColor = System.Drawing.SystemColors.ScrollBar;
             dataGridViewCellStyle4.Font = new System.Drawing.Font("Verdana", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -794,15 +837,6 @@ namespace PedidoTela.Formularios
             this.panel9.Size = new System.Drawing.Size(1359, 47);
             this.panel9.TabIndex = 136;
             // 
-            // lblConsecutivo
-            // 
-            this.lblConsecutivo.AutoSize = true;
-            this.lblConsecutivo.Font = new System.Drawing.Font("Verdana", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblConsecutivo.Location = new System.Drawing.Point(678, 12);
-            this.lblConsecutivo.Name = "lblConsecutivo";
-            this.lblConsecutivo.Size = new System.Drawing.Size(0, 20);
-            this.lblConsecutivo.TabIndex = 100;
-            // 
             // btnImprimir
             // 
             this.btnImprimir.Font = new System.Drawing.Font("Verdana", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -816,6 +850,15 @@ namespace PedidoTela.Formularios
             this.btnImprimir.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
             this.btnImprimir.UseVisualStyleBackColor = true;
             this.btnImprimir.Click += new System.EventHandler(this.btnImprimir_Click);
+            // 
+            // lblConsecutivo
+            // 
+            this.lblConsecutivo.AutoSize = true;
+            this.lblConsecutivo.Font = new System.Drawing.Font("Verdana", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblConsecutivo.Location = new System.Drawing.Point(678, 12);
+            this.lblConsecutivo.Name = "lblConsecutivo";
+            this.lblConsecutivo.Size = new System.Drawing.Size(0, 20);
+            this.lblConsecutivo.TabIndex = 100;
             // 
             // btnConfirmar
             // 
@@ -881,6 +924,7 @@ namespace PedidoTela.Formularios
             this.Load += new System.EventHandler(this.frmPedidoaMontarPretenido_Load);
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dgvPedidos)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.dgvInfoConsolidar)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.dgvTotalConsolidado)).EndInit();
             this.panel9.ResumeLayout(false);
@@ -895,13 +939,10 @@ namespace PedidoTela.Formularios
         private System.Windows.Forms.Label lbInformacion;
         private System.Windows.Forms.Panel panel1;
         private System.Windows.Forms.DateTimePicker dtpFechaLlegada;
-        private System.Windows.Forms.TextBox textBox4;
         private System.Windows.Forms.TextBox txtRendimiento;
         private System.Windows.Forms.Label lbEnsayoRef;
         private System.Windows.Forms.TextBox txtDisenador;
         private System.Windows.Forms.TextBox txtNomTela;
-        private System.Windows.Forms.TextBox textBox5;
-        private System.Windows.Forms.TextBox textBox3;
         private System.Windows.Forms.Label lbAnalista;
         private System.Windows.Forms.Label lbDiseñador;
         private System.Windows.Forms.Label lbClase;
@@ -973,5 +1014,11 @@ namespace PedidoTela.Formularios
         private System.Windows.Forms.DataGridViewComboBoxColumn uniMedidaTela;
         private System.Windows.Forms.Label lblConsecutivo;
         private System.Windows.Forms.Button btnImprimir;
+        private System.Windows.Forms.Button btnAgregarPedido;
+        private System.Windows.Forms.DataGridView dgvPedidos;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Column1;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Column2;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Column3;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Column4;
     }
 }

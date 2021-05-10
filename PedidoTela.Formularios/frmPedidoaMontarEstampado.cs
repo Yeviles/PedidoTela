@@ -32,7 +32,7 @@ namespace PedidoTela.Formularios
             InitializeComponent();
             this.control = control;
             this.solicitudes = solicitudes;
-            this.contador = contador;
+            this.contador = contador;       
         }
 
         #region Eventos
@@ -46,12 +46,26 @@ namespace PedidoTela.Formularios
                 cargarDgvInfoConsolidar(solicitudes);
                 calcularTotalesPorColores();
             }
+            dgvInfoConsolidar.Columns[0].HeaderCell.ToolTipText = "Clic item si desea modificar";
+            dgvInfoConsolidar.Columns[1].HeaderCell.ToolTipText = "Clic item si desea modificar";
+            dgvInfoConsolidar.Columns[13].HeaderCell.ToolTipText = "(Consumo * Total Unidades)*1.10";
+            dgvInfoConsolidar.Columns[15].HeaderCell.ToolTipText = "M calculados -  M reservados";
+            dgvInfoConsolidar.Columns[16].HeaderCell.ToolTipText = "M a solicitar / Rendimiento";
+
+            dgvTotalConsolidado.Columns[12].HeaderCell.ToolTipText = "(Consumo * Total Unidades)*1.10";
+            dgvTotalConsolidado.Columns[13].HeaderCell.ToolTipText = "M a solicitar / Rendimiento";
         }
 
         private void cbxClase_SelectedIndexChanged(object sender, EventArgs e)
-        {
-            if (cbxClase.SelectedIndex != -1 && cbxClase.SelectedItem.ToString().ToLower() == "no tejer") {
-                bandera = true;
+        {  
+            if (cbxClase.SelectedIndex != -1 && cbxClase.SelectedItem.ToString().ToLower() == "no tejer")
+            {
+                this.bandera = true;
+                btnAgregarPedido.Enabled = true;
+            }
+            else
+            {
+                this.bandera = false;
             }
         }
 
@@ -59,9 +73,9 @@ namespace PedidoTela.Formularios
         {
             try
             {
-                if (txtRendimiento.Text.Trim() != "")
+                for (int i = 0; i < dgvInfoConsolidar.RowCount; i++)
                 {
-                    for (int i = 0; i < dgvTotalConsolidado.RowCount; i++)
+                    if (txtRendimiento.Text.Trim() != "")
                     {
                         if (dgvInfoConsolidar.Rows[i].Cells[15].Value != null && dgvInfoConsolidar.Rows[i].Cells[15].Value.ToString() != "") {
                             decimal mSolicitar = decimal.Parse(dgvInfoConsolidar.Rows[i].Cells[15].Value.ToString());
@@ -69,10 +83,15 @@ namespace PedidoTela.Formularios
                             dgvInfoConsolidar.Rows[i].Cells[16].Value = calcularKgCalculados(mSolicitar, rendimiento);
                         }
                     }
+                    else
+                    {
+                        dgvInfoConsolidar.Rows[i].Cells[16].Value = 0;
+                    }
                 }
                 calcularTotalesPorColores();
             }
-            catch {
+            catch 
+            {
                 txtRendimiento.Text = "";
             }
         }
@@ -225,7 +244,8 @@ namespace PedidoTela.Formularios
                     }
                     else
                     {
-                        dgvInfoConsolidar.Rows[e.RowIndex].Cells[16].Value = "";
+                        dgvInfoConsolidar.Rows[e.RowIndex].Cells[15].Value = dgvInfoConsolidar.Rows[e.RowIndex].Cells[13].Value;
+                        dgvInfoConsolidar.Rows[e.RowIndex].Cells[16].Value = decimal.Round(decimal.Parse(dgvInfoConsolidar.Rows[e.RowIndex].Cells[15].Value.ToString()) / decimal.Parse(txtRendimiento.Text),2);
                     }
                 }
                 catch (Exception ex)
@@ -281,108 +301,128 @@ namespace PedidoTela.Formularios
         #region Botones
         private void btnAgregarPedido_Click(object sender, EventArgs e)
         {
-            frmBuscarPedido buscar = new frmBuscarPedido();
-            if (buscar.ShowDialog() == DialogResult.OK) { 
+            frmBuscarPedido buscar = new frmBuscarPedido(control);
+            if (buscar.ShowDialog() == DialogResult.OK) {
+                TomarDelPedido obj = buscar.Elemento;
+                dgvPedidos.Rows.Add();
+                dgvPedidos.Rows[dgvPedidos.Rows.Count - 1].Cells[0].Value = obj.NumeroPedido;
+                dgvPedidos.Rows[dgvPedidos.Rows.Count - 1].Cells[1].Value = obj.CodigoColor;
+                dgvPedidos.Rows[dgvPedidos.Rows.Count - 1].Cells[2].Value = obj.Estado;
+                dgvPedidos.Rows[dgvPedidos.Rows.Count - 1].Cells[3].Value = obj.Disponible;
             }
         }
 
         private void btnGrabar_Click(object sender, EventArgs e) 
         {
-            if (cbxClase.SelectedIndex != -1)
+            if (this.bandera && dgvPedidos.RowCount == 0)
             {
-                if (cbxTipoMarcacion.SelectedIndex != -1)
+                MessageBox.Show("Por favor, seleccione al menos un pedido", "Advertencia", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+            }
+            else
+            {
+                if (cbxClase.SelectedIndex != -1)
                 {
-                    if (txtRendimiento.Text.Trim() != "")
+                    if (cbxTipoMarcacion.SelectedIndex != -1)
                     {
-                        if (txtAnalista.Text != "")
+                        if (txtRendimiento.Text.Trim() != "")
                         {
-                            if (txtDesPrenda.Text != "")
+                            if (txtAnalista.Text != "")
                             {
-                                if (dgvInfoConsolidar.RowCount > 0 && dgvTotalConsolidado.RowCount > 0)
+                                if (txtDesPrenda.Text != "")
                                 {
-                                    if (!validarValoresConsumo()) {
-                                        if (!validarValoresReserva())
+                                    if (dgvInfoConsolidar.RowCount > 0 && dgvTotalConsolidado.RowCount > 0)
+                                    {
+                                        if (!validarValoresConsumo())
                                         {
-                                            if (!validarTotalAPedir())
+                                            if (!validarValoresReserva())
                                             {
-
-                                                if (!validarUnidadTotal())
+                                                if (!validarTotalAPedir())
                                                 {
-                                                    PedidoAMontar pedido = new PedidoAMontar();
-                                                    pedido.Id = id;
-                                                    pedido.Tela = txtNomTela.Text.Trim();
-                                                    pedido.Disenador = txtDisenador.Text.Trim();
-                                                    pedido.Rendimiento = decimal.Parse(txtRendimiento.Text.Trim());
-                                                    pedido.EnsayoReferencia = txtEnsayoRef.Text.Trim();
-                                                    pedido.DescripcionPrenda = txtDesPrenda.Text.Trim();
-                                                    pedido.Clase = cbxClase.SelectedItem.ToString();
-                                                    pedido.TipoMarcacion = ((Objeto)cbxTipoMarcacion.SelectedItem).Nombre;
-                                                    pedido.Rendimiento = decimal.Parse(txtRendimiento.Text.Trim());
-                                                    pedido.AnalistasCortesB = txtAnalista.Text.Trim();
-                                                    pedido.FechaLlegada = dtpFechaLlegada.Value.ToString("dd/MM/yyyy");
-                                                    pedido.IdSolicitud = idSolicitud;
-                                                    if (control.existePedidoEstampado(idSolicitud))
+
+                                                    if (!validarUnidadTotal())
                                                     {
-                                                        control.actualizarPedidoEstampado(pedido);
+                                                        PedidoAMontar pedido = new PedidoAMontar();
+                                                        pedido.Id = id;
+                                                        pedido.Tela = txtNomTela.Text.Trim();
+                                                        pedido.Disenador = txtDisenador.Text.Trim();
+                                                        pedido.Rendimiento = decimal.Parse(txtRendimiento.Text.Trim());
+                                                        pedido.EnsayoReferencia = txtEnsayoRef.Text.Trim();
+                                                        pedido.DescripcionPrenda = txtDesPrenda.Text.Trim();
+                                                        pedido.Clase = cbxClase.SelectedItem.ToString();
+                                                        pedido.TipoMarcacion = ((Objeto)cbxTipoMarcacion.SelectedItem).Nombre;
+                                                        pedido.Rendimiento = decimal.Parse(txtRendimiento.Text.Trim());
+                                                        pedido.AnalistasCortesB = txtAnalista.Text.Trim();
+                                                        pedido.FechaLlegada = dtpFechaLlegada.Value.ToString("dd/MM/yyyy");
+                                                        pedido.IdSolicitud = idSolicitud;
+                                                        if (control.existePedidoEstampado(idSolicitud))
+                                                        {
+                                                            control.actualizarPedidoEstampado(pedido);
+                                                        }
+                                                        else
+                                                        {
+                                                            control.addPedidoEstampado(pedido);
+                                                            pedido.Id = control.getIdPedidoEstampado(idSolicitud);
+                                                        }
+                                                        if (pedido.Id != 0)
+                                                        {
+                                                            control.eliminarPedidoEstampadoTotal(pedido.Id);
+                                                            control.eliminarPedidoEstampadoInformacion(pedido.Id);
+                                                            control.eliminarPedido(pedido.Id);
+
+                                                            guardarPedido(pedido.Id);
+                                                            guardarInformacion(pedido.Id);
+                                                            guardarTotal(pedido.Id);
+                                                        }
+                                                        //Agrega el Consolidado.
+                                                        AgregarConsolidado();
+
+                                                        MessageBox.Show("Pedido Estampado se guardó con éxito.", "Información", MessageBoxButtons.OK, MessageBoxIcon.Information);
                                                     }
                                                     else
                                                     {
-                                                        control.addPedidoEstampado(pedido);
-                                                        pedido.Id = control.getIdPedidoEstampado(idSolicitud);
+                                                        MessageBox.Show("Por favor seleccione los valores para la columna: Unidad medida tela.", "Advertencia", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                                                     }
-                                                    if (pedido.Id != 0)
-                                                    {
-                                                        control.eliminarPedidoEstampadoTotal(pedido.Id);
-                                                        control.eliminarPedidoEstampadoInformacion(pedido.Id);
-                                                        guardarInformacion(pedido.Id);
-                                                        guardarTotal(pedido.Id);
-                                                    }
-                                                    //Agrega el Consolidado.
-                                                    AgregarConsolidado();
-
-                                                    MessageBox.Show("Pedido Estampado se guardó con éxito.", "Información", MessageBoxButtons.OK, MessageBoxIcon.Information);
                                                 }
                                                 else
                                                 {
-                                                    MessageBox.Show("Por favor seleccione los valores para la columna: Unidad medida tela.", "Advertencia", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                                                    MessageBox.Show("Por favor ingrese los valores para la columna: Total a pedir.", "Advertencia", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                                                 }
                                             }
                                             else
                                             {
-                                                MessageBox.Show("Por favor ingrese los valores para la columna: Total a pedir.", "Advertencia", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                                                MessageBox.Show("Por favor ingrese los valores para la columna: M Reservados.", "Advertencia", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                                             }
                                         }
                                         else
                                         {
-                                            MessageBox.Show("Por favor ingrese los valores para la columna: M Reservados.", "Advertencia", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                                            MessageBox.Show("Por favor ingrese los valores para la columna: Consumo.", "Advertencia", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                                         }
-                                    } else {
-                                        MessageBox.Show("Por favor ingrese los valores para la columna: Consumo.", "Advertencia", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                                     }
+                                }
+                                else
+                                {
+                                    MessageBox.Show("Por favor ingrese un valor en el campo Descripción prenda.", "Advertencia", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                                 }
                             }
                             else
                             {
-                                MessageBox.Show("Por favor ingrese un valor en el campo Descripción prenda.", "Advertencia", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                                MessageBox.Show("Por favor ingrese un valor en el campo Analista corte B.", "Advertencia", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                             }
                         }
                         else
                         {
-                            MessageBox.Show("Por favor ingrese un valor en el campo Analista corte B.", "Advertencia", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                            MessageBox.Show("Por favor ingrese un valor en el campo Rendimiento tela.", "Advertencia", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                         }
                     }
                     else
                     {
-                        MessageBox.Show("Por favor ingrese un valor en el campo Rendimiento tela.", "Advertencia", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                        MessageBox.Show("Por favor seleccione un valor en el campo Tipo marcación.", "Advertencia", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                     }
                 }
                 else
                 {
-                    MessageBox.Show("Por favor seleccione un valor en el campo Tipo marcación.", "Advertencia", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    MessageBox.Show("Por favor seleccione un valor en el campo Clase", "Advertencia", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 }
-            }
-            else {
-                MessageBox.Show("Por favor seleccione un valor en el campo Clase", "Advertencia", MessageBoxButtons.OK, MessageBoxIcon.Warning);
             }
         }
 
@@ -400,9 +440,9 @@ namespace PedidoTela.Formularios
         #endregion
 
         #region otros métodos
-        /* <summary> Realiza la carga de los datos en el ComboBox </summary>
-         * <param name="lista">Lista de tipo Objeto</param>
-         * <returns></returns>*/
+        ///<summary> Realiza la carga de los datos en el ComboBox </summary>
+        ///<param name="lista">Lista de tipo Objeto</param>
+        ///<returns></returns>*/
         private void cargarCombobox(ComboBox combo, List<Objeto> lista)
         {
             combo.DataSource = lista;
@@ -414,9 +454,9 @@ namespace PedidoTela.Formularios
             combo.AutoCompleteSource = AutoCompleteSource.CustomSource;
         }
 
-        /*<summary> Permite el autocompletado de un comboBox </summary>
-         * <param name="lista">Lista de tipo objeto</param>
-         * <returns></returns>*/
+        ///<summary> Permite el autocompletado de un comboBox </summary>
+         ///<param name="lista">Lista de tipo objeto</param>
+         /// <returns></returns>*/
         private AutoCompleteStringCollection cargarCombobox(List<Objeto> lista)
         {
             AutoCompleteStringCollection datos = new AutoCompleteStringCollection();
@@ -642,6 +682,16 @@ namespace PedidoTela.Formularios
 
                 dgvInfoConsolidar.Rows.Clear();
                 dgvTotalConsolidado.Rows.Clear();
+                /* Carga Pedido */
+
+                List<TomarDelPedido> listaPedido = control.getPedido(pedido.Id);
+                if (listaPedido.Count > 0)
+                {
+                    foreach (TomarDelPedido obj in listaPedido)
+                    {
+                        dgvPedidos.Rows.Add(obj.NumeroPedido, obj.CodigoColor, obj.Estado, obj.Disponible);
+                    }
+                }
                 /* Carga detalle Información a  Consolidar */
                 List<PedidoMontarInformacion> listaInfoConsolidar = control.getPedidoEstampadoInformacion(pedido.Id);
                 if (listaInfoConsolidar.Count > 0)
@@ -719,6 +769,21 @@ namespace PedidoTela.Formularios
             }
         }
 
+        private void guardarPedido(int id)
+        {
+            for (int i = 0; i < dgvPedidos.RowCount; i++)
+            {
+                TomarDelPedido pedido = new TomarDelPedido();
+                pedido.IdPedidoMontar = id;
+                pedido.NumeroPedido = (dgvPedidos.Rows[i].Cells[0].Value.ToString());
+                pedido.CodigoColor = (dgvPedidos.Rows[i].Cells[1].Value != null && dgvPedidos.Rows[i].Cells[1].Value.ToString() != "") ? int.Parse(dgvPedidos.Rows[i].Cells[1].Value.ToString()) : 0;
+                pedido.Estado = (dgvPedidos.Rows[i].Cells[2].Value != null && dgvPedidos.Rows[i].Cells[2].Value.ToString() != "") ? dgvPedidos.Rows[i].Cells[2].Value.ToString() : "";
+                pedido.Disponible = (dgvPedidos.Rows[i].Cells[3].Value != null && dgvPedidos.Rows[i].Cells[3].Value.ToString() != "") ? decimal.Parse(dgvPedidos.Rows[i].Cells[3].Value.ToString()) : 0;
+                pedido.TipoPedido = "ESTAMPADO";
+                control.addPedido(pedido);
+            }
+        }
+        
         private decimal calcularMCalculados(decimal consumo, int totalUnidades) {
             return decimal.Round(consumo * totalUnidades * decimal.Parse("1.10"), 2);
         }

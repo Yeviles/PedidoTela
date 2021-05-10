@@ -31,6 +31,8 @@ namespace PedidoTela.Formularios
         {
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
             this.pnlSolicitudColor = new System.Windows.Forms.Panel();
+            this.cbxTipoTejido = new System.Windows.Forms.ComboBox();
+            this.lbTipoTejido = new System.Windows.Forms.Label();
             this.txbNomTela = new System.Windows.Forms.TextBox();
             this.lbReferenciaTela = new System.Windows.Forms.Label();
             this.lbNombreTela = new System.Windows.Forms.Label();
@@ -73,8 +75,6 @@ namespace PedidoTela.Formularios
             this.lbIdentificador = new System.Windows.Forms.Label();
             this.lbSolicitud = new System.Windows.Forms.Label();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
-            this.cbxTipoTejido = new System.Windows.Forms.ComboBox();
-            this.lbTipoTejido = new System.Windows.Forms.Label();
             this.pnlSolicitudColor.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvPlano)).BeginInit();
             this.panel9.SuspendLayout();
@@ -99,6 +99,27 @@ namespace PedidoTela.Formularios
             this.pnlSolicitudColor.Name = "pnlSolicitudColor";
             this.pnlSolicitudColor.Size = new System.Drawing.Size(1359, 77);
             this.pnlSolicitudColor.TabIndex = 23;
+            // 
+            // cbxTipoTejido
+            // 
+            this.cbxTipoTejido.FormattingEnabled = true;
+            this.cbxTipoTejido.Items.AddRange(new object[] {
+            "PLANO",
+            "PUNTO",
+            "PRETEÑIDO"});
+            this.cbxTipoTejido.Location = new System.Drawing.Point(169, 42);
+            this.cbxTipoTejido.Name = "cbxTipoTejido";
+            this.cbxTipoTejido.Size = new System.Drawing.Size(211, 24);
+            this.cbxTipoTejido.TabIndex = 16;
+            // 
+            // lbTipoTejido
+            // 
+            this.lbTipoTejido.AutoSize = true;
+            this.lbTipoTejido.Location = new System.Drawing.Point(26, 45);
+            this.lbTipoTejido.Name = "lbTipoTejido";
+            this.lbTipoTejido.Size = new System.Drawing.Size(90, 17);
+            this.lbTipoTejido.TabIndex = 15;
+            this.lbTipoTejido.Text = "Tipo Tejido:";
             // 
             // txbNomTela
             // 
@@ -407,7 +428,7 @@ namespace PedidoTela.Formularios
             // 
             this.btnConfirmar.Font = new System.Drawing.Font("Verdana", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnConfirmar.Image = global::PedidoTela.Formularios.Properties.Resources.confirmar1;
-            this.btnConfirmar.Location = new System.Drawing.Point(127, 1);
+            this.btnConfirmar.Location = new System.Drawing.Point(126, 1);
             this.btnConfirmar.Name = "btnConfirmar";
             this.btnConfirmar.Size = new System.Drawing.Size(126, 41);
             this.btnConfirmar.TabIndex = 96;
@@ -437,7 +458,7 @@ namespace PedidoTela.Formularios
             // 
             this.btnSalir.Font = new System.Drawing.Font("Verdana", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnSalir.Image = global::PedidoTela.Formularios.Properties.Resources.salir2;
-            this.btnSalir.Location = new System.Drawing.Point(251, 2);
+            this.btnSalir.Location = new System.Drawing.Point(251, 1);
             this.btnSalir.Name = "btnSalir";
             this.btnSalir.Size = new System.Drawing.Size(126, 41);
             this.btnSalir.TabIndex = 97;
@@ -494,27 +515,6 @@ namespace PedidoTela.Formularios
             this.pictureBox1.Size = new System.Drawing.Size(31, 33);
             this.pictureBox1.TabIndex = 151;
             this.pictureBox1.TabStop = false;
-            // 
-            // cbxTipoTejido
-            // 
-            this.cbxTipoTejido.FormattingEnabled = true;
-            this.cbxTipoTejido.Items.AddRange(new object[] {
-            "PLANO",
-            "PUNTO",
-            "PRETEÑIDO"});
-            this.cbxTipoTejido.Location = new System.Drawing.Point(169, 42);
-            this.cbxTipoTejido.Name = "cbxTipoTejido";
-            this.cbxTipoTejido.Size = new System.Drawing.Size(211, 24);
-            this.cbxTipoTejido.TabIndex = 16;
-            // 
-            // lbTipoTejido
-            // 
-            this.lbTipoTejido.AutoSize = true;
-            this.lbTipoTejido.Location = new System.Drawing.Point(26, 45);
-            this.lbTipoTejido.Name = "lbTipoTejido";
-            this.lbTipoTejido.Size = new System.Drawing.Size(90, 17);
-            this.lbTipoTejido.TabIndex = 15;
-            this.lbTipoTejido.Text = "Tipo Tejido:";
             // 
             // frmSolicitudPlanoPretenido
             // 

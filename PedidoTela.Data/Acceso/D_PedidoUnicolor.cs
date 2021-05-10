@@ -82,7 +82,7 @@ namespace PedidoTela.Data.Acceso
             return id;
         }
 
-        public bool consultarIdentificador(int idSolTela)
+        public bool consultarExistePedido(int idSolTela)
         {
             string ensayo;
             using (var administrador = new clsConexion())
@@ -94,6 +94,7 @@ namespace PedidoTela.Data.Acceso
                     datos.Read();
                     ensayo = datos["ensayo_ref"].ToString().Trim();
                     administrador.cerrarConexion();
+
                     return true;
                 }
                 catch

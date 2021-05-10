@@ -77,12 +77,12 @@
     <Compile Include="Logica\PedidoMontarInformacion.cs" />
     <Compile Include="Logica\MontajeTela.cs" />
     <Compile Include="Logica\Objeto.cs" />
-    <Compile Include="Logica\Pedido.cs" />
     <Compile Include="Logica\PlanoPretenido.cs" />
     <Compile Include="Logica\ReporteReservaTela.cs" />
     <Compile Include="Logica\TipoPedido.cs" />
     <Compile Include="Logica\TipoTejido.cs" />
     <Compile Include="Logica\PedidoMontarTotal.cs" />
+    <Compile Include="Logica\TomarDelPedido.cs" />
     <Compile Include="Logica\Unicolor.cs" />
     <Compile Include="Logica\Utilidades.cs" />
     <Compile Include="Logica\Validar.cs" />

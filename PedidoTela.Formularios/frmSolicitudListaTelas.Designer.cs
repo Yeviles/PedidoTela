@@ -61,24 +61,6 @@ namespace PedidoTela.Formularios
             this.txbNdibujo = new System.Windows.Forms.TextBox();
             this.txbEnsayoRef = new System.Windows.Forms.TextBox();
             this.dgvSolicitudTelas = new System.Windows.Forms.DataGridView();
-            this.pnlInicial = new System.Windows.Forms.Panel();
-            this.cbxEstado = new System.Windows.Forms.ComboBox();
-            this.cbxColor = new System.Windows.Forms.ComboBox();
-            this.cbxRefTela = new System.Windows.Forms.ComboBox();
-            this.cbxNomTela = new System.Windows.Forms.ComboBox();
-            this.cbxSiCoordinado = new System.Windows.Forms.CheckBox();
-            this.cbxNoCoordinado = new System.Windows.Forms.CheckBox();
-            this.dtpFechaTienda = new System.Windows.Forms.DateTimePicker();
-            this.cbxEntrada = new System.Windows.Forms.ComboBox();
-            this.cbxTema = new System.Windows.Forms.ComboBox();
-            this.cbxOcasionUso = new System.Windows.Forms.ComboBox();
-            this.cbxMuestrario = new System.Windows.Forms.ComboBox();
-            this.cbxDisenador = new System.Windows.Forms.ComboBox();
-            this.cbxTipoSolicitud = new System.Windows.Forms.ComboBox();
-            this.btnConsultar = new System.Windows.Forms.Button();
-            this.ttMuestrario = new System.Windows.Forms.ToolTip(this.components);
-            this.ttNomTela = new System.Windows.Forms.ToolTip(this.components);
-            this.pnlContenedorGrid = new System.Windows.Forms.Panel();
             this.sel = new System.Windows.Forms.DataGridViewCheckBoxColumn();
             this.solicitud = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.tipoSolicitud = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -111,6 +93,24 @@ namespace PedidoTela.Formularios
             this.idProgramador = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.descPrenda = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.consolidado = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.pnlInicial = new System.Windows.Forms.Panel();
+            this.cbxEstado = new System.Windows.Forms.ComboBox();
+            this.cbxColor = new System.Windows.Forms.ComboBox();
+            this.cbxRefTela = new System.Windows.Forms.ComboBox();
+            this.cbxNomTela = new System.Windows.Forms.ComboBox();
+            this.cbxSiCoordinado = new System.Windows.Forms.CheckBox();
+            this.cbxNoCoordinado = new System.Windows.Forms.CheckBox();
+            this.dtpFechaTienda = new System.Windows.Forms.DateTimePicker();
+            this.cbxEntrada = new System.Windows.Forms.ComboBox();
+            this.cbxTema = new System.Windows.Forms.ComboBox();
+            this.cbxOcasionUso = new System.Windows.Forms.ComboBox();
+            this.cbxMuestrario = new System.Windows.Forms.ComboBox();
+            this.cbxDisenador = new System.Windows.Forms.ComboBox();
+            this.cbxTipoSolicitud = new System.Windows.Forms.ComboBox();
+            this.btnConsultar = new System.Windows.Forms.Button();
+            this.ttMuestrario = new System.Windows.Forms.ToolTip(this.components);
+            this.ttNomTela = new System.Windows.Forms.ToolTip(this.components);
+            this.pnlContenedorGrid = new System.Windows.Forms.Panel();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvSolicitudTelas)).BeginInit();
             this.pnlInicial.SuspendLayout();
@@ -409,6 +409,7 @@ namespace PedidoTela.Formularios
             this.dgvSolicitudTelas.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.dgvSolicitudTelas.AutoSizeRowsMode = System.Windows.Forms.DataGridViewAutoSizeRowsMode.DisplayedCells;
             this.dgvSolicitudTelas.BackgroundColor = System.Drawing.Color.White;
+            this.dgvSolicitudTelas.BorderStyle = System.Windows.Forms.BorderStyle.None;
             dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
             dataGridViewCellStyle1.BackColor = System.Drawing.SystemColors.ScrollBar;
             dataGridViewCellStyle1.Font = new System.Drawing.Font("Verdana", 8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -462,202 +463,6 @@ namespace PedidoTela.Formularios
             this.dgvSolicitudTelas.Size = new System.Drawing.Size(3027, 453);
             this.dgvSolicitudTelas.TabIndex = 58;
             this.dgvSolicitudTelas.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvSolicitudTelas_CellClick);
-            // 
-            // pnlInicial
-            // 
-            this.pnlInicial.BackColor = System.Drawing.SystemColors.ScrollBar;
-            this.pnlInicial.Controls.Add(this.cbxEstado);
-            this.pnlInicial.Controls.Add(this.cbxColor);
-            this.pnlInicial.Controls.Add(this.cbxRefTela);
-            this.pnlInicial.Controls.Add(this.cbxNomTela);
-            this.pnlInicial.Controls.Add(this.cbxSiCoordinado);
-            this.pnlInicial.Controls.Add(this.cbxNoCoordinado);
-            this.pnlInicial.Controls.Add(this.dtpFechaTienda);
-            this.pnlInicial.Controls.Add(this.cbxEntrada);
-            this.pnlInicial.Controls.Add(this.cbxTema);
-            this.pnlInicial.Controls.Add(this.cbxOcasionUso);
-            this.pnlInicial.Controls.Add(this.cbxMuestrario);
-            this.pnlInicial.Controls.Add(this.cbxDisenador);
-            this.pnlInicial.Controls.Add(this.cbxTipoSolicitud);
-            this.pnlInicial.Controls.Add(this.btnConsultar);
-            this.pnlInicial.Controls.Add(this.lbMuestrario);
-            this.pnlInicial.Controls.Add(this.lbOcasionUso);
-            this.pnlInicial.Controls.Add(this.txbEnsayoRef);
-            this.pnlInicial.Controls.Add(this.lbTema);
-            this.pnlInicial.Controls.Add(this.lbEntrada);
-            this.pnlInicial.Controls.Add(this.lbEnsayo);
-            this.pnlInicial.Controls.Add(this.lbRefenciaTela);
-            this.pnlInicial.Controls.Add(this.lbNombreTela);
-            this.pnlInicial.Controls.Add(this.txbNdibujo);
-            this.pnlInicial.Controls.Add(this.lbColor);
-            this.pnlInicial.Controls.Add(this.lbClase);
-            this.pnlInicial.Controls.Add(this.lbCoordinado);
-            this.pnlInicial.Controls.Add(this.txbSolicitud);
-            this.pnlInicial.Controls.Add(this.lbDisenadora);
-            this.pnlInicial.Controls.Add(this.lbNdibujo);
-            this.pnlInicial.Controls.Add(this.lbFechaTienda);
-            this.pnlInicial.Controls.Add(this.lbSolicitud);
-            this.pnlInicial.Controls.Add(this.lbTipoSolicitud);
-            this.pnlInicial.Controls.Add(this.txbClase);
-            this.pnlInicial.Controls.Add(this.lbEstado);
-            this.pnlInicial.Location = new System.Drawing.Point(13, 139);
-            this.pnlInicial.Name = "pnlInicial";
-            this.pnlInicial.Size = new System.Drawing.Size(1358, 213);
-            this.pnlInicial.TabIndex = 60;
-            // 
-            // cbxEstado
-            // 
-            this.cbxEstado.FormattingEnabled = true;
-            this.cbxEstado.Items.AddRange(new object[] {
-            "Por Analizar",
-            "Reserva Total",
-            "Reserva Parcial",
-            "Solicitud Inventario",
-            "Radicado"});
-            this.cbxEstado.Location = new System.Drawing.Point(661, 129);
-            this.cbxEstado.Name = "cbxEstado";
-            this.cbxEstado.Size = new System.Drawing.Size(224, 24);
-            this.cbxEstado.TabIndex = 73;
-            // 
-            // cbxColor
-            // 
-            this.cbxColor.FormattingEnabled = true;
-            this.cbxColor.Location = new System.Drawing.Point(660, 72);
-            this.cbxColor.Name = "cbxColor";
-            this.cbxColor.Size = new System.Drawing.Size(224, 24);
-            this.cbxColor.TabIndex = 72;
-            // 
-            // cbxRefTela
-            // 
-            this.cbxRefTela.FormattingEnabled = true;
-            this.cbxRefTela.Location = new System.Drawing.Point(660, 41);
-            this.cbxRefTela.Name = "cbxRefTela";
-            this.cbxRefTela.Size = new System.Drawing.Size(224, 24);
-            this.cbxRefTela.TabIndex = 71;
-            // 
-            // cbxNomTela
-            // 
-            this.cbxNomTela.FormattingEnabled = true;
-            this.cbxNomTela.Location = new System.Drawing.Point(660, 11);
-            this.cbxNomTela.Name = "cbxNomTela";
-            this.cbxNomTela.Size = new System.Drawing.Size(224, 24);
-            this.cbxNomTela.TabIndex = 70;
-            // 
-            // cbxSiCoordinado
-            // 
-            this.cbxSiCoordinado.AutoSize = true;
-            this.cbxSiCoordinado.Location = new System.Drawing.Point(1189, 104);
-            this.cbxSiCoordinado.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.cbxSiCoordinado.Name = "cbxSiCoordinado";
-            this.cbxSiCoordinado.Size = new System.Drawing.Size(43, 21);
-            this.cbxSiCoordinado.TabIndex = 69;
-            this.cbxSiCoordinado.Text = "Si";
-            this.cbxSiCoordinado.UseVisualStyleBackColor = true;
-            this.cbxSiCoordinado.CheckedChanged += new System.EventHandler(this.cbxSiCoordinado_CheckedChanged);
-            // 
-            // cbxNoCoordinado
-            // 
-            this.cbxNoCoordinado.AutoSize = true;
-            this.cbxNoCoordinado.Location = new System.Drawing.Point(1102, 105);
-            this.cbxNoCoordinado.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.cbxNoCoordinado.Name = "cbxNoCoordinado";
-            this.cbxNoCoordinado.Size = new System.Drawing.Size(49, 21);
-            this.cbxNoCoordinado.TabIndex = 68;
-            this.cbxNoCoordinado.Text = "No";
-            this.cbxNoCoordinado.UseVisualStyleBackColor = true;
-            this.cbxNoCoordinado.CheckedChanged += new System.EventHandler(this.cbxNoCoordinado_CheckedChanged);
-            // 
-            // dtpFechaTienda
-            // 
-            this.dtpFechaTienda.Location = new System.Drawing.Point(661, 165);
-            this.dtpFechaTienda.Name = "dtpFechaTienda";
-            this.dtpFechaTienda.Size = new System.Drawing.Size(224, 24);
-            this.dtpFechaTienda.TabIndex = 67;
-            this.dtpFechaTienda.Value = new System.DateTime(2021, 4, 16, 8, 41, 21, 0);
-            // 
-            // cbxEntrada
-            // 
-            this.cbxEntrada.FormattingEnabled = true;
-            this.cbxEntrada.Location = new System.Drawing.Point(184, 132);
-            this.cbxEntrada.Name = "cbxEntrada";
-            this.cbxEntrada.Size = new System.Drawing.Size(224, 24);
-            this.cbxEntrada.TabIndex = 65;
-            this.cbxEntrada.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.cbxEntrada_KeyPress);
-            // 
-            // cbxTema
-            // 
-            this.cbxTema.FormattingEnabled = true;
-            this.cbxTema.Location = new System.Drawing.Point(184, 102);
-            this.cbxTema.Name = "cbxTema";
-            this.cbxTema.Size = new System.Drawing.Size(224, 24);
-            this.cbxTema.TabIndex = 64;
-            this.cbxTema.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.cbxTema_KeyPress);
-            // 
-            // cbxOcasionUso
-            // 
-            this.cbxOcasionUso.FormattingEnabled = true;
-            this.cbxOcasionUso.Location = new System.Drawing.Point(184, 72);
-            this.cbxOcasionUso.Name = "cbxOcasionUso";
-            this.cbxOcasionUso.Size = new System.Drawing.Size(224, 24);
-            this.cbxOcasionUso.TabIndex = 63;
-            this.cbxOcasionUso.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.cbxOcasionUso_KeyPress);
-            // 
-            // cbxMuestrario
-            // 
-            this.cbxMuestrario.FormattingEnabled = true;
-            this.cbxMuestrario.Location = new System.Drawing.Point(184, 41);
-            this.cbxMuestrario.Name = "cbxMuestrario";
-            this.cbxMuestrario.Size = new System.Drawing.Size(224, 24);
-            this.cbxMuestrario.TabIndex = 62;
-            this.cbxMuestrario.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.cbxMuestrario_KeyPress);
-            // 
-            // cbxDisenador
-            // 
-            this.cbxDisenador.FormattingEnabled = true;
-            this.cbxDisenador.Location = new System.Drawing.Point(184, 163);
-            this.cbxDisenador.Name = "cbxDisenador";
-            this.cbxDisenador.Size = new System.Drawing.Size(224, 24);
-            this.cbxDisenador.TabIndex = 61;
-            this.cbxDisenador.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.cbxDisenador_KeyPress);
-            // 
-            // cbxTipoSolicitud
-            // 
-            this.cbxTipoSolicitud.FormattingEnabled = true;
-            this.cbxTipoSolicitud.Location = new System.Drawing.Point(184, 10);
-            this.cbxTipoSolicitud.Name = "cbxTipoSolicitud";
-            this.cbxTipoSolicitud.Size = new System.Drawing.Size(224, 24);
-            this.cbxTipoSolicitud.TabIndex = 60;
-            // 
-            // btnConsultar
-            // 
-            this.btnConsultar.Image = global::PedidoTela.Formularios.Properties.Resources.finger_hand_5531;
-            this.btnConsultar.Location = new System.Drawing.Point(1159, 152);
-            this.btnConsultar.Name = "btnConsultar";
-            this.btnConsultar.Size = new System.Drawing.Size(167, 50);
-            this.btnConsultar.TabIndex = 59;
-            this.btnConsultar.Text = "Consultar";
-            this.btnConsultar.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
-            this.btnConsultar.UseVisualStyleBackColor = true;
-            this.btnConsultar.Click += new System.EventHandler(this.btnConsultar_Click);
-            // 
-            // ttMuestrario
-            // 
-            this.ttMuestrario.BackColor = System.Drawing.Color.Yellow;
-            // 
-            // ttNomTela
-            // 
-            this.ttNomTela.BackColor = System.Drawing.Color.LightGoldenrodYellow;
-            // 
-            // pnlContenedorGrid
-            // 
-            this.pnlContenedorGrid.AutoScroll = true;
-            this.pnlContenedorGrid.AutoScrollMargin = new System.Drawing.Size(30, 60);
-            this.pnlContenedorGrid.BackColor = System.Drawing.SystemColors.Window;
-            this.pnlContenedorGrid.Controls.Add(this.dgvSolicitudTelas);
-            this.pnlContenedorGrid.Location = new System.Drawing.Point(13, 383);
-            this.pnlContenedorGrid.Name = "pnlContenedorGrid";
-            this.pnlContenedorGrid.Size = new System.Drawing.Size(1358, 379);
-            this.pnlContenedorGrid.TabIndex = 61;
             // 
             // sel
             // 
@@ -856,6 +661,202 @@ namespace PedidoTela.Formularios
             this.consolidado.HeaderText = "Consolidado";
             this.consolidado.MinimumWidth = 6;
             this.consolidado.Name = "consolidado";
+            // 
+            // pnlInicial
+            // 
+            this.pnlInicial.BackColor = System.Drawing.SystemColors.ScrollBar;
+            this.pnlInicial.Controls.Add(this.cbxEstado);
+            this.pnlInicial.Controls.Add(this.cbxColor);
+            this.pnlInicial.Controls.Add(this.cbxRefTela);
+            this.pnlInicial.Controls.Add(this.cbxNomTela);
+            this.pnlInicial.Controls.Add(this.cbxSiCoordinado);
+            this.pnlInicial.Controls.Add(this.cbxNoCoordinado);
+            this.pnlInicial.Controls.Add(this.dtpFechaTienda);
+            this.pnlInicial.Controls.Add(this.cbxEntrada);
+            this.pnlInicial.Controls.Add(this.cbxTema);
+            this.pnlInicial.Controls.Add(this.cbxOcasionUso);
+            this.pnlInicial.Controls.Add(this.cbxMuestrario);
+            this.pnlInicial.Controls.Add(this.cbxDisenador);
+            this.pnlInicial.Controls.Add(this.cbxTipoSolicitud);
+            this.pnlInicial.Controls.Add(this.btnConsultar);
+            this.pnlInicial.Controls.Add(this.lbMuestrario);
+            this.pnlInicial.Controls.Add(this.lbOcasionUso);
+            this.pnlInicial.Controls.Add(this.txbEnsayoRef);
+            this.pnlInicial.Controls.Add(this.lbTema);
+            this.pnlInicial.Controls.Add(this.lbEntrada);
+            this.pnlInicial.Controls.Add(this.lbEnsayo);
+            this.pnlInicial.Controls.Add(this.lbRefenciaTela);
+            this.pnlInicial.Controls.Add(this.lbNombreTela);
+            this.pnlInicial.Controls.Add(this.txbNdibujo);
+            this.pnlInicial.Controls.Add(this.lbColor);
+            this.pnlInicial.Controls.Add(this.lbClase);
+            this.pnlInicial.Controls.Add(this.lbCoordinado);
+            this.pnlInicial.Controls.Add(this.txbSolicitud);
+            this.pnlInicial.Controls.Add(this.lbDisenadora);
+            this.pnlInicial.Controls.Add(this.lbNdibujo);
+            this.pnlInicial.Controls.Add(this.lbFechaTienda);
+            this.pnlInicial.Controls.Add(this.lbSolicitud);
+            this.pnlInicial.Controls.Add(this.lbTipoSolicitud);
+            this.pnlInicial.Controls.Add(this.txbClase);
+            this.pnlInicial.Controls.Add(this.lbEstado);
+            this.pnlInicial.Location = new System.Drawing.Point(13, 139);
+            this.pnlInicial.Name = "pnlInicial";
+            this.pnlInicial.Size = new System.Drawing.Size(1358, 213);
+            this.pnlInicial.TabIndex = 60;
+            // 
+            // cbxEstado
+            // 
+            this.cbxEstado.FormattingEnabled = true;
+            this.cbxEstado.Items.AddRange(new object[] {
+            "Por Analizar",
+            "Reserva Total",
+            "Reserva Parcial",
+            "Solicitud Inventario",
+            "Radicado"});
+            this.cbxEstado.Location = new System.Drawing.Point(661, 129);
+            this.cbxEstado.Name = "cbxEstado";
+            this.cbxEstado.Size = new System.Drawing.Size(224, 24);
+            this.cbxEstado.TabIndex = 73;
+            // 
+            // cbxColor
+            // 
+            this.cbxColor.FormattingEnabled = true;
+            this.cbxColor.Location = new System.Drawing.Point(660, 72);
+            this.cbxColor.Name = "cbxColor";
+            this.cbxColor.Size = new System.Drawing.Size(224, 24);
+            this.cbxColor.TabIndex = 72;
+            // 
+            // cbxRefTela
+            // 
+            this.cbxRefTela.FormattingEnabled = true;
+            this.cbxRefTela.Location = new System.Drawing.Point(660, 41);
+            this.cbxRefTela.Name = "cbxRefTela";
+            this.cbxRefTela.Size = new System.Drawing.Size(224, 24);
+            this.cbxRefTela.TabIndex = 71;
+            // 
+            // cbxNomTela
+            // 
+            this.cbxNomTela.FormattingEnabled = true;
+            this.cbxNomTela.Location = new System.Drawing.Point(660, 11);
+            this.cbxNomTela.Name = "cbxNomTela";
+            this.cbxNomTela.Size = new System.Drawing.Size(224, 24);
+            this.cbxNomTela.TabIndex = 70;
+            // 
+            // cbxSiCoordinado
+            // 
+            this.cbxSiCoordinado.AutoSize = true;
+            this.cbxSiCoordinado.Location = new System.Drawing.Point(1189, 104);
+            this.cbxSiCoordinado.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.cbxSiCoordinado.Name = "cbxSiCoordinado";
+            this.cbxSiCoordinado.Size = new System.Drawing.Size(43, 21);
+            this.cbxSiCoordinado.TabIndex = 69;
+            this.cbxSiCoordinado.Text = "Si";
+            this.cbxSiCoordinado.UseVisualStyleBackColor = true;
+            this.cbxSiCoordinado.CheckedChanged += new System.EventHandler(this.cbxSiCoordinado_CheckedChanged);
+            // 
+            // cbxNoCoordinado
+            // 
+            this.cbxNoCoordinado.AutoSize = true;
+            this.cbxNoCoordinado.Location = new System.Drawing.Point(1102, 105);
+            this.cbxNoCoordinado.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.cbxNoCoordinado.Name = "cbxNoCoordinado";
+            this.cbxNoCoordinado.Size = new System.Drawing.Size(49, 21);
+            this.cbxNoCoordinado.TabIndex = 68;
+            this.cbxNoCoordinado.Text = "No";
+            this.cbxNoCoordinado.UseVisualStyleBackColor = true;
+            this.cbxNoCoordinado.CheckedChanged += new System.EventHandler(this.cbxNoCoordinado_CheckedChanged);
+            // 
+            // dtpFechaTienda
+            // 
+            this.dtpFechaTienda.Location = new System.Drawing.Point(661, 165);
+            this.dtpFechaTienda.Name = "dtpFechaTienda";
+            this.dtpFechaTienda.Size = new System.Drawing.Size(224, 24);
+            this.dtpFechaTienda.TabIndex = 67;
+            this.dtpFechaTienda.Value = new System.DateTime(2021, 4, 16, 8, 41, 21, 0);
+            // 
+            // cbxEntrada
+            // 
+            this.cbxEntrada.FormattingEnabled = true;
+            this.cbxEntrada.Location = new System.Drawing.Point(184, 132);
+            this.cbxEntrada.Name = "cbxEntrada";
+            this.cbxEntrada.Size = new System.Drawing.Size(224, 24);
+            this.cbxEntrada.TabIndex = 65;
+            this.cbxEntrada.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.cbxEntrada_KeyPress);
+            // 
+            // cbxTema
+            // 
+            this.cbxTema.FormattingEnabled = true;
+            this.cbxTema.Location = new System.Drawing.Point(184, 102);
+            this.cbxTema.Name = "cbxTema";
+            this.cbxTema.Size = new System.Drawing.Size(224, 24);
+            this.cbxTema.TabIndex = 64;
+            this.cbxTema.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.cbxTema_KeyPress);
+            // 
+            // cbxOcasionUso
+            // 
+            this.cbxOcasionUso.FormattingEnabled = true;
+            this.cbxOcasionUso.Location = new System.Drawing.Point(184, 72);
+            this.cbxOcasionUso.Name = "cbxOcasionUso";
+            this.cbxOcasionUso.Size = new System.Drawing.Size(224, 24);
+            this.cbxOcasionUso.TabIndex = 63;
+            this.cbxOcasionUso.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.cbxOcasionUso_KeyPress);
+            // 
+            // cbxMuestrario
+            // 
+            this.cbxMuestrario.FormattingEnabled = true;
+            this.cbxMuestrario.Location = new System.Drawing.Point(184, 41);
+            this.cbxMuestrario.Name = "cbxMuestrario";
+            this.cbxMuestrario.Size = new System.Drawing.Size(224, 24);
+            this.cbxMuestrario.TabIndex = 62;
+            this.cbxMuestrario.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.cbxMuestrario_KeyPress);
+            // 
+            // cbxDisenador
+            // 
+            this.cbxDisenador.FormattingEnabled = true;
+            this.cbxDisenador.Location = new System.Drawing.Point(184, 163);
+            this.cbxDisenador.Name = "cbxDisenador";
+            this.cbxDisenador.Size = new System.Drawing.Size(224, 24);
+            this.cbxDisenador.TabIndex = 61;
+            this.cbxDisenador.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.cbxDisenador_KeyPress);
+            // 
+            // cbxTipoSolicitud
+            // 
+            this.cbxTipoSolicitud.FormattingEnabled = true;
+            this.cbxTipoSolicitud.Location = new System.Drawing.Point(184, 10);
+            this.cbxTipoSolicitud.Name = "cbxTipoSolicitud";
+            this.cbxTipoSolicitud.Size = new System.Drawing.Size(224, 24);
+            this.cbxTipoSolicitud.TabIndex = 60;
+            // 
+            // btnConsultar
+            // 
+            this.btnConsultar.Image = global::PedidoTela.Formularios.Properties.Resources.finger_hand_5531;
+            this.btnConsultar.Location = new System.Drawing.Point(1159, 152);
+            this.btnConsultar.Name = "btnConsultar";
+            this.btnConsultar.Size = new System.Drawing.Size(167, 50);
+            this.btnConsultar.TabIndex = 59;
+            this.btnConsultar.Text = "Consultar";
+            this.btnConsultar.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
+            this.btnConsultar.UseVisualStyleBackColor = true;
+            this.btnConsultar.Click += new System.EventHandler(this.btnConsultar_Click);
+            // 
+            // ttMuestrario
+            // 
+            this.ttMuestrario.BackColor = System.Drawing.Color.Yellow;
+            // 
+            // ttNomTela
+            // 
+            this.ttNomTela.BackColor = System.Drawing.Color.LightGoldenrodYellow;
+            // 
+            // pnlContenedorGrid
+            // 
+            this.pnlContenedorGrid.AutoScroll = true;
+            this.pnlContenedorGrid.AutoScrollMargin = new System.Drawing.Size(30, 60);
+            this.pnlContenedorGrid.BackColor = System.Drawing.SystemColors.Window;
+            this.pnlContenedorGrid.Controls.Add(this.dgvSolicitudTelas);
+            this.pnlContenedorGrid.Location = new System.Drawing.Point(13, 383);
+            this.pnlContenedorGrid.Name = "pnlContenedorGrid";
+            this.pnlContenedorGrid.Size = new System.Drawing.Size(1358, 379);
+            this.pnlContenedorGrid.TabIndex = 61;
             // 
             // frmSolicitudListaTelas
             // 

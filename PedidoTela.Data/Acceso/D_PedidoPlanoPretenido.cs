@@ -56,7 +56,7 @@ namespace PedidoTela.Data.Acceso
         #endregion
 
         #region Métodos Consulta
-        public bool consultarIdentificador(int prmIdSolicitudTela)
+        public bool ExistePedido(int prmIdSolicitudTela)
         {
             string ensayo;
             using (var administrador = new clsConexion())

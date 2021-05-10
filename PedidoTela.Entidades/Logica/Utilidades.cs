@@ -85,6 +85,20 @@ namespace PedidoTela.Entidades.Logica
             return contador;
         }
 
-       
+
+        public decimal calcularKgCalculados(decimal mSolicitar, decimal rendimiento)
+        {
+            return decimal.Round(mSolicitar / rendimiento, 2);
+        }
+
+        public decimal calcularMCalculados(decimal consumo, int totalUnidades)
+        {
+            return decimal.Round(consumo * totalUnidades * decimal.Parse("1.10"), 2);
+        }
+
+        public decimal calcularMSolicitar(decimal mCalculados, decimal mReservados)
+        {
+            return decimal.Round(mCalculados - mReservados, 2);
+        }
     }
 }
