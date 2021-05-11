@@ -478,7 +478,7 @@ namespace PedidoTela.Formularios
 
         private void btnAgregarPedido_Click(object sender, EventArgs e)
         {
-            frmBuscarPedido buscar = new frmBuscarPedido(control);
+            frmBuscarPedido buscar = new frmBuscarPedido(control, DetalleSeleccionado[0].IdProgramador);
             if (buscar.ShowDialog() == DialogResult.OK)
             {
                 TomarDelPedido obj = buscar.Elemento;

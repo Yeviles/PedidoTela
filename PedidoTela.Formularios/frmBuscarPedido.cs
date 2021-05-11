@@ -14,33 +14,39 @@ namespace PedidoTela.Formularios
 {
     public partial class frmBuscarPedido : MaterialSkin.Controls.MaterialForm
     {
-        Controlador control;
+        private Controlador control;
         private TomarDelPedido elemento;
+        private int disenador;
 
         public TomarDelPedido Elemento { get => elemento; set => elemento = value; }
 
-        public frmBuscarPedido(Controlador control)
+        public frmBuscarPedido(Controlador control, int disenador)
         {
             this.control = control;
+            this.disenador = disenador;
             Elemento = new TomarDelPedido();
             InitializeComponent();
         }
 
         private void frmBuscarPedido_Load(object sender, EventArgs e)
         {
-
+            listar(control.consultarPedidoPorDisenador(disenador));
         }
 
         private void btnBuscar_Click(object sender, EventArgs e)
         {
             List<TomarDelPedido> lista = new List<TomarDelPedido>();
+            
             if (txbPedido.Text.Trim().Length > 0)
             {
-                lista = control.consultarPorNumeroPedido(txbPedido.Text.Trim());
+                lista = control.consultarPorNumeroPedido(disenador, txbPedido.Text.Trim());
             }
             else if (txbColor.Text.Trim().Length > 0)
             {
-                lista = control.consultarPorCodigoColor(txbColor.Text.Trim());
+                lista = control.consultarPorCodigoColor(disenador, txbColor.Text.Trim());
+            }
+            else {
+                lista = control.consultarPedidoPorDisenador(disenador);
             }
 
             listar(lista);
@@ -88,7 +94,7 @@ namespace PedidoTela.Formularios
                 string codigo = txbPedido.Text.Trim().ToUpper();
                 if (codigo.Length > 0)
                 {
-                    listar(control.consultarPorNumeroPedido(codigo));
+                    listar(control.consultarPorNumeroPedido(disenador, codigo));
                 }
             }
         }

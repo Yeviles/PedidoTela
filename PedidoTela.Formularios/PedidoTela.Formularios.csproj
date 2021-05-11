@@ -142,6 +142,12 @@
     <Compile Include="frmEditarDsolicitudTela.Designer.cs">
       <DependentUpon>frmEditarDsolicitudTela.cs</DependentUpon>
     </Compile>
+    <Compile Include="frmImprimirPedidoEstampado.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmImprimirPedidoEstampado.Designer.cs">
+      <DependentUpon>frmImprimirPedidoEstampado.cs</DependentUpon>
+    </Compile>
     <Compile Include="frmImprimirPedidoPlano.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -294,6 +300,9 @@
     <EmbeddedResource Include="frmEditarDsolicitudTela.resx">
       <DependentUpon>frmEditarDsolicitudTela.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="frmImprimirPedidoEstampado.resx">
+      <DependentUpon>frmImprimirPedidoEstampado.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="frmImprimirPedidoPlano.resx">
       <DependentUpon>frmImprimirPedidoPlano.cs</DependentUpon>
     </EmbeddedResource>
@@ -361,6 +370,7 @@
       <DependentUpon>frmSolicitudUnicolor.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="PDFImprimirSIP.rdlc" />
+    <EmbeddedResource Include="PDFPedidoEstampado.rdlc" />
     <EmbeddedResource Include="PDFPedidoPlano.rdlc" />
     <EmbeddedResource Include="PDFPedidoUnicolor.rdlc" />
     <EmbeddedResource Include="PDFReporteReserva.rdlc" />
@@ -386,6 +396,8 @@
     <None Include="Properties\DataSources\PedidoTela.Entidades.Logica.PedUnicolorInfoCon.datasource" />
     <None Include="Properties\DataSources\PedidoTela.Entidades.Logica.PedUnicolorTotalCon.datasource" />
     <None Include="Properties\DataSources\PedidoTela.Entidades.Logica.ReporteReservaTela.datasource" />
+    <None Include="Properties\DataSources\PedidoTela.Entidades.Logica.TomarDelPedido.datasource" />
+    <None Include="Properties\DataSources\PedidoTela.Entidades.PedidoAMontar.datasource" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
