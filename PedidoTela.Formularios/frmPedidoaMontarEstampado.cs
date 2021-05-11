@@ -23,7 +23,7 @@ namespace PedidoTela.Formularios
         private List<int> listaIdSolicitudes = new List<int>();
         private List<string> listaEsayosRef = new List<string>();
         private Validar validacion = new Validar();
-        private int contador = 0, idSolicitud, id;
+        private int contador = 0, idSolicitud, id, consecutivo;
         private bool bandera = false;
         #endregion
 
@@ -428,9 +428,50 @@ namespace PedidoTela.Formularios
 
         private void btnConfirmar_Click(object sender, EventArgs e)
         {
+            int maxConsecutivo = control.consultarMaxConsecutivoPedido();
+            // Se asignar valores para la fecha. 
+            string fechaActual = DateTime.Now.ToString("dd/MM/yyyy");
+            // El estado que se le debe dar a solicitud cuando es confirmada
 
+            string estado = "Radicado";
+
+            if (id != 0)
+            {
+                for (int i = 0; i < listaIdSolicitudes.Count; i++)
+                {
+                    control.agregarConsecutivo(listaIdSolicitudes[i], maxConsecutivo + 1, fechaActual, estado);
+                }
+                MessageBox.Show("La información se guardó con éxito. \n El estado se actualizó a Radicado.", "Información", MessageBoxButtons.OK, MessageBoxIcon.Information);
+
+                // Deshabilita los diferentes botones y demás contenido del formulario que se quiere que no sea modificado una vez se confirme la solicitud.
+                btnConfirmar.Enabled = false;
+                btnGrabar.Enabled = false;
+
+                dgvInfoConsolidar.ReadOnly = true;
+                dgvTotalConsolidado.ReadOnly = true;
+
+                //Consulta el consecutivo generado y se muestra en la vista.
+                consecutivo = control.consultarConsecutivoPedido(idSolicitud);
+                lblConsecutivo.Text = "Consecutivo: " + consecutivo;
+            }
+            else
+            {
+                MessageBox.Show("Por favor, Grabe la Información.", "Advertencia", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+            }
         }
 
+        private void btnImprimir_Click(object sender, EventArgs e)
+        {
+            if (id != 0)
+            {
+                frmImprimirPedidoEstampado imprimir = new frmImprimirPedidoEstampado(control, idSolicitud);
+                imprimir.ShowDialog();
+            }
+            else
+            {
+                MessageBox.Show("Por favor guarde el consolidado.", "Advertencia", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+            }
+        }
         private void btnSalir_Click(object sender, EventArgs e)
         {
             this.Close();
@@ -783,7 +824,7 @@ namespace PedidoTela.Formularios
                 control.addPedido(pedido);
             }
         }
-        
+
         private decimal calcularMCalculados(decimal consumo, int totalUnidades) {
             return decimal.Round(consumo * totalUnidades * decimal.Parse("1.10"), 2);
         }

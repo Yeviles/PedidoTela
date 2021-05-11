@@ -572,7 +572,6 @@
           </TablixMembers>
         </TablixRowHierarchy>
         <RepeatRowHeaders>true</RepeatRowHeaders>
-        <DataSetName>DataSet1</DataSetName>
         <Top>2.56328cm</Top>
         <Left>0.52599cm</Left>
         <Height>1.2cm</Height>
@@ -582,6 +581,7 @@
           <Border>
             <Style>None</Style>
           </Border>
+          <FontFamily />
         </Style>
       </Tablix>
     </ReportItems>
