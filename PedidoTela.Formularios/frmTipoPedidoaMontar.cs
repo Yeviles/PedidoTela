@@ -81,6 +81,7 @@ namespace PedidoTela.Formularios
                 cbxestampado.Checked = false;
                 cbxPlanoPretenido.Checked = false;
                 Seleccion = "cuelloPun";
+                frmMontarCuellos = new frmPedidoaMontarCuellos(control, detalleSeleccionado, IdSolTela);
             }
         }
 

@@ -31,8 +31,8 @@ namespace PedidoTela.Data.Acceso
                            "   CONCAT(CONCAT(NVL(du.otros,''), NVL(de.otros,'')), NVL(pd.otros,'')) as otros, NVL(li.desc_linea,'') as desc_linea, " +
                            "   NVL(st.m_calculados,'') as m_calculados, NVL(st.m_reservar,'') as m_reservar, NVL(st.m_solicitar,'') as m_solicitar,st.idsolicitud,NVL(st.cantidad_reservado,'') as cantidad_reservado,  " +
                            "   CONCAT(CONCAT(CONCAT(NVL(du.id,''),NVL(de.iddetalleest,'')),NVL(pd.id,'')), NVL(cd.iddetallecuellodos,'')) as idDetalleSol, NVL(st.id_programador,0) as id_programador, st.desc_prenda, " +
-                           "   NVL(pd.codigo_h1, 0) as codigo_h1, NVL(pd.descripcion_h1, '') as descripcion_h1, NVL(pd.codigo_h2,0) as codigo_h2, NVL(pd.descripcion_h2,'') as descripcion_h2, NVL(pd.codigo_h3,0) as codigo_h3, " +
-                           "   NVL(pd.descripcion_h3,'') as descripcion_h3, NVL(pd.codigo_h4,0) as codigo_h4, NVL(pd.descripcion_h4,'') as descripcion_h4, NVL(pd.codigo_h5,0) as codigo_h5, NVL(pd.descripcion_h5,'') as descripcion_h5  "+
+                           "   CONCAT(NVL(pd.codigo_h1,''), NVL(cd.codigo_h1,'')) as codigo_h1, CONCAT(NVL(pd.descripcion_h1, ''), NVL(cd.descripcion_h1, '')) as descripcion_h1, CONCAT(NVL(pd.codigo_h2,''),NVL(cd.codigo_h2,'')) as codigo_h2, CONCAT(NVL(pd.descripcion_h2,''),NVL(cd.descripcion_h2,''))as descripcion_h2, CONCAT(NVL(pd.codigo_h3,''),NVL(cd.codigo_h3,'')) as codigo_h3,  "+
+                           "   CONCAT(NVL(pd.descripcion_h3,''),NVL(cd.descripcion_h3,'')) as descripcion_h3, CONCAT(NVL(pd.codigo_h4,''),NVL(cd.codigo_h4,'')) as codigo_h4, CONCAT(NVL(pd.descripcion_h4,''),NVL(cd.descripcion_h4,'')) as descripcion_h4, CONCAT(NVL(pd.codigo_h5,''),NVL(cd.codigo_h5,'')) as codigo_h5, CONCAT(NVL(pd.descripcion_h5,''),NVL(cd.descripcion_h5,'')) as descripcion_h5  "+
                            "   from  cfc_spt_tipo_solicitud ts " +
                            "   left join cfc_spt_sol_tela st " +
                            "   on ts.id_solicitud = st.idsolicitud " +
@@ -339,15 +339,15 @@ namespace PedidoTela.Data.Acceso
                     detalle.IdDetalleSolicitud = datosDataReader["idDetalleSol"].ToString().Trim();
                     detalle.IdProgramador = int.Parse(datosDataReader["id_programador"].ToString().Trim());
                     detalle.DescPrenda = datosDataReader["desc_prenda"].ToString().Trim();
-                    detalle.CodigoH1 = int.Parse(datosDataReader["codigo_h1"].ToString());
+                    detalle.CodigoH1 =datosDataReader["codigo_h1"].ToString();
                     detalle.DescripcionH1 = datosDataReader["descripcion_h1"].ToString().Trim();
-                    detalle.CodigoH2 = int.Parse(datosDataReader["codigo_h2"].ToString());
+                    detalle.CodigoH2 = datosDataReader["codigo_h2"].ToString();
                     detalle.DescripcionH2 = datosDataReader["descripcion_h2"].ToString().Trim();
-                    detalle.CodigoH3 = int.Parse(datosDataReader["codigo_h3"].ToString());
+                    detalle.CodigoH3 = datosDataReader["codigo_h3"].ToString();
                     detalle.DescripcionH3 = datosDataReader["descripcion_h3"].ToString().Trim();
-                    detalle.CodigoH4 = int.Parse(datosDataReader["codigo_h4"].ToString());
+                    detalle.CodigoH4 = datosDataReader["codigo_h4"].ToString();
                     detalle.DescripcionH4 = datosDataReader["descripcion_h4"].ToString().Trim();
-                    detalle.CodigoH5 = int.Parse(datosDataReader["codigo_h5"].ToString());
+                    detalle.CodigoH5 = datosDataReader["codigo_h5"].ToString();
                     detalle.DescripcionH5 = datosDataReader["descripcion_h5"].ToString().Trim();
 
 
