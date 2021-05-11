@@ -96,6 +96,7 @@
     <Compile Include="Acceso\D_Estampado.cs" />
     <Compile Include="Acceso\D_Muestrario.cs" />
     <Compile Include="Acceso\D_OcasionUso.cs" />
+    <Compile Include="Acceso\D_PedidoCuellos.cs" />
     <Compile Include="Acceso\D_PedidoEstampado.cs" />
     <Compile Include="Acceso\D_PedidoEstampadoInfomacion.cs" />
     <Compile Include="Acceso\D_PedidoEstampadoTotal.cs" />

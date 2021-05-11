@@ -36,6 +36,7 @@ namespace PedidoTela.Formularios
         }
 
         #region Eventos
+
         private void frmPedidoaMontarEstampado_Load(object sender, EventArgs e)
         {
             SkinManager.Theme = MaterialSkin.MaterialSkinManager.Themes.LIGHT;

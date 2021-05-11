@@ -921,9 +921,18 @@ namespace PedidoTela.Controlodores
 
         #endregion
 
-      
-        #region Pedido Cuellos-Puños-Tiras
 
+        #region Pedido Cuellos-Puños-Tiras
+        public List<int> consultarIdDetalleCuellos(List<int> idCuellos)
+        {
+            D_PedidoCuellos d_pedidoCuellos = new D_PedidoCuellos();
+            return d_pedidoCuellos.ConsultarIdDetalles(idCuellos);
+        }
+        public List<PedidoCuellos> getPedidoCuellos(List<int> idCuellos)
+        {
+            D_PedidoCuellos d_pedidoCuellos = new D_PedidoCuellos();
+            return d_pedidoCuellos.Consultar(idCuellos);
+        }
         #endregion
 
         #region Pedido Coordinado Tres en Uno

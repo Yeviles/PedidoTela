@@ -74,6 +74,7 @@
     <Compile Include="Logica\Ensayo.cs" />
     <Compile Include="Logica\Estampado.cs" />
     <Compile Include="Logica\PedidoAMontar.cs" />
+    <Compile Include="Logica\PedidoCuellos.cs" />
     <Compile Include="Logica\PedidoMontarInformacion.cs" />
     <Compile Include="Logica\MontajeTela.cs" />
     <Compile Include="Logica\Objeto.cs" />
