@@ -977,15 +977,20 @@ namespace PedidoTela.Controlodores
         #endregion
 
         #region Tomar del Pedido
-        public List<TomarDelPedido> consultarPorNumeroPedido(string numeroPedido)
+        public List<TomarDelPedido> consultarPedidoPorDisenador(int disenador)
         {
             D_TomarDelPedido d_tomarDelPedido = new D_TomarDelPedido();
-            return d_tomarDelPedido.ConsultarPorNumeroPedido(numeroPedido);
+            return d_tomarDelPedido.Consultar(disenador);
         }
-        public List<TomarDelPedido> consultarPorCodigoColor(string codigoColor)
+        public List<TomarDelPedido> consultarPorNumeroPedido(int disenador, string numeroPedido)
         {
             D_TomarDelPedido d_tomarDelPedido = new D_TomarDelPedido();
-            return d_tomarDelPedido.ConsultarPorCodigoColor(codigoColor);
+            return d_tomarDelPedido.ConsultarPorNumeroPedido(disenador, numeroPedido);
+        }
+        public List<TomarDelPedido> consultarPorCodigoColor(int disenador, string codigoColor)
+        {
+            D_TomarDelPedido d_tomarDelPedido = new D_TomarDelPedido();
+            return d_tomarDelPedido.ConsultarPorCodigoColor(disenador, codigoColor);
         }
 
         public void addPedido(TomarDelPedido detalle)
