@@ -48,7 +48,7 @@ namespace PedidoTela.Formularios
         {
             SkinManager.Theme = MaterialSkin.MaterialSkinManager.Themes.LIGHT;
             SkinManager.ColorScheme = new ColorScheme(Primary.Blue900, Primary.Grey500, Primary.Grey200, Accent.Green100, TextShade.WHITE);
-
+            cargarCombobox(cbxTipoMarcacion, control.getTipoMarcacion());
         }
         #region Eventos
        
@@ -56,6 +56,7 @@ namespace PedidoTela.Formularios
         {
             this.Close();
         }
+
         #endregion
         #region Métodos
         /// <summary>
@@ -198,7 +199,15 @@ namespace PedidoTela.Formularios
         {
 
         }
+
         #endregion
 
+        private void dgvCuellos_CellFormatting(object sender, DataGridViewCellFormattingEventArgs e)
+        {
+            if (e.ColumnIndex <=19)
+            {
+                e.CellStyle.BackColor = Color.PaleGoldenrod;
+            }
+        }
     }
 }
