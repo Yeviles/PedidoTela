@@ -923,15 +923,67 @@ namespace PedidoTela.Controlodores
 
 
         #region Pedido Cuellos-Puños-Tiras
-        public List<int> consultarIdDetalleCuellos(List<int> idCuellos)
+
+        /* ENCABEZADO */
+        public bool existePedidoCuellos(int idSolTelas)
         {
-            D_PedidoCuellos d_pedidoCuellos = new D_PedidoCuellos();
-            return d_pedidoCuellos.ConsultarIdDetalles(idCuellos);
+            D_PedidoCuellos d_pedUnicolor = new D_PedidoCuellos();
+            return d_pedUnicolor.consultarExistePedido(idSolTelas);
         }
-        public List<PedidoCuellos> getPedidoCuellos(List<int> idCuellos)
+        public bool addPedidoCuellos(PedidoAMontar pedidoCuellos)
         {
             D_PedidoCuellos d_pedidoCuellos = new D_PedidoCuellos();
-            return d_pedidoCuellos.Consultar(idCuellos);
+            return (d_pedidoCuellos.Agregar(pedidoCuellos) == "ok") ? true : false;
+        }
+        public int getIdPedidoCuellos(int idSolTela)
+        {
+            D_PedidoCuellos d_pedidoCuellos = new D_PedidoCuellos();
+            return d_pedidoCuellos.ConsultarId(idSolTela);
+        }
+        public bool actualizarPedidoCuellos(PedidoAMontar pedUnicolor)
+        {
+            D_PedidoCuellos actualizarPedidoCuellos = new D_PedidoCuellos();
+            return (actualizarPedidoCuellos.Actualizar(pedUnicolor) == "ok") ? true : false;
+        }
+        public PedidoAMontar getPedidoCuellos(int idSolTela)
+        {
+            D_PedidoCuellos d_pedidoCuellos = new D_PedidoCuellos();
+            return d_pedidoCuellos.Consultar(idSolTela);
+        }
+        /* INFROMACIÓN A CONSOLIDAR */
+
+        public void addPedidoCuellosInfo(PedidoMontarInformacion detalle)
+        {
+            D_PedidoCuellosInformacion d_infoConsolidar = new D_PedidoCuellosInformacion();
+            d_infoConsolidar.Agregar(detalle);
+        }
+        public void eliminarPedidoCuellosInformacion(int idPedido)
+        {
+            D_PedidoCuellosInformacion d_PedidoCuellosInfomacion = new D_PedidoCuellosInformacion();
+            d_PedidoCuellosInfomacion.EliminarPorPedido(idPedido);
+        }
+
+        public List<PedidoMontarInformacion> getPedidoCuellosInfo(int idPedidoCuellos)
+        {
+            D_PedidoCuellosInformacion d_pedUniInfoCon = new D_PedidoCuellosInformacion();
+            return d_pedUniInfoCon.ConsultarInformacion(idPedidoCuellos);
+        }
+
+        /* PROPORCIÓN */
+        public void addPedidoCuellosProporcion(PedidoCuellos detalle)
+        {
+            D_PedidoCuellosProporcion d_pedidoCuellosProporcion = new D_PedidoCuellosProporcion();
+            d_pedidoCuellosProporcion.Agregar(detalle);
+        }
+        public void eliminarPedidoCuellosProporcion(int idPedido)
+        {
+            D_PedidoCuellosProporcion d_PedidoCuellosProporcion = new D_PedidoCuellosProporcion();
+            d_PedidoCuellosProporcion.EliminarPorPedido(idPedido);
+        }
+        public List<PedidoCuellos> getPedidoCuellosProporcion(int idPedidoCuellos)
+        {
+            D_PedidoCuellosProporcion d_pedidoCuellosproporcion = new D_PedidoCuellosProporcion();
+            return d_pedidoCuellosproporcion.Consultar(idPedidoCuellos);
         }
         #endregion
 

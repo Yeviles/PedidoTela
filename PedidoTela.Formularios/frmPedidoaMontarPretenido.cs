@@ -47,7 +47,7 @@ namespace PedidoTela.Formularios
             ContItemSeleccionado = itemsSeleccionados;
             dtpFechaLlegada.Format = DateTimePickerFormat.Custom;
             dtpFechaLlegada.CustomFormat = "dd/MM/yyyy";
-            llenarListasolicitudes(DetalleSeleccionado);
+            CargarSolicicitudes(DetalleSeleccionado);
             Iniciar(DetalleSeleccionado, ContItemSeleccionado);
         }
         #endregion
@@ -484,8 +484,16 @@ namespace PedidoTela.Formularios
         
         private void btnImprimir_Click(object sender, EventArgs e)
         {
-            frmImprimirPedidoPlano frmPedUnicolor = new frmImprimirPedidoPlano(control, IdSolicitudTelas);
-            frmPedUnicolor.Show();
+            PedidoAMontar objPlano = control.getPedidoPlano(IdSolicitudTelas);
+            if (objPlano.Id != 0)
+            {
+                frmImprimirPedidoPlano frmPedUnicolor = new frmImprimirPedidoPlano(control, IdSolicitudTelas);
+                frmPedUnicolor.Show();
+            }
+            else
+            {
+                MessageBox.Show("El consolidado no ha sido guardado.", "Advertencia", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+            }
         }
        
         private void btnAgregarPedido_Click(object sender, EventArgs e)
@@ -504,12 +512,14 @@ namespace PedidoTela.Formularios
         #endregion
 
         #region Métodos
-        private void llenarListasolicitudes(List<MontajeTelaDetalle> prmLista)
+        private void CargarSolicicitudes(List<MontajeTelaDetalle> prmLista)
         {
+            List<int> listaSolicitudes = new List<int>();
             for (int i=0;i < prmLista.Count;i++)
             {
-                ListaIdSolicitudes.Add(prmLista[i].IdSolTela);
+                listaSolicitudes.Add(prmLista[i].IdSolTela);
             }
+            ListaIdSolicitudes = listaSolicitudes.Distinct().ToList();
         }
        
         private void Iniciar(List<MontajeTelaDetalle> prmLista, int numfilasSeleccionadas)
@@ -683,15 +693,15 @@ namespace PedidoTela.Formularios
                 detalle.IdPedidoAMontar = id;
                 detalle.CodigoColor = (dgvInfoConsolidar.Rows[i].Cells[0].Value.ToString());
                 detalle.DescripcionColor = (dgvInfoConsolidar.Rows[i].Cells[1].Value != null && dgvInfoConsolidar.Rows[i].Cells[1].Value.ToString() != "") ? dgvInfoConsolidar.Rows[i].Cells[1].Value.ToString() : "";
-                detalle.CodigoH1 = (dgvInfoConsolidar.Rows[i].Cells[2].Value != null && dgvInfoConsolidar.Rows[i].Cells[2].Value.ToString() != "") ? int.Parse(dgvInfoConsolidar.Rows[i].Cells[2].Value.ToString()) : 0;
+                detalle.CodigoH1 = (dgvInfoConsolidar.Rows[i].Cells[2].Value != null && dgvInfoConsolidar.Rows[i].Cells[2].Value.ToString() != "") ? dgvInfoConsolidar.Rows[i].Cells[2].Value.ToString() : "";
                 detalle.DescripcionH1 = (dgvInfoConsolidar.Rows[i].Cells[3].Value != null && dgvInfoConsolidar.Rows[i].Cells[3].Value.ToString() != "") ? dgvInfoConsolidar.Rows[i].Cells[3].Value.ToString() : "";
-                detalle.CodigoH2 = (dgvInfoConsolidar.Rows[i].Cells[4].Value != null && dgvInfoConsolidar.Rows[i].Cells[4].Value.ToString() != "") ? int.Parse(dgvInfoConsolidar.Rows[i].Cells[4].Value.ToString()) : 0;
+                detalle.CodigoH2 = (dgvInfoConsolidar.Rows[i].Cells[4].Value != null && dgvInfoConsolidar.Rows[i].Cells[4].Value.ToString() != "") ? dgvInfoConsolidar.Rows[i].Cells[4].Value.ToString() : "";
                 detalle.DescripcionH2 = (dgvInfoConsolidar.Rows[i].Cells[5].Value != null && dgvInfoConsolidar.Rows[i].Cells[5].Value.ToString() != "") ? dgvInfoConsolidar.Rows[i].Cells[5].Value.ToString() : "";
-                detalle.CodigoH3 = (dgvInfoConsolidar.Rows[i].Cells[6].Value != null && dgvInfoConsolidar.Rows[i].Cells[6].Value.ToString() != "") ? int.Parse(dgvInfoConsolidar.Rows[i].Cells[6].Value.ToString()) : 0;
+                detalle.CodigoH3 = (dgvInfoConsolidar.Rows[i].Cells[6].Value != null && dgvInfoConsolidar.Rows[i].Cells[6].Value.ToString() != "") ? dgvInfoConsolidar.Rows[i].Cells[6].Value.ToString() : "";
                 detalle.DescripcionH3 = (dgvInfoConsolidar.Rows[i].Cells[7].Value != null && dgvInfoConsolidar.Rows[i].Cells[7].Value.ToString() != "") ? dgvInfoConsolidar.Rows[i].Cells[7].Value.ToString() : "";
-                detalle.CodigoH4 = (dgvInfoConsolidar.Rows[i].Cells[8].Value != null && dgvInfoConsolidar.Rows[i].Cells[8].Value.ToString() != "") ? int.Parse(dgvInfoConsolidar.Rows[i].Cells[8].Value.ToString()) : 0;
+                detalle.CodigoH4 = (dgvInfoConsolidar.Rows[i].Cells[8].Value != null && dgvInfoConsolidar.Rows[i].Cells[8].Value.ToString() != "") ? dgvInfoConsolidar.Rows[i].Cells[8].Value.ToString() : "";
                 detalle.DescripcionH4 = (dgvInfoConsolidar.Rows[i].Cells[9].Value != null && dgvInfoConsolidar.Rows[i].Cells[9].Value.ToString() != "") ? dgvInfoConsolidar.Rows[i].Cells[9].Value.ToString() : "";
-                detalle.CodigoH5 = (dgvInfoConsolidar.Rows[i].Cells[10].Value != null && dgvInfoConsolidar.Rows[i].Cells[10].Value.ToString() != "") ? int.Parse(dgvInfoConsolidar.Rows[i].Cells[10].Value.ToString()) : 0;
+                detalle.CodigoH5 = (dgvInfoConsolidar.Rows[i].Cells[10].Value != null && dgvInfoConsolidar.Rows[i].Cells[10].Value.ToString() != "") ? dgvInfoConsolidar.Rows[i].Cells[10].Value.ToString() : "";
                 detalle.DescripcionH5 = (dgvInfoConsolidar.Rows[i].Cells[11].Value != null && dgvInfoConsolidar.Rows[i].Cells[11].Value.ToString() != "") ? dgvInfoConsolidar.Rows[i].Cells[11].Value.ToString() : "";
                 detalle.Tiendas = (dgvInfoConsolidar.Rows[i].Cells[12].Value != null && dgvInfoConsolidar.Rows[i].Cells[12].Value.ToString() != "") ? int.Parse(dgvInfoConsolidar.Rows[i].Cells[12].Value.ToString()) : 0;
                 detalle.Exito = (dgvInfoConsolidar.Rows[i].Cells[13].Value != null && dgvInfoConsolidar.Rows[i].Cells[13].Value.ToString() != "") ? int.Parse(dgvInfoConsolidar.Rows[i].Cells[13].Value.ToString()) : 0;

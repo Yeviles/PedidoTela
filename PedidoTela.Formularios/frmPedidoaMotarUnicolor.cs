@@ -467,8 +467,16 @@ namespace PedidoTela.Formularios
 
         private void btnImprimir_Click(object sender, EventArgs e)
         {
-            frmImprimirPedUnicolor frmPedUnicolor = new frmImprimirPedUnicolor(control,IdSolTela);
-            frmPedUnicolor.Show();
+            PedidoAMontar objPedUnicolor = control.getPedUnicolor(IdSolTela);
+            if (objPedUnicolor.Id != 0)
+            {
+                frmImprimirPedUnicolor frmPedUnicolor = new frmImprimirPedUnicolor(control, IdSolTela);
+                frmPedUnicolor.Show();
+            }
+            else
+            {
+                MessageBox.Show("El consolidado no ha sido guardado.", "Advertencia", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+            }
         }
 
         private void btnSalir_Click(object sender, EventArgs e)
@@ -499,10 +507,12 @@ namespace PedidoTela.Formularios
         /// <param name="prmLista"></param>
         private void Cargarsolicitudes(List<MontajeTelaDetalle> prmLista)
         {
+            List<int> listaSolicitudes = new List<int>();
             for (int i = 0; i < prmLista.Count; i++)
             {
-                ListaIdSolicitudes.Add(prmLista[i].IdSolTela);
+                listaSolicitudes.Add(prmLista[i].IdSolTela);
             }
+            ListaIdSolicitudes = listaSolicitudes.Distinct().ToList();
         }
         
         /// <summary>

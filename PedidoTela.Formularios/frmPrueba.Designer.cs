@@ -30,6 +30,7 @@ namespace PedidoTela.Formularios
         private void InitializeComponent()
         {
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
             this.lbTotalCons = new System.Windows.Forms.Label();
             this.panel9 = new System.Windows.Forms.Panel();
             this.button1 = new System.Windows.Forms.Button();
@@ -60,9 +61,30 @@ namespace PedidoTela.Formularios
             this.Disponible = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.button4 = new System.Windows.Forms.Button();
             this.label3 = new System.Windows.Forms.Label();
+            this.dgvCuellos = new System.Windows.Forms.DataGridView();
+            this.codigo = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.xs = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.s = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.m = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.l = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.xl = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.xxl = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.cuatro = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.seis = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.ocho = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.diez = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.doce = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.catorce = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dieciseis = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dieciocho = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.veinte = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.veintidos = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.veintecuatro = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.ancho = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.panel9.SuspendLayout();
             this.panel8.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvTomarDelPedido)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dgvCuellos)).BeginInit();
             this.SuspendLayout();
             // 
             // lbTotalCons
@@ -365,11 +387,196 @@ namespace PedidoTela.Formularios
             this.label3.TabIndex = 145;
             this.label3.Text = "Tomar del pedido:";
             // 
+            // dgvCuellos
+            // 
+            this.dgvCuellos.AllowUserToAddRows = false;
+            this.dgvCuellos.AllowUserToDeleteRows = false;
+            this.dgvCuellos.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
+            this.dgvCuellos.AutoSizeRowsMode = System.Windows.Forms.DataGridViewAutoSizeRowsMode.DisplayedCells;
+            this.dgvCuellos.BackgroundColor = System.Drawing.Color.White;
+            this.dgvCuellos.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle2.BackColor = System.Drawing.SystemColors.ScrollBar;
+            dataGridViewCellStyle2.Font = new System.Drawing.Font("Verdana", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle2.ForeColor = System.Drawing.Color.Navy;
+            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.Color.Navy;
+            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dgvCuellos.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle2;
+            this.dgvCuellos.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dgvCuellos.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.codigo,
+            this.xs,
+            this.s,
+            this.m,
+            this.l,
+            this.xl,
+            this.xxl,
+            this.cuatro,
+            this.seis,
+            this.ocho,
+            this.diez,
+            this.doce,
+            this.catorce,
+            this.dieciseis,
+            this.dieciocho,
+            this.veinte,
+            this.veintidos,
+            this.veintecuatro,
+            this.ancho});
+            this.dgvCuellos.EnableHeadersVisualStyles = false;
+            this.dgvCuellos.Location = new System.Drawing.Point(50, 534);
+            this.dgvCuellos.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.dgvCuellos.MultiSelect = false;
+            this.dgvCuellos.Name = "dgvCuellos";
+            this.dgvCuellos.ReadOnly = true;
+            this.dgvCuellos.RightToLeft = System.Windows.Forms.RightToLeft.No;
+            this.dgvCuellos.RowHeadersWidth = 62;
+            this.dgvCuellos.RowTemplate.Height = 28;
+            this.dgvCuellos.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
+            this.dgvCuellos.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
+            this.dgvCuellos.Size = new System.Drawing.Size(1359, 114);
+            this.dgvCuellos.TabIndex = 147;
+            // 
+            // codigo
+            // 
+            this.codigo.HeaderText = "Código";
+            this.codigo.MinimumWidth = 8;
+            this.codigo.Name = "codigo";
+            this.codigo.ReadOnly = true;
+            // 
+            // xs
+            // 
+            this.xs.HeaderText = "XS";
+            this.xs.MinimumWidth = 8;
+            this.xs.Name = "xs";
+            this.xs.ReadOnly = true;
+            // 
+            // s
+            // 
+            this.s.HeaderText = "S";
+            this.s.MinimumWidth = 8;
+            this.s.Name = "s";
+            this.s.ReadOnly = true;
+            // 
+            // m
+            // 
+            this.m.HeaderText = "M";
+            this.m.MinimumWidth = 8;
+            this.m.Name = "m";
+            this.m.ReadOnly = true;
+            // 
+            // l
+            // 
+            this.l.HeaderText = "L";
+            this.l.MinimumWidth = 8;
+            this.l.Name = "l";
+            this.l.ReadOnly = true;
+            // 
+            // xl
+            // 
+            this.xl.HeaderText = "XL";
+            this.xl.MinimumWidth = 8;
+            this.xl.Name = "xl";
+            this.xl.ReadOnly = true;
+            // 
+            // xxl
+            // 
+            this.xxl.HeaderText = "2XL";
+            this.xxl.MinimumWidth = 8;
+            this.xxl.Name = "xxl";
+            this.xxl.ReadOnly = true;
+            // 
+            // cuatro
+            // 
+            this.cuatro.HeaderText = "4";
+            this.cuatro.MinimumWidth = 8;
+            this.cuatro.Name = "cuatro";
+            this.cuatro.ReadOnly = true;
+            // 
+            // seis
+            // 
+            this.seis.HeaderText = "6";
+            this.seis.MinimumWidth = 8;
+            this.seis.Name = "seis";
+            this.seis.ReadOnly = true;
+            // 
+            // ocho
+            // 
+            this.ocho.HeaderText = "8";
+            this.ocho.MinimumWidth = 8;
+            this.ocho.Name = "ocho";
+            this.ocho.ReadOnly = true;
+            // 
+            // diez
+            // 
+            this.diez.HeaderText = "10";
+            this.diez.MinimumWidth = 8;
+            this.diez.Name = "diez";
+            this.diez.ReadOnly = true;
+            // 
+            // doce
+            // 
+            this.doce.HeaderText = "12";
+            this.doce.MinimumWidth = 8;
+            this.doce.Name = "doce";
+            this.doce.ReadOnly = true;
+            // 
+            // catorce
+            // 
+            this.catorce.HeaderText = "14";
+            this.catorce.MinimumWidth = 8;
+            this.catorce.Name = "catorce";
+            this.catorce.ReadOnly = true;
+            // 
+            // dieciseis
+            // 
+            this.dieciseis.HeaderText = "16";
+            this.dieciseis.MinimumWidth = 8;
+            this.dieciseis.Name = "dieciseis";
+            this.dieciseis.ReadOnly = true;
+            // 
+            // dieciocho
+            // 
+            this.dieciocho.HeaderText = "18";
+            this.dieciocho.MinimumWidth = 8;
+            this.dieciocho.Name = "dieciocho";
+            this.dieciocho.ReadOnly = true;
+            // 
+            // veinte
+            // 
+            this.veinte.HeaderText = "20";
+            this.veinte.MinimumWidth = 8;
+            this.veinte.Name = "veinte";
+            this.veinte.ReadOnly = true;
+            // 
+            // veintidos
+            // 
+            this.veintidos.HeaderText = "22";
+            this.veintidos.MinimumWidth = 8;
+            this.veintidos.Name = "veintidos";
+            this.veintidos.ReadOnly = true;
+            // 
+            // veintecuatro
+            // 
+            this.veintecuatro.HeaderText = "24";
+            this.veintecuatro.MinimumWidth = 8;
+            this.veintecuatro.Name = "veintecuatro";
+            this.veintecuatro.ReadOnly = true;
+            // 
+            // ancho
+            // 
+            this.ancho.HeaderText = "Ancho";
+            this.ancho.MinimumWidth = 6;
+            this.ancho.Name = "ancho";
+            this.ancho.ReadOnly = true;
+            // 
             // frmPrueba
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1710, 1011);
+            this.Controls.Add(this.dgvCuellos);
             this.Controls.Add(this.dgvTomarDelPedido);
             this.Controls.Add(this.button4);
             this.Controls.Add(this.label3);
@@ -393,6 +600,7 @@ namespace PedidoTela.Formularios
             this.panel8.ResumeLayout(false);
             this.panel8.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvTomarDelPedido)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dgvCuellos)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -430,5 +638,25 @@ namespace PedidoTela.Formularios
         private System.Windows.Forms.DataGridViewTextBoxColumn Disponible;
         private System.Windows.Forms.Button button4;
         private System.Windows.Forms.Label label3;
+        private System.Windows.Forms.DataGridView dgvCuellos;
+        private System.Windows.Forms.DataGridViewTextBoxColumn codigo;
+        private System.Windows.Forms.DataGridViewTextBoxColumn xs;
+        private System.Windows.Forms.DataGridViewTextBoxColumn s;
+        private System.Windows.Forms.DataGridViewTextBoxColumn m;
+        private System.Windows.Forms.DataGridViewTextBoxColumn l;
+        private System.Windows.Forms.DataGridViewTextBoxColumn xl;
+        private System.Windows.Forms.DataGridViewTextBoxColumn xxl;
+        private System.Windows.Forms.DataGridViewTextBoxColumn cuatro;
+        private System.Windows.Forms.DataGridViewTextBoxColumn seis;
+        private System.Windows.Forms.DataGridViewTextBoxColumn ocho;
+        private System.Windows.Forms.DataGridViewTextBoxColumn diez;
+        private System.Windows.Forms.DataGridViewTextBoxColumn doce;
+        private System.Windows.Forms.DataGridViewTextBoxColumn catorce;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dieciseis;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dieciocho;
+        private System.Windows.Forms.DataGridViewTextBoxColumn veinte;
+        private System.Windows.Forms.DataGridViewTextBoxColumn veintidos;
+        private System.Windows.Forms.DataGridViewTextBoxColumn veintecuatro;
+        private System.Windows.Forms.DataGridViewTextBoxColumn ancho;
     }
 }

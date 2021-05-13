@@ -23,7 +23,6 @@ namespace PedidoTela.Data.Acceso
         public List<DetalleCuelloUno> Consultar(int idCuelloUno)
         {
             List<DetalleCuelloUno> lista = new List<DetalleCuelloUno>();
-            int cont = 0;
             try
             {
                 using (var con = new clsConexion())

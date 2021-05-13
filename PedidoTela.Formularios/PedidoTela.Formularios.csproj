@@ -142,6 +142,12 @@
     <Compile Include="frmEditarDsolicitudTela.Designer.cs">
       <DependentUpon>frmEditarDsolicitudTela.cs</DependentUpon>
     </Compile>
+    <Compile Include="frmImprimirPedidoCuellos.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmImprimirPedidoCuellos.Designer.cs">
+      <DependentUpon>frmImprimirPedidoCuellos.cs</DependentUpon>
+    </Compile>
     <Compile Include="frmImprimirPedidoEstampado.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -300,6 +306,9 @@
     <EmbeddedResource Include="frmEditarDsolicitudTela.resx">
       <DependentUpon>frmEditarDsolicitudTela.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="frmImprimirPedidoCuellos.resx">
+      <DependentUpon>frmImprimirPedidoCuellos.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="frmImprimirPedidoEstampado.resx">
       <DependentUpon>frmImprimirPedidoEstampado.cs</DependentUpon>
     </EmbeddedResource>
@@ -370,6 +379,7 @@
       <DependentUpon>frmSolicitudUnicolor.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="PDFImprimirSIP.rdlc" />
+    <EmbeddedResource Include="PDFPedidoCuellos.rdlc" />
     <EmbeddedResource Include="PDFPedidoEstampado.rdlc" />
     <EmbeddedResource Include="PDFPedidoPlano.rdlc" />
     <EmbeddedResource Include="PDFPedidoUnicolor.rdlc" />
@@ -384,12 +394,14 @@
     <None Include="PedidoTela.Formularios_2_TemporaryKey.pfx" />
     <None Include="PedidoTela.Formularios_3_TemporaryKey.pfx" />
     <None Include="PedidoTela.Formularios_TemporaryKey.pfx" />
+    <None Include="Properties\DataSources\frmPedidoaMontarCuellos.datasource" />
     <None Include="Properties\DataSources\frmPedidoaMontarPretenido.datasource" />
     <None Include="Properties\DataSources\frmPedidoaMotarUnicolor.datasource" />
     <None Include="Properties\DataSources\PedidoTela.Entidades.Logica.AgenciasExternos.datasource" />
     <None Include="Properties\DataSources\PedidoTela.Entidades.Logica.AgenciasInfoConsolidar.datasource" />
     <None Include="Properties\DataSources\PedidoTela.Entidades.Logica.AgenciasSIP.datasource" />
     <None Include="Properties\DataSources\PedidoTela.Entidades.Logica.AgenciaTotalConsolidar.datasource" />
+    <None Include="Properties\DataSources\PedidoTela.Entidades.Logica.PedidoCuellos.datasource" />
     <None Include="Properties\DataSources\PedidoTela.Entidades.Logica.PedidoMontarInformacion.datasource" />
     <None Include="Properties\DataSources\PedidoTela.Entidades.Logica.PedidoMontarTotal.datasource" />
     <None Include="Properties\DataSources\PedidoTela.Entidades.Logica.PedMontarUnicolor.datasource" />

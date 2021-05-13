@@ -8,34 +8,46 @@ namespace PedidoTela.Entidades.Logica
 {
     public class PedidoCuellos
     {
-        private int idCuellos;
+
+        private int idPedidoCuellos;
         private string codigo;
-        private string xs;
-        private string s;
-        private string m;
-        private string l;
-        private string xl;
-        private string dosxl;
-        private string cuatro;
-        private string seis;
-        private string ocho;
-        private string diez;
-        private string doce;
-        private string catorce;
-        private string dieciseis;
-        private string dieciocho;
-        private string veinte;
-        private string veintidos;
-        private string veinticuatro;
-        private string ancho;
-        private string tipoTejido;
+        private string codigoVte;
+        private string descripcionVte;
+        private decimal xs;
+        private decimal s;
+        private decimal m;
+        private decimal l;
+        private decimal xl;
+        private decimal dosxl;
+        private decimal cuatro;
+        private decimal seis;
+        private decimal ocho;
+        private decimal diez;
+        private decimal doce;
+        private decimal catorce;
+        private decimal dieciseis;
+        private decimal dieciocho;
+        private decimal veinte;
+        private decimal veintidos;
+        private decimal veinticuatro;
+        private decimal ancho;
+        private decimal tipoTejido;
+        private int totalUnidades;
 
         public PedidoCuellos() { }
 
-        public PedidoCuellos(int idCuellos, string codigo, string xs, string s, string m, string l, string xl, string dosxl, string cuatro, string seis, string ocho, string diez, string doce, string catorce, string dieciseis, string dieciocho, string veinte, string veintidos, string veinticuatro, string ancho, string tipoTejido)
+        public PedidoCuellos(string codigoVte, string descripcionVte)
         {
-            this.idCuellos = idCuellos;
+            this.CodigoVte = codigoVte;
+            this.DescripcionVte = descripcionVte;
+        }
+
+        public PedidoCuellos(int idPedidoCuellos, string codigo, string codigoVte, string descripcionVte, decimal xs, decimal s, decimal m, decimal l, decimal xl, decimal dosxl, decimal cuatro, decimal seis, decimal ocho, decimal diez, decimal doce, decimal catorce, decimal dieciseis, decimal dieciocho, decimal veinte, decimal veintidos, decimal veinticuatro, decimal ancho, decimal tipoTejido, int totalUnidades)
+        {
+            this.IdPedidoCuellos = idPedidoCuellos;
             this.codigo = codigo;
+            this.codigoVte = codigoVte;
+            this.descripcionVte = descripcionVte;
             this.xs = xs;
             this.s = s;
             this.m = m;
@@ -55,28 +67,32 @@ namespace PedidoTela.Entidades.Logica
             this.veinticuatro = veinticuatro;
             this.ancho = ancho;
             this.tipoTejido = tipoTejido;
+            this.totalUnidades = totalUnidades;
         }
 
-        public int IdCuellos { get => idCuellos; set => idCuellos = value; }
         public string Codigo { get => codigo; set => codigo = value; }
-        public string Xs { get => xs; set => xs = value; }
-        public string S { get => s; set => s = value; }
-        public string M { get => m; set => m = value; }
-        public string L { get => l; set => l = value; }
-        public string Xl { get => xl; set => xl = value; }
-        public string Dosxl { get => dosxl; set => dosxl = value; }
-        public string Cuatro { get => cuatro; set => cuatro = value; }
-        public string Seis { get => seis; set => seis = value; }
-        public string Ocho { get => ocho; set => ocho = value; }
-        public string Diez { get => diez; set => diez = value; }
-        public string Doce { get => doce; set => doce = value; }
-        public string Catorce { get => catorce; set => catorce = value; }
-        public string Dieciseis { get => dieciseis; set => dieciseis = value; }
-        public string Dieciocho { get => dieciocho; set => dieciocho = value; }
-        public string Veinte { get => veinte; set => veinte = value; }
-        public string Veintidos { get => veintidos; set => veintidos = value; }
-        public string Veinticuatro { get => veinticuatro; set => veinticuatro = value; }
-        public string Ancho { get => ancho; set => ancho = value; }
-        public string TipoTejido { get => tipoTejido; set => tipoTejido = value; }
+        public string CodigoVte { get => codigoVte; set => codigoVte = value; }
+        public string DescripcionVte { get => descripcionVte; set => descripcionVte = value; }
+        public decimal Xs { get => xs; set => xs = value; }
+        public decimal S { get => s; set => s = value; }
+        public decimal M { get => m; set => m = value; }
+        public decimal L { get => l; set => l = value; }
+        public decimal Xl { get => xl; set => xl = value; }
+        public decimal Dosxl { get => dosxl; set => dosxl = value; }
+        public decimal Cuatro { get => cuatro; set => cuatro = value; }
+        public decimal Seis { get => seis; set => seis = value; }
+        public decimal Ocho { get => ocho; set => ocho = value; }
+        public decimal Diez { get => diez; set => diez = value; }
+        public decimal Doce { get => doce; set => doce = value; }
+        public decimal Catorce { get => catorce; set => catorce = value; }
+        public decimal Dieciseis { get => dieciseis; set => dieciseis = value; }
+        public decimal Dieciocho { get => dieciocho; set => dieciocho = value; }
+        public decimal Veinte { get => veinte; set => veinte = value; }
+        public decimal Veintidos { get => veintidos; set => veintidos = value; }
+        public decimal Veinticuatro { get => veinticuatro; set => veinticuatro = value; }
+        public decimal Ancho { get => ancho; set => ancho = value; }
+        public decimal TipoTejido { get => tipoTejido; set => tipoTejido = value; }
+        public int TotalUnidades { get => totalUnidades; set => totalUnidades = value; }
+        public int IdPedidoCuellos { get => idPedidoCuellos; set => idPedidoCuellos = value; }
     }
 }

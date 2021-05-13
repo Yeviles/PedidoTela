@@ -1,7 +1,7 @@
 ﻿
 namespace PedidoTela.Formularios
 {
-    partial class frmImprimirPedidoPlano
+    partial class frmImprimirPedidoCuellos
     {
         /// <summary>
         /// Required designer variable.
@@ -39,7 +39,7 @@ namespace PedidoTela.Formularios
             // 
             this.panel1.BackColor = System.Drawing.SystemColors.ScrollBar;
             this.panel1.Controls.Add(this.btnSalir);
-            this.panel1.Location = new System.Drawing.Point(13, 83);
+            this.panel1.Location = new System.Drawing.Point(13, 77);
             this.panel1.Margin = new System.Windows.Forms.Padding(4);
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(1357, 47);
@@ -61,27 +61,25 @@ namespace PedidoTela.Formularios
             // 
             // reportViewer1
             // 
-            this.reportViewer1.LocalReport.ReportEmbeddedResource = "PedidoTela.Formularios.PDFPedidoPlano.rdlc";
-            this.reportViewer1.Location = new System.Drawing.Point(101, 146);
+            this.reportViewer1.LocalReport.ReportEmbeddedResource = "PedidoTela.Formularios.PDFPedidoCuellos.rdlc";
+            this.reportViewer1.Location = new System.Drawing.Point(202, 139);
             this.reportViewer1.Name = "reportViewer1";
-            this.reportViewer1.RightToLeft = System.Windows.Forms.RightToLeft.No;
             this.reportViewer1.ServerReport.BearerToken = null;
-            this.reportViewer1.Size = new System.Drawing.Size(1179, 610);
+            this.reportViewer1.Size = new System.Drawing.Size(1051, 613);
             this.reportViewer1.TabIndex = 68;
             // 
-            // frmImprimirPedidoPlano
+            // frmImprimirPedidoCuellos
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1383, 788);
             this.Controls.Add(this.reportViewer1);
             this.Controls.Add(this.panel1);
-            this.Font = new System.Drawing.Font("Verdana", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.MaximizeBox = false;
-            this.Name = "frmImprimirPedidoPlano";
+            this.Name = "frmImprimirPedidoCuellos";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "Imprimir Pedido Plano Preteñido";
-            this.Load += new System.EventHandler(this.frmImprimirPedidoPlano_Load);
+            this.Text = "Imprimir Pedido Cuellos-Puños-Tiras";
+            this.Load += new System.EventHandler(this.frmImprimirPedidoCuellos_Load);
             this.panel1.ResumeLayout(false);
             this.ResumeLayout(false);
 

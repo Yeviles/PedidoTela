@@ -13,15 +13,15 @@ namespace PedidoTela.Entidades.Logica
         private string descripcionColor;
         private string fondo;
         private string descripcionFondo;
-        private int codigoH1;
+        private string codigoH1;
         private string descripcionH1;
-        private int codigoH2;
+        private string codigoH2;
         private string descripcionH2;
-        private int codigoH3;
+        private string codigoH3;
         private string descripcionH3;
-        private int codigoH4;
+        private string codigoH4;
         private string descripcionH4;
-        private int codigoH5;
+        private string codigoH5;
         private string descripcionH5;
         private int tiendas;
         private int exito;
@@ -39,7 +39,7 @@ namespace PedidoTela.Entidades.Logica
 
         public PedidoMontarInformacion() { }
 
-        public PedidoMontarInformacion(int idPedidoAMontar, string codigoColor, string descripcionColor, string fondo, string descripcionFondo, int codigoH1, string descripcionH1, int codigoH2, string descripcionH2, int codigoH3, string descripcionH3, int codigoH4, string descripcionH4, int codigoH5, string descripcionH5, int tiendas, int exito, int cencosud, int sao, int comercioOrg, int rosado, int otros, int totalUnidades, decimal consumo, decimal mCalculados, decimal mReservados, decimal mSolicitar, decimal kgCalculados)
+        public PedidoMontarInformacion(int idPedidoAMontar, string codigoColor, string descripcionColor, string fondo, string descripcionFondo, string codigoH1, string descripcionH1, string codigoH2, string descripcionH2, string codigoH3, string descripcionH3, string codigoH4, string descripcionH4, string codigoH5, string descripcionH5, int tiendas, int exito, int cencosud, int sao, int comercioOrg, int rosado, int otros, int totalUnidades, decimal consumo, decimal mCalculados, decimal mReservados, decimal mSolicitar, decimal kgCalculados)
         {
             this.IdPedidoAMontar = idPedidoAMontar;
             this.CodigoColor = codigoColor;
@@ -76,15 +76,15 @@ namespace PedidoTela.Entidades.Logica
         public string DescripcionColor { get => descripcionColor; set => descripcionColor = value; }
         public string Fondo { get => fondo; set => fondo = value; }
         public string DescripcionFondo { get => descripcionFondo; set => descripcionFondo = value; }
-        public int CodigoH1 { get => codigoH1; set => codigoH1 = value; }
+        public string CodigoH1 { get => codigoH1; set => codigoH1 = value; }
         public string DescripcionH1 { get => descripcionH1; set => descripcionH1 = value; }
-        public int CodigoH2 { get => codigoH2; set => codigoH2 = value; }
+        public string CodigoH2 { get => codigoH2; set => codigoH2 = value; }
         public string DescripcionH2 { get => descripcionH2; set => descripcionH2 = value; }
-        public int CodigoH3 { get => codigoH3; set => codigoH3 = value; }
+        public string CodigoH3 { get => codigoH3; set => codigoH3 = value; }
         public string DescripcionH3 { get => descripcionH3; set => descripcionH3 = value; }
-        public int CodigoH4 { get => codigoH4; set => codigoH4 = value; }
+        public string CodigoH4 { get => codigoH4; set => codigoH4 = value; }
         public string DescripcionH4 { get => descripcionH4; set => descripcionH4 = value; }
-        public int CodigoH5 { get => codigoH5; set => codigoH5 = value; }
+        public string CodigoH5 { get => codigoH5; set => codigoH5 = value; }
         public string DescripcionH5 { get => descripcionH5; set => descripcionH5 = value; }
         public int Tiendas { get => tiendas; set => tiendas = value; }
         public int Exito { get => exito; set => exito = value; }

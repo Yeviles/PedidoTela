@@ -1,4 +1,5 @@
 ﻿using IBM.Data.Informix;
+using PedidoTela.Entidades;
 using PedidoTela.Entidades.Logica;
 using System;
 using System.Collections.Generic;
@@ -11,88 +12,153 @@ namespace PedidoTela.Data.Acceso
     public class D_PedidoCuellos
     {
         #region consultas
+        private readonly string consultaInsert = "INSERT INTO cfc_spt_ped_cuellos (ensayo_ref,disenador,analista_corteb,fecha_llegada,tipo_marcacion,desc_prenda,id_sol_tela)VALUES(?, ?, ?, ?, ?, ?, ?);";
+         
+        private readonly string consultaId = "SELECT id_ped_cuellos FROM cfc_spt_ped_cuellos WHERE id_sol_tela = ?;";
 
-        private readonly string consultarIdCuellos = "SELECT idcuellos from cfc_spt_sol_cuellos WHERE id_sol_tela =?;";
+        private readonly string consultarTodo = "SELECT id_ped_cuellos,ensayo_ref,disenador,analista_corteb,fecha_llegada,tipo_marcacion,desc_prenda FROM cfc_spt_ped_cuellos WHERE id_sol_tela=?;";
 
-        private readonly string consultarTodo = "SELECT codigo,xs,s,m,l,xl,dosxl,cuatro,seis,ocho,diez,doce,catorce,dieciseis,dieciocho,veinte,veintidos,veinticuatro,ancho,nombre FROM cfc_spt_sol_detalle_cuello_uno WHERE idCuellos = ?;";
+        private readonly string actualizar = "UPDATE cfc_spt_ped_cuellos SET ensayo_ref=?, disenador=?, analista_corteb=?,fecha_llegada=?, tipo_marcacion=?,desc_prenda=? WHERE id_sol_tela =?; ";
+
+        private readonly string consultaIdentificador = "SELECT ensayo_ref FROM cfc_spt_ped_cuellos WHERE id_sol_tela = ?;";
 
         #endregion
+        #region Métodos Agregar
+        public string Agregar(PedidoAMontar elemento)
+        {
+            string respuesta = "";
+            try
+            {
+                using (var con = new clsConexion())
+                {
+
+                    con.Parametros.Add(new IfxParameter("@ensayo_ref", elemento.EnsayoReferencia));
+                    con.Parametros.Add(new IfxParameter("@disenador", elemento.Disenador));
+                    con.Parametros.Add(new IfxParameter("@analista_corteb", elemento.AnalistasCortesB));
+                    con.Parametros.Add(new IfxParameter("@fecha_llegada", elemento.FechaLlegada));
+                    con.Parametros.Add(new IfxParameter("@tipo_marcacion", elemento.TipoMarcacion));
+                    con.Parametros.Add(new IfxParameter("@desc_prenda", elemento.DescripcionPrenda));
+                    con.Parametros.Add(new IfxParameter("@id_sol_tela", elemento.IdSolicitud));
+
+                    var datos = con.EjecutarConsulta(this.consultaInsert);
+                    con.cerrarConexion();
+                }
+                respuesta = "ok";
+            }
+            catch (Exception ex)
+            {
+                respuesta = "Error: " + ex.Message;
+            }
+            return respuesta;
+        }
+        #endregion
+
         #region Métodos Consulta
-        public List<int> ConsultarIdDetalles(List<int> prmIdSolicitud)
-        {
-            List<int> lista = new List<int>();
-            try
-            {                
-                for (int i = 0; i < prmIdSolicitud.Count; i++)
-                {
-                    using (var con = new clsConexion())
-                    {
-                        con.Parametros.Add(new IfxParameter("@id_sol_tela", prmIdSolicitud[i]));
-                        var datos = con.EjecutarConsulta(this.consultarIdCuellos);
-                        while (datos.Read())
-                        {
-                            int id = int.Parse(datos["idcuellos"].ToString());
-                            lista.Add(id);
-                        }
-                        con.cerrarConexion();
-                    }
-                   
-                }
-            }
-            catch (Exception ex)
-            {
-                Console.WriteLine("Error: " + ex.Message);
-            }
-            return lista;
-        }
         
-        public List<PedidoCuellos> Consultar(List<int> prmIdCuellos)
+        public PedidoAMontar Consultar(int prmIdSolicitud)
         {
-            List<PedidoCuellos> lista = new List<PedidoCuellos>();
+            PedidoAMontar pedidoCuellos = new PedidoAMontar();
             try
-            {              
-                for (int i = 0; i < prmIdCuellos.Count; i++)
+            {
+                using (var con = new clsConexion())
                 {
-                    using (var con = new clsConexion())
+                    con.Parametros.Add(new IfxParameter("@id_sol_tela", prmIdSolicitud));
+                    var datos = con.EjecutarConsulta(consultarTodo);
+                    while (datos.Read())
                     {
-                        con.Parametros.Add(new IfxParameter("@idcuellos", prmIdCuellos[i]));
-                        var datos = con.EjecutarConsulta(this.consultarTodo);
-                        while (datos.Read())
-                        {
-                            PedidoCuellos detalle = new PedidoCuellos();
-                            detalle.Codigo = datos["codigo"].ToString().Trim();
-                            detalle.Xs = datos["xs"].ToString().Trim();
-                            detalle.S = datos["s"].ToString().Trim();
-                            detalle.M = datos["m"].ToString().Trim();
-                            detalle.L = datos["l"].ToString().Trim();
-                            detalle.Xl = datos["xl"].ToString().Trim();
-                            detalle.Dosxl = datos["dosxl"].ToString().Trim();
-                            detalle.Cuatro = datos["cuatro"].ToString();
-                            detalle.Seis = datos["seis"].ToString().Trim();
-                            detalle.Ocho = datos["ocho"].ToString().Trim();
-                            detalle.Diez = datos["diez"].ToString().Trim();
-                            detalle.Doce = datos["doce"].ToString().Trim();
-                            detalle.Catorce = datos["catorce"].ToString().Trim();
-                            detalle.Dieciseis = datos["dieciseis"].ToString().Trim();
-                            detalle.Dieciocho = datos["dieciocho"].ToString().Trim();
-                            detalle.Veinte = datos["veinte"].ToString().Trim();
-                            detalle.Veintidos = datos["Veintidos"].ToString().Trim();
-                            detalle.Veinticuatro = datos["veinticuatro"].ToString().Trim();
-                            detalle.Ancho = datos["ancho"].ToString().Trim();
-                            detalle.TipoTejido = datos["nombre"].ToString().Trim();
-
-                            lista.Add(detalle);
-                        }
-                        con.cerrarConexion();
+                        pedidoCuellos.Id = int.Parse(datos["id_ped_cuellos"].ToString());
+                        pedidoCuellos.EnsayoReferencia = datos["ensayo_ref"].ToString();
+                        pedidoCuellos.Disenador = datos["disenador"].ToString();
+                        pedidoCuellos.AnalistasCortesB = datos["analista_corteb"].ToString();
+                        pedidoCuellos.FechaLlegada = datos["fecha_llegada"].ToString();
+                        pedidoCuellos.TipoMarcacion = datos["tipo_marcacion"].ToString();
+                        pedidoCuellos.DescripcionPrenda = datos["desc_prenda"].ToString();
+                       
                     }
+                    con.cerrarConexion();
                 }
             }
             catch (Exception ex)
             {
                 Console.WriteLine("Error: " + ex.Message);
             }
-            return lista;
+            return pedidoCuellos;
+        }
+
+        public int ConsultarId(int idSolTela)
+        {
+            int id = 0;
+            try
+            {
+                using (var conexion = new clsConexion())
+                {
+                    conexion.Parametros.Add(new IfxParameter("@id_sol_tela", idSolTela));
+                    var datos = conexion.EjecutarConsulta(consultaId);
+                    datos.Read();
+                    id = int.Parse(datos["id_ped_cuellos"].ToString());
+
+                    conexion.cerrarConexion();
+                }
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine("Error: " + ex.Message);
+            }
+            return id;
+        }
+
+        public bool consultarExistePedido(int idSolTela)
+        {
+            string ensayo;
+            using (var administrador = new clsConexion())
+            {
+                try
+                {
+                    administrador.Parametros.Add(new IfxParameter("@id_sol_tela", idSolTela));
+                    var datos = administrador.EjecutarConsulta(consultaIdentificador);
+                    datos.Read();
+                    ensayo = datos["ensayo_ref"].ToString().Trim();
+                    administrador.cerrarConexion();
+
+                    return true;
+                }
+                catch
+                {
+                    return false;
+                }
+            }
         }
         #endregion
+
+        #region Métodos Actualizar
+        public string Actualizar(PedidoAMontar elemento)
+        {
+            string respuesta = "";
+            try
+            {
+                using (var con = new clsConexion())
+                {
+                    con.Parametros.Add(new IfxParameter("@ensayo_ref", elemento.EnsayoReferencia));
+                    con.Parametros.Add(new IfxParameter("@disenador", elemento.Disenador));
+                    con.Parametros.Add(new IfxParameter("@analista_corteb", elemento.AnalistasCortesB));
+                    con.Parametros.Add(new IfxParameter("@fecha_llegada", elemento.FechaLlegada));
+                    con.Parametros.Add(new IfxParameter("@tipo_marcacion", elemento.TipoMarcacion));
+                    con.Parametros.Add(new IfxParameter("@desc_prenda", elemento.DescripcionPrenda));
+
+                    con.Parametros.Add(new IfxParameter("@id_sol_tela", elemento.IdSolicitud));
+                    var datos = con.EjecutarConsulta(actualizar);
+
+                    con.cerrarConexion();
+                }
+                respuesta = "ok";
+            }
+            catch (Exception ex)
+            {
+                respuesta = "Error: " + ex.Message;
+            }
+            return respuesta;
+        }
+        #endregion
+
     }
 }
