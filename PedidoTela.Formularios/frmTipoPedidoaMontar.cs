@@ -45,7 +45,6 @@ namespace PedidoTela.Formularios
                 cbxPlanoPretenido.Checked = false;
                 cbxCuePunTiras.Checked = false;
                 Seleccion = "unicolor";
-                frmMontarUnicolor = new frmPedidoaMotarUnicolor(control, detalleSeleccionado, contItemSeleccionado, Seleccion, IdSolTela);
             }
         }
 
@@ -57,7 +56,6 @@ namespace PedidoTela.Formularios
                 cbxPlanoPretenido.Checked = false;
                 cbxCuePunTiras.Checked = false;
                 Seleccion = "estampado";
-                frmMontarEstampado = new frmPedidoaMontarEstampado(control, detalleSeleccionado, contItemSeleccionado);
             }
         }
 
@@ -68,8 +66,7 @@ namespace PedidoTela.Formularios
                 cbxUnicolor.Checked = false;
                 cbxestampado.Checked = false;
                 cbxCuePunTiras.Checked = false;
-                Seleccion = "planoPre";
-                frmMontarPretenido = new frmPedidoaMontarPretenido(control, detalleSeleccionado, IdSolTela, contItemSeleccionado);
+                Seleccion = "planoPre";                
             }
         }
 
@@ -81,7 +78,6 @@ namespace PedidoTela.Formularios
                 cbxestampado.Checked = false;
                 cbxPlanoPretenido.Checked = false;
                 Seleccion = "cuelloPun";
-                frmMontarCuellos = new frmPedidoaMontarCuellos(control, detalleSeleccionado, IdSolTela);
             }
         }
 
@@ -119,27 +115,38 @@ namespace PedidoTela.Formularios
         {
             if (cbxUnicolor.Checked)
             {
+                frmMontarUnicolor = new frmPedidoaMotarUnicolor(control, detalleSeleccionado, contItemSeleccionado, Seleccion, IdSolTela);
                 frmMontarUnicolor.ShowDialog();
+                this.Close();
             }
             else if (cbxestampado.Checked)
             {
+                frmMontarEstampado = new frmPedidoaMontarEstampado(control, detalleSeleccionado);
                 frmMontarEstampado.ShowDialog();
+                this.Close();
             }
             else if (cbxPlanoPretenido.Checked)
             {
+                frmMontarPretenido = new frmPedidoaMontarPretenido(control, detalleSeleccionado, IdSolTela, contItemSeleccionado);
                 frmMontarPretenido.ShowDialog();
+                this.Close();
             }
             else if (cbxCuePunTiras.Checked)
             {
+                frmMontarCuellos = new frmPedidoaMontarCuellos(control, detalleSeleccionado, IdSolTela);
                 frmMontarCuellos.ShowDialog();
+                this.Close();
             }
             else if (cbxCdoTresUno.Checked)
             {
+                frmMontarCoordinado = new frmPedidoaMontarCoordinado(control, detalleSeleccionado);
                 frmMontarCoordinado.ShowDialog();
+                this.Close();
             }
             else if (cbxAgencias.Checked)
             {
                 frmPedidoaMontarAgencias.ShowDialog();
+                this.Close();
             }
             else {
                 MessageBox.Show("Por favor seleccione el tipo de pedido que desea montar", "Advertencia", MessageBoxButtons.OK, MessageBoxIcon.Warning);

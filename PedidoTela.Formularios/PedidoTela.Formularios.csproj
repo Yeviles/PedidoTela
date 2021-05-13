@@ -124,6 +124,12 @@
     <Compile Include="frmBuscarPedido.Designer.cs">
       <DependentUpon>frmBuscarPedido.cs</DependentUpon>
     </Compile>
+    <Compile Include="frmContenedor.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmContenedor.Designer.cs">
+      <DependentUpon>frmContenedor.cs</DependentUpon>
+    </Compile>
     <Compile Include="frmDetalleReserva.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -296,6 +302,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="frmBuscarPedido.resx">
       <DependentUpon>frmBuscarPedido.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmContenedor.resx">
+      <DependentUpon>frmContenedor.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="frmDetalleReserva.resx">
       <DependentUpon>frmDetalleReserva.cs</DependentUpon>
