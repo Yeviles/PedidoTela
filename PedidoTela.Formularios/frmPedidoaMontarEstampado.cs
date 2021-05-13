@@ -23,16 +23,15 @@ namespace PedidoTela.Formularios
         private List<int> listaIdSolicitudes = new List<int>();
         private List<string> listaEsayosRef = new List<string>();
         private Validar validacion = new Validar();
-        private int contador = 0, idSolicitud, id, consecutivo;
+        private int idSolicitud, id, consecutivo;
         private bool bandera = false;
         #endregion
 
-        public frmPedidoaMontarEstampado(Controlador control, List<MontajeTelaDetalle> solicitudes, int contador)
+        public frmPedidoaMontarEstampado(Controlador control, List<MontajeTelaDetalle> solicitudes)
         {
             InitializeComponent();
             this.control = control;
             this.solicitudes = solicitudes;
-            this.contador = contador;       
         }
 
         #region Eventos
