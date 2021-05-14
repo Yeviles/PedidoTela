@@ -51,8 +51,6 @@ namespace PedidoTela.Formularios
             dtpFechaLlegada.Format = DateTimePickerFormat.Custom;
             dtpFechaLlegada.CustomFormat = "dd/MM/yyyy";
             IdSolTela = idSolTela;
-            Cargarsolicitudes(DetalleSeleccionado);
-            Iniciar(DetalleSeleccionado, ContItemSeleccionado);
 
         }
         #endregion
@@ -60,7 +58,9 @@ namespace PedidoTela.Formularios
         #region Método inicial de Carga
         private void frmPedidoaMotarUnicolor_Load(object sender, EventArgs e)
         {
+            Cargarsolicitudes(DetalleSeleccionado);
             cargarCombobox(cbxTipoMarcacion, control.getTipoMarcacion());
+            Iniciar(DetalleSeleccionado, ContItemSeleccionado);
             
             dgvInfoConsolidar.Columns["descripColor"].HeaderCell.ToolTipText = "Clic item si desea modificar";
             dgvInfoConsolidar.Columns["codColor"].HeaderCell.ToolTipText = "Clic item si desea modificar";
@@ -78,6 +78,11 @@ namespace PedidoTela.Formularios
 
         #region Eventos
 
+        private void txtAnalista_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            e.KeyChar = Char.ToUpper(e.KeyChar);
+        }
+       
         private void txtRendimiento_KeyPress(object sender, KeyPressEventArgs e)
         {
             if (txtRendimiento.Text.Trim() != "")
@@ -117,18 +122,18 @@ namespace PedidoTela.Formularios
 
         private void cbxClase_SelectedIndexChanged(object sender, EventArgs e)
         {
-            if (cbxClase.SelectedIndex != -1 && cbxClase.SelectedItem.ToString().ToLower() == "no tejer")
+            if (cbxClase.SelectedIndex != -1 && cbxClase.SelectedItem.ToString() == "No Tejer")
             {
-                this.noTejer = true;
+                noTejer = true;
                 btnAgregarPedido.Enabled = true;
             }
             else
             {
-                this.noTejer = false;
+                noTejer = false;
             }
 
         }
-
+        
         private void dgvInfoConsolidar_CellFormatting(object sender, DataGridViewCellFormattingEventArgs e)
         {
             if (e.ColumnIndex > 1 && e.ColumnIndex < 10 || e.ColumnIndex == 11 || e.ColumnIndex >=13)
@@ -371,7 +376,7 @@ namespace PedidoTela.Formularios
 
         private void btnGrabar_Click(object sender, EventArgs e)
         {
-            if (this.noTejer && dgvPedidos.RowCount == 0)
+            if (noTejer && dgvPedidos.RowCount == 0)
             {
                 MessageBox.Show("Por favor, seleccione al menos un pedido", "Advertencia", MessageBoxButtons.OK, MessageBoxIcon.Warning);
             }
@@ -379,68 +384,62 @@ namespace PedidoTela.Formularios
             {
                 if (txtRendimiento.Text != "")
                 {
-                    if (cbxTipoMarcacion.SelectedIndex != -1)
+                    if (cbxTipoMarcacion.Text != "")
                     {
                         if (txtAnalista.Text != "")
                         {
                             if (txtDesPrenda.Text != "")
                             {
-                                if (noTejer && dgvPedidos.RowCount > 0)
+                               
+                                if (dgvInfoConsolidar.RowCount > 0 && dgvTotalConsolidado.RowCount > 0)
                                 {
-                                    if (dgvInfoConsolidar.RowCount > 0 && dgvTotalConsolidado.RowCount > 0)
+                                    bool vacio = false;
+                                    foreach (DataGridViewRow row in dgvTotalConsolidado.Rows)
                                     {
-                                        bool vacio = false;
-                                        foreach (DataGridViewRow row in dgvTotalConsolidado.Rows)
+                                        if (row.Cells[11].Value == null || row.Cells[12].Value == null || row.Cells[13].Value == null)
                                         {
-                                            if (row.Cells[11].Value == null || row.Cells[12].Value == null || row.Cells[13].Value == null)
-                                            {
-                                                vacio = true;
-                                            }
+                                            vacio = true;
                                         }
-                                        if (!vacio)
+                                    }
+                                    if (!vacio)
+                                    {
+                                        //Se obtiene el encabezado de la vista.
+                                        PedidoAMontar elemento = ObtenerEncabezado();
+                                        if (control.existePedidoUnicolor(IdSolTela))
                                         {
-                                            //Se obtiene el encabezado de la vista.
-                                            PedidoAMontar elemento = ObtenerEncabezado();
-                                            if (control.existePedidoUnicolor(IdSolTela))
-                                            {
-                                                control.actualizarPedidoUnicolor(elemento);
-                                            }
-                                            else
-                                            {
-                                                control.addPedUnicolor(elemento);
-                                            }
-
-                                            //Consulta el id que se genero cuando se guarda la infromación del encabezado.
-                                            id = control.getIdPedUnicolor(IdSolTela);
-                                            if (id != 0)
-                                            {
-                                                control.eliminarPedidoUnicolorTotal(id);
-                                                control.eliminarPedidoUnicolorInformacion(id);
-                                                control.eliminarPedido(id);
-
-                                                GuardarPedido(id);
-                                                GuardarTotalConsolidar(id);
-                                                GuardarInformacionConsolidar(id);
-                                            }
-                                            //Agrega el Consolidado.
-                                            AgregarConsolidado();
-                                            MessageBox.Show("Pedido Unicolor se guardó con éxito.", "Información", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                                            control.actualizarPedidoUnicolor(elemento);
                                         }
                                         else
                                         {
-                                            MessageBox.Show("Los campos Kg Calculados, total a Pedir y unidad de Medida Tela deben estar llenos.", "Advertencia", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                                            control.addPedUnicolor(elemento);
                                         }
+
+                                        //Consulta el id que se genero cuando se guarda la infromación del encabezado.
+                                        id = control.getIdPedUnicolor(IdSolTela);
+                                        if (id != 0)
+                                        {
+                                            control.eliminarPedidoUnicolorTotal(id);
+                                            control.eliminarPedidoUnicolorInformacion(id);
+                                            control.eliminarPedido(id);
+
+                                            GuardarPedido(id);
+                                            GuardarTotalConsolidar(id);
+                                            GuardarInformacionConsolidar(id);
+                                        }
+                                        //Agrega el Consolidado.
+                                        AgregarConsolidado();
+                                        MessageBox.Show("Pedido Unicolor se guardó con éxito.", "Información", MessageBoxButtons.OK, MessageBoxIcon.Information);
                                     }
                                     else
                                     {
-                                        MessageBox.Show("Por favor, adicione al menos un color.", "Advertencia", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                                        MessageBox.Show("Los campos Kg Calculados, total a Pedir y unidad de Medida Tela deben estar llenos.", "Advertencia", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                                     }
                                 }
                                 else
                                 {
-                                    MessageBox.Show("Por favor, adicione al menos un pedido.", "Advertencia", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-
+                                    MessageBox.Show("Por favor, adicione al menos un color.", "Advertencia", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                                 }
+                               
                             }
                             else
                             {
@@ -462,7 +461,7 @@ namespace PedidoTela.Formularios
                     MessageBox.Show("Por favor, ingrese un valor para Rendimiento.", "Advertencia", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 }
 
-            }
+           }
         }
 
         private void btnImprimir_Click(object sender, EventArgs e)
@@ -679,7 +678,8 @@ namespace PedidoTela.Formularios
             elemento.EnsayoReferencia = txtEnsayoRef.Text.Trim();
             elemento.DescripcionPrenda = txtDesPrenda.Text.Trim();
             elemento.Clase = cbxClase.SelectedItem.ToString();
-            elemento.TipoMarcacion = ((Objeto)cbxTipoMarcacion.SelectedItem).Nombre;
+            //elemento.TipoMarcacion = ((Objeto)cbxTipoMarcacion.SelectedItem).Nombre;
+            elemento.TipoMarcacion = cbxTipoMarcacion.GetItemText(cbxTipoMarcacion.SelectedItem);
             elemento.Rendimiento = decimal.Parse(txtRendimiento.Text.Trim());
             elemento.AnalistasCortesB = txtAnalista.Text.Trim();
             string fecha = dtpFechaLlegada.Value.ToString("dd/MM/yyyy");
@@ -716,6 +716,7 @@ namespace PedidoTela.Formularios
                 control.addPedUnicolorTotalCons(detalle);
             }
         }
+
 
         private void GuardarPedido(int id)
         {

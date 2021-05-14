@@ -601,6 +601,7 @@ namespace PedidoTela.Formularios
             this.txtAnalista.Name = "txtAnalista";
             this.txtAnalista.Size = new System.Drawing.Size(180, 23);
             this.txtAnalista.TabIndex = 70;
+            this.txtAnalista.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtAnalista_KeyPress);
             // 
             // pnlEmcabezado
             // 

@@ -41,8 +41,6 @@ namespace PedidoTela.Formularios
             this.control = control;
             this.idSolicitudTelas = idsolTela;
             DetalleSeleccionado = listaSeleccionada;
-            Cargarsolicitudes(DetalleSeleccionado);
-            Iniciar(DetalleSeleccionado);
         }
         #endregion
 
@@ -51,12 +49,19 @@ namespace PedidoTela.Formularios
         {
             SkinManager.Theme = MaterialSkin.MaterialSkinManager.Themes.LIGHT;
             SkinManager.ColorScheme = new ColorScheme(Primary.Blue900, Primary.Grey500, Primary.Grey200, Accent.Green100, TextShade.WHITE);
+            Cargarsolicitudes(DetalleSeleccionado);
             CargarCombobox(cbxTipoMarcacion, control.getTipoMarcacion());
+            Iniciar(DetalleSeleccionado);
         }
         #endregion
 
         #region Eventos
 
+        private void txtAnalistas_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            e.KeyChar = Char.ToUpper(e.KeyChar);
+        }
+        
         private void dgvInfoConsolidar_CellEndEdit(object sender, DataGridViewCellEventArgs e)
         {
             if (e.ColumnIndex == 12)
@@ -619,7 +624,8 @@ namespace PedidoTela.Formularios
             elemento.AnalistasCortesB = txtAnalistas.Text.Trim();
             string fecha = dtpFechaLlegada.Value.ToString("dd/MM/yyyy");
             elemento.FechaLlegada = fecha;
-            elemento.TipoMarcacion = ((Objeto)cbxTipoMarcacion.SelectedItem).Nombre;
+            //elemento.TipoMarcacion = ((Objeto)cbxTipoMarcacion.SelectedItem).Nombre;
+            elemento.TipoMarcacion = cbxTipoMarcacion.GetItemText(cbxTipoMarcacion.SelectedItem);
             elemento.DescripcionPrenda = txtDesPrenda.Text.Trim();
             elemento.IdSolicitud = idSolicitudTelas;
             return elemento;
@@ -647,6 +653,7 @@ namespace PedidoTela.Formularios
                 control.addPedidoCuellosInfo(detalle);
             }
         }
+
 
         private void GuardarProporcion(int id)
         {

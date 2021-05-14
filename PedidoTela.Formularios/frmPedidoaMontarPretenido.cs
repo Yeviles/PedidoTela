@@ -47,16 +47,16 @@ namespace PedidoTela.Formularios
             ContItemSeleccionado = itemsSeleccionados;
             dtpFechaLlegada.Format = DateTimePickerFormat.Custom;
             dtpFechaLlegada.CustomFormat = "dd/MM/yyyy";
-            CargarSolicicitudes(DetalleSeleccionado);
-            Iniciar(DetalleSeleccionado, ContItemSeleccionado);
         }
         #endregion
 
         #region Método inicial de Carga
         private void frmPedidoaMontarPretenido_Load(object sender, EventArgs e)
         {
-
+            CargarSolicicitudes(DetalleSeleccionado);
             cargarCombobox(cbxTipoMarcacion, control.getTipoMarcacion());
+            Iniciar(DetalleSeleccionado, ContItemSeleccionado);
+
             dgvInfoConsolidar.Columns[0].HeaderCell.ToolTipText = "Clic item si desea modificar";
             dgvInfoConsolidar.Columns[1].HeaderCell.ToolTipText = "Clic item si desea modificar";
             dgvInfoConsolidar.Columns[21].HeaderCell.ToolTipText = "(Consumo * Total Unidades)*1.10";
@@ -72,6 +72,11 @@ namespace PedidoTela.Formularios
 
         #region Eventos
 
+        private void txtAnalista_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            e.KeyChar = Char.ToUpper(e.KeyChar);
+        }
+        
         private void txtRendimiento_KeyPress(object sender, KeyPressEventArgs e)
         {
             if (txtRendimiento.Text.Trim() != "")
@@ -79,7 +84,7 @@ namespace PedidoTela.Formularios
                 validacion.validarDecimal(sender, e);
             }
         }
-       
+             
         private void txtRendimiento_TextChanged(object sender, EventArgs e)
         {
             try
@@ -111,7 +116,7 @@ namespace PedidoTela.Formularios
        
         private void cbxClase_SelectedIndexChanged(object sender, EventArgs e)
         {
-            if (cbxClase.SelectedIndex != -1 && cbxClase.SelectedItem.ToString().ToLower() == "no tejer")
+            if (cbxClase.SelectedIndex != -1 && cbxClase.SelectedItem.ToString() == "No Tejer")
             {
                 this.noTejer = true;
                 btnAgregarPedido.Enabled = true;
@@ -375,7 +380,7 @@ namespace PedidoTela.Formularios
             {
                 if (txtRendimiento.Text != "")
                 {
-                    if (cbxTipoMarcacion.SelectedIndex != -1)
+                    if (cbxTipoMarcacion.Text != "")
                     {
                         if (txtAnalista.Text != "")
                         {
@@ -776,6 +781,7 @@ namespace PedidoTela.Formularios
             }
         }
 
+
         /// <summary>
         /// Válida que algunos campos requeridos del DatagridView (dgvInfoConsolidar) no esten vacíos.
         /// </summary>
@@ -906,17 +912,7 @@ namespace PedidoTela.Formularios
                 txtRendimiento.Text = objPedidoPlano.Rendimiento.ToString();
                 txtAnalista.Text = objPedidoPlano.AnalistasCortesB.ToString();
                 dtpFechaLlegada.Text = objPedidoPlano.FechaLlegada.ToString();
-
-                //cbxTipoMarcacion.Text = objPedidoPlano.TipoMarcacion;
-                Objeto item = new Objeto();
-                foreach (Objeto obj in cbxTipoMarcacion.Items)
-                {
-                    if (obj.Nombre == objPedidoPlano.TipoMarcacion)
-                    {
-                        item = obj;
-                    }
-                }
-                cbxTipoMarcacion.SelectedItem = item;
+                cbxTipoMarcacion.Text = objPedidoPlano.TipoMarcacion.ToString();
 
                 /* Carga Pedido */
                 List<TomarDelPedido> listaPedido = control.getPedido(objPedidoPlano.Id);

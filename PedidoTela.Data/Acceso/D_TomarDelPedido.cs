@@ -132,10 +132,10 @@ namespace PedidoTela.Data.Acceso
             {
                 using (var con = new clsConexion())
                 {
-                    con.Parametros.Add(new IfxParameter("@codi_progra", prmDisenador.ToString()));
-                    con.Parametros.Add(new IfxParameter("@codi_progra", prmDisenador.ToString()));
-                    con.Parametros.Add(new IfxParameter("@codi_progra", prmDisenador.ToString()));
-                    con.Parametros.Add(new IfxParameter("@codi_progra", prmDisenador.ToString()));
+                    con.Parametros.Add(new IfxParameter("@codi_progra", prmDisenador.ToString("D4")));
+                    con.Parametros.Add(new IfxParameter("@codi_progra", prmDisenador.ToString("D4")));
+                    con.Parametros.Add(new IfxParameter("@codi_progra", prmDisenador.ToString("D4")));
+                    con.Parametros.Add(new IfxParameter("@codi_progra", prmDisenador.ToString("D4")));
 
                     var datos = con.EjecutarConsulta(this.consultarPorDisenador);
                     while (datos.Read())
@@ -164,10 +164,10 @@ namespace PedidoTela.Data.Acceso
             {
                 using (var con = new clsConexion())
                 {
-                    con.Parametros.Add(new IfxParameter("@codi_progra", prmDisenador.ToString()));
-                    con.Parametros.Add(new IfxParameter("@codi_progra", prmDisenador.ToString()));
-                    con.Parametros.Add(new IfxParameter("@codi_progra", prmDisenador.ToString()));
-                    con.Parametros.Add(new IfxParameter("@codi_progra", prmDisenador.ToString()));
+                    con.Parametros.Add(new IfxParameter("@codi_progra", prmDisenador.ToString("D4")));
+                    con.Parametros.Add(new IfxParameter("@codi_progra", prmDisenador.ToString("D4")));
+                    con.Parametros.Add(new IfxParameter("@codi_progra", prmDisenador.ToString("D4")));
+                    con.Parametros.Add(new IfxParameter("@codi_progra", prmDisenador.ToString("D4")));
                     con.Parametros.Add(new IfxParameter("@nume_pedido", prmNumPedido + "%"));
                     con.Parametros.Add(new IfxParameter("@nume_pedido", prmNumPedido + "%"));
                     con.Parametros.Add(new IfxParameter("@nume_pedido", prmNumPedido + "%"));
@@ -201,10 +201,10 @@ namespace PedidoTela.Data.Acceso
             {
                 using (var con = new clsConexion())
                 {
-                    con.Parametros.Add(new IfxParameter("@codi_progra", prmDisenador.ToString()));
-                    con.Parametros.Add(new IfxParameter("@codi_progra", prmDisenador.ToString()));
-                    con.Parametros.Add(new IfxParameter("@codi_progra", prmDisenador.ToString()));
-                    con.Parametros.Add(new IfxParameter("@codi_progra", prmDisenador.ToString()));
+                    con.Parametros.Add(new IfxParameter("@codi_progra", prmDisenador.ToString("D4")));
+                    con.Parametros.Add(new IfxParameter("@codi_progra", prmDisenador.ToString("D4")));
+                    con.Parametros.Add(new IfxParameter("@codi_progra", prmDisenador.ToString("D4")));
+                    con.Parametros.Add(new IfxParameter("@codi_progra", prmDisenador.ToString("D4")));
                     con.Parametros.Add(new IfxParameter("@codi_color", prmCodigoColor + "%"));
                     con.Parametros.Add(new IfxParameter("@codi_color", prmCodigoColor + "%"));
                     con.Parametros.Add(new IfxParameter("@codi_color", prmCodigoColor + "%"));

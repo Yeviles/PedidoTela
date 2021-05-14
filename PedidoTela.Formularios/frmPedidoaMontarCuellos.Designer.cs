@@ -156,6 +156,7 @@ namespace PedidoTela.Formularios
             this.txtAnalistas.Name = "txtAnalistas";
             this.txtAnalistas.Size = new System.Drawing.Size(222, 23);
             this.txtAnalistas.TabIndex = 70;
+            this.txtAnalistas.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtAnalistas_KeyPress);
             // 
             // lbEnsayoRef
             // 
