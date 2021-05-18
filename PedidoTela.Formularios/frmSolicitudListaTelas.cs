@@ -264,10 +264,38 @@ namespace PedidoTela.Formularios
         private void btnInventarioExt_Click(object sender, EventArgs e)
         {
             /// Cuenta cuantas filas de la DataGridView (dgvSolicitudTelas) en la vista frmSolicitudListaTelas ha sido chequeada (seleccionada).
-            int contador = utilidades.ContarChecked(dgvSolicitudTelas);
-            /// Realiza el respectivo método que retorna la lista de filas Seleccionadas
-            List<MontajeTelaDetalle> listaFilasSeleccionadas = ListaFilasSeleccionadas();
-            FrmAgenciasExternos frmAgenciasExterno = new FrmAgenciasExternos(controlador, listaFilasSeleccionadas, contador, idSolicitudTelas);
+            int cantFilasSeleccionadas = utilidades.ContarChecked(dgvSolicitudTelas);
+            int b = 0;
+            if (cantFilasSeleccionadas > 1)
+            {
+                for (int i = 0; i < dgvSolicitudTelas.RowCount; i++)
+                {
+                    if (dgvSolicitudTelas.Rows[i].Cells[0].Value.Equals(true))//Columna de checks
+                    {
+                        if ( dgvSolicitudTelas.Rows[i].Cells[26].Value.ToString() == "Reserva parcial" || dgvSolicitudTelas.Rows[i].Cells[26].Value.ToString() == "Por Analizar")
+                        {
+                            b += 1;
+                        }
+                    }
+                }
+                if (b == cantFilasSeleccionadas)
+                {
+                    /*Realiza el respectivo método que retorna la lista de filas Seleccionadas*/
+                    List<MontajeTelaDetalle> listaFilasSeleccionadas = ListaFilasSeleccionadas();
+                    frmAgenciasExternos frmAgenciasExterno = new frmAgenciasExternos(controlador, listaFilasSeleccionadas, cantFilasSeleccionadas, int.Parse(listaFilasSeleccionadas[0].IdSolTela.ToString()));
+                    frmAgenciasExterno.Show();
+                }
+                else
+                {
+                    MessageBox.Show("El estado de solicitud No corresponde a Reserva Parcial o Por Analizar.", "Advertencia", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                }
+            }
+            else
+            {
+                MessageBox.Show("Por favor seleccione al menos dos items.", "Advertencia", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+
+            }
+
         }
 
         /// <summary>

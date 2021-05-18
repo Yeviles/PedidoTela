@@ -23,8 +23,10 @@ namespace PedidoTela.Entidades.Logica
         private decimal mCalculados;
         private decimal mReservados;
         private decimal maSolicitar;
+        private decimal kgCalculados; 
+
         public AgenciasInfoConsolidar() { }
-        public AgenciasInfoConsolidar(string codColor, string desColor, int tiendas, int exito, int cencosud, int sao, int comercioOrg, int rosado, int otros, int totalUnidades, decimal consumo, decimal mCalculados, decimal mReservados, decimal maSolicitar, int idAgencias)
+        public AgenciasInfoConsolidar(string codColor, string desColor, int tiendas, int exito, int cencosud, int sao, int comercioOrg, int rosado, int otros, int totalUnidades, decimal consumo, decimal mCalculados, decimal mReservados, decimal maSolicitar, int idAgencias, decimal kgCalculados)
         {
             this.CodColor = codColor;
             this.DesColor = desColor;
@@ -41,6 +43,7 @@ namespace PedidoTela.Entidades.Logica
             this.MReservados = mReservados;
             this.MaSolicitar = maSolicitar;
             this.IdAgencias = idAgencias;
+            this.KgCalculados = kgCalculados;
         }
 
         public string CodColor { get => codColor; set => codColor = value; }
@@ -58,5 +61,6 @@ namespace PedidoTela.Entidades.Logica
         public decimal MReservados { get => mReservados; set => mReservados = value; }
         public decimal MaSolicitar { get => maSolicitar; set => maSolicitar = value; }
         public int IdAgencias { get => idAgencias; set => idAgencias = value; }
+        public decimal KgCalculados { get => kgCalculados; set => kgCalculados = value; }
     }
 }

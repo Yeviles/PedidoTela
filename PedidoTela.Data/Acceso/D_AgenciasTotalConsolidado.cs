@@ -11,80 +11,16 @@ namespace PedidoTela.Data.Acceso
     public class D_AgenciasTotalConsolidado
     {
         #region Consultas
-        private readonly string consultaId = "SELECT id_totalconsolidar FROM cfc_spt_agen_totalconsolidar WHERE  idAgencias =?;";
-
-        private readonly string actualizar = "UPDATE cfc_spt_agen_totalconsolidar SET codigo_color=?, desc_color=?, tiendas=?, exito=?," +
-           " cencosud=?, sao=?, comercio=?, rosado=?, otros=?, total=?, m_calculados=?, kg_calculados=?, total_pedir=?, uni_medidatela=? WHERE id_totalconsolidar =?;";
-       
-        private readonly string consultaInsert = "INSERT INTO cfc_spt_agen_totalconsolidar (idAgencias,codigo_color,desc_color,tiendas,exito,cencosud,sao,comercio,rosado,otros,total,m_calculados,kg_calculados,total_pedir,uni_medidatela) " +
+        private readonly string consultaInsert = "INSERT INTO cfc_spt_agen_externos_total (id_agencias,codigo_color,desc_color,tiendas,exito,cencosud,sao,comercio,rosado,otros,total,m_calculados,kg_calculados,total_pedir,uni_medidatela) " +
           " VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ? )";
 
-        private readonly string consultarTodo = "SELECT codigo_color,desc_color,tiendas,exito,cencosud,sao,comercio,rosado,otros,total,m_calculados,kg_calculados,total_pedir,uni_medidatela FROM cfc_spt_agen_totalconsolidar WHERE idAgencias =?; ";
+        private readonly string consultarTodo = "SELECT codigo_color,desc_color,tiendas,exito,cencosud,sao,comercio,rosado,otros,total,m_calculados,kg_calculados,total_pedir,uni_medidatela FROM cfc_spt_agen_externos_total WHERE id_agencias =?; ";
+
+        private readonly string consultaEliminar = "DELETE cfc_spt_agen_externos_total WHERE id_agencias = ?;";
 
         #endregion
-        public List<int> ConsultarId(int idCuellos)
-        {
-            int id = 0;
-            List<int> lista = new List<int>();
-            try
-            {
-                using (var con = new clsConexion())
-                {
-                    con.Parametros.Add(new IfxParameter("@idAgencias", idCuellos));
-                    var datos = con.EjecutarConsulta(this.consultaId);
-                    while (datos.Read())
-                    {
-                        id = int.Parse(datos["id_totalconsolidar"].ToString());
-                        lista.Add(id);
-                    }
-                    con.cerrarConexion();
-                }
-            }
-            catch (Exception ex)
-            {
-                Console.WriteLine("Error: " + ex.Message);
-            }
-            return lista;
-        }
 
-        public string Actualizar(AgenciaTotalConsolidar elemento, int idDetalle)
-        {
-            string respuesta = "";
-            try
-            {
-                //UPDATE 
-                using (var con = new clsConexion())
-                {
-                    con.Parametros.Add(new IfxParameter("@codigo_color", elemento.CodColor));
-                    con.Parametros.Add(new IfxParameter("@desc_color", elemento.DesColor));
-                    con.Parametros.Add(new IfxParameter("@tiendas", elemento.Tiendas));
-                    con.Parametros.Add(new IfxParameter("@exito", elemento.Exito));
-                    con.Parametros.Add(new IfxParameter("@cencosud", elemento.Cencosud));
-                    con.Parametros.Add(new IfxParameter("@sao", elemento.Sao));
-                    con.Parametros.Add(new IfxParameter("@comercio", elemento.ComercioOrg));
-                    con.Parametros.Add(new IfxParameter("@rosado", elemento.Rosado));
-                    con.Parametros.Add(new IfxParameter("@otros", elemento.Otros));
-                    con.Parametros.Add(new IfxParameter("@total", elemento.TotalUnidades));
-                    con.Parametros.Add(new IfxParameter("@m_calculados", elemento.MCalculados));
-                    con.Parametros.Add(new IfxParameter("@kg_calculados", elemento.KgCalculados));
-                    con.Parametros.Add(new IfxParameter("@total_pedir", elemento.TotalaPedir));
-                    con.Parametros.Add(new IfxParameter("@uni_medidatela", elemento.UniMedidaTela));
-
-                    con.Parametros.Add(new IfxParameter("@id_totalconsolidar", idDetalle));
-                    var datos = con.EjecutarConsulta(actualizar);
-
-                    con.cerrarConexion();
-
-                }
-                respuesta = "ok";
-            }
-            catch (Exception ex)
-            {
-                respuesta = "Error: " + ex.Message;
-            }
-            return respuesta;
-        }
-
+        #region Métodos Agregar
         public string Agregar(AgenciaTotalConsolidar elemento)
         {
             string respuesta = "";
@@ -92,7 +28,7 @@ namespace PedidoTela.Data.Acceso
             {
                 using (var con = new clsConexion())
                 {
-                    con.Parametros.Add(new IfxParameter("@idAgencias", elemento.IdAgencias));
+                    con.Parametros.Add(new IfxParameter("@id_agencias", elemento.IdAgencias));
                     con.Parametros.Add(new IfxParameter("@codigo_color", elemento.CodColor));
                     con.Parametros.Add(new IfxParameter("@desc_color", elemento.DesColor));
                     con.Parametros.Add(new IfxParameter("@tiendas", elemento.Tiendas));
@@ -119,7 +55,9 @@ namespace PedidoTela.Data.Acceso
             }
             return respuesta;
         }
+        #endregion
 
+        #region Métodos Consultar
         public List<AgenciaTotalConsolidar> getDetalleTotalConsolidado(int prmIdAgencias)
         {
             List<AgenciaTotalConsolidar> lista = new List<AgenciaTotalConsolidar>();
@@ -128,7 +66,7 @@ namespace PedidoTela.Data.Acceso
                 using (var con = new clsConexion())
                 {
 
-                    con.Parametros.Add(new IfxParameter("@idAgencias ", prmIdAgencias));
+                    con.Parametros.Add(new IfxParameter("@id_agencias", prmIdAgencias));
                     var datos = con.EjecutarConsulta(this.consultarTodo);
                     while (datos.Read())
                     {
@@ -159,5 +97,17 @@ namespace PedidoTela.Data.Acceso
             }
             return lista;
         }
+        #endregion
+
+        #region Métodos Eliminar
+        public void EliminarAgenciasExternoInfo(int prmIdAgencias)
+        {
+            using (var con = new clsConexion())
+            {
+                con.Parametros.Add(new IfxParameter("@id_agencias", prmIdAgencias));
+                con.Ejecutar(this.consultaEliminar);
+            }
+        }
+        #endregion
     }
 }

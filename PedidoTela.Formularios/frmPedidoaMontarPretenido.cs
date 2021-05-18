@@ -22,29 +22,25 @@ namespace PedidoTela.Formularios
         private Controlador control = new Controlador();
         List<MontajeTelaDetalle> detalleSeleccionado = new List<MontajeTelaDetalle>();
         List<int> listaIdSolicitudes = new List<int>();
-        List<string> listaEsayosRef = new List<string>();
         Utilidades utilidades = new Utilidades();
         Validar validacion = new Validar();
         bool bandera = false, noTejer = false;
-        int idSolicitudTelas=0, id, contItemSeleccionado, consecutivo;
+        int idSolicitudTelas=0, id, consecutivo;
         #endregion
 
         #region Setter && Getter
         public List<MontajeTelaDetalle> DetalleSeleccionado { get => detalleSeleccionado; set => detalleSeleccionado = value; }
         public int IdSolicitudTelas { get => idSolicitudTelas; set => idSolicitudTelas = value; }
         public List<int> ListaIdSolicitudes { get => listaIdSolicitudes; set => listaIdSolicitudes = value; }
-        public List<string> ListaEsayosRef { get => listaEsayosRef; set => listaEsayosRef = value; }
-        public int ContItemSeleccionado { get => contItemSeleccionado; set => contItemSeleccionado = value; }
         #endregion
 
         #region Constructor
-        public frmPedidoaMontarPretenido(Controlador controlador, List<MontajeTelaDetalle> listaSeleccionada, int idsolTela, int itemsSeleccionados)
+        public frmPedidoaMontarPretenido(Controlador controlador, List<MontajeTelaDetalle> listaSeleccionada, int idsolTela,int contador)
         {        
             InitializeComponent();
             DetalleSeleccionado = listaSeleccionada;
             this.control = controlador;
             IdSolicitudTelas = idsolTela;       
-            ContItemSeleccionado = itemsSeleccionados;
             dtpFechaLlegada.Format = DateTimePickerFormat.Custom;
             dtpFechaLlegada.CustomFormat = "dd/MM/yyyy";
         }
@@ -55,8 +51,9 @@ namespace PedidoTela.Formularios
         {
             CargarSolicicitudes(DetalleSeleccionado);
             cargarCombobox(cbxTipoMarcacion, control.getTipoMarcacion());
-            Iniciar(DetalleSeleccionado, ContItemSeleccionado);
+            Iniciar(DetalleSeleccionado);
 
+            #region ToolTips
             dgvInfoConsolidar.Columns[0].HeaderCell.ToolTipText = "Clic item si desea modificar";
             dgvInfoConsolidar.Columns[1].HeaderCell.ToolTipText = "Clic item si desea modificar";
             dgvInfoConsolidar.Columns[21].HeaderCell.ToolTipText = "(Consumo * Total Unidades)*1.10";
@@ -67,6 +64,7 @@ namespace PedidoTela.Formularios
             dgvTotalConsolidado.Columns[2].HeaderCell.ToolTipText = "Clic item si desea modificar";
             dgvTotalConsolidado.Columns[20].HeaderCell.ToolTipText = "(Consumo * Total Unidades)*1.10";
             dgvTotalConsolidado.Columns[21].HeaderCell.ToolTipText = "M a solicitar / Rendimiento";
+            #endregion
         }
         #endregion
 
@@ -220,7 +218,7 @@ namespace PedidoTela.Formularios
 
         private void dgvInfoConsolidar_CellEndEdit(object sender, DataGridViewCellEventArgs e)
         {
-            if (e.ColumnIndex == 20) //Cuando cambia el consumo [20] cambia M Calculados [21]
+            if (e.ColumnIndex == 20) //Cuando cambia el consumo [20] cambia M Calculados [21] y kg Calculado [24]
             {
                 try
                 {
@@ -245,6 +243,8 @@ namespace PedidoTela.Formularios
                                 {
                                     decimal mReservados = decimal.Parse(dgvInfoConsolidar.Rows[e.RowIndex].Cells[22].Value.ToString());
                                     dgvInfoConsolidar.Rows[e.RowIndex].Cells[23].Value = utilidades.calcularMSolicitar(mCalculados, mReservados);
+                                    dgvInfoConsolidar.Rows[e.RowIndex].Cells[24].Value = decimal.Round(decimal.Parse(dgvInfoConsolidar.Rows[e.RowIndex].Cells[23].Value.ToString()) / decimal.Parse(txtRendimiento.Text), 2);
+
                                 }
                                 else
                                 {
@@ -364,12 +364,12 @@ namespace PedidoTela.Formularios
                 }
             }
         }
-        
-        private void btnSalir_Click(object sender, EventArgs e)
-        {
-            this.Close();
-        }
 
+        /// <summary>
+        /// Guarda toda la información de la vista. 
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void btnGrabar_Click(object sender, EventArgs e)
         {
             if (this.noTejer && dgvPedidos.RowCount == 0)
@@ -453,6 +453,11 @@ namespace PedidoTela.Formularios
             }
         }
 
+        /// <summary>
+        ///  Boton  confirmar, el  sistema  genera   un  consecutivo   y   la   solicitud     cambia  al   estado   Radicado.  
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void btnConfirmar_Click(object sender, EventArgs e)
         {
             int maxConsecutivo = control.consultarMaxConsecutivoPedido();
@@ -486,7 +491,12 @@ namespace PedidoTela.Formularios
                 MessageBox.Show("Por favor, Grabe la Información.", "Advertencia", MessageBoxButtons.OK, MessageBoxIcon.Warning);
             }
         }
-        
+
+        /// <summary>
+        /// Imprime los datos del consolidado, una vez este se encuentre guardado.
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void btnImprimir_Click(object sender, EventArgs e)
         {
             PedidoAMontar objPlano = control.getPedidoPlano(IdSolicitudTelas);
@@ -500,7 +510,22 @@ namespace PedidoTela.Formularios
                 MessageBox.Show("El consolidado no ha sido guardado.", "Advertencia", MessageBoxButtons.OK, MessageBoxIcon.Warning);
             }
         }
-       
+        
+        /// <summary>
+        /// Cierra la Vista.
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void btnSalir_Click(object sender, EventArgs e)
+        {
+            this.Close();
+        }
+
+        /// <summary>
+        /// Permite llevar a cabo la acción de tomar del pedido.
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void btnAgregarPedido_Click(object sender, EventArgs e)
         {
             frmBuscarPedido buscar = new frmBuscarPedido(control, DetalleSeleccionado[0].IdProgramador);
@@ -517,6 +542,10 @@ namespace PedidoTela.Formularios
         #endregion
 
         #region Métodos
+        /// <summary>
+        /// Permite cargar una lista con todos los id_solicitud seleccionados.
+        /// </summary>
+        /// <param name="prmLista">Lista de tipo MontajeTelaDetalle,representa las filas seleccionadas en el vista  inicial de filtros (frmSolicitudListaTelas).</param>
         private void CargarSolicicitudes(List<MontajeTelaDetalle> prmLista)
         {
             List<int> listaSolicitudes = new List<int>();
@@ -526,8 +555,13 @@ namespace PedidoTela.Formularios
             }
             ListaIdSolicitudes = listaSolicitudes.Distinct().ToList();
         }
-       
-        private void Iniciar(List<MontajeTelaDetalle> prmLista, int numfilasSeleccionadas)
+
+        /// <summary>
+        /// Busca la información en las respectivas entidades si encuentra dastos los carga y la bandera el True, de lo contrario la bandera es False y se procede a 
+        /// cargar la vista con la información que se ha seleccionado de la vista anterior.
+        /// </summary>
+        /// <param name="prmLista"> Lista de tipo MontajeTelaDetalle, representa las filas seleccionadas en el vista  inicial de filtros (frmSolicitudListaTelas). </param>
+        private void Iniciar(List<MontajeTelaDetalle> prmLista)
         {          
             Cargar();
             // Bandera controlada en el método Cargar()
@@ -540,6 +574,10 @@ namespace PedidoTela.Formularios
             }     
         }
 
+        /// <summary>
+        /// Carga el primer DataGridView expuesto en la vista, corresponde a información a consolidar.
+        /// </summary>
+        /// <param name="prmLista">Lista de tipo MontajeTelaDetalle, representa las filas seleccionadas en el vista  inicial de filtros (frmSolicitudListaTelas).</param>
         private void cargarDgvInfoConsolidar(List<MontajeTelaDetalle> prmLista)
         {
             if (prmLista.Count != 0)
@@ -575,9 +613,6 @@ namespace PedidoTela.Formularios
 
                     txtEnsayoRef.Text += prmLista[i].RefSimilar.ToString() + "\n";
                     txtDesPrenda.Text = prmLista[i].DescPrenda.ToString();
-                    //IdSolicitudTelas = prmLista[i].IdSolTela;
-                    ListaIdSolicitudes.Add(prmLista[i].IdSolTela);
-                    ListaEsayosRef.Add(prmLista[i].RefSimilar);
                 }
                 txtNomTela.Text = prmLista[0].DesTela.ToString();
                 txtDisenador.Text = prmLista[0].Disenador.ToString();
@@ -588,6 +623,10 @@ namespace PedidoTela.Formularios
             }
         }
 
+        /// <summary>
+        /// Carga el segundo DataGridView expuesto en la vista, corresponde a total consolidar.
+        /// </summary>
+        /// <param name="prmLista">Lista de tipo MontajeTelaDetalle, representa las filas seleccionadas en el vista  inicial de filtros (frmSolicitudListaTelas).</param>
         private void cargarDgvTotalConsolidar(List<MontajeTelaDetalle> prmLista)
         {
             if (prmLista.Count != 0)
@@ -627,6 +666,11 @@ namespace PedidoTela.Formularios
 
         }
 
+        /// <summary>
+        /// Carga la informacion de los ComboBox.
+        /// </summary>
+        /// <param name="combo"></param>
+        /// <param name="lista"></param>
         private void cargarCombobox(ComboBox combo, List<Objeto> lista)
         {
             combo.DataSource = lista;
@@ -651,6 +695,24 @@ namespace PedidoTela.Formularios
             return datos;
         }
 
+        /// <summary>
+        /// Agrega el consolidado a lista de solicitudes seleccionadas en la vista frmSolicitudListaTelas, al momento de dar clic en Guardar.
+        /// </summary>
+        private void AgregarConsolidado()
+        {
+            int maxConsolidado = control.consultarMaxConsolidado();
+            for (int i = 0; i < ListaIdSolicitudes.Count; i++)
+            {
+                //Permite agregar el consolidado a todas las solicitudes seleccionadas, recibe id_solicitud y consolidado
+                control.agregarConsolidado(ListaIdSolicitudes[i], maxConsolidado + 1);
+            }
+
+        }
+        
+        /// <summary>
+        /// Obtiene la información del encabezado de la vista.
+        /// </summary>
+        /// <returns>Retorna un Objeto de Tipo Pedido a Montar, representa la información del encabezado.</returns>
         private PedidoAMontar ObtenerEncabezado()
         {
             PedidoAMontar elemento = new PedidoAMontar();
@@ -670,24 +732,9 @@ namespace PedidoTela.Formularios
         }
 
         /// <summary>
-        /// Agrega el consolidado a lista de solicitudes seleccionadas en la vista frmSolicitudListaTelas, al momento de dar clic en Guardar.
+        /// Guarda la información de la primera dataGridView (dgvInfoConsolidar)
         /// </summary>
-        private void AgregarConsolidado()
-        {
-            int maxConsolidado = control.consultarMaxConsolidado();
-            for (int i = 0; i < ListaIdSolicitudes.Count; i++)
-            {
-                //Permite agregar el consolidado a todas las solicitudes seleccionadas, recibe id_solicitud y consolidado
-                control.agregarConsolidado(ListaIdSolicitudes[i], maxConsolidado + 1);
-            }
-
-        }
-
-        /// <summary>
-        /// Se obtiene la informacion de la primera dataGridView (dgvInfoConsolidar)
-        /// </summary>
-        /// <param name="i">Índice de creación del objeto.</param>
-        /// <returns>Retorna un objeto de tipo PedidoMontarInformacion el cual representa cada fila del dataGridView.</returns>
+        /// <param name="id">Id del Pedido Plano Preteñido.</param>
         private void GuardarInformacionConsolidar(int id)
         {
             for (int i = 0; i < dgvInfoConsolidar.RowCount; i++)
@@ -727,10 +774,9 @@ namespace PedidoTela.Formularios
         }
 
         /// <summary>
-        /// Se obtine la información de la segunada dataGridView (dgvTotalConsolidado)
+        /// Guarda la información de la segunada dataGridView (dgvTotalConsolidado)
         /// </summary>
-        /// <param name="i">Índice de creación del objeto.</param>
-        /// <returns>Retorna un objeto de tipo PedidoMontarInformacion el cual representa cada fila del dataGridView.</returns>
+        /// <param name="id">Id del pedido Plano Prteñido.</param>
         private void GuardarTotalConsolidar(int id)
         {
             for (int i = 0; i < dgvTotalConsolidado.RowCount; i++)
@@ -766,6 +812,10 @@ namespace PedidoTela.Formularios
             
         }
 
+        /// <summary>
+        /// Guarda la información correspondiente a la sección de Tomar del Pedido.
+        /// </summary>
+        /// <param name="id">Id del Pedido Plano Preteñido.</param>
         private void GuardarPedido(int id)
         {
             for (int i = 0; i < dgvPedidos.RowCount; i++)
@@ -780,7 +830,6 @@ namespace PedidoTela.Formularios
                 control.addPedido(pedido);
             }
         }
-
 
         /// <summary>
         /// Válida que algunos campos requeridos del DatagridView (dgvInfoConsolidar) no esten vacíos.
@@ -817,6 +866,9 @@ namespace PedidoTela.Formularios
            
         }
 
+        /// <summary>
+        ///  Calcula y edita algunos de los campos de los dataGridView de la vista según los colores cargados.
+        /// </summary>
         private void calcularTotalesPorColores()
         {
             List<Objeto> colores = new List<Objeto>();
@@ -897,6 +949,9 @@ namespace PedidoTela.Formularios
             }
         }
 
+        /// <summary>
+        /// Carga la información de la vista.
+        /// </summary>
         private void Cargar()
         {
             PedidoAMontar objPedidoPlano = control.getPedidoPlano(IdSolicitudTelas);

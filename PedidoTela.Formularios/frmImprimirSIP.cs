@@ -10,6 +10,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using MaterialSkin;
 
 namespace PedidoTela.Formularios
 {
@@ -27,7 +28,10 @@ namespace PedidoTela.Formularios
 
         private void frmImprimirSIP_Load(object sender, EventArgs e)
         {
-            AgenciasExternos agencia = control.getAgenciasExt(idSolicitudTela);
+            SkinManager.Theme = MaterialSkin.MaterialSkinManager.Themes.LIGHT;
+            SkinManager.ColorScheme = new ColorScheme(Primary.Blue900, Primary.Grey500, Primary.Grey200, Accent.Green100, TextShade.WHITE);
+
+            AgenciasExternos agencia = control.getAgenciasExterno(idSolicitudTela);
             List<AgenciasSIP> lista = new List<AgenciasSIP>();
             List<AgenciasInfoConsolidar> listaInfoConsolidar = control.getInfoConsolidar(agencia.IdAgencias);
             List<AgenciaTotalConsolidar> listaTotalConsolidado = control.getTotalConsolidado(agencia.IdAgencias);

@@ -21,10 +21,15 @@ namespace PedidoTela.Formularios
         private Controlador control = new Controlador();
         private List<MontajeTelaDetalle> solicitudes = new List<MontajeTelaDetalle>();
         private List<int> listaIdSolicitudes = new List<int>();
-        private List<string> listaEsayosRef = new List<string>();
         private Validar validacion = new Validar();
+        private Utilidades utilidades = new Utilidades();
         private int idSolicitud, id, consecutivo;
         private bool bandera = false;
+
+        #endregion
+
+        #region Setter && Getter
+        public List<int> ListaIdSolicitudes { get => listaIdSolicitudes; set => listaIdSolicitudes = value; }
         #endregion
 
         public frmPedidoaMontarEstampado(Controlador control, List<MontajeTelaDetalle> solicitudes)
@@ -32,6 +37,8 @@ namespace PedidoTela.Formularios
             InitializeComponent();
             this.control = control;
             this.solicitudes = solicitudes;
+            dtpFechaLlegada.Format = DateTimePickerFormat.Custom;
+            dtpFechaLlegada.CustomFormat = "dd/MM/yyyy";
         }
 
         #region Eventos
@@ -40,12 +47,14 @@ namespace PedidoTela.Formularios
         {
             SkinManager.Theme = MaterialSkin.MaterialSkinManager.Themes.LIGHT;
             SkinManager.ColorScheme = new ColorScheme(Primary.Blue900, Primary.Grey500, Primary.Grey200, Accent.Green100, TextShade.WHITE);
+            Cargarsolicitudes(solicitudes);
             cargarCombobox(cbxTipoMarcacion, control.getTipoMarcacion());
             cargar();
             if (id == 0) {
                 cargarDgvInfoConsolidar(solicitudes);
                 calcularTotalesPorColores();
             }
+            #region TootTipsTex
             dgvInfoConsolidar.Columns[0].HeaderCell.ToolTipText = "Clic item si desea modificar";
             dgvInfoConsolidar.Columns[1].HeaderCell.ToolTipText = "Clic item si desea modificar";
             dgvInfoConsolidar.Columns[13].HeaderCell.ToolTipText = "(Consumo * Total Unidades)*1.10";
@@ -54,6 +63,7 @@ namespace PedidoTela.Formularios
 
             dgvTotalConsolidado.Columns[12].HeaderCell.ToolTipText = "(Consumo * Total Unidades)*1.10";
             dgvTotalConsolidado.Columns[13].HeaderCell.ToolTipText = "M a solicitar / Rendimiento";
+            #endregion
         }
 
         private void cbxClase_SelectedIndexChanged(object sender, EventArgs e)
@@ -80,7 +90,7 @@ namespace PedidoTela.Formularios
                         if (dgvInfoConsolidar.Rows[i].Cells[15].Value != null && dgvInfoConsolidar.Rows[i].Cells[15].Value.ToString() != "") {
                             decimal mSolicitar = decimal.Parse(dgvInfoConsolidar.Rows[i].Cells[15].Value.ToString());
                             decimal rendimiento = decimal.Parse(txtRendimiento.Text.Trim());
-                            dgvInfoConsolidar.Rows[i].Cells[16].Value = calcularKgCalculados(mSolicitar, rendimiento);
+                            dgvInfoConsolidar.Rows[i].Cells[16].Value = utilidades.calcularKgCalculados(mSolicitar, rendimiento);
                         }
                     }
                     else
@@ -141,7 +151,7 @@ namespace PedidoTela.Formularios
 
         private void dgvInfoConsolidar_CellEndEdit(object sender, DataGridViewCellEventArgs e)
         {
-            if (e.ColumnIndex == 12) //Cuando cambia el consumo [12] cambia M Calculados [13]
+            if (e.ColumnIndex == 12) //Cuando cambia el consumo [12] cambia M Calculados [13] y KG Calculados[16]
             {
                 try
                 {
@@ -154,7 +164,7 @@ namespace PedidoTela.Formularios
                         {
                             decimal consumo = decimal.Parse(dgvInfoConsolidar.CurrentCell.Value.ToString());
                             int totalUnidades = int.Parse(dgvInfoConsolidar.Rows[e.RowIndex].Cells[11].Value.ToString());
-                            dgvInfoConsolidar.Rows[e.RowIndex].Cells[13].Value = calcularMCalculados(consumo, totalUnidades);
+                            dgvInfoConsolidar.Rows[e.RowIndex].Cells[13].Value = utilidades.calcularMCalculados(consumo, totalUnidades);
 
 
                             // cuando cambia M Calculados [13] se actualiza M Solicitar [15]
@@ -165,7 +175,9 @@ namespace PedidoTela.Formularios
                                 if (dgvInfoConsolidar.Rows[e.RowIndex].Cells[14].Value != null && dgvInfoConsolidar.Rows[e.RowIndex].Cells[14].Value.ToString() != "")
                                 {
                                     decimal mReservados = decimal.Parse(dgvInfoConsolidar.Rows[e.RowIndex].Cells[14].Value.ToString());
-                                    dgvInfoConsolidar.Rows[e.RowIndex].Cells[15].Value = calcularMSolicitar(mCalculados, mReservados);
+                                    dgvInfoConsolidar.Rows[e.RowIndex].Cells[15].Value = utilidades.calcularMSolicitar(mCalculados, mReservados);
+                                    dgvInfoConsolidar.Rows[e.RowIndex].Cells[16].Value = decimal.Round(decimal.Parse(dgvInfoConsolidar.Rows[e.RowIndex].Cells[15].Value.ToString()) / decimal.Parse(txtRendimiento.Text), 2);
+
                                 }
                                 else
                                 {
@@ -201,7 +213,7 @@ namespace PedidoTela.Formularios
                     if (dgvInfoConsolidar.Rows[e.RowIndex].Cells[14].Value != null && dgvInfoConsolidar.Rows[e.RowIndex].Cells[14].Value.ToString() != "")
                     {
                         decimal mReservados = decimal.Parse(dgvInfoConsolidar.Rows[e.RowIndex].Cells[14].Value.ToString());
-                        dgvInfoConsolidar.Rows[e.RowIndex].Cells[15].Value = calcularMSolicitar(mCalculados, mReservados);
+                        dgvInfoConsolidar.Rows[e.RowIndex].Cells[15].Value = utilidades.calcularMSolicitar(mCalculados, mReservados);
                     }
                     else {
                         dgvInfoConsolidar.Rows[e.RowIndex].Cells[15].Value = mCalculados;
@@ -222,7 +234,7 @@ namespace PedidoTela.Formularios
                             decimal mReservados = decimal.Parse(dgvInfoConsolidar.CurrentCell.Value.ToString());
                             decimal mCalculados = decimal.Parse(dgvInfoConsolidar.Rows[e.RowIndex].Cells[13].Value.ToString());
                             if (mCalculados >= mReservados) {
-                                decimal mSolicitar = calcularMSolicitar(mCalculados, mReservados); ;
+                                decimal mSolicitar = utilidades.calcularMSolicitar(mCalculados, mReservados); ;
                                 dgvInfoConsolidar.Rows[e.RowIndex].Cells[15].Value = mSolicitar;
 
                                 if (txtRendimiento.Text.Trim() != "")
@@ -322,7 +334,7 @@ namespace PedidoTela.Formularios
             {
                 if (cbxClase.SelectedIndex != -1)
                 {
-                    if (cbxTipoMarcacion.SelectedIndex != -1)
+                    if (cbxTipoMarcacion.Text != "")
                     {
                         if (txtRendimiento.Text.Trim() != "")
                         {
@@ -349,7 +361,7 @@ namespace PedidoTela.Formularios
                                                         pedido.EnsayoReferencia = txtEnsayoRef.Text.Trim();
                                                         pedido.DescripcionPrenda = txtDesPrenda.Text.Trim();
                                                         pedido.Clase = cbxClase.SelectedItem.ToString();
-                                                        pedido.TipoMarcacion = ((Objeto)cbxTipoMarcacion.SelectedItem).Nombre;
+                                                        pedido.TipoMarcacion = cbxTipoMarcacion.GetItemText(cbxTipoMarcacion.SelectedItem);
                                                         pedido.Rendimiento = decimal.Parse(txtRendimiento.Text.Trim());
                                                         pedido.AnalistasCortesB = txtAnalista.Text.Trim();
                                                         pedido.FechaLlegada = dtpFechaLlegada.Value.ToString("dd/MM/yyyy");
@@ -437,9 +449,9 @@ namespace PedidoTela.Formularios
 
             if (id != 0)
             {
-                for (int i = 0; i < listaIdSolicitudes.Count; i++)
+                for (int i = 0; i < ListaIdSolicitudes.Count; i++)
                 {
-                    control.agregarConsecutivo(listaIdSolicitudes[i], maxConsecutivo + 1, fechaActual, estado);
+                    control.agregarConsecutivo(ListaIdSolicitudes[i], maxConsecutivo + 1, fechaActual, estado);
                 }
                 MessageBox.Show("La información se guardó con éxito. \n El estado se actualizó a Radicado.", "Información", MessageBoxButtons.OK, MessageBoxIcon.Information);
 
@@ -472,6 +484,7 @@ namespace PedidoTela.Formularios
                 MessageBox.Show("Por favor guarde el consolidado.", "Advertencia", MessageBoxButtons.OK, MessageBoxIcon.Warning);
             }
         }
+        
         private void btnSalir_Click(object sender, EventArgs e)
         {
             this.Close();
@@ -481,6 +494,20 @@ namespace PedidoTela.Formularios
         #endregion
 
         #region otros métodos
+        /// <summary>
+        /// Permite cargar una lista con todos los id_solicitud seleccionados.
+        /// </summary>
+        /// <param name="prmLista">Lista de tipo MontajeTelaDetalle, la cual representa las filas seleccionadas en el vista  inicial de filtros (frmSolicitudListaTelas).</param>
+        private void Cargarsolicitudes(List<MontajeTelaDetalle> prmLista)
+        {
+            List<int> listaSolicitudes = new List<int>();
+            for (int i = 0; i < prmLista.Count; i++)
+            {
+                listaSolicitudes.Add(prmLista[i].IdSolTela);
+            }
+            ListaIdSolicitudes = listaSolicitudes.Distinct().ToList();
+        }
+
         ///<summary> Realiza la carga de los datos en el ComboBox </summary>
         ///<param name="lista">Lista de tipo Objeto</param>
         ///<returns></returns>*/
@@ -536,8 +563,7 @@ namespace PedidoTela.Formularios
                     txtEnsayoRef.Text += prmLista[i].RefSimilar.ToString() + "\n";
                     txtDesPrenda.Text = prmLista[i].DescPrenda.ToString();
                     idSolicitud = prmLista[i].IdSolTela;
-                    listaIdSolicitudes.Add(prmLista[i].IdSolTela);
-                    listaEsayosRef.Add(prmLista[i].RefSimilar);
+                   // listaIdSolicitudes.Add(prmLista[i].IdSolTela);
                 }
                 txtNomTela.Text = prmLista[0].DesTela.ToString();
                 txtDisenador.Text = prmLista[0].Disenador.ToString();
@@ -628,10 +654,7 @@ namespace PedidoTela.Formularios
                     dgvTotalConsolidado.Rows[i].Cells[13].Value = totales[i].KgCalculados.ToString();
                 }
             }
-            else
-            {
-                MessageBox.Show("No existe información sobre su consulta", "Advertencia", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-            }
+   
         }
 
         private bool validarValoresConsumo()
@@ -691,9 +714,9 @@ namespace PedidoTela.Formularios
         private void AgregarConsolidado()
         {
             int maxConsolidado = control.consultarMaxConsolidado();
-            for (int i = 0; i < listaIdSolicitudes.Count; i++)
+            for (int i = 0; i < ListaIdSolicitudes.Count; i++)
             {
-                control.agregarConsolidado(listaIdSolicitudes[i], maxConsolidado + 1);
+                control.agregarConsolidado(ListaIdSolicitudes[i], maxConsolidado + 1);
             }
 
         }
@@ -786,6 +809,11 @@ namespace PedidoTela.Formularios
             }
         }
 
+        private void txtAnalista_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            e.KeyChar = Char.ToUpper(e.KeyChar);
+        }
+
         private void guardarTotal(int idPedido)
         {
             foreach (DataGridViewRow row in dgvTotalConsolidado.Rows)
@@ -826,21 +854,6 @@ namespace PedidoTela.Formularios
                 control.addPedido(pedido);
             }
         }
-
-        private decimal calcularMCalculados(decimal consumo, int totalUnidades) {
-            return decimal.Round(consumo * totalUnidades * decimal.Parse("1.10"), 2);
-        }
-
-        private decimal calcularMSolicitar(decimal mCalculados, decimal mReservados)
-        {
-            return decimal.Round(mCalculados - mReservados, 2);
-        }
-
-        private decimal calcularKgCalculados(decimal mSolicitar, decimal rendimiento)
-        {
-            return decimal.Round(mSolicitar / rendimiento, 2);
-        }
-
         #endregion
     }
 }

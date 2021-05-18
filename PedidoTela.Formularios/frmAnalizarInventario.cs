@@ -97,7 +97,7 @@ namespace PedidoTela.Formularios
                         /// Si es diferente de 0, entonces debe actualizar el estado a Reserva Parcial, y la fecha de estado 
                         if (dgvAnalizarInventario.Rows[row.Index].Cells[16].Value.ToString() != "0")
                         {
-                            if (control.setEstado(int.Parse(DetalleSeleccionado[row.Index].IdSolTela.ToString()), estado1, fechaAtualizada))
+                            if (control.actualizarEstado(int.Parse(DetalleSeleccionado[row.Index].IdSolTela.ToString()), estado1, fechaAtualizada))
                             {
                                 MessageBox.Show("Estado actualizado a Reserva Parcial.", "Información", MessageBoxButtons.OK, MessageBoxIcon.Information);
                             }
@@ -105,7 +105,7 @@ namespace PedidoTela.Formularios
                         // Si es igual a 0, entonces debe actualizar el estado a Reserva Total, y la fecha de estado 
                         else if (dgvAnalizarInventario.Rows[row.Index].Cells[16].Value.ToString() == "0")
                         {
-                            if (control.setEstado(int.Parse(DetalleSeleccionado[row.Index].IdSolTela.ToString()), estado2, fechaAtualizada))
+                            if (control.actualizarEstado(int.Parse(DetalleSeleccionado[row.Index].IdSolTela.ToString()), estado2, fechaAtualizada))
                             {
                                 MessageBox.Show("Estado actualizado a Reserva Total.", "Información", MessageBoxButtons.OK, MessageBoxIcon.Information);
                             }
