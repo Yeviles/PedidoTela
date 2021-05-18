@@ -554,7 +554,6 @@ namespace PedidoTela.Formularios
             ListaIdSolicitudes = listaSolicitudes.Distinct().ToList();
         }
 
-
         /// <summary>
         /// Busca la información en las respectivas entidades si encuentra dastos los carga y la bandera el True, de lo contrario la bandera es False y se procede a 
         /// cargar la vista con la información que se ha seleccionado de la vista anterior.

@@ -240,7 +240,7 @@ namespace PedidoTela.Formularios
                             }
                             else
                             {
-                                MessageBox.Show("El campo Tota Unidades deben estar llenos.", "Advertencia", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                               MessageBox.Show("Por favor ingrese los valores para la columna: Total a pedir.", "Advertencia", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                             }
                         }
                         else
@@ -600,14 +600,16 @@ namespace PedidoTela.Formularios
                     for (int i = dgvInfoConsolidar.Rows.Count; i < totales.Count; i++)
                     {
                         dgvInfoConsolidar.Rows.Add();
-                        
+
                     }
                 }
+               
                 //Se agrega la información en las filas
                 for (int i = 0; i < totales.Count; i++)
                 {
-                    dgvInfoConsolidar.Rows[i].Cells[0].Value = totales[i].CodigoVte;
-                    dgvInfoConsolidar.Rows[i].Cells[1].Value = totales[i].DescripcionVte.ToUpper();
+                    dgvInfoConsolidar.Rows[i].Cells[0].Value = dgvProporcion.Rows[i].Cells[0].Value;
+                    //dgvInfoConsolidar.Rows[i].Cells[1].Value = totales[i].DescripcionVte.ToUpper();
+                    dgvInfoConsolidar.Rows[i].Cells[1].Value = dgvProporcion.Rows[i].Cells[1].Value;
                     dgvInfoConsolidar.Rows[i].Cells[12].Value = totales[i].TotalUnidades.ToString();
 
                     
