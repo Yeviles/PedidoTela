@@ -956,6 +956,7 @@ namespace PedidoTela.Formularios
                 txtContacto.Text = objAgencias.Contacto.ToString();
                 txtPedidoAgencia.Text = objAgencias.PedidoAgencia.ToString();
                 cbxComposicion.Text = objAgencias.Composicion;
+                cbxTipoMarcacion.Text = objAgencias.TipoMarcacion;
                 txtNit.Text = objAgencias.Nit.ToString();
                 dtpFechaLlegada.Text = objAgencias.FechaLlegadaTela.ToString();
 
