@@ -549,14 +549,12 @@ namespace PedidoTela.Controlodores
         public bool setMaReservar(int idSolTela, string maReservar, string cantidadReservada)
         {
             D_AnalizarInventario objDetalleEditado = new D_AnalizarInventario();
-            // return (d_Detalle.Agregar(detalle) == "ok") ? true : false;
             return (objDetalleEditado.setMaReservar(idSolTela, maReservar, cantidadReservada) == "ok") ? true : false;
 
         }
         public bool AtualizarCalculados(int idSolTela, string mCalculados,string maReservar, string maSolicitar)
         {
             D_AnalizarInventario objDetalleEditado = new D_AnalizarInventario();
-            // return (d_Detalle.Agregar(detalle) == "ok") ? true : false;
             return (objDetalleEditado.Actualizar(idSolTela, mCalculados, maReservar, maSolicitar) == "ok") ? true : false;
 
         }
@@ -918,7 +916,6 @@ namespace PedidoTela.Controlodores
 
         #endregion
 
-
         #region Pedido Cuellos-Puños-Tiras
 
         /* ENCABEZADO */
@@ -1012,10 +1009,11 @@ namespace PedidoTela.Controlodores
             D_Consolidado d_consolidado = new D_Consolidado();
             return (d_consolidado.AgregarConsecutivo(prmIdsolicitud, prmConsecutivo, prmFecha, prmEstado) == "ok") ? true : false;
         }
-        public bool agregarConsolidado(int prmIdsolicitud, int prmConsolidado)
+        
+        public bool agregarConsolidado(int prmIdsolicitud, int prmConsolidado,string prmTipoPedido)
         {
             D_Consolidado d_consolidado = new D_Consolidado();
-            return (d_consolidado.ActualizarConsolidado(prmIdsolicitud, prmConsolidado) == "ok") ? true : false;
+            return (d_consolidado.ActualizarConsolidado(prmIdsolicitud, prmConsolidado, prmTipoPedido) == "ok") ? true : false;
         }
         public int consultarConsecutivoPedido(int prmIdSolicitud)
         {

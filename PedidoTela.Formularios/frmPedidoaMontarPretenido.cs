@@ -718,7 +718,7 @@ namespace PedidoTela.Formularios
             for (int i = 0; i < ListaIdSolicitudes.Count; i++)
             {
                 //Permite agregar el consolidado a todas las solicitudes seleccionadas, recibe id_solicitud y consolidado
-                control.agregarConsolidado(ListaIdSolicitudes[i], maxConsolidado + 1);
+                control.agregarConsolidado(ListaIdSolicitudes[i], maxConsolidado + 1,"PLANO");
             }
 
         }
