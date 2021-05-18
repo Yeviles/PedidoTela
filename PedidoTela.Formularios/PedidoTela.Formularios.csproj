@@ -148,6 +148,12 @@
     <Compile Include="frmEditarDsolicitudTela.Designer.cs">
       <DependentUpon>frmEditarDsolicitudTela.cs</DependentUpon>
     </Compile>
+    <Compile Include="frmImprimirPedidoAgencias.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmImprimirPedidoAgencias.Designer.cs">
+      <DependentUpon>frmImprimirPedidoAgencias.cs</DependentUpon>
+    </Compile>
     <Compile Include="frmImprimirPedidoCuellos.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -315,6 +321,9 @@
     <EmbeddedResource Include="frmEditarDsolicitudTela.resx">
       <DependentUpon>frmEditarDsolicitudTela.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="frmImprimirPedidoAgencias.resx">
+      <DependentUpon>frmImprimirPedidoAgencias.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="frmImprimirPedidoCuellos.resx">
       <DependentUpon>frmImprimirPedidoCuellos.cs</DependentUpon>
     </EmbeddedResource>
@@ -388,6 +397,7 @@
       <DependentUpon>frmSolicitudUnicolor.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="PDFImprimirSIP.rdlc" />
+    <EmbeddedResource Include="PDFPedidoAgencias.rdlc" />
     <EmbeddedResource Include="PDFPedidoCuellos.rdlc" />
     <EmbeddedResource Include="PDFPedidoEstampado.rdlc" />
     <EmbeddedResource Include="PDFPedidoPlano.rdlc" />
