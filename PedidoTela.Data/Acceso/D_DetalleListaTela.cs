@@ -30,7 +30,7 @@ namespace PedidoTela.Data.Acceso
                            "   CONCAT(CONCAT(NVL(du.rosado,''), NVL(de.rosado,'')), NVL(pd.rosado,'')) as rosado, " +
                            "   CONCAT(CONCAT(NVL(du.otros,''), NVL(de.otros,'')), NVL(pd.otros,'')) as otros, NVL(li.desc_linea,'') as desc_linea, " +
                            "   NVL(st.m_calculados,'') as m_calculados, NVL(st.m_reservar,'') as m_reservar, NVL(st.m_solicitar,'') as m_solicitar,st.idsolicitud,NVL(st.cantidad_reservado,'') as cantidad_reservado,  " +
-                           "   CONCAT(CONCAT(CONCAT(NVL(du.id,''),NVL(de.iddetalleest,'')),NVL(pd.id,'')), NVL(cd.iddetallecuellodos,'')) as idDetalleSol, NVL(st.id_programador,0) as id_programador, st.desc_prenda, " +
+                           "   CONCAT(CONCAT(CONCAT(NVL(du.id,''),NVL(de.iddetalleest,'')),NVL(pd.id,'')), NVL(cd.iddetallecuellodos,'')) as idDetalleSol, NVL(st.id_programador,0) as id_programador, st.desc_prenda,  NVL(ts.tipo_pedido,'') as tipo_pedido, " +
                            "   CONCAT(NVL(pd.codigo_h1,''), NVL(cd.codigo_h1,'')) as codigo_h1, CONCAT(NVL(pd.descripcion_h1, ''), NVL(cd.descripcion_h1, '')) as descripcion_h1, CONCAT(NVL(pd.codigo_h2,''),NVL(cd.codigo_h2,'')) as codigo_h2, CONCAT(NVL(pd.descripcion_h2,''),NVL(cd.descripcion_h2,''))as descripcion_h2, CONCAT(NVL(pd.codigo_h3,''),NVL(cd.codigo_h3,'')) as codigo_h3,  "+
                            "   CONCAT(NVL(pd.descripcion_h3,''),NVL(cd.descripcion_h3,'')) as descripcion_h3, CONCAT(NVL(pd.codigo_h4,''),NVL(cd.codigo_h4,'')) as codigo_h4, CONCAT(NVL(pd.descripcion_h4,''),NVL(cd.descripcion_h4,'')) as descripcion_h4, CONCAT(NVL(pd.codigo_h5,''),NVL(cd.codigo_h5,'')) as codigo_h5, CONCAT(NVL(pd.descripcion_h5,''),NVL(cd.descripcion_h5,'')) as descripcion_h5  "+
                            "   from  cfc_spt_tipo_solicitud ts " +
@@ -339,6 +339,7 @@ namespace PedidoTela.Data.Acceso
                     detalle.IdDetalleSolicitud = datosDataReader["idDetalleSol"].ToString().Trim();
                     detalle.IdProgramador = int.Parse(datosDataReader["id_programador"].ToString().Trim());
                     detalle.DescPrenda = datosDataReader["desc_prenda"].ToString().Trim();
+                    detalle.TipoPedido = datosDataReader["tipo_pedido"].ToString().Trim();
                     detalle.CodigoH1 =datosDataReader["codigo_h1"].ToString();
                     detalle.DescripcionH1 = datosDataReader["descripcion_h1"].ToString().Trim();
                     detalle.CodigoH2 = datosDataReader["codigo_h2"].ToString();

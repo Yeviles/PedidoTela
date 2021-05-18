@@ -25,15 +25,15 @@ namespace PedidoTela.Entidades.Logica
         private string contacto;
         private string pedidoAgencia;
         private string composicion;
+        private string tipoMarcacion;
         private string nit;
         private string fechaLlegadaTela;
         private int idSolTela;
 
        
-
         public AgenciasExternos() { }
 
-        public AgenciasExternos(int idAgencias, string solicitadoPor, string nombreTela, string disenadora, string cargo, string telefono, string ensayoRef, string departamento, decimal anchoTela, string proveedor, string ordenCompra, string extencion, string descPrenda, decimal rendimiento, string contacto, string pedidoAgencia, string composicion, string nit, string fechaLlegadaTela, int idSolTela)
+        public AgenciasExternos(int idAgencias, string solicitadoPor, string nombreTela, string disenadora, string cargo, string telefono, string ensayoRef, string departamento, decimal anchoTela, string proveedor, string ordenCompra, string extencion, string descPrenda, decimal rendimiento, string contacto, string pedidoAgencia, string composicion, string tipoMarcacion,string nit, string fechaLlegadaTela, int idSolTela)
         {
             this.IdAgencias = idAgencias;
             this.SolicitadoPor = solicitadoPor;
@@ -55,6 +55,7 @@ namespace PedidoTela.Entidades.Logica
             this.Nit = nit;
             this.FechaLlegadaTela = fechaLlegadaTela;
             this.IdSolTela = idSolTela;
+            this.TipoMarcacion = tipoMarcacion;
         }
 
         public int IdAgencias { get => idAgencias; set => idAgencias = value; }
@@ -74,6 +75,7 @@ namespace PedidoTela.Entidades.Logica
         public string Contacto { get => contacto; set => contacto = value; }
         public string PedidoAgencia { get => pedidoAgencia; set => pedidoAgencia = value; }
         public string Composicion { get => composicion; set => composicion = value; }
+        public string TipoMarcacion { get => tipoMarcacion; set => tipoMarcacion = value; }
         public string Nit { get => nit; set => nit = value; }
         public string FechaLlegadaTela { get => fechaLlegadaTela; set => fechaLlegadaTela = value; }
         public int IdSolTela { get => idSolTela; set => idSolTela = value; }

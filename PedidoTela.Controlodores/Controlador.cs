@@ -994,16 +994,19 @@ namespace PedidoTela.Controlodores
             D_TipoMarcacion tm = new D_TipoMarcacion();
             return tm.consultar();
         }
+        
         public int consultarMaxConsolidado()
         {
             D_Consolidado d_consolidado = new D_Consolidado();
             return d_consolidado.ConsultarMaxConsolidado();
         }
+        
         public int consultarMaxConsecutivoPedido()
         {
             D_Consolidado d_solicitud = new D_Consolidado();
             return d_solicitud.consultarMaxconsecutivo();
         }
+        
         public bool agregarConsecutivo(int prmIdsolicitud,  int prmConsecutivo, string prmFecha, string prmEstado)
         {
             D_Consolidado d_consolidado = new D_Consolidado();

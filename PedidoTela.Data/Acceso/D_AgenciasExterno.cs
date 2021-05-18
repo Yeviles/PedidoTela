@@ -11,15 +11,15 @@ namespace PedidoTela.Data.Acceso
    public  class D_AgenciasExterno
     {
         #region Consultas 
-        private readonly string consultaInsert = "INSERT INTO cfc_spt_agencias_externos (solicitado_por, id_sol_tela, nombre_tela, disenador, cargo, telefono, ensayo_ref, departamento, ancho_tela, proveedor, orden_compra, extencion, desc_prenda, rendimiento, contacto, pedido_agencia, composicion, nit, fecha_llegada_tela)  VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ? );";
+        private readonly string consultaInsert = "INSERT INTO cfc_spt_agencias_externos (solicitado_por, id_sol_tela, nombre_tela, disenador, cargo, telefono, ensayo_ref, departamento, ancho_tela, proveedor, orden_compra, extencion, desc_prenda, rendimiento, contacto, pedido_agencia, composicion, tipo_marcacion, nit, fecha_llegada_tela)  VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ? );";
 
         private readonly string consultaIdentificador = "SELECT ensayo_ref FROM cfc_spt_agencias_externos WHERE id_sol_tela = ?;";
 
-        private readonly string actualizar = "UPDATE cfc_spt_agencias_externos SET solicitado_por=?, nombre_tela=?, disenador=?, cargo=?, telefono=?, ensayo_ref=?, departamento=?, ancho_tela=?, proveedor=?, orden_compra=?, extencion=?, desc_prenda=?, rendimiento=?, contacto=?, pedido_agencia=?, composicion=?, nit=?, fecha_llegada_tela=? WHERE id_sol_tela =?;";
+        private readonly string actualizar = "UPDATE cfc_spt_agencias_externos SET solicitado_por=?, nombre_tela=?, disenador=?, cargo=?, telefono=?, ensayo_ref=?, departamento=?, ancho_tela=?, proveedor=?, orden_compra=?, extencion=?, desc_prenda=?, rendimiento=?, contacto=?, pedido_agencia=?, composicion=?, tipo_marcacion=?, nit=?, fecha_llegada_tela=? WHERE id_sol_tela =?;";
 
         private readonly string consultaId = "SELECT id_agencias FROM cfc_spt_agencias_externos WHERE id_sol_tela = ?;";
 
-        private readonly string consutarTodo = "SELECT solicitado_por,id_agencias, nombre_tela, disenador, cargo, telefono, ensayo_ref, departamento, ancho_tela, proveedor, orden_compra, extencion, desc_prenda, rendimiento, contacto, pedido_agencia, composicion, nit, fecha_llegada_tela, id_sol_tela FROM cfc_spt_agencias_externos WHERE id_sol_tela =?; ";
+        private readonly string consutarTodo = "SELECT solicitado_por,id_agencias, nombre_tela, disenador, cargo, telefono, ensayo_ref, departamento, ancho_tela, proveedor, orden_compra, extencion, desc_prenda, rendimiento, contacto, pedido_agencia, composicion, tipo_marcacion, nit, fecha_llegada_tela, id_sol_tela FROM cfc_spt_agencias_externos WHERE id_sol_tela =?; ";
         #endregion
        
         #region Métodos Agregar
@@ -48,6 +48,7 @@ namespace PedidoTela.Data.Acceso
                     con.Parametros.Add(new IfxParameter("@contacto", elemento.Contacto));
                     con.Parametros.Add(new IfxParameter("@pedido_agencia", elemento.PedidoAgencia));
                     con.Parametros.Add(new IfxParameter("@composicion", elemento.Composicion));
+                    con.Parametros.Add(new IfxParameter("@tipo_marcacion", elemento.TipoMarcacion));
                     con.Parametros.Add(new IfxParameter("@nit", elemento.Nit));
                     con.Parametros.Add(new IfxParameter("@fecha_llegada_tela", elemento.FechaLlegadaTela));
 
@@ -115,6 +116,7 @@ namespace PedidoTela.Data.Acceso
                         agencias.Contacto = datos["contacto"].ToString().Trim();
                         agencias.PedidoAgencia = datos["pedido_agencia"].ToString();
                         agencias.Composicion = datos["composicion"].ToString();
+                        agencias.TipoMarcacion = datos["tipo_marcacion"].ToString();
                         agencias.Nit = datos["nit"].ToString();
                         agencias.FechaLlegadaTela = datos["fecha_llegada_tela"].ToString();     
                           
@@ -177,6 +179,7 @@ namespace PedidoTela.Data.Acceso
                     con.Parametros.Add(new IfxParameter("@contacto", elemento.Contacto));
                     con.Parametros.Add(new IfxParameter("@pedido_agencia", elemento.PedidoAgencia));
                     con.Parametros.Add(new IfxParameter("@composicion", elemento.Composicion));  
+                    con.Parametros.Add(new IfxParameter("@tipo_marcacion", elemento.TipoMarcacion));  
                     con.Parametros.Add(new IfxParameter("@nit", elemento.Nit));
                     con.Parametros.Add(new IfxParameter("@fecha_llegada_tela", elemento.FechaLlegadaTela));
 

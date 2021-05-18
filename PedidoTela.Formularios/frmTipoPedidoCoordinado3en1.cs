@@ -290,7 +290,7 @@ namespace PedidoTela.Formularios
             int maxConsolidado = control.consultarMaxConsolidado();
             for (int i = 0; i < listaIdSolicitudes.Count; i++)
             {
-                control.agregarConsolidado(listaIdSolicitudes[i], maxConsolidado + 1);
+                control.agregarConsolidado(listaIdSolicitudes[i], maxConsolidado + 1,"COORDINADO");
             }
 
         }

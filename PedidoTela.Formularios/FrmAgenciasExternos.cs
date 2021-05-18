@@ -50,6 +50,7 @@ namespace PedidoTela.Formularios
         {
             Cargarsolicitudes(DetalleSeleccionado);
             cargarCombobox(cbxComposicion, control.getComposicion());
+            cargarCombobox(cbxTipoMarcacion, control.getTipoMarcacion());
             Iniciar(DetalleSeleccionado);
             txtCargo.Text = "Analista";
             txtDepartamento.Text = "Cortes B";
@@ -700,6 +701,7 @@ namespace PedidoTela.Formularios
             elemento.Contacto = txtContacto.Text.Trim();
             elemento.PedidoAgencia = txtPedidoAgencia.Text.Trim();
             elemento.Composicion = cbxComposicion.GetItemText(cbxComposicion.SelectedItem);
+            elemento.TipoMarcacion = cbxTipoMarcacion.GetItemText(cbxTipoMarcacion.SelectedItem);
             elemento.Nit = txtNit.Text.Trim();
             string fecha = dtpFechaLlegada.Value.ToString("dd/MM/yyyy");
             elemento.FechaLlegadaTela = fecha;

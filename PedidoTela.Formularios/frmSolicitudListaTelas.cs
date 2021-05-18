@@ -222,7 +222,8 @@ namespace PedidoTela.Formularios
                     prmLista[i].IdSolTela.ToString(),
                     prmLista[i].IdProgramador.ToString(),
                     prmLista[i].DescPrenda.ToString(),
-                    prmLista[i].Consolidado.ToString()
+                    prmLista[i].Consolidado.ToString(),
+                    prmLista[i].TipoPedido.ToString()
 
                     );
                     this.idSolicitudTelas = prmLista[i].IdSolTela;
