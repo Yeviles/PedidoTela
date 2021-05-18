@@ -10,94 +10,72 @@ namespace PedidoTela.Entidades.Logica
     {
         private int idAgencias;
         private string solicitadoPor;
-        private string cargo;
-        private string departamento;
-        private string telefono;
-        private string extencion;
-        private string referenciaTela;
-        private string tipoTejido;
-        private string fondo;
         private string nombreTela;
-        private decimal anchoTela;
-        private decimal rendimiento;
-        private string composicion;
-        private string muestrario;
-        private string ocasionUso;
-        private string tema;
-        private string entrada;
-        private string ensayoRef;
-        private string fechaTienda;
         private string disenadora;
-        private string descPrenda;
+        private string cargo;
+        private string telefono;
+        private string ensayoRef;
+        private string departamento;
+        private decimal anchoTela;
         private string proveedor;
-        private string nit;
+        private string ordenCompra;
+        private string extencion;
+        private string descPrenda;
+        private decimal rendimiento;
         private string contacto;
         private string pedidoAgencia;
-        private string ordenCompra;
+        private string composicion;
+        private string nit;
         private string fechaLlegadaTela;
         private int idSolTela;
 
+       
+
         public AgenciasExternos() { }
 
-        public AgenciasExternos(string solicitadoPor, string cargo, string departamento, string telefono, string extencion, string referenciaTela, string tipoTejido, string fondo, string nombreTela, decimal anchoTela, decimal rendimiento, string muestrario, string ocasionUso, string tema, string entrada, string ensayoRef, string fechaTienda, string disenadora, string descPrenda, string proveedor, string nit, string contacto, string pedidoAgencia, string ordenCompra, string fechaLlegadaTela, int idSolTela, string composicion, int idAgencias)
+        public AgenciasExternos(int idAgencias, string solicitadoPor, string nombreTela, string disenadora, string cargo, string telefono, string ensayoRef, string departamento, decimal anchoTela, string proveedor, string ordenCompra, string extencion, string descPrenda, decimal rendimiento, string contacto, string pedidoAgencia, string composicion, string nit, string fechaLlegadaTela, int idSolTela)
         {
+            this.IdAgencias = idAgencias;
             this.SolicitadoPor = solicitadoPor;
-            this.Cargo = cargo;
-            this.Departamento = departamento;
-            this.Telefono = telefono;
-            this.Extencion = extencion;
-            this.ReferenciaTela = referenciaTela;
-            this.TipoTejido = tipoTejido;
-            this.Fondo = fondo;
             this.NombreTela = nombreTela;
-            this.AnchoTela = anchoTela;
-            this.Rendimiento = rendimiento;
-            this.Muestrario = muestrario;
-            this.OcasionUso = ocasionUso;
-            this.Tema = tema;
-            this.Entrada = entrada;
-            this.EnsayoRef = ensayoRef;
-            this.FechaTienda = fechaTienda;
             this.Disenadora = disenadora;
-            this.DescPrenda = descPrenda;
+            this.Cargo = cargo;
+            this.Telefono = telefono;
+            this.EnsayoRef = ensayoRef;
+            this.Departamento = departamento;
+            this.AnchoTela = anchoTela;
             this.Proveedor = proveedor;
-            this.Nit = nit;
+            this.OrdenCompra = ordenCompra;
+            this.Extencion = extencion;
+            this.DescPrenda = descPrenda;
+            this.Rendimiento = rendimiento;
             this.Contacto = contacto;
             this.PedidoAgencia = pedidoAgencia;
-            this.OrdenCompra = ordenCompra;
+            this.Composicion = composicion;
+            this.Nit = nit;
             this.FechaLlegadaTela = fechaLlegadaTela;
             this.IdSolTela = idSolTela;
-            this.Composicion = composicion;
-            this.IdAgencias = idAgencias;
         }
 
+        public int IdAgencias { get => idAgencias; set => idAgencias = value; }
         public string SolicitadoPor { get => solicitadoPor; set => solicitadoPor = value; }
-        public string Cargo { get => cargo; set => cargo = value; }
-        public string Departamento { get => departamento; set => departamento = value; }
-        public string Telefono { get => telefono; set => telefono = value; }
-        public string Extencion { get => extencion; set => extencion = value; }
-        public string ReferenciaTela { get => referenciaTela; set => referenciaTela = value; }
-        public string TipoTejido { get => tipoTejido; set => tipoTejido = value; }
-        public string Fondo { get => fondo; set => fondo = value; }
         public string NombreTela { get => nombreTela; set => nombreTela = value; }
-        public decimal AnchoTela { get => anchoTela; set => anchoTela = value; }
-        public decimal Rendimiento { get => rendimiento; set => rendimiento = value; }
-        public string Muestrario { get => muestrario; set => muestrario = value; }
-        public string OcasionUso { get => ocasionUso; set => ocasionUso = value; }
-        public string Tema { get => tema; set => tema = value; }
-        public string Entrada { get => entrada; set => entrada = value; }
-        public string EnsayoRef { get => ensayoRef; set => ensayoRef = value; }
-        public string FechaTienda { get => fechaTienda; set => fechaTienda = value; }
         public string Disenadora { get => disenadora; set => disenadora = value; }
-        public string DescPrenda { get => descPrenda; set => descPrenda = value; }
+        public string Cargo { get => cargo; set => cargo = value; }
+        public string Telefono { get => telefono; set => telefono = value; }
+        public string EnsayoRef { get => ensayoRef; set => ensayoRef = value; }
+        public string Departamento { get => departamento; set => departamento = value; }
+        public decimal AnchoTela { get => anchoTela; set => anchoTela = value; }
         public string Proveedor { get => proveedor; set => proveedor = value; }
-        public string Nit { get => nit; set => nit = value; }
+        public string OrdenCompra { get => ordenCompra; set => ordenCompra = value; }
+        public string Extencion { get => extencion; set => extencion = value; }
+        public string DescPrenda { get => descPrenda; set => descPrenda = value; }
+        public decimal Rendimiento { get => rendimiento; set => rendimiento = value; }
         public string Contacto { get => contacto; set => contacto = value; }
         public string PedidoAgencia { get => pedidoAgencia; set => pedidoAgencia = value; }
-        public string OrdenCompra { get => ordenCompra; set => ordenCompra = value; }
+        public string Composicion { get => composicion; set => composicion = value; }
+        public string Nit { get => nit; set => nit = value; }
         public string FechaLlegadaTela { get => fechaLlegadaTela; set => fechaLlegadaTela = value; }
         public int IdSolTela { get => idSolTela; set => idSolTela = value; }
-        public string Composicion { get => composicion; set => composicion = value; }
-        public int IdAgencias { get => idAgencias; set => idAgencias = value; }
     }
 }

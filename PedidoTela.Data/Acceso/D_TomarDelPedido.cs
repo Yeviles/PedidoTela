@@ -94,7 +94,7 @@ namespace PedidoTela.Data.Acceso
 
         private readonly string consultaEliminar = "DELETE cfc_spt_pedido WHERE id_ped_montar = ?;";
 
-        private readonly string consultarTodo = "SELECT id_ped_montar,numero_pedido,codigo_color,estado,disponible FROM cfc_spt_pedido WHERE id_ped_montar =?;";
+        private readonly string consultarTodo = "SELECT id_ped_montar,numero_pedido,codigo_color,estado,disponible, tipo_pedido FROM cfc_spt_pedido WHERE id_ped_montar =?;";
         #endregion
 
         #region Métodos Agregar
@@ -248,6 +248,7 @@ namespace PedidoTela.Data.Acceso
                         detalle.CodigoColor = int.Parse(datos["codigo_color"].ToString().Trim());
                         detalle.Estado = datos["estado"].ToString().Trim();
                         detalle.Disponible = decimal.Parse(datos["disponible"].ToString());
+                        detalle.TipoPedido = datos["tipo_pedido"].ToString();
                       
                         lista.Add(detalle);
                     }

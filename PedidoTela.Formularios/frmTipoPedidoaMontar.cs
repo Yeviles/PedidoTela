@@ -115,7 +115,7 @@ namespace PedidoTela.Formularios
         {
             if (cbxUnicolor.Checked)
             {
-                frmMontarUnicolor = new frmPedidoaMotarUnicolor(control, detalleSeleccionado, contItemSeleccionado, Seleccion, IdSolTela);
+                frmMontarUnicolor = new frmPedidoaMotarUnicolor(control, detalleSeleccionado,contItemSeleccionado,Seleccion, IdSolTela);
                 frmMontarUnicolor.ShowDialog();
                 this.Close();
             }
@@ -127,7 +127,7 @@ namespace PedidoTela.Formularios
             }
             else if (cbxPlanoPretenido.Checked)
             {
-                frmMontarPretenido = new frmPedidoaMontarPretenido(control, detalleSeleccionado, IdSolTela, contItemSeleccionado);
+                frmMontarPretenido = new frmPedidoaMontarPretenido(control, detalleSeleccionado, IdSolTela,contItemSeleccionado);
                 frmMontarPretenido.ShowDialog();
                 this.Close();
             }

@@ -63,7 +63,7 @@
             <rd:DefaultName>Textbox2</rd:DefaultName>
             <Top>0.62604cm</Top>
             <Height>1.12917cm</Height>
-            <Width>26.99536cm</Width>
+            <Width>16.77186cm</Width>
             <Style>
               <Border>
                 <Style>None</Style>
@@ -83,7 +83,9 @@
                 <TextRuns>
                   <TextRun>
                     <Value>Solicitado por:</Value>
-                    <Style />
+                    <Style>
+                      <FontWeight>Bold</FontWeight>
+                    </Style>
                   </TextRun>
                 </TextRuns>
                 <Style />
@@ -113,7 +115,9 @@
                 <TextRuns>
                   <TextRun>
                     <Value>Cargo:</Value>
-                    <Style />
+                    <Style>
+                      <FontWeight>Bold</FontWeight>
+                    </Style>
                   </TextRun>
                 </TextRuns>
                 <Style />
@@ -143,7 +147,9 @@
                 <TextRuns>
                   <TextRun>
                     <Value>Departamento:</Value>
-                    <Style />
+                    <Style>
+                      <FontWeight>Bold</FontWeight>
+                    </Style>
                   </TextRun>
                 </TextRuns>
                 <Style />
@@ -203,7 +209,9 @@
                 <TextRuns>
                   <TextRun>
                     <Value>Teléfono:</Value>
-                    <Style />
+                    <Style>
+                      <FontWeight>Bold</FontWeight>
+                    </Style>
                   </TextRun>
                 </TextRuns>
                 <Style />
@@ -233,7 +241,9 @@
                 <TextRuns>
                   <TextRun>
                     <Value>Extensión:</Value>
-                    <Style />
+                    <Style>
+                      <FontWeight>Bold</FontWeight>
+                    </Style>
                   </TextRun>
                 </TextRuns>
                 <Style />
@@ -298,15 +308,17 @@
                 <TextRuns>
                   <TextRun>
                     <Value>Pedido agencias:</Value>
-                    <Style />
+                    <Style>
+                      <FontWeight>Bold</FontWeight>
+                    </Style>
                   </TextRun>
                 </TextRuns>
                 <Style />
               </Paragraph>
             </Paragraphs>
             <rd:DefaultName>Textbox14</rd:DefaultName>
-            <Top>2.69558cm</Top>
-            <Left>17.4732cm</Left>
+            <Top>5.07104cm</Top>
+            <Left>9.35049cm</Left>
             <Height>0.6cm</Height>
             <Width>3.00271cm</Width>
             <ZIndex>8</ZIndex>
@@ -418,15 +430,17 @@
                 <TextRuns>
                   <TextRun>
                     <Value>Orden de compra:</Value>
-                    <Style />
+                    <Style>
+                      <FontWeight>Bold</FontWeight>
+                    </Style>
                   </TextRun>
                 </TextRuns>
                 <Style />
               </Paragraph>
             </Paragraphs>
             <rd:DefaultName>Textbox14</rd:DefaultName>
-            <Top>3.85396cm</Top>
-            <Left>17.4732cm</Left>
+            <Top>6.26696cm</Top>
+            <Left>0.635cm</Left>
             <Height>0.6cm</Height>
             <Width>3.00271cm</Width>
             <ZIndex>12</ZIndex>
@@ -455,10 +469,10 @@
               </Paragraph>
             </Paragraphs>
             <rd:DefaultName>Textbox14</rd:DefaultName>
-            <Top>2.69558cm</Top>
-            <Left>21.61141cm</Left>
+            <Top>5.07104cm</Top>
+            <Left>12.38848cm</Left>
             <Height>0.6cm</Height>
-            <Width>4.56375cm</Width>
+            <Width>3.77472cm</Width>
             <ZIndex>13</ZIndex>
             <Style>
               <Border>
@@ -485,10 +499,10 @@
               </Paragraph>
             </Paragraphs>
             <rd:DefaultName>Textbox14</rd:DefaultName>
-            <Top>3.85396cm</Top>
-            <Left>21.61141cm</Left>
+            <Top>6.26696cm</Top>
+            <Left>3.77882cm</Left>
             <Height>0.6cm</Height>
-            <Width>4.56375cm</Width>
+            <Width>4.31459cm</Width>
             <ZIndex>14</ZIndex>
             <Style>
               <Border>
@@ -504,16 +518,16 @@
             <TablixBody>
               <TablixColumns>
                 <TablixColumn>
-                  <Width>7.03988cm</Width>
+                  <Width>4.01305cm</Width>
                 </TablixColumn>
                 <TablixColumn>
-                  <Width>6.16676cm</Width>
+                  <Width>2.92826cm</Width>
                 </TablixColumn>
                 <TablixColumn>
-                  <Width>6.16676cm</Width>
+                  <Width>3.83843cm</Width>
                 </TablixColumn>
                 <TablixColumn>
-                  <Width>6.16676cm</Width>
+                  <Width>5.06609cm</Width>
                 </TablixColumn>
               </TablixColumns>
               <TablixRows>
@@ -821,10 +835,10 @@
             </TablixRowHierarchy>
             <RepeatRowHeaders>true</RepeatRowHeaders>
             <DataSetName>agencia</DataSetName>
-            <Top>6.43792cm</Top>
+            <Top>9.16842cm</Top>
             <Left>0.635cm</Left>
             <Height>1.2cm</Height>
-            <Width>25.54016cm</Width>
+            <Width>15.84583cm</Width>
             <ZIndex>15</ZIndex>
             <Style>
               <Border>
@@ -833,10 +847,10 @@
             </Style>
           </Tablix>
         </ReportItems>
-        <Height>3.40625in</Height>
+        <Height>4.80625in</Height>
         <Style />
       </Body>
-      <Width>10.6281in</Width>
+      <Width>7.38643in</Width>
       <Page>
         <PageHeight>29.7cm</PageHeight>
         <PageWidth>21cm</PageWidth>

@@ -180,11 +180,18 @@ namespace PedidoTela.Formularios
                     Objeto obj = buscarColor.Elemento;
                     dgvProporcion.Rows[e.RowIndex].Cells[0].Value = obj.Id;
                     dgvProporcion.Rows[e.RowIndex].Cells[1].Value = obj.Nombre;
+                    dgvInfoConsolidar.Rows[e.RowIndex].Cells[0].Value = obj.Id;
+                    dgvInfoConsolidar.Rows[e.RowIndex].Cells[1].Value = obj.Nombre;
                 }
             }
             CalcularTotalTallaPorColores();
         }
 
+        /// <summary>
+        /// Guarda toda la información de la vista. 
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void btnGrabar_Click(object sender, EventArgs e)
         {    
             if (cbxTipoMarcacion.SelectedIndex != -1)
@@ -259,7 +266,12 @@ namespace PedidoTela.Formularios
 
             
         }
-        
+
+        /// <summary>
+        ///  Imprime los datos del consolidado, una vez este se encuentre guardado. 
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void btnImprimir_Click(object sender, EventArgs e)
         {
             PedidoAMontar objPedidoCuellos = control.getPedidoCuellos(idSolicitudTelas);
@@ -274,6 +286,11 @@ namespace PedidoTela.Formularios
             }
         }
 
+        /// <summary>
+        /// Boton  confirmar, el  sistema  genera   un  consecutivo   y   la   solicitud     cambia  al   estado   Radicado.  
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void btnConfirmar_Click(object sender, EventArgs e)
         {
             int maxConsecutivo = control.consultarMaxConsecutivoPedido();
@@ -308,6 +325,11 @@ namespace PedidoTela.Formularios
             }
         }
         
+        /// <summary>
+        /// Cierra la vista.
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void btnSalir_Click(object sender, EventArgs e)
         {
             this.Close();
@@ -378,9 +400,9 @@ namespace PedidoTela.Formularios
         }
 
         /// <summary>
-        /// Carga el segungo DataGridView expuesto en la vista, el cual corresponde a información a consolidar.
+        /// Carga el primer DataGridView expuesto en la vista, corresponde a información a consolidar.
         /// </summary>
-        /// <param name="prmLista">Lista de tipo MontajeTelaDetalle, la cual representa las filas seleccionadas en el vista  inicial de seleccion (frmSolicitudListaTelas).</param>
+        /// <param name="prmLista">Lista de tipo MontajeTelaDetalle, representa las filas seleccionadas en el vista de filtros (frmSolicitudListaTelas).</param>
         private void CargarDgvInfoConsolidar(List<MontajeTelaDetalle> prmLista)
         {
             if (prmLista.Count != 0)
@@ -415,6 +437,10 @@ namespace PedidoTela.Formularios
             }
         }
 
+        /// <summary>
+        /// Carga el segundo DatagridView expuesto en la vista, correspondienta a Proporcion.
+        /// </summary>
+        /// <param name="prmLista">Lista de tipo MontajeTelaDetalle, representa las filas seleccionadas en la vista de filtros (frmSolicitudListaTelas)  </param>
         private void CargarDgvCuellos(List<MontajeTelaDetalle> prmLista)
         {
             if (prmLista.Count != 0)
@@ -434,6 +460,9 @@ namespace PedidoTela.Formularios
             }
         }
 
+        /// <summary>
+        /// Actualiza el total unidades de la DatagridView (dgvProporcion) una vez sea editado dicho campo en el DatagridView (dgvInformacionConsolidar).
+        /// </summary>
         private void CalcularTotalesPorColores()
         {
             List<Objeto> colores = new List<Objeto>();
@@ -497,6 +526,9 @@ namespace PedidoTela.Formularios
             }
         }
 
+        /// <summary>
+        /// Suma los valores de las tallas en el DatagridView (dgvProporcion) una vez se modifique el color, también actualia el DatagridView (dgvInfoConsolidar).
+        /// </summary>
         private void CalcularTotalTallaPorColores()
         {
             List<Objeto> colores = new List<Objeto>();
@@ -554,12 +586,13 @@ namespace PedidoTela.Formularios
             if (totales.Count != 0)
             {
                 //Si hay más filas en total consolidado que colores se eliminan filas
-                if (totales.Count < dgvInfoConsolidar.Rows.Count)
+                if (totales.Count < dgvProporcion.Rows.Count)
                 {
-                    for (int i = totales.Count; i < dgvInfoConsolidar.Rows.Count; i++)
+                    for (int i = totales.Count; i < dgvProporcion.Rows.Count; i++)
                     {
-                        dgvInfoConsolidar.Rows.RemoveAt(i);
                         dgvProporcion.Rows.RemoveAt(i);
+                        //dgvInfoConsolidar.Rows.Add();
+                        //dgvInfoConsolidar.Rows.RemoveAt(i);
                     }
                 }//Si hay más colores que filas en total consolidado se agregan filas
                 else if (totales.Count > dgvInfoConsolidar.Rows.Count)
@@ -604,7 +637,7 @@ namespace PedidoTela.Formularios
         }
 
         /// <summary>
-        /// Agrega el consolidado a lista de solicitudes seleccionadas en la vista frmSolicitudListaTelas, al momento d e dar clic en Guardar.
+        /// Agrega el consolidado a lista de solicitudes seleccionadas en la vista frmSolicitudListaTelas, al momento de clickear en el btn Guardar.
         /// </summary>
         private void AgregarConsolidado()
         {
@@ -616,6 +649,10 @@ namespace PedidoTela.Formularios
 
         }
 
+        /// <summary>
+        /// Obtiene la información correspondiente al encabezado de la vista.
+        /// </summary>
+        /// <returns>Retorna un objeto de tipo PedidoaMontar, representa la informacion ingresada y/o consultada en la vista.</returns>
         private PedidoAMontar ObtenerEncabezado()
         {
             PedidoAMontar elemento = new PedidoAMontar();
@@ -631,6 +668,10 @@ namespace PedidoTela.Formularios
             return elemento;
         }
         
+        /// <summary>
+        /// Guarda la información del primer DataGridView presente en la vista.
+        /// </summary>
+        /// <param name="id">Id del Pedido Cuellos-Tiras-Puños </param>
         private void GuardarInformacionConsolidar(int id)
         {
             for (int i = 0; i < dgvInfoConsolidar.RowCount; i++)
@@ -654,7 +695,10 @@ namespace PedidoTela.Formularios
             }
         }
 
-
+        /// <summary>
+        /// Guarda la información del segundo DatagridView presente en la vista.
+        /// </summary>
+        /// <param name="id">Id del Pedido Cuellos-Tiras-Puños</param>
         private void GuardarProporcion(int id)
         {
             for(int i=0; i<dgvProporcion.RowCount; i++)
@@ -685,6 +729,9 @@ namespace PedidoTela.Formularios
             }
         }
         
+        /// <summary>
+        /// Permite el cargue de los datos correspondientes a vista.
+        /// </summary>
         private void Cargar()
         {
             PedidoAMontar objPedUnicolor = control.getPedidoCuellos(idSolicitudTelas);
@@ -725,8 +772,7 @@ namespace PedidoTela.Formularios
             }
         }
 
-            #endregion
-
+       #endregion
 
     }
 }
