@@ -12,7 +12,7 @@ namespace PedidoTela.Data.Acceso
         #region Consulas
         private readonly string agregarConsecutivo = "UPDATE cfc_spt_tipo_solicitud SET consecutivo_pedido=?, fecha_estado=?, estado =? WHERE id_solicitud=?; ";
 
-        private readonly string actualizarConsolidado = "UPDATE cfc_spt_tipo_solicitud SET consolidado=? WHERE id_solicitud=?; ";
+        private readonly string actualizarConsolidado = "UPDATE cfc_spt_tipo_solicitud SET consolidado=?, tipo_pedido=? WHERE id_solicitud=?; ";
 
         private readonly string conMaxConsolidado = "select max(consolidado) as max_Consolidado from  cfc_spt_tipo_solicitud;";
 
@@ -48,7 +48,7 @@ namespace PedidoTela.Data.Acceso
             return respuesta;
         }
        
-        public string ActualizarConsolidado(int prmIdsolicitud, int prmConsolidado)
+        public string ActualizarConsolidado(int prmIdsolicitud, int prmConsolidado, string prmTipoPedido)
         {
             string respuesta = "";
             try
@@ -56,6 +56,7 @@ namespace PedidoTela.Data.Acceso
                 using (var con = new clsConexion())
                 {
                     con.Parametros.Add(new IfxParameter("@consolidado", prmConsolidado));
+                    con.Parametros.Add(new IfxParameter("@tipo_pedido", prmTipoPedido));
                     con.Parametros.Add(new IfxParameter("@id_solicitud", prmIdsolicitud));
 
                     var datos = con.EjecutarConsulta(this.actualizarConsolidado);
