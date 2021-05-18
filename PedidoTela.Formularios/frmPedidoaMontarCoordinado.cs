@@ -45,8 +45,10 @@ namespace PedidoTela.Formularios
         {
             if (!validarComboBox())
             {
-                frmContenedor frmcontenido = new frmContenedor(control, listaSolicitudes, principal.Id, coordinado1.Id, coordinado2.Id);
-                frmcontenido.ShowDialog();
+                //frmContenedor frmcontenido = new frmContenedor(control, listaSolicitudes, principal.Id, coordinado1.Id, coordinado2.Id);
+                //frmcontenido.ShowDialog();
+                frmTipoPedidoCoordinado3en1 frmCoordinado3en1 = new frmTipoPedidoCoordinado3en1(control, listaSolicitudes, principal.Id, coordinado1.Id, coordinado2.Id);
+                frmCoordinado3en1.ShowDialog();
             }
         }
 
