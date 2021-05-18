@@ -634,7 +634,7 @@ namespace PedidoTela.Formularios
                     prmLista[i].Rosado.ToString(),
                     prmLista[i].Otros.ToString(),
                     prmLista[i].TotaUnidades.ToString(),
-                    prmLista[i].MCalculados.ToString()
+                    prmLista[i].Masolicitar.ToString()
                     );
                     
                 }
@@ -805,7 +805,7 @@ namespace PedidoTela.Formularios
                         objColor.Rosado += (dgvInfoConsolidar.Rows[i].Cells[7].Value != null && dgvInfoConsolidar.Rows[i].Cells[7].Value.ToString() != "") ? int.Parse(dgvInfoConsolidar.Rows[i].Cells[7].Value.ToString()) : 0;
                         objColor.Otros += (dgvInfoConsolidar.Rows[i].Cells[8].Value != null && dgvInfoConsolidar.Rows[i].Cells[8].Value.ToString() != "") ? int.Parse(dgvInfoConsolidar.Rows[i].Cells[8].Value.ToString()) : 0;
                         objColor.TotalUnidades += (dgvInfoConsolidar.Rows[i].Cells[9].Value != null && dgvInfoConsolidar.Rows[i].Cells[9].Value.ToString() != "") ? int.Parse(dgvInfoConsolidar.Rows[i].Cells[9].Value.ToString()) : 0;
-                        objColor.MCalculados += (dgvInfoConsolidar.Rows[i].Cells[11].Value != null && dgvInfoConsolidar.Rows[i].Cells[11].Value.ToString() != "") ? decimal.Parse(dgvInfoConsolidar.Rows[i].Cells[11].Value.ToString()) : 0;
+                        objColor.MCalculados += (dgvInfoConsolidar.Rows[i].Cells[13].Value != null && dgvInfoConsolidar.Rows[i].Cells[13].Value.ToString() != "") ? decimal.Parse(dgvInfoConsolidar.Rows[i].Cells[13].Value.ToString()) : 0;
                         objColor.KgCalculados += (dgvInfoConsolidar.Rows[i].Cells[14].Value != null && dgvInfoConsolidar.Rows[i].Cells[14].Value.ToString() != "") ? decimal.Parse(dgvInfoConsolidar.Rows[i].Cells[14].Value.ToString()) : 0;
                     }
                 }

@@ -115,38 +115,39 @@ namespace PedidoTela.Formularios
         {
             if (cbxUnicolor.Checked)
             {
+                this.Close();
                 frmMontarUnicolor = new frmPedidoaMotarUnicolor(control, detalleSeleccionado,contItemSeleccionado,Seleccion, IdSolTela);
                 frmMontarUnicolor.ShowDialog();
-                this.Close();
             }
             else if (cbxestampado.Checked)
             {
+                this.Close();
                 frmMontarEstampado = new frmPedidoaMontarEstampado(control, detalleSeleccionado);
                 frmMontarEstampado.ShowDialog();
-                this.Close();
             }
             else if (cbxPlanoPretenido.Checked)
             {
+                this.Close();
                 frmMontarPretenido = new frmPedidoaMontarPretenido(control, detalleSeleccionado, IdSolTela,contItemSeleccionado);
                 frmMontarPretenido.ShowDialog();
-                this.Close();
             }
             else if (cbxCuePunTiras.Checked)
             {
+                this.Close();
                 frmMontarCuellos = new frmPedidoaMontarCuellos(control, detalleSeleccionado, IdSolTela);
                 frmMontarCuellos.ShowDialog();
-                this.Close();
             }
             else if (cbxCdoTresUno.Checked)
             {
+                this.Close();
                 frmMontarCoordinado = new frmPedidoaMontarCoordinado(control, detalleSeleccionado);
                 frmMontarCoordinado.ShowDialog();
-                this.Close();
             }
             else if (cbxAgencias.Checked)
             {
-                frmPedidoaMontarAgencias.ShowDialog();
                 this.Close();
+                frmPedidoaMontarAgencias = new frmPedidoaMontarAgencias(control, detalleSeleccionado, IdSolTela);
+                frmPedidoaMontarAgencias.ShowDialog();
             }
             else {
                 MessageBox.Show("Por favor seleccione el tipo de pedido que desea montar", "Advertencia", MessageBoxButtons.OK, MessageBoxIcon.Warning);
