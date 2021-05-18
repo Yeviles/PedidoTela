@@ -274,11 +274,11 @@
     <Compile Include="frmTipoPedidoaMontar.Designer.cs">
       <DependentUpon>frmTipoPedidoaMontar.cs</DependentUpon>
     </Compile>
-    <Compile Include="frmTipoPedSelecCoordinar.cs">
+    <Compile Include="frmTipoPedidoCoordinado3en1.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="frmTipoPedSelecCoordinar.Designer.cs">
-      <DependentUpon>frmTipoPedSelecCoordinar.cs</DependentUpon>
+    <Compile Include="frmTipoPedidoCoordinado3en1.Designer.cs">
+      <DependentUpon>frmTipoPedidoCoordinado3en1.cs</DependentUpon>
     </Compile>
     <Compile Include="frmTipoSolicitud.cs">
       <SubType>Form</SubType>
@@ -378,8 +378,8 @@
     <EmbeddedResource Include="frmTipoPedidoaMontar.resx">
       <DependentUpon>frmTipoPedidoaMontar.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="frmTipoPedSelecCoordinar.resx">
-      <DependentUpon>frmTipoPedSelecCoordinar.cs</DependentUpon>
+    <EmbeddedResource Include="frmTipoPedidoCoordinado3en1.resx">
+      <DependentUpon>frmTipoPedidoCoordinado3en1.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="frmTipoSolicitud.resx">
       <DependentUpon>frmTipoSolicitud.cs</DependentUpon>
