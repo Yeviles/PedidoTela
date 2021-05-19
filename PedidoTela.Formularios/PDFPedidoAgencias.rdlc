@@ -25,176 +25,6 @@
     </DataSource>
   </DataSources>
   <DataSets>
-    <DataSet Name="agencias">
-      <Query>
-        <DataSourceName>PedidoTelaEntidadesLogica</DataSourceName>
-        <CommandText>/* Local Query */</CommandText>
-      </Query>
-      <Fields>
-        <Field Name="AnchoTela">
-          <DataField>AnchoTela</DataField>
-          <rd:TypeName>System.Decimal</rd:TypeName>
-        </Field>
-        <Field Name="Cargo">
-          <DataField>Cargo</DataField>
-          <rd:TypeName>System.String</rd:TypeName>
-        </Field>
-        <Field Name="Composicion">
-          <DataField>Composicion</DataField>
-          <rd:TypeName>System.String</rd:TypeName>
-        </Field>
-        <Field Name="Contacto">
-          <DataField>Contacto</DataField>
-          <rd:TypeName>System.String</rd:TypeName>
-        </Field>
-        <Field Name="Departamento">
-          <DataField>Departamento</DataField>
-          <rd:TypeName>System.String</rd:TypeName>
-        </Field>
-        <Field Name="DescPrenda">
-          <DataField>DescPrenda</DataField>
-          <rd:TypeName>System.String</rd:TypeName>
-        </Field>
-        <Field Name="Disenadora">
-          <DataField>Disenadora</DataField>
-          <rd:TypeName>System.String</rd:TypeName>
-        </Field>
-        <Field Name="EnsayoRef">
-          <DataField>EnsayoRef</DataField>
-          <rd:TypeName>System.String</rd:TypeName>
-        </Field>
-        <Field Name="Extencion">
-          <DataField>Extencion</DataField>
-          <rd:TypeName>System.String</rd:TypeName>
-        </Field>
-        <Field Name="FechaLlegadaTela">
-          <DataField>FechaLlegadaTela</DataField>
-          <rd:TypeName>System.String</rd:TypeName>
-        </Field>
-        <Field Name="IdAgencias">
-          <DataField>IdAgencias</DataField>
-          <rd:TypeName>System.Int32</rd:TypeName>
-        </Field>
-        <Field Name="IdSolTela">
-          <DataField>IdSolTela</DataField>
-          <rd:TypeName>System.Int32</rd:TypeName>
-        </Field>
-        <Field Name="Nit">
-          <DataField>Nit</DataField>
-          <rd:TypeName>System.String</rd:TypeName>
-        </Field>
-        <Field Name="NombreTela">
-          <DataField>NombreTela</DataField>
-          <rd:TypeName>System.String</rd:TypeName>
-        </Field>
-        <Field Name="OrdenCompra">
-          <DataField>OrdenCompra</DataField>
-          <rd:TypeName>System.String</rd:TypeName>
-        </Field>
-        <Field Name="PedidoAgencia">
-          <DataField>PedidoAgencia</DataField>
-          <rd:TypeName>System.String</rd:TypeName>
-        </Field>
-        <Field Name="Proveedor">
-          <DataField>Proveedor</DataField>
-          <rd:TypeName>System.String</rd:TypeName>
-        </Field>
-        <Field Name="Rendimiento">
-          <DataField>Rendimiento</DataField>
-          <rd:TypeName>System.Decimal</rd:TypeName>
-        </Field>
-        <Field Name="SolicitadoPor">
-          <DataField>SolicitadoPor</DataField>
-          <rd:TypeName>System.String</rd:TypeName>
-        </Field>
-        <Field Name="Telefono">
-          <DataField>Telefono</DataField>
-          <rd:TypeName>System.String</rd:TypeName>
-        </Field>
-      </Fields>
-      <rd:DataSetInfo>
-        <rd:DataSetName>PedidoTela.Entidades.Logica</rd:DataSetName>
-        <rd:TableName>AgenciasExternos</rd:TableName>
-        <rd:ObjectDataSourceType>PedidoTela.Entidades.Logica.AgenciasExternos, PedidoTela.Entidades, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null</rd:ObjectDataSourceType>
-      </rd:DataSetInfo>
-    </DataSet>
-    <DataSet Name="informacion">
-      <Query>
-        <DataSourceName>PedidoTelaEntidadesLogica1</DataSourceName>
-        <CommandText>/* Local Query */</CommandText>
-      </Query>
-      <Fields>
-        <Field Name="Cencosud">
-          <DataField>Cencosud</DataField>
-          <rd:TypeName>System.Int32</rd:TypeName>
-        </Field>
-        <Field Name="CodColor">
-          <DataField>CodColor</DataField>
-          <rd:TypeName>System.String</rd:TypeName>
-        </Field>
-        <Field Name="ComercioOrg">
-          <DataField>ComercioOrg</DataField>
-          <rd:TypeName>System.Int32</rd:TypeName>
-        </Field>
-        <Field Name="Consumo">
-          <DataField>Consumo</DataField>
-          <rd:TypeName>System.Decimal</rd:TypeName>
-        </Field>
-        <Field Name="DesColor">
-          <DataField>DesColor</DataField>
-          <rd:TypeName>System.String</rd:TypeName>
-        </Field>
-        <Field Name="Exito">
-          <DataField>Exito</DataField>
-          <rd:TypeName>System.Int32</rd:TypeName>
-        </Field>
-        <Field Name="IdAgencias">
-          <DataField>IdAgencias</DataField>
-          <rd:TypeName>System.Int32</rd:TypeName>
-        </Field>
-        <Field Name="KgCalculados">
-          <DataField>KgCalculados</DataField>
-          <rd:TypeName>System.Decimal</rd:TypeName>
-        </Field>
-        <Field Name="MaSolicitar">
-          <DataField>MaSolicitar</DataField>
-          <rd:TypeName>System.Decimal</rd:TypeName>
-        </Field>
-        <Field Name="MCalculados">
-          <DataField>MCalculados</DataField>
-          <rd:TypeName>System.Decimal</rd:TypeName>
-        </Field>
-        <Field Name="MReservados">
-          <DataField>MReservados</DataField>
-          <rd:TypeName>System.Decimal</rd:TypeName>
-        </Field>
-        <Field Name="Otros">
-          <DataField>Otros</DataField>
-          <rd:TypeName>System.Int32</rd:TypeName>
-        </Field>
-        <Field Name="Rosado">
-          <DataField>Rosado</DataField>
-          <rd:TypeName>System.Int32</rd:TypeName>
-        </Field>
-        <Field Name="Sao">
-          <DataField>Sao</DataField>
-          <rd:TypeName>System.Int32</rd:TypeName>
-        </Field>
-        <Field Name="Tiendas">
-          <DataField>Tiendas</DataField>
-          <rd:TypeName>System.Int32</rd:TypeName>
-        </Field>
-        <Field Name="TotalUnidades">
-          <DataField>TotalUnidades</DataField>
-          <rd:TypeName>System.Int32</rd:TypeName>
-        </Field>
-      </Fields>
-      <rd:DataSetInfo>
-        <rd:DataSetName>PedidoTela.Entidades.Logica</rd:DataSetName>
-        <rd:TableName>AgenciasInfoConsolidar</rd:TableName>
-        <rd:ObjectDataSourceType>PedidoTela.Entidades.Logica.AgenciasInfoConsolidar, PedidoTela.Entidades, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null</rd:ObjectDataSourceType>
-      </rd:DataSetInfo>
-    </DataSet>
     <DataSet Name="consolidado">
       <Query>
         <DataSourceName>PedidoTelaEntidadesLogica2</DataSourceName>
@@ -600,7 +430,7 @@
               </Paragraph>
             </Paragraphs>
             <rd:DefaultName>Textbox10</rd:DefaultName>
-            <Top>7.70943cm</Top>
+            <Top>8.50318cm</Top>
             <Left>8.42871cm</Left>
             <Height>0.6cm</Height>
             <Width>2.96566cm</Width>
@@ -622,7 +452,7 @@
               <Paragraph>
                 <TextRuns>
                   <TextRun>
-                    <Value>=Parameters!nomTela.Value</Value>
+                    <Value>=Parameters!tela.Value</Value>
                     <Style>
                       <FontSize>9pt</FontSize>
                     </Style>
@@ -729,7 +559,7 @@
             </Paragraphs>
             <rd:DefaultName>Textbox14</rd:DefaultName>
             <Top>8.14156cm</Top>
-            <Left>3.95539cm</Left>
+            <Left>3.91407cm</Left>
             <Height>0.6cm</Height>
             <Width>4.21775cm</Width>
             <ZIndex>13</ZIndex>
@@ -760,7 +590,7 @@
               </Paragraph>
             </Paragraphs>
             <rd:DefaultName>Textbox14</rd:DefaultName>
-            <Top>7.70943cm</Top>
+            <Top>8.50318cm</Top>
             <Left>11.42965cm</Left>
             <Height>0.6cm</Height>
             <Width>4.46378cm</Width>
@@ -921,7 +751,7 @@
             </Paragraphs>
             <rd:DefaultName>Textbox64</rd:DefaultName>
             <Top>9.72523cm</Top>
-            <Left>0.57836cm</Left>
+            <Left>0.49071cm</Left>
             <Height>0.6cm</Height>
             <Width>3.67117cm</Width>
             <ZIndex>19</ZIndex>
@@ -939,19 +769,19 @@
             <TablixBody>
               <TablixColumns>
                 <TablixColumn>
-                  <Width>2.39606cm</Width>
+                  <Width>2.39948cm</Width>
                 </TablixColumn>
                 <TablixColumn>
-                  <Width>3.52296cm</Width>
+                  <Width>3.52638cm</Width>
                 </TablixColumn>
                 <TablixColumn>
-                  <Width>2.15604cm</Width>
+                  <Width>2.15946cm</Width>
                 </TablixColumn>
                 <TablixColumn>
-                  <Width>2.81151cm</Width>
+                  <Width>2.81493cm</Width>
                 </TablixColumn>
                 <TablixColumn>
-                  <Width>4.53434cm</Width>
+                  <Width>4.53776cm</Width>
                 </TablixColumn>
               </TablixColumns>
               <TablixRows>
@@ -1175,7 +1005,6 @@
                             <PaddingBottom>2pt</PaddingBottom>
                           </Style>
                         </Textbox>
-                        <rd:Selected>true</rd:Selected>
                       </CellContents>
                     </TablixCell>
                     <TablixCell>
@@ -1210,7 +1039,6 @@
                             <PaddingBottom>2pt</PaddingBottom>
                           </Style>
                         </Textbox>
-                        <rd:Selected>true</rd:Selected>
                       </CellContents>
                     </TablixCell>
                     <TablixCell>
@@ -1341,9 +1169,9 @@
             <RepeatRowHeaders>true</RepeatRowHeaders>
             <DataSetName>consolidado</DataSetName>
             <Top>10.50162cm</Top>
-            <Left>0.54308cm</Left>
+            <Left>0.49071cm</Left>
             <Height>5.61854cm</Height>
-            <Width>15.42091cm</Width>
+            <Width>15.438cm</Width>
             <ZIndex>20</ZIndex>
             <Style>
               <Border>
@@ -1937,6 +1765,71 @@
               <PaddingBottom>2pt</PaddingBottom>
             </Style>
           </Textbox>
+          <Textbox Name="Textbox45">
+            <CanGrow>true</CanGrow>
+            <KeepTogether>true</KeepTogether>
+            <Paragraphs>
+              <Paragraph>
+                <TextRuns>
+                  <TextRun>
+                    <Value>Nit:</Value>
+                    <Style>
+                      <FontSize>9pt</FontSize>
+                      <FontWeight>Bold</FontWeight>
+                    </Style>
+                  </TextRun>
+                </TextRuns>
+                <Style />
+              </Paragraph>
+            </Paragraphs>
+            <rd:DefaultName>Textbox10</rd:DefaultName>
+            <Top>7.67415cm</Top>
+            <Left>8.42871cm</Left>
+            <Height>0.6cm</Height>
+            <Width>2.96566cm</Width>
+            <ZIndex>39</ZIndex>
+            <Style>
+              <Border>
+                <Style>None</Style>
+              </Border>
+              <PaddingLeft>2pt</PaddingLeft>
+              <PaddingRight>2pt</PaddingRight>
+              <PaddingTop>2pt</PaddingTop>
+              <PaddingBottom>2pt</PaddingBottom>
+            </Style>
+          </Textbox>
+          <Textbox Name="Textbox46">
+            <CanGrow>true</CanGrow>
+            <KeepTogether>true</KeepTogether>
+            <Paragraphs>
+              <Paragraph>
+                <TextRuns>
+                  <TextRun>
+                    <Value>=Parameters!nit.Value</Value>
+                    <Style>
+                      <FontSize>9pt</FontSize>
+                    </Style>
+                  </TextRun>
+                </TextRuns>
+                <Style />
+              </Paragraph>
+            </Paragraphs>
+            <rd:DefaultName>Textbox14</rd:DefaultName>
+            <Top>7.67415cm</Top>
+            <Left>11.42965cm</Left>
+            <Height>0.6cm</Height>
+            <Width>4.46378cm</Width>
+            <ZIndex>40</ZIndex>
+            <Style>
+              <Border>
+                <Style>None</Style>
+              </Border>
+              <PaddingLeft>2pt</PaddingLeft>
+              <PaddingRight>2pt</PaddingRight>
+              <PaddingTop>2pt</PaddingTop>
+              <PaddingBottom>2pt</PaddingBottom>
+            </Style>
+          </Textbox>
         </ReportItems>
         <Height>6.59651in</Height>
         <Style />
@@ -2028,10 +1921,6 @@
       <Prompt>ReportParameter1</Prompt>
     </ReportParameter>
     <ReportParameter Name="tipo_marcacion">
-      <DataType>String</DataType>
-      <Prompt>ReportParameter1</Prompt>
-    </ReportParameter>
-    <ReportParameter Name="nomTela">
       <DataType>String</DataType>
       <Prompt>ReportParameter1</Prompt>
     </ReportParameter>
@@ -2135,11 +2024,6 @@
           <ColumnIndex>2</ColumnIndex>
           <RowIndex>4</RowIndex>
           <ParameterName>tipo_marcacion</ParameterName>
-        </CellDefinition>
-        <CellDefinition>
-          <ColumnIndex>3</ColumnIndex>
-          <RowIndex>4</RowIndex>
-          <ParameterName>nomTela</ParameterName>
         </CellDefinition>
       </CellDefinitions>
     </GridLayoutDefinition>

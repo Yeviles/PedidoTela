@@ -29,11 +29,13 @@ namespace PedidoTela.Formularios
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
             this.lbTotalconsolidado = new System.Windows.Forms.Label();
             this.lbInformacion = new System.Windows.Forms.Label();
             this.pnlEncabezado = new System.Windows.Forms.Panel();
+            this.cbxTipoMarcacion = new System.Windows.Forms.ComboBox();
+            this.lbTipomarcacion = new System.Windows.Forms.Label();
             this.txtDesPrenda = new System.Windows.Forms.RichTextBox();
             this.txtEnsayoRef = new System.Windows.Forms.RichTextBox();
             this.cbxComposicion = new System.Windows.Forms.ComboBox();
@@ -107,8 +109,6 @@ namespace PedidoTela.Formularios
             this.btnImprimirSIP = new System.Windows.Forms.Button();
             this.btnGrabar = new System.Windows.Forms.Button();
             this.btnSalir = new System.Windows.Forms.Button();
-            this.cbxTipoMarcacion = new System.Windows.Forms.ComboBox();
-            this.lbTipomarcacion = new System.Windows.Forms.Label();
             this.pnlEncabezado.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvInfoConsolidar)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dgvTotalConsolidado)).BeginInit();
@@ -181,6 +181,23 @@ namespace PedidoTela.Formularios
             this.pnlEncabezado.Name = "pnlEncabezado";
             this.pnlEncabezado.Size = new System.Drawing.Size(1344, 261);
             this.pnlEncabezado.TabIndex = 137;
+            // 
+            // cbxTipoMarcacion
+            // 
+            this.cbxTipoMarcacion.FormattingEnabled = true;
+            this.cbxTipoMarcacion.Location = new System.Drawing.Point(1111, 41);
+            this.cbxTipoMarcacion.Name = "cbxTipoMarcacion";
+            this.cbxTipoMarcacion.Size = new System.Drawing.Size(215, 20);
+            this.cbxTipoMarcacion.TabIndex = 143;
+            // 
+            // lbTipomarcacion
+            // 
+            this.lbTipomarcacion.AutoSize = true;
+            this.lbTipomarcacion.Location = new System.Drawing.Point(941, 41);
+            this.lbTipomarcacion.Name = "lbTipomarcacion";
+            this.lbTipomarcacion.Size = new System.Drawing.Size(117, 13);
+            this.lbTipomarcacion.TabIndex = 144;
+            this.lbTipomarcacion.Text = "Tipo de marcación:";
             // 
             // txtDesPrenda
             // 
@@ -512,14 +529,14 @@ namespace PedidoTela.Formularios
             this.dgvInfoConsolidar.AutoSizeRowsMode = System.Windows.Forms.DataGridViewAutoSizeRowsMode.DisplayedCells;
             this.dgvInfoConsolidar.BackgroundColor = System.Drawing.Color.White;
             this.dgvInfoConsolidar.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle3.BackColor = System.Drawing.SystemColors.ScrollBar;
-            dataGridViewCellStyle3.Font = new System.Drawing.Font("Verdana", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle3.ForeColor = System.Drawing.Color.Navy;
-            dataGridViewCellStyle3.SelectionBackColor = System.Drawing.SystemColors.ScrollBar;
-            dataGridViewCellStyle3.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dgvInfoConsolidar.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle3;
+            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle1.BackColor = System.Drawing.SystemColors.ScrollBar;
+            dataGridViewCellStyle1.Font = new System.Drawing.Font("Verdana", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle1.ForeColor = System.Drawing.Color.Navy;
+            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.ScrollBar;
+            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dgvInfoConsolidar.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
             this.dgvInfoConsolidar.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgvInfoConsolidar.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.codColor,
@@ -552,6 +569,7 @@ namespace PedidoTela.Formularios
             this.dgvInfoConsolidar.TabIndex = 138;
             this.dgvInfoConsolidar.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvInfoConsolidar_CellClick);
             this.dgvInfoConsolidar.CellEndEdit += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvInfoConsolidar_CellEndEdit);
+            this.dgvInfoConsolidar.CellFormatting += new System.Windows.Forms.DataGridViewCellFormattingEventHandler(this.dgvInfoConsolidar_CellFormatting);
             // 
             // codColor
             // 
@@ -651,14 +669,14 @@ namespace PedidoTela.Formularios
             this.dgvTotalConsolidado.AutoSizeRowsMode = System.Windows.Forms.DataGridViewAutoSizeRowsMode.DisplayedCells;
             this.dgvTotalConsolidado.BackgroundColor = System.Drawing.Color.White;
             this.dgvTotalConsolidado.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            dataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle4.BackColor = System.Drawing.SystemColors.ScrollBar;
-            dataGridViewCellStyle4.Font = new System.Drawing.Font("Verdana", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle4.ForeColor = System.Drawing.Color.Navy;
-            dataGridViewCellStyle4.SelectionBackColor = System.Drawing.SystemColors.ScrollBar;
-            dataGridViewCellStyle4.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle4.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dgvTotalConsolidado.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle4;
+            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle2.BackColor = System.Drawing.SystemColors.ScrollBar;
+            dataGridViewCellStyle2.Font = new System.Drawing.Font("Verdana", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle2.ForeColor = System.Drawing.Color.Navy;
+            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.SystemColors.ScrollBar;
+            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dgvTotalConsolidado.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle2;
             this.dgvTotalConsolidado.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgvTotalConsolidado.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.codigoColor,
@@ -690,6 +708,7 @@ namespace PedidoTela.Formularios
             this.dgvTotalConsolidado.TabIndex = 139;
             this.dgvTotalConsolidado.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvTotalConsolidado_CellClick);
             this.dgvTotalConsolidado.CellEndEdit += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvTotalConsolidado_CellEndEdit);
+            this.dgvTotalConsolidado.CellFormatting += new System.Windows.Forms.DataGridViewCellFormattingEventHandler(this.dgvTotalConsolidado_CellFormatting);
             // 
             // codigoColor
             // 
@@ -863,23 +882,6 @@ namespace PedidoTela.Formularios
             this.btnSalir.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
             this.btnSalir.UseVisualStyleBackColor = true;
             this.btnSalir.Click += new System.EventHandler(this.btnSalir_Click);
-            // 
-            // cbxTipoMarcacion
-            // 
-            this.cbxTipoMarcacion.FormattingEnabled = true;
-            this.cbxTipoMarcacion.Location = new System.Drawing.Point(1111, 41);
-            this.cbxTipoMarcacion.Name = "cbxTipoMarcacion";
-            this.cbxTipoMarcacion.Size = new System.Drawing.Size(215, 20);
-            this.cbxTipoMarcacion.TabIndex = 143;
-            // 
-            // lbTipomarcacion
-            // 
-            this.lbTipomarcacion.AutoSize = true;
-            this.lbTipomarcacion.Location = new System.Drawing.Point(941, 41);
-            this.lbTipomarcacion.Name = "lbTipomarcacion";
-            this.lbTipomarcacion.Size = new System.Drawing.Size(117, 13);
-            this.lbTipomarcacion.TabIndex = 144;
-            this.lbTipomarcacion.Text = "Tipo de marcación:";
             // 
             // frmPedidoaMontarAgencias
             // 

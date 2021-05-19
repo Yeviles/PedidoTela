@@ -40,9 +40,10 @@ namespace PedidoTela.Formularios
         {
             SkinManager.Theme = MaterialSkin.MaterialSkinManager.Themes.LIGHT;
             SkinManager.ColorScheme = new ColorScheme(Primary.Blue900, Primary.Grey500, Primary.Grey200, Accent.Green100, TextShade.WHITE);
-            Cargarsolicitudes(solicitudes);
             cargarCombobox(cbxComposicion, control.getComposicion());
-            Iniciar(solicitudes);
+            cargarCombobox(cbxTipoMarcacion, control.getTipoMarcacion());
+            cargarsolicitudes(solicitudes);
+            iniciar(solicitudes);
             txtCargo.Text = "Analista";
             txtDepartamento.Text = "Cortes B";
             txtTelefono.Text = "4055252";
@@ -156,7 +157,30 @@ namespace PedidoTela.Formularios
 
         private void dgvInfoConsolidar_CellClick(object sender, DataGridViewCellEventArgs e)
         {
-
+            if (e.ColumnIndex == 0 || e.ColumnIndex == 1)
+            {
+                frmBuscarColor buscarColor = new frmBuscarColor(control);
+                buscarColor.StartPosition = FormStartPosition.CenterScreen;
+                if (buscarColor.ShowDialog() == DialogResult.OK)
+                {
+                    Objeto obj = buscarColor.Elemento;
+                    dgvInfoConsolidar.Rows[e.RowIndex].Cells[0].Value = obj.Id;
+                    dgvInfoConsolidar.Rows[e.RowIndex].Cells[1].Value = obj.Nombre;
+                }
+                calcularTotalesPorColores();
+            }
+            else if (e.ColumnIndex == 2 || e.ColumnIndex == 3)
+            {
+                frmBuscarColor buscarColor = new frmBuscarColor(control);
+                buscarColor.StartPosition = FormStartPosition.CenterScreen;
+                if (buscarColor.ShowDialog() == DialogResult.OK)
+                {
+                    Objeto obj = buscarColor.Elemento;
+                    dgvInfoConsolidar.Rows[e.RowIndex].Cells[2].Value = obj.Id;
+                    dgvInfoConsolidar.Rows[e.RowIndex].Cells[3].Value = obj.Nombre;
+                }
+                calcularTotalesPorColores();
+            }
         }
 
         private void dgvTotalConsolidado_CellClick(object sender, DataGridViewCellEventArgs e)
@@ -343,64 +367,70 @@ namespace PedidoTela.Formularios
                                     {
                                         if (txtPedidoAgencia.Text != "")
                                         {
-                                            if (dgvInfoConsolidar.RowCount > 0 && dgvTotalConsolidado.RowCount > 0)
-                                            {
-                                                if (!validarValoresConsumo())
+                                            if (cbxTipoMarcacion.Text.Trim() != "") {
+                                                if (dgvInfoConsolidar.RowCount > 0 && dgvTotalConsolidado.RowCount > 0)
                                                 {
-                                                    if (!validarValoresReserva())
+                                                    if (!validarValoresConsumo())
                                                     {
-                                                        if (!validarTotalAPedir())
+                                                        if (!validarValoresReserva())
                                                         {
-                                                            if (!validarUnidadTotal())
+                                                            if (!validarTotalAPedir())
                                                             {
-
-                                                                AgenciasExternos elemento = ObtenerEncabezado();
-
-                                                                if (control.ExisteAgenciasExterno(idSolicitud))
+                                                                if (!validarUnidadTotal())
                                                                 {
-                                                                    control.ActualizarAgenciasExterno(elemento);
+
+                                                                    AgenciasExternos elemento = obtenerEncabezado();
+
+                                                                    if (control.ExisteAgenciasExterno(idSolicitud))
+                                                                    {
+                                                                        control.ActualizarAgenciasExterno(elemento);
+                                                                    }
+                                                                    else
+                                                                    {
+                                                                        control.addAgenciaExterno(elemento);
+                                                                    }
+                                                                    id = control.getIdAgenciasExterno(idSolicitud);
+
+                                                                    if (id != 0)
+                                                                    {
+                                                                        control.eliminarAgenciasExternoInformacion(id);
+                                                                        control.eliminarAgenciasExternoTotal(id);
+
+                                                                        guardarTotalConsolidar(id);
+                                                                        guardarInformacionConsolidar(id);
+                                                                    }
+                                                                    agregarConsolidado();
+                                                                    MessageBox.Show("Agencias-Externos se guardó con éxito", "Información", MessageBoxButtons.OK, MessageBoxIcon.Information);
+
                                                                 }
                                                                 else
                                                                 {
-                                                                    control.addAgenciaExterno(elemento);
+                                                                    MessageBox.Show("Por favor seleccione los valores para la columna: Unidad medida tela.", "Advertencia", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                                                                 }
-                                                                id = control.getIdAgenciasExterno(idSolicitud);
-
-                                                                if (id != 0)
-                                                                {
-                                                                    control.eliminarAgenciasExternoInformacion(id);
-                                                                    control.eliminarAgenciasExternoTotal(id);
-
-                                                                    GuardarTotalConsolidar(id);
-                                                                    GuardarInformacionConsolidar(id);
-                                                                }
-                                                                AgregarConsolidado();
-                                                                MessageBox.Show("Agencias-Externos se guardó con éxito", "Información", MessageBoxButtons.OK, MessageBoxIcon.Information);
-
                                                             }
                                                             else
                                                             {
-                                                                MessageBox.Show("Por favor seleccione los valores para la columna: Unidad medida tela.", "Advertencia", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                                                                MessageBox.Show("Por favor ingrese los valores para la columna: Total a pedir.", "Advertencia", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                                                             }
                                                         }
                                                         else
                                                         {
-                                                            MessageBox.Show("Por favor ingrese los valores para la columna: Total a pedir.", "Advertencia", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                                                            MessageBox.Show("Por favor ingrese los valores para la columna: M Reservados.", "Advertencia", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                                                         }
                                                     }
                                                     else
                                                     {
-                                                        MessageBox.Show("Por favor ingrese los valores para la columna: M Reservados.", "Advertencia", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                                                        MessageBox.Show("Por favor ingrese los valores para la columna: Consumo.", "Advertencia", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                                                     }
                                                 }
                                                 else
                                                 {
-                                                    MessageBox.Show("Por favor ingrese los valores para la columna: Consumo.", "Advertencia", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                                                    MessageBox.Show("Por favor adicione al menos un color.", "Advertencia", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                                                 }
-                                            }
+                                            } 
                                             else
                                             {
-                                                MessageBox.Show("Por favor adicione al menos un color.", "Advertencia", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                                                MessageBox.Show("Por favor seleccione un valor en el campo Tipo marcación.", "Advertencia", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                                             }
                                         }
                                         else
@@ -516,7 +546,7 @@ namespace PedidoTela.Formularios
         /// Permite cargar una lista con todos los id_solicitud seleccionados.
         /// </summary>
         /// <param name="prmLista">Lista de tipo MontajeTelaDetalle, la cual representa las filas seleccionadas en el vista  inicial de filtros (frmSolicitudListaTelas).</param>
-        private void Cargarsolicitudes(List<MontajeTelaDetalle> prmLista)
+        private void cargarsolicitudes(List<MontajeTelaDetalle> prmLista)
         {
             List<int> listaSolicitudes = new List<int>();
             for (int i = 0; i < prmLista.Count; i++)
@@ -526,15 +556,14 @@ namespace PedidoTela.Formularios
             listaIdSolicitudes = listaSolicitudes.Distinct().ToList();
         }
 
-
         /// <summary>
         /// Busca la información en las respectivas entidades si encuentra dastos los carga y la bandera el True, de lo contrario la bandera es False y se procede a 
         /// cargar la vista con la información que se ha seleccionado de la vista anterior.
         /// </summary>
         /// <param name="prmLista"> Lista de tipo MontajeTelaDetalle, representa las filas seleccionadas en el vista  inicial de filtros (frmSolicitudListaTelas). </param>
-        public void Iniciar(List<MontajeTelaDetalle> prmLista)
+        public void iniciar(List<MontajeTelaDetalle> prmLista)
         {
-            Cargar();
+            cargar();
             // Bandera controlada en el método Cargar()
             if (!this.bandera)
             {
@@ -653,7 +682,7 @@ namespace PedidoTela.Formularios
         /// Obtine la información correspondiente al encabezado de la vista.
         /// </summary>
         /// <returns>Retorna un objeto de Tipo AgenciasExternos, representa la información del encabezado.</returns>
-        private AgenciasExternos ObtenerEncabezado()
+        private AgenciasExternos obtenerEncabezado()
         {
             AgenciasExternos elemento = new AgenciasExternos();
             elemento.SolicitadoPor = txtSolicitadoPor.Text.Trim();
@@ -672,6 +701,7 @@ namespace PedidoTela.Formularios
             elemento.Contacto = txtContacto.Text.Trim();
             elemento.PedidoAgencia = txtPedidoAgencia.Text.Trim();
             elemento.Composicion = cbxComposicion.GetItemText(cbxComposicion.SelectedItem);
+            elemento.TipoMarcacion = cbxTipoMarcacion.GetItemText(cbxTipoMarcacion.SelectedItem);
             elemento.Nit = txtNit.Text.Trim();
             string fecha = dtpFechaLlegada.Value.ToString("dd/MM/yyyy");
             elemento.FechaLlegadaTela = fecha;
@@ -683,7 +713,7 @@ namespace PedidoTela.Formularios
         /// Guarda la información correspondiente al primer DtaGridView presente en la vista
         /// </summary>
         /// <param name="id">Id de Agencias Externos.</param>
-        private void GuardarInformacionConsolidar(int id)
+        private void guardarInformacionConsolidar(int id)
         {
             for (int i = 0; i < dgvInfoConsolidar.RowCount; i++)
             {
@@ -713,7 +743,7 @@ namespace PedidoTela.Formularios
         /// Guarda la información correspondiente al segundo DtaGridView presente en la vista
         /// </summary>
         /// <param name="id">Id de Agencias Externos.</param>
-        private void GuardarTotalConsolidar(int id)
+        private void guardarTotalConsolidar(int id)
         {
             for (int i = 0; i < dgvTotalConsolidado.RowCount; i++)
             {
@@ -891,7 +921,7 @@ namespace PedidoTela.Formularios
         /// <summary>
         /// Agrega el consolidado a lista de solicitudes seleccionadas en la vista frmSolicitudListaTelas, al momento de dar clic en Guardar.
         /// </summary>
-        private void AgregarConsolidado()
+        private void agregarConsolidado()
         {
             int maxConsolidado = control.consultarMaxConsolidado();
             for (int i = 0; i < listaIdSolicitudes.Count; i++)
@@ -904,18 +934,10 @@ namespace PedidoTela.Formularios
         /// <summary>
         /// Realiza el cargue inicial de los datos para la vista (frmAgenciasExternos).
         /// </summary>   
-        private void Cargar()
+        private void cargar()
         {
-            AgenciasExternos objAgencias = new AgenciasExternos();
-            foreach (MontajeTelaDetalle solicitud in solicitudes)
-            {
-                objAgencias = control.getAgenciasExterno(idSolicitud);
-                if (objAgencias != null)
-                {
-                    idSolicitud = solicitud.IdSolTela;
-                }
-            }
-            //AgenciasExternos objAgencias = control.getAgenciasExterno(idSolicitudTela);
+            AgenciasExternos objAgencias = control.getAgenciasExterno(idSolicitud);
+
             id = objAgencias.IdAgencias;
             if (id != 0)
             {
@@ -934,6 +956,7 @@ namespace PedidoTela.Formularios
                 txtRendimiento.Text = objAgencias.Rendimiento.ToString();
                 txtContacto.Text = objAgencias.Contacto.ToString();
                 txtPedidoAgencia.Text = objAgencias.PedidoAgencia.ToString();
+                cbxTipoMarcacion.Text = objAgencias.TipoMarcacion;
                 cbxComposicion.Text = objAgencias.Composicion;
                 txtNit.Text = objAgencias.Nit.ToString();
                 dtpFechaLlegada.Text = objAgencias.FechaLlegadaTela.ToString();

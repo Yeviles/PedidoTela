@@ -553,11 +553,12 @@ namespace PedidoTela.Formularios
             this.undMedidaTela});
             this.dgvTotalConsolidado.EnableHeadersVisualStyles = false;
             this.dgvTotalConsolidado.GridColor = System.Drawing.SystemColors.ScrollBar;
-            this.dgvTotalConsolidado.Location = new System.Drawing.Point(-3, 225);
+            this.dgvTotalConsolidado.Location = new System.Drawing.Point(4, 207);
             this.dgvTotalConsolidado.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.dgvTotalConsolidado.MultiSelect = false;
             this.dgvTotalConsolidado.Name = "dgvTotalConsolidado";
             this.dgvTotalConsolidado.RightToLeft = System.Windows.Forms.RightToLeft.No;
+            this.dgvTotalConsolidado.RowHeadersVisible = false;
             this.dgvTotalConsolidado.RowHeadersWidth = 62;
             this.dgvTotalConsolidado.RowTemplate.Height = 28;
             this.dgvTotalConsolidado.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
@@ -704,6 +705,7 @@ namespace PedidoTela.Formularios
             this.dgvInfoConsolidar.MultiSelect = false;
             this.dgvInfoConsolidar.Name = "dgvInfoConsolidar";
             this.dgvInfoConsolidar.RightToLeft = System.Windows.Forms.RightToLeft.No;
+            this.dgvInfoConsolidar.RowHeadersVisible = false;
             this.dgvInfoConsolidar.RowHeadersWidth = 62;
             this.dgvInfoConsolidar.RowTemplate.Height = 28;
             this.dgvInfoConsolidar.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
@@ -820,7 +822,7 @@ namespace PedidoTela.Formularios
             this.tabPage2.Location = new System.Drawing.Point(4, 22);
             this.tabPage2.Name = "tabPage2";
             this.tabPage2.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage2.Size = new System.Drawing.Size(1446, 624);
+            this.tabPage2.Size = new System.Drawing.Size(1446, 368);
             this.tabPage2.TabIndex = 1;
             this.tabPage2.Text = "Estampado";
             this.tabPage2.UseVisualStyleBackColor = true;
@@ -860,7 +862,7 @@ namespace PedidoTela.Formularios
             this.dataGridViewTextBoxColumn42,
             this.dataGridViewComboBoxColumn1});
             this.dgvConsolidarEstampado.EnableHeadersVisualStyles = false;
-            this.dgvConsolidarEstampado.Location = new System.Drawing.Point(6, 202);
+            this.dgvConsolidarEstampado.Location = new System.Drawing.Point(6, 213);
             this.dgvConsolidarEstampado.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.dgvConsolidarEstampado.MultiSelect = false;
             this.dgvConsolidarEstampado.Name = "dgvConsolidarEstampado";
@@ -993,7 +995,7 @@ namespace PedidoTela.Formularios
             // 
             this.label1.AutoSize = true;
             this.label1.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
-            this.label1.Location = new System.Drawing.Point(3, 184);
+            this.label1.Location = new System.Drawing.Point(6, 187);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(116, 15);
             this.label1.TabIndex = 99;
@@ -1189,7 +1191,7 @@ namespace PedidoTela.Formularios
             this.tabPage3.Controls.Add(this.dataGridView3);
             this.tabPage3.Location = new System.Drawing.Point(4, 22);
             this.tabPage3.Name = "tabPage3";
-            this.tabPage3.Size = new System.Drawing.Size(1446, 624);
+            this.tabPage3.Size = new System.Drawing.Size(1446, 368);
             this.tabPage3.TabIndex = 2;
             this.tabPage3.Text = "Plano preteñido";
             // 
@@ -1241,6 +1243,7 @@ namespace PedidoTela.Formularios
             this.dataGridView2.MultiSelect = false;
             this.dataGridView2.Name = "dataGridView2";
             this.dataGridView2.RightToLeft = System.Windows.Forms.RightToLeft.No;
+            this.dataGridView2.RowHeadersVisible = false;
             this.dataGridView2.RowHeadersWidth = 62;
             this.dataGridView2.RowTemplate.Height = 28;
             this.dataGridView2.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.CellSelect;
@@ -1441,11 +1444,12 @@ namespace PedidoTela.Formularios
             this.dataGridViewTextBoxColumn27,
             this.dataGridViewTextBoxColumn28});
             this.dataGridView6.EnableHeadersVisualStyles = false;
-            this.dataGridView6.Location = new System.Drawing.Point(2, 32);
+            this.dataGridView6.Location = new System.Drawing.Point(3, 27);
             this.dataGridView6.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.dataGridView6.MultiSelect = false;
             this.dataGridView6.Name = "dataGridView6";
             this.dataGridView6.RightToLeft = System.Windows.Forms.RightToLeft.No;
+            this.dataGridView6.RowHeadersVisible = false;
             this.dataGridView6.RowHeadersWidth = 62;
             this.dataGridView6.RowTemplate.Height = 28;
             this.dataGridView6.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.CellSelect;
