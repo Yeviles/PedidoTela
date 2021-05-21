@@ -12,7 +12,8 @@ namespace PedidoTela.Data.Acceso
     {
         #region consultas
         private readonly string consultaInsert = "INSERT INTO cfc_spt_ped_coordinado (id_solicitud, nom_tela, disenador, " +
-            "ensayo_ref, desc_prenda, clase, tipo_marcacion, rendimiento, analista_corteb, fecha_llegada) VALUES(?, ?, ?, ?, ?, ?, ?, ?, ?, ?);";
+            "ensayo_ref, desc_prenda, clase, tipo_marcacion, rendimiento, analista_corteb, fecha_llegada) " +
+            "VALUES(?, ?, ?, ?, ?, ?, ?, ?, ?, ?);";
 
         private readonly string consultaId = "SELECT id_ped_coordinado FROM cfc_spt_ped_coordinado WHERE id_solicitud = ?;";
 

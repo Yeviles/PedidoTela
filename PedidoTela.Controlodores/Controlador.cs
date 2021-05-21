@@ -982,7 +982,70 @@ namespace PedidoTela.Controlodores
         #endregion
 
         #region Pedido Coordinado Tres en Uno
+        public PedidoAMontar getPedidoCoordinado(int idSolicitud)
+        {
+            D_PedidoCoordinado d_PedidoCoordinado = new D_PedidoCoordinado();
+            return d_PedidoCoordinado.Consultar(idSolicitud);
+        }
 
+        public int getIdPedidoCoordinado(int idSolicitud)
+        {
+            D_PedidoCoordinado d_PedidoCoordinado = new D_PedidoCoordinado();
+            return d_PedidoCoordinado.ConsultarId(idSolicitud);
+        }
+
+        public bool existePedidoCoordinado(int idSolicitud)
+        {
+            D_PedidoCoordinado d_PedidoCoordinado = new D_PedidoCoordinado();
+            return d_PedidoCoordinado.consultarExistePedido(idSolicitud);
+        }
+        public bool addPedidoCoordinado(PedidoAMontar pedido)
+        {
+            D_PedidoCoordinado d_PedidoCoordinado = new D_PedidoCoordinado();
+            return (d_PedidoCoordinado.Agregar(pedido) == "ok") ? true : false;
+        }
+        public bool actualizarPedidoCoordinado(PedidoAMontar pedido)
+        {
+            D_PedidoCoordinado d_PedidoCoordinado = new D_PedidoCoordinado();
+            return (d_PedidoCoordinado.Actualizar(pedido) == "ok") ? true : false;
+        }
+
+
+        //Información
+        public void addPedidoCoordinadoInformacion(PedidoMontarInformacion detalle)
+        {
+            D_PedidoCoordinadoInformacion d_PedidoCoordinadoInformacion = new D_PedidoCoordinadoInformacion();
+            d_PedidoCoordinadoInformacion.Agregar(detalle);
+        }
+        public List<PedidoMontarInformacion> getPedidoCoordinadoInformacion(int idPedido)
+        {
+            D_PedidoCoordinadoInformacion d_PedidoCoordinadoInformacion = new D_PedidoCoordinadoInformacion();
+            return d_PedidoCoordinadoInformacion.Consultar(idPedido);
+        }
+        public void eliminarPedidoCoordinadoInformacion(int idPedido)
+        {
+            D_PedidoCoordinadoInformacion d_PedidoCoordinadoInformacion = new D_PedidoCoordinadoInformacion();
+            d_PedidoCoordinadoInformacion.EliminarPorPedido(idPedido);
+        }
+
+        //Total
+        public List<PedidoMontarTotal> getPedidoCoordinadoTotal(int idPedUnicolor)
+        {
+            D_PedidoCoordinadoTotal d_PedidoCoordinadoTotal = new D_PedidoCoordinadoTotal();
+            return d_PedidoCoordinadoTotal.ConsultarTotalConsolidado(idPedUnicolor);
+        }
+
+        public void addPedidoCoordinadoTotal(PedidoMontarTotal detalle)
+        {
+            D_PedidoCoordinadoTotal d_PedidoCoordinadoTotal = new D_PedidoCoordinadoTotal();
+            d_PedidoCoordinadoTotal.Agregar(detalle);
+        }
+
+        public void eliminarPedidoCoordinadoTotal(int idPedido)
+        {
+            D_PedidoCoordinadoTotal d_PedidoCoordinadoTotal = new D_PedidoCoordinadoTotal();
+            d_PedidoCoordinadoTotal.EliminarPorPedido(idPedido);
+        }
         #endregion
 
         #region Pedido Agencias-Externos

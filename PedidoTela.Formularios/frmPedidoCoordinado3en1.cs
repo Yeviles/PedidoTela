@@ -68,6 +68,7 @@ namespace PedidoTela.Formularios
         {
             SkinManager.Theme = MaterialSkin.MaterialSkinManager.Themes.LIGHT;
             SkinManager.ColorScheme = new ColorScheme(Primary.Blue900, Primary.Grey500, Primary.Grey200, Accent.Green100, TextShade.WHITE);
+            cargarCombobox(cbxTipoMarcacion, control.getTipoMarcacion());
             cargarSolicitudes(solicitudes);
         }
 
@@ -111,11 +112,11 @@ namespace PedidoTela.Formularios
                 }
 
                 if (swUnicolor && swEstampado && swPlano) {
-                    if (validarTotalAPedir() && validarUnidadTotal()) {
+                    if (!validarTotalAPedir() && !validarUnidadTotal()) {
                         guardarPedido();
                         if (id != 0) {
-                            control.eliminarPedidoEstampadoTotal(id);
-                            control.eliminarPedidoEstampadoInformacion(id);
+                            control.eliminarPedidoCoordinadoInformacion(id);
+                            control.eliminarPedidoCoordinadoTotal(id);
                             control.eliminarPedido(id); //Tomar del pedido
 
                             guardarTomarDelPedido();
@@ -485,8 +486,19 @@ namespace PedidoTela.Formularios
                 foreach (DataGridViewRow row in dgvInformacionUnicolor.Rows)
                 {
                     PedidoMontarInformacion info = new PedidoMontarInformacion();
+                    info.IdPedidoAMontar = id;
                     info.CodigoColor = (row.Cells[0].Value.ToString());
                     info.DescripcionColor = (row.Cells[1].Value != null && row.Cells[1].Value.ToString() != "") ? row.Cells[1].Value.ToString() : "";
+                    info.CodigoH1 = "";
+                    info.DescripcionH1 = "";
+                    info.CodigoH2 = "";
+                    info.DescripcionH2 = "";
+                    info.CodigoH3 = "";
+                    info.DescripcionH3 = "";
+                    info.CodigoH4 = "";
+                    info.DescripcionH4 = "";
+                    info.CodigoH5 = "";
+                    info.DescripcionH5 = "";
                     info.Tiendas = (row.Cells[2].Value != null && row.Cells[2].Value.ToString() != "") ? int.Parse(row.Cells[2].Value.ToString()) : 0;
                     info.Exito = (row.Cells[3].Value != null && row.Cells[3].Value.ToString() != "") ? int.Parse(row.Cells[3].Value.ToString()) : 0;
                     info.Cencosud = (row.Cells[4].Value != null && row.Cells[4].Value.ToString() != "") ? int.Parse(row.Cells[4].Value.ToString()) : 0;
@@ -802,6 +814,16 @@ namespace PedidoTela.Formularios
                     info.DescripcionColor = row.Cells[1].Value.ToString();
                     info.Fondo = row.Cells[2].Value.ToString();
                     info.DescripcionFondo = row.Cells[3].Value.ToString();
+                    info.CodigoH1 = "";
+                    info.DescripcionH1 = "";
+                    info.CodigoH2 = "";
+                    info.DescripcionH2 = "";
+                    info.CodigoH3 = "";
+                    info.DescripcionH3 = "";
+                    info.CodigoH4 = "";
+                    info.DescripcionH4 = "";
+                    info.CodigoH5 = "";
+                    info.DescripcionH5 = "";
                     info.Tiendas = (row.Cells[4].Value != null && row.Cells[4].Value.ToString() != "") ? int.Parse(row.Cells[4].Value.ToString()) : 0;
                     info.Exito = (row.Cells[5].Value != null && row.Cells[5].Value.ToString() != "") ? int.Parse(row.Cells[5].Value.ToString()) : 0;
                     info.Cencosud = (row.Cells[6].Value != null && row.Cells[6].Value.ToString() != "") ? int.Parse(row.Cells[6].Value.ToString()) : 0;
@@ -810,7 +832,7 @@ namespace PedidoTela.Formularios
                     info.Rosado = (row.Cells[9].Value != null && row.Cells[9].Value.ToString() != "") ? int.Parse(row.Cells[9].Value.ToString()) : 0;
                     info.Otros = (row.Cells[10].Value != null && row.Cells[10].Value.ToString() != "") ? int.Parse(row.Cells[10].Value.ToString()) : 0;
                     info.TotalUnidades = (row.Cells[11].Value != null && row.Cells[11].Value.ToString() != "") ? int.Parse(row.Cells[11].Value.ToString()) : 0;
-                    info.Consumo = (row.Cells[12].Value != null && row.Cells[12].Value.ToString() != "") ? int.Parse(row.Cells[12].Value.ToString()) : 0;
+                    info.Consumo = (row.Cells[12].Value != null && row.Cells[12].Value.ToString() != "") ? decimal.Parse(row.Cells[12].Value.ToString()) : 0;
                     info.MCalculados = (row.Cells[13].Value != null && row.Cells[13].Value.ToString() != "") ? decimal.Parse(row.Cells[13].Value.ToString()) : 0;
                     info.MReservados = (row.Cells[14].Value != null && row.Cells[14].Value.ToString() != "") ? decimal.Parse(row.Cells[14].Value.ToString()) : 0;
                     info.MSolicitar = (row.Cells[15].Value != null && row.Cells[15].Value.ToString() != "") ? decimal.Parse(row.Cells[15].Value.ToString()) : 0;
@@ -1213,22 +1235,22 @@ namespace PedidoTela.Formularios
         /// <summary> Carga la información de la vista. </summary>
         private void cargar()
         {
-            PedidoAMontar objPedidoPlano = new PedidoAMontar();//control.getPedidoPlano(idSolicitud);
-            id = objPedidoPlano.Id;
+            PedidoAMontar pedido = control.getPedidoCoordinado(idSolicitud);
+            id = pedido.Id;
             if (id != 0)
             {
-                txtNomTela.Text = objPedidoPlano.Tela.ToString();
-                txtDisenador.Text = objPedidoPlano.Disenador.ToString();
-                txtEnsayoRef.Text = objPedidoPlano.EnsayoReferencia.ToString();
-                txtDesPrenda.Text = objPedidoPlano.DescripcionPrenda.ToString();
-                cbxClase.Text = objPedidoPlano.Clase.ToString();
-                txtRendimiento.Text = objPedidoPlano.Rendimiento.ToString();
-                txtAnalista.Text = objPedidoPlano.AnalistasCortesB.ToString();
-                dtpFechaLlegada.Text = objPedidoPlano.FechaLlegada.ToString();
-                cbxTipoMarcacion.Text = objPedidoPlano.TipoMarcacion.ToString();
+                txtNomTela.Text = pedido.Tela.ToString();
+                txtDisenador.Text = pedido.Disenador.ToString();
+                txtEnsayoRef.Text = pedido.EnsayoReferencia.ToString();
+                txtDesPrenda.Text = pedido.DescripcionPrenda.ToString();
+                cbxClase.Text = pedido.Clase.ToString();
+                txtRendimiento.Text = pedido.Rendimiento.ToString();
+                txtAnalista.Text = pedido.AnalistasCortesB.ToString();
+                dtpFechaLlegada.Text = pedido.FechaLlegada.ToString();
+                cbxTipoMarcacion.Text = pedido.TipoMarcacion.ToString();
 
                 /* Carga Pedido */
-                List<TomarDelPedido> listaPedido = control.getPedido(objPedidoPlano.Id);
+                List<TomarDelPedido> listaPedido = control.getPedido(pedido.Id);
                 if (listaPedido.Count > 0)
                 {
                     foreach (TomarDelPedido obj in listaPedido)
@@ -1237,7 +1259,7 @@ namespace PedidoTela.Formularios
                     }
                 }
                 /*Carga detalle Información a  Consolidar*/
-                List<PedidoMontarInformacion> listaInfoConsolidar = control.getPedidoPlanoInfo(objPedidoPlano.Id);
+                List<PedidoMontarInformacion> listaInfoConsolidar = control.getPedidoCoordinadoInformacion(pedido.Id);
                 if (listaInfoConsolidar.Count > 0)
                 {
                     foreach (PedidoMontarInformacion obj in listaInfoConsolidar)
@@ -1248,7 +1270,7 @@ namespace PedidoTela.Formularios
                 }
 
                 /*Carga detalle Toltal a  Consolidar*/
-                List<PedidoMontarTotal> listaTotalConsolidado = control.getPedidoPlanoTotal(objPedidoPlano.Id);
+                List<PedidoMontarTotal> listaTotalConsolidado = control.getPedidoCoordinadoTotal(pedido.Id);
                 if (listaTotalConsolidado.Count > 0)
                 {
                     foreach (PedidoMontarTotal obj in listaTotalConsolidado)
@@ -1404,9 +1426,9 @@ namespace PedidoTela.Formularios
         private bool validarGeneral()
         {
             bool bandera = false;
-            if (cbxClase.SelectedItem == null || cbxClase.Text == "" && dgvPedidos.RowCount == 0)
+            if (cbxClase.SelectedText.ToLower() == "no tejer" && dgvPedidos.RowCount == 0)
             {
-                MessageBox.Show("Por favor seleccione al menos un pedido", "Advertencia", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                MessageBox.Show("Por favor seleccione al menos un pedido a montar", "Advertencia", MessageBoxButtons.OK, MessageBoxIcon.Warning);
             }
             else
             {
@@ -1490,14 +1512,14 @@ namespace PedidoTela.Formularios
             pedido.AnalistasCortesB = txtAnalista.Text.Trim();
             pedido.FechaLlegada = dtpFechaLlegada.Value.ToString("dd/MM/yyyy");
             pedido.IdSolicitud = idSolicitud;
-            if (control.existePedidoEstampado(idSolicitud))
+            if (control.existePedidoCoordinado(idSolicitud))
             {
-                control.actualizarPedidoEstampado(pedido);
+                control.actualizarPedidoCoordinado(pedido);
             }
             else
             {
-                control.addPedidoEstampado(pedido);
-                id = control.getIdPedidoEstampado(idSolicitud);
+                control.addPedidoCoordinado(pedido);
+                id = control.getIdPedidoCoordinado(idSolicitud);
             }
         }
 
@@ -1518,8 +1540,12 @@ namespace PedidoTela.Formularios
 
         private void guardarInformacion()
         {
+            informacion = new List<PedidoMontarInformacion>();
+            obtenerInformacionUnicolor();
+            obtenerInformacionEstampado();
+            obtenerInformacionPlano();
             foreach (PedidoMontarInformacion info in informacion) {
-                control.addPedidoEstampadoInformacion(info);
+                control.addPedidoCoordinadoInformacion(info);
             }
         }
 
@@ -1531,21 +1557,19 @@ namespace PedidoTela.Formularios
                 total.IdPedidoAmontar = id;
                 total.CodidoColor = row.Cells[0].Value.ToString();
                 total.DescripcionColor = row.Cells[1].Value.ToString();
-                total.Fondo = row.Cells[2].Value.ToString();
-                total.DescripcionFondo = row.Cells[3].Value.ToString();
-                total.Tiendas = int.Parse(row.Cells[4].Value.ToString());
-                total.Exito = int.Parse(row.Cells[5].Value.ToString());
-                total.Cencosud = int.Parse(row.Cells[6].Value.ToString());
-                total.Sao = int.Parse(row.Cells[7].Value.ToString());
-                total.ComercioOrg = int.Parse(row.Cells[8].Value.ToString());
-                total.Rosado = int.Parse(row.Cells[9].Value.ToString());
-                total.Otros = int.Parse(row.Cells[10].Value.ToString());
-                total.TotalUnidades = int.Parse(row.Cells[11].Value.ToString());
-                total.MCalculados = decimal.Parse(row.Cells[12].Value.ToString());
-                total.KgCalculados = decimal.Parse(row.Cells[13].Value.ToString());
-                total.TotalPedir = decimal.Parse(row.Cells[14].Value.ToString());
-                total.UnidadMedida = row.Cells[15].Value.ToString();
-                control.addPedidoEstampadoTotal(total);
+                total.Tiendas = int.Parse(row.Cells[2].Value.ToString());
+                total.Exito = int.Parse(row.Cells[3].Value.ToString());
+                total.Cencosud = int.Parse(row.Cells[4].Value.ToString());
+                total.Sao = int.Parse(row.Cells[5].Value.ToString());
+                total.ComercioOrg = int.Parse(row.Cells[6].Value.ToString());
+                total.Rosado = int.Parse(row.Cells[7].Value.ToString());
+                total.Otros = int.Parse(row.Cells[8].Value.ToString());
+                total.TotalUnidades = int.Parse(row.Cells[9].Value.ToString());
+                total.MCalculados = decimal.Parse(row.Cells[10].Value.ToString());
+                total.KgCalculados = decimal.Parse(row.Cells[11].Value.ToString());
+                total.TotalPedir = decimal.Parse(row.Cells[12].Value.ToString());
+                total.UnidadMedida = row.Cells[13].Value.ToString();
+                control.addPedidoCoordinadoTotal(total);
             }
         }
 

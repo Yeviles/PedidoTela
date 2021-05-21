@@ -11,10 +11,12 @@ namespace PedidoTela.Data.Acceso
     public class D_PedidoCoordinadoTotal
     {
         #region Consultas
-        private readonly string consultaInsert = "INSERT INTO cfc_spt_ped_coordinado_total (id_ped_coordinado,cod_color,desc_color,fondo, desc_fondo,codigo_h1,descripcion_h1, codigo_h2,descripcion_h2,codigo_h3, descripcion_h3, codigo_h4, descripcion_h4, codigo_h5,descripcion_h5,tiendas,exito,cencosud,sao,comercio,rosado,otros,total_uni,m_calculados,kg_calculados,total_pedir,uni_medidatela) " +
-         " VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ? )";
+        
+        private readonly string consultaInsert = "INSERT INTO cfc_spt_ped_coordinado_total (id_ped_coordinado,cod_color,desc_color,tiendas,exito,cencosud,sao,comercio,rosado,otros,total_uni,m_calculados,kg_calculados,total_pedir,uni_medidatela) " +
+          " VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ? )";
 
-        private readonly string consultarTodo = "SELECT cod_color,desc_color,fondo, desc_fondo,codigo_h1,descripcion_h1, codigo_h2,descripcion_h2,codigo_h3, descripcion_h3, codigo_h4, descripcion_h4, codigo_h5,descripcion_h5,tiendas,exito,cencosud,sao,comercio,rosado,otros,total_uni,m_calculados,kg_calculados,total_pedir,uni_medidatela " +
+
+        private readonly string consultarTodo = "SELECT cod_color,desc_color,tiendas,exito,cencosud,sao,comercio,rosado,otros,total_uni,m_calculados,kg_calculados,total_pedir,uni_medidatela " +
             "FROM cfc_spt_ped_coordinado_total WHERE id_ped_coordinado =?; ";
 
         private readonly string consultaEliminar = "DELETE cfc_spt_ped_coordinado_total WHERE id_ped_coordinado = ?;";
@@ -30,19 +32,6 @@ namespace PedidoTela.Data.Acceso
                 {
                     con.Parametros.Add(new IfxParameter("@id_ped_coordinado", elemento.IdPedidoAmontar));
                     con.Parametros.Add(new IfxParameter("@cod_color", elemento.CodidoColor));
-                    con.Parametros.Add(new IfxParameter("@desc_color", elemento.DescripcionColor));
-                    con.Parametros.Add(new IfxParameter("@fondo", elemento.Fondo));
-                    con.Parametros.Add(new IfxParameter("@desc_fondo", elemento.DescripcionFondo));
-                    con.Parametros.Add(new IfxParameter("@codigo_h1", elemento.CodigoH1));
-                    con.Parametros.Add(new IfxParameter("@descripcion_h1", elemento.DescripcionH1));
-                    con.Parametros.Add(new IfxParameter("@codigo_h2", elemento.CodigoH2));
-                    con.Parametros.Add(new IfxParameter("@descripcion_h2", elemento.DescripcionH2));
-                    con.Parametros.Add(new IfxParameter("@codigo_h3", elemento.CodigoH3));
-                    con.Parametros.Add(new IfxParameter("@descripcion_h3", elemento.DescripcionH3));
-                    con.Parametros.Add(new IfxParameter("@codigo_h4", elemento.CodigoH4));
-                    con.Parametros.Add(new IfxParameter("@descripcion_h4", elemento.DescripcionH4));
-                    con.Parametros.Add(new IfxParameter("@codigo_h5", elemento.CodigoH5));
-                    con.Parametros.Add(new IfxParameter("@descripcion_h5", elemento.DescripcionH5));
                     con.Parametros.Add(new IfxParameter("@tiendas", elemento.Tiendas));
                     con.Parametros.Add(new IfxParameter("@exito", elemento.Exito));
                     con.Parametros.Add(new IfxParameter("@cencosud", elemento.Cencosud));
@@ -84,18 +73,6 @@ namespace PedidoTela.Data.Acceso
                         PedidoMontarTotal detalle = new PedidoMontarTotal();
                         detalle.CodidoColor = datos["cod_color"].ToString();
                         detalle.DescripcionColor = datos["desc_color"].ToString().Trim();
-                        detalle.Fondo = datos["fondo"].ToString();
-                        detalle.DescripcionFondo = datos["desc_fondo"].ToString().Trim();
-                        detalle.CodigoH1 = int.Parse(datos["codigo_h1"].ToString());
-                        detalle.DescripcionH1 = datos["descripcion_h1"].ToString().Trim();
-                        detalle.CodigoH2 = int.Parse(datos["codigo_h2"].ToString());
-                        detalle.DescripcionH2 = datos["descripcion_h2"].ToString().Trim();
-                        detalle.CodigoH3 = int.Parse(datos["codigo_h3"].ToString());
-                        detalle.DescripcionH3 = datos["descripcion_h3"].ToString().Trim();
-                        detalle.CodigoH4 = int.Parse(datos["codigo_h4"].ToString());
-                        detalle.DescripcionH4 = datos["descripcion_h4"].ToString().Trim();
-                        detalle.CodigoH5 = int.Parse(datos["codigo_h5"].ToString());
-                        detalle.DescripcionH5 = datos["descripcion_h5"].ToString().Trim();
                         detalle.Tiendas = int.Parse(datos["tiendas"].ToString().Trim());
                         detalle.Exito = int.Parse(datos["exito"].ToString());
                         detalle.Cencosud = int.Parse(datos["cencosud"].ToString());

@@ -70,7 +70,7 @@ namespace PedidoTela.Data.Acceso
         #endregion
 
         #region Métodos Consulta
-        public List<PedidoMontarInformacion> ConsultarInfoConsolidar(int prmIdPedidoPlano)
+        public List<PedidoMontarInformacion> Consultar(int prmIdPedidoPlano)
         {
             List<PedidoMontarInformacion> lista = new List<PedidoMontarInformacion>();
             try
