@@ -30,7 +30,7 @@ namespace PedidoTela.Data.Acceso
                            "   CONCAT(CONCAT(NVL(du.rosado,''), NVL(de.rosado,'')), NVL(pd.rosado,'')) as rosado, " +
                            "   CONCAT(CONCAT(NVL(du.otros,''), NVL(de.otros,'')), NVL(pd.otros,'')) as otros, NVL(li.desc_linea,'') as desc_linea, " +
                            "   NVL(st.m_calculados,'') as m_calculados, NVL(st.m_reservar,'') as m_reservar, NVL(st.m_solicitar,'') as m_solicitar,st.idsolicitud,NVL(st.cantidad_reservado,'') as cantidad_reservado,  " +
-                           "   CONCAT(CONCAT(CONCAT(NVL(du.id,''),NVL(de.iddetalleest,'')),NVL(pd.id,'')), NVL(cd.iddetallecuellodos,'')) as idDetalleSol, NVL(st.id_programador,0) as id_programador, st.desc_prenda,  NVL(ts.tipo_pedido,'') as tipo_pedido, " +
+                           "   CONCAT(CONCAT(CONCAT(NVL(du.id,''),NVL(de.iddetalleest,'')),NVL(pd.id,'')), NVL(cd.iddetallecuellodos,'')) as idDetalleSol, NVL(st.id_programador,0) as id_programador, st.desc_prenda,  NVL(ts.tipo_pedido,'') as tipo_pedido, NVL(ts.consecutivo_pedido,0) as consecutivo_pedido, " +
                            "   CONCAT(NVL(pd.codigo_h1,''), NVL(cd.codigo_h1,'')) as codigo_h1, CONCAT(NVL(pd.descripcion_h1, ''), NVL(cd.descripcion_h1, '')) as descripcion_h1, CONCAT(NVL(pd.codigo_h2,''),NVL(cd.codigo_h2,'')) as codigo_h2, CONCAT(NVL(pd.descripcion_h2,''),NVL(cd.descripcion_h2,''))as descripcion_h2, CONCAT(NVL(pd.codigo_h3,''),NVL(cd.codigo_h3,'')) as codigo_h3,  "+
                            "   CONCAT(NVL(pd.descripcion_h3,''),NVL(cd.descripcion_h3,'')) as descripcion_h3, CONCAT(NVL(pd.codigo_h4,''),NVL(cd.codigo_h4,'')) as codigo_h4, CONCAT(NVL(pd.descripcion_h4,''),NVL(cd.descripcion_h4,'')) as descripcion_h4, CONCAT(NVL(pd.codigo_h5,''),NVL(cd.codigo_h5,'')) as codigo_h5, CONCAT(NVL(pd.descripcion_h5,''),NVL(cd.descripcion_h5,'')) as descripcion_h5  "+
                            "   from  cfc_spt_tipo_solicitud ts " +
@@ -95,7 +95,7 @@ namespace PedidoTela.Data.Acceso
                 if (objTela.TipoSolicitud.ToString().Trim() != "" || objTela.Muestrario.ToString().Trim() != "" || objTela.OcasionUso.ToString().Trim() != "" || objTela.Tema.ToString().Trim() != ""
                     || objTela.Entrada.ToString().Trim() != "" || objTela.Disenador.ToString().Trim() != "" || objTela.EnsayoRefSimilar.ToString().Trim() != "" || objTela.Estado.ToString().Trim() != ""
                     || objTela.FechaTienda.ToString().Trim() != "" || objTela.RefTela.ToString().Trim() != "" || objTela.NomTela.ToString().Trim() != "" || objTela.Solicitud.ToString().Trim() != ""
-                    || objTela.Color.ToString().Trim() != "" || objTela.Clase.ToString().Trim() != "" || objTela.Coordinado.ToString().Trim() != "" || objTela.NumDibujo.ToString().ToString() != "")
+                    || objTela.Color.ToString().Trim() != "" || objTela.Clase.ToString().Trim() != "" || objTela.Coordinado.ToString().Trim() != "" || objTela.NumDibujo.ToString() != "" || objTela.ConsecutivoPedido != 0)
                 {
                     clausulaWhere += "WHERE ";
                 }
@@ -108,7 +108,7 @@ namespace PedidoTela.Data.Acceso
                     if (objTela.Muestrario.ToString().Trim() != "" || objTela.OcasionUso.ToString().Trim() != "" || objTela.Tema.ToString().Trim() != ""
                         || objTela.Entrada.ToString().Trim() != "" || objTela.Disenador.ToString().Trim() != "" || objTela.EnsayoRefSimilar.ToString().Trim() != "" || objTela.Estado.ToString().Trim() != ""
                         || objTela.FechaTienda.ToString().Trim() != "" || objTela.RefTela.ToString().Trim() != "" || objTela.NomTela.ToString().Trim() != "" || objTela.Solicitud.ToString().Trim() != ""
-                        || objTela.Color.ToString().Trim() != "" || objTela.Clase.ToString().Trim() != "" || objTela.Coordinado.ToString().Trim() != "" || objTela.NumDibujo.ToString().ToString() != "")
+                        || objTela.Color.ToString().Trim() != "" || objTela.Clase.ToString().Trim() != "" || objTela.Coordinado.ToString().Trim() != "" || objTela.NumDibujo.ToString() != "" || objTela.ConsecutivoPedido != 0)
                     {
                         clausulaWhere += "AND ";
                     }
@@ -122,7 +122,7 @@ namespace PedidoTela.Data.Acceso
                     if (objTela.OcasionUso.ToString().Trim() != "" || objTela.Tema.ToString().Trim() != ""
                         || objTela.Entrada.ToString().Trim() != "" || objTela.Disenador.ToString().Trim() != "" || objTela.EnsayoRefSimilar.ToString().Trim() != "" || objTela.Estado.ToString().Trim() != ""
                         || objTela.FechaTienda.ToString().Trim() != "" || objTela.RefTela.ToString().Trim() != "" || objTela.NomTela.ToString().Trim() != "" || objTela.Solicitud.ToString().Trim() != ""
-                        || objTela.Color.ToString().Trim() != "" || objTela.Clase.ToString().Trim() != "" || objTela.Coordinado.ToString().Trim() != "" || objTela.NumDibujo.ToString().ToString() != "")
+                        || objTela.Color.ToString().Trim() != "" || objTela.Clase.ToString().Trim() != "" || objTela.Coordinado.ToString().Trim() != "" || objTela.NumDibujo.ToString()!= "" || objTela.ConsecutivoPedido != 0)
                     {
                         clausulaWhere += "AND ";
                     }
@@ -135,7 +135,7 @@ namespace PedidoTela.Data.Acceso
                     if (objTela.Tema.ToString().Trim() != ""
                         || objTela.Entrada.ToString().Trim() != "" || objTela.Disenador.ToString().Trim() != "" || objTela.EnsayoRefSimilar.ToString().Trim() != "" || objTela.Estado.ToString().Trim() != ""
                         || objTela.FechaTienda.ToString().Trim() != "" || objTela.RefTela.ToString().Trim() != "" || objTela.NomTela.ToString().Trim() != "" || objTela.Solicitud.ToString().Trim() != ""
-                        || objTela.Color.ToString().Trim() != "" || objTela.Clase.ToString().Trim() != "" || objTela.Coordinado.ToString().Trim() != "" || objTela.NumDibujo.ToString().ToString() != "")
+                        || objTela.Color.ToString().Trim() != "" || objTela.Clase.ToString().Trim() != "" || objTela.Coordinado.ToString().Trim() != "" || objTela.NumDibujo.ToString() != "" || objTela.ConsecutivoPedido != 0)
                     {
                         clausulaWhere += "AND ";
                     }
@@ -148,7 +148,7 @@ namespace PedidoTela.Data.Acceso
 
                     if (objTela.Entrada.ToString().Trim() != "" || objTela.Disenador.ToString().Trim() != "" || objTela.EnsayoRefSimilar.ToString().Trim() != "" || objTela.Estado.ToString().Trim() != ""
                         || objTela.FechaTienda.ToString().Trim() != "" || objTela.RefTela.ToString().Trim() != "" || objTela.NomTela.ToString().Trim() != "" || objTela.Solicitud.ToString().Trim() != ""
-                        || objTela.Color.ToString().Trim() != "" || objTela.Clase.ToString().Trim() != "" || objTela.Coordinado.ToString().Trim() != "" || objTela.NumDibujo.ToString().ToString() != "")
+                        || objTela.Color.ToString().Trim() != "" || objTela.Clase.ToString().Trim() != "" || objTela.Coordinado.ToString().Trim() != "" || objTela.NumDibujo.ToString()!= "" || objTela.ConsecutivoPedido != 0)
                     {
                         clausulaWhere += "AND ";
                     }
@@ -160,7 +160,7 @@ namespace PedidoTela.Data.Acceso
                     con.Parametros.Add(new IfxParameter("@entrada", objTela.Entrada.ToString()));
                     if (objTela.Disenador.ToString().Trim() != "" || objTela.EnsayoRefSimilar.ToString().Trim() != "" || objTela.Estado.ToString().Trim() != ""
                         || objTela.FechaTienda.ToString().Trim() != "" || objTela.RefTela.ToString().Trim() != "" || objTela.NomTela.ToString().Trim() != "" || objTela.Solicitud.ToString().Trim() != ""
-                        || objTela.Color.ToString().Trim() != "" || objTela.Clase.ToString().Trim() != "" || objTela.Coordinado.ToString().Trim() != "" || objTela.NumDibujo.ToString().ToString() != "")
+                        || objTela.Color.ToString().Trim() != "" || objTela.Clase.ToString().Trim() != "" || objTela.Coordinado.ToString().Trim() != "" || objTela.NumDibujo.ToString() != "" || objTela.ConsecutivoPedido != 0)
                     {
                         clausulaWhere += "AND ";
                     }
@@ -172,7 +172,7 @@ namespace PedidoTela.Data.Acceso
                     con.Parametros.Add(new IfxParameter("@disenador", objTela.Disenador.ToString()));
                     if (objTela.EnsayoRefSimilar.ToString().Trim() != "" || objTela.Estado.ToString().Trim() != ""
                         || objTela.FechaTienda.ToString().Trim() != "" || objTela.RefTela.ToString().Trim() != "" || objTela.NomTela.ToString().Trim() != "" || objTela.Solicitud.ToString().Trim() != ""
-                        || objTela.Color.ToString().Trim() != "" || objTela.Clase.ToString().Trim() != "" || objTela.Coordinado.ToString().Trim() != "" || objTela.NumDibujo.ToString().ToString() != "")
+                        || objTela.Color.ToString().Trim() != "" || objTela.Clase.ToString().Trim() != "" || objTela.Coordinado.ToString().Trim() != "" || objTela.NumDibujo.ToString() != "" || objTela.ConsecutivoPedido != 0)
                     {
                         clausulaWhere += "AND ";
                     }
@@ -184,7 +184,7 @@ namespace PedidoTela.Data.Acceso
                     con.Parametros.Add(new IfxParameter("@identificador", objTela.EnsayoRefSimilar.ToString()));
                     if (objTela.Estado.ToString().Trim() != ""
                         || objTela.FechaTienda.ToString().Trim() != "" || objTela.RefTela.ToString().Trim() != "" || objTela.NomTela.ToString().Trim() != "" || objTela.Solicitud.ToString().Trim() != ""
-                        || objTela.Color.ToString().Trim() != "" || objTela.Clase.ToString().Trim() != "" || objTela.Coordinado.ToString().Trim() != "" || objTela.NumDibujo.ToString().ToString() != "")
+                        || objTela.Color.ToString().Trim() != "" || objTela.Clase.ToString().Trim() != "" || objTela.Coordinado.ToString().Trim() != "" || objTela.NumDibujo.ToString() != "" || objTela.ConsecutivoPedido != 0)
                     {
                         clausulaWhere += "AND ";
                     }
@@ -196,7 +196,7 @@ namespace PedidoTela.Data.Acceso
                     con.Parametros.Add(new IfxParameter("@ts.estado", objTela.Estado.ToString()));
 
                     if (objTela.FechaTienda.ToString().Trim() != "" || objTela.RefTela.ToString().Trim() != "" || objTela.NomTela.ToString().Trim() != "" || objTela.Solicitud.ToString().Trim() != ""
-                    || objTela.Color.ToString().Trim() != "" || objTela.Clase.ToString().Trim() != "" || objTela.Coordinado.ToString().Trim() != "" || objTela.NumDibujo.ToString().ToString() != "")
+                    || objTela.Color.ToString().Trim() != "" || objTela.Clase.ToString().Trim() != "" || objTela.Coordinado.ToString().Trim() != "" || objTela.NumDibujo.ToString() != "" || objTela.ConsecutivoPedido != 0)
                     {
                         clausulaWhere += "AND ";
                     }
@@ -207,7 +207,7 @@ namespace PedidoTela.Data.Acceso
                     clausulaWhere += "st.fecha_tienda = ? ";
                     con.Parametros.Add(new IfxParameter("@fecha_tienda", objTela.FechaTienda.ToString()));
                     if (objTela.RefTela.ToString().Trim() != "" || objTela.NomTela.ToString().Trim() != "" || objTela.Solicitud.ToString().Trim() != ""
-                    || objTela.Color.ToString().Trim() != "" || objTela.Clase.ToString().Trim() != "" || objTela.Coordinado.ToString().Trim() != "" || objTela.NumDibujo.ToString().ToString() != "")
+                    || objTela.Color.ToString().Trim() != "" || objTela.Clase.ToString().Trim() != "" || objTela.Coordinado.ToString().Trim() != "" || objTela.NumDibujo.ToString()!= "" || objTela.ConsecutivoPedido != 0)
                     {
                         clausulaWhere += "AND ";
                     }
@@ -218,7 +218,7 @@ namespace PedidoTela.Data.Acceso
                     clausulaWhere += "upper(st.referencia_tela) = ? ";
                     con.Parametros.Add(new IfxParameter("@referencia_tela", objTela.RefTela.ToString()));
                     if (objTela.NomTela.ToString().Trim() != "" || objTela.Solicitud.ToString().Trim() != ""
-                    || objTela.Color.ToString().Trim() != "" || objTela.Clase.ToString().Trim() != "" || objTela.Coordinado.ToString().Trim() != "" || objTela.NumDibujo.ToString().ToString() != "")
+                    || objTela.Color.ToString().Trim() != "" || objTela.Clase.ToString().Trim() != "" || objTela.Coordinado.ToString().Trim() != "" || objTela.NumDibujo.ToString() != "" || objTela.ConsecutivoPedido != 0)
                     {
                         clausulaWhere += "AND ";
                     }
@@ -229,7 +229,7 @@ namespace PedidoTela.Data.Acceso
                     clausulaWhere += "upper(st.desc_tela) = ? ";
                     con.Parametros.Add(new IfxParameter("@desc_tela", objTela.NomTela.ToString()));
                     if (objTela.Solicitud.ToString().Trim() != ""
-                    || objTela.Color.ToString().Trim() != "" || objTela.Clase.ToString().Trim() != "" || objTela.Coordinado.ToString().Trim() != "" || objTela.NumDibujo.ToString().ToString() != "")
+                    || objTela.Color.ToString().Trim() != "" || objTela.Clase.ToString().Trim() != "" || objTela.Coordinado.ToString().Trim() != "" || objTela.NumDibujo.ToString() != "" || objTela.ConsecutivoPedido != 0)
                     {
                         clausulaWhere += "AND ";
                     }
@@ -239,7 +239,7 @@ namespace PedidoTela.Data.Acceso
                 {
                     clausulaWhere += "ts.consecutivo = ? ";
                     con.Parametros.Add(new IfxParameter("@solicitud", objTela.Solicitud.ToString()));
-                    if (objTela.Color.ToString().Trim() != "" || objTela.Clase.ToString().Trim() != "" || objTela.Coordinado.ToString().Trim() != "" || objTela.NumDibujo.ToString().ToString() != "")
+                    if (objTela.Color.ToString().Trim() != "" || objTela.Clase.ToString().Trim() != "" || objTela.Coordinado.ToString().Trim() != "" || objTela.NumDibujo.ToString() != "" || objTela.ConsecutivoPedido != 0)
                     {
                         clausulaWhere += "AND ";
                     }
@@ -252,7 +252,7 @@ namespace PedidoTela.Data.Acceso
                     con.Parametros.Add(new IfxParameter("@cd.descripcion_vte", objTela.Color.ToString()));
                     con.Parametros.Add(new IfxParameter("@de.desc_color", objTela.Color.ToString()));
                     con.Parametros.Add(new IfxParameter("@c.desc_color", objTela.Color.ToString()));
-                    if (objTela.Clase.ToString().Trim() != "" || objTela.Coordinado.ToString().Trim() != "" || objTela.NumDibujo.ToString().Trim() != "")
+                    if (objTela.Clase.ToString().Trim() != "" || objTela.Coordinado.ToString().Trim() != "" || objTela.NumDibujo.ToString().Trim() != "" || objTela.ConsecutivoPedido != 0)
                     {
                         clausulaWhere += "AND ";
                     }
@@ -285,10 +285,18 @@ namespace PedidoTela.Data.Acceso
                 {
                     clausulaWhere += "es.n_dibujos = ? ";
                     con.Parametros.Add(new IfxParameter("@n_dibujos", objTela.NumDibujo.ToString()));
+                    if (objTela.ConsecutivoPedido != 0)
+                    {
+                        clausulaWhere += "AND ";
+                    }
                 }
-
+                if (objTela.ConsecutivoPedido > 0)
+                {
+                    clausulaWhere += "ts.consecutivo_pedido= ? ";
+                    con.Parametros.Add(new IfxParameter("@consecutivo_pedido", objTela.ConsecutivoPedido));
+                }
                 #endregion
-                clausulaWhere += "ORDER BY solicitud;";
+                clausulaWhere += "ORDER BY consecutivo_pedido;";
                 consultaPedido += clausulaWhere;
 
                 var datosDataReader = con.EjecutarConsulta(consultaPedido);
@@ -340,6 +348,7 @@ namespace PedidoTela.Data.Acceso
                     detalle.IdProgramador = int.Parse(datosDataReader["id_programador"].ToString().Trim());
                     detalle.DescPrenda = datosDataReader["desc_prenda"].ToString().Trim();
                     detalle.TipoPedido = datosDataReader["tipo_pedido"].ToString().Trim();
+                    detalle.ConsecutivoPedido = datosDataReader["consecutivo_pedido"].ToString().Trim();
                     detalle.CodigoH1 =datosDataReader["codigo_h1"].ToString();
                     detalle.DescripcionH1 = datosDataReader["descripcion_h1"].ToString().Trim();
                     detalle.CodigoH2 = datosDataReader["codigo_h2"].ToString();
