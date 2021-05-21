@@ -1060,5 +1060,40 @@ namespace PedidoTela.Controlodores
         }
 
         #endregion
+
+        #region Devolución
+        public string existeDevolucion(int prmConsecutivo)
+        {
+            D_Devolucion d_devolucion = new D_Devolucion();
+            return d_devolucion.existeDevolucion(prmConsecutivo);
+        }
+        public bool existeConsecutivoPedido(int prmConsecutivo)
+        {
+            D_Devolucion d_devolucion = new D_Devolucion();
+            return d_devolucion.existeConsecutivo(prmConsecutivo);
+        }
+        public bool actualizarConsecutivo(int prmConsecutivo, string prmFecha, string prmEstado,string prmMotivoDevolucion)
+        {
+            D_Devolucion d_consolidado = new D_Devolucion();
+            return (d_consolidado.ActualizarConsecutivo( prmConsecutivo, prmFecha, prmEstado, prmMotivoDevolucion) == "ok") ? true : false;
+        }
+        #endregion
+        #region Editar
+        public bool existeConsecutivo(int prmConsecutivo)
+        {
+            D_Editar d_editar = new D_Editar();
+            return d_editar.existeConsecutivo(prmConsecutivo);
+        }
+        public bool consultarEstado(int prmConsecutivo)
+        {
+            D_Editar d_editar = new D_Editar();
+            return d_editar.consultarEstado(prmConsecutivo);
+        }
+        public string tipoPedido(int prmConsecutivo)
+        {
+            D_Editar d_editar = new D_Editar();
+            return d_editar.consultarTipoPedido(prmConsecutivo);
+        }
+        #endregion
     }
 }

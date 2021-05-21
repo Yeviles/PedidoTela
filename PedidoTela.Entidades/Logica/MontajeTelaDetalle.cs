@@ -53,6 +53,7 @@ namespace PedidoTela.Entidades.Logica
         private string idDetalleSolicitud;
         private int idProgramador;
         private string descPrenda;
+        private string consecutivoPedido;
         private string tipoPedido;
         private string codigoH1;
         private string descripcionH1;
@@ -68,7 +69,7 @@ namespace PedidoTela.Entidades.Logica
         public MontajeTelaDetalle() {}
 
 
-        public MontajeTelaDetalle(bool sel, string solicitud, string tipoSolicitud, string ensayo, string refSimilar, int numDibujos, string codFondo, string fondo, string tipoTela, string coordinado, string coordinadoCon, string refTela, string desTela, string vte, string desColor, string totaUnidades, string consumo, string marca, string muestrario, string ocasionUso, string tema, string entrada, string fechaTienda, string disenador, string obsDiseno, string fechaSolTelas, string estado, string fechaEstado, string tiendas, string exito, string cencosud, string sao, string comercio, string rosado, string otros, string mCalculados, string mReservados, string masolicitar, string tipo, int idSolTela, string cantidadReservado, string idDetalleSolicitud = null, int idProgramador = 0, string descPrenda = null, string consolidado = null, string codigoH1 = null, string descripcionH1 = null, string codigoH2 = null, string descripcionH2 = null, string codigoH3 = null, string descripcionH3 = null, string codigoH4 = null, string descripcionH4 = null, string codigoH5 = null, string descripcionH5 = null, string tipoPedido = null)
+        public MontajeTelaDetalle(bool sel, string solicitud, string tipoSolicitud, string ensayo, string refSimilar, int numDibujos, string codFondo, string fondo, string tipoTela, string coordinado, string coordinadoCon, string refTela, string desTela, string vte, string desColor, string totaUnidades, string consumo, string marca, string muestrario, string ocasionUso, string tema, string entrada, string fechaTienda, string disenador, string obsDiseno, string fechaSolTelas, string estado, string fechaEstado, string tiendas, string exito, string cencosud, string sao, string comercio, string rosado, string otros, string mCalculados, string mReservados, string masolicitar, string tipo, int idSolTela, string cantidadReservado, string idDetalleSolicitud = null, int idProgramador = 0, string descPrenda = null, string consolidado = null, string codigoH1 = null, string descripcionH1 = null, string codigoH2 = null, string descripcionH2 = null, string codigoH3 = null, string descripcionH3 = null, string codigoH4 = null, string descripcionH4 = null, string codigoH5 = null, string descripcionH5 = null, string tipoPedido = null, string consecutivoPedido = null)
         {
             this.Sel = sel;
             this.Solicitud = solicitud;
@@ -114,6 +115,7 @@ namespace PedidoTela.Entidades.Logica
             this.IdDetalleSolicitud = idDetalleSolicitud;
             this.IdProgramador = idProgramador;
             this.DescPrenda = descPrenda;
+            this.ConsecutivoPedido = consecutivoPedido;
             this.Consolidado = consolidado;
             this.CodigoH1 = codigoH1;
             this.DescripcionH1 = descripcionH1;
@@ -184,5 +186,6 @@ namespace PedidoTela.Entidades.Logica
         public string CodigoH5 { get => codigoH5; set => codigoH5 = value; }
         public string DescripcionH5 { get => descripcionH5; set => descripcionH5 = value; }
         public string TipoPedido { get => tipoPedido; set => tipoPedido = value; }
+        public string ConsecutivoPedido { get => consecutivoPedido; set => consecutivoPedido = value; }
     }
 }

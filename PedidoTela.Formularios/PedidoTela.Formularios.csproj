@@ -136,11 +136,23 @@
     <Compile Include="frmDetalleReserva.Designer.cs">
       <DependentUpon>frmDetalleReserva.cs</DependentUpon>
     </Compile>
+    <Compile Include="frmDevolucion.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmDevolucion.Designer.cs">
+      <DependentUpon>frmDevolucion.cs</DependentUpon>
+    </Compile>
     <Compile Include="frmDisponibleParaReserva.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="frmDisponibleParaReserva.Designer.cs">
       <DependentUpon>frmDisponibleParaReserva.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frmEditar.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmEditar.Designer.cs">
+      <DependentUpon>frmEditar.cs</DependentUpon>
     </Compile>
     <Compile Include="frmEditarDsolicitudTela.cs">
       <SubType>Form</SubType>
@@ -321,8 +333,14 @@
     <EmbeddedResource Include="frmDetalleReserva.resx">
       <DependentUpon>frmDetalleReserva.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="frmDevolucion.resx">
+      <DependentUpon>frmDevolucion.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="frmDisponibleParaReserva.resx">
       <DependentUpon>frmDisponibleParaReserva.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmEditar.resx">
+      <DependentUpon>frmEditar.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="frmEditarDsolicitudTela.resx">
       <DependentUpon>frmEditarDsolicitudTela.cs</DependentUpon>
@@ -558,6 +576,24 @@
     <None Include="imgs\volver.png" />
     <None Include="imgs\aceptar.png" />
     <None Include="imgs\imprimir.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="imgs\devolver.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="imgs\buscar.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="imgs\editar.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="imgs\inventarioExterno.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="imgs\analizarInventario.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="imgs\inventarioExte.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

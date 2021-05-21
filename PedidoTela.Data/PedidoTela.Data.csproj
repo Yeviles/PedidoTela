@@ -88,8 +88,10 @@
     <Compile Include="Acceso\D_DetalleListaTela.cs" />
     <Compile Include="Acceso\D_DetallePlanoPretenido.cs" />
     <Compile Include="Acceso\D_DetalleUnicolor.cs" />
+    <Compile Include="Acceso\D_Devolucion.cs" />
     <Compile Include="Acceso\D_Disenador.cs" />
     <Compile Include="Acceso\D_DisponibleParaReserva.cs" />
+    <Compile Include="Acceso\D_Editar.cs" />
     <Compile Include="Acceso\D_EditarDetalleConsumo.cs" />
     <Compile Include="Acceso\D_Ensayo.cs" />
     <Compile Include="Acceso\D_Entrada.cs" />

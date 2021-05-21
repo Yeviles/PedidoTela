@@ -24,10 +24,10 @@ namespace PedidoTela.Entidades.Logica
         private string clase;
         private string coordinado;
         private string numDibujo;
-
+        private int consecutivoPedido;
 
         public MontajeTela() { }
-        public MontajeTela(string tipoSolicitud, string muestrario, string ocasionUso, string tema, string entrada, string disenador, string ensayoRefSimilar, string estado, string fechaTienda, string refTela, string nomTela, string solicitud, string color, string clase, string coordinado, string numDibujo)
+        public MontajeTela(string tipoSolicitud, string muestrario, string ocasionUso, string tema, string entrada, string disenador, string ensayoRefSimilar, string estado, string fechaTienda, string refTela, string nomTela, string solicitud, string color, string clase, string coordinado, string numDibujo, int consecutivoPedido)
         {
             this.TipoSolicitud = tipoSolicitud;
             this.Muestrario = muestrario;
@@ -45,6 +45,7 @@ namespace PedidoTela.Entidades.Logica
             this.Clase = clase;
             this.Coordinado = coordinado;
             this.NumDibujo = numDibujo;
+            this.ConsecutivoPedido = consecutivoPedido;
         }
 
         public string TipoSolicitud { get => tipoSolicitud; set => tipoSolicitud = value; }
@@ -63,5 +64,6 @@ namespace PedidoTela.Entidades.Logica
         public string Clase { get => clase; set => clase = value; }
         public string Coordinado { get => coordinado; set => coordinado = value; }
         public string NumDibujo { get => numDibujo; set => numDibujo = value; }
+        public int ConsecutivoPedido { get => consecutivoPedido; set => consecutivoPedido = value; }
     }
 }

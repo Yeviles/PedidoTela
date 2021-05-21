@@ -133,6 +133,16 @@ namespace PedidoTela.Formularios.Properties {
         /// <summary>
         ///   Busca un recurso adaptado de tipo System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap analizarInventario {
+            get {
+                object obj = ResourceManager.GetObject("analizarInventario", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Busca un recurso adaptado de tipo System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap arrow_6_90997 {
             get {
                 object obj = ResourceManager.GetObject("arrow-6_90997", resourceCulture);
@@ -156,6 +166,16 @@ namespace PedidoTela.Formularios.Properties {
         internal static System.Drawing.Bitmap Booking_icon_icons_com_55957 {
             get {
                 object obj = ResourceManager.GetObject("Booking_icon-icons.com_55957", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Busca un recurso adaptado de tipo System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap buscar {
+            get {
+                object obj = ResourceManager.GetObject("buscar", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
@@ -233,6 +253,26 @@ namespace PedidoTela.Formularios.Properties {
         /// <summary>
         ///   Busca un recurso adaptado de tipo System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap devolver {
+            get {
+                object obj = ResourceManager.GetObject("devolver", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Busca un recurso adaptado de tipo System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap editar {
+            get {
+                object obj = ResourceManager.GetObject("editar", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Busca un recurso adaptado de tipo System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap finger_hand_5531 {
             get {
                 object obj = ResourceManager.GetObject("finger_hand_5531", resourceCulture);
@@ -286,6 +326,26 @@ namespace PedidoTela.Formularios.Properties {
         internal static System.Drawing.Bitmap invenExt {
             get {
                 object obj = ResourceManager.GetObject("invenExt", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Busca un recurso adaptado de tipo System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap inventarioExte {
+            get {
+                object obj = ResourceManager.GetObject("inventarioExte", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Busca un recurso adaptado de tipo System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap inventarioExterno {
+            get {
+                object obj = ResourceManager.GetObject("inventarioExterno", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
