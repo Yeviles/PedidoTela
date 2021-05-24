@@ -22,12 +22,14 @@ namespace PedidoTela.Formularios
         private Objeto principal = new Objeto();
         private Objeto coordinado1 = new Objeto();
         private Objeto coordinado2 = new Objeto();
+        private int idSolicitud;
         #endregion
 
-        public frmPedidoaMontarCoordinado(Controlador control, List<MontajeTelaDetalle> listaSolicitudes)
+        public frmPedidoaMontarCoordinado(Controlador control, List<MontajeTelaDetalle> listaSolicitudes, int idSolicitud)
         {
             this.control = control;
             this.listaSolicitudes = listaSolicitudes;
+            this.idSolicitud = idSolicitud;
             InitializeComponent();
 
             cargarCombobox(cbxPrincipal, getListaCombo());
@@ -47,7 +49,7 @@ namespace PedidoTela.Formularios
             {
                 //frmContenedor frmcontenido = new frmContenedor(control, listaSolicitudes, principal.Id, coordinado1.Id, coordinado2.Id);
                 //frmcontenido.ShowDialog();
-                frmPedidoCoordinado3en1 frmCoordinado3en1 = new frmPedidoCoordinado3en1(control, listaSolicitudes, principal.Id, coordinado1.Id, coordinado2.Id);
+                frmPedidoCoordinado3en1 frmCoordinado3en1 = new frmPedidoCoordinado3en1(control, listaSolicitudes, idSolicitud, principal.Id, coordinado1.Id, coordinado2.Id);
                 frmCoordinado3en1.ShowDialog();
             }
         }
@@ -61,8 +63,6 @@ namespace PedidoTela.Formularios
         {
             this.Close();
         }
-
-        
 
         private void cbxPrincipal_SelectionChangeCommitted(object sender, EventArgs e)
         {

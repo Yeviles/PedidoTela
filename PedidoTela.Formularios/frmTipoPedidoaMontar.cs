@@ -140,7 +140,7 @@ namespace PedidoTela.Formularios
             else if (cbxCdoTresUno.Checked)
             {
                 this.Close();
-                frmMontarCoordinado = new frmPedidoaMontarCoordinado(control, detalleSeleccionado);
+                frmMontarCoordinado = new frmPedidoaMontarCoordinado(control, detalleSeleccionado, detalleSeleccionado[0].IdSolTela);
                 frmMontarCoordinado.ShowDialog();
             }
             else if (cbxAgencias.Checked)
