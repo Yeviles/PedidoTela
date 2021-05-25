@@ -657,7 +657,6 @@ namespace PedidoTela.Formularios
 
             frmInicial frmInicial = new frmInicial();
             this.Close();
-            frmInicial.Show();
         }
     }
 }
