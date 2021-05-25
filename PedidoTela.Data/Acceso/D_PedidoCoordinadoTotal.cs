@@ -32,6 +32,7 @@ namespace PedidoTela.Data.Acceso
                 {
                     con.Parametros.Add(new IfxParameter("@id_ped_coordinado", elemento.IdPedidoAmontar));
                     con.Parametros.Add(new IfxParameter("@cod_color", elemento.CodidoColor));
+                    con.Parametros.Add(new IfxParameter("@desc_color", elemento.DescripcionColor));
                     con.Parametros.Add(new IfxParameter("@tiendas", elemento.Tiendas));
                     con.Parametros.Add(new IfxParameter("@exito", elemento.Exito));
                     con.Parametros.Add(new IfxParameter("@cencosud", elemento.Cencosud));

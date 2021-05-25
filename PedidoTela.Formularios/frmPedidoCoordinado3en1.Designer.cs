@@ -29,11 +29,28 @@ namespace PedidoTela.Formularios
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle9 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle10 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle11 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle12 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
             this.tabControl1 = new System.Windows.Forms.TabControl();
+            this.tabPage1 = new System.Windows.Forms.TabPage();
+            this.dgvInformacionUnicolor = new System.Windows.Forms.DataGridView();
+            this.dataGridViewTextBoxColumn15 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dataGridViewTextBoxColumn16 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dataGridViewTextBoxColumn19 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dataGridViewTextBoxColumn20 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dataGridViewTextBoxColumn21 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dataGridViewTextBoxColumn22 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dataGridViewTextBoxColumn23 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dataGridViewTextBoxColumn24 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dataGridViewTextBoxColumn25 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dataGridViewTextBoxColumn26 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dataGridViewTextBoxColumn27 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dataGridViewTextBoxColumn28 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dataGridViewTextBoxColumn29 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dataGridViewTextBoxColumn30 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dataGridViewTextBoxColumn31 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.tabPage2 = new System.Windows.Forms.TabPage();
             this.dgvInformacionEstampado = new System.Windows.Forms.DataGridView();
             this.dataGridViewTextBoxColumn43 = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -55,31 +72,6 @@ namespace PedidoTela.Formularios
             this.dataGridViewTextBoxColumn58 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.tabPage3 = new System.Windows.Forms.TabPage();
             this.dgvInformacionPlano = new System.Windows.Forms.DataGridView();
-            this.dataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.descripcionColor = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.codH1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.descH1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.codH2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.descH2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.codH3 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.descH3 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.codH4 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.descH4 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.codH5 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.descH5 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dataGridViewTextBoxColumn2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dataGridViewTextBoxColumn3 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dataGridViewTextBoxColumn4 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dataGridViewTextBoxColumn5 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dataGridViewTextBoxColumn6 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dataGridViewTextBoxColumn7 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dataGridViewTextBoxColumn8 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dataGridViewTextBoxColumn9 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dataGridViewTextBoxColumn10 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dataGridViewTextBoxColumn11 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dataGridViewTextBoxColumn12 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dataGridViewTextBoxColumn13 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dataGridViewTextBoxColumn14 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.panel1 = new System.Windows.Forms.Panel();
             this.btnAgregarPedido = new System.Windows.Forms.Button();
             this.dgvPedidos = new System.Windows.Forms.DataGridView();
@@ -115,23 +107,6 @@ namespace PedidoTela.Formularios
             this.label16 = new System.Windows.Forms.Label();
             this.lbInformacion = new System.Windows.Forms.Label();
             this.panel2 = new System.Windows.Forms.Panel();
-            this.tabPage1 = new System.Windows.Forms.TabPage();
-            this.dgvInformacionUnicolor = new System.Windows.Forms.DataGridView();
-            this.dataGridViewTextBoxColumn15 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dataGridViewTextBoxColumn16 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dataGridViewTextBoxColumn19 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dataGridViewTextBoxColumn20 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dataGridViewTextBoxColumn21 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dataGridViewTextBoxColumn22 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dataGridViewTextBoxColumn23 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dataGridViewTextBoxColumn24 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dataGridViewTextBoxColumn25 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dataGridViewTextBoxColumn26 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dataGridViewTextBoxColumn27 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dataGridViewTextBoxColumn28 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dataGridViewTextBoxColumn29 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dataGridViewTextBoxColumn30 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dataGridViewTextBoxColumn31 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dgvConsolidar = new System.Windows.Forms.DataGridView();
             this.dataGridViewTextBoxColumn17 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dataGridViewTextBoxColumn18 = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -147,7 +122,34 @@ namespace PedidoTela.Formularios
             this.kgCalculados = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.totalaPedir = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.undMedidaTela = new System.Windows.Forms.DataGridViewComboBoxColumn();
+            this.dataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.descripcionColor = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.codH1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.descH1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.codH2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.descH2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.codH3 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.descH3 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.codH4 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.descH4 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.codH5 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.descH5 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dataGridViewTextBoxColumn2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dataGridViewTextBoxColumn3 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dataGridViewTextBoxColumn4 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dataGridViewTextBoxColumn5 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dataGridViewTextBoxColumn6 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dataGridViewTextBoxColumn7 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dataGridViewTextBoxColumn8 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dataGridViewTextBoxColumn9 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dataGridViewTextBoxColumn10 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dataGridViewTextBoxColumn11 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dataGridViewTextBoxColumn12 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dataGridViewTextBoxColumn13 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dataGridViewTextBoxColumn14 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.tabControl1.SuspendLayout();
+            this.tabPage1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dgvInformacionUnicolor)).BeginInit();
             this.tabPage2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvInformacionEstampado)).BeginInit();
             this.tabPage3.SuspendLayout();
@@ -156,8 +158,6 @@ namespace PedidoTela.Formularios
             ((System.ComponentModel.ISupportInitialize)(this.dgvPedidos)).BeginInit();
             this.panel9.SuspendLayout();
             this.panel2.SuspendLayout();
-            this.tabPage1.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dgvInformacionUnicolor)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dgvConsolidar)).BeginInit();
             this.SuspendLayout();
             // 
@@ -172,6 +172,170 @@ namespace PedidoTela.Formularios
             this.tabControl1.SelectedIndex = 0;
             this.tabControl1.Size = new System.Drawing.Size(1362, 180);
             this.tabControl1.TabIndex = 130;
+            // 
+            // tabPage1
+            // 
+            this.tabPage1.Controls.Add(this.dgvInformacionUnicolor);
+            this.tabPage1.Location = new System.Drawing.Point(4, 22);
+            this.tabPage1.Name = "tabPage1";
+            this.tabPage1.Size = new System.Drawing.Size(1354, 154);
+            this.tabPage1.TabIndex = 3;
+            this.tabPage1.Text = "Unicolor";
+            this.tabPage1.UseVisualStyleBackColor = true;
+            // 
+            // dgvInformacionUnicolor
+            // 
+            this.dgvInformacionUnicolor.AllowUserToAddRows = false;
+            this.dgvInformacionUnicolor.AllowUserToDeleteRows = false;
+            this.dgvInformacionUnicolor.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
+            this.dgvInformacionUnicolor.AutoSizeRowsMode = System.Windows.Forms.DataGridViewAutoSizeRowsMode.DisplayedCells;
+            this.dgvInformacionUnicolor.BackgroundColor = System.Drawing.SystemColors.Window;
+            this.dgvInformacionUnicolor.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle1.BackColor = System.Drawing.SystemColors.ScrollBar;
+            dataGridViewCellStyle1.Font = new System.Drawing.Font("Verdana", 8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle1.ForeColor = System.Drawing.Color.Navy;
+            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.ScrollBar;
+            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dgvInformacionUnicolor.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
+            this.dgvInformacionUnicolor.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dgvInformacionUnicolor.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.dataGridViewTextBoxColumn15,
+            this.dataGridViewTextBoxColumn16,
+            this.dataGridViewTextBoxColumn19,
+            this.dataGridViewTextBoxColumn20,
+            this.dataGridViewTextBoxColumn21,
+            this.dataGridViewTextBoxColumn22,
+            this.dataGridViewTextBoxColumn23,
+            this.dataGridViewTextBoxColumn24,
+            this.dataGridViewTextBoxColumn25,
+            this.dataGridViewTextBoxColumn26,
+            this.dataGridViewTextBoxColumn27,
+            this.dataGridViewTextBoxColumn28,
+            this.dataGridViewTextBoxColumn29,
+            this.dataGridViewTextBoxColumn30,
+            this.dataGridViewTextBoxColumn31});
+            this.dgvInformacionUnicolor.EnableHeadersVisualStyles = false;
+            this.dgvInformacionUnicolor.GridColor = System.Drawing.SystemColors.ScrollBar;
+            this.dgvInformacionUnicolor.Location = new System.Drawing.Point(3, 2);
+            this.dgvInformacionUnicolor.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.dgvInformacionUnicolor.MultiSelect = false;
+            this.dgvInformacionUnicolor.Name = "dgvInformacionUnicolor";
+            this.dgvInformacionUnicolor.RightToLeft = System.Windows.Forms.RightToLeft.No;
+            this.dgvInformacionUnicolor.RowHeadersVisible = false;
+            this.dgvInformacionUnicolor.RowHeadersWidth = 62;
+            this.dgvInformacionUnicolor.RowTemplate.Height = 28;
+            this.dgvInformacionUnicolor.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
+            this.dgvInformacionUnicolor.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.CellSelect;
+            this.dgvInformacionUnicolor.Size = new System.Drawing.Size(1359, 122);
+            this.dgvInformacionUnicolor.TabIndex = 98;
+            this.dgvInformacionUnicolor.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvInformacionUnicolor_CellClick);
+            this.dgvInformacionUnicolor.CellEndEdit += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvInformacionUnicolor_CellEndEdit);
+            this.dgvInformacionUnicolor.CellFormatting += new System.Windows.Forms.DataGridViewCellFormattingEventHandler(this.dgvInformacionUnicolor_CellFormatting);
+            // 
+            // dataGridViewTextBoxColumn15
+            // 
+            this.dataGridViewTextBoxColumn15.HeaderText = "Código Color";
+            this.dataGridViewTextBoxColumn15.MinimumWidth = 8;
+            this.dataGridViewTextBoxColumn15.Name = "dataGridViewTextBoxColumn15";
+            this.dataGridViewTextBoxColumn15.ReadOnly = true;
+            // 
+            // dataGridViewTextBoxColumn16
+            // 
+            this.dataGridViewTextBoxColumn16.HeaderText = "Descripción Color";
+            this.dataGridViewTextBoxColumn16.MinimumWidth = 8;
+            this.dataGridViewTextBoxColumn16.Name = "dataGridViewTextBoxColumn16";
+            this.dataGridViewTextBoxColumn16.ReadOnly = true;
+            // 
+            // dataGridViewTextBoxColumn19
+            // 
+            this.dataGridViewTextBoxColumn19.HeaderText = "Tiendas";
+            this.dataGridViewTextBoxColumn19.MinimumWidth = 8;
+            this.dataGridViewTextBoxColumn19.Name = "dataGridViewTextBoxColumn19";
+            this.dataGridViewTextBoxColumn19.ReadOnly = true;
+            // 
+            // dataGridViewTextBoxColumn20
+            // 
+            this.dataGridViewTextBoxColumn20.HeaderText = "Éxito";
+            this.dataGridViewTextBoxColumn20.MinimumWidth = 8;
+            this.dataGridViewTextBoxColumn20.Name = "dataGridViewTextBoxColumn20";
+            this.dataGridViewTextBoxColumn20.ReadOnly = true;
+            // 
+            // dataGridViewTextBoxColumn21
+            // 
+            this.dataGridViewTextBoxColumn21.HeaderText = "Cencosud";
+            this.dataGridViewTextBoxColumn21.MinimumWidth = 8;
+            this.dataGridViewTextBoxColumn21.Name = "dataGridViewTextBoxColumn21";
+            this.dataGridViewTextBoxColumn21.ReadOnly = true;
+            // 
+            // dataGridViewTextBoxColumn22
+            // 
+            this.dataGridViewTextBoxColumn22.HeaderText = "SAO";
+            this.dataGridViewTextBoxColumn22.MinimumWidth = 8;
+            this.dataGridViewTextBoxColumn22.Name = "dataGridViewTextBoxColumn22";
+            this.dataGridViewTextBoxColumn22.ReadOnly = true;
+            // 
+            // dataGridViewTextBoxColumn23
+            // 
+            this.dataGridViewTextBoxColumn23.HeaderText = "Comercio Org.";
+            this.dataGridViewTextBoxColumn23.MinimumWidth = 8;
+            this.dataGridViewTextBoxColumn23.Name = "dataGridViewTextBoxColumn23";
+            this.dataGridViewTextBoxColumn23.ReadOnly = true;
+            // 
+            // dataGridViewTextBoxColumn24
+            // 
+            this.dataGridViewTextBoxColumn24.HeaderText = "Rosado";
+            this.dataGridViewTextBoxColumn24.MinimumWidth = 8;
+            this.dataGridViewTextBoxColumn24.Name = "dataGridViewTextBoxColumn24";
+            this.dataGridViewTextBoxColumn24.ReadOnly = true;
+            // 
+            // dataGridViewTextBoxColumn25
+            // 
+            this.dataGridViewTextBoxColumn25.HeaderText = "Otros";
+            this.dataGridViewTextBoxColumn25.MinimumWidth = 8;
+            this.dataGridViewTextBoxColumn25.Name = "dataGridViewTextBoxColumn25";
+            this.dataGridViewTextBoxColumn25.ReadOnly = true;
+            // 
+            // dataGridViewTextBoxColumn26
+            // 
+            this.dataGridViewTextBoxColumn26.HeaderText = "Total Unidades";
+            this.dataGridViewTextBoxColumn26.MinimumWidth = 8;
+            this.dataGridViewTextBoxColumn26.Name = "dataGridViewTextBoxColumn26";
+            this.dataGridViewTextBoxColumn26.ReadOnly = true;
+            // 
+            // dataGridViewTextBoxColumn27
+            // 
+            this.dataGridViewTextBoxColumn27.HeaderText = "Consumo";
+            this.dataGridViewTextBoxColumn27.MinimumWidth = 8;
+            this.dataGridViewTextBoxColumn27.Name = "dataGridViewTextBoxColumn27";
+            // 
+            // dataGridViewTextBoxColumn28
+            // 
+            this.dataGridViewTextBoxColumn28.HeaderText = "M Calculados";
+            this.dataGridViewTextBoxColumn28.MinimumWidth = 8;
+            this.dataGridViewTextBoxColumn28.Name = "dataGridViewTextBoxColumn28";
+            this.dataGridViewTextBoxColumn28.ReadOnly = true;
+            // 
+            // dataGridViewTextBoxColumn29
+            // 
+            this.dataGridViewTextBoxColumn29.HeaderText = "M Reservados";
+            this.dataGridViewTextBoxColumn29.MinimumWidth = 8;
+            this.dataGridViewTextBoxColumn29.Name = "dataGridViewTextBoxColumn29";
+            // 
+            // dataGridViewTextBoxColumn30
+            // 
+            this.dataGridViewTextBoxColumn30.HeaderText = "M a Solicitar";
+            this.dataGridViewTextBoxColumn30.MinimumWidth = 8;
+            this.dataGridViewTextBoxColumn30.Name = "dataGridViewTextBoxColumn30";
+            this.dataGridViewTextBoxColumn30.ReadOnly = true;
+            // 
+            // dataGridViewTextBoxColumn31
+            // 
+            this.dataGridViewTextBoxColumn31.HeaderText = "KG Calculados";
+            this.dataGridViewTextBoxColumn31.MinimumWidth = 8;
+            this.dataGridViewTextBoxColumn31.Name = "dataGridViewTextBoxColumn31";
+            this.dataGridViewTextBoxColumn31.ReadOnly = true;
             // 
             // tabPage2
             // 
@@ -192,14 +356,14 @@ namespace PedidoTela.Formularios
             this.dgvInformacionEstampado.AutoSizeRowsMode = System.Windows.Forms.DataGridViewAutoSizeRowsMode.DisplayedCells;
             this.dgvInformacionEstampado.BackgroundColor = System.Drawing.SystemColors.Window;
             this.dgvInformacionEstampado.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            dataGridViewCellStyle9.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle9.BackColor = System.Drawing.SystemColors.ScrollBar;
-            dataGridViewCellStyle9.Font = new System.Drawing.Font("Verdana", 8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle9.ForeColor = System.Drawing.Color.Navy;
-            dataGridViewCellStyle9.SelectionBackColor = System.Drawing.SystemColors.ScrollBar;
-            dataGridViewCellStyle9.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle9.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dgvInformacionEstampado.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle9;
+            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle2.BackColor = System.Drawing.SystemColors.ScrollBar;
+            dataGridViewCellStyle2.Font = new System.Drawing.Font("Verdana", 8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle2.ForeColor = System.Drawing.Color.Navy;
+            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.SystemColors.ScrollBar;
+            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dgvInformacionEstampado.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle2;
             this.dgvInformacionEstampado.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgvInformacionEstampado.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.dataGridViewTextBoxColumn43,
@@ -368,18 +532,18 @@ namespace PedidoTela.Formularios
             // 
             this.dgvInformacionPlano.AllowUserToAddRows = false;
             this.dgvInformacionPlano.AllowUserToDeleteRows = false;
-            this.dgvInformacionPlano.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
+            this.dgvInformacionPlano.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.DisplayedCells;
             this.dgvInformacionPlano.AutoSizeRowsMode = System.Windows.Forms.DataGridViewAutoSizeRowsMode.DisplayedCells;
             this.dgvInformacionPlano.BackgroundColor = System.Drawing.Color.White;
             this.dgvInformacionPlano.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            dataGridViewCellStyle10.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle10.BackColor = System.Drawing.SystemColors.ScrollBar;
-            dataGridViewCellStyle10.Font = new System.Drawing.Font("Verdana", 8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle10.ForeColor = System.Drawing.Color.Navy;
-            dataGridViewCellStyle10.SelectionBackColor = System.Drawing.SystemColors.ScrollBar;
-            dataGridViewCellStyle10.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle10.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dgvInformacionPlano.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle10;
+            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle3.BackColor = System.Drawing.SystemColors.ScrollBar;
+            dataGridViewCellStyle3.Font = new System.Drawing.Font("Verdana", 8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle3.ForeColor = System.Drawing.Color.Navy;
+            dataGridViewCellStyle3.SelectionBackColor = System.Drawing.SystemColors.ScrollBar;
+            dataGridViewCellStyle3.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dgvInformacionPlano.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle3;
             this.dgvInformacionPlano.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgvInformacionPlano.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.dataGridViewTextBoxColumn1,
@@ -422,156 +586,6 @@ namespace PedidoTela.Formularios
             this.dgvInformacionPlano.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvInformacionPlano_CellClick);
             this.dgvInformacionPlano.CellEndEdit += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvInformacionPlano_CellEndEdit);
             this.dgvInformacionPlano.CellFormatting += new System.Windows.Forms.DataGridViewCellFormattingEventHandler(this.dgvInformacionPlano_CellFormatting);
-            // 
-            // dataGridViewTextBoxColumn1
-            // 
-            this.dataGridViewTextBoxColumn1.HeaderText = "Código Color";
-            this.dataGridViewTextBoxColumn1.MinimumWidth = 8;
-            this.dataGridViewTextBoxColumn1.Name = "dataGridViewTextBoxColumn1";
-            // 
-            // descripcionColor
-            // 
-            this.descripcionColor.HeaderText = "Descripción Color";
-            this.descripcionColor.MinimumWidth = 8;
-            this.descripcionColor.Name = "descripcionColor";
-            // 
-            // codH1
-            // 
-            this.codH1.HeaderText = "Cod H1";
-            this.codH1.MinimumWidth = 8;
-            this.codH1.Name = "codH1";
-            // 
-            // descH1
-            // 
-            this.descH1.HeaderText = "DescH1";
-            this.descH1.MinimumWidth = 8;
-            this.descH1.Name = "descH1";
-            // 
-            // codH2
-            // 
-            this.codH2.HeaderText = "Cod H2";
-            this.codH2.MinimumWidth = 8;
-            this.codH2.Name = "codH2";
-            // 
-            // descH2
-            // 
-            this.descH2.HeaderText = "Desc H2";
-            this.descH2.MinimumWidth = 8;
-            this.descH2.Name = "descH2";
-            // 
-            // codH3
-            // 
-            this.codH3.HeaderText = "Cod H3";
-            this.codH3.MinimumWidth = 8;
-            this.codH3.Name = "codH3";
-            // 
-            // descH3
-            // 
-            this.descH3.HeaderText = "Desc H3";
-            this.descH3.MinimumWidth = 8;
-            this.descH3.Name = "descH3";
-            // 
-            // codH4
-            // 
-            this.codH4.HeaderText = "Cod H4";
-            this.codH4.MinimumWidth = 8;
-            this.codH4.Name = "codH4";
-            // 
-            // descH4
-            // 
-            this.descH4.HeaderText = "Desc H4";
-            this.descH4.MinimumWidth = 8;
-            this.descH4.Name = "descH4";
-            // 
-            // codH5
-            // 
-            this.codH5.HeaderText = "Cod H5";
-            this.codH5.MinimumWidth = 8;
-            this.codH5.Name = "codH5";
-            // 
-            // descH5
-            // 
-            this.descH5.HeaderText = "Desc H5";
-            this.descH5.MinimumWidth = 8;
-            this.descH5.Name = "descH5";
-            // 
-            // dataGridViewTextBoxColumn2
-            // 
-            this.dataGridViewTextBoxColumn2.HeaderText = "Tiendas";
-            this.dataGridViewTextBoxColumn2.MinimumWidth = 8;
-            this.dataGridViewTextBoxColumn2.Name = "dataGridViewTextBoxColumn2";
-            // 
-            // dataGridViewTextBoxColumn3
-            // 
-            this.dataGridViewTextBoxColumn3.HeaderText = "Éxito";
-            this.dataGridViewTextBoxColumn3.MinimumWidth = 8;
-            this.dataGridViewTextBoxColumn3.Name = "dataGridViewTextBoxColumn3";
-            // 
-            // dataGridViewTextBoxColumn4
-            // 
-            this.dataGridViewTextBoxColumn4.HeaderText = "Cencosud";
-            this.dataGridViewTextBoxColumn4.MinimumWidth = 8;
-            this.dataGridViewTextBoxColumn4.Name = "dataGridViewTextBoxColumn4";
-            // 
-            // dataGridViewTextBoxColumn5
-            // 
-            this.dataGridViewTextBoxColumn5.HeaderText = "SAO";
-            this.dataGridViewTextBoxColumn5.MinimumWidth = 8;
-            this.dataGridViewTextBoxColumn5.Name = "dataGridViewTextBoxColumn5";
-            // 
-            // dataGridViewTextBoxColumn6
-            // 
-            this.dataGridViewTextBoxColumn6.HeaderText = "Comercio Org.";
-            this.dataGridViewTextBoxColumn6.MinimumWidth = 8;
-            this.dataGridViewTextBoxColumn6.Name = "dataGridViewTextBoxColumn6";
-            // 
-            // dataGridViewTextBoxColumn7
-            // 
-            this.dataGridViewTextBoxColumn7.HeaderText = "Rosado";
-            this.dataGridViewTextBoxColumn7.MinimumWidth = 8;
-            this.dataGridViewTextBoxColumn7.Name = "dataGridViewTextBoxColumn7";
-            // 
-            // dataGridViewTextBoxColumn8
-            // 
-            this.dataGridViewTextBoxColumn8.HeaderText = "Otros";
-            this.dataGridViewTextBoxColumn8.MinimumWidth = 8;
-            this.dataGridViewTextBoxColumn8.Name = "dataGridViewTextBoxColumn8";
-            // 
-            // dataGridViewTextBoxColumn9
-            // 
-            this.dataGridViewTextBoxColumn9.HeaderText = "Total Unidades";
-            this.dataGridViewTextBoxColumn9.MinimumWidth = 8;
-            this.dataGridViewTextBoxColumn9.Name = "dataGridViewTextBoxColumn9";
-            // 
-            // dataGridViewTextBoxColumn10
-            // 
-            this.dataGridViewTextBoxColumn10.HeaderText = "Consumo";
-            this.dataGridViewTextBoxColumn10.MinimumWidth = 8;
-            this.dataGridViewTextBoxColumn10.Name = "dataGridViewTextBoxColumn10";
-            // 
-            // dataGridViewTextBoxColumn11
-            // 
-            this.dataGridViewTextBoxColumn11.HeaderText = "M Calculados";
-            this.dataGridViewTextBoxColumn11.MinimumWidth = 8;
-            this.dataGridViewTextBoxColumn11.Name = "dataGridViewTextBoxColumn11";
-            // 
-            // dataGridViewTextBoxColumn12
-            // 
-            this.dataGridViewTextBoxColumn12.HeaderText = "M Reservados";
-            this.dataGridViewTextBoxColumn12.MinimumWidth = 8;
-            this.dataGridViewTextBoxColumn12.Name = "dataGridViewTextBoxColumn12";
-            // 
-            // dataGridViewTextBoxColumn13
-            // 
-            this.dataGridViewTextBoxColumn13.HeaderText = "M a Solicitar";
-            this.dataGridViewTextBoxColumn13.MinimumWidth = 8;
-            this.dataGridViewTextBoxColumn13.Name = "dataGridViewTextBoxColumn13";
-            // 
-            // dataGridViewTextBoxColumn14
-            // 
-            this.dataGridViewTextBoxColumn14.HeaderText = "Kg Calculados";
-            this.dataGridViewTextBoxColumn14.MinimumWidth = 8;
-            this.dataGridViewTextBoxColumn14.Name = "dataGridViewTextBoxColumn14";
             // 
             // panel1
             // 
@@ -946,170 +960,6 @@ namespace PedidoTela.Formularios
             this.panel2.Size = new System.Drawing.Size(1371, 146);
             this.panel2.TabIndex = 144;
             // 
-            // tabPage1
-            // 
-            this.tabPage1.Controls.Add(this.dgvInformacionUnicolor);
-            this.tabPage1.Location = new System.Drawing.Point(4, 22);
-            this.tabPage1.Name = "tabPage1";
-            this.tabPage1.Size = new System.Drawing.Size(1354, 154);
-            this.tabPage1.TabIndex = 3;
-            this.tabPage1.Text = "Unicolor";
-            this.tabPage1.UseVisualStyleBackColor = true;
-            // 
-            // dgvInformacionUnicolor
-            // 
-            this.dgvInformacionUnicolor.AllowUserToAddRows = false;
-            this.dgvInformacionUnicolor.AllowUserToDeleteRows = false;
-            this.dgvInformacionUnicolor.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
-            this.dgvInformacionUnicolor.AutoSizeRowsMode = System.Windows.Forms.DataGridViewAutoSizeRowsMode.DisplayedCells;
-            this.dgvInformacionUnicolor.BackgroundColor = System.Drawing.SystemColors.Window;
-            this.dgvInformacionUnicolor.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            dataGridViewCellStyle11.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle11.BackColor = System.Drawing.SystemColors.ScrollBar;
-            dataGridViewCellStyle11.Font = new System.Drawing.Font("Verdana", 8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle11.ForeColor = System.Drawing.Color.Navy;
-            dataGridViewCellStyle11.SelectionBackColor = System.Drawing.SystemColors.ScrollBar;
-            dataGridViewCellStyle11.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle11.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dgvInformacionUnicolor.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle11;
-            this.dgvInformacionUnicolor.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dgvInformacionUnicolor.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
-            this.dataGridViewTextBoxColumn15,
-            this.dataGridViewTextBoxColumn16,
-            this.dataGridViewTextBoxColumn19,
-            this.dataGridViewTextBoxColumn20,
-            this.dataGridViewTextBoxColumn21,
-            this.dataGridViewTextBoxColumn22,
-            this.dataGridViewTextBoxColumn23,
-            this.dataGridViewTextBoxColumn24,
-            this.dataGridViewTextBoxColumn25,
-            this.dataGridViewTextBoxColumn26,
-            this.dataGridViewTextBoxColumn27,
-            this.dataGridViewTextBoxColumn28,
-            this.dataGridViewTextBoxColumn29,
-            this.dataGridViewTextBoxColumn30,
-            this.dataGridViewTextBoxColumn31});
-            this.dgvInformacionUnicolor.EnableHeadersVisualStyles = false;
-            this.dgvInformacionUnicolor.GridColor = System.Drawing.SystemColors.ScrollBar;
-            this.dgvInformacionUnicolor.Location = new System.Drawing.Point(3, 2);
-            this.dgvInformacionUnicolor.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.dgvInformacionUnicolor.MultiSelect = false;
-            this.dgvInformacionUnicolor.Name = "dgvInformacionUnicolor";
-            this.dgvInformacionUnicolor.RightToLeft = System.Windows.Forms.RightToLeft.No;
-            this.dgvInformacionUnicolor.RowHeadersVisible = false;
-            this.dgvInformacionUnicolor.RowHeadersWidth = 62;
-            this.dgvInformacionUnicolor.RowTemplate.Height = 28;
-            this.dgvInformacionUnicolor.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
-            this.dgvInformacionUnicolor.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.CellSelect;
-            this.dgvInformacionUnicolor.Size = new System.Drawing.Size(1359, 122);
-            this.dgvInformacionUnicolor.TabIndex = 98;
-            this.dgvInformacionUnicolor.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvInformacionUnicolor_CellClick);
-            this.dgvInformacionUnicolor.CellEndEdit += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvInformacionUnicolor_CellEndEdit);
-            this.dgvInformacionUnicolor.CellFormatting += new System.Windows.Forms.DataGridViewCellFormattingEventHandler(this.dgvInformacionUnicolor_CellFormatting);
-            // 
-            // dataGridViewTextBoxColumn15
-            // 
-            this.dataGridViewTextBoxColumn15.HeaderText = "Código Color";
-            this.dataGridViewTextBoxColumn15.MinimumWidth = 8;
-            this.dataGridViewTextBoxColumn15.Name = "dataGridViewTextBoxColumn15";
-            this.dataGridViewTextBoxColumn15.ReadOnly = true;
-            // 
-            // dataGridViewTextBoxColumn16
-            // 
-            this.dataGridViewTextBoxColumn16.HeaderText = "Descripción Color";
-            this.dataGridViewTextBoxColumn16.MinimumWidth = 8;
-            this.dataGridViewTextBoxColumn16.Name = "dataGridViewTextBoxColumn16";
-            this.dataGridViewTextBoxColumn16.ReadOnly = true;
-            // 
-            // dataGridViewTextBoxColumn19
-            // 
-            this.dataGridViewTextBoxColumn19.HeaderText = "Tiendas";
-            this.dataGridViewTextBoxColumn19.MinimumWidth = 8;
-            this.dataGridViewTextBoxColumn19.Name = "dataGridViewTextBoxColumn19";
-            this.dataGridViewTextBoxColumn19.ReadOnly = true;
-            // 
-            // dataGridViewTextBoxColumn20
-            // 
-            this.dataGridViewTextBoxColumn20.HeaderText = "Éxito";
-            this.dataGridViewTextBoxColumn20.MinimumWidth = 8;
-            this.dataGridViewTextBoxColumn20.Name = "dataGridViewTextBoxColumn20";
-            this.dataGridViewTextBoxColumn20.ReadOnly = true;
-            // 
-            // dataGridViewTextBoxColumn21
-            // 
-            this.dataGridViewTextBoxColumn21.HeaderText = "Cencosud";
-            this.dataGridViewTextBoxColumn21.MinimumWidth = 8;
-            this.dataGridViewTextBoxColumn21.Name = "dataGridViewTextBoxColumn21";
-            this.dataGridViewTextBoxColumn21.ReadOnly = true;
-            // 
-            // dataGridViewTextBoxColumn22
-            // 
-            this.dataGridViewTextBoxColumn22.HeaderText = "SAO";
-            this.dataGridViewTextBoxColumn22.MinimumWidth = 8;
-            this.dataGridViewTextBoxColumn22.Name = "dataGridViewTextBoxColumn22";
-            this.dataGridViewTextBoxColumn22.ReadOnly = true;
-            // 
-            // dataGridViewTextBoxColumn23
-            // 
-            this.dataGridViewTextBoxColumn23.HeaderText = "Comercio Org.";
-            this.dataGridViewTextBoxColumn23.MinimumWidth = 8;
-            this.dataGridViewTextBoxColumn23.Name = "dataGridViewTextBoxColumn23";
-            this.dataGridViewTextBoxColumn23.ReadOnly = true;
-            // 
-            // dataGridViewTextBoxColumn24
-            // 
-            this.dataGridViewTextBoxColumn24.HeaderText = "Rosado";
-            this.dataGridViewTextBoxColumn24.MinimumWidth = 8;
-            this.dataGridViewTextBoxColumn24.Name = "dataGridViewTextBoxColumn24";
-            this.dataGridViewTextBoxColumn24.ReadOnly = true;
-            // 
-            // dataGridViewTextBoxColumn25
-            // 
-            this.dataGridViewTextBoxColumn25.HeaderText = "Otros";
-            this.dataGridViewTextBoxColumn25.MinimumWidth = 8;
-            this.dataGridViewTextBoxColumn25.Name = "dataGridViewTextBoxColumn25";
-            this.dataGridViewTextBoxColumn25.ReadOnly = true;
-            // 
-            // dataGridViewTextBoxColumn26
-            // 
-            this.dataGridViewTextBoxColumn26.HeaderText = "Total Unidades";
-            this.dataGridViewTextBoxColumn26.MinimumWidth = 8;
-            this.dataGridViewTextBoxColumn26.Name = "dataGridViewTextBoxColumn26";
-            this.dataGridViewTextBoxColumn26.ReadOnly = true;
-            // 
-            // dataGridViewTextBoxColumn27
-            // 
-            this.dataGridViewTextBoxColumn27.HeaderText = "Consumo";
-            this.dataGridViewTextBoxColumn27.MinimumWidth = 8;
-            this.dataGridViewTextBoxColumn27.Name = "dataGridViewTextBoxColumn27";
-            // 
-            // dataGridViewTextBoxColumn28
-            // 
-            this.dataGridViewTextBoxColumn28.HeaderText = "M Calculados";
-            this.dataGridViewTextBoxColumn28.MinimumWidth = 8;
-            this.dataGridViewTextBoxColumn28.Name = "dataGridViewTextBoxColumn28";
-            this.dataGridViewTextBoxColumn28.ReadOnly = true;
-            // 
-            // dataGridViewTextBoxColumn29
-            // 
-            this.dataGridViewTextBoxColumn29.HeaderText = "M Reservados";
-            this.dataGridViewTextBoxColumn29.MinimumWidth = 8;
-            this.dataGridViewTextBoxColumn29.Name = "dataGridViewTextBoxColumn29";
-            // 
-            // dataGridViewTextBoxColumn30
-            // 
-            this.dataGridViewTextBoxColumn30.HeaderText = "M a Solicitar";
-            this.dataGridViewTextBoxColumn30.MinimumWidth = 8;
-            this.dataGridViewTextBoxColumn30.Name = "dataGridViewTextBoxColumn30";
-            this.dataGridViewTextBoxColumn30.ReadOnly = true;
-            // 
-            // dataGridViewTextBoxColumn31
-            // 
-            this.dataGridViewTextBoxColumn31.HeaderText = "KG Calculados";
-            this.dataGridViewTextBoxColumn31.MinimumWidth = 8;
-            this.dataGridViewTextBoxColumn31.Name = "dataGridViewTextBoxColumn31";
-            this.dataGridViewTextBoxColumn31.ReadOnly = true;
-            // 
             // dgvConsolidar
             // 
             this.dgvConsolidar.AllowUserToAddRows = false;
@@ -1118,14 +968,14 @@ namespace PedidoTela.Formularios
             this.dgvConsolidar.AutoSizeRowsMode = System.Windows.Forms.DataGridViewAutoSizeRowsMode.DisplayedCells;
             this.dgvConsolidar.BackgroundColor = System.Drawing.SystemColors.Window;
             this.dgvConsolidar.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            dataGridViewCellStyle12.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle12.BackColor = System.Drawing.SystemColors.ScrollBar;
-            dataGridViewCellStyle12.Font = new System.Drawing.Font("Verdana", 8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle12.ForeColor = System.Drawing.Color.Navy;
-            dataGridViewCellStyle12.SelectionBackColor = System.Drawing.SystemColors.ScrollBar;
-            dataGridViewCellStyle12.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle12.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dgvConsolidar.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle12;
+            dataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle4.BackColor = System.Drawing.SystemColors.ScrollBar;
+            dataGridViewCellStyle4.Font = new System.Drawing.Font("Verdana", 8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle4.ForeColor = System.Drawing.Color.Navy;
+            dataGridViewCellStyle4.SelectionBackColor = System.Drawing.SystemColors.ScrollBar;
+            dataGridViewCellStyle4.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle4.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dgvConsolidar.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle4;
             this.dgvConsolidar.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgvConsolidar.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.dataGridViewTextBoxColumn17,
@@ -1259,6 +1109,184 @@ namespace PedidoTela.Formularios
             this.undMedidaTela.Resizable = System.Windows.Forms.DataGridViewTriState.True;
             this.undMedidaTela.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic;
             // 
+            // dataGridViewTextBoxColumn1
+            // 
+            this.dataGridViewTextBoxColumn1.HeaderText = "Código Color";
+            this.dataGridViewTextBoxColumn1.MinimumWidth = 8;
+            this.dataGridViewTextBoxColumn1.Name = "dataGridViewTextBoxColumn1";
+            this.dataGridViewTextBoxColumn1.Width = 98;
+            // 
+            // descripcionColor
+            // 
+            this.descripcionColor.HeaderText = "Descripción Color";
+            this.descripcionColor.MinimumWidth = 8;
+            this.descripcionColor.Name = "descripcionColor";
+            this.descripcionColor.Width = 122;
+            // 
+            // codH1
+            // 
+            this.codH1.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.ColumnHeader;
+            this.codH1.HeaderText = "Cod H1";
+            this.codH1.MinimumWidth = 8;
+            this.codH1.Name = "codH1";
+            this.codH1.Width = 55;
+            // 
+            // descH1
+            // 
+            this.descH1.HeaderText = "Desc H1";
+            this.descH1.MinimumWidth = 8;
+            this.descH1.Name = "descH1";
+            this.descH1.Width = 60;
+            // 
+            // codH2
+            // 
+            this.codH2.HeaderText = "Cod H2";
+            this.codH2.MinimumWidth = 8;
+            this.codH2.Name = "codH2";
+            this.codH2.Width = 55;
+            // 
+            // descH2
+            // 
+            this.descH2.HeaderText = "Desc H2";
+            this.descH2.MinimumWidth = 8;
+            this.descH2.Name = "descH2";
+            this.descH2.Width = 60;
+            // 
+            // codH3
+            // 
+            this.codH3.HeaderText = "Cod H3";
+            this.codH3.MinimumWidth = 8;
+            this.codH3.Name = "codH3";
+            this.codH3.Width = 55;
+            // 
+            // descH3
+            // 
+            this.descH3.HeaderText = "Desc H3";
+            this.descH3.MinimumWidth = 8;
+            this.descH3.Name = "descH3";
+            this.descH3.Width = 60;
+            // 
+            // codH4
+            // 
+            this.codH4.HeaderText = "Cod H4";
+            this.codH4.MinimumWidth = 8;
+            this.codH4.Name = "codH4";
+            this.codH4.Width = 55;
+            // 
+            // descH4
+            // 
+            this.descH4.HeaderText = "Desc H4";
+            this.descH4.MinimumWidth = 8;
+            this.descH4.Name = "descH4";
+            this.descH4.Width = 60;
+            // 
+            // codH5
+            // 
+            this.codH5.HeaderText = "Cod H5";
+            this.codH5.MinimumWidth = 8;
+            this.codH5.Name = "codH5";
+            this.codH5.Width = 55;
+            // 
+            // descH5
+            // 
+            this.descH5.HeaderText = "Desc H5";
+            this.descH5.MinimumWidth = 8;
+            this.descH5.Name = "descH5";
+            this.descH5.Width = 60;
+            // 
+            // dataGridViewTextBoxColumn2
+            // 
+            this.dataGridViewTextBoxColumn2.HeaderText = "Tiendas";
+            this.dataGridViewTextBoxColumn2.MinimumWidth = 8;
+            this.dataGridViewTextBoxColumn2.Name = "dataGridViewTextBoxColumn2";
+            this.dataGridViewTextBoxColumn2.Width = 76;
+            // 
+            // dataGridViewTextBoxColumn3
+            // 
+            this.dataGridViewTextBoxColumn3.HeaderText = "Éxito";
+            this.dataGridViewTextBoxColumn3.MinimumWidth = 8;
+            this.dataGridViewTextBoxColumn3.Name = "dataGridViewTextBoxColumn3";
+            this.dataGridViewTextBoxColumn3.Width = 60;
+            // 
+            // dataGridViewTextBoxColumn4
+            // 
+            this.dataGridViewTextBoxColumn4.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.DisplayedCells;
+            this.dataGridViewTextBoxColumn4.HeaderText = "Cencosud";
+            this.dataGridViewTextBoxColumn4.MinimumWidth = 8;
+            this.dataGridViewTextBoxColumn4.Name = "dataGridViewTextBoxColumn4";
+            this.dataGridViewTextBoxColumn4.Width = 88;
+            // 
+            // dataGridViewTextBoxColumn5
+            // 
+            this.dataGridViewTextBoxColumn5.HeaderText = "SAO";
+            this.dataGridViewTextBoxColumn5.MinimumWidth = 8;
+            this.dataGridViewTextBoxColumn5.Name = "dataGridViewTextBoxColumn5";
+            this.dataGridViewTextBoxColumn5.Width = 57;
+            // 
+            // dataGridViewTextBoxColumn6
+            // 
+            this.dataGridViewTextBoxColumn6.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.None;
+            this.dataGridViewTextBoxColumn6.HeaderText = "Comercio Org.";
+            this.dataGridViewTextBoxColumn6.MinimumWidth = 8;
+            this.dataGridViewTextBoxColumn6.Name = "dataGridViewTextBoxColumn6";
+            this.dataGridViewTextBoxColumn6.Width = 60;
+            // 
+            // dataGridViewTextBoxColumn7
+            // 
+            this.dataGridViewTextBoxColumn7.HeaderText = "Rosado";
+            this.dataGridViewTextBoxColumn7.MinimumWidth = 8;
+            this.dataGridViewTextBoxColumn7.Name = "dataGridViewTextBoxColumn7";
+            this.dataGridViewTextBoxColumn7.Width = 74;
+            // 
+            // dataGridViewTextBoxColumn8
+            // 
+            this.dataGridViewTextBoxColumn8.HeaderText = "Otros";
+            this.dataGridViewTextBoxColumn8.MinimumWidth = 8;
+            this.dataGridViewTextBoxColumn8.Name = "dataGridViewTextBoxColumn8";
+            this.dataGridViewTextBoxColumn8.Width = 63;
+            // 
+            // dataGridViewTextBoxColumn9
+            // 
+            this.dataGridViewTextBoxColumn9.HeaderText = "Total Unidades";
+            this.dataGridViewTextBoxColumn9.MinimumWidth = 8;
+            this.dataGridViewTextBoxColumn9.Name = "dataGridViewTextBoxColumn9";
+            this.dataGridViewTextBoxColumn9.Width = 105;
+            // 
+            // dataGridViewTextBoxColumn10
+            // 
+            this.dataGridViewTextBoxColumn10.HeaderText = "Consumo";
+            this.dataGridViewTextBoxColumn10.MinimumWidth = 8;
+            this.dataGridViewTextBoxColumn10.Name = "dataGridViewTextBoxColumn10";
+            this.dataGridViewTextBoxColumn10.Width = 86;
+            // 
+            // dataGridViewTextBoxColumn11
+            // 
+            this.dataGridViewTextBoxColumn11.HeaderText = "M Calculados";
+            this.dataGridViewTextBoxColumn11.MinimumWidth = 8;
+            this.dataGridViewTextBoxColumn11.Name = "dataGridViewTextBoxColumn11";
+            this.dataGridViewTextBoxColumn11.Width = 98;
+            // 
+            // dataGridViewTextBoxColumn12
+            // 
+            this.dataGridViewTextBoxColumn12.HeaderText = "M Reservados";
+            this.dataGridViewTextBoxColumn12.MinimumWidth = 8;
+            this.dataGridViewTextBoxColumn12.Name = "dataGridViewTextBoxColumn12";
+            this.dataGridViewTextBoxColumn12.Width = 103;
+            // 
+            // dataGridViewTextBoxColumn13
+            // 
+            this.dataGridViewTextBoxColumn13.HeaderText = "M a Solicitar";
+            this.dataGridViewTextBoxColumn13.MinimumWidth = 8;
+            this.dataGridViewTextBoxColumn13.Name = "dataGridViewTextBoxColumn13";
+            this.dataGridViewTextBoxColumn13.Width = 94;
+            // 
+            // dataGridViewTextBoxColumn14
+            // 
+            this.dataGridViewTextBoxColumn14.HeaderText = "Kg Calculados";
+            this.dataGridViewTextBoxColumn14.MinimumWidth = 8;
+            this.dataGridViewTextBoxColumn14.Name = "dataGridViewTextBoxColumn14";
+            this.dataGridViewTextBoxColumn14.Width = 104;
+            // 
             // frmPedidoCoordinado3en1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 13F);
@@ -1277,6 +1305,8 @@ namespace PedidoTela.Formularios
             this.Text = "Tipo Pedido Seleccionado a Coordinar";
             this.Load += new System.EventHandler(this.frmTipoPedSelecCoordinar_Load);
             this.tabControl1.ResumeLayout(false);
+            this.tabPage1.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.dgvInformacionUnicolor)).EndInit();
             this.tabPage2.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.dgvInformacionEstampado)).EndInit();
             this.tabPage3.ResumeLayout(false);
@@ -1287,8 +1317,6 @@ namespace PedidoTela.Formularios
             this.panel9.ResumeLayout(false);
             this.panel9.PerformLayout();
             this.panel2.ResumeLayout(false);
-            this.tabPage1.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.dgvInformacionUnicolor)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.dgvConsolidar)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
@@ -1353,31 +1381,6 @@ namespace PedidoTela.Formularios
         private System.Windows.Forms.DataGridView dgvInformacionPlano;
         private System.Windows.Forms.Label lbInformacion;
         private System.Windows.Forms.Panel panel2;
-        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn1;
-        private System.Windows.Forms.DataGridViewTextBoxColumn descripcionColor;
-        private System.Windows.Forms.DataGridViewTextBoxColumn codH1;
-        private System.Windows.Forms.DataGridViewTextBoxColumn descH1;
-        private System.Windows.Forms.DataGridViewTextBoxColumn codH2;
-        private System.Windows.Forms.DataGridViewTextBoxColumn descH2;
-        private System.Windows.Forms.DataGridViewTextBoxColumn codH3;
-        private System.Windows.Forms.DataGridViewTextBoxColumn descH3;
-        private System.Windows.Forms.DataGridViewTextBoxColumn codH4;
-        private System.Windows.Forms.DataGridViewTextBoxColumn descH4;
-        private System.Windows.Forms.DataGridViewTextBoxColumn codH5;
-        private System.Windows.Forms.DataGridViewTextBoxColumn descH5;
-        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn2;
-        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn3;
-        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn4;
-        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn5;
-        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn6;
-        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn7;
-        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn8;
-        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn9;
-        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn10;
-        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn11;
-        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn12;
-        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn13;
-        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn14;
         private System.Windows.Forms.TabPage tabPage1;
         private System.Windows.Forms.DataGridView dgvInformacionUnicolor;
         private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn15;
@@ -1410,5 +1413,30 @@ namespace PedidoTela.Formularios
         private System.Windows.Forms.DataGridViewTextBoxColumn kgCalculados;
         private System.Windows.Forms.DataGridViewTextBoxColumn totalaPedir;
         private System.Windows.Forms.DataGridViewComboBoxColumn undMedidaTela;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn1;
+        private System.Windows.Forms.DataGridViewTextBoxColumn descripcionColor;
+        private System.Windows.Forms.DataGridViewTextBoxColumn codH1;
+        private System.Windows.Forms.DataGridViewTextBoxColumn descH1;
+        private System.Windows.Forms.DataGridViewTextBoxColumn codH2;
+        private System.Windows.Forms.DataGridViewTextBoxColumn descH2;
+        private System.Windows.Forms.DataGridViewTextBoxColumn codH3;
+        private System.Windows.Forms.DataGridViewTextBoxColumn descH3;
+        private System.Windows.Forms.DataGridViewTextBoxColumn codH4;
+        private System.Windows.Forms.DataGridViewTextBoxColumn descH4;
+        private System.Windows.Forms.DataGridViewTextBoxColumn codH5;
+        private System.Windows.Forms.DataGridViewTextBoxColumn descH5;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn2;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn3;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn4;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn5;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn6;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn7;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn8;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn9;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn10;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn11;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn12;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn13;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn14;
     }
 }

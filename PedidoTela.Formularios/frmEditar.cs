@@ -85,7 +85,7 @@ namespace PedidoTela.Formularios
                         }
                         else if (tipoPedido == "COORDINADO")
                         {
-                            frmMontarCoordinado = new frmPedidoaMontarCoordinado(control, detalleSeleccionado);
+                            frmMontarCoordinado = new frmPedidoaMontarCoordinado(control, detalleSeleccionado, detalleSeleccionado[0].IdSolTela);
                             frmMontarCoordinado.ShowDialog();
                         }
                         else if (tipoPedido == "AGENCIAS EXTERNOS")
@@ -151,7 +151,7 @@ namespace PedidoTela.Formularios
                         }
                         else if (tipoPedido == "COORDINADO")
                         {
-                            frmMontarCoordinado = new frmPedidoaMontarCoordinado(control, montajeTelaDetalles);
+                            frmMontarCoordinado = new frmPedidoaMontarCoordinado(control, montajeTelaDetalles, montajeTelaDetalles[0].IdSolTela);
                             frmMontarCoordinado.ShowDialog();
                         }
                         else if (tipoPedido == "AGENCIAS EXTERNOS")

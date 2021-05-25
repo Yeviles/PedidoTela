@@ -351,6 +351,9 @@
     <EmbeddedResource Include="frmImprimirPedidoAgencias.resx">
       <DependentUpon>frmImprimirPedidoAgencias.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="frmImprimirPedidoCoordinado.resx">
+      <DependentUpon>frmImprimirPedidoCoordinado.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="frmImprimirPedidoCuellos.resx">
       <DependentUpon>frmImprimirPedidoCuellos.cs</DependentUpon>
     </EmbeddedResource>
@@ -424,6 +427,7 @@
     <EmbeddedResource Include="PDFSolicitudEstampado.rdlc" />
     <EmbeddedResource Include="PDFImprimirSIP.rdlc" />
     <EmbeddedResource Include="PDFPedidoAgencias.rdlc" />
+    <EmbeddedResource Include="PDFPedidoCoordinado.rdlc" />
     <EmbeddedResource Include="PDFPedidoCuellos.rdlc" />
     <EmbeddedResource Include="PDFPedidoEstampado.rdlc" />
     <EmbeddedResource Include="PDFPedidoPlano.rdlc" />

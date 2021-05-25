@@ -29,46 +29,23 @@ namespace PedidoTela.Formularios
         private List<string> listaEsayosRef = new List<string>();
         private List<Objeto> colores = new List<Objeto>();
         private int idSolicitud, id, consecutivo;
+        private bool existia = false;
         #endregion
 
-        public frmPedidoCoordinado3en1(Controlador control, List<MontajeTelaDetalle> solicitudes, string principal, string coordinado1, string coordinado2)
+        public frmPedidoCoordinado3en1(Controlador control, List<MontajeTelaDetalle> solicitudes, int idSolicitud, string principal, string coordinado1, string coordinado2)
         {
             this.control = control;
             this.solicitudes = solicitudes;
-            cargarListas();
+            this.idSolicitud = idSolicitud;
             InitializeComponent();
-
-            if (listaUnicolor.Count == 0)
-            {
-                ((Control)this.tabPage1).Enabled = false;
-            }
-            else {
-                inicioUnicolor();
-            }
-
-            if (listaEstampado.Count == 0)
-            {
-                ((Control)this.tabPage2).Enabled = false;
-            }
-            else {
-                inicioEstampado();
-            }
-
-            if (listaPlano.Count == 0)
-            {
-                ((Control)this.tabPage3).Enabled = false;
-            }
-            else {
-                inicioPlano();
-            }
-            calcularTotalesPorColores();
+            cargarCombobox(cbxTipoMarcacion, control.getTipoMarcacion());
+            cargar();
         }
 
         private void frmTipoPedSelecCoordinar_Load(object sender, EventArgs e)
         {
             SkinManager.Theme = MaterialSkin.MaterialSkinManager.Themes.LIGHT;
             SkinManager.ColorScheme = new ColorScheme(Primary.Blue900, Primary.Grey500, Primary.Grey200, Accent.Green100, TextShade.WHITE);
-            cargarCombobox(cbxTipoMarcacion, control.getTipoMarcacion());
             cargarSolicitudes(solicitudes);
         }
 
@@ -122,6 +99,10 @@ namespace PedidoTela.Formularios
                             guardarTomarDelPedido();
                             guardarInformacion();
                             guardarTotal();
+                            MessageBox.Show("Pedido guardado con éxito", "Información", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                            if (!existia) {
+                                agregarConsolidado();
+                            }
                         }                    
                     }
                 }
@@ -176,6 +157,7 @@ namespace PedidoTela.Formularios
                 MessageBox.Show("Por favor guarde el consolidado.", "Advertencia", MessageBoxButtons.OK, MessageBoxIcon.Warning);
             }
         }
+
         private void btnAgregarPedido_Click(object sender, EventArgs e)
         {
             frmBuscarPedido buscar = new frmBuscarPedido(control, solicitudes[0].IdProgramador);
@@ -189,6 +171,7 @@ namespace PedidoTela.Formularios
                 dgvPedidos.Rows[dgvPedidos.Rows.Count - 1].Cells[3].Value = obj.Disponible;
             }
         }
+
         private void btnSalir_Click(object sender, EventArgs e)
         {
             this.Close();
@@ -489,6 +472,8 @@ namespace PedidoTela.Formularios
                     info.IdPedidoAMontar = id;
                     info.CodigoColor = (row.Cells[0].Value.ToString());
                     info.DescripcionColor = (row.Cells[1].Value != null && row.Cells[1].Value.ToString() != "") ? row.Cells[1].Value.ToString() : "";
+                    info.Fondo = "";
+                    info.DescripcionFondo = "";
                     info.CodigoH1 = "";
                     info.DescripcionH1 = "";
                     info.CodigoH2 = "";
@@ -1175,6 +1160,8 @@ namespace PedidoTela.Formularios
                     info.IdPedidoAMontar = id;
                     info.CodigoColor = (row.Cells[0].Value.ToString());
                     info.DescripcionColor = (row.Cells[1].Value != null && row.Cells[1].Value.ToString() != "") ? row.Cells[1].Value.ToString() : "";
+                    info.Fondo = "";
+                    info.DescripcionFondo = "";
                     info.CodigoH1 = (row.Cells[2].Value != null && row.Cells[2].Value.ToString() != "") ? row.Cells[2].Value.ToString() : "";
                     info.DescripcionH1 = (row.Cells[3].Value != null && row.Cells[3].Value.ToString() != "") ? row.Cells[3].Value.ToString() : "";
                     info.CodigoH2 = (row.Cells[4].Value != null && row.Cells[4].Value.ToString() != "") ? row.Cells[4].Value.ToString() : "";
@@ -1239,6 +1226,7 @@ namespace PedidoTela.Formularios
             id = pedido.Id;
             if (id != 0)
             {
+                existia = true;
                 txtNomTela.Text = pedido.Tela.ToString();
                 txtDisenador.Text = pedido.Disenador.ToString();
                 txtEnsayoRef.Text = pedido.EnsayoReferencia.ToString();
@@ -1264,8 +1252,22 @@ namespace PedidoTela.Formularios
                 {
                     foreach (PedidoMontarInformacion obj in listaInfoConsolidar)
                     {
-                        dgvInformacionPlano.Rows.Add(obj.CodigoColor, obj.DescripcionColor, obj.CodigoH1, obj.DescripcionH1, obj.CodigoH2, obj.DescripcionH2, obj.CodigoH3, obj.DescripcionH3, obj.CodigoH4, obj.DescripcionH4, obj.CodigoH5, obj.DescripcionH5, obj.Tiendas, obj.Exito,
+                        if (obj.Fondo.Trim() == "" && obj.CodigoH1.Trim() == "")
+                        {
+                            dgvInformacionUnicolor.Rows.Add(obj.CodigoColor, obj.DescripcionColor, obj.Tiendas, obj.Exito,
                             obj.Cencosud, obj.Sao, obj.ComercioOrg, obj.Rosado, obj.Otros, obj.TotalUnidades, obj.Consumo, obj.MCalculados, obj.MReservados, obj.MSolicitar, obj.KgCalculados);
+                        }
+                        else if (obj.Fondo.Trim() != "")
+                        {
+                            dgvInformacionEstampado.Rows.Add(obj.CodigoColor, obj.DescripcionColor, obj.Fondo, obj.DescripcionFondo, obj.Tiendas, obj.Exito,
+                            obj.Cencosud, obj.Sao, obj.ComercioOrg, obj.Rosado, obj.Otros, obj.TotalUnidades, obj.Consumo, obj.MCalculados, obj.MReservados, obj.MSolicitar, obj.KgCalculados);
+                        }
+                        else if (obj.Fondo.Trim() == "" && obj.CodigoH1.Trim() != "")
+                        {
+                            dgvInformacionPlano.Rows.Add(obj.CodigoColor, obj.DescripcionColor, obj.CodigoH1, obj.DescripcionH1, obj.CodigoH2, obj.DescripcionH2, obj.CodigoH3, obj.DescripcionH3, obj.CodigoH4, obj.DescripcionH4, obj.CodigoH5, obj.DescripcionH5, obj.Tiendas, obj.Exito,
+                            obj.Cencosud, obj.Sao, obj.ComercioOrg, obj.Rosado, obj.Otros, obj.TotalUnidades, obj.Consumo, obj.MCalculados, obj.MReservados, obj.MSolicitar, obj.KgCalculados);
+                        }
+
                     }
                 }
 
@@ -1275,10 +1277,41 @@ namespace PedidoTela.Formularios
                 {
                     foreach (PedidoMontarTotal obj in listaTotalConsolidado)
                     {
-                        dgvConsolidar.Rows.Add(obj.CodidoColor, obj.DescripcionColor, obj.CodigoH1, obj.DescripcionH1, obj.CodigoH2, obj.DescripcionH2, obj.CodigoH3, obj.DescripcionH3, obj.CodigoH4, obj.DescripcionH4, obj.CodigoH5, obj.DescripcionH5, obj.Tiendas, obj.Exito,
-                            obj.Cencosud, obj.Sao, obj.ComercioOrg, obj.Rosado, obj.Otros, obj.TotalUnidades, obj.MCalculados, obj.KgCalculados, obj.TotalPedir, obj.UnidadMedida);
+                        dgvConsolidar.Rows.Add(obj.CodidoColor, obj.DescripcionColor, obj.Tiendas, obj.Exito,
+                            obj.Cencosud, obj.Sao, obj.ComercioOrg, obj.Rosado, obj.Otros, obj.TotalUnidades,
+                            obj.MCalculados, obj.KgCalculados, obj.TotalPedir, obj.UnidadMedida);
                     }
                 }
+            }
+            else {
+                cargarListas();
+                if (listaUnicolor.Count == 0)
+                {
+                    ((Control)this.tabPage1).Enabled = false;
+                }
+                else
+                {
+                    inicioUnicolor();
+                }
+
+                if (listaEstampado.Count == 0)
+                {
+                    ((Control)this.tabPage2).Enabled = false;
+                }
+                else
+                {
+                    inicioEstampado();
+                }
+
+                if (listaPlano.Count == 0)
+                {
+                    ((Control)this.tabPage3).Enabled = false;
+                }
+                else
+                {
+                    inicioPlano();
+                }
+                calcularTotalesPorColores();
             }
         }
 
@@ -1426,7 +1459,7 @@ namespace PedidoTela.Formularios
         private bool validarGeneral()
         {
             bool bandera = false;
-            if (cbxClase.SelectedText.ToLower() == "no tejer" && dgvPedidos.RowCount == 0)
+            if (cbxClase.Text.ToLower() == "no tejer" && dgvPedidos.RowCount == 0)
             {
                 MessageBox.Show("Por favor seleccione al menos un pedido a montar", "Advertencia", MessageBoxButtons.OK, MessageBoxIcon.Warning);
             }
@@ -1571,6 +1604,18 @@ namespace PedidoTela.Formularios
                 total.UnidadMedida = row.Cells[13].Value.ToString();
                 control.addPedidoCoordinadoTotal(total);
             }
+        }
+
+        /* <summary> Agrega el consolidado a lista de solicitudes seleccionadas en la vista frmSolicitudListaTelas, 
+         * al momento de dar clic en Guardar.</summary>*/
+        private void agregarConsolidado()
+        {
+            int maxConsolidado = control.consultarMaxConsolidado();
+            for (int i = 0; i < listaIdSolicitudes.Count; i++)
+            {
+                control.agregarConsolidado(listaIdSolicitudes[i], maxConsolidado + 1, "COORDINADO");
+            }
+
         }
 
         #endregion
