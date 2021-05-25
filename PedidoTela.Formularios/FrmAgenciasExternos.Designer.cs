@@ -65,6 +65,8 @@ namespace PedidoTela.Formularios
             this.txtOrdenCompra = new System.Windows.Forms.TextBox();
             this.dtpFechaLlegada = new System.Windows.Forms.DateTimePicker();
             this.pnlEncabezado = new System.Windows.Forms.Panel();
+            this.cbxTipoMarcacion = new System.Windows.Forms.ComboBox();
+            this.lbTipomarcacion = new System.Windows.Forms.Label();
             this.txtDesPrenda = new System.Windows.Forms.RichTextBox();
             this.txtEnsayoRef = new System.Windows.Forms.RichTextBox();
             this.cbxComposicion = new System.Windows.Forms.ComboBox();
@@ -106,8 +108,6 @@ namespace PedidoTela.Formularios
             this.btnImprimirSIP = new System.Windows.Forms.Button();
             this.btnGrabar = new System.Windows.Forms.Button();
             this.btnSalir = new System.Windows.Forms.Button();
-            this.cbxTipoMarcacion = new System.Windows.Forms.ComboBox();
-            this.lbTipomarcacion = new System.Windows.Forms.Label();
             this.pnlEncabezado.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvInfoConsolidar)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dgvTotalConsolidado)).BeginInit();
@@ -464,6 +464,23 @@ namespace PedidoTela.Formularios
             this.pnlEncabezado.Size = new System.Drawing.Size(1358, 254);
             this.pnlEncabezado.TabIndex = 86;
             // 
+            // cbxTipoMarcacion
+            // 
+            this.cbxTipoMarcacion.FormattingEnabled = true;
+            this.cbxTipoMarcacion.Location = new System.Drawing.Point(1111, 195);
+            this.cbxTipoMarcacion.Name = "cbxTipoMarcacion";
+            this.cbxTipoMarcacion.Size = new System.Drawing.Size(215, 24);
+            this.cbxTipoMarcacion.TabIndex = 143;
+            // 
+            // lbTipomarcacion
+            // 
+            this.lbTipomarcacion.AutoSize = true;
+            this.lbTipomarcacion.Location = new System.Drawing.Point(941, 202);
+            this.lbTipomarcacion.Name = "lbTipomarcacion";
+            this.lbTipomarcacion.Size = new System.Drawing.Size(141, 17);
+            this.lbTipomarcacion.TabIndex = 144;
+            this.lbTipomarcacion.Text = "Tipo de marcación:";
+            // 
             // txtDesPrenda
             // 
             this.txtDesPrenda.Location = new System.Drawing.Point(655, 159);
@@ -540,6 +557,7 @@ namespace PedidoTela.Formularios
             this.dgvInfoConsolidar.MultiSelect = false;
             this.dgvInfoConsolidar.Name = "dgvInfoConsolidar";
             this.dgvInfoConsolidar.RightToLeft = System.Windows.Forms.RightToLeft.No;
+            this.dgvInfoConsolidar.RowHeadersVisible = false;
             this.dgvInfoConsolidar.RowHeadersWidth = 62;
             this.dgvInfoConsolidar.RowTemplate.Height = 28;
             this.dgvInfoConsolidar.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
@@ -678,6 +696,7 @@ namespace PedidoTela.Formularios
             this.dgvTotalConsolidado.MultiSelect = false;
             this.dgvTotalConsolidado.Name = "dgvTotalConsolidado";
             this.dgvTotalConsolidado.RightToLeft = System.Windows.Forms.RightToLeft.No;
+            this.dgvTotalConsolidado.RowHeadersVisible = false;
             this.dgvTotalConsolidado.RowHeadersWidth = 62;
             this.dgvTotalConsolidado.RowTemplate.Height = 28;
             this.dgvTotalConsolidado.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
@@ -861,23 +880,6 @@ namespace PedidoTela.Formularios
             this.btnSalir.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
             this.btnSalir.UseVisualStyleBackColor = true;
             this.btnSalir.Click += new System.EventHandler(this.btnSalir_Click);
-            // 
-            // cbxTipoMarcacion
-            // 
-            this.cbxTipoMarcacion.FormattingEnabled = true;
-            this.cbxTipoMarcacion.Location = new System.Drawing.Point(1111, 195);
-            this.cbxTipoMarcacion.Name = "cbxTipoMarcacion";
-            this.cbxTipoMarcacion.Size = new System.Drawing.Size(215, 24);
-            this.cbxTipoMarcacion.TabIndex = 143;
-            // 
-            // lbTipomarcacion
-            // 
-            this.lbTipomarcacion.AutoSize = true;
-            this.lbTipomarcacion.Location = new System.Drawing.Point(941, 202);
-            this.lbTipomarcacion.Name = "lbTipomarcacion";
-            this.lbTipomarcacion.Size = new System.Drawing.Size(141, 17);
-            this.lbTipomarcacion.TabIndex = 144;
-            this.lbTipomarcacion.Text = "Tipo de marcación:";
             // 
             // frmAgenciasExternos
             // 

@@ -354,7 +354,7 @@ namespace PedidoTela.Formularios
                                                     if (!validarUnidadTotal())
                                                     {
                                                         PedidoAMontar pedido = new PedidoAMontar();
-                                                        pedido.Id = id;
+                                                        //pedido.Id = id;
                                                         pedido.Tela = txtNomTela.Text.Trim();
                                                         pedido.Disenador = txtDisenador.Text.Trim();
                                                         pedido.Rendimiento = decimal.Parse(txtRendimiento.Text.Trim());
@@ -373,17 +373,17 @@ namespace PedidoTela.Formularios
                                                         else
                                                         {
                                                             control.addPedidoEstampado(pedido);
-                                                            pedido.Id = control.getIdPedidoEstampado(idSolicitud);
                                                         }
-                                                        if (pedido.Id != 0)
+                                                            id = control.getIdPedidoEstampado(idSolicitud);
+                                                        if (id != 0)
                                                         {
-                                                            control.eliminarPedidoEstampadoTotal(pedido.Id);
-                                                            control.eliminarPedidoEstampadoInformacion(pedido.Id);
-                                                            control.eliminarPedido(pedido.Id);
+                                                            control.eliminarPedidoEstampadoTotal(id);
+                                                            control.eliminarPedidoEstampadoInformacion(id);
+                                                            control.eliminarPedido(id);
 
-                                                            guardarPedido(pedido.Id);
-                                                            guardarInformacion(pedido.Id);
-                                                            guardarTotal(pedido.Id);
+                                                            guardarPedido(id);
+                                                            guardarInformacion(id);
+                                                            guardarTotal(id);
                                                         }
                                                         //Agrega el Consolidado.
                                                         AgregarConsolidado();
@@ -732,7 +732,7 @@ namespace PedidoTela.Formularios
                     idSolicitud = solicitud.IdSolTela;
                 }
             }
-            
+            //PedidoAMontar pedido = control.getPedidoEstampado(ListaIdSolicitudes[0]);
             id = pedido.Id;
             if (id != 0)
             {

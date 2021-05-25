@@ -18,10 +18,14 @@ namespace PedidoTela.Data.Acceso
         private readonly string actualizar = "UPDATE cfc_spt_agencias_externos SET solicitado_por=?, nombre_tela=?, disenador=?, cargo=?, telefono=?, ensayo_ref=?, departamento=?, ancho_tela=?, proveedor=?, orden_compra=?, extencion=?, desc_prenda=?, rendimiento=?, contacto=?, pedido_agencia=?, composicion=?, tipo_marcacion=?, nit=?, fecha_llegada_tela=? WHERE id_sol_tela =?;";
 
         private readonly string consultaId = "SELECT id_agencias FROM cfc_spt_agencias_externos WHERE id_sol_tela = ?;";
-
+        
         private readonly string consutarTodo = "SELECT solicitado_por,id_agencias, nombre_tela, disenador, cargo, telefono, ensayo_ref, departamento, ancho_tela, proveedor, orden_compra, extencion, desc_prenda, rendimiento, contacto, pedido_agencia, composicion, tipo_marcacion, nit, fecha_llegada_tela, id_sol_tela FROM cfc_spt_agencias_externos WHERE id_sol_tela =?; ";
+
+        private readonly string consultaIdsolicitud = "SELECT id_solicitud FROM cfc_spt_tipo_solicitud WHERE estado = 'Solicitud de Inventario' AND identificador = ?; ";
+
+        private readonly string consultarInventario = "SELECT identificador, estado from cfc_spt_tipo_solicitud WHERE estado = 'Solicitud de Inventario' ;";
         #endregion
-       
+
         #region Métodos Agregar
         public string Agregar(AgenciasExternos elemento)
         {
@@ -64,8 +68,47 @@ namespace PedidoTela.Data.Acceso
             return respuesta;
         }
         #endregion
-       
+
         #region Métodos ColsuLta
+        public int consultarIdSolicitud(string prmEnsayoReferencia)
+        {
+            int id = 0;
+            try
+            {
+                using (var conexion = new clsConexion())
+                {
+                    conexion.Parametros.Add(new IfxParameter("@identificador", prmEnsayoReferencia));
+                    var datos = conexion.EjecutarConsulta(consultaIdsolicitud);
+                    datos.Read();
+                    id = int.Parse(datos["id_solicitud"].ToString());
+
+                    conexion.cerrarConexion();
+                }
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine("Error: " + ex.Message);
+            }
+            return id;
+        }
+        
+        public List<Objeto> getSolicitudInventario()
+        {
+            List<Objeto> respuesta = new List<Objeto>();
+            using (var administracionConexion = new clsConexion())
+            {
+                var datosDataReader = administracionConexion.EjecutarConsulta(consultarInventario);
+                while (datosDataReader.Read())
+                {
+                    Objeto objComposicion = new Objeto();
+                    objComposicion.Id = datosDataReader["identificador"].ToString().Trim();
+                    objComposicion.Nombre = datosDataReader["estado"].ToString().Trim();
+                    respuesta.Add(objComposicion);
+                };
+                administracionConexion.cerrarConexion();
+            }
+            return respuesta;
+        }
         public bool consultarExisteAgencias(int idSolTela)
         {
             string ensayo;

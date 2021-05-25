@@ -22,7 +22,8 @@ namespace PedidoTela.Data.Acceso
         private readonly string actualizar = "UPDATE cfc_spt_ped_unicolor SET nom_tela=?,disenador=?, ensayo_ref=?, desc_prenda=?,clase=?, tipo_marcacion=?, rendimiento=?, analista_corteb=?, fecha_llegada=? WHERE id_sol_tela =?; ";
 
         private readonly string consutarTodo = "SELECT id_ped_unicolor,nom_tela, disenador, ensayo_ref, desc_prenda, clase, tipo_marcacion, rendimiento, analista_corteb, fecha_llegada FROM cfc_spt_ped_unicolor WHERE id_sol_tela =?;";
-
+        
+       
         #endregion
 
         #region Métodos Agregar
@@ -59,7 +60,7 @@ namespace PedidoTela.Data.Acceso
         #endregion
 
         #region Métodos Consultar
-
+       
         public int ConsultarId(int idSolTela)
         {
             int id = 0;

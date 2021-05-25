@@ -22,7 +22,7 @@ namespace PedidoTela.Data.Acceso
         private readonly string consultaIdSolTela = "select id_sol_tela from cfc_spt_sol_estampado where idEstampado = ?; ";
         //private readonly string consultarTodo = "SELECT idEstampado,tipo_estampado,tipo_tejido,n_dibujos,n_cilindros, NVL(coordinado_con, '') AS coordinado_con,coordinado, observaciones FROM cfc_spt_sol_estampado WHERE ensayo_ref = ?;";
         
-        private readonly string consultarTodo = "SELECT idEstampado,tipo_estampado,tipo_tejido,n_dibujos,n_cilindros, NVL(coordinado_con, '') AS coordinado_con,coordinado, observaciones FROM cfc_spt_sol_estampado WHERE id_sol_tela = ?;";
+        private readonly string consultarTodo = "SELECT ensayo_ref,idEstampado,referencia_tela,nombre_tela,tipo_estampado,tipo_tejido,n_dibujos,n_cilindros, NVL(coordinado_con, '') AS coordinado_con,coordinado, observaciones FROM cfc_spt_sol_estampado WHERE id_sol_tela = ?;";
         
         private readonly string actualizar = "update cfc_spt_sol_estampado set tipo_estampado =?,  tipo_tejido=?, n_dibujos=?, n_cilindros=?, coordinado_con=?, coordinado=?, observaciones=?,ensayo_ref=? where id_sol_tela =?;";
         #endregion
@@ -189,9 +189,10 @@ namespace PedidoTela.Data.Acceso
                     while (datos.Read())
                     {
                  
+                        estampado.Esayo_ref = datos["ensayo_ref"].ToString();
                         estampado.IdEstampado = int.Parse(datos["idEstampado"].ToString());
-                        //estampado.Referencia_tela = datos["referencia_tela"].ToString();
-                        //estampado.Nombre_tela = datos["nombre_tela"].ToString();
+                        estampado.Referencia_tela = datos["referencia_tela"].ToString();
+                        estampado.Nombre_tela = datos["nombre_tela"].ToString();
                         estampado.Tipo_estampado = datos["tipo_estampado"].ToString();
                         estampado.Tipo_tejido = datos["tipo_tejido"].ToString();
                         estampado.N_dibujos = int.Parse(datos["n_dibujos"].ToString());

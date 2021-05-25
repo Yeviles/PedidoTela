@@ -65,14 +65,17 @@ namespace PedidoTela.Formularios
             // lbDescripcion
             // 
             this.lbDescripcion.AutoSize = true;
-            this.lbDescripcion.Location = new System.Drawing.Point(309, 20);
+            this.lbDescripcion.Font = new System.Drawing.Font("Verdana", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lbDescripcion.Location = new System.Drawing.Point(303, 17);
             this.lbDescripcion.Name = "lbDescripcion";
-            this.lbDescripcion.Size = new System.Drawing.Size(118, 17);
+            this.lbDescripcion.Size = new System.Drawing.Size(125, 17);
             this.lbDescripcion.TabIndex = 3;
             this.lbDescripcion.Text = "Descripción Tela:";
             // 
             // btnBuscar
             // 
+            this.btnBuscar.Image = global::PedidoTela.Formularios.Properties.Resources.buscar;
+            this.btnBuscar.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.btnBuscar.Location = new System.Drawing.Point(551, 8);
             this.btnBuscar.Name = "btnBuscar";
             this.btnBuscar.Size = new System.Drawing.Size(113, 36);
@@ -92,9 +95,10 @@ namespace PedidoTela.Formularios
             // lbRefTela
             // 
             this.lbRefTela.AutoSize = true;
-            this.lbRefTela.Location = new System.Drawing.Point(23, 20);
+            this.lbRefTela.Font = new System.Drawing.Font("Verdana", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lbRefTela.Location = new System.Drawing.Point(17, 17);
             this.lbRefTela.Name = "lbRefTela";
-            this.lbRefTela.Size = new System.Drawing.Size(113, 17);
+            this.lbRefTela.Size = new System.Drawing.Size(117, 17);
             this.lbRefTela.TabIndex = 0;
             this.lbRefTela.Text = "Referencia Tela:";
             // 

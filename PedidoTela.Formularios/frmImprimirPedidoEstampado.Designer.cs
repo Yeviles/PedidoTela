@@ -49,13 +49,13 @@ namespace PedidoTela.Formularios
             reportDataSource1.Value = this.PedidoMontarInformacionBindingSource;
             this.reportViewer1.LocalReport.DataSources.Add(reportDataSource1);
             this.reportViewer1.LocalReport.ReportEmbeddedResource = "PedidoTela.Formularios.PDFPedidoEstampado.rdlc";
-            this.reportViewer1.Location = new System.Drawing.Point(4, 122);
+            this.reportViewer1.Location = new System.Drawing.Point(8, 122);
             this.reportViewer1.Margin = new System.Windows.Forms.Padding(4);
             this.reportViewer1.Name = "reportViewer1";
             this.reportViewer1.ServerReport.BearerToken = null;
             this.reportViewer1.ShowRefreshButton = false;
             this.reportViewer1.ShowStopButton = false;
-            this.reportViewer1.Size = new System.Drawing.Size(961, 622);
+            this.reportViewer1.Size = new System.Drawing.Size(949, 653);
             this.reportViewer1.TabIndex = 64;
             // 
             // panel1
@@ -85,7 +85,7 @@ namespace PedidoTela.Formularios
             // 
             // frmImprimirPedidoEstampado
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 12F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(970, 788);
             this.Controls.Add(this.panel1);

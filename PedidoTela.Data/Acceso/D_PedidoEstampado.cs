@@ -22,8 +22,10 @@ namespace PedidoTela.Data.Acceso
             "desc_prenda=?,clase=?, tipo_marcacion=?, rendimiento=?, analista_corteb=?, fecha_llegada=? WHERE id_solicitud = ?; ";
 
         private readonly string consutarTodo = "SELECT id_ped_estampado, nom_tela, disenador, ensayo_ref, desc_prenda, clase, tipo_marcacion, rendimiento, analista_corteb, fecha_llegada FROM cfc_spt_ped_estampado WHERE id_solicitud =?;";
+
         #endregion
 
+      
         public PedidoAMontar Consultar(int idSolicitud)
         {
             PedidoAMontar pedido = new PedidoAMontar();

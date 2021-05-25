@@ -408,7 +408,11 @@ namespace PedidoTela.Controlodores
         #endregion
 
         #region Métodos Solicitud Cuellos-Puños-Tiras
-
+        public int consultarIdCuellos(string prmIdentificador)
+        {
+            D_CuellosTiras d_cuellos = new D_CuellosTiras();
+            return d_cuellos.consultarIdCuellos(prmIdentificador);
+        }
         public int getIdCuellos(int idSolTela)
         {
             D_CuellosTiras d_CuelloId = new D_CuellosTiras();
@@ -420,10 +424,10 @@ namespace PedidoTela.Controlodores
             D_CuellosTiras d_CuellosT = new D_CuellosTiras();
             return d_CuellosT.Consultar(idSolTela);
         }
-        public int getIdSoltelaCue(int idPlano)
+        public int getIdSoltelaCue(int idCuellos)
         {
             D_CuellosTiras d_plano = new D_CuellosTiras();
-            return d_plano.ConsultarIdSolCuel(idPlano);
+            return d_plano.ConsultarIdSolCuel(idCuellos);
         }
         public bool ActualizarCuellos(CuellosTiras cuellosTiras)
         {
@@ -574,7 +578,16 @@ namespace PedidoTela.Controlodores
         #endregion
 
         #region Métodos Agencias Externos
-
+        public List<Objeto> getSolicitudesInventario()
+        {
+            D_AgenciasExterno d_agencias = new D_AgenciasExterno();
+            return d_agencias.getSolicitudInventario();
+        }
+        public int consultarIdSolicitudAgencias(string prmEnsayoReferencia)
+        {
+            D_AgenciasExterno d_agencias = new D_AgenciasExterno();
+            return d_agencias.consultarIdSolicitud(prmEnsayoReferencia);
+        }
         public bool ExisteAgenciasExterno(int idSolTelas)
         {
             D_AgenciasExterno d_agenciasExterno = new D_AgenciasExterno();
@@ -654,7 +667,6 @@ namespace PedidoTela.Controlodores
         #endregion
 
         #region Pedido Unicolor
-
         public bool existePedidoUnicolor(int idSolTelas)
         {
             D_PedidoUnicolor d_pedUnicolor = new D_PedidoUnicolor();
@@ -728,6 +740,7 @@ namespace PedidoTela.Controlodores
         #endregion
 
         #region Pedido Estampado
+    
         public PedidoAMontar getPedidoEstampado(int idSolicitud)
         {
             D_PedidoEstampado d_PedidoEstampado = new D_PedidoEstampado();
@@ -1053,6 +1066,11 @@ namespace PedidoTela.Controlodores
         #endregion
 
         #region Métodos Consolidar
+        public int consultarIdSolicitud(int prmconsecutivo, string prmTipoPedido)
+        {
+            D_TipoPedido d_general = new D_TipoPedido();
+            return d_general.consultarIdSolicitud(prmconsecutivo, prmTipoPedido);
+        }
         public List<Objeto> getTipoMarcacion() {
             D_TipoMarcacion tm = new D_TipoMarcacion();
             return tm.consultar();
@@ -1141,6 +1159,7 @@ namespace PedidoTela.Controlodores
             return (d_consolidado.ActualizarConsecutivo( prmConsecutivo, prmFecha, prmEstado, prmMotivoDevolucion) == "ok") ? true : false;
         }
         #endregion
+
         #region Editar
         public bool existeConsecutivo(int prmConsecutivo)
         {
@@ -1157,6 +1176,14 @@ namespace PedidoTela.Controlodores
             D_Editar d_editar = new D_Editar();
             return d_editar.consultarTipoPedido(prmConsecutivo);
         }
+        #endregion
+
+        #region Imprimir 
+
+        #region Solicitud de Telas
+        
+        #endregion
+
         #endregion
     }
 }

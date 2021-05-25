@@ -18,6 +18,8 @@ namespace PedidoTela.Data.Acceso
         
         private readonly string consultaId = "SELECT idCuellos FROM cfc_spt_sol_Cuellos WHERE id_sol_tela = ?;";
         
+        private readonly string consultaIdCuello = "SELECT idCuellos FROM cfc_spt_sol_Cuellos WHERE identificador = ?;";
+        
         private readonly string consultaIdentificador = "SELECT identificador FROM cfc_spt_sol_Cuellos WHERE id_sol_tela = ?;";
 
         private readonly string actualizar = "UPDATE cfc_spt_sol_Cuellos SET cuellos=?,punos=?, tiras=?, coordinado=?,coordinadoCon=?, observacion=?, identificador=? WHERE id_sol_tela =?;";
@@ -27,6 +29,27 @@ namespace PedidoTela.Data.Acceso
         #endregion
 
         #region Métodos 
+        public int consultarIdCuellos(string prmIdentificador)
+        {
+            int id = 0;
+            try
+            {
+                using (var conexion = new clsConexion())
+                {
+                    conexion.Parametros.Add(new IfxParameter("@identificador", prmIdentificador));
+                    var datos = conexion.EjecutarConsulta(consultaIdCuello);
+                    datos.Read();
+                    id = int.Parse(datos["idCuellos"].ToString());
+
+                    conexion.cerrarConexion();
+                }
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine("Error: " + ex.Message);
+            }
+            return id;
+        }
         public CuellosTiras Consultar(int idSolTela)
         {
             CuellosTiras cuellos = new CuellosTiras();

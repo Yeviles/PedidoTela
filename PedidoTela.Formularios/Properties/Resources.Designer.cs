@@ -253,6 +253,26 @@ namespace PedidoTela.Formularios.Properties {
         /// <summary>
         ///   Busca un recurso adaptado de tipo System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap detalleReserva {
+            get {
+                object obj = ResourceManager.GetObject("detalleReserva", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Busca un recurso adaptado de tipo System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap detaReserva {
+            get {
+                object obj = ResourceManager.GetObject("detaReserva", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Busca un recurso adaptado de tipo System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap devolver {
             get {
                 object obj = ResourceManager.GetObject("devolver", resourceCulture);
@@ -416,6 +436,16 @@ namespace PedidoTela.Formularios.Properties {
         internal static System.Drawing.Bitmap record_icon_icons_com_64775__1_ {
             get {
                 object obj = ResourceManager.GetObject("record_icon-icons.com_64775 (1)", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Busca un recurso adaptado de tipo System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap reservar {
+            get {
+                object obj = ResourceManager.GetObject("reservar", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }

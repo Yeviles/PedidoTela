@@ -42,7 +42,7 @@ namespace PedidoTela.Formularios
             this.panel1.Location = new System.Drawing.Point(13, 77);
             this.panel1.Margin = new System.Windows.Forms.Padding(4);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(1357, 47);
+            this.panel1.Size = new System.Drawing.Size(945, 47);
             this.panel1.TabIndex = 67;
             // 
             // btnSalir
@@ -62,17 +62,17 @@ namespace PedidoTela.Formularios
             // reportViewer1
             // 
             this.reportViewer1.LocalReport.ReportEmbeddedResource = "PedidoTela.Formularios.PDFPedidoCuellos.rdlc";
-            this.reportViewer1.Location = new System.Drawing.Point(202, 139);
+            this.reportViewer1.Location = new System.Drawing.Point(12, 131);
             this.reportViewer1.Name = "reportViewer1";
             this.reportViewer1.ServerReport.BearerToken = null;
-            this.reportViewer1.Size = new System.Drawing.Size(1051, 613);
+            this.reportViewer1.Size = new System.Drawing.Size(946, 645);
             this.reportViewer1.TabIndex = 68;
             // 
             // frmImprimirPedidoCuellos
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1383, 788);
+            this.ClientSize = new System.Drawing.Size(970, 788);
             this.Controls.Add(this.reportViewer1);
             this.Controls.Add(this.panel1);
             this.MaximizeBox = false;

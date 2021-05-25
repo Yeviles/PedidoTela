@@ -263,7 +263,7 @@ namespace PedidoTela.Formularios
             catch (ArgumentException aex)
             {
                 dgvUnicolor.CurrentCell.Value = "";
-                MessageBox.Show("Unicamente se permiten valores numéricos", "TTipo de dato no permitido", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                MessageBox.Show("Tipo de dato no permitido \n Unicamente se permiten valores numéricos", "Advertencia", MessageBoxButtons.OK, MessageBoxIcon.Warning);
             }
          
           

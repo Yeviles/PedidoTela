@@ -508,6 +508,12 @@ namespace PedidoTela.Formularios
             frmInicial frmInicial = new frmInicial();
             this.Close();
         }
+
+        private void btnImprimir_Click(object sender, EventArgs e)
+        {
+            frmImprimir frmImprimir = new frmImprimir(controlador);
+            frmImprimir.Show();
+        }
         #endregion
         
         #region Métodos 

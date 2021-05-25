@@ -259,6 +259,7 @@ namespace PedidoTela.Formularios
             this.dgvInfoConsolidar.MultiSelect = false;
             this.dgvInfoConsolidar.Name = "dgvInfoConsolidar";
             this.dgvInfoConsolidar.RightToLeft = System.Windows.Forms.RightToLeft.No;
+            this.dgvInfoConsolidar.RowHeadersVisible = false;
             this.dgvInfoConsolidar.RowHeadersWidth = 62;
             this.dgvInfoConsolidar.RowTemplate.Height = 28;
             this.dgvInfoConsolidar.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
@@ -399,6 +400,7 @@ namespace PedidoTela.Formularios
             this.dgvProporcion.MultiSelect = false;
             this.dgvProporcion.Name = "dgvProporcion";
             this.dgvProporcion.RightToLeft = System.Windows.Forms.RightToLeft.No;
+            this.dgvProporcion.RowHeadersVisible = false;
             this.dgvProporcion.RowHeadersWidth = 62;
             this.dgvProporcion.RowTemplate.Height = 28;
             this.dgvProporcion.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;

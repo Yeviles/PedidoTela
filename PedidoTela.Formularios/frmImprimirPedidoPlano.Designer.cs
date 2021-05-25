@@ -39,10 +39,10 @@ namespace PedidoTela.Formularios
             // 
             this.panel1.BackColor = System.Drawing.SystemColors.ScrollBar;
             this.panel1.Controls.Add(this.btnSalir);
-            this.panel1.Location = new System.Drawing.Point(13, 83);
+            this.panel1.Location = new System.Drawing.Point(12, 80);
             this.panel1.Margin = new System.Windows.Forms.Padding(4);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(1357, 47);
+            this.panel1.Size = new System.Drawing.Size(946, 47);
             this.panel1.TabIndex = 67;
             // 
             // btnSalir
@@ -62,18 +62,18 @@ namespace PedidoTela.Formularios
             // reportViewer1
             // 
             this.reportViewer1.LocalReport.ReportEmbeddedResource = "PedidoTela.Formularios.PDFPedidoPlano.rdlc";
-            this.reportViewer1.Location = new System.Drawing.Point(101, 146);
+            this.reportViewer1.Location = new System.Drawing.Point(12, 134);
             this.reportViewer1.Name = "reportViewer1";
             this.reportViewer1.RightToLeft = System.Windows.Forms.RightToLeft.No;
             this.reportViewer1.ServerReport.BearerToken = null;
-            this.reportViewer1.Size = new System.Drawing.Size(1179, 610);
+            this.reportViewer1.Size = new System.Drawing.Size(946, 622);
             this.reportViewer1.TabIndex = 68;
             // 
             // frmImprimirPedidoPlano
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1383, 788);
+            this.ClientSize = new System.Drawing.Size(970, 788);
             this.Controls.Add(this.reportViewer1);
             this.Controls.Add(this.panel1);
             this.Font = new System.Drawing.Font("Verdana", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
