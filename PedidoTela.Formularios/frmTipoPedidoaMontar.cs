@@ -16,6 +16,7 @@ namespace PedidoTela.Formularios
     {
         private String seleccion;
         private Controlador control= new Controlador();
+        private string tipoPedido;
         List<MontajeTelaDetalle> detalleSeleccionado = new List<MontajeTelaDetalle>();
         int contItemSeleccionado = 0, idSolTela;
         frmPedidoaMotarUnicolor frmMontarUnicolor;
@@ -28,13 +29,30 @@ namespace PedidoTela.Formularios
         public string Seleccion { get => seleccion; set => seleccion = value; }
         public int IdSolTela { get => idSolTela; set => idSolTela = value; }
 
-        public frmTipoPedidoaMontar(Controlador controlador, List<MontajeTelaDetalle> listaSeleccionada, int contador, int idSolTela)
+        public frmTipoPedidoaMontar(Controlador controlador, List<MontajeTelaDetalle> listaSeleccionada, string tipoPedido, int idSolTela)
         {
             InitializeComponent();
             detalleSeleccionado = listaSeleccionada;
             control = controlador;
             IdSolTela = idSolTela;
-            contItemSeleccionado = contador;
+            contItemSeleccionado = listaSeleccionada.Count;
+            this.tipoPedido = tipoPedido;
+            switch (tipoPedido.ToUpper()) {
+                case "UNICOLOR": cbxUnicolor.Checked = true; break;
+                case "ESTAMPADO": cbxestampado.Checked = true; break;
+                case "PRETEÑIDO": cbxPlanoPretenido.Checked = true; break;
+                case "TIRAS/CUELLOS/PUÑOS": cbxCuePunTiras.Checked = true; break;
+                case "COORDINADO": cbxCoordinadoTresUno.Checked = true; break;
+                case "AGENCIAS EXTERNOS": cbxAgencias.Checked = true; break;
+            }
+        }
+
+        private void frmTipoPedidoaMontar_Load(object sender, EventArgs e)
+        {
+            if (tipoPedido.Trim() != "")
+            {
+                btnAceptar_Click(sender, e);
+            }
         }
 
         private void cbxUnicolor_CheckedChanged(object sender, EventArgs e)
@@ -83,7 +101,7 @@ namespace PedidoTela.Formularios
 
         private void cbxCdoTresUno_CheckedChanged(object sender, EventArgs e)
         {
-            if (cbxCdoTresUno.Checked)
+            if (cbxCoordinadoTresUno.Checked)
             {
                 cbxUnicolor.Checked = false;
                 cbxestampado.Checked = false;
@@ -101,7 +119,7 @@ namespace PedidoTela.Formularios
                 cbxestampado.Checked = false;
                 cbxPlanoPretenido.Checked = false;
                 cbxCuePunTiras.Checked = false;
-                cbxCdoTresUno.Checked = false;
+                cbxCoordinadoTresUno.Checked = false;
                 Seleccion = "agencias";
             }
         }
@@ -137,7 +155,7 @@ namespace PedidoTela.Formularios
                 frmMontarCuellos = new frmPedidoaMontarCuellos(control, detalleSeleccionado, IdSolTela);
                 frmMontarCuellos.ShowDialog();
             }
-            else if (cbxCdoTresUno.Checked)
+            else if (cbxCoordinadoTresUno.Checked)
             {
                 this.Close();
                 frmMontarCoordinado = new frmPedidoaMontarCoordinado(control, detalleSeleccionado, detalleSeleccionado[0].IdSolTela);

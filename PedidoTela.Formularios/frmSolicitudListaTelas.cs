@@ -20,8 +20,7 @@ namespace PedidoTela.Formularios
         Validar validacion = new Validar();
         Utilidades utilidades = new Utilidades();
         List<MontajeTelaDetalle> montajeTelaDetalles = new List<MontajeTelaDetalle>();
-
-        string validarCoordinado = "";
+        string coordina = "";
         int idSolicitudTelas = 0;
         #endregion
 
@@ -31,11 +30,8 @@ namespace PedidoTela.Formularios
             InitializeComponent();
             dtpFechaTienda.Format = DateTimePickerFormat.Custom;
             dtpFechaTienda.CustomFormat = "dd/MM/yyyy";
-           
             txbClase.CharacterCasing = CharacterCasing.Upper;
-
             btnVerDetalle.Enabled = false;
-    
             // ToolTips
             this.ttMuestrario.SetToolTip(this.cbxMuestrario, "Campo Obligatorio");
         }
@@ -59,8 +55,6 @@ namespace PedidoTela.Formularios
             cargarCombobox(cbxColor, controlador.getColoresT());
 
             dgvSolicitudTelas.CellContentClick += new DataGridViewCellEventHandler(dgvSolicitudTelas_CellClick);
-
-
         }
         #endregion
 
@@ -136,8 +130,7 @@ namespace PedidoTela.Formularios
             if (cbxNoCoordinado.Checked)
             {
                 cbxSiCoordinado.Checked = false;
-                validarCoordinado = "f";
-
+                coordina = "f";
             }
         }
 
@@ -151,7 +144,7 @@ namespace PedidoTela.Formularios
             if (cbxSiCoordinado.Checked)
             {
                 cbxNoCoordinado.Checked = false;
-                validarCoordinado = "t";
+                coordina = "t";
             }
 
         }
@@ -192,7 +185,9 @@ namespace PedidoTela.Formularios
             }
 
         }
-       
+        #endregion
+
+        #region Botones
         /// <summary>
         /// Consulta en la base de datos, según los filtros (comboBox) seleccionados, luego procede a llenar la DatagridView con la infromación traida.
         /// </summary>
@@ -225,16 +220,13 @@ namespace PedidoTela.Formularios
                 objTela.Solicitud = txbSolicitud.Text.Trim();
                 objTela.Color = cbxColor.GetItemText(cbxColor.SelectedItem);
                 objTela.Clase = txbClase.Text.Trim();
-                objTela.Coordinado = validarCoordinado;
+                objTela.Coordinado = coordina;
                 objTela.NumDibujo = txbNdibujo.Text.Trim();
 
                 dgvSolicitudTelas.Rows.Clear();
                 montajeTelaDetalles = controlador.consultarListaTelas(objTela);
                 cargarDataGridView(montajeTelaDetalles);
-
             }
-
-
         }
 
         /// <summary>
@@ -249,7 +241,7 @@ namespace PedidoTela.Formularios
             /// Realiza el respectivo método que retorna la lista de filas Seleccionadas
             if (contador > 1)
             {
-                List<MontajeTelaDetalle> listaFilasSeleccionadas = ListaFilasSeleccionadas();
+                List<MontajeTelaDetalle> listaFilasSeleccionadas = obtenerListaFilasSeleccionadas();
                 frmAnalizarInventario frmAnalizarInventario = new frmAnalizarInventario(controlador, listaFilasSeleccionadas, contador);
             }
             else
@@ -283,7 +275,7 @@ namespace PedidoTela.Formularios
                 if (b == cantFilasSeleccionadas)
                 {
                     /*Realiza el respectivo método que retorna la lista de filas Seleccionadas*/
-                    List<MontajeTelaDetalle> listaFilasSeleccionadas = ListaFilasSeleccionadas();
+                    List<MontajeTelaDetalle> listaFilasSeleccionadas = obtenerListaFilasSeleccionadas();
                     frmAgenciasExternos frmAgenciasExterno = new frmAgenciasExternos(controlador, listaFilasSeleccionadas, cantFilasSeleccionadas, int.Parse(listaFilasSeleccionadas[0].IdSolTela.ToString()));
                     frmAgenciasExterno.Show();
                 }
@@ -311,7 +303,7 @@ namespace PedidoTela.Formularios
                 {
                     if (dgvSolicitudTelas.Rows[i].Cells[0].Value.Equals(true))//Columna de checks
                     {
-                        if (dgvSolicitudTelas.Rows[i].Cells[26].Value.ToString() == "Solicitud Inventario" || dgvSolicitudTelas.Rows[i].Cells[26].Value.ToString() == "Reserva parcial" || dgvSolicitudTelas.Rows[i].Cells[26].Value.ToString() == "Por Analizar")
+                        if (dgvSolicitudTelas.Rows[i].Cells[26].Value.ToString() == "Solicitud de Inventario" || dgvSolicitudTelas.Rows[i].Cells[26].Value.ToString() == "Reserva parcial" || dgvSolicitudTelas.Rows[i].Cells[26].Value.ToString() == "Por Analizar")
                         {
                             b += 1;
                         }
@@ -320,9 +312,93 @@ namespace PedidoTela.Formularios
                 if (b == cantFilasSeleccionadas)
                 {
                     /*Realiza el respectivo método que retorna la lista de filas Seleccionadas*/
-                    List<MontajeTelaDetalle> listaFilasSeleccionadas = ListaFilasSeleccionadas();
-                    frmTipoPedidoaMontar frmTipoPedido = new frmTipoPedidoaMontar(controlador, listaFilasSeleccionadas, cantFilasSeleccionadas, int.Parse(listaFilasSeleccionadas[0].IdSolTela.ToString()));
-                    frmTipoPedido.Show();
+                    List<MontajeTelaDetalle> listaFilasSeleccionadas = obtenerListaFilasSeleccionadas();
+
+                    string tipo = "";
+                    //Validar consolidado
+                    if (validarTieneConsolidado(listaFilasSeleccionadas))
+                    {
+                        if (validarIgualConsolidado(listaFilasSeleccionadas))
+                        {
+                            tipo = listaFilasSeleccionadas[0].TipoPedido;
+                        }
+                        else {
+                            MessageBox.Show("Las solicitudes no corresponden al mismo pedido", "Advertencia", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                        }
+                    }
+                    else
+                    {
+                        //Validar que las solicitudes tengan el mismo estado
+                        bool valTipo = validarMismoTipoSolicitud(listaFilasSeleccionadas);
+                        bool valCoordinado = validarCoordinado(listaFilasSeleccionadas);
+                        if (valTipo)
+                        {
+                            if (valCoordinado)
+                            {
+                                if (listaFilasSeleccionadas.Count == 3)
+                                {
+                                    if (!validarCoordinadoSolicitudEsPlano(listaFilasSeleccionadas))
+                                    {
+                                        tipo = "COORDINADO";
+                                    }
+                                    else
+                                    {
+                                        MessageBox.Show("Pedido a montar COORDINADO no permite solicitudes de tipo Plano Preteñido", "Advertencia", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                                    }
+                                }
+                                else
+                                {
+                                    MessageBox.Show("Pedido a montar COORDINADO permite consolidar solo tres (3) solicitudes", "Advertencia", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                                }
+                            }
+                            else
+                            {
+                                if (validarAgencias(listaFilasSeleccionadas))
+                                {
+                                    tipo = "AGENCIAS EXTERNO";
+                                }
+                                else
+                                {
+                                    tipo = listaFilasSeleccionadas[0].TipoSolicitud;
+                                }
+                            }
+                        }
+                        else
+                        {
+
+                            if (valCoordinado)
+                            {
+                                if (listaFilasSeleccionadas.Count == 3)
+                                {
+                                    if (!validarCoordinadoSolicitudEsPlano(listaFilasSeleccionadas))
+                                    {
+                                        tipo = "COORDINADO";
+                                    }
+                                    else
+                                    {
+                                        MessageBox.Show("Pedido a montar COORDINADO no permite solicitudes de tipo Plano Preteñido", "Advertencia", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                                    }
+                                }
+                                else
+                                {
+                                    MessageBox.Show("Pedido a montar COORDINADO permite consolidar tres (3) solicitudes", "Advertencia", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                                }
+                            }
+                            else if (validarAgencias(listaFilasSeleccionadas))
+                            {
+                                tipo = "AGENCIAS EXTERNOS";
+                            }
+                            else
+                            {
+                                MessageBox.Show("Por favor seleccione solicitudes con estado: Solicitud de Inventario", "Advertencia", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                            }
+                        }
+                    }
+                    if (tipo != "")
+                    {
+                        frmTipoPedidoaMontar frmTipoPedido = new frmTipoPedidoaMontar(controlador, listaFilasSeleccionadas, tipo, int.Parse(listaFilasSeleccionadas[0].IdSolTela.ToString()));
+                        frmTipoPedido.Show();
+                    }
                 }
                 else
                 {
@@ -340,7 +416,7 @@ namespace PedidoTela.Formularios
         private void btnDevolucion_Click(object sender, EventArgs e)
         {
             int cantFilasSeleccionadas = utilidades.ContarChecked(dgvSolicitudTelas);
-            List<MontajeTelaDetalle> listaFilasSeleccionadas = ListaFilasSeleccionadas();
+            List<MontajeTelaDetalle> listaFilasSeleccionadas = obtenerListaFilasSeleccionadas();
             if (listaFilasSeleccionadas.Count != 0)
             {          
                 int consolidado = int.Parse(listaFilasSeleccionadas[0].Consolidado);
@@ -383,7 +459,7 @@ namespace PedidoTela.Formularios
         private void btnEditar_Click(object sender, EventArgs e)
         {
             int cantFilasSeleccionadas = utilidades.ContarChecked(dgvSolicitudTelas);
-            List<MontajeTelaDetalle> listaFilasSeleccionadas = ListaFilasSeleccionadas();
+            List<MontajeTelaDetalle> listaFilasSeleccionadas = obtenerListaFilasSeleccionadas();
             if (listaFilasSeleccionadas.Count != 0)
             {
                 int consolidado = int.Parse(listaFilasSeleccionadas[0].Consolidado);
@@ -431,11 +507,9 @@ namespace PedidoTela.Formularios
         {
             frmInicial frmInicial = new frmInicial();
             this.Close();
-            frmInicial.Show();
         }
-
         #endregion
-
+        
         #region Métodos 
         /// <summary>
         /// Carga toda la información de los comboBox mostrados en la vista.
@@ -451,7 +525,6 @@ namespace PedidoTela.Formularios
             prmCombo.AutoCompleteCustomSource = cargarCombobox(prmLista);
             prmCombo.AutoCompleteMode = AutoCompleteMode.Suggest;
             prmCombo.AutoCompleteSource = AutoCompleteSource.CustomSource;
-
         }
 
         /// <summary>
@@ -474,7 +547,7 @@ namespace PedidoTela.Formularios
         /// en la vista frmSolicitudListaTelas, para más comprensión son las filas Chequedas. 
         /// </summary>
         /// <returns>Retorna una Lista de Tipo DetalleLista, que representas las filas seleccionadas.</returns>
-        private List<MontajeTelaDetalle> ListaFilasSeleccionadas()
+        private List<MontajeTelaDetalle> obtenerListaFilasSeleccionadas()
         {
             List<MontajeTelaDetalle> listaSeleccionadas = new List<MontajeTelaDetalle>();
 
@@ -614,6 +687,79 @@ namespace PedidoTela.Formularios
                 MessageBox.Show("No existe información sobre su consulta", "Advertencia", MessageBoxButtons.OK, MessageBoxIcon.Warning);
             }
 
+        }
+
+        private bool validarMismoTipoSolicitud(List<MontajeTelaDetalle> lista)
+        {
+            string tipoSolicitud = lista[0].TipoSolicitud;
+            foreach (MontajeTelaDetalle item in lista)
+            {
+                if (item.TipoSolicitud.ToUpper() != tipoSolicitud.ToUpper())
+                {
+                    return false;
+                }
+            }
+            return true;
+        }
+
+        private bool validarCoordinado(List<MontajeTelaDetalle> lista)
+        {
+            foreach (MontajeTelaDetalle item in lista)
+            {
+                if (item.Coordinado.ToUpper() != "SI")
+                {
+                    return false;
+                }
+            }
+            return true;
+        }
+        private bool validarCoordinadoSolicitudEsPlano(List<MontajeTelaDetalle> lista)
+        {
+            foreach (MontajeTelaDetalle item in lista)
+            {
+                if (item.TipoSolicitud.ToUpper() == "PRETEÑIDO")
+                {
+                    return true;
+                }
+            }
+            return false;
+        }
+
+        private bool validarAgencias(List<MontajeTelaDetalle> lista)
+        {
+            foreach (MontajeTelaDetalle item in lista)
+            {
+                if (item.Estado.ToUpper() != "SOLICITUD DE INVENTARIO")
+                {
+                    return false;
+                }
+            }
+            return true;
+        }
+
+        private bool validarTieneConsolidado(List<MontajeTelaDetalle> lista)
+        {
+            foreach (MontajeTelaDetalle item in lista)
+            {
+                if (item.Consolidado == null && item.Consolidado == "")
+                {
+                    return false;
+                }
+            }
+            return true;
+        }
+
+        private bool validarIgualConsolidado(List<MontajeTelaDetalle> lista)
+        {
+            string consolidado = lista[0].Consolidado;
+            foreach (MontajeTelaDetalle item in lista)
+            {
+                if (item.Consolidado != null && item.Consolidado != "" && item.Consolidado != consolidado)
+                {
+                    return false;
+                }
+            }
+            return true;
         }
 
         #endregion

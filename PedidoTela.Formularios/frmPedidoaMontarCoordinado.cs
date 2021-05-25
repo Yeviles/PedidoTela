@@ -47,10 +47,16 @@ namespace PedidoTela.Formularios
         {
             if (!validarComboBox())
             {
-                //frmContenedor frmcontenido = new frmContenedor(control, listaSolicitudes, principal.Id, coordinado1.Id, coordinado2.Id);
-                //frmcontenido.ShowDialog();
-                frmPedidoCoordinado3en1 frmCoordinado3en1 = new frmPedidoCoordinado3en1(control, listaSolicitudes, idSolicitud, principal.Id, coordinado1.Id, coordinado2.Id);
-                frmCoordinado3en1.ShowDialog();
+                if (((Objeto)cbxPrincipal.SelectedItem).Id != "0" && ((Objeto)cbxCoordinado1.SelectedItem).Id != "0" && ((Objeto)cbxCoordinado2.SelectedItem).Id != "0")
+                {
+                    //frmContenedor frmcontenido = new frmContenedor(control, listaSolicitudes, principal.Id, coordinado1.Id, coordinado2.Id);
+                    //frmcontenido.ShowDialog();
+                    frmPedidoCoordinado3en1 frmCoordinado3en1 = new frmPedidoCoordinado3en1(control, listaSolicitudes, idSolicitud, principal.Id, coordinado1.Id, coordinado2.Id);
+                    frmCoordinado3en1.ShowDialog();
+                }
+                else {
+                    MessageBox.Show("Por favor seleccione un valor en los campos Principal, coordinado 1 y Coordinado 2", "Advertencia", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                }
             }
         }
 
