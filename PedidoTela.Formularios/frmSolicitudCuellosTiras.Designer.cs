@@ -425,6 +425,7 @@ namespace PedidoTela.Formularios
             dataGridViewCellStyle2.SelectionForeColor = System.Drawing.Color.Navy;
             dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
             this.dgvCuellos1.RowHeadersDefaultCellStyle = dataGridViewCellStyle2;
+            this.dgvCuellos1.RowHeadersVisible = false;
             this.dgvCuellos1.RowHeadersWidth = 62;
             this.dgvCuellos1.RowTemplate.Height = 28;
             this.dgvCuellos1.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.CellSelect;
@@ -703,6 +704,7 @@ namespace PedidoTela.Formularios
             this.dgvCuellos2.MultiSelect = false;
             this.dgvCuellos2.Name = "dgvCuellos2";
             this.dgvCuellos2.RightToLeft = System.Windows.Forms.RightToLeft.No;
+            this.dgvCuellos2.RowHeadersVisible = false;
             this.dgvCuellos2.RowHeadersWidth = 62;
             this.dgvCuellos2.RowTemplate.Height = 28;
             this.dgvCuellos2.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;

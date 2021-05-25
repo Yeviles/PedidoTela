@@ -248,6 +248,7 @@ namespace PedidoTela.Formularios
             this.dgvPlano.MultiSelect = false;
             this.dgvPlano.Name = "dgvPlano";
             this.dgvPlano.RightToLeft = System.Windows.Forms.RightToLeft.No;
+            this.dgvPlano.RowHeadersVisible = false;
             this.dgvPlano.RowHeadersWidth = 62;
             this.dgvPlano.RowTemplate.Height = 28;
             this.dgvPlano.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.CellSelect;

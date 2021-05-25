@@ -39,10 +39,10 @@ namespace PedidoTela.Formularios
             // 
             this.panel1.BackColor = System.Drawing.SystemColors.ScrollBar;
             this.panel1.Controls.Add(this.btnSalir);
-            this.panel1.Location = new System.Drawing.Point(1, 3);
-            this.panel1.Margin = new System.Windows.Forms.Padding(4);
+            this.panel1.Location = new System.Drawing.Point(7, 72);
+            this.panel1.Margin = new System.Windows.Forms.Padding(5, 5, 5, 5);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(965, 47);
+            this.panel1.Size = new System.Drawing.Size(949, 47);
             this.panel1.TabIndex = 67;
             // 
             // btnSalir
@@ -50,7 +50,7 @@ namespace PedidoTela.Formularios
             this.btnSalir.Font = new System.Drawing.Font("Verdana", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnSalir.Image = global::PedidoTela.Formularios.Properties.Resources.volver;
             this.btnSalir.Location = new System.Drawing.Point(4, 3);
-            this.btnSalir.Margin = new System.Windows.Forms.Padding(4);
+            this.btnSalir.Margin = new System.Windows.Forms.Padding(5, 5, 5, 5);
             this.btnSalir.Name = "btnSalir";
             this.btnSalir.Size = new System.Drawing.Size(126, 41);
             this.btnSalir.TabIndex = 98;
@@ -63,22 +63,24 @@ namespace PedidoTela.Formularios
             // reportViewer1
             // 
             this.reportViewer1.LocalReport.ReportEmbeddedResource = "PedidoTela.Formularios.PDFPedidoAgencias.rdlc";
-            this.reportViewer1.Location = new System.Drawing.Point(5, 58);
-            this.reportViewer1.Margin = new System.Windows.Forms.Padding(4);
+            this.reportViewer1.Location = new System.Drawing.Point(7, 140);
+            this.reportViewer1.Margin = new System.Windows.Forms.Padding(5, 5, 5, 5);
             this.reportViewer1.Name = "reportViewer1";
             this.reportViewer1.ServerReport.BearerToken = null;
             this.reportViewer1.ShowRefreshButton = false;
             this.reportViewer1.ShowStopButton = false;
-            this.reportViewer1.Size = new System.Drawing.Size(961, 622);
+            this.reportViewer1.Size = new System.Drawing.Size(949, 634);
             this.reportViewer1.TabIndex = 68;
             // 
             // frmImprimirPedidoAgencias
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(970, 788);
             this.Controls.Add(this.reportViewer1);
             this.Controls.Add(this.panel1);
+            this.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.MaximizeBox = false;
             this.Name = "frmImprimirPedidoAgencias";
             this.Text = "Imprimir pedido agencias-externos";
             this.Load += new System.EventHandler(this.frmImprimirPedidoAgencias_Load);

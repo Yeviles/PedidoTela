@@ -458,6 +458,7 @@ namespace PedidoTela.Formularios
             this.dgvInfoConsolidar.MultiSelect = false;
             this.dgvInfoConsolidar.Name = "dgvInfoConsolidar";
             this.dgvInfoConsolidar.RightToLeft = System.Windows.Forms.RightToLeft.No;
+            this.dgvInfoConsolidar.RowHeadersVisible = false;
             this.dgvInfoConsolidar.RowHeadersWidth = 62;
             this.dgvInfoConsolidar.RowTemplate.Height = 28;
             this.dgvInfoConsolidar.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.CellSelect;
@@ -665,6 +666,7 @@ namespace PedidoTela.Formularios
             this.dgvTotalConsolidado.MultiSelect = false;
             this.dgvTotalConsolidado.Name = "dgvTotalConsolidado";
             this.dgvTotalConsolidado.RightToLeft = System.Windows.Forms.RightToLeft.No;
+            this.dgvTotalConsolidado.RowHeadersVisible = false;
             this.dgvTotalConsolidado.RowHeadersWidth = 62;
             this.dgvTotalConsolidado.RowTemplate.Height = 28;
             this.dgvTotalConsolidado.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.CellSelect;

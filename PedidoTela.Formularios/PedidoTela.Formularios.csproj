@@ -160,6 +160,12 @@
     <Compile Include="frmEditarDsolicitudTela.Designer.cs">
       <DependentUpon>frmEditarDsolicitudTela.cs</DependentUpon>
     </Compile>
+    <Compile Include="frmImprimir.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmImprimir.Designer.cs">
+      <DependentUpon>frmImprimir.cs</DependentUpon>
+    </Compile>
     <Compile Include="frmImprimirPedidoAgencias.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -250,12 +256,6 @@
     <Compile Include="frmPedidoaMotarUnicolor.Designer.cs">
       <DependentUpon>frmPedidoaMotarUnicolor.cs</DependentUpon>
     </Compile>
-    <Compile Include="frmPrueba.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="frmPrueba.Designer.cs">
-      <DependentUpon>frmPrueba.cs</DependentUpon>
-    </Compile>
     <Compile Include="frmAnalizarInventario.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -345,6 +345,9 @@
     <EmbeddedResource Include="frmEditarDsolicitudTela.resx">
       <DependentUpon>frmEditarDsolicitudTela.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="frmImprimir.resx">
+      <DependentUpon>frmImprimir.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="frmImprimirPedidoAgencias.resx">
       <DependentUpon>frmImprimirPedidoAgencias.cs</DependentUpon>
     </EmbeddedResource>
@@ -387,9 +390,6 @@
     <EmbeddedResource Include="frmPedidoaMotarUnicolor.resx">
       <DependentUpon>frmPedidoaMotarUnicolor.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="frmPrueba.resx">
-      <DependentUpon>frmPrueba.cs</DependentUpon>
-    </EmbeddedResource>
     <EmbeddedResource Include="frmAnalizarInventario.resx">
       <DependentUpon>frmAnalizarInventario.cs</DependentUpon>
     </EmbeddedResource>
@@ -420,6 +420,8 @@
     <EmbeddedResource Include="frmSolicitudUnicolor.resx">
       <DependentUpon>frmSolicitudUnicolor.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="PDFSolicitudCuellos.rdlc" />
+    <EmbeddedResource Include="PDFSolicitudEstampado.rdlc" />
     <EmbeddedResource Include="PDFImprimirSIP.rdlc" />
     <EmbeddedResource Include="PDFPedidoAgencias.rdlc" />
     <EmbeddedResource Include="PDFPedidoCuellos.rdlc" />
@@ -427,6 +429,8 @@
     <EmbeddedResource Include="PDFPedidoPlano.rdlc" />
     <EmbeddedResource Include="PDFPedidoUnicolor.rdlc" />
     <EmbeddedResource Include="PDFReporteReserva.rdlc" />
+    <EmbeddedResource Include="PDFSolicitudPlano.rdlc" />
+    <EmbeddedResource Include="PDFSolicitudUnicolor.rdlc" />
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
       <SubType>Designer</SubType>
@@ -444,6 +448,11 @@
     <None Include="Properties\DataSources\PedidoTela.Entidades.Logica.AgenciasInfoConsolidar.datasource" />
     <None Include="Properties\DataSources\PedidoTela.Entidades.Logica.AgenciasSIP.datasource" />
     <None Include="Properties\DataSources\PedidoTela.Entidades.Logica.AgenciaTotalConsolidar.datasource" />
+    <None Include="Properties\DataSources\PedidoTela.Entidades.Logica.DetalleCuelloDos.datasource" />
+    <None Include="Properties\DataSources\PedidoTela.Entidades.Logica.DetalleCuelloUno.datasource" />
+    <None Include="Properties\DataSources\PedidoTela.Entidades.Logica.DetalleEstampado.datasource" />
+    <None Include="Properties\DataSources\PedidoTela.Entidades.Logica.DetallePlanoPretenido.datasource" />
+    <None Include="Properties\DataSources\PedidoTela.Entidades.Logica.DetalleUnicolor.datasource" />
     <None Include="Properties\DataSources\PedidoTela.Entidades.Logica.PedidoCuellos.datasource" />
     <None Include="Properties\DataSources\PedidoTela.Entidades.Logica.PedidoMontarInformacion.datasource" />
     <None Include="Properties\DataSources\PedidoTela.Entidades.Logica.PedidoMontarTotal.datasource" />
@@ -594,6 +603,15 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="imgs\inventarioExte.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="imgs\reservar.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="imgs\detalleReserva.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="imgs\detaReserva.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

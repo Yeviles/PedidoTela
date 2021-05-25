@@ -31,11 +31,6 @@ namespace PedidoTela.Formularios
         {
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
             this.dgvDisponibleReservar = new System.Windows.Forms.DataGridView();
-            this.lbDisponible = new System.Windows.Forms.Label();
-            this.panel9 = new System.Windows.Forms.Panel();
-            this.btnDetalleReserva = new System.Windows.Forms.Button();
-            this.btnGrabar = new System.Windows.Forms.Button();
-            this.btnSalir = new System.Windows.Forms.Button();
             this.diseñadora = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.pedido = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.referencia = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -48,6 +43,11 @@ namespace PedidoTela.Formularios
             this.disponibleTeorico = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.metrosaReservar = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.idSolTela = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.lbDisponible = new System.Windows.Forms.Label();
+            this.panel9 = new System.Windows.Forms.Panel();
+            this.btnDetalleReserva = new System.Windows.Forms.Button();
+            this.btnGrabar = new System.Windows.Forms.Button();
+            this.btnSalir = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.dgvDisponibleReservar)).BeginInit();
             this.panel9.SuspendLayout();
             this.SuspendLayout();
@@ -87,78 +87,13 @@ namespace PedidoTela.Formularios
             this.dgvDisponibleReservar.MultiSelect = false;
             this.dgvDisponibleReservar.Name = "dgvDisponibleReservar";
             this.dgvDisponibleReservar.RightToLeft = System.Windows.Forms.RightToLeft.No;
+            this.dgvDisponibleReservar.RowHeadersVisible = false;
             this.dgvDisponibleReservar.RowHeadersWidth = 62;
             this.dgvDisponibleReservar.RowTemplate.Height = 28;
             this.dgvDisponibleReservar.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.CellSelect;
             this.dgvDisponibleReservar.Size = new System.Drawing.Size(1359, 546);
             this.dgvDisponibleReservar.TabIndex = 28;
             this.dgvDisponibleReservar.CellEndEdit += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvDisponibleReservar_CellEndEdit);
-            // 
-            // lbDisponible
-            // 
-            this.lbDisponible.AutoSize = true;
-            this.lbDisponible.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
-            this.lbDisponible.Location = new System.Drawing.Point(12, 182);
-            this.lbDisponible.Name = "lbDisponible";
-            this.lbDisponible.Size = new System.Drawing.Size(179, 19);
-            this.lbDisponible.TabIndex = 29;
-            this.lbDisponible.Text = "Disponible para Reserva";
-            // 
-            // panel9
-            // 
-            this.panel9.BackColor = System.Drawing.SystemColors.ScrollBar;
-            this.panel9.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.panel9.Controls.Add(this.btnDetalleReserva);
-            this.panel9.Controls.Add(this.btnGrabar);
-            this.panel9.Controls.Add(this.btnSalir);
-            this.panel9.Location = new System.Drawing.Point(12, 87);
-            this.panel9.Name = "panel9";
-            this.panel9.Size = new System.Drawing.Size(1359, 56);
-            this.panel9.TabIndex = 137;
-            // 
-            // btnDetalleReserva
-            // 
-            this.btnDetalleReserva.Font = new System.Drawing.Font("Verdana", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnDetalleReserva.Image = global::PedidoTela.Formularios.Properties.Resources._1492790860_8check_84164;
-            this.btnDetalleReserva.Location = new System.Drawing.Point(4, 2);
-            this.btnDetalleReserva.Name = "btnDetalleReserva";
-            this.btnDetalleReserva.Size = new System.Drawing.Size(209, 50);
-            this.btnDetalleReserva.TabIndex = 96;
-            this.btnDetalleReserva.Text = "Detalle Reserva";
-            this.btnDetalleReserva.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.btnDetalleReserva.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
-            this.btnDetalleReserva.UseVisualStyleBackColor = true;
-            this.btnDetalleReserva.Click += new System.EventHandler(this.btnDetalleReserva_Click);
-            // 
-            // btnGrabar
-            // 
-            this.btnGrabar.BackColor = System.Drawing.Color.LightGray;
-            this.btnGrabar.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.btnGrabar.Font = new System.Drawing.Font("Verdana", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnGrabar.Image = global::PedidoTela.Formularios.Properties.Resources.record_icon_icons_com_64775__1_;
-            this.btnGrabar.Location = new System.Drawing.Point(214, 2);
-            this.btnGrabar.Name = "btnGrabar";
-            this.btnGrabar.Size = new System.Drawing.Size(174, 50);
-            this.btnGrabar.TabIndex = 95;
-            this.btnGrabar.Text = "Grabar";
-            this.btnGrabar.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.btnGrabar.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
-            this.btnGrabar.UseVisualStyleBackColor = false;
-            this.btnGrabar.Click += new System.EventHandler(this.btnGrabar_Click);
-            // 
-            // btnSalir
-            // 
-            this.btnSalir.Font = new System.Drawing.Font("Verdana", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnSalir.Image = global::PedidoTela.Formularios.Properties.Resources.logout_exit_icon_176185;
-            this.btnSalir.Location = new System.Drawing.Point(388, 2);
-            this.btnSalir.Name = "btnSalir";
-            this.btnSalir.Size = new System.Drawing.Size(174, 50);
-            this.btnSalir.TabIndex = 97;
-            this.btnSalir.Text = "Salir";
-            this.btnSalir.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.btnSalir.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
-            this.btnSalir.UseVisualStyleBackColor = true;
-            this.btnSalir.Click += new System.EventHandler(this.btnSalir_Click);
             // 
             // diseñadora
             // 
@@ -232,6 +167,72 @@ namespace PedidoTela.Formularios
             this.idSolTela.MinimumWidth = 6;
             this.idSolTela.Name = "idSolTela";
             this.idSolTela.Visible = false;
+            // 
+            // lbDisponible
+            // 
+            this.lbDisponible.AutoSize = true;
+            this.lbDisponible.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
+            this.lbDisponible.Location = new System.Drawing.Point(12, 182);
+            this.lbDisponible.Name = "lbDisponible";
+            this.lbDisponible.Size = new System.Drawing.Size(179, 19);
+            this.lbDisponible.TabIndex = 29;
+            this.lbDisponible.Text = "Disponible para Reserva";
+            // 
+            // panel9
+            // 
+            this.panel9.BackColor = System.Drawing.SystemColors.ScrollBar;
+            this.panel9.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.panel9.Controls.Add(this.btnDetalleReserva);
+            this.panel9.Controls.Add(this.btnGrabar);
+            this.panel9.Controls.Add(this.btnSalir);
+            this.panel9.Location = new System.Drawing.Point(12, 87);
+            this.panel9.Name = "panel9";
+            this.panel9.Size = new System.Drawing.Size(1359, 47);
+            this.panel9.TabIndex = 137;
+            // 
+            // btnDetalleReserva
+            // 
+            this.btnDetalleReserva.Font = new System.Drawing.Font("Verdana", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnDetalleReserva.Image = global::PedidoTela.Formularios.Properties.Resources.detaReserva;
+            this.btnDetalleReserva.Location = new System.Drawing.Point(4, 2);
+            this.btnDetalleReserva.Name = "btnDetalleReserva";
+            this.btnDetalleReserva.Size = new System.Drawing.Size(174, 41);
+            this.btnDetalleReserva.TabIndex = 96;
+            this.btnDetalleReserva.Text = "Detalle Reserva";
+            this.btnDetalleReserva.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.btnDetalleReserva.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
+            this.btnDetalleReserva.UseVisualStyleBackColor = true;
+            this.btnDetalleReserva.Click += new System.EventHandler(this.btnDetalleReserva_Click);
+            // 
+            // btnGrabar
+            // 
+            this.btnGrabar.BackColor = System.Drawing.Color.LightGray;
+            this.btnGrabar.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.btnGrabar.Font = new System.Drawing.Font("Verdana", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnGrabar.Image = global::PedidoTela.Formularios.Properties.Resources.guardar2;
+            this.btnGrabar.Location = new System.Drawing.Point(175, 2);
+            this.btnGrabar.Name = "btnGrabar";
+            this.btnGrabar.Size = new System.Drawing.Size(174, 41);
+            this.btnGrabar.TabIndex = 95;
+            this.btnGrabar.Text = "Grabar";
+            this.btnGrabar.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.btnGrabar.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
+            this.btnGrabar.UseVisualStyleBackColor = false;
+            this.btnGrabar.Click += new System.EventHandler(this.btnGrabar_Click);
+            // 
+            // btnSalir
+            // 
+            this.btnSalir.Font = new System.Drawing.Font("Verdana", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnSalir.Image = global::PedidoTela.Formularios.Properties.Resources.salir2;
+            this.btnSalir.Location = new System.Drawing.Point(347, 2);
+            this.btnSalir.Name = "btnSalir";
+            this.btnSalir.Size = new System.Drawing.Size(174, 41);
+            this.btnSalir.TabIndex = 97;
+            this.btnSalir.Text = "Salir";
+            this.btnSalir.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.btnSalir.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
+            this.btnSalir.UseVisualStyleBackColor = true;
+            this.btnSalir.Click += new System.EventHandler(this.btnSalir_Click);
             // 
             // frmDisponibleParaReserva
             // 

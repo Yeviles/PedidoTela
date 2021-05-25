@@ -35,9 +35,11 @@ namespace PedidoTela.Formularios
             this.tbcPedidoTela = new System.Windows.Forms.TabControl();
             this.tbpAdicionarSolTela = new System.Windows.Forms.TabPage();
             this.pnlAdicionarSolicitud = new System.Windows.Forms.Panel();
+            this.btnSalir = new System.Windows.Forms.Button();
             this.txbEnsRefDigitado = new System.Windows.Forms.TextBox();
             this.cbxTipo = new System.Windows.Forms.ComboBox();
             this.lbTipo = new System.Windows.Forms.Label();
+            this.btnConsultar = new System.Windows.Forms.Button();
             this.dtpFechaTienda = new System.Windows.Forms.DateTimePicker();
             this.label9 = new System.Windows.Forms.Label();
             this.txbDisenador = new System.Windows.Forms.TextBox();
@@ -69,8 +71,6 @@ namespace PedidoTela.Formularios
             this.ttEnsayoRef = new System.Windows.Forms.ToolTip(this.components);
             this.ttSku = new System.Windows.Forms.ToolTip(this.components);
             this.ttTipo = new System.Windows.Forms.ToolTip(this.components);
-            this.btnSalir = new System.Windows.Forms.Button();
-            this.btnConsultar = new System.Windows.Forms.Button();
             this.tbcPedidoTela.SuspendLayout();
             this.tbpAdicionarSolTela.SuspendLayout();
             this.pnlAdicionarSolicitud.SuspendLayout();
@@ -134,6 +134,20 @@ namespace PedidoTela.Formularios
             this.pnlAdicionarSolicitud.Size = new System.Drawing.Size(1345, 187);
             this.pnlAdicionarSolicitud.TabIndex = 20;
             // 
+            // btnSalir
+            // 
+            this.btnSalir.Font = new System.Drawing.Font("Verdana", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnSalir.Image = global::PedidoTela.Formularios.Properties.Resources.salir2;
+            this.btnSalir.Location = new System.Drawing.Point(973, 139);
+            this.btnSalir.Name = "btnSalir";
+            this.btnSalir.Size = new System.Drawing.Size(174, 41);
+            this.btnSalir.TabIndex = 98;
+            this.btnSalir.Text = "Salir";
+            this.btnSalir.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.btnSalir.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
+            this.btnSalir.UseVisualStyleBackColor = true;
+            this.btnSalir.Click += new System.EventHandler(this.btnSalir_Click);
+            // 
             // txbEnsRefDigitado
             // 
             this.txbEnsRefDigitado.BackColor = System.Drawing.SystemColors.Window;
@@ -164,6 +178,18 @@ namespace PedidoTela.Formularios
             this.lbTipo.Size = new System.Drawing.Size(44, 17);
             this.lbTipo.TabIndex = 61;
             this.lbTipo.Text = "Tipo:";
+            // 
+            // btnConsultar
+            // 
+            this.btnConsultar.Image = global::PedidoTela.Formularios.Properties.Resources.finger_hand_5531;
+            this.btnConsultar.Location = new System.Drawing.Point(1153, 139);
+            this.btnConsultar.Name = "btnConsultar";
+            this.btnConsultar.Size = new System.Drawing.Size(167, 41);
+            this.btnConsultar.TabIndex = 60;
+            this.btnConsultar.Text = "Consultar";
+            this.btnConsultar.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
+            this.btnConsultar.UseVisualStyleBackColor = true;
+            this.btnConsultar.Click += new System.EventHandler(this.btnConsultar_Click);
             // 
             // dtpFechaTienda
             // 
@@ -356,6 +382,7 @@ namespace PedidoTela.Formularios
             this.dgvDetalleConsumo.Name = "dgvDetalleConsumo";
             this.dgvDetalleConsumo.ReadOnly = true;
             this.dgvDetalleConsumo.RightToLeft = System.Windows.Forms.RightToLeft.No;
+            this.dgvDetalleConsumo.RowHeadersVisible = false;
             this.dgvDetalleConsumo.RowHeadersWidth = 62;
             dataGridViewCellStyle2.Font = new System.Drawing.Font("Verdana", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             dataGridViewCellStyle2.ForeColor = System.Drawing.Color.Black;
@@ -444,32 +471,6 @@ namespace PedidoTela.Formularios
             this.lbDetalleConsumo.Size = new System.Drawing.Size(129, 19);
             this.lbDetalleConsumo.TabIndex = 18;
             this.lbDetalleConsumo.Text = "Detalle Consumo";
-            // 
-            // btnSalir
-            // 
-            this.btnSalir.Font = new System.Drawing.Font("Verdana", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnSalir.Image = global::PedidoTela.Formularios.Properties.Resources.salir2;
-            this.btnSalir.Location = new System.Drawing.Point(973, 139);
-            this.btnSalir.Name = "btnSalir";
-            this.btnSalir.Size = new System.Drawing.Size(174, 41);
-            this.btnSalir.TabIndex = 98;
-            this.btnSalir.Text = "Salir";
-            this.btnSalir.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.btnSalir.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
-            this.btnSalir.UseVisualStyleBackColor = true;
-            this.btnSalir.Click += new System.EventHandler(this.btnSalir_Click);
-            // 
-            // btnConsultar
-            // 
-            this.btnConsultar.Image = global::PedidoTela.Formularios.Properties.Resources.finger_hand_5531;
-            this.btnConsultar.Location = new System.Drawing.Point(1153, 139);
-            this.btnConsultar.Name = "btnConsultar";
-            this.btnConsultar.Size = new System.Drawing.Size(167, 41);
-            this.btnConsultar.TabIndex = 60;
-            this.btnConsultar.Text = "Consultar";
-            this.btnConsultar.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
-            this.btnConsultar.UseVisualStyleBackColor = true;
-            this.btnConsultar.Click += new System.EventHandler(this.btnConsultar_Click);
             // 
             // frmSolicitudTela
             // 

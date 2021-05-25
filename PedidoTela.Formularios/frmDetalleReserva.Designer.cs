@@ -31,10 +31,6 @@ namespace PedidoTela.Formularios
         {
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
             this.dgvDetalle = new System.Windows.Forms.DataGridView();
-            this.lbTotal = new System.Windows.Forms.Label();
-            this.txbTotal = new System.Windows.Forms.TextBox();
-            this.panel9 = new System.Windows.Forms.Panel();
-            this.button1 = new System.Windows.Forms.Button();
             this.diseñadora = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.pedido = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.referencia = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -44,6 +40,10 @@ namespace PedidoTela.Formularios
             this.referencia2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.cantReservado = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.idSolTela = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.lbTotal = new System.Windows.Forms.Label();
+            this.txbTotal = new System.Windows.Forms.TextBox();
+            this.panel9 = new System.Windows.Forms.Panel();
+            this.button1 = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.dgvDetalle)).BeginInit();
             this.panel9.SuspendLayout();
             this.SuspendLayout();
@@ -75,58 +75,19 @@ namespace PedidoTela.Formularios
             this.cantReservado,
             this.idSolTela});
             this.dgvDetalle.EnableHeadersVisualStyles = false;
-            this.dgvDetalle.Location = new System.Drawing.Point(22, 187);
+            this.dgvDetalle.Location = new System.Drawing.Point(12, 146);
             this.dgvDetalle.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.dgvDetalle.MultiSelect = false;
             this.dgvDetalle.Name = "dgvDetalle";
             this.dgvDetalle.ReadOnly = true;
             this.dgvDetalle.RightToLeft = System.Windows.Forms.RightToLeft.No;
+            this.dgvDetalle.RowHeadersVisible = false;
             this.dgvDetalle.RowHeadersWidth = 62;
             this.dgvDetalle.RowTemplate.Height = 28;
             this.dgvDetalle.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dgvDetalle.Size = new System.Drawing.Size(1349, 511);
+            this.dgvDetalle.Size = new System.Drawing.Size(1359, 552);
             this.dgvDetalle.TabIndex = 28;
             this.dgvDetalle.CurrentCellChanged += new System.EventHandler(this.dgvDetalle_CurrentCellChanged);
-            // 
-            // lbTotal
-            // 
-            this.lbTotal.AutoSize = true;
-            this.lbTotal.Location = new System.Drawing.Point(1172, 730);
-            this.lbTotal.Name = "lbTotal";
-            this.lbTotal.Size = new System.Drawing.Size(41, 17);
-            this.lbTotal.TabIndex = 29;
-            this.lbTotal.Text = "Total";
-            // 
-            // txbTotal
-            // 
-            this.txbTotal.Location = new System.Drawing.Point(1245, 725);
-            this.txbTotal.Name = "txbTotal";
-            this.txbTotal.Size = new System.Drawing.Size(112, 23);
-            this.txbTotal.TabIndex = 30;
-            // 
-            // panel9
-            // 
-            this.panel9.BackColor = System.Drawing.SystemColors.ScrollBar;
-            this.panel9.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.panel9.Controls.Add(this.button1);
-            this.panel9.Location = new System.Drawing.Point(12, 81);
-            this.panel9.Name = "panel9";
-            this.panel9.Size = new System.Drawing.Size(1359, 56);
-            this.panel9.TabIndex = 137;
-            // 
-            // button1
-            // 
-            this.button1.Font = new System.Drawing.Font("Verdana", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button1.Image = global::PedidoTela.Formularios.Properties.Resources.logout_exit_icon_176185;
-            this.button1.Location = new System.Drawing.Point(4, 2);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(174, 50);
-            this.button1.TabIndex = 97;
-            this.button1.Text = "Salir";
-            this.button1.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.button1.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
-            this.button1.UseVisualStyleBackColor = true;
-            this.button1.Click += new System.EventHandler(this.button1_Click);
             // 
             // diseñadora
             // 
@@ -192,6 +153,46 @@ namespace PedidoTela.Formularios
             this.idSolTela.ReadOnly = true;
             this.idSolTela.Visible = false;
             // 
+            // lbTotal
+            // 
+            this.lbTotal.AutoSize = true;
+            this.lbTotal.Location = new System.Drawing.Point(1172, 730);
+            this.lbTotal.Name = "lbTotal";
+            this.lbTotal.Size = new System.Drawing.Size(41, 17);
+            this.lbTotal.TabIndex = 29;
+            this.lbTotal.Text = "Total";
+            // 
+            // txbTotal
+            // 
+            this.txbTotal.Location = new System.Drawing.Point(1245, 725);
+            this.txbTotal.Name = "txbTotal";
+            this.txbTotal.Size = new System.Drawing.Size(112, 23);
+            this.txbTotal.TabIndex = 30;
+            // 
+            // panel9
+            // 
+            this.panel9.BackColor = System.Drawing.SystemColors.ScrollBar;
+            this.panel9.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.panel9.Controls.Add(this.button1);
+            this.panel9.Location = new System.Drawing.Point(12, 81);
+            this.panel9.Name = "panel9";
+            this.panel9.Size = new System.Drawing.Size(1359, 47);
+            this.panel9.TabIndex = 137;
+            // 
+            // button1
+            // 
+            this.button1.Font = new System.Drawing.Font("Verdana", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.button1.Image = global::PedidoTela.Formularios.Properties.Resources.volver;
+            this.button1.Location = new System.Drawing.Point(4, 2);
+            this.button1.Name = "button1";
+            this.button1.Size = new System.Drawing.Size(126, 41);
+            this.button1.TabIndex = 97;
+            this.button1.Text = "Salir";
+            this.button1.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.button1.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
+            this.button1.UseVisualStyleBackColor = true;
+            this.button1.Click += new System.EventHandler(this.button1_Click);
+            // 
             // frmDetalleReserva
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
@@ -203,6 +204,7 @@ namespace PedidoTela.Formularios
             this.Controls.Add(this.dgvDetalle);
             this.Font = new System.Drawing.Font("Verdana", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.MaximizeBox = false;
             this.Name = "frmDetalleReserva";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Detalle Reserva";

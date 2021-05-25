@@ -32,6 +32,14 @@ namespace PedidoTela.Formularios
             this.components = new System.ComponentModel.Container();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
             this.panel1 = new System.Windows.Forms.Panel();
+            this.btnSalir = new System.Windows.Forms.Button();
+            this.btnEditar = new System.Windows.Forms.Button();
+            this.btnInventarioExt = new System.Windows.Forms.Button();
+            this.btnDevolucion = new System.Windows.Forms.Button();
+            this.btnImprimir = new System.Windows.Forms.Button();
+            this.btnConsolidar = new System.Windows.Forms.Button();
+            this.btnVerDetalle = new System.Windows.Forms.Button();
+            this.btnAnaInventario = new System.Windows.Forms.Button();
             this.lbMuestrario = new System.Windows.Forms.Label();
             this.lbOcasionUso = new System.Windows.Forms.Label();
             this.lbTema = new System.Windows.Forms.Label();
@@ -101,18 +109,10 @@ namespace PedidoTela.Formularios
             this.cbxMuestrario = new System.Windows.Forms.ComboBox();
             this.cbxDisenador = new System.Windows.Forms.ComboBox();
             this.cbxTipoSolicitud = new System.Windows.Forms.ComboBox();
+            this.btnConsultar = new System.Windows.Forms.Button();
             this.ttMuestrario = new System.Windows.Forms.ToolTip(this.components);
             this.ttNomTela = new System.Windows.Forms.ToolTip(this.components);
             this.pnlContenedorGrid = new System.Windows.Forms.Panel();
-            this.btnConsultar = new System.Windows.Forms.Button();
-            this.btnSalir = new System.Windows.Forms.Button();
-            this.btnEditar = new System.Windows.Forms.Button();
-            this.btnInventarioExt = new System.Windows.Forms.Button();
-            this.btnDevolucion = new System.Windows.Forms.Button();
-            this.btnImprimir = new System.Windows.Forms.Button();
-            this.btnConsolidar = new System.Windows.Forms.Button();
-            this.btnVerDetalle = new System.Windows.Forms.Button();
-            this.btnAnaInventario = new System.Windows.Forms.Button();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvSolicitudTelas)).BeginInit();
             this.pnlInicial.SuspendLayout();
@@ -134,6 +134,104 @@ namespace PedidoTela.Formularios
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(1358, 49);
             this.panel1.TabIndex = 25;
+            // 
+            // btnSalir
+            // 
+            this.btnSalir.Font = new System.Drawing.Font("Verdana", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnSalir.Image = global::PedidoTela.Formularios.Properties.Resources.salir2;
+            this.btnSalir.Location = new System.Drawing.Point(867, 5);
+            this.btnSalir.Name = "btnSalir";
+            this.btnSalir.Size = new System.Drawing.Size(126, 41);
+            this.btnSalir.TabIndex = 99;
+            this.btnSalir.Text = "Salir";
+            this.btnSalir.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.btnSalir.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
+            this.btnSalir.UseVisualStyleBackColor = true;
+            this.btnSalir.Click += new System.EventHandler(this.btnSalir_Click);
+            // 
+            // btnEditar
+            // 
+            this.btnEditar.Image = global::PedidoTela.Formularios.Properties.Resources.editar;
+            this.btnEditar.Location = new System.Drawing.Point(620, 5);
+            this.btnEditar.Name = "btnEditar";
+            this.btnEditar.Size = new System.Drawing.Size(126, 41);
+            this.btnEditar.TabIndex = 4;
+            this.btnEditar.Text = "Editar";
+            this.btnEditar.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.btnEditar.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
+            this.btnEditar.UseVisualStyleBackColor = true;
+            this.btnEditar.Click += new System.EventHandler(this.btnEditar_Click);
+            // 
+            // btnInventarioExt
+            // 
+            this.btnInventarioExt.Image = global::PedidoTela.Formularios.Properties.Resources.inventarioExte;
+            this.btnInventarioExt.Location = new System.Drawing.Point(372, 4);
+            this.btnInventarioExt.Name = "btnInventarioExt";
+            this.btnInventarioExt.Size = new System.Drawing.Size(126, 42);
+            this.btnInventarioExt.TabIndex = 6;
+            this.btnInventarioExt.Text = "Inventario Externo";
+            this.btnInventarioExt.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
+            this.btnInventarioExt.UseVisualStyleBackColor = true;
+            this.btnInventarioExt.Click += new System.EventHandler(this.btnInventarioExt_Click);
+            // 
+            // btnDevolucion
+            // 
+            this.btnDevolucion.Image = global::PedidoTela.Formularios.Properties.Resources.devolver;
+            this.btnDevolucion.Location = new System.Drawing.Point(496, 5);
+            this.btnDevolucion.Name = "btnDevolucion";
+            this.btnDevolucion.Size = new System.Drawing.Size(126, 41);
+            this.btnDevolucion.TabIndex = 5;
+            this.btnDevolucion.Text = "Devolución";
+            this.btnDevolucion.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
+            this.btnDevolucion.UseVisualStyleBackColor = true;
+            this.btnDevolucion.Click += new System.EventHandler(this.btnDevolucion_Click);
+            // 
+            // btnImprimir
+            // 
+            this.btnImprimir.Image = global::PedidoTela.Formularios.Properties.Resources.imprimir;
+            this.btnImprimir.Location = new System.Drawing.Point(743, 5);
+            this.btnImprimir.Name = "btnImprimir";
+            this.btnImprimir.Size = new System.Drawing.Size(126, 41);
+            this.btnImprimir.TabIndex = 3;
+            this.btnImprimir.Text = "Imprimir";
+            this.btnImprimir.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
+            this.btnImprimir.UseVisualStyleBackColor = true;
+            this.btnImprimir.Click += new System.EventHandler(this.btnImprimir_Click);
+            // 
+            // btnConsolidar
+            // 
+            this.btnConsolidar.Image = global::PedidoTela.Formularios.Properties.Resources.consolidate_icon_135744;
+            this.btnConsolidar.Location = new System.Drawing.Point(0, 4);
+            this.btnConsolidar.Name = "btnConsolidar";
+            this.btnConsolidar.Size = new System.Drawing.Size(126, 41);
+            this.btnConsolidar.TabIndex = 0;
+            this.btnConsolidar.Text = "Consolidar";
+            this.btnConsolidar.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
+            this.btnConsolidar.UseVisualStyleBackColor = true;
+            this.btnConsolidar.Click += new System.EventHandler(this.btnConsolidar_Click);
+            // 
+            // btnVerDetalle
+            // 
+            this.btnVerDetalle.Image = global::PedidoTela.Formularios.Properties.Resources._1491254401_detailinformationmenudata_82977;
+            this.btnVerDetalle.Location = new System.Drawing.Point(124, 4);
+            this.btnVerDetalle.Name = "btnVerDetalle";
+            this.btnVerDetalle.Size = new System.Drawing.Size(126, 41);
+            this.btnVerDetalle.TabIndex = 1;
+            this.btnVerDetalle.Text = "Verdetalle";
+            this.btnVerDetalle.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
+            this.btnVerDetalle.UseVisualStyleBackColor = true;
+            // 
+            // btnAnaInventario
+            // 
+            this.btnAnaInventario.Image = global::PedidoTela.Formularios.Properties.Resources.analizarInventario;
+            this.btnAnaInventario.Location = new System.Drawing.Point(248, 4);
+            this.btnAnaInventario.Name = "btnAnaInventario";
+            this.btnAnaInventario.Size = new System.Drawing.Size(126, 42);
+            this.btnAnaInventario.TabIndex = 2;
+            this.btnAnaInventario.Text = "Analizar Inventario";
+            this.btnAnaInventario.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
+            this.btnAnaInventario.UseVisualStyleBackColor = true;
+            this.btnAnaInventario.Click += new System.EventHandler(this.btnAnaInventario_Click);
             // 
             // lbMuestrario
             // 
@@ -748,6 +846,18 @@ namespace PedidoTela.Formularios
             this.cbxTipoSolicitud.Size = new System.Drawing.Size(224, 24);
             this.cbxTipoSolicitud.TabIndex = 60;
             // 
+            // btnConsultar
+            // 
+            this.btnConsultar.Image = global::PedidoTela.Formularios.Properties.Resources.finger_hand_5531;
+            this.btnConsultar.Location = new System.Drawing.Point(1159, 152);
+            this.btnConsultar.Name = "btnConsultar";
+            this.btnConsultar.Size = new System.Drawing.Size(167, 50);
+            this.btnConsultar.TabIndex = 59;
+            this.btnConsultar.Text = "Consultar";
+            this.btnConsultar.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
+            this.btnConsultar.UseVisualStyleBackColor = true;
+            this.btnConsultar.Click += new System.EventHandler(this.btnConsultar_Click);
+            // 
             // ttMuestrario
             // 
             this.ttMuestrario.BackColor = System.Drawing.Color.Yellow;
@@ -766,115 +876,6 @@ namespace PedidoTela.Formularios
             this.pnlContenedorGrid.Name = "pnlContenedorGrid";
             this.pnlContenedorGrid.Size = new System.Drawing.Size(1358, 379);
             this.pnlContenedorGrid.TabIndex = 61;
-            // 
-            // btnConsultar
-            // 
-            this.btnConsultar.Image = global::PedidoTela.Formularios.Properties.Resources.finger_hand_5531;
-            this.btnConsultar.Location = new System.Drawing.Point(1159, 152);
-            this.btnConsultar.Name = "btnConsultar";
-            this.btnConsultar.Size = new System.Drawing.Size(167, 50);
-            this.btnConsultar.TabIndex = 59;
-            this.btnConsultar.Text = "Consultar";
-            this.btnConsultar.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
-            this.btnConsultar.UseVisualStyleBackColor = true;
-            this.btnConsultar.Click += new System.EventHandler(this.btnConsultar_Click);
-            // 
-            // btnSalir
-            // 
-            this.btnSalir.Font = new System.Drawing.Font("Verdana", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnSalir.Image = global::PedidoTela.Formularios.Properties.Resources.salir2;
-            this.btnSalir.Location = new System.Drawing.Point(867, 5);
-            this.btnSalir.Name = "btnSalir";
-            this.btnSalir.Size = new System.Drawing.Size(126, 41);
-            this.btnSalir.TabIndex = 99;
-            this.btnSalir.Text = "Salir";
-            this.btnSalir.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.btnSalir.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
-            this.btnSalir.UseVisualStyleBackColor = true;
-            this.btnSalir.Click += new System.EventHandler(this.btnSalir_Click);
-            // 
-            // btnEditar
-            // 
-            this.btnEditar.Image = global::PedidoTela.Formularios.Properties.Resources.editar;
-            this.btnEditar.Location = new System.Drawing.Point(620, 5);
-            this.btnEditar.Name = "btnEditar";
-            this.btnEditar.Size = new System.Drawing.Size(126, 41);
-            this.btnEditar.TabIndex = 4;
-            this.btnEditar.Text = "Editar";
-            this.btnEditar.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.btnEditar.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
-            this.btnEditar.UseVisualStyleBackColor = true;
-            this.btnEditar.Click += new System.EventHandler(this.btnEditar_Click);
-            // 
-            // btnInventarioExt
-            // 
-            this.btnInventarioExt.Image = global::PedidoTela.Formularios.Properties.Resources.inventarioExte;
-            this.btnInventarioExt.Location = new System.Drawing.Point(372, 4);
-            this.btnInventarioExt.Name = "btnInventarioExt";
-            this.btnInventarioExt.Size = new System.Drawing.Size(126, 42);
-            this.btnInventarioExt.TabIndex = 6;
-            this.btnInventarioExt.Text = "Inventario Externo";
-            this.btnInventarioExt.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
-            this.btnInventarioExt.UseVisualStyleBackColor = true;
-            this.btnInventarioExt.Click += new System.EventHandler(this.btnInventarioExt_Click);
-            // 
-            // btnDevolucion
-            // 
-            this.btnDevolucion.Image = global::PedidoTela.Formularios.Properties.Resources.devolver;
-            this.btnDevolucion.Location = new System.Drawing.Point(496, 5);
-            this.btnDevolucion.Name = "btnDevolucion";
-            this.btnDevolucion.Size = new System.Drawing.Size(126, 41);
-            this.btnDevolucion.TabIndex = 5;
-            this.btnDevolucion.Text = "Devolución";
-            this.btnDevolucion.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
-            this.btnDevolucion.UseVisualStyleBackColor = true;
-            this.btnDevolucion.Click += new System.EventHandler(this.btnDevolucion_Click);
-            // 
-            // btnImprimir
-            // 
-            this.btnImprimir.Image = global::PedidoTela.Formularios.Properties.Resources.imprimir;
-            this.btnImprimir.Location = new System.Drawing.Point(743, 5);
-            this.btnImprimir.Name = "btnImprimir";
-            this.btnImprimir.Size = new System.Drawing.Size(126, 41);
-            this.btnImprimir.TabIndex = 3;
-            this.btnImprimir.Text = "Imprimir";
-            this.btnImprimir.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
-            this.btnImprimir.UseVisualStyleBackColor = true;
-            // 
-            // btnConsolidar
-            // 
-            this.btnConsolidar.Image = global::PedidoTela.Formularios.Properties.Resources.consolidate_icon_135744;
-            this.btnConsolidar.Location = new System.Drawing.Point(0, 4);
-            this.btnConsolidar.Name = "btnConsolidar";
-            this.btnConsolidar.Size = new System.Drawing.Size(126, 41);
-            this.btnConsolidar.TabIndex = 0;
-            this.btnConsolidar.Text = "Consolidar";
-            this.btnConsolidar.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
-            this.btnConsolidar.UseVisualStyleBackColor = true;
-            this.btnConsolidar.Click += new System.EventHandler(this.btnConsolidar_Click);
-            // 
-            // btnVerDetalle
-            // 
-            this.btnVerDetalle.Image = global::PedidoTela.Formularios.Properties.Resources._1491254401_detailinformationmenudata_82977;
-            this.btnVerDetalle.Location = new System.Drawing.Point(124, 4);
-            this.btnVerDetalle.Name = "btnVerDetalle";
-            this.btnVerDetalle.Size = new System.Drawing.Size(126, 41);
-            this.btnVerDetalle.TabIndex = 1;
-            this.btnVerDetalle.Text = "Verdetalle";
-            this.btnVerDetalle.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
-            this.btnVerDetalle.UseVisualStyleBackColor = true;
-            // 
-            // btnAnaInventario
-            // 
-            this.btnAnaInventario.Image = global::PedidoTela.Formularios.Properties.Resources.analizarInventario;
-            this.btnAnaInventario.Location = new System.Drawing.Point(248, 4);
-            this.btnAnaInventario.Name = "btnAnaInventario";
-            this.btnAnaInventario.Size = new System.Drawing.Size(126, 42);
-            this.btnAnaInventario.TabIndex = 2;
-            this.btnAnaInventario.Text = "Analizar Inventario";
-            this.btnAnaInventario.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
-            this.btnAnaInventario.UseVisualStyleBackColor = true;
-            this.btnAnaInventario.Click += new System.EventHandler(this.btnAnaInventario_Click);
             // 
             // frmSolicitudListaTelas
             // 

@@ -47,16 +47,21 @@ namespace PedidoTela.Formularios
             this.panel1.Controls.Add(this.lblCodigo);
             this.panel1.Controls.Add(this.txbDescripcion);
             this.panel1.Controls.Add(this.txbCodigo);
-            this.panel1.Location = new System.Drawing.Point(13, 76);
+            this.panel1.Location = new System.Drawing.Point(17, 94);
+            this.panel1.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(535, 45);
+            this.panel1.Size = new System.Drawing.Size(713, 55);
             this.panel1.TabIndex = 0;
             // 
             // btnBuscar
             // 
-            this.btnBuscar.Location = new System.Drawing.Point(444, 9);
+            this.btnBuscar.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
+            this.btnBuscar.Image = global::PedidoTela.Formularios.Properties.Resources.buscar;
+            this.btnBuscar.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnBuscar.Location = new System.Drawing.Point(587, 8);
+            this.btnBuscar.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.btnBuscar.Name = "btnBuscar";
-            this.btnBuscar.Size = new System.Drawing.Size(75, 23);
+            this.btnBuscar.Size = new System.Drawing.Size(109, 36);
             this.btnBuscar.TabIndex = 4;
             this.btnBuscar.Text = "Buscar";
             this.btnBuscar.UseVisualStyleBackColor = true;
@@ -65,34 +70,40 @@ namespace PedidoTela.Formularios
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(186, 15);
+            this.label1.Font = new System.Drawing.Font("Verdana", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label1.Location = new System.Drawing.Point(248, 18);
+            this.label1.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(63, 13);
+            this.label1.Size = new System.Drawing.Size(88, 17);
             this.label1.TabIndex = 3;
             this.label1.Text = "Descripción";
             // 
             // lblCodigo
             // 
             this.lblCodigo.AutoSize = true;
-            this.lblCodigo.Location = new System.Drawing.Point(14, 15);
+            this.lblCodigo.Font = new System.Drawing.Font("Verdana", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblCodigo.Location = new System.Drawing.Point(19, 18);
+            this.lblCodigo.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lblCodigo.Name = "lblCodigo";
-            this.lblCodigo.Size = new System.Drawing.Size(40, 13);
+            this.lblCodigo.Size = new System.Drawing.Size(57, 17);
             this.lblCodigo.TabIndex = 2;
             this.lblCodigo.Text = "Código";
             // 
             // txbDescripcion
             // 
-            this.txbDescripcion.Location = new System.Drawing.Point(268, 12);
+            this.txbDescripcion.Location = new System.Drawing.Point(357, 15);
+            this.txbDescripcion.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.txbDescripcion.Name = "txbDescripcion";
-            this.txbDescripcion.Size = new System.Drawing.Size(160, 20);
+            this.txbDescripcion.Size = new System.Drawing.Size(212, 22);
             this.txbDescripcion.TabIndex = 1;
             this.txbDescripcion.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txbDescripcion_KeyPress);
             // 
             // txbCodigo
             // 
-            this.txbCodigo.Location = new System.Drawing.Point(60, 12);
+            this.txbCodigo.Location = new System.Drawing.Point(80, 15);
+            this.txbCodigo.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.txbCodigo.Name = "txbCodigo";
-            this.txbCodigo.Size = new System.Drawing.Size(100, 20);
+            this.txbCodigo.Size = new System.Drawing.Size(132, 22);
             this.txbCodigo.TabIndex = 0;
             this.txbCodigo.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txbCodigo_KeyPress);
             // 
@@ -101,21 +112,24 @@ namespace PedidoTela.Formularios
             this.dgvColores.AllowUserToAddRows = false;
             this.dgvColores.AllowUserToDeleteRows = false;
             this.dgvColores.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dgvColores.Location = new System.Drawing.Point(13, 128);
+            this.dgvColores.Location = new System.Drawing.Point(17, 158);
+            this.dgvColores.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.dgvColores.Name = "dgvColores";
             this.dgvColores.ReadOnly = true;
+            this.dgvColores.RowHeadersWidth = 51;
             this.dgvColores.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dgvColores.Size = new System.Drawing.Size(535, 310);
+            this.dgvColores.Size = new System.Drawing.Size(713, 382);
             this.dgvColores.TabIndex = 1;
             this.dgvColores.CellDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvColores_CellDoubleClick);
             // 
             // frmBuscarColor
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(560, 450);
+            this.ClientSize = new System.Drawing.Size(747, 554);
             this.Controls.Add(this.dgvColores);
             this.Controls.Add(this.panel1);
+            this.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.MaximizeBox = false;
             this.Name = "frmBuscarColor";
             this.Text = "Buscar color";
