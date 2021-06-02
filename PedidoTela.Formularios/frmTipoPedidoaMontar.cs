@@ -40,7 +40,7 @@ namespace PedidoTela.Formularios
             switch (tipoPedido.ToUpper()) {
                 case "UNICOLOR": cbxUnicolor.Checked = true; break;
                 case "ESTAMPADO": cbxestampado.Checked = true; break;
-                case "PRETEÑIDO": cbxPlanoPretenido.Checked = true; break;
+                case "PLANO": cbxPlanoPretenido.Checked = true; break;
                 case "TIRAS/CUELLOS/PUÑOS": cbxCuePunTiras.Checked = true; break;
                 case "COORDINADO": cbxCoordinadoTresUno.Checked = true; break;
                 case "AGENCIAS EXTERNOS": cbxAgencias.Checked = true; break;

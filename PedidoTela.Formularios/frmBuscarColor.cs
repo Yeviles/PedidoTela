@@ -47,33 +47,16 @@ namespace PedidoTela.Formularios
 
         private void txbCodigo_KeyPress(object sender, KeyPressEventArgs e)
         {
-            if (e.KeyChar == (Char)Keys.Enter)
-            {
-                string codigo = txbCodigo.Text.Trim().ToUpper();
-                if (codigo.Length > 0)
-                {
-                    listar(control.buscarColorPorCodigo(codigo));
-                }
-            }
-            else
-            {
-                listar(control.getColores());
+            if (e.KeyChar == (char)Keys.Enter) {
+                btnBuscar_Click(sender, e);
             }
         }
 
         private void txbDescripcion_KeyPress(object sender, KeyPressEventArgs e)
         {
-            if (e.KeyChar == (Char)Keys.Enter)
+            if (e.KeyChar == (char)Keys.Enter)
             {
-                string descripcion = txbDescripcion.Text.Trim().ToUpper();
-                if (descripcion.Length > 0)
-                {
-                    listar(control.buscarColorPorDescripcion(descripcion));
-                }
-            }
-            else
-            {
-                listar(control.getColores());
+                btnBuscar_Click(sender, e);
             }
         }
 
@@ -85,8 +68,6 @@ namespace PedidoTela.Formularios
             this.Close();
         }
 
-
-        
         private void listar(List<Objeto> lista)
         {
             dgvColores.Rows.Clear();

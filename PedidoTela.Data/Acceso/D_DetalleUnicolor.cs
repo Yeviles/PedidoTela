@@ -35,6 +35,7 @@ namespace PedidoTela.Data.Acceso
                         detalle.IdUnicolor = int.Parse(datos["idunicolor"].ToString());
                         detalle.CodigoColor = datos["codigo_color"].ToString();
                         detalle.Descripcion = datos["desc_color"].ToString().Trim();
+                        detalle.Tiendas = int.Parse(datos["tiendas"].ToString());
                         detalle.Exito = int.Parse(datos["exito"].ToString());
                         detalle.Cencosud = int.Parse(datos["cencosud"].ToString());
                         detalle.Sao = int.Parse(datos["sao"].ToString());

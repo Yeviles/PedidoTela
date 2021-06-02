@@ -52,95 +52,7 @@ namespace PedidoTela.Formularios
         }
         #endregion
 
-        #region Eventos
-        private void txbNdibujo_KeyPress(object sender, KeyPressEventArgs e)
-        {
-            validacion.SoloNumeros(e);
-
-        }
-
-        private void txbCoordinaCon_KeyPress(object sender, KeyPressEventArgs e)
-        {
-            e.KeyChar = Char.ToUpper(e.KeyChar);
-        }
-        
-        private void txbNcilindro_KeyPress(object sender, KeyPressEventArgs e)
-        {
-            validacion.SoloNumeros(e);
-        }
-
-        private void cbxSiCoordinadoEst_CheckedChanged(object sender, EventArgs e)
-        {
-            if(cbxSiCoordinado.Checked)
-            {
-                txbCoordinaCon.ReadOnly = false;
-                txbCoordinaCon.Focus();
-                txbCoordinaCon.BackColor = Color.White;
-                cbxNoCoordinado.Checked = false;
-            }
-           
-        }
-        
-        private void cbxNoCoordinadoEst_CheckedChanged(object sender, EventArgs e)
-        {
-            if(cbxNoCoordinado.Checked)
-            {
-                txbCoordinaCon.ReadOnly = true;
-                txbCoordinaCon.BackColor = Color.LightGoldenrodYellow;
-                cbxSiCoordinado.Checked = false;
-
-            }
-        }
-        
-        private void btnSalir_Click(object sender, EventArgs e)
-        {
-            this.Close();
-        }
-
-        private void btnAddColor_Click(object sender, EventArgs e)
-        {
-            frmBuscarColor buscarColor = new frmBuscarColor(controlador);
-            buscarColor.StartPosition = FormStartPosition.CenterScreen;
-            if (buscarColor.ShowDialog() == DialogResult.OK)
-            {
-                Objeto obj = buscarColor.Elemento;
-                dvgEstampado.Rows.Add();
-                dvgEstampado.Rows[dvgEstampado.Rows.Count - 1].Cells[0].Value = obj.Id;
-                dvgEstampado.Rows[dvgEstampado.Rows.Count - 1].Cells[1].Value = obj.Nombre;
-            }
-        }
-
-        private void btnConfirmar_Click(object sender, EventArgs e)
-        {
-            //Estampado objEstampado = controlador.getEstampado(id);
-            //id = objEstampado.IdEstampado;
-            //int idSolicitud = controlador.consultarIdsolicitud(identificador);
-            
-            int maxConsecutivo = controlador.consultarMaximo();
-            string fechaActual = DateTime.Now.ToString("dd/MM/yyyy");
-            string estado = "Por Analizar";
-            if (id != 0)
-            {
-               
-              
-                    controlador.agregarConsecutivo(idSolTelas, id, "ESTAMPADO", maxConsecutivo + 1, fechaActual, estado, fechaActual, Identificador);
-                    MessageBox.Show("El consecutivo se guardó con éxito.", "Información", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                    btnConfirmar.Enabled = false;
-                    btnGrabar.Enabled = false;
-                    txtObservaciones.Enabled = false;
-                    btnAddColor.Enabled = false;
-                    dvgEstampado.ReadOnly = true;
-                    consecutivo = controlador.consultarConsecutivo(id);
-                    lblConsecutivo.Text = "Consecutivo: " + consecutivo;
-                DialogResult = DialogResult.OK;
-            }
-            else
-            {
-                MessageBox.Show("Por favor, Grabe la Información.", "Advertencia", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-
-            }
-        }
-        
+        #region Botones
         /// <summary>
         /// Guarda infomación en dos tablas difrente que estan relacionadas entre si, las cuales son cfc_spt_sol_estampado, cfc_spt_sol_detalleEstampado
         /// y formando asi la infomación completa de la solicitud Estampado.
@@ -169,7 +81,8 @@ namespace PedidoTela.Formularios
                                 bool vacio = false;
                                 foreach (DataGridViewRow row in dvgEstampado.Rows)
                                 {
-                                    if (row.Cells[2].Value == null || row.Cells[3].Value == null) {
+                                    if (row.Cells[2].Value == null || row.Cells[3].Value == null)
+                                    {
                                         vacio = true;
                                     }
                                 }
@@ -187,18 +100,18 @@ namespace PedidoTela.Formularios
                                     elemento.Coordinado = (cbxSiCoordinado.Checked) ? true : false;
                                     elemento.Observaciones = (txtObservaciones.Text.Trim().Length > 0) ? txtObservaciones.Text.Trim() : "";
                                     elemento.IdSolTela = idSolTelas;
-                                    
+
                                     if (controlador.consultarIdentificadorEst(idSolTelas))
                                     {
                                         controlador.ActualizarEstampado(elemento);
-                                       
+
                                         b = true;
                                     }
                                     else
                                     {
                                         controlador.addEstampado(elemento);
                                     }
-                                  
+
                                     id = controlador.consultarIdEst(idSolTelas);
                                     listaIdDetalles = controlador.getIdDetalleEst(id);
                                     try
@@ -250,12 +163,12 @@ namespace PedidoTela.Formularios
                                     MessageBox.Show("Los campos fondo y descripción de fondo están vacíos.", "Advertencia", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                                 }
                             }
-                              else
+                            else
                             {
                                 MessageBox.Show("Por favor, adicione al menos un color.", "Advertencia", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                             }
                         }
-                         else
+                        else
                         {
                             MessageBox.Show("Por favor,Seleccione un Tipo de tejido.", "Advertencia", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                         }
@@ -273,9 +186,91 @@ namespace PedidoTela.Formularios
             }
         }
 
-        private void dvgEstampado_CellEndEdit(object sender, DataGridViewCellEventArgs e)
+        private void btnConfirmar_Click(object sender, EventArgs e)
         {
-            
+            int maxConsecutivo = controlador.consultarMaximo();
+            string fechaActual = DateTime.Now.ToString("dd/MM/yyyy");
+            string estado = "Por Analizar";
+            if (id != 0)
+            {
+                controlador.agregarConsecutivo(idSolTelas, id, "ESTAMPADO", maxConsecutivo + 1, fechaActual, estado, fechaActual, Identificador);
+                MessageBox.Show("El consecutivo se guardó con éxito.", "Información", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                btnConfirmar.Enabled = false;
+                btnGrabar.Enabled = false;
+                txtObservaciones.Enabled = false;
+                btnAddColor.Enabled = false;
+                dvgEstampado.ReadOnly = true;
+                consecutivo = controlador.consultarConsecutivo(id);
+                lblConsecutivo.Text = "Consecutivo: " + consecutivo;
+                DialogResult = DialogResult.OK;
+            }
+            else
+            {
+                MessageBox.Show("Por favor, Grabe la Información.", "Advertencia", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+            }
+        }
+
+        private void btnSalir_Click(object sender, EventArgs e)
+        {
+            this.Close();
+        }
+
+        private void btnAddColor_Click(object sender, EventArgs e)
+        {
+            frmBuscarColor buscarColor = new frmBuscarColor(controlador);
+            buscarColor.StartPosition = FormStartPosition.CenterScreen;
+            if (buscarColor.ShowDialog() == DialogResult.OK)
+            {
+                Objeto obj = buscarColor.Elemento;
+                dvgEstampado.Rows.Add();
+                dvgEstampado.Rows[dvgEstampado.Rows.Count - 1].Cells[0].Value = obj.Id;
+                dvgEstampado.Rows[dvgEstampado.Rows.Count - 1].Cells[1].Value = obj.Nombre;
+            }
+        }
+        #endregion
+
+        #region Eventos
+        private void txbNdibujo_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            validacion.SoloNumeros(e);
+
+        }
+
+        private void txbCoordinaCon_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            e.KeyChar = Char.ToUpper(e.KeyChar);
+        }
+        
+        private void txbNcilindro_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            validacion.SoloNumeros(e);
+        }
+
+        private void cbxSiCoordinadoEst_CheckedChanged(object sender, EventArgs e)
+        {
+            if(cbxSiCoordinado.Checked)
+            {
+                txbCoordinaCon.ReadOnly = false;
+                txbCoordinaCon.Focus();
+                txbCoordinaCon.BackColor = Color.White;
+                cbxNoCoordinado.Checked = false;
+            }
+           
+        }
+        
+        private void cbxNoCoordinadoEst_CheckedChanged(object sender, EventArgs e)
+        {
+            if(cbxNoCoordinado.Checked)
+            {
+                txbCoordinaCon.ReadOnly = true;
+                txbCoordinaCon.BackColor = Color.LightGoldenrodYellow;
+                cbxSiCoordinado.Checked = false;
+
+            }
+        }
+
+        private void dvgEstampado_CellEndEdit(object sender, DataGridViewCellEventArgs e)
+        {        
             try
             {
                 if (dvgEstampado.CurrentCell.Value != null)
@@ -317,8 +312,8 @@ namespace PedidoTela.Formularios
                 if (buscarColor.ShowDialog() == DialogResult.OK)
                 {
                     Objeto obj = buscarColor.Elemento;
-                    dvgEstampado.Rows[dvgEstampado.Rows.Count - 1].Cells[2].Value = obj.Id;
-                    dvgEstampado.Rows[dvgEstampado.Rows.Count - 1].Cells[3].Value = obj.Nombre;
+                    dvgEstampado.Rows[e.RowIndex].Cells[2].Value = obj.Id;
+                    dvgEstampado.Rows[e.RowIndex].Cells[3].Value = obj.Nombre;
                 }
 
             }
@@ -387,8 +382,5 @@ namespace PedidoTela.Formularios
             }
         }
         #endregion
-
-
-
     }
 }

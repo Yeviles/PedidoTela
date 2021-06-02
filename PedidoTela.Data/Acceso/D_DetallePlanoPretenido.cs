@@ -47,6 +47,7 @@ namespace PedidoTela.Data.Acceso
                         detalle.DescripcionH4 = datos["descripcion_h4"].ToString().Trim();
                         detalle.CodigoH5 = datos["codigo_h5"].ToString();
                         detalle.DescripcionH5 = datos["descripcion_h5"].ToString().Trim();
+                        detalle.Tiendas = int.Parse(datos["tiendas"].ToString());
                         detalle.Exito = int.Parse(datos["exito"].ToString());
                         detalle.Cencosud = int.Parse(datos["cencosud"].ToString());
                         detalle.Sao = int.Parse(datos["sao"].ToString());

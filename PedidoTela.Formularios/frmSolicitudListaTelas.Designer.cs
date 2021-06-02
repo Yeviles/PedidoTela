@@ -113,6 +113,7 @@ namespace PedidoTela.Formularios
             this.ttMuestrario = new System.Windows.Forms.ToolTip(this.components);
             this.ttNomTela = new System.Windows.Forms.ToolTip(this.components);
             this.pnlContenedorGrid = new System.Windows.Forms.Panel();
+            this.cbxHabilitarFecha = new System.Windows.Forms.CheckBox();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvSolicitudTelas)).BeginInit();
             this.pnlInicial.SuspendLayout();
@@ -718,6 +719,7 @@ namespace PedidoTela.Formularios
             // pnlInicial
             // 
             this.pnlInicial.BackColor = System.Drawing.SystemColors.ScrollBar;
+            this.pnlInicial.Controls.Add(this.cbxHabilitarFecha);
             this.pnlInicial.Controls.Add(this.cbxEstado);
             this.pnlInicial.Controls.Add(this.cbxColor);
             this.pnlInicial.Controls.Add(this.cbxRefTela);
@@ -911,6 +913,15 @@ namespace PedidoTela.Formularios
             this.pnlContenedorGrid.Size = new System.Drawing.Size(1358, 393);
             this.pnlContenedorGrid.TabIndex = 61;
             // 
+            // cbxHabilitarFecha
+            // 
+            this.cbxHabilitarFecha.AutoSize = true;
+            this.cbxHabilitarFecha.Location = new System.Drawing.Point(632, 169);
+            this.cbxHabilitarFecha.Name = "cbxHabilitarFecha";
+            this.cbxHabilitarFecha.Size = new System.Drawing.Size(15, 14);
+            this.cbxHabilitarFecha.TabIndex = 74;
+            this.cbxHabilitarFecha.UseVisualStyleBackColor = true;
+            // 
             // frmSolicitudListaTelas
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
@@ -1018,5 +1029,6 @@ namespace PedidoTela.Formularios
         private System.Windows.Forms.DataGridViewTextBoxColumn consolidado;
         private System.Windows.Forms.DataGridViewTextBoxColumn tipoPedido;
         private System.Windows.Forms.DataGridViewTextBoxColumn consecutivoPedido;
+        private System.Windows.Forms.CheckBox cbxHabilitarFecha;
     }
 }

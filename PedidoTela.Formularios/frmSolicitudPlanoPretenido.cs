@@ -54,42 +54,7 @@ namespace PedidoTela.Formularios
         }
         #endregion
 
-        #region Eventos
-        private void cbxNoCoordinado_CheckedChanged(object sender, EventArgs e)
-        {
-            if (cbxNoCoordinado.Checked)
-            {
-                txbCoordinaCon.ReadOnly = true;
-                txbCoordinaCon.BackColor = Color.LightGoldenrodYellow;
-                cbxSiCoordinado.Checked = false;
-
-            }
-        }
-        
-        private void cbxSiCoordinado_CheckedChanged(object sender, EventArgs e)
-        {
-            if (cbxSiCoordinado.Checked)
-            {
-                txbCoordinaCon.ReadOnly = false;
-                txbCoordinaCon.Focus();
-                txbCoordinaCon.BackColor = Color.White;
-                cbxNoCoordinado.Checked = false;
-            }
-        }
-        
-        private void btnAddColor_Click(object sender, EventArgs e)
-        {
-            frmBuscarColor buscarColor = new frmBuscarColor(control);
-            buscarColor.StartPosition = FormStartPosition.CenterScreen;
-            if (buscarColor.ShowDialog() == DialogResult.OK)
-            {
-                Objeto obj = buscarColor.Elemento;
-                dgvPlano.Rows.Add();
-                dgvPlano.Rows[dgvPlano.Rows.Count - 1].Cells[0].Value = obj.Id;
-                dgvPlano.Rows[dgvPlano.Rows.Count - 1].Cells[1].Value = obj.Nombre;
-            }
-        }
-
+        #region Botones
         private void btnGrabar_Click(object sender, EventArgs e)
         {
             bool b = false;
@@ -109,8 +74,7 @@ namespace PedidoTela.Formularios
                             bool vacio = false;
                             foreach (DataGridViewRow row in dgvPlano.Rows)
                             {
-                                if (row.Cells[2].Value == null || row.Cells[4].Value == null || row.Cells[6].Value == null ||
-                                    row.Cells[8].Value == null || row.Cells[10].Value == null)
+                                if (row.Cells[2].Value == null || row.Cells[3].Value == null)
                                 {
                                     vacio = true;
                                 }
@@ -189,7 +153,7 @@ namespace PedidoTela.Formularios
                             }
                             else
                             {
-                                MessageBox.Show("Los colores H1 - H5 están vacíos", "Advertencia", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                                MessageBox.Show("El campo color H1 está vacío", "Advertencia", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                             }
                         }
                         else
@@ -208,8 +172,8 @@ namespace PedidoTela.Formularios
                 }
 
             }
-                
-            
+
+
         }
 
         private void btnConfirmar_Click(object sender, EventArgs e)
@@ -220,7 +184,7 @@ namespace PedidoTela.Formularios
 
             if (id != 0)
             {
-   
+
                 control.agregarConsecutivo(idSolTelas, id, "PRETEÑIDO", maxConsecutivo + 1, fechaActual, estado, fechaActual, identificador);
                 MessageBox.Show("El consecutivo se guardó con éxito.", "Información", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 btnConfirmar.Enabled = false;
@@ -231,7 +195,7 @@ namespace PedidoTela.Formularios
                 consecutivo = control.consultarConsecutivo(id);
                 lblConsecutivo.Text = "Consecutivo: " + consecutivo;
                 DialogResult = DialogResult.OK;
-                
+
             }
             else
             {
@@ -239,11 +203,47 @@ namespace PedidoTela.Formularios
 
             }
         }
-        
+
         private void btnSalir_Click(object sender, EventArgs e)
         {
             this.Close();
         }
+        private void btnAddColor_Click(object sender, EventArgs e)
+        {
+            frmBuscarColor buscarColor = new frmBuscarColor(control);
+            buscarColor.StartPosition = FormStartPosition.CenterScreen;
+            if (buscarColor.ShowDialog() == DialogResult.OK)
+            {
+                Objeto obj = buscarColor.Elemento;
+                dgvPlano.Rows.Add();
+                dgvPlano.Rows[dgvPlano.Rows.Count - 1].Cells[0].Value = obj.Id;
+                dgvPlano.Rows[dgvPlano.Rows.Count - 1].Cells[1].Value = obj.Nombre;
+            }
+        }
+        #endregion
+
+        #region Eventos
+        private void cbxNoCoordinado_CheckedChanged(object sender, EventArgs e)
+        {
+            if (cbxNoCoordinado.Checked)
+            {
+                txbCoordinaCon.ReadOnly = true;
+                txbCoordinaCon.BackColor = Color.LightGoldenrodYellow;
+                cbxSiCoordinado.Checked = false;
+            }
+        }
+        
+        private void cbxSiCoordinado_CheckedChanged(object sender, EventArgs e)
+        {
+            if (cbxSiCoordinado.Checked)
+            {
+                txbCoordinaCon.ReadOnly = false;
+                txbCoordinaCon.Focus();
+                txbCoordinaCon.BackColor = Color.White;
+                cbxNoCoordinado.Checked = false;
+            }
+        }
+        
 
         private void txbCoordinaCon_KeyPress(object sender, KeyPressEventArgs e)
         {
@@ -260,6 +260,11 @@ namespace PedidoTela.Formularios
                 if (buscarColor.ShowDialog() == DialogResult.OK)
                 {
                     Objeto obj = buscarColor.Elemento;
+                    if (e.ColumnIndex == 0 || e.ColumnIndex == 1)
+                    {
+                        dgvPlano.Rows[e.RowIndex].Cells[0].Value = obj.Id;
+                        dgvPlano.Rows[e.RowIndex].Cells[1].Value = obj.Nombre;
+                    }
                     if (e.ColumnIndex == 2 || e.ColumnIndex == 3)
                     {
                         dgvPlano.Rows[e.RowIndex].Cells[2].Value = obj.Id;
@@ -331,6 +336,29 @@ namespace PedidoTela.Formularios
             }
         }
 
+        private void dgvPlano_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+
+        }
+
+        private void dgvPlano_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (dgvPlano.CurrentCell.ColumnIndex > 1 && dgvPlano.CurrentCell.ColumnIndex < 12) {
+                if (e.KeyChar == (char)Keys.Back || e.KeyChar == (char)Keys.Delete)
+                {
+                    if ((dgvPlano.CurrentCell.ColumnIndex % 2) == 0)
+                    {
+                        dgvPlano.CurrentRow.Cells[dgvPlano.CurrentCell.ColumnIndex].Value = "";
+                        dgvPlano.CurrentRow.Cells[dgvPlano.CurrentCell.ColumnIndex + 1].Value = "";
+                    }
+                    else {
+                        dgvPlano.CurrentRow.Cells[dgvPlano.CurrentCell.ColumnIndex - 1].Value = "";
+                        dgvPlano.CurrentRow.Cells[dgvPlano.CurrentCell.ColumnIndex].Value = "";
+                    }
+                }
+            }
+        }
+
         private void dgvPlano_CellPainting(object sender, DataGridViewCellPaintingEventArgs e)
         {
             if (e.ColumnIndex >= 0 && dgvPlano.Columns[e.ColumnIndex].Name == "eliminar" && e.RowIndex >= 0)
@@ -384,7 +412,7 @@ namespace PedidoTela.Formularios
                 {
                     dgvPlano.Rows.Add(obj.CodigoVte, obj.DescripcionVte, obj.CodigoH1, obj.DescripcionH1, obj.CodigoH2, obj.DescripcionH2,
                         obj.CodigoH3, obj.DescripcionH3, obj.CodigoH4, obj.DescripcionH4, obj.CodigoH5, obj.DescripcionH5,
-                        obj.Exito, obj.Tiendas, obj.Cencosud, obj.Sao, obj.Comercio, obj.Rosado, obj.Otros, obj.Total);
+                        obj.Tiendas, obj.Exito, obj.Cencosud, obj.Sao, obj.Comercio, obj.Rosado, obj.Otros, obj.Total);
                 }
             }
         }
