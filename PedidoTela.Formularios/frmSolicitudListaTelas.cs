@@ -747,7 +747,7 @@ namespace PedidoTela.Formularios
         {
             foreach (MontajeTelaDetalle item in lista)
             {
-                if (item.Consolidado == null && item.Consolidado == "")
+                if (item.Consolidado == null || item.Consolidado == "")
                 {
                     return false;
                 }

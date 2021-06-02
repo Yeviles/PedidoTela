@@ -18,15 +18,14 @@ namespace PedidoTela.Formularios
 {
     public partial class frmSolicitudCuellosTiras : MaterialSkin.Controls.MaterialForm
     {
+        #region variables
         private Controlador controlador;
         private string identificador, cuellos, punos, tiras;
         private int id = 0, consecutivo = 0, catidadSeleccionada = 0, idSolTela;
-
         private Image imgCuellos, imgPunos, imgTiras;
-        Boolean swImgCuellos = false, swImgPunos = false, swImgTiras = false;
-        string tipoImgCuellos = "", tipoImgPunos = "", tipoImgTiras = "";
-
-        public string Identificador { get => identificador; set => identificador = value; }
+        private Boolean swImgCuellos = false, swImgPunos = false, swImgTiras = false;
+        private string tipoImgCuellos = "", tipoImgPunos = "", tipoImgTiras = "";
+        #endregion
 
         public Image ImgCuellos { get => imgCuellos; set => imgCuellos = value; }
         public Image ImgPunos { get => imgPunos; set => imgPunos = value; }
@@ -55,7 +54,7 @@ namespace PedidoTela.Formularios
 
 
 
-            CargarCuellosTiras();
+            cargarCuellosTiras();
 
 
             if (dgvCuellos1.RowCount < 0 && dgvCuellos2.RowCount < 0)
@@ -79,6 +78,7 @@ namespace PedidoTela.Formularios
 
         }
 
+        #region Botones
         private void btnGrabar_Click(object sender, EventArgs e)
         {
             bool b = false;
@@ -106,8 +106,7 @@ namespace PedidoTela.Formularios
                         bool vacio = false;
                         foreach (DataGridViewRow row in dgvCuellos2.Rows)
                         {
-                            if (row.Cells[2].Value == null || row.Cells[4].Value == null || row.Cells[6].Value == null ||
-                                row.Cells[8].Value == null || row.Cells[10].Value == null)
+                            if (row.Cells[2].Value == null || row.Cells[3].Value == null)
                             {
                                 vacio = true;
                             }
@@ -115,7 +114,6 @@ namespace PedidoTela.Formularios
 
                         if (!vacio)
                         {
-
                             CuellosTiras elemento = new CuellosTiras();
                             elemento.Identificador = identificador;
                             elemento.Cuellos = (cbxCuellos.Checked) ? true : false;
@@ -137,7 +135,7 @@ namespace PedidoTela.Formularios
                             id = controlador.getIdCuellos(idSolTela);
                             listaIdDetalles = controlador.getIdDetallecuellosUno(id);
                             listaIdDetalleDos = controlador.getIdDetallecuellosDos(id);
-                            //Console.WriteLine("ID: " + id);
+                            
                             try
                             {
                                 for (int i = 0; i < dgvCuellos1.RowCount; i++)
@@ -217,7 +215,6 @@ namespace PedidoTela.Formularios
                                     {
                                         controlador.addDetalleCuelloDos(detalle);
                                     }
-
                                 }
                                 guardarImagen();
                                 MessageBox.Show("Cuellos-Puños-Tiras se guardó con éxito", "Información", MessageBoxButtons.OK, MessageBoxIcon.Information);
@@ -230,7 +227,7 @@ namespace PedidoTela.Formularios
                         }
                         else
                         {
-                            MessageBox.Show("Los colores H1 - H5 están vacíos.", "Advertencia", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                            MessageBox.Show("El campo color H1 está vacío.", "Advertencia", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                         }
                     }
                     else
@@ -247,7 +244,6 @@ namespace PedidoTela.Formularios
 
         private void btnConfirmar_Click(object sender, EventArgs e)
         {
-
             int maxConsecutivo = controlador.consultarMaximo();
 
             string fechaActual = DateTime.Now.ToString("dd/MM/yyyy");
@@ -267,15 +263,34 @@ namespace PedidoTela.Formularios
                 consecutivo = controlador.consultarConsecutivo(id);
                 lblConsecutivo.Text = "Consecutivo: " + consecutivo;
                 DialogResult = DialogResult.OK;
-
             }
             else
             {
                 MessageBox.Show("Por favor, Grabe la Información.", "Advertencia", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-
             }
         }
 
+        private void btnSalir_Click(object sender, EventArgs e)
+        {
+            this.Close();
+        }
+
+        private void btnAddColor_Click(object sender, EventArgs e)
+        {
+            frmBuscarColor buscarColor = new frmBuscarColor(controlador);
+            buscarColor.StartPosition = FormStartPosition.CenterScreen;
+            if (buscarColor.ShowDialog() == DialogResult.OK)
+            {
+                Objeto obj = buscarColor.Elemento;
+                dgvCuellos2.Rows.Add();
+                dgvCuellos2.Rows[dgvCuellos2.Rows.Count - 1].Cells[0].Value = obj.Id;
+                dgvCuellos2.Rows[dgvCuellos2.Rows.Count - 1].Cells[1].Value = obj.Nombre;
+            }
+        }
+
+        #endregion
+
+        #region Eventos
         private void btnImgCuellos_Click(object sender, EventArgs e)
         {
             using (OpenFileDialog ofd = new OpenFileDialog())
@@ -289,11 +304,8 @@ namespace PedidoTela.Formularios
                     ImgCuellos = Image.FromFile(urlArchivo);
                     string[] split = urlArchivo.Split('.');
                     tipoImgCuellos = split[split.Length - 1].ToLower();
-                    //pbxImagenFrente.Image = imgCuellos;
                     ptbCuellos.Image = ImgCuellos;
                     ImgCuellos = ImgCuellos.GetThumbnailImage(300, 300, delegate { return false; }, System.IntPtr.Zero);
-                    //btnAddImgFrente.Visible = false;
-                    //btnDelImgFrente.Visible = true;
                     swImgCuellos = true;
                 }
             }
@@ -345,11 +357,6 @@ namespace PedidoTela.Formularios
             }
         }
 
-        private void btnSalir_Click(object sender, EventArgs e)
-        {
-            this.Close();
-        }
-
         private void cbxSiCoordinado_CheckedChanged(object sender, EventArgs e)
         {
             if (cbxSiCoordinado.Checked)
@@ -358,6 +365,26 @@ namespace PedidoTela.Formularios
                 txbCoordinaCon.Focus();
                 txbCoordinaCon.BackColor = Color.White;
                 cbxNoCoordinado.Checked = false;
+            }
+        }
+
+        private void dgvCuellos2_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (dgvCuellos2.CurrentCell.ColumnIndex > 1 && dgvCuellos2.CurrentCell.ColumnIndex < 12)
+            {
+                if (e.KeyChar == (char)Keys.Back || e.KeyChar == (char)Keys.Delete)
+                {
+                    if ((dgvCuellos2.CurrentCell.ColumnIndex % 2) == 0)
+                    {
+                        dgvCuellos2.CurrentRow.Cells[dgvCuellos2.CurrentCell.ColumnIndex].Value = "";
+                        dgvCuellos2.CurrentRow.Cells[dgvCuellos2.CurrentCell.ColumnIndex + 1].Value = "";
+                    }
+                    else
+                    {
+                        dgvCuellos2.CurrentRow.Cells[dgvCuellos2.CurrentCell.ColumnIndex - 1].Value = "";
+                        dgvCuellos2.CurrentRow.Cells[dgvCuellos2.CurrentCell.ColumnIndex].Value = "";
+                    }
+                }
             }
         }
 
@@ -374,7 +401,6 @@ namespace PedidoTela.Formularios
 
         private void cbxCuellos_CheckedChanged(object sender, EventArgs e)
         {
-            //dgvCuellos1.Rows.Clear();
             if (cbxCuellos.Checked)
             {
                 foreach (DataGridViewRow fila in dgvCuellos1.Rows)
@@ -388,7 +414,6 @@ namespace PedidoTela.Formularios
                         btnImgCuellos.Enabled = true;
                     }
                 } 
-
             }
             else
             {
@@ -411,7 +436,6 @@ namespace PedidoTela.Formularios
 
         private void cbxPunos_CheckedChanged(object sender, EventArgs e)
         {
-            //dgvCuellos1.Rows.Clear();
             if (cbxPunos.Checked)
             {
                 foreach (DataGridViewRow fila in dgvCuellos1.Rows)
@@ -503,19 +527,6 @@ namespace PedidoTela.Formularios
             }
         }
 
-        private void btnAddColor_Click(object sender, EventArgs e)
-        {
-            frmBuscarColor buscarColor = new frmBuscarColor(controlador);
-            buscarColor.StartPosition = FormStartPosition.CenterScreen;
-            if (buscarColor.ShowDialog() == DialogResult.OK)
-            {
-                Objeto obj = buscarColor.Elemento;
-                dgvCuellos2.Rows.Add();
-                dgvCuellos2.Rows[dgvCuellos2.Rows.Count - 1].Cells[0].Value = obj.Id;
-                dgvCuellos2.Rows[dgvCuellos2.Rows.Count - 1].Cells[1].Value = obj.Nombre;
-            }
-        }
-
         private void dgvCuellos2_CellClick(object sender, DataGridViewCellEventArgs e)
         {
             if (e.RowIndex > -1 && e.ColumnIndex < 12)
@@ -526,7 +537,11 @@ namespace PedidoTela.Formularios
                 if (buscarColor.ShowDialog() == DialogResult.OK)
                 {
                     Objeto obj = buscarColor.Elemento;
-                    //dgvCuellos2.Rows[e.RowIndex].Cells[13].ReadOnly = true;
+                    if (e.ColumnIndex == 0 || e.ColumnIndex == 1)
+                    {
+                        dgvCuellos2.Rows[e.RowIndex].Cells[0].Value = obj.Id;
+                        dgvCuellos2.Rows[e.RowIndex].Cells[1].Value = obj.Nombre;
+                    }
                     if (e.ColumnIndex == 2 || e.ColumnIndex == 3)
                     {
                         dgvCuellos2.Rows[e.RowIndex].Cells[2].Value = obj.Id;
@@ -555,7 +570,7 @@ namespace PedidoTela.Formularios
                 }
             }
             if (dgvCuellos2.Columns[e.ColumnIndex].Name == "eliminar")
-            {    
+            {
                 dgvCuellos2.Rows.Remove(dgvCuellos2.CurrentRow);
             }
         }
@@ -621,8 +636,10 @@ namespace PedidoTela.Formularios
 
             }
         }
+        #endregion
 
-        private void CargarCuellosTiras()
+        #region métodos
+        private void cargarCuellosTiras()
         {
             CuellosTiras cuellosT = controlador.getCuellosTiras(idSolTela);
             id = cuellosT.IdCuellos;
@@ -631,7 +648,6 @@ namespace PedidoTela.Formularios
             {
                 cargarImagen();
             }
-
 
             /* Verificación del Checked de Coordinado */
             if (cuellosT.Coordinado)
@@ -643,8 +659,6 @@ namespace PedidoTela.Formularios
             {
                 cbxNoCoordinado.Checked = true;
             }
-
-
 
             txtObservaciones.Text = cuellosT.Observacion;
             consecutivo = controlador.consultarConsecutivo(id);
@@ -697,17 +711,14 @@ namespace PedidoTela.Formularios
             if (cuellosT.Cuellos)
             {
                 cbxCuellos.Checked = true;
-
             }
-            else if (cuellosT.Punos)
+            if (cuellosT.Punos)
             {
                 cbxPunos.Checked = true;
-
             }
-            else if (cuellosT.Tiras)
+            if (cuellosT.Tiras)
             {
                 cbxTiras.Checked = true;
-
             }
         
 
@@ -805,7 +816,6 @@ namespace PedidoTela.Formularios
                 controlador.guardarImagen(ruta, ImgTiras, nombre, tipoImgTiras);
             }
         }
-       
-    
-    } 
+        #endregion
+    }
 }

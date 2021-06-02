@@ -292,6 +292,19 @@ namespace PedidoTela.Formularios
             {
                 dgvUnicolor.Rows.Remove(dgvUnicolor.CurrentRow);
             }
+            
+            if (e.ColumnIndex == 0 || e.ColumnIndex == 1)
+            {
+                frmBuscarColor buscarColor = new frmBuscarColor(control);
+                buscarColor.StartPosition = FormStartPosition.CenterScreen;
+
+                if (buscarColor.ShowDialog() == DialogResult.OK)
+                {
+                    Objeto obj = buscarColor.Elemento;
+                    dgvUnicolor.Rows[e.RowIndex].Cells[0].Value = obj.Id;
+                    dgvUnicolor.Rows[e.RowIndex].Cells[1].Value = obj.Nombre;
+                }
+            }
         }
 
         #endregion
@@ -324,7 +337,7 @@ namespace PedidoTela.Formularios
             {
                 foreach (DetalleUnicolor obj in lista)
                 {
-                    dgvUnicolor.Rows.Add(obj.CodigoColor, obj.Descripcion, obj.Exito, obj.Tiendas,
+                    dgvUnicolor.Rows.Add(obj.CodigoColor, obj.Descripcion, obj.Tiendas, obj.Exito,
                         obj.Cencosud, obj.Sao, obj.Comercio, obj.Rosado, obj.Otros, obj.Total);
                 }
             }
