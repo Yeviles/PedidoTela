@@ -127,7 +127,7 @@ namespace PedidoTela.Formularios
         
         private void dgvInfoConsolidar_CellFormatting(object sender, DataGridViewCellFormattingEventArgs e)
         {
-            if (e.ColumnIndex > 1 && e.ColumnIndex < 10 || e.ColumnIndex == 11 || e.ColumnIndex >=13)
+            if (e.ColumnIndex > 1 && e.ColumnIndex < 10 || e.ColumnIndex == 11 || e.ColumnIndex == 12 || e.ColumnIndex >=13)
             {
                 e.CellStyle.BackColor = Color.PaleGoldenrod;
             }
@@ -218,7 +218,7 @@ namespace PedidoTela.Formularios
                 }
             }
 
-            else if (e.ColumnIndex == 12) // cuando cambia M Reservados [12] cambia el M Solicitar [13]
+          else if (e.ColumnIndex == 12) // cuando cambia M Reservados [12] cambia el M Solicitar [13]
             {
                 try
                 {
@@ -301,6 +301,7 @@ namespace PedidoTela.Formularios
             dgvInfoConsolidar.CurrentRow.Cells[8].ReadOnly = true;
             dgvInfoConsolidar.CurrentRow.Cells[9].ReadOnly = true;
             dgvInfoConsolidar.CurrentRow.Cells[11].ReadOnly = true;
+            dgvInfoConsolidar.CurrentRow.Cells[12].ReadOnly = true;
             dgvInfoConsolidar.CurrentRow.Cells[13].ReadOnly = true;
             dgvInfoConsolidar.CurrentRow.Cells[14].ReadOnly = true;
 
@@ -392,53 +393,48 @@ namespace PedidoTela.Formularios
                                 {
                                     if (!validarValoresConsumo())
                                     {
-                                        if (!validarValoresReserva())
+                                       
+                                        if (!validarTotalAPedir())
                                         {
-                                            if (!validarTotalAPedir())
+                                            if (!validarUnidadTotal())
                                             {
-                                                if (!validarUnidadTotal())
+                                                //Se obtiene el encabezado de la vista.
+                                                PedidoAMontar elemento = ObtenerEncabezado();
+                                                if (control.existePedidoUnicolor(IdSolTela))
                                                 {
-                                                    //Se obtiene el encabezado de la vista.
-                                                    PedidoAMontar elemento = ObtenerEncabezado();
-                                                    if (control.existePedidoUnicolor(IdSolTela))
-                                                    {
-                                                        control.actualizarPedidoUnicolor(elemento);
-                                                    }
-                                                    else
-                                                    {
-                                                        control.addPedUnicolor(elemento);
-                                                    }
-
-                                                    //Consulta el id que se genero cuando se guarda la infromación del encabezado.
-                                                    id = control.getIdPedUnicolor(IdSolTela);
-                                                    if (id != 0)
-                                                    {
-                                                        control.eliminarPedidoUnicolorTotal(id);
-                                                        control.eliminarPedidoUnicolorInformacion(id);
-                                                        control.eliminarPedido(id);
-
-                                                        GuardarPedido(id);
-                                                        GuardarTotalConsolidar(id);
-                                                        GuardarInformacionConsolidar(id);
-                                                    }
-                                                    //Agrega el Consolidado.
-                                                    AgregarConsolidado();
-                                                    MessageBox.Show("Pedido Unicolor se guardó con éxito.", "Información", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                                                    control.actualizarPedidoUnicolor(elemento);
                                                 }
                                                 else
                                                 {
-                                                    MessageBox.Show("Por favor seleccione los valores para la columna: Unidad medida tela.", "Advertencia", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                                                    control.addPedUnicolor(elemento);
                                                 }
+
+                                                //Consulta el id que se genero cuando se guarda la infromación del encabezado.
+                                                id = control.getIdPedUnicolor(IdSolTela);
+                                                if (id != 0)
+                                                {
+                                                    control.eliminarPedidoUnicolorTotal(id);
+                                                    control.eliminarPedidoUnicolorInformacion(id);
+                                                    control.eliminarPedido(id);
+
+                                                    GuardarPedido(id);
+                                                    GuardarTotalConsolidar(id);
+                                                    GuardarInformacionConsolidar(id);
+                                                }
+                                                //Agrega el Consolidado.
+                                                AgregarConsolidado();
+                                                MessageBox.Show("Pedido Unicolor se guardó con éxito.", "Información", MessageBoxButtons.OK, MessageBoxIcon.Information);
                                             }
                                             else
                                             {
-                                                MessageBox.Show("Por favor ingrese los valores para la columna: Total a pedir.", "Advertencia", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                                                MessageBox.Show("Por favor seleccione los valores para la columna: Unidad medida tela.", "Advertencia", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                                             }
                                         }
                                         else
                                         {
-                                            MessageBox.Show("Por favor ingrese los valores para la columna: M Reservados.", "Advertencia", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                                            MessageBox.Show("Por favor ingrese los valores para la columna: Total a pedir.", "Advertencia", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                                         }
+                                       
                                     }
                                     else
                                     {
@@ -500,6 +496,7 @@ namespace PedidoTela.Formularios
         /// <param name="e"></param>
         private void btnSalir_Click(object sender, EventArgs e)
         {
+            
             this.Close();
         }
         
@@ -672,7 +669,7 @@ namespace PedidoTela.Formularios
             elemento.DescripcionPrenda = txtDesPrenda.Text.Trim();
             elemento.Clase = cbxClase.SelectedItem.ToString();
             //elemento.TipoMarcacion = ((Objeto)cbxTipoMarcacion.SelectedItem).Nombre;
-            elemento.TipoMarcacion = cbxTipoMarcacion.GetItemText(cbxTipoMarcacion.SelectedItem);
+            elemento.TipoMarcacion = cbxTipoMarcacion.GetItemText(cbxTipoMarcacion.Text);
             elemento.Rendimiento = decimal.Parse(txtRendimiento.Text.Trim());
             elemento.AnalistasCortesB = txtAnalista.Text.Trim();
             string fecha = dtpFechaLlegada.Value.ToString("dd/MM/yyyy");
@@ -771,7 +768,7 @@ namespace PedidoTela.Formularios
                 bool existe = false;
                 foreach (Objeto obj in colores)
                 {
-                    if (obj.Nombre == color.Nombre)
+                    if (obj.Id == color.Id)
                     {
                         existe = true;
                     }
@@ -787,7 +784,7 @@ namespace PedidoTela.Formularios
                 PedidoMontarTotal objColor = new PedidoMontarTotal(0, obj.Id, obj.Nombre, "", "", 0, "", 0, "", 0, "", 0, "", 0, "", 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, "");
                 for (int i = 0; i < dgvInfoConsolidar.RowCount; i++)
                 {
-                    if (dgvInfoConsolidar.Rows[i].Cells[1].Value.ToString().ToLower() == obj.Nombre)
+                    if (dgvInfoConsolidar.Rows[i].Cells[0].Value.ToString().ToLower() == obj.Id)
                     {
                         objColor.Tiendas += (dgvInfoConsolidar.Rows[i].Cells[2].Value != null && dgvInfoConsolidar.Rows[i].Cells[2].Value.ToString() != "") ? int.Parse(dgvInfoConsolidar.Rows[i].Cells[2].Value.ToString()) : 0;
                         objColor.Exito += (dgvInfoConsolidar.Rows[i].Cells[3].Value != null && dgvInfoConsolidar.Rows[i].Cells[3].Value.ToString() != "") ? int.Parse(dgvInfoConsolidar.Rows[i].Cells[3].Value.ToString()) : 0;
@@ -854,23 +851,6 @@ namespace PedidoTela.Formularios
             foreach (DataGridViewRow row in dgvInfoConsolidar.Rows)
             {
                 if (row.Cells[10].Value == null || row.Cells[10].Value.ToString() == "")
-                {
-                    vacio = true;
-                }
-            }
-            return vacio;
-        }
-
-        /// <summary>
-        /// Válida el estado del campo M resevar del DataGridView (dgvInfoConsolidar).
-        /// </summary>
-        /// <returns>Retorn True si el campo está vacío, False de lo contrario.</returns>
-        private bool validarValoresReserva()
-        {
-            bool vacio = false;
-            foreach (DataGridViewRow row in dgvInfoConsolidar.Rows)
-            {
-                if (row.Cells[12].Value == null || row.Cells[12].Value.ToString() == "")
                 {
                     vacio = true;
                 }

@@ -152,7 +152,7 @@ namespace PedidoTela.Data.Acceso
                     con.Parametros.Add(new IfxParameter("@ensayo_ref", elemento.EnsayoReferencia));
                     con.Parametros.Add(new IfxParameter("@desc_prenda", elemento.DescripcionPrenda));
                     con.Parametros.Add(new IfxParameter("@clase", elemento.Clase));
-                    con.Parametros.Add(new IfxParameter("@tipo_marcacion", elemento.TipoMarcacion));
+                    con.Parametros.Add(new IfxParameter("@tipo_marcacion", elemento.TipoMarcacion.ToString().Trim()));
                     con.Parametros.Add(new IfxParameter("@rendimiento", elemento.Rendimiento));
                     con.Parametros.Add(new IfxParameter("@analista_corteb", elemento.AnalistasCortesB));
                     con.Parametros.Add(new IfxParameter("@fecha_llegada", elemento.FechaLlegada));

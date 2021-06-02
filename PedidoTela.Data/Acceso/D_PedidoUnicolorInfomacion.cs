@@ -43,7 +43,7 @@ namespace PedidoTela.Data.Acceso
                     con.Parametros.Add(new IfxParameter("@m_calculados", elemento.MCalculados));
                     con.Parametros.Add(new IfxParameter("@m_reservar", elemento.MReservados));
                     con.Parametros.Add(new IfxParameter("@m_solicitar", elemento.MSolicitar));
-                   con.Parametros.Add(new IfxParameter("@kg_calculados", elemento.MReservados));
+                   con.Parametros.Add(new IfxParameter("@kg_calculados", elemento.KgCalculados));
 
                     var datos = con.EjecutarConsulta(this.consultaInsert);
                     con.cerrarConexion();

@@ -15,11 +15,15 @@ namespace PedidoTela.Data.Acceso
         private readonly string consultaInsert = "INSERT INTO cfc_spt_ped_coordinado_total (id_ped_coordinado,cod_color,desc_color,tiendas,exito,cencosud,sao,comercio,rosado,otros,total_uni,m_calculados,kg_calculados,total_pedir,uni_medidatela) " +
           " VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ? )";
 
+        private readonly string consultaInsertCoordinadoCuellos = "INSERT INTO cfc_spt_ped_coordinado_cuello (id_ped_coordinado, cod_vte, desc_vte, xs, s, m, l, xl, dosxl, cuatro, seis, ocho, diez, doce, catorce, dieciseis, dieciocho, veinte, veintidos, veinticuatro, total_uni)  values (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?);";
+
 
         private readonly string consultarTodo = "SELECT cod_color,desc_color,tiendas,exito,cencosud,sao,comercio,rosado,otros,total_uni,m_calculados,kg_calculados,total_pedir,uni_medidatela " +
             "FROM cfc_spt_ped_coordinado_total WHERE id_ped_coordinado =?; ";
 
         private readonly string consultaEliminar = "DELETE cfc_spt_ped_coordinado_total WHERE id_ped_coordinado = ?;";
+        
+        private readonly string consultaEliminarCoordinadoCuellos = "DELETE cfc_spt_ped_coordinado_cuello WHERE id_ped_coordinado = ?;";
         #endregion
 
         #region Métodos Agregar
@@ -57,6 +61,46 @@ namespace PedidoTela.Data.Acceso
             }
             return respuesta;
         }
+
+        public string AgregarCoordinadoCuellosProporcion(PedidoCuellos elemento)
+        {
+            string respuesta = "";
+            try
+            {
+                using (var con = new clsConexion())
+                {
+                    con.Parametros.Add(new IfxParameter("@id_ped_coordinado", elemento.IdPedidoCuellos));
+                    con.Parametros.Add(new IfxParameter("@cod_vte", elemento.CodigoVte));
+                    con.Parametros.Add(new IfxParameter("@desc_vte", elemento.DescripcionVte));
+                    con.Parametros.Add(new IfxParameter("@xs", elemento.Xs));
+                    con.Parametros.Add(new IfxParameter("@s", elemento.S));
+                    con.Parametros.Add(new IfxParameter("@m", elemento.M));
+                    con.Parametros.Add(new IfxParameter("@l", elemento.L));
+                    con.Parametros.Add(new IfxParameter("@xl", elemento.Xl));
+                    con.Parametros.Add(new IfxParameter("@dosxl", elemento.Dosxl));
+                    con.Parametros.Add(new IfxParameter("@cuatro", elemento.Cuatro));
+                    con.Parametros.Add(new IfxParameter("@seis", elemento.Seis));
+                    con.Parametros.Add(new IfxParameter("@ocho", elemento.Ocho));
+                    con.Parametros.Add(new IfxParameter("@diez", elemento.Diez));
+                    con.Parametros.Add(new IfxParameter("@doce", elemento.Doce));
+                    con.Parametros.Add(new IfxParameter("@catorce", elemento.Catorce));
+                    con.Parametros.Add(new IfxParameter("@dieciseis", elemento.Dieciseis));
+                    con.Parametros.Add(new IfxParameter("@dieciocho", elemento.Dieciocho));
+                    con.Parametros.Add(new IfxParameter("@veinte", elemento.Veinte));
+                    con.Parametros.Add(new IfxParameter("@veintidos", elemento.Veintidos));
+                    con.Parametros.Add(new IfxParameter("@veinticuatro", elemento.Veinticuatro));
+                    con.Parametros.Add(new IfxParameter("@total_uni", elemento.TotalUnidades));
+                    var datos = con.EjecutarConsulta(this.consultaInsertCoordinadoCuellos);
+                    con.cerrarConexion();
+                }
+            }
+            catch (Exception ex)
+            {
+                respuesta = "Error: " + ex.Message;
+            }
+            return respuesta;
+        }
+
         #endregion
 
         #region Métodos consultas      
@@ -109,6 +153,15 @@ namespace PedidoTela.Data.Acceso
                 con.Ejecutar(this.consultaEliminar);
             }
         }
+        public void EliminarCoordinadoCuellos(int idPedido)
+        {
+            using (var con = new clsConexion())
+            {
+                con.Parametros.Add(new IfxParameter("@id_ped_coordinado", idPedido));
+                con.Ejecutar(this.consultaEliminarCoordinadoCuellos);
+            }
+        }
+
         #endregion
     }
 }

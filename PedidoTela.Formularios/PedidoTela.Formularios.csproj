@@ -617,5 +617,8 @@
   <ItemGroup>
     <None Include="imgs\detaReserva.png" />
   </ItemGroup>
+  <ItemGroup>
+    <None Include="imgs\aceptar %282%29.png" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

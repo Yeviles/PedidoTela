@@ -96,6 +96,7 @@ namespace PedidoTela.Formularios
             this.tipoPedido = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.consecutivoPedido = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.pnlInicial = new System.Windows.Forms.Panel();
+            this.cbxHabilitarFecha = new System.Windows.Forms.CheckBox();
             this.cbxEstado = new System.Windows.Forms.ComboBox();
             this.cbxColor = new System.Windows.Forms.ComboBox();
             this.cbxRefTela = new System.Windows.Forms.ComboBox();
@@ -113,7 +114,6 @@ namespace PedidoTela.Formularios
             this.ttMuestrario = new System.Windows.Forms.ToolTip(this.components);
             this.ttNomTela = new System.Windows.Forms.ToolTip(this.components);
             this.pnlContenedorGrid = new System.Windows.Forms.Panel();
-            this.cbxHabilitarFecha = new System.Windows.Forms.CheckBox();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvSolicitudTelas)).BeginInit();
             this.pnlInicial.SuspendLayout();
@@ -677,7 +677,7 @@ namespace PedidoTela.Formularios
             this.idSolTela.MinimumWidth = 6;
             this.idSolTela.Name = "idSolTela";
             this.idSolTela.Visible = false;
-            this.idSolTela.Width = 83;
+            this.idSolTela.Width = 97;
             // 
             // idProgramador
             // 
@@ -685,7 +685,7 @@ namespace PedidoTela.Formularios
             this.idProgramador.MinimumWidth = 6;
             this.idProgramador.Name = "idProgramador";
             this.idProgramador.Visible = false;
-            this.idProgramador.Width = 117;
+            this.idProgramador.Width = 140;
             // 
             // descPrenda
             // 
@@ -693,14 +693,14 @@ namespace PedidoTela.Formularios
             this.descPrenda.MinimumWidth = 6;
             this.descPrenda.Name = "descPrenda";
             this.descPrenda.Visible = false;
-            this.descPrenda.Width = 98;
+            this.descPrenda.Width = 117;
             // 
             // consolidado
             // 
-            this.consolidado.HeaderText = "Consolidado";
+            this.consolidado.HeaderText = "Consecutivo consolidado";
             this.consolidado.MinimumWidth = 6;
             this.consolidado.Name = "consolidado";
-            this.consolidado.Width = 123;
+            this.consolidado.Width = 192;
             // 
             // tipoPedido
             // 
@@ -758,6 +758,16 @@ namespace PedidoTela.Formularios
             this.pnlInicial.Name = "pnlInicial";
             this.pnlInicial.Size = new System.Drawing.Size(1358, 213);
             this.pnlInicial.TabIndex = 60;
+            // 
+            // cbxHabilitarFecha
+            // 
+            this.cbxHabilitarFecha.AutoSize = true;
+            this.cbxHabilitarFecha.Location = new System.Drawing.Point(632, 169);
+            this.cbxHabilitarFecha.Name = "cbxHabilitarFecha";
+            this.cbxHabilitarFecha.Size = new System.Drawing.Size(18, 17);
+            this.cbxHabilitarFecha.TabIndex = 74;
+            this.cbxHabilitarFecha.UseVisualStyleBackColor = true;
+            this.cbxHabilitarFecha.CheckedChanged += new System.EventHandler(this.cbxHabilitarFecha_CheckedChanged);
             // 
             // cbxEstado
             // 
@@ -828,6 +838,7 @@ namespace PedidoTela.Formularios
             this.dtpFechaTienda.Size = new System.Drawing.Size(224, 24);
             this.dtpFechaTienda.TabIndex = 67;
             this.dtpFechaTienda.Value = new System.DateTime(2021, 4, 16, 8, 41, 21, 0);
+            this.dtpFechaTienda.Visible = false;
             // 
             // cbxEntrada
             // 
@@ -913,15 +924,6 @@ namespace PedidoTela.Formularios
             this.pnlContenedorGrid.Size = new System.Drawing.Size(1358, 393);
             this.pnlContenedorGrid.TabIndex = 61;
             // 
-            // cbxHabilitarFecha
-            // 
-            this.cbxHabilitarFecha.AutoSize = true;
-            this.cbxHabilitarFecha.Location = new System.Drawing.Point(632, 169);
-            this.cbxHabilitarFecha.Name = "cbxHabilitarFecha";
-            this.cbxHabilitarFecha.Size = new System.Drawing.Size(15, 14);
-            this.cbxHabilitarFecha.TabIndex = 74;
-            this.cbxHabilitarFecha.UseVisualStyleBackColor = true;
-            // 
             // frmSolicitudListaTelas
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
@@ -995,6 +997,7 @@ namespace PedidoTela.Formularios
         private System.Windows.Forms.Button btnSalir;
         private System.Windows.Forms.Button btnInventarioExt;
         private System.Windows.Forms.ComboBox cbxEstado;
+        private System.Windows.Forms.CheckBox cbxHabilitarFecha;
         private System.Windows.Forms.DataGridViewCheckBoxColumn sel;
         private System.Windows.Forms.DataGridViewTextBoxColumn solicitud;
         private System.Windows.Forms.DataGridViewTextBoxColumn tipoSolicitud;
@@ -1029,6 +1032,5 @@ namespace PedidoTela.Formularios
         private System.Windows.Forms.DataGridViewTextBoxColumn consolidado;
         private System.Windows.Forms.DataGridViewTextBoxColumn tipoPedido;
         private System.Windows.Forms.DataGridViewTextBoxColumn consecutivoPedido;
-        private System.Windows.Forms.CheckBox cbxHabilitarFecha;
     }
 }

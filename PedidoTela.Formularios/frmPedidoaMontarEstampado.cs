@@ -116,6 +116,8 @@ namespace PedidoTela.Formularios
 
         private void dgvInfoConsolidar_CellClick(object sender, DataGridViewCellEventArgs e)
         {
+            dgvInfoConsolidar.CurrentRow.Cells[14].ReadOnly = true;
+
             if (e.ColumnIndex == 0 || e.ColumnIndex == 1)
             {
                 frmBuscarColor buscarColor = new frmBuscarColor(control);
@@ -295,7 +297,7 @@ namespace PedidoTela.Formularios
         #region Formato grillas
         private void dgvInfoConsolidar_CellFormatting(object sender, DataGridViewCellFormattingEventArgs e)
         {
-            if (e.ColumnIndex > 3 && e.ColumnIndex <= 11 || e.ColumnIndex > 12 && e.ColumnIndex <= 13 || e.ColumnIndex > 14 && e.ColumnIndex <= 16)
+            if (e.ColumnIndex > 3 && e.ColumnIndex <= 11 || e.ColumnIndex > 12 && e.ColumnIndex <= 13 || e.ColumnIndex >= 14 && e.ColumnIndex <= 16)
             {
                 e.CellStyle.BackColor = Color.PaleGoldenrod;
             }
@@ -345,65 +347,58 @@ namespace PedidoTela.Formularios
                                     if (dgvInfoConsolidar.RowCount > 0 && dgvTotalConsolidado.RowCount > 0)
                                     {
                                         if (!validarValoresConsumo())
-                                        {
-                                            if (!validarValoresReserva())
+                                        {                                         
+                                            if (!validarTotalAPedir())
                                             {
-                                                if (!validarTotalAPedir())
+                                                if (!validarUnidadTotal())
                                                 {
-
-                                                    if (!validarUnidadTotal())
+                                                    PedidoAMontar pedido = new PedidoAMontar();
+                                                    //pedido.Id = id;
+                                                    pedido.Tela = txtNomTela.Text.Trim();
+                                                    pedido.Disenador = txtDisenador.Text.Trim();
+                                                    pedido.Rendimiento = decimal.Parse(txtRendimiento.Text.Trim());
+                                                    pedido.EnsayoReferencia = txtEnsayoRef.Text.Trim();
+                                                    pedido.DescripcionPrenda = txtDesPrenda.Text.Trim();
+                                                    pedido.Clase = cbxClase.SelectedItem.ToString();
+                                                    pedido.TipoMarcacion = cbxTipoMarcacion.GetItemText(cbxTipoMarcacion.Text);
+                                                    pedido.Rendimiento = decimal.Parse(txtRendimiento.Text.Trim());
+                                                    pedido.AnalistasCortesB = txtAnalista.Text.Trim();
+                                                    pedido.FechaLlegada = dtpFechaLlegada.Value.ToString("dd/MM/yyyy");
+                                                    pedido.IdSolicitud = idSolicitud;
+                                                    if (control.existePedidoEstampado(idSolicitud))
                                                     {
-                                                        PedidoAMontar pedido = new PedidoAMontar();
-                                                        //pedido.Id = id;
-                                                        pedido.Tela = txtNomTela.Text.Trim();
-                                                        pedido.Disenador = txtDisenador.Text.Trim();
-                                                        pedido.Rendimiento = decimal.Parse(txtRendimiento.Text.Trim());
-                                                        pedido.EnsayoReferencia = txtEnsayoRef.Text.Trim();
-                                                        pedido.DescripcionPrenda = txtDesPrenda.Text.Trim();
-                                                        pedido.Clase = cbxClase.SelectedItem.ToString();
-                                                        pedido.TipoMarcacion = cbxTipoMarcacion.GetItemText(cbxTipoMarcacion.SelectedItem);
-                                                        pedido.Rendimiento = decimal.Parse(txtRendimiento.Text.Trim());
-                                                        pedido.AnalistasCortesB = txtAnalista.Text.Trim();
-                                                        pedido.FechaLlegada = dtpFechaLlegada.Value.ToString("dd/MM/yyyy");
-                                                        pedido.IdSolicitud = idSolicitud;
-                                                        if (control.existePedidoEstampado(idSolicitud))
-                                                        {
-                                                            control.actualizarPedidoEstampado(pedido);
-                                                        }
-                                                        else
-                                                        {
-                                                            control.addPedidoEstampado(pedido);
-                                                        }
-                                                            id = control.getIdPedidoEstampado(idSolicitud);
-                                                        if (id != 0)
-                                                        {
-                                                            control.eliminarPedidoEstampadoTotal(id);
-                                                            control.eliminarPedidoEstampadoInformacion(id);
-                                                            control.eliminarPedido(id);
-
-                                                            guardarPedido(id);
-                                                            guardarInformacion(id);
-                                                            guardarTotal(id);
-                                                        }
-                                                        //Agrega el Consolidado.
-                                                        AgregarConsolidado();
-
-                                                        MessageBox.Show("Pedido Estampado se guardó con éxito.", "Información", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                                                        control.actualizarPedidoEstampado(pedido);
                                                     }
                                                     else
                                                     {
-                                                        MessageBox.Show("Por favor seleccione los valores para la columna: Unidad medida tela.", "Advertencia", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                                                        control.addPedidoEstampado(pedido);
                                                     }
+                                                        id = control.getIdPedidoEstampado(idSolicitud);
+                                                    if (id != 0)
+                                                    {
+                                                        control.eliminarPedidoEstampadoTotal(id);
+                                                        control.eliminarPedidoEstampadoInformacion(id);
+                                                        control.eliminarPedido(id);
+
+                                                        guardarPedido(id);
+                                                        guardarInformacion(id);
+                                                        guardarTotal(id);
+                                                    }
+                                                    //Agrega el Consolidado.
+                                                    AgregarConsolidado();
+
+                                                    MessageBox.Show("Pedido Estampado se guardó con éxito.", "Información", MessageBoxButtons.OK, MessageBoxIcon.Information);
                                                 }
                                                 else
                                                 {
-                                                    MessageBox.Show("Por favor ingrese los valores para la columna: Total a pedir.", "Advertencia", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                                                    MessageBox.Show("Por favor seleccione los valores para la columna: Unidad medida tela.", "Advertencia", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                                                 }
                                             }
                                             else
                                             {
-                                                MessageBox.Show("Por favor ingrese los valores para la columna: M Reservados.", "Advertencia", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                                                MessageBox.Show("Por favor ingrese los valores para la columna: Total a pedir.", "Advertencia", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                                             }
+                                            
                                         }
                                         else
                                         {
@@ -585,7 +580,7 @@ namespace PedidoTela.Formularios
                 bool existe = false;
                 foreach (Objeto obj in colores)
                 {
-                    if (obj.Nombre == color.Nombre)
+                    if (obj.Id == color.Id)
                     {
                         existe = true;
                     }
@@ -601,7 +596,7 @@ namespace PedidoTela.Formularios
                 PedidoMontarTotal objColor = new PedidoMontarTotal(0, obj.Id, obj.Nombre, "", "", 0, "", 0, "", 0, "", 0, "", 0, "", 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, "");
                 for (int i = 0; i < dgvInfoConsolidar.RowCount; i++)
                 {
-                    if (dgvInfoConsolidar.Rows[i].Cells[1].Value.ToString().ToLower() == obj.Nombre)
+                    if (dgvInfoConsolidar.Rows[i].Cells[0].Value.ToString().ToLower() == obj.Id)
                     {
                         objColor.Fondo = dgvInfoConsolidar.Rows[i].Cells[2].Value.ToString();
                         objColor.DescripcionFondo = dgvInfoConsolidar.Rows[i].Cells[3].Value.ToString();
@@ -663,18 +658,6 @@ namespace PedidoTela.Formularios
             foreach (DataGridViewRow row in dgvInfoConsolidar.Rows)
             {
                 if (row.Cells[12].Value == null || row.Cells[12].Value == "")
-                {
-                    vacio = true;
-                }
-            }
-            return vacio;
-        }
-
-        private bool validarValoresReserva() {
-            bool vacio = false;
-            foreach (DataGridViewRow row in dgvInfoConsolidar.Rows)
-            {
-                if (row.Cells[14].Value == null || row.Cells[14].Value == "")
                 {
                     vacio = true;
                 }

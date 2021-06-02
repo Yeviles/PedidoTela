@@ -133,8 +133,8 @@
   <data name="imprimir" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\imgs\imprimir.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="mbrilogout_99583" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\imgs\mbrilogout_99583.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="1491254401-detailinformationmenudata_82977" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\imgs\1491254401-detailinformationmenudata_82977.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="mbriprint_99560" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\imgs\mbriprint_99560.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
@@ -142,23 +142,20 @@
   <data name="volver" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\imgs\volver.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
+  <data name="detaReserva" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\imgs\detaReserva.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
   <data name="guardar1" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\imgs\guardar1.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="guardar" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\imgs\guardar.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
+  <data name="seleccion2" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\imgs\seleccion2.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
   <data name="editar" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\imgs\editar.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="consolidate_icon_135744" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\imgs\consolidate_icon_135744.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="seleccion4" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\imgs\seleccion4.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="confirmar1" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\imgs\confirmar1.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="detalleReserva" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\imgs\detalleReserva.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
@@ -214,20 +211,26 @@
   <data name="arrow_up_upload_icon_123739" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\imgs\arrow_up_upload_icon_123739.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
+  <data name="devolver" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\imgs\devolver.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
   <data name="aceptar" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\imgs\aceptar.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="seleccion2" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\imgs\seleccion2.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="1491254401-detailinformationmenudata_82977" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\imgs\1491254401-detailinformationmenudata_82977.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="checkmark1" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\imgs\checkmark.ico;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="confirmar1" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\imgs\confirmar1.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="guardar2" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\imgs\guardar2.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="consolidate_icon_135744" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\imgs\consolidate_icon_135744.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="analizarInventario" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\imgs\analizarInventario.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="seleccion4" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\imgs\seleccion4.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="seleccion3" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\imgs\seleccion3.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
@@ -247,16 +250,16 @@
   <data name="4544831-business-comerce-delivery-return-shop_121431" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\imgs\4544831-business-comerce-delivery-return-shop_121431.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="devolver" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\imgs\devolver.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="mbrilogout_99583" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\imgs\mbrilogout_99583.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="analizarInventario" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\imgs\analizarInventario.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="checkmark1" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\imgs\checkmark.ico;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="salir1" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\imgs\salir.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="detaReserva" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\imgs\detaReserva.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="aceptar (2)" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\imgs\aceptar (2).png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
 </root>

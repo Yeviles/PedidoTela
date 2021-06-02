@@ -12,7 +12,7 @@ namespace PedidoTela.Data.Acceso
     {
         #region Consultas SQL
 
-        string consultaPedido = "select  NVL(ts.consolidado,'') as consolidado, ts.consecutivo as solicitud,ts.tipo as tipo_solicitud,st.tipo as ensayo_ref, ts.identificador, NVL(es.n_dibujos,'0') as n_dibujos, " +
+        string consultaPedido = "select  NVL(ts.consecutivo_consolidado,'') as consecutivo_consolidado, ts.consecutivo as solicitud,ts.tipo as tipo_solicitud,st.tipo as ensayo_ref, ts.identificador, NVL(es.n_dibujos,'0') as n_dibujos, " +
                            "   NVL(de.fondo,'') as cod_fondo,NVL(de.des_fondo,'')as des_fondo,CONCAT(CONCAT(NVL(es.tipo_tejido,''),NVL(un.tipo_tejido,'')),NVL(pl.tipo_tejido,'')) as tipo_tela, " +
                            "   CONCAT(CONCAT(CONCAT (NVL(pl.coordinado,''),NVL(es.coordinado,'')),NVL(un.coordinado,'')),NVL(cu.coordinado,'')) as coordinado, " +
                            "   CONCAT(CONCAT(CONCAT(NVL(un.coordinado_con,''),NVL(cu.coordinadocon,'')),NVL(es.coordinado_con,'')),NVL(pl.coordinado_con,'')) as coordinado_con, " +
@@ -304,7 +304,7 @@ namespace PedidoTela.Data.Acceso
                 {
                     MontajeTelaDetalle detalle = new MontajeTelaDetalle();
 
-                    detalle.Consolidado = datosDataReader["consolidado"].ToString().Trim();
+                    detalle.Consolidado = datosDataReader["consecutivo_consolidado"].ToString().Trim();
                     detalle.Solicitud = datosDataReader["solicitud"].ToString().Trim();
                     detalle.TipoSolicitud = datosDataReader["tipo_solicitud"].ToString().Trim();
                     detalle.Tipo = datosDataReader["ensayo_ref"].ToString().Trim();

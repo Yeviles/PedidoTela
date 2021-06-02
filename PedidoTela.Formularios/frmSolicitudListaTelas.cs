@@ -55,6 +55,7 @@ namespace PedidoTela.Formularios
             cargarCombobox(cbxColor, controlador.getColoresT());
 
             dgvSolicitudTelas.CellContentClick += new DataGridViewCellEventHandler(dgvSolicitudTelas_CellClick);
+            btnConsultar.Click += new EventHandler(btnConsultar_Click);
         }
         #endregion
 
@@ -203,7 +204,14 @@ namespace PedidoTela.Formularios
             else
             {
                 string fecha = dtpFechaTienda.Value.ToString("dd/MM/yyyy");
-
+                if (cbxHabilitarFecha.Checked)
+                {
+                    objTela.FechaTienda = fecha;
+                }
+                else
+                {
+                    objTela.FechaTienda = "";
+                }
 
                 objTela.TipoSolicitud = (cbxTipoSolicitud.SelectedIndex != -1 && cbxTipoSolicitud.Text != "") ? cbxTipoSolicitud.Text.ToString() : "";
                 objTela.Muestrario = cbxMuestrario.GetItemText(cbxMuestrario.SelectedItem);
@@ -214,7 +222,7 @@ namespace PedidoTela.Formularios
                 objTela.EnsayoRefSimilar = txbEnsayoRef.Text.Trim();
                 objTela.Estado = (cbxEstado.SelectedIndex != -1 && cbxEstado.Text != "") ? cbxEstado.Text.ToString() : "";
 
-                objTela.FechaTienda = fecha;
+                //objTela.FechaTienda = fecha;
                 objTela.RefTela = cbxRefTela.GetItemText(cbxRefTela.SelectedItem);
                 objTela.NomTela = cbxNomTela.GetItemText(cbxNomTela.SelectedItem);
                 objTela.Solicitud = txbSolicitud.Text.Trim();
@@ -294,6 +302,7 @@ namespace PedidoTela.Formularios
         
         private void btnConsolidar_Click(object sender, EventArgs e)
         {
+        
             /// Cuenta cuantas filas de la DataGridView (dgvSolicitudTelas) en la vista frmSolicitudListaTelas ha sido chequeada (seleccionada).
             int cantFilasSeleccionadas = utilidades.ContarChecked(dgvSolicitudTelas);
             int b = 0;
@@ -397,7 +406,12 @@ namespace PedidoTela.Formularios
                     if (tipo != "")
                     {
                         frmTipoPedidoaMontar frmTipoPedido = new frmTipoPedidoaMontar(controlador, listaFilasSeleccionadas, tipo, int.Parse(listaFilasSeleccionadas[0].IdSolTela.ToString()));
-                        frmTipoPedido.Show();
+                        //frmTipoPedido.Show();
+                        if (frmTipoPedido.ShowDialog() == DialogResult.OK)
+                        {
+                            //btnConsultar.Click += new EventHandler(btnConsultar_Click);
+                            btnConsultar.PerformClick();
+                        }
                     }
                 }
                 else
@@ -769,5 +783,17 @@ namespace PedidoTela.Formularios
         }
 
         #endregion
+
+        private void cbxHabilitarFecha_CheckedChanged(object sender, EventArgs e)
+        {
+            if (cbxHabilitarFecha.Checked)
+            {
+                dtpFechaTienda.Visible = true;
+            }
+            else
+            {
+                dtpFechaTienda.Visible = false;
+            }
+        }
     }
 }

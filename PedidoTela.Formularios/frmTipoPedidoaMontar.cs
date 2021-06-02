@@ -136,36 +136,45 @@ namespace PedidoTela.Formularios
                 this.Close();
                 frmMontarUnicolor = new frmPedidoaMotarUnicolor(control, detalleSeleccionado,contItemSeleccionado,Seleccion, IdSolTela);
                 frmMontarUnicolor.ShowDialog();
+                this.DialogResult = DialogResult.OK;
+
             }
             else if (cbxestampado.Checked)
             {
                 this.Close();
                 frmMontarEstampado = new frmPedidoaMontarEstampado(control, detalleSeleccionado);
                 frmMontarEstampado.ShowDialog();
+                this.DialogResult = DialogResult.OK;
+
             }
             else if (cbxPlanoPretenido.Checked)
             {
                 this.Close();
                 frmMontarPretenido = new frmPedidoaMontarPretenido(control, detalleSeleccionado, IdSolTela,contItemSeleccionado);
                 frmMontarPretenido.ShowDialog();
+                this.DialogResult = DialogResult.OK;
+
             }
             else if (cbxCuePunTiras.Checked)
             {
                 this.Close();
                 frmMontarCuellos = new frmPedidoaMontarCuellos(control, detalleSeleccionado, IdSolTela);
                 frmMontarCuellos.ShowDialog();
+                this.DialogResult = DialogResult.OK;
             }
             else if (cbxCoordinadoTresUno.Checked)
             {
                 this.Close();
                 frmMontarCoordinado = new frmPedidoaMontarCoordinado(control, detalleSeleccionado, detalleSeleccionado[0].IdSolTela);
                 frmMontarCoordinado.ShowDialog();
+                this.DialogResult = DialogResult.OK;
             }
             else if (cbxAgencias.Checked)
             {
                 this.Close();
                 frmPedidoaMontarAgencias = new frmPedidoaMontarAgencias(control, detalleSeleccionado, IdSolTela);
                 frmPedidoaMontarAgencias.ShowDialog();
+                this.DialogResult = DialogResult.OK;
             }
             else {
                 MessageBox.Show("Por favor seleccione el tipo de pedido que desea montar", "Advertencia", MessageBoxButtons.OK, MessageBoxIcon.Warning);

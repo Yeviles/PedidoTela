@@ -474,7 +474,7 @@ namespace PedidoTela.Formularios
                 bool existe = false;
                 foreach (Objeto obj in colores)
                 {
-                    if (obj.Nombre == color.Nombre)
+                    if (obj.Id == color.Id)
                     {
                         existe = true;
                     }
@@ -490,7 +490,7 @@ namespace PedidoTela.Formularios
                 PedidoMontarTotal objColor = new PedidoMontarTotal(0, obj.Id, obj.Nombre, "", "", 0, "", 0, "", 0, "", 0, "", 0, "", 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, "");
                 for (int i = 0; i < dgvInfoConsolidar.RowCount; i++)
                 {
-                    if (dgvInfoConsolidar.Rows[i].Cells[1].Value.ToString().ToLower() == obj.Nombre)
+                    if (dgvInfoConsolidar.Rows[i].Cells[0].Value.ToString().ToLower() == obj.Id)
                     {
                         objColor.TotalUnidades += (dgvInfoConsolidar.Rows[i].Cells[12].Value != null && dgvInfoConsolidar.Rows[i].Cells[12].Value.ToString() != "") ? int.Parse(dgvInfoConsolidar.Rows[i].Cells[12].Value.ToString()) : 0;
                     }
@@ -540,7 +540,7 @@ namespace PedidoTela.Formularios
                 bool existe = false;
                 foreach (Objeto obj in colores)
                 {
-                    if (obj.Nombre == color.Nombre)
+                    if (obj.Id == color.Id)
                     {
                         existe = true;
                     }
@@ -557,7 +557,7 @@ namespace PedidoTela.Formularios
                 PedidoCuellos objColor = new PedidoCuellos( obj.Id, obj.Nombre);
                 for (int i = 0; i < dgvProporcion.RowCount; i++)
                 {
-                    if (dgvProporcion.Rows[i].Cells[1].Value.ToString().ToLower() == obj.Nombre)
+                    if (dgvProporcion.Rows[i].Cells[0].Value.ToString().ToLower() == obj.Id)
                     {
 
                         objColor.Xs += (dgvProporcion.Rows[i].Cells[2].Value != null && dgvProporcion.Rows[i].Cells[2].Value.ToString() != "") ? decimal.Parse(dgvProporcion.Rows[i].Cells[2].Value.ToString()) : 0;
@@ -664,7 +664,7 @@ namespace PedidoTela.Formularios
             string fecha = dtpFechaLlegada.Value.ToString("dd/MM/yyyy");
             elemento.FechaLlegada = fecha;
             //elemento.TipoMarcacion = ((Objeto)cbxTipoMarcacion.SelectedItem).Nombre;
-            elemento.TipoMarcacion = cbxTipoMarcacion.GetItemText(cbxTipoMarcacion.SelectedItem);
+            elemento.TipoMarcacion = cbxTipoMarcacion.GetItemText(cbxTipoMarcacion.Text);
             elemento.DescripcionPrenda = txtDesPrenda.Text.Trim();
             elemento.IdSolicitud = idSolicitudTelas;
             return elemento;

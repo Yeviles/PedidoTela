@@ -46,7 +46,7 @@ namespace PedidoTela.Formularios
             this.reportViewer1.LocalReport.SetParameters(new ReportParameter("desc_prenda", objPedUnicolor.DescripcionPrenda));
             this.reportViewer1.LocalReport.SetParameters(new ReportParameter("fecha_llegada", objPedUnicolor.FechaLlegada));
             this.reportViewer1.LocalReport.SetParameters(new ReportParameter("clase", objPedUnicolor.Clase));
-            this.reportViewer1.LocalReport.SetParameters(new ReportParameter("tipo_marcacion", objPedUnicolor.TipoMarcacion));
+            this.reportViewer1.LocalReport.SetParameters(new ReportParameter("tipo_marcacion", objPedUnicolor.TipoMarcacion.ToString()));
             this.reportViewer1.LocalReport.SetParameters(new ReportParameter("rendimiento", objPedUnicolor.Rendimiento.ToString()));
             this.reportViewer1.LocalReport.SetParameters(new ReportParameter("analista_corteb", objPedUnicolor.AnalistasCortesB));
             this.reportViewer1.LocalReport.DataSources.Clear();

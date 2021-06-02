@@ -113,6 +113,16 @@ namespace PedidoTela.Formularios.Properties {
         /// <summary>
         ///   Busca un recurso adaptado de tipo System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap aceptar__2_ {
+            get {
+                object obj = ResourceManager.GetObject("aceptar (2)", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Busca un recurso adaptado de tipo System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap addColor {
             get {
                 object obj = ResourceManager.GetObject("addColor", resourceCulture);

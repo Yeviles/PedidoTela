@@ -1059,6 +1059,17 @@ namespace PedidoTela.Controlodores
             D_PedidoCoordinadoTotal d_PedidoCoordinadoTotal = new D_PedidoCoordinadoTotal();
             d_PedidoCoordinadoTotal.EliminarPorPedido(idPedido);
         }
+        // total Cuellos
+        public void addPedidoCoordinadoCuellosProporcion(PedidoCuellos detalle)
+        {
+            D_PedidoCoordinadoTotal d_PedidoCoordinadoTotal = new D_PedidoCoordinadoTotal();
+            d_PedidoCoordinadoTotal.AgregarCoordinadoCuellosProporcion(detalle);
+        }
+        public void eliminarPedidoCoordinadoCuellosProporcion(int idPedido)
+        {
+            D_PedidoCoordinadoTotal d_PedidoCoordinadoTotal = new D_PedidoCoordinadoTotal();
+            d_PedidoCoordinadoTotal.EliminarCoordinadoCuellos(idPedido);
+        }
         #endregion
 
         #region Pedido Agencias-Externos
