@@ -16,7 +16,7 @@ namespace PedidoTela.Formularios
 {
     public partial class frmSolicitudTela : MaterialSkin.Controls.MaterialForm
     {
-
+        #region variables
         Controlador controlador = new Controlador();
         ErrorProvider errorProvider = new ErrorProvider();
         Validar validacion = new Validar();
@@ -28,7 +28,9 @@ namespace PedidoTela.Formularios
         private string id_disenador;
         private string codi_linea;
         private string idProgramador;
-       
+        #endregion
+
+        #region getters & setters
         public string Idmundo { get => idmundo; set => idmundo = value; }
         public string Codi_capsula { get => codi_capsula; set => codi_capsula = value; }
         public string Codi_entrada { get => codi_entrada; set => codi_entrada = value; }
@@ -36,11 +38,12 @@ namespace PedidoTela.Formularios
         public string Id_disenador { get => id_disenador; set => id_disenador = value; }
         public string Codi_linea { get => codi_linea; set => codi_linea = value; }
         public string IdProgramador { get => idProgramador; set => idProgramador = value; }
-     
+        #endregion
+
         public frmSolicitudTela()
         {
             InitializeComponent();
-
+            this.MaximumSize = SystemInformation.PrimaryMonitorMaximizedWindowSize;
             this.ttTipo.SetToolTip(this.cbxTipo, "Por favor Seleccione un Tipo");
             this.ttEnsayoRef.SetToolTip(this.txbEnsRefDigitado, "Precione Enter para Buscar");
             this.ttSku.SetToolTip(this.txbSku, "Por favor Ingrese solo 3 Carateres");

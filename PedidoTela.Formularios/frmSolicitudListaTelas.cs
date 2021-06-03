@@ -28,6 +28,7 @@ namespace PedidoTela.Formularios
         public frmSolicitudListaTelas()
         {
             InitializeComponent();
+            this.MaximumSize = SystemInformation.PrimaryMonitorMaximizedWindowSize;
             dtpFechaTienda.Format = DateTimePickerFormat.Custom;
             dtpFechaTienda.CustomFormat = "dd/MM/yyyy";
             txbClase.CharacterCasing = CharacterCasing.Upper;
