@@ -29,19 +29,19 @@ namespace PedidoTela.Data.Acceso
                 using (var con = new clsConexion())
                 {
                     con.Parametros.Add(new IfxParameter("@id_ped_coordinado", elemento.IdPedidoAMontar));
-                    con.Parametros.Add(new IfxParameter("@cod_color", elemento.CodigoColor));
-                    con.Parametros.Add(new IfxParameter("@desc_color", elemento.DescripcionColor));
-                    con.Parametros.Add(new IfxParameter("@fondo", elemento.Fondo));
+                    con.Parametros.Add(new IfxParameter("@cod_color", elemento.CodigoColor.ToString()));
+                    con.Parametros.Add(new IfxParameter("@desc_color", elemento.DescripcionColor.ToString()));
+                    con.Parametros.Add(new IfxParameter("@fondo", elemento.Fondo.ToString()));
                     con.Parametros.Add(new IfxParameter("@desc_fondo", elemento.DescripcionFondo));
-                    con.Parametros.Add(new IfxParameter("@codigo_h1", elemento.CodigoH1));
+                    con.Parametros.Add(new IfxParameter("@codigo_h1", elemento.CodigoH1.ToString()));
                     con.Parametros.Add(new IfxParameter("@descripcion_h1", elemento.DescripcionH1));
-                    con.Parametros.Add(new IfxParameter("@codigo_h2", elemento.CodigoH2));
+                    con.Parametros.Add(new IfxParameter("@codigo_h2", elemento.CodigoH2.ToString()));
                     con.Parametros.Add(new IfxParameter("@descripcion_h2", elemento.DescripcionH2));
-                    con.Parametros.Add(new IfxParameter("@codigo_h3", elemento.CodigoH3));
+                    con.Parametros.Add(new IfxParameter("@codigo_h3", elemento.CodigoH3.ToString()));
                     con.Parametros.Add(new IfxParameter("@descripcion_h3", elemento.DescripcionH3));
-                    con.Parametros.Add(new IfxParameter("@codigo_h4", elemento.CodigoH4));
+                    con.Parametros.Add(new IfxParameter("@codigo_h4", elemento.CodigoH4.ToString()));
                     con.Parametros.Add(new IfxParameter("@descripcion_h4", elemento.DescripcionH4));
-                    con.Parametros.Add(new IfxParameter("@codigo_h5", elemento.CodigoH5));
+                    con.Parametros.Add(new IfxParameter("@codigo_h5", elemento.CodigoH5.ToString()));
                     con.Parametros.Add(new IfxParameter("@descripcion_h5", elemento.DescripcionH5));
                     con.Parametros.Add(new IfxParameter("@tiendas", elemento.Tiendas));
                     con.Parametros.Add(new IfxParameter("@exito", elemento.Exito));
