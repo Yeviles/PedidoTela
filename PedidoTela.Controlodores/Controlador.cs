@@ -1070,6 +1070,11 @@ namespace PedidoTela.Controlodores
             D_PedidoCoordinadoTotal d_PedidoCoordinadoTotal = new D_PedidoCoordinadoTotal();
             d_PedidoCoordinadoTotal.EliminarCoordinadoCuellos(idPedido);
         }
+        public List<PedidoCuellos> getPedidocoordinadoCuellosProporcion(int idPedidoCuellos)
+        {
+            D_PedidoCoordinadoTotal d_PedidoCoordinadoTotal = new D_PedidoCoordinadoTotal();
+            return d_PedidoCoordinadoTotal.ConsultarCoordinadoCuellos(idPedidoCuellos);
+        }
         #endregion
 
         #region Pedido Agencias-Externos

@@ -21,6 +21,8 @@ namespace PedidoTela.Data.Acceso
         private readonly string consultarTodo = "SELECT cod_color,desc_color,tiendas,exito,cencosud,sao,comercio,rosado,otros,total_uni,m_calculados,kg_calculados,total_pedir,uni_medidatela " +
             "FROM cfc_spt_ped_coordinado_total WHERE id_ped_coordinado =?; ";
 
+        private readonly string colsultarTodoCuellos = "SELECT id_ped_coordinado, cod_vte,desc_vte,xs,s,m,l,xl,dosxl,cuatro,seis,ocho,diez,doce,catorce,dieciseis,dieciocho,veinte,veintidos,veinticuatro,total_uni FROM cfc_spt_ped_coordinado_cuello WHERE id_ped_coordinado = ?;";
+
         private readonly string consultaEliminar = "DELETE cfc_spt_ped_coordinado_total WHERE id_ped_coordinado = ?;";
         
         private readonly string consultaEliminarCoordinadoCuellos = "DELETE cfc_spt_ped_coordinado_cuello WHERE id_ped_coordinado = ?;";
@@ -142,6 +144,54 @@ namespace PedidoTela.Data.Acceso
             }
             return lista;
         }
+
+        public List<PedidoCuellos> ConsultarCoordinadoCuellos(int prmIdPedidoCuellos)
+        {
+            List<PedidoCuellos> lista = new List<PedidoCuellos>();
+            try
+            {
+                using (var con = new clsConexion())
+                {
+
+                    con.Parametros.Add(new IfxParameter("@id_ped_coordinado", prmIdPedidoCuellos));
+                    var datos = con.EjecutarConsulta(this.colsultarTodoCuellos);
+                    while (datos.Read())
+                    {
+                        PedidoCuellos detalle = new PedidoCuellos();
+                        detalle.IdPedidoCuellos = int.Parse(datos["id_ped_coordinado"].ToString());
+                        detalle.CodigoVte = datos["cod_vte"].ToString().Trim();
+                        detalle.DescripcionVte = datos["desc_vte"].ToString().Trim();
+                        detalle.Xs = decimal.Parse(datos["xs"].ToString().Trim());
+                        detalle.S = decimal.Parse(datos["s"].ToString().Trim());
+                        detalle.M = decimal.Parse(datos["m"].ToString().Trim());
+                        detalle.L = decimal.Parse(datos["l"].ToString().Trim());
+                        detalle.Xl = decimal.Parse(datos["xl"].ToString().Trim());
+                        detalle.Dosxl = decimal.Parse(datos["dosxl"].ToString().Trim());
+                        detalle.Cuatro = decimal.Parse(datos["cuatro"].ToString());
+                        detalle.Seis = decimal.Parse(datos["seis"].ToString().Trim());
+                        detalle.Ocho = decimal.Parse(datos["ocho"].ToString().Trim());
+                        detalle.Diez = decimal.Parse(datos["diez"].ToString().Trim());
+                        detalle.Doce = decimal.Parse(datos["doce"].ToString().Trim());
+                        detalle.Catorce = decimal.Parse(datos["catorce"].ToString().Trim());
+                        detalle.Dieciseis = decimal.Parse(datos["dieciseis"].ToString().Trim());
+                        detalle.Dieciocho = decimal.Parse(datos["dieciocho"].ToString().Trim());
+                        detalle.Veinte = decimal.Parse(datos["veinte"].ToString().Trim());
+                        detalle.Veintidos = decimal.Parse(datos["Veintidos"].ToString().Trim());
+                        detalle.Veinticuatro = decimal.Parse(datos["veinticuatro"].ToString().Trim());
+                        detalle.TotalUnidades = int.Parse(datos["total_uni"].ToString().Trim());
+                        lista.Add(detalle);
+                    }
+
+                    con.cerrarConexion();
+                }
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine("Error: " + ex.Message);
+            }
+            return lista;
+        }
+
         #endregion
 
         #region Métodos Eliminar

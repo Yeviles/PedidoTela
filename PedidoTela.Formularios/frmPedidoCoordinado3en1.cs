@@ -198,7 +198,7 @@ namespace PedidoTela.Formularios
         #region eventos
         private void dgvInformacionUnicolor_CellFormatting(object sender, DataGridViewCellFormattingEventArgs e)
         {
-            if (e.ColumnIndex > 1 && e.ColumnIndex < 10 || e.ColumnIndex == 11 || e.ColumnIndex >= 13)
+            if (e.ColumnIndex > 1 && e.ColumnIndex < 10 || e.ColumnIndex == 11 || e.ColumnIndex == 12 || e.ColumnIndex >= 13)
             {
                 e.CellStyle.BackColor = Color.PaleGoldenrod;
             }
@@ -215,6 +215,7 @@ namespace PedidoTela.Formularios
             dgvInformacionUnicolor.CurrentRow.Cells[8].ReadOnly = true;
             dgvInformacionUnicolor.CurrentRow.Cells[9].ReadOnly = true;
             dgvInformacionUnicolor.CurrentRow.Cells[11].ReadOnly = true;
+            dgvInformacionUnicolor.CurrentRow.Cells[12].ReadOnly = true;
             dgvInformacionUnicolor.CurrentRow.Cells[13].ReadOnly = true;
             dgvInformacionUnicolor.CurrentRow.Cells[14].ReadOnly = true;
 
@@ -414,7 +415,7 @@ namespace PedidoTela.Formularios
                     bool existe = false;
                     foreach (Objeto obj in colores)
                     {
-                        if (obj.Nombre == color.Nombre)
+                        if (obj.Id == color.Id)
                         {
                             existe = true;
                         }
@@ -433,15 +434,8 @@ namespace PedidoTela.Formularios
             if (dgvInformacionUnicolor.RowCount > 0)
             {
                 if (!validarValoresConsumoUnicolor())
-                {
-                    if (!validarValoresReservaUnicolor())
-                    {
-                        bandera = true;
-                    }
-                    else
-                    {
-                        MessageBox.Show("Por favor ingrese los valores para la columna: M Reservados.", "Advertencia", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                    }
+                {                  
+                    bandera = true;                 
                 }
                 else
                 {
@@ -457,19 +451,6 @@ namespace PedidoTela.Formularios
             foreach (DataGridViewRow row in dgvInformacionUnicolor.Rows)
             {
                 if (row.Cells[10].Value == null || row.Cells[10].Value.ToString() == "")
-                {
-                    vacio = true;
-                }
-            }
-            return vacio;
-        }
-
-        private bool validarValoresReservaUnicolor()
-        {
-            bool vacio = false;
-            foreach (DataGridViewRow row in dgvInformacionUnicolor.Rows)
-            {
-                if (row.Cells[12].Value == null || row.Cells[12].Value.ToString() == "")
                 {
                     vacio = true;
                 }
@@ -523,7 +504,7 @@ namespace PedidoTela.Formularios
         #region eventos
         private void dgvInformacionEstampado_CellFormatting(object sender, DataGridViewCellFormattingEventArgs e)
         {
-            if (e.ColumnIndex > 3 && e.ColumnIndex <= 11 || e.ColumnIndex > 12 && e.ColumnIndex <= 13 || e.ColumnIndex > 14 && e.ColumnIndex <= 16)
+            if (e.ColumnIndex > 3 && e.ColumnIndex <= 11 || e.ColumnIndex > 12 && e.ColumnIndex <= 13 || e.ColumnIndex >= 14 && e.ColumnIndex <= 16)
             {
                 e.CellStyle.BackColor = Color.PaleGoldenrod;
             }
@@ -531,6 +512,7 @@ namespace PedidoTela.Formularios
 
         private void dgvInformacionEstampado_CellClick(object sender, DataGridViewCellEventArgs e)
         {
+           // dgvInformacionEstampado.CurrentRow.Cells[14].ReadOnly = true;
             if (e.ColumnIndex == 0 || e.ColumnIndex == 1)
             {
                 frmBuscarColor buscarColor = new frmBuscarColor(control);
@@ -740,7 +722,7 @@ namespace PedidoTela.Formularios
                     bool existe = false;
                     foreach (Objeto obj in colores)
                     {
-                        if (obj.Nombre == color.Nombre)
+                        if (obj.Id == color.Id)
                         {
                             existe = true;
                         }
@@ -766,33 +748,14 @@ namespace PedidoTela.Formularios
             return vacio;
         }
 
-        private bool validarValoresReservaEstampado()
-        {
-            bool vacio = false;
-            foreach (DataGridViewRow row in dgvInformacionEstampado.Rows)
-            {
-                if (row.Cells[14].Value == null || row.Cells[14].Value == "")
-                {
-                    vacio = true;
-                }
-            }
-            return vacio;
-        }
-
         private bool validarEstampado() {
             bool bandera = false;
             if (dgvInformacionEstampado.RowCount > 0)
             {
                 if (!validarValoresConsumoEstampado())
                 {
-                    if (!validarValoresReservaEstampado())
-                    {
-                        bandera = true;
-                    }
-                    else
-                    {
-                        MessageBox.Show("Por favor ingrese los valores para la columna: M Reservados.", "Advertencia", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                    }
+                    bandera = true;
+                    
                 }
                 else
                 {
@@ -847,7 +810,7 @@ namespace PedidoTela.Formularios
         #region eventos
         private void dgvInformacionPlano_CellFormatting(object sender, DataGridViewCellFormattingEventArgs e)
         {
-            if (e.ColumnIndex > 11 && e.ColumnIndex < 20 || e.ColumnIndex == 21 || e.ColumnIndex >= 23)
+            if (e.ColumnIndex > 11 && e.ColumnIndex < 20 || e.ColumnIndex == 21 || e.ColumnIndex >= 22)
             {
                 e.CellStyle.BackColor = Color.PaleGoldenrod;
             }
@@ -1102,7 +1065,7 @@ namespace PedidoTela.Formularios
                     bool existe = false;
                     foreach (Objeto obj in colores)
                     {
-                        if (obj.Nombre == color.Nombre)
+                        if (obj.Id == color.Id)
                         {
                             existe = true;
                         }
@@ -1121,15 +1084,8 @@ namespace PedidoTela.Formularios
             if (dgvInformacionPlano.RowCount > 0)
             {
                 if (!validarValoresConsumoPlano())
-                {
-                    if (!validarValoresReservaPlano())
-                    {
-                        bandera = true;
-                    }
-                    else
-                    {
-                        MessageBox.Show("Por favor ingrese los valores para la columna: M Reservados.", "Advertencia", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                    }
+                {               
+                    bandera = true;                  
                 }
                 else
                 {
@@ -1145,19 +1101,6 @@ namespace PedidoTela.Formularios
             foreach (DataGridViewRow row in dgvInformacionPlano.Rows)
             {
                 if (row.Cells[20].Value == null || row.Cells[20].Value.ToString() == "")
-                {
-                    vacio = true;
-                }
-            }
-            return vacio;
-        }
-
-        private bool validarValoresReservaPlano()
-        {
-            bool vacio = false;
-            foreach (DataGridViewRow row in dgvInformacionPlano.Rows)
-            {
-                if (row.Cells[22].Value == null || row.Cells[22].Value.ToString() == "")
                 {
                     vacio = true;
                 }
@@ -1660,7 +1603,7 @@ namespace PedidoTela.Formularios
                             dgvInformacionEstampado.Rows.Add(obj.CodigoColor, obj.DescripcionColor, obj.Fondo, obj.DescripcionFondo, obj.Tiendas, obj.Exito,
                             obj.Cencosud, obj.Sao, obj.ComercioOrg, obj.Rosado, obj.Otros, obj.TotalUnidades, obj.Consumo, obj.MCalculados, obj.MReservados, obj.MSolicitar, obj.KgCalculados);
                         }
-                        else if (obj.Fondo.Trim() == "" && obj.CodigoH1.Trim() != "")
+                        else if (obj.Fondo.Trim() == "" && obj.CodigoH1.Trim() != "0" && obj.MCalculados != 0)
                         {
                             dgvInformacionPlano.Rows.Add(obj.CodigoColor, obj.DescripcionColor, obj.CodigoH1, obj.DescripcionH1, obj.CodigoH2, obj.DescripcionH2, obj.CodigoH3, obj.DescripcionH3, obj.CodigoH4, obj.DescripcionH4, obj.CodigoH5, obj.DescripcionH5, obj.Tiendas, obj.Exito,
                             obj.Cencosud, obj.Sao, obj.ComercioOrg, obj.Rosado, obj.Otros, obj.TotalUnidades, obj.Consumo, obj.MCalculados, obj.MReservados, obj.MSolicitar, obj.KgCalculados);
@@ -1674,7 +1617,7 @@ namespace PedidoTela.Formularios
 
                 /*Carga detalle Toltal a  Consolidar*/
                 List<PedidoMontarTotal> listaTotalConsolidado = control.getPedidoCoordinadoTotal(pedido.Id);
-                //List<PedidoMontarTotal> listaTotalConsolidado = control.getPedidoCoordinadoTotal(pedido.Id);
+                List<PedidoCuellos> listaTotalCoordinadoCuellos = control.getPedidocoordinadoCuellosProporcion(pedido.Id);
 
                 if (listaTotalConsolidado.Count > 0)
                 {
@@ -1683,6 +1626,15 @@ namespace PedidoTela.Formularios
                         dgvConsolidar.Rows.Add(obj.CodidoColor, obj.DescripcionColor, obj.Tiendas, obj.Exito,
                             obj.Cencosud, obj.Sao, obj.ComercioOrg, obj.Rosado, obj.Otros, obj.TotalUnidades,
                             obj.MCalculados, obj.KgCalculados, obj.TotalPedir, obj.UnidadMedida);
+                    }
+                }
+                
+                if (listaTotalCoordinadoCuellos.Count > 0)
+                {
+                    dgvProporcion.Visible = true;
+                    foreach (PedidoCuellos obj in listaTotalCoordinadoCuellos)
+                    {
+                        dgvProporcion.Rows.Add(obj.CodigoVte, obj.DescripcionVte, obj.Xs, obj.S, obj.M, obj.L, obj.Xl, obj.Dosxl, obj.Cuatro, obj.Seis, obj.Ocho, obj.Diez, obj.Doce, obj.Catorce, obj.Dieciseis, obj.Dieciocho, obj.Veinte, obj.Veintidos, obj.Veinticuatro, obj.TotalUnidades);
                     }
                 }
             }
@@ -1721,7 +1673,7 @@ namespace PedidoTela.Formularios
                 else
                 {
                     dgvProporcion.Visible = true;
-                    dgvConsolidar.Visible = false;
+                    //dgvConsolidar.Visible = false;
                     ///dgvPedidos.Visible = false;
                     inicioCuello();
                 }
@@ -1746,7 +1698,7 @@ namespace PedidoTela.Formularios
                 PedidoMontarTotal objColor = new PedidoMontarTotal(0, obj.Id, obj.Nombre, "", "", 0, "", 0, "", 0, "", 0, "", 0, "", 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, "");
                 for (int i = 0; i < dgvInformacionUnicolor.RowCount; i++)
                 {
-                    if (dgvInformacionUnicolor.Rows[i].Cells[1].Value.ToString().ToLower() == obj.Nombre)
+                    if (dgvInformacionUnicolor.Rows[i].Cells[0].Value.ToString().ToLower() == obj.Id)
                     {
                         objColor.Tiendas += (dgvInformacionUnicolor.Rows[i].Cells[2].Value != null && dgvInformacionUnicolor.Rows[i].Cells[2].Value.ToString() != "") ? int.Parse(dgvInformacionUnicolor.Rows[i].Cells[2].Value.ToString()) : 0;
                         objColor.Exito += (dgvInformacionUnicolor.Rows[i].Cells[3].Value != null && dgvInformacionUnicolor.Rows[i].Cells[3].Value.ToString() != "") ? int.Parse(dgvInformacionUnicolor.Rows[i].Cells[3].Value.ToString()) : 0;
@@ -1769,7 +1721,7 @@ namespace PedidoTela.Formularios
                 PedidoMontarTotal objColor = new PedidoMontarTotal(0, obj.Id, obj.Nombre, "", "", 0, "", 0, "", 0, "", 0, "", 0, "", 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, "");
                 for (int i = 0; i < dgvInformacionEstampado.RowCount; i++)
                 {
-                    if (dgvInformacionEstampado.Rows[i].Cells[1].Value.ToString().ToLower() == obj.Nombre)
+                    if (dgvInformacionEstampado.Rows[i].Cells[0].Value.ToString().ToLower() == obj.Id)
                     {
                         objColor.Fondo = dgvInformacionEstampado.Rows[i].Cells[2].Value.ToString();
                         objColor.DescripcionFondo = dgvInformacionEstampado.Rows[i].Cells[3].Value.ToString();
@@ -1794,7 +1746,7 @@ namespace PedidoTela.Formularios
                 PedidoMontarTotal objColor = new PedidoMontarTotal(0, obj.Id, obj.Nombre, "", "", 0, "", 0, "", 0, "", 0, "", 0, "", 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, "");
                 for (int i = 0; i < dgvInformacionPlano.RowCount; i++)
                 {
-                    if (dgvInformacionPlano.Rows[i].Cells[1].Value.ToString().ToLower() == obj.Nombre)
+                    if (dgvInformacionPlano.Rows[i].Cells[0].Value.ToString().ToLower() == obj.Id)
                     {
                         objColor.Tiendas += (dgvInformacionPlano.Rows[i].Cells[12].Value != null && dgvInformacionPlano.Rows[i].Cells[12].Value.ToString() != "") ? int.Parse(dgvInformacionPlano.Rows[i].Cells[12].Value.ToString()) : 0;
                         objColor.Exito += (dgvInformacionPlano.Rows[i].Cells[13].Value != null && dgvInformacionPlano.Rows[i].Cells[13].Value.ToString() != "") ? int.Parse(dgvInformacionPlano.Rows[i].Cells[13].Value.ToString()) : 0;
