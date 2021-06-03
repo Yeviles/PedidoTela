@@ -347,14 +347,7 @@ namespace PedidoTela.Formularios
                             {
                                 if (listaFilasSeleccionadas.Count == 3)
                                 {
-                                    if (!validarCoordinadoSolicitudEsPlano(listaFilasSeleccionadas))
-                                    {
-                                        tipo = "COORDINADO";
-                                    }
-                                    else
-                                    {
-                                        MessageBox.Show("Pedido a montar COORDINADO no permite solicitudes de tipo Plano Preteñido", "Advertencia", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                                    }
+                                    tipo = "COORDINADO";
                                 }
                                 else
                                 {
@@ -380,14 +373,7 @@ namespace PedidoTela.Formularios
                             {
                                 if (listaFilasSeleccionadas.Count == 3)
                                 {
-                                    if (!validarCoordinadoSolicitudEsPlano(listaFilasSeleccionadas))
-                                    {
-                                        tipo = "COORDINADO";
-                                    }
-                                    else
-                                    {
-                                        MessageBox.Show("Pedido a montar COORDINADO no permite solicitudes de tipo Plano Preteñido", "Advertencia", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                                    }
+                                    tipo = "COORDINADO";
                                 }
                                 else
                                 {
