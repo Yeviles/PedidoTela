@@ -50,7 +50,6 @@ namespace PedidoTela.Formularios
             dgvAnalizarInventario.Columns["mCalculados"].HeaderCell.ToolTipText = "(Total Unidades * Consumo)*1.10";
             dgvAnalizarInventario.Columns["mReservados"].HeaderCell.ToolTipText = "Metros reservados para cada item.";
             dgvAnalizarInventario.Columns["maSolicitar"].HeaderCell.ToolTipText = "(mCalculados - mReservados)";
-
         }
 
         #region Eventos
@@ -97,9 +96,15 @@ namespace PedidoTela.Formularios
                         /// Si es diferente de 0, entonces debe actualizar el estado a Reserva Parcial, y la fecha de estado 
                         if (dgvAnalizarInventario.Rows[row.Index].Cells[16].Value.ToString() != "0")
                         {
-                            if (control.actualizarEstado(int.Parse(DetalleSeleccionado[row.Index].IdSolTela.ToString()), estado1, fechaAtualizada))
+                            if (dgvAnalizarInventario.Rows[row.Index].Cells[15].Value.ToString() != "0" && dgvAnalizarInventario.Rows[row.Index].Cells[15].Value.ToString() != "")
                             {
-                                MessageBox.Show("Estado actualizado a Reserva Parcial.", "Información", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                                if (control.actualizarEstado(int.Parse(DetalleSeleccionado[row.Index].IdSolTela.ToString()), estado1, fechaAtualizada))
+                                {
+                                    MessageBox.Show("Estado actualizado a Reserva Parcial.", "Información", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                                }
+                            }
+                            else {
+                                MessageBox.Show("El registro no se puede confirmar porque aún no tiene reserva.", "Información", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                             }
                         }
                         // Si es igual a 0, entonces debe actualizar el estado a Reserva Total, y la fecha de estado 
@@ -136,7 +141,7 @@ namespace PedidoTela.Formularios
 
                     if (Convert.ToBoolean(dgvAnalizarInventario.Rows[i].Cells["sel"].Value) == true)
                     {
-                    // método para consultar pedido
+                        // método para consultar pedido
                         pedido = control.consultarPedido(DetalleSeleccionado[i].IdProgramador, DetalleSeleccionado[i].RefTela, DetalleSeleccionado[i].Vte);
                         
                         if (dgvAnalizarInventario.Rows[i].Cells["mReservados"].Value.ToString() == "" || dgvAnalizarInventario.Rows[i].Cells["mReservados"].Value == null)
@@ -186,7 +191,6 @@ namespace PedidoTela.Formularios
                             {
                                 if (dgvAnalizarInventario.Rows[i].Cells[0].Value.Equals(true))//Columna de checks
                                 {
-
                                     Actualizar(control.consultarInvertario(int.Parse(DetalleSeleccionado[i].IdSolTela.ToString())));
                                 }
                             }

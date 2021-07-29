@@ -243,7 +243,7 @@ namespace PedidoTela.Formularios
             // btnImprimir
             // 
             this.btnImprimir.Image = global::PedidoTela.Formularios.Properties.Resources.imprimir;
-            this.btnImprimir.Location = new System.Drawing.Point(374, 2);
+            this.btnImprimir.Location = new System.Drawing.Point(381, 2);
             this.btnImprimir.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.btnImprimir.Name = "btnImprimir";
             this.btnImprimir.Size = new System.Drawing.Size(126, 41);
@@ -257,7 +257,7 @@ namespace PedidoTela.Formularios
             // 
             this.btnConfirmar.Font = new System.Drawing.Font("Verdana", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnConfirmar.Image = global::PedidoTela.Formularios.Properties.Resources.confirmar1;
-            this.btnConfirmar.Location = new System.Drawing.Point(126, 2);
+            this.btnConfirmar.Location = new System.Drawing.Point(129, 2);
             this.btnConfirmar.Name = "btnConfirmar";
             this.btnConfirmar.Size = new System.Drawing.Size(126, 41);
             this.btnConfirmar.TabIndex = 96;
@@ -287,7 +287,7 @@ namespace PedidoTela.Formularios
             // 
             this.btnSalir.Font = new System.Drawing.Font("Verdana", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnSalir.Image = global::PedidoTela.Formularios.Properties.Resources.salir2;
-            this.btnSalir.Location = new System.Drawing.Point(498, 2);
+            this.btnSalir.Location = new System.Drawing.Point(507, 2);
             this.btnSalir.Name = "btnSalir";
             this.btnSalir.Size = new System.Drawing.Size(126, 41);
             this.btnSalir.TabIndex = 97;
@@ -300,7 +300,7 @@ namespace PedidoTela.Formularios
             // btnReservar
             // 
             this.btnReservar.Image = global::PedidoTela.Formularios.Properties.Resources.reservar;
-            this.btnReservar.Location = new System.Drawing.Point(250, 2);
+            this.btnReservar.Location = new System.Drawing.Point(255, 2);
             this.btnReservar.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.btnReservar.Name = "btnReservar";
             this.btnReservar.Size = new System.Drawing.Size(126, 41);
@@ -312,7 +312,7 @@ namespace PedidoTela.Formularios
             // 
             // frmAnalizarInventario
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1383, 788);
             this.Controls.Add(this.panel9);

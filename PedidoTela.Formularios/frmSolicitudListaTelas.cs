@@ -608,11 +608,11 @@ namespace PedidoTela.Formularios
                     objInfo.Comercio = montajeTelaDetalles[i].Comercio.ToString();
                     objInfo.Rosado = montajeTelaDetalles[i].Rosado.ToString();
                     objInfo.Otros = montajeTelaDetalles[i].Otros.ToString();
-                    objInfo.MCalculados = utilidades.mCalculados2(dgvSolicitudTelas.Rows[i].Cells[15].Value.ToString(), dgvSolicitudTelas.Rows[i].Cells[16].Value.ToString());
-
+                    //objInfo.MCalculados = utilidades.mCalculados2(dgvSolicitudTelas.Rows[i].Cells[15].Value.ToString(), dgvSolicitudTelas.Rows[i].Cells[16].Value.ToString());
+                    //controlador.setMCalculados(int.Parse(dgvSolicitudTelas.Rows[i].Cells[28].Value.ToString()), utilidades.mCalculados2(dgvSolicitudTelas.Rows[i].Cells[15].Value.ToString(), dgvSolicitudTelas.Rows[i].Cells[16].Value.ToString()));
+                    objInfo.MCalculados = montajeTelaDetalles[i].MCalculados;
                     objInfo.MReservados = montajeTelaDetalles[i].MReservados.ToString();
                     objInfo.Masolicitar = utilidades.mSolicitar(objInfo.MCalculados, montajeTelaDetalles[i].MReservados.ToString());
-                    controlador.setMCalculados(int.Parse(dgvSolicitudTelas.Rows[i].Cells[28].Value.ToString()), utilidades.mCalculados2(dgvSolicitudTelas.Rows[i].Cells[15].Value.ToString(), dgvSolicitudTelas.Rows[i].Cells[16].Value.ToString()));
                     objInfo.CantidadReservado = (montajeTelaDetalles[i].CantidadReservado != null && montajeTelaDetalles[i].CantidadReservado != "") ? montajeTelaDetalles[i].CantidadReservado : "0";
                     objInfo.IdSolTela = montajeTelaDetalles[i].IdSolTela;
                     objInfo.IdDetalleSolicitud = montajeTelaDetalles[i].IdDetalleSolicitud;
@@ -693,7 +693,6 @@ namespace PedidoTela.Formularios
             {
                 MessageBox.Show("No existe información sobre su consulta", "Advertencia", MessageBoxButtons.OK, MessageBoxIcon.Warning);
             }
-
         }
 
         private bool validarMismoTipoSolicitud(List<MontajeTelaDetalle> lista)

@@ -174,7 +174,7 @@ namespace PedidoTela.Formularios
             this.lbDisponible.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
             this.lbDisponible.Location = new System.Drawing.Point(12, 182);
             this.lbDisponible.Name = "lbDisponible";
-            this.lbDisponible.Size = new System.Drawing.Size(179, 19);
+            this.lbDisponible.Size = new System.Drawing.Size(149, 15);
             this.lbDisponible.TabIndex = 29;
             this.lbDisponible.Text = "Disponible para Reserva";
             // 
@@ -210,7 +210,7 @@ namespace PedidoTela.Formularios
             this.btnGrabar.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.btnGrabar.Font = new System.Drawing.Font("Verdana", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnGrabar.Image = global::PedidoTela.Formularios.Properties.Resources.guardar2;
-            this.btnGrabar.Location = new System.Drawing.Point(175, 2);
+            this.btnGrabar.Location = new System.Drawing.Point(178, 2);
             this.btnGrabar.Name = "btnGrabar";
             this.btnGrabar.Size = new System.Drawing.Size(174, 41);
             this.btnGrabar.TabIndex = 95;
@@ -224,7 +224,7 @@ namespace PedidoTela.Formularios
             // 
             this.btnSalir.Font = new System.Drawing.Font("Verdana", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnSalir.Image = global::PedidoTela.Formularios.Properties.Resources.salir2;
-            this.btnSalir.Location = new System.Drawing.Point(347, 2);
+            this.btnSalir.Location = new System.Drawing.Point(352, 2);
             this.btnSalir.Name = "btnSalir";
             this.btnSalir.Size = new System.Drawing.Size(174, 41);
             this.btnSalir.TabIndex = 97;
@@ -236,7 +236,7 @@ namespace PedidoTela.Formularios
             // 
             // frmDisponibleParaReserva
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1383, 788);
             this.Controls.Add(this.panel9);

@@ -17,21 +17,20 @@ namespace PedidoTela.Formularios
   
     public partial class frmDisponibleParaReserva : MaterialSkin.Controls.MaterialForm
     {
+        #region variables
         Controlador controlador = new Controlador();
         Utilidades utilidades = new Utilidades();
         List<DisponibleParaReserva> listDetalle = new List<DisponibleParaReserva>();
         private decimal metrosReservar;
-
+        #endregion
         public List<DisponibleParaReserva> ListDetalle { get => listDetalle; set => listDetalle = value; }
         public decimal MetrosReservar { get => metrosReservar; set => metrosReservar = value; }
 
         public frmDisponibleParaReserva(Controlador control, List<DisponibleParaReserva> listaSeleccionada)
         { 
-            
             InitializeComponent();
             controlador = control;
             ListDetalle = listaSeleccionada;
-            
         }
        
         private void frmDisponibleParaReserva_Load(object sender, EventArgs e)
@@ -39,7 +38,6 @@ namespace PedidoTela.Formularios
             cargarDataGridView(ListDetalle);
             dgvDisponibleReservar.Columns["disponibleTeorico"].HeaderCell.ToolTipText = "Disponible - Cantidad Reservada";
             dgvDisponibleReservar.Columns["metrosaReservar"].HeaderCell.ToolTipText = "Por favor ingrese un valor, No mayor al disponible.";
-
         }
 
         private void cargarDataGridView(List<DisponibleParaReserva> prmLista)
@@ -48,7 +46,6 @@ namespace PedidoTela.Formularios
             {
                 for (int i = 0; i < prmLista.Count; i++)
                 {
-
                     dgvDisponibleReservar.Rows.Add(
                         prmLista[i].Disenadora.ToString(),
                         prmLista[i].Pedido.ToString(),
@@ -129,11 +126,8 @@ namespace PedidoTela.Formularios
         {
             foreach (DataGridViewRow row in dgvDisponibleReservar.Rows)
             {
-
-                if (decimal.Parse(row.Cells[10].Value.ToString()) < decimal.Parse(row.Cells[7].Value.ToString()))
+                if (decimal.Parse(row.Cells[10].Value.ToString()) <= decimal.Parse(row.Cells[7].Value.ToString()))
                 {
-
-
                     if (controlador.setMaReservar(int.Parse(row.Cells[11].Value.ToString()), row.Cells[10].Value.ToString(), row.Cells[8].Value.ToString()))
                     {
                         MessageBox.Show("Información Actualizada con éxito, datos actualizados (metros a reservar y cantidad Reservada)", "Información", MessageBoxButtons.OK, MessageBoxIcon.Information);
@@ -144,7 +138,6 @@ namespace PedidoTela.Formularios
                 {
                     MessageBox.Show("El campo Metros a reservar no puede ser mayor que el disponible", "Advertencia", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 }
-
             } 
         }
 

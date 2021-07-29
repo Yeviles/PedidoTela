@@ -49,7 +49,6 @@ namespace PedidoTela.Data.Acceso
             {
                 using (var con = new clsConexion())
                 {
-
                     con.Parametros.Add(new IfxParameter("@m_reservar", maReservar));
                     con.Parametros.Add(new IfxParameter("@cantidad_reservado", cantidadReservada));
                     con.Parametros.Add(new IfxParameter("@idsolicitud", idSolTela));

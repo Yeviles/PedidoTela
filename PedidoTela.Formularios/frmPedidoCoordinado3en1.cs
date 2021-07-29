@@ -51,6 +51,7 @@ namespace PedidoTela.Formularios
             SkinManager.Theme = MaterialSkin.MaterialSkinManager.Themes.LIGHT;
             SkinManager.ColorScheme = new ColorScheme(Primary.Blue900, Primary.Grey500, Primary.Grey200, Accent.Green100, TextShade.WHITE);
             cargarSolicitudes(solicitudes);
+            cargarListas();
         }
 
         private void cargarListas()
@@ -206,14 +207,14 @@ namespace PedidoTela.Formularios
 
         private void dgvInformacionUnicolor_CellClick(object sender, DataGridViewCellEventArgs e)
         {
-            dgvInformacionUnicolor.CurrentRow.Cells[2].ReadOnly = true;
+            /*dgvInformacionUnicolor.CurrentRow.Cells[2].ReadOnly = true;
             dgvInformacionUnicolor.CurrentRow.Cells[3].ReadOnly = true;
             dgvInformacionUnicolor.CurrentRow.Cells[4].ReadOnly = true;
             dgvInformacionUnicolor.CurrentRow.Cells[5].ReadOnly = true;
             dgvInformacionUnicolor.CurrentRow.Cells[6].ReadOnly = true;
             dgvInformacionUnicolor.CurrentRow.Cells[7].ReadOnly = true;
             dgvInformacionUnicolor.CurrentRow.Cells[8].ReadOnly = true;
-            dgvInformacionUnicolor.CurrentRow.Cells[9].ReadOnly = true;
+            dgvInformacionUnicolor.CurrentRow.Cells[9].ReadOnly = true;*/
             dgvInformacionUnicolor.CurrentRow.Cells[11].ReadOnly = true;
             dgvInformacionUnicolor.CurrentRow.Cells[12].ReadOnly = true;
             dgvInformacionUnicolor.CurrentRow.Cells[13].ReadOnly = true;
@@ -818,13 +819,13 @@ namespace PedidoTela.Formularios
 
         private void dgvInformacionPlano_CellClick(object sender, DataGridViewCellEventArgs e)
         {
-            dgvInformacionPlano.CurrentRow.Cells[13].ReadOnly = true;
+            /*dgvInformacionPlano.CurrentRow.Cells[13].ReadOnly = true;
             dgvInformacionPlano.CurrentRow.Cells[14].ReadOnly = true;
             dgvInformacionPlano.CurrentRow.Cells[15].ReadOnly = true;
             dgvInformacionPlano.CurrentRow.Cells[16].ReadOnly = true;
             dgvInformacionPlano.CurrentRow.Cells[17].ReadOnly = true;
             dgvInformacionPlano.CurrentRow.Cells[18].ReadOnly = true;
-            dgvInformacionPlano.CurrentRow.Cells[19].ReadOnly = true;
+            dgvInformacionPlano.CurrentRow.Cells[19].ReadOnly = true;*/
             dgvInformacionPlano.CurrentRow.Cells[21].ReadOnly = true;
             dgvInformacionPlano.CurrentRow.Cells[23].ReadOnly = true;
             dgvInformacionPlano.CurrentRow.Cells[24].ReadOnly = true;
@@ -1147,35 +1148,6 @@ namespace PedidoTela.Formularios
                 }
             }
         }
-
-        private void obtenerInformacionCuello()
-        {
-            if (dgvInfoConsolidar.RowCount > 0)
-            {
-                foreach (DataGridViewRow row in dgvInfoConsolidar.Rows)
-                {
-                    PedidoMontarInformacion info = new PedidoMontarInformacion();
-                    info.IdPedidoAMontar = id;
-                    info.CodigoColor = (row.Cells[0].Value.ToString());
-                    info.DescripcionColor = (row.Cells[1].Value != null && row.Cells[1].Value.ToString() != "") ? row.Cells[1].Value.ToString() : "";
-                    info.Fondo = "";info.DescripcionFondo = "";
-                    info.CodigoH1 = (row.Cells[2].Value != null && row.Cells[2].Value.ToString() != "") ? row.Cells[2].Value.ToString() : "";
-                    info.DescripcionH1 = (row.Cells[3].Value != null && row.Cells[3].Value.ToString() != "") ? row.Cells[3].Value.ToString() : "";
-                    info.CodigoH2 = (row.Cells[4].Value != null && row.Cells[4].Value.ToString() != "") ? row.Cells[4].Value.ToString() : "";
-                    info.DescripcionH2 = (row.Cells[5].Value != null && row.Cells[5].Value.ToString() != "") ? row.Cells[5].Value.ToString() : "";
-                    info.CodigoH3 = (row.Cells[6].Value != null && row.Cells[6].Value.ToString() != "") ? row.Cells[6].Value.ToString() : "";
-                    info.DescripcionH3 = (row.Cells[7].Value != null && row.Cells[7].Value.ToString() != "") ? row.Cells[7].Value.ToString() : "";
-                    info.CodigoH4 = (row.Cells[8].Value != null && row.Cells[8].Value.ToString() != "") ? row.Cells[8].Value.ToString() : "";
-                    info.DescripcionH4 = (row.Cells[9].Value != null && row.Cells[9].Value.ToString() != "") ? row.Cells[9].Value.ToString() : "";
-                    info.CodigoH5 = (row.Cells[10].Value != null && row.Cells[10].Value.ToString() != "") ? row.Cells[10].Value.ToString() : "";
-                    info.DescripcionH5 = (row.Cells[11].Value != null && row.Cells[11].Value.ToString() != "") ? row.Cells[11].Value.ToString() : "";
-                    info.TotalUnidades = (row.Cells[12].Value != null && row.Cells[12].Value.ToString() != "") ? int.Parse(row.Cells[12].Value.ToString()) : 0;
-                    info.Tiendas =0;info.Exito = 0;info.Cencosud = 0;info.Sao =  0; info.ComercioOrg = 0;info.Rosado =  0;info.Otros =  0;
-                    informacion.Add(info);
-                }
-            }
-        }
-
         #endregion
 
         #region Cuellos Puños Tiras
@@ -1528,6 +1500,34 @@ namespace PedidoTela.Formularios
                 detalle.Veinticuatro = (dgvProporcion.Rows[i].Cells[18].Value != null && dgvProporcion.Rows[i].Cells[18].Value.ToString() != "") ? decimal.Parse(dgvProporcion.Rows[i].Cells[18].Value.ToString()) : 0;
                 detalle.TotalUnidades = (dgvProporcion.Rows[i].Cells[19].Value != null && dgvProporcion.Rows[i].Cells[19].Value.ToString() != "") ? int.Parse(dgvProporcion.Rows[i].Cells[19].Value.ToString()) : 0;
                 control.addPedidoCoordinadoCuellosProporcion(detalle);
+            }
+        }
+
+        private void obtenerInformacionCuello()
+        {
+            if (dgvInfoConsolidar.RowCount > 0)
+            {
+                foreach (DataGridViewRow row in dgvInfoConsolidar.Rows)
+                {
+                    PedidoMontarInformacion info = new PedidoMontarInformacion();
+                    info.IdPedidoAMontar = id;
+                    info.CodigoColor = (row.Cells[0].Value.ToString());
+                    info.DescripcionColor = (row.Cells[1].Value != null && row.Cells[1].Value.ToString() != "") ? row.Cells[1].Value.ToString() : "";
+                    info.Fondo = ""; info.DescripcionFondo = "";
+                    info.CodigoH1 = (row.Cells[2].Value != null && row.Cells[2].Value.ToString() != "") ? row.Cells[2].Value.ToString() : "";
+                    info.DescripcionH1 = (row.Cells[3].Value != null && row.Cells[3].Value.ToString() != "") ? row.Cells[3].Value.ToString() : "";
+                    info.CodigoH2 = (row.Cells[4].Value != null && row.Cells[4].Value.ToString() != "") ? row.Cells[4].Value.ToString() : "";
+                    info.DescripcionH2 = (row.Cells[5].Value != null && row.Cells[5].Value.ToString() != "") ? row.Cells[5].Value.ToString() : "";
+                    info.CodigoH3 = (row.Cells[6].Value != null && row.Cells[6].Value.ToString() != "") ? row.Cells[6].Value.ToString() : "";
+                    info.DescripcionH3 = (row.Cells[7].Value != null && row.Cells[7].Value.ToString() != "") ? row.Cells[7].Value.ToString() : "";
+                    info.CodigoH4 = (row.Cells[8].Value != null && row.Cells[8].Value.ToString() != "") ? row.Cells[8].Value.ToString() : "";
+                    info.DescripcionH4 = (row.Cells[9].Value != null && row.Cells[9].Value.ToString() != "") ? row.Cells[9].Value.ToString() : "";
+                    info.CodigoH5 = (row.Cells[10].Value != null && row.Cells[10].Value.ToString() != "") ? row.Cells[10].Value.ToString() : "";
+                    info.DescripcionH5 = (row.Cells[11].Value != null && row.Cells[11].Value.ToString() != "") ? row.Cells[11].Value.ToString() : "";
+                    info.TotalUnidades = (row.Cells[12].Value != null && row.Cells[12].Value.ToString() != "") ? int.Parse(row.Cells[12].Value.ToString()) : 0;
+                    info.Tiendas = 0; info.Exito = 0; info.Cencosud = 0; info.Sao = 0; info.ComercioOrg = 0; info.Rosado = 0; info.Otros = 0;
+                    informacion.Add(info);
+                }
             }
         }
 
@@ -1982,7 +1982,6 @@ namespace PedidoTela.Formularios
             {
                 control.agregarConsolidado(listaIdSolicitudes[i], maxConsolidado + 1, "COORDINADO");
             }
-
         }
 
     #endregion
